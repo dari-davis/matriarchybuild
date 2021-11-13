@@ -1,6 +1,20 @@
 <?php
 
 /**
+ * Includes
+ */
+array_map(function ($file) {
+  if ('blocks' === $file):
+    foreach (glob(get_stylesheet_directory() . "/includes/blocks/*.php") as $filename):
+      require_once($filename);
+    endforeach;
+  endif;
+	$filepath = "/includes/{$file}.php";
+  require_once(get_stylesheet_directory() . $filepath);
+}, ['blocks', 'post-types', 'taxonomies']);
+
+
+/**
  * Include Theme Customizer.
  *
  * @since v1.0
