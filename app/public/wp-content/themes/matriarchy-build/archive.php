@@ -16,8 +16,6 @@ if ( have_posts() ) :
 				printf( esc_html__( 'Monthly Archives: %s', 'matriarchy-build' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'matriarchy-build' ) ) );
 			elseif ( is_year() ) :
 				printf( esc_html__( 'Yearly Archives: %s', 'matriarchy-build' ), get_the_date( _x( 'Y', 'yearly archives date format', 'matriarchy-build' ) ) );
-			else :
-				esc_html_e( 'Blog Archives', 'matriarchy-build' );
 			endif;
 		?>
 	</h1>
