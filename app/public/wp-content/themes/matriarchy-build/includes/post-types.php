@@ -21,7 +21,7 @@ add_action('init', function() {
         'not_found_in_trash' => __('No Pros found in Trash.')
       ),
       'public' => true,
-      'has_archive' => false,
+      'has_archive' => true,
       'supports' => array('title', 'thumbnail', 'excerpt', 'editor'),
       'menu_icon' => 'dashicons-admin-users',
       'show_in_rest' => true,
