@@ -1,0 +1,130 @@
+2021-11-14T00:13:17+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+
+2021-11-14T00:25:21+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+
+2021-11-14T00:37:30+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+
+2021-11-14T00:44:31+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+
+2021-11-14T00:45:23+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+
+2021-11-14T00:45:25+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+
+2021-11-14T00:45:42+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+
+2021-11-14T00:45:43+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+
+2021-11-14T00:45:43+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+
+2021-11-14T00:45:44+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+
+2021-11-14T00:45:45+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+
+2021-11-14T00:46:09+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+
+2021-11-14T00:46:19+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+
+2021-11-14T00:46:42+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+
+2021-11-14T00:46:57+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+
+2021-11-14T00:49:51+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+
+2021-11-14T01:47:17+00:00 CRITICAL Object of class WP_Term could not be converted to string in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/single-pro.php on line 16
+

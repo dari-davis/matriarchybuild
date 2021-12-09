@@ -136,3 +136,191 @@
 [13-Nov-2021 18:46:53 UTC] PHP  20. Automattic\WooCommerce\Admin\RemoteInboxNotifications\TransformerService::apply() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/RemoteInboxNotifications/OptionRuleProcessor.php:45
 [13-Nov-2021 18:46:53 UTC] PHP  21. Automattic\WooCommerce\Admin\RemoteInboxNotifications\Transformers\Count->transform() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/RemoteInboxNotifications/TransformerService.php:59
 [13-Nov-2021 18:46:53 UTC] PHP  22. count() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/RemoteInboxNotifications/Transformers/Count.php:24
+[14-Nov-2021 00:13:17 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+[14-Nov-2021 00:25:21 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+[14-Nov-2021 00:37:30 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+[14-Nov-2021 00:44:31 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+[14-Nov-2021 00:45:23 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+[14-Nov-2021 00:45:25 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+[14-Nov-2021 00:45:42 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+[14-Nov-2021 00:45:43 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+[14-Nov-2021 00:45:43 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+[14-Nov-2021 00:45:44 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+[14-Nov-2021 00:45:45 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+[14-Nov-2021 00:46:09 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+[14-Nov-2021 00:46:19 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+[14-Nov-2021 00:46:42 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+[14-Nov-2021 00:46:57 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+[14-Nov-2021 00:49:51 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function WC_Template_Loader::unsupported_theme_title_filter(), 1 passed in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php:457
+Stack trace:
+#0 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php(303): WC_Template_Loader::unsupported_theme_title_filter('Hello world!')
+#1 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php(189): WP_Hook->apply_filters('Hello world!', Array)
+#2 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/sidebar.php(46): apply_filters('the_title', 'Hello world!')
+#3 /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template.php(770): require_once('/Users/darielle...')
+#4 /Users/darielledavis/Loca in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/includes/class-wc-template-loader.php on line 457
+[14-Nov-2021 01:47:17 UTC] PHP Recoverable fatal error:  Object of class WP_Term could not be converted to string in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/single-pro.php on line 16
+[14-Nov-2021 01:47:17 UTC] PHP Stack trace:
+[14-Nov-2021 01:47:17 UTC] PHP   1. {main}() /Users/darielledavis/Local Sites/matriarchy-build/app/public/index.php:0
+[14-Nov-2021 01:47:17 UTC] PHP   2. require() /Users/darielledavis/Local Sites/matriarchy-build/app/public/index.php:17
+[14-Nov-2021 01:47:17 UTC] PHP   3. require_once() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-blog-header.php:19
+[14-Nov-2021 01:47:17 UTC] PHP   4. include() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template-loader.php:106
+[14-Nov-2021 01:51:26 UTC] PHP Warning:  Invalid argument supplied for foreach() in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/single-pro.php on line 15
+[14-Nov-2021 01:51:26 UTC] PHP Stack trace:
+[14-Nov-2021 01:51:26 UTC] PHP   1. {main}() /Users/darielledavis/Local Sites/matriarchy-build/app/public/index.php:0
+[14-Nov-2021 01:51:26 UTC] PHP   2. require() /Users/darielledavis/Local Sites/matriarchy-build/app/public/index.php:17
+[14-Nov-2021 01:51:26 UTC] PHP   3. require_once() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-blog-header.php:19
+[14-Nov-2021 01:51:26 UTC] PHP   4. include() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template-loader.php:106
+[14-Nov-2021 01:52:10 UTC] PHP Warning:  Invalid argument supplied for foreach() in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/single-pro.php on line 15
+[14-Nov-2021 01:52:10 UTC] PHP Stack trace:
+[14-Nov-2021 01:52:10 UTC] PHP   1. {main}() /Users/darielledavis/Local Sites/matriarchy-build/app/public/index.php:0
+[14-Nov-2021 01:52:10 UTC] PHP   2. require() /Users/darielledavis/Local Sites/matriarchy-build/app/public/index.php:17
+[14-Nov-2021 01:52:10 UTC] PHP   3. require_once() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-blog-header.php:19
+[14-Nov-2021 01:52:10 UTC] PHP   4. include() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template-loader.php:106
+[14-Nov-2021 01:52:44 UTC] PHP Warning:  Invalid argument supplied for foreach() in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/single-pro.php on line 15
+[14-Nov-2021 01:52:44 UTC] PHP Stack trace:
+[14-Nov-2021 01:52:44 UTC] PHP   1. {main}() /Users/darielledavis/Local Sites/matriarchy-build/app/public/index.php:0
+[14-Nov-2021 01:52:44 UTC] PHP   2. require() /Users/darielledavis/Local Sites/matriarchy-build/app/public/index.php:17
+[14-Nov-2021 01:52:44 UTC] PHP   3. require_once() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-blog-header.php:19
+[14-Nov-2021 01:52:44 UTC] PHP   4. include() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template-loader.php:106
+[14-Nov-2021 02:10:08 UTC] PHP Warning:  Invalid argument supplied for foreach() in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/single-pro.php on line 15
+[14-Nov-2021 02:10:08 UTC] PHP Stack trace:
+[14-Nov-2021 02:10:08 UTC] PHP   1. {main}() /Users/darielledavis/Local Sites/matriarchy-build/app/public/index.php:0
+[14-Nov-2021 02:10:08 UTC] PHP   2. require() /Users/darielledavis/Local Sites/matriarchy-build/app/public/index.php:17
+[14-Nov-2021 02:10:08 UTC] PHP   3. require_once() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-blog-header.php:19
+[14-Nov-2021 02:10:08 UTC] PHP   4. include() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template-loader.php:106
+[01-Dec-2021 01:32:07 UTC] PHP Warning:  array_column() expects parameter 1 to be array, string given in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/RemoteInboxNotifications/Transformers/ArrayColumn.php on line 27
+[01-Dec-2021 01:32:07 UTC] PHP Stack trace:
+[01-Dec-2021 01:32:07 UTC] PHP   1. {main}() /Users/darielledavis/Local Sites/matriarchy-build/app/public/index.php:0
+[01-Dec-2021 01:32:07 UTC] PHP   2. require() /Users/darielledavis/Local Sites/matriarchy-build/app/public/index.php:17
+[01-Dec-2021 01:32:07 UTC] PHP   3. wp() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-blog-header.php:16
+[01-Dec-2021 01:32:07 UTC] PHP   4. WP->main() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/functions.php:1291
+[01-Dec-2021 01:32:07 UTC] PHP   5. WP->parse_request() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp.php:750
+[01-Dec-2021 01:32:07 UTC] PHP   6. do_action_ref_array() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp.php:388
+[01-Dec-2021 01:32:07 UTC] PHP   7. WP_Hook->do_action() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php:518
+[01-Dec-2021 01:32:07 UTC] PHP   8. WP_Hook->apply_filters() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php:327
+[01-Dec-2021 01:32:07 UTC] PHP   9. rest_api_loaded() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php:303
+[01-Dec-2021 01:32:07 UTC] PHP  10. WP_REST_Server->serve_request() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/rest-api.php:370
+[01-Dec-2021 01:32:07 UTC] PHP  11. WP_REST_Server->dispatch() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/rest-api/class-wp-rest-server.php:414
+[01-Dec-2021 01:32:07 UTC] PHP  12. WP_REST_Server->respond_to_request() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/rest-api/class-wp-rest-server.php:987
+[01-Dec-2021 01:32:07 UTC] PHP  13. Automattic\WooCommerce\Admin\API\OnboardingFreeExtensions->get_available_extensions() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/rest-api/class-wp-rest-server.php:1140
+[01-Dec-2021 01:32:07 UTC] PHP  14. Automattic\WooCommerce\Admin\Features\RemoteFreeExtensions\Init::get_extensions() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/API/OnboardingFreeExtensions.php:75
+[01-Dec-2021 01:32:07 UTC] PHP  15. Automattic\WooCommerce\Admin\Features\RemoteFreeExtensions\EvaluateExtension::evaluate() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/Features/RemoteFreeExtensions/Init.php:48
+[01-Dec-2021 01:32:07 UTC] PHP  16. Automattic\WooCommerce\Admin\RemoteInboxNotifications\RuleEvaluator->evaluate() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/Features/RemoteFreeExtensions/EvaluateExtension.php:27
+[01-Dec-2021 01:32:07 UTC] PHP  17. Automattic\WooCommerce\Admin\RemoteInboxNotifications\OptionRuleProcessor->process() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/RemoteInboxNotifications/RuleEvaluator.php:62
+[01-Dec-2021 01:32:07 UTC] PHP  18. Automattic\WooCommerce\Admin\RemoteInboxNotifications\TransformerService::apply() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/RemoteInboxNotifications/OptionRuleProcessor.php:45
+[01-Dec-2021 01:32:07 UTC] PHP  19. Automattic\WooCommerce\Admin\RemoteInboxNotifications\Transformers\ArrayColumn->transform() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/RemoteInboxNotifications/TransformerService.php:59
+[01-Dec-2021 01:32:07 UTC] PHP  20. array_column() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/RemoteInboxNotifications/Transformers/ArrayColumn.php:27
+[01-Dec-2021 01:32:07 UTC] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/RemoteInboxNotifications/Transformers/Count.php on line 24
+[01-Dec-2021 01:32:07 UTC] PHP Stack trace:
+[01-Dec-2021 01:32:07 UTC] PHP   1. {main}() /Users/darielledavis/Local Sites/matriarchy-build/app/public/index.php:0
+[01-Dec-2021 01:32:07 UTC] PHP   2. require() /Users/darielledavis/Local Sites/matriarchy-build/app/public/index.php:17
+[01-Dec-2021 01:32:07 UTC] PHP   3. wp() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-blog-header.php:16
+[01-Dec-2021 01:32:07 UTC] PHP   4. WP->main() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/functions.php:1291
+[01-Dec-2021 01:32:07 UTC] PHP   5. WP->parse_request() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp.php:750
+[01-Dec-2021 01:32:07 UTC] PHP   6. do_action_ref_array() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp.php:388
+[01-Dec-2021 01:32:07 UTC] PHP   7. WP_Hook->do_action() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php:518
+[01-Dec-2021 01:32:07 UTC] PHP   8. WP_Hook->apply_filters() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php:327
+[01-Dec-2021 01:32:07 UTC] PHP   9. rest_api_loaded() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php:303
+[01-Dec-2021 01:32:07 UTC] PHP  10. WP_REST_Server->serve_request() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/rest-api.php:370
+[01-Dec-2021 01:32:07 UTC] PHP  11. WP_REST_Server->dispatch() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/rest-api/class-wp-rest-server.php:414
+[01-Dec-2021 01:32:07 UTC] PHP  12. WP_REST_Server->respond_to_request() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/rest-api/class-wp-rest-server.php:987
+[01-Dec-2021 01:32:07 UTC] PHP  13. Automattic\WooCommerce\Admin\API\OnboardingFreeExtensions->get_available_extensions() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/rest-api/class-wp-rest-server.php:1140
+[01-Dec-2021 01:32:07 UTC] PHP  14. Automattic\WooCommerce\Admin\Features\RemoteFreeExtensions\Init::get_extensions() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/API/OnboardingFreeExtensions.php:75
+[01-Dec-2021 01:32:07 UTC] PHP  15. Automattic\WooCommerce\Admin\Features\RemoteFreeExtensions\EvaluateExtension::evaluate() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/Features/RemoteFreeExtensions/Init.php:48
+[01-Dec-2021 01:32:07 UTC] PHP  16. Automattic\WooCommerce\Admin\RemoteInboxNotifications\RuleEvaluator->evaluate() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/Features/RemoteFreeExtensions/EvaluateExtension.php:27
+[01-Dec-2021 01:32:07 UTC] PHP  17. Automattic\WooCommerce\Admin\RemoteInboxNotifications\OrRuleProcessor->process() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/RemoteInboxNotifications/RuleEvaluator.php:62
+[01-Dec-2021 01:32:07 UTC] PHP  18. Automattic\WooCommerce\Admin\RemoteInboxNotifications\RuleEvaluator->evaluate() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/RemoteInboxNotifications/OrRuleProcessor.php:38
+[01-Dec-2021 01:32:07 UTC] PHP  19. Automattic\WooCommerce\Admin\RemoteInboxNotifications\OptionRuleProcessor->process() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/RemoteInboxNotifications/RuleEvaluator.php:62
+[01-Dec-2021 01:32:07 UTC] PHP  20. Automattic\WooCommerce\Admin\RemoteInboxNotifications\TransformerService::apply() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/RemoteInboxNotifications/OptionRuleProcessor.php:45
+[01-Dec-2021 01:32:07 UTC] PHP  21. Automattic\WooCommerce\Admin\RemoteInboxNotifications\Transformers\Count->transform() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/RemoteInboxNotifications/TransformerService.php:59
+[01-Dec-2021 01:32:07 UTC] PHP  22. count() /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/RemoteInboxNotifications/Transformers/Count.php:24

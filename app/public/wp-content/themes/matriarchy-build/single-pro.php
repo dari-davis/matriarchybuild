@@ -16,9 +16,6 @@
           <a href="<?= get_term_link($term->slug, 'pros') ?>"><?= $term->name ?></a>
         <?php endforeach; ?>
       </div>
-
-
-
     <?php endwhile; ?>
   </div>
 <?php endif; ?>
