@@ -12086,4 +12086,9 @@ img {
 .footer {
   background: #2d457c;
 }
+
+.primary-nav {
+  border: 1px solid #f7cbad;
+  border-width: 1px 0;
+}
 /*# sourceMappingURL=main.css.map */

@@ -28,13 +28,13 @@
         <img class="header__logo-image mx-auto" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo_2x.png">
       </div>
 
-      <div class="col-md-7">
+      <div class="col-md-7 text-center">
         <div class="header__account row">
-          <div class="col-6">
-            <a>Sign In</a>
+          <div class="col-6 py-4">
+            <a href="#">Sign In</a>
           </div>
-          <div class="col-6">
-            <a>Sign Up</a>
+          <div class="col-6 py-4">
+            <a href="#">Sign Up</a>
           </div>
         </div>
 
@@ -45,7 +45,7 @@
                 array(
                   'theme_location' => 'main-menu',
                   'container'      => '',
-                  'menu_class'     => 'navbar-nav me-auto',
+                  'menu_class'     => 'primary-nav__menu',
                   'fallback_cb'    => 'WP_Bootstrap_Navwalker::fallback',
                   'walker'         => new WP_Bootstrap_Navwalker(),
                 )
@@ -53,7 +53,7 @@
               ?>
         </div>
 
-        <div class="row">
+        <div class="row search p-4">
           <?php if ( '1' === $search_enabled ) : ?>
           <form class="search-form my-2 my-lg-0" role="search" method="get"
             action="<?php echo esc_url( home_url( '/' ) ); ?>">
