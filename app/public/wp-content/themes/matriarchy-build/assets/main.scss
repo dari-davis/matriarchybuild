@@ -152,44 +152,8 @@ body.admin-bar {
 
 /* Header */
 
-#header {
-	.search-form {
-		min-width: 250px;
-	}
-}
-
-.navbar-brand {
-	img {
-		height: 40px;
-	}
-}
-
 .navbar-static-top {
 	margin-bottom: $grid-gutter-width;
-}
-
-/* Main */
-
-#main {
-	margin-top: $spacer;
-}
-
-/* Footer */
-
-#footer {
-	background-color: #fff;
-
-	p {
-		margin-top: 10px;
-	}
-
-	.menu-item {
-		a {
-			&[aria-current='page'] {
-				color: $link-hover-color;
-			}
-		}
-	}
 }
 
 /* Sidebar */
@@ -198,24 +162,6 @@ body.admin-bar {
 	ul {
 		list-style: none;
 		padding: 0;
-	}
-}
-
-/* Author */
-
-.author-avatar {
-	.avatar {
-		width: 64px;
-		height: auto;
-	}
-}
-
-.author-info {
-	margin: 40px 0;
-
-	h2,
-	h3 {
-		margin-top: 0;
 	}
 }
 
@@ -352,4 +298,8 @@ body.admin-bar {
 
 
 // Matriarchy Build - Custom Theme Styles
+@import "scss/variables";
 @import "scss/global";
+
+@import "scss/layouts/header";
+@import "scss/layouts/footer";

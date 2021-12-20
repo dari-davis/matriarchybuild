@@ -13,7 +13,7 @@
 				endif;
 			?>
 		</main><!-- /#main -->
-		<footer id="footer">
+		<footer id="footer" class="footer">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6">

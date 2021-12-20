@@ -1,0 +1,21 @@
+.header {
+  background: $blue;
+
+  &__logo {
+    background: $pink;
+  }
+
+  &__logo-image {
+    max-width: 80%;
+  }
+
+  &__account {
+    .col-6 {
+      border-right: 1px solid $pink;
+    }
+
+    .col-6 + .col-6 {
+      border: 0;
+    }
+  }
+}
