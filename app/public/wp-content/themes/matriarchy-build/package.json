@@ -11,7 +11,7 @@
   },
   "scripts": {
     "watch": "gulp watch",
-    "scss": "node-sass --watch scss/ -o css/"
+    "scss": "node-sass -watch scss -o css"
   },
   "browserslist": [
     "last 2 versions"
