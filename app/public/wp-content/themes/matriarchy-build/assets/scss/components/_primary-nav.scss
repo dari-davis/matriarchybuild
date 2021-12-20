@@ -1,4 +1,9 @@
 .primary-nav {
   border: 1px solid $pink;
   border-width: 1px 0;
+
+  &__menu {
+    flex-direction: row;
+    justify-content: space-around;
+  }
 }

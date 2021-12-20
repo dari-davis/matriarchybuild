@@ -45,7 +45,7 @@
                 array(
                   'theme_location' => 'main-menu',
                   'container'      => '',
-                  'menu_class'     => 'primary-nav__menu',
+                  'menu_class'     => 'primary-nav__menu d-flex',
                   'fallback_cb'    => 'WP_Bootstrap_Navwalker::fallback',
                   'walker'         => new WP_Bootstrap_Navwalker(),
                 )
