@@ -23,7 +23,7 @@
     class="visually-hidden-focusable"><?php esc_html_e( 'Skip to main content', 'matriarchy-build' ); ?></a>
 
   <div id="wrapper">
-    <header id="header" class="header row">
+    <header id="header" class="header row mb-4">
       <div class="header__logo col-md-5 p-4 d-flex">
         <img class="header__logo-image mx-auto" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo_2x.png">
       </div>
@@ -31,10 +31,10 @@
       <div class="col-md-7 text-center">
         <div class="header__account row">
           <div class="col-6 py-4">
-            <a href="#">Sign In</a>
+            <a class="header__account-link" href="#">Sign In</a>
           </div>
           <div class="col-6 py-4">
-            <a href="#">Sign Up</a>
+            <a class="header__account-link" href="#">Sign Up</a>
           </div>
         </div>
 
@@ -45,7 +45,7 @@
                 array(
                   'theme_location' => 'main-menu',
                   'container'      => '',
-                  'menu_class'     => 'primary-nav__menu d-flex',
+                  'menu_class'     => 'primary-nav__menu d-flex m-0',
                   'fallback_cb'    => 'WP_Bootstrap_Navwalker::fallback',
                   'walker'         => new WP_Bootstrap_Navwalker(),
                 )

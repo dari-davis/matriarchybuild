@@ -3,9 +3,17 @@
 */
 
 body {
+  color: $blue;
+  font-family: $font-family;
   background: $background-color;
 }
 
 img {
   max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $heading-font-family;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }

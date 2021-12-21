@@ -1,9 +1,26 @@
 .primary-nav {
+  height: 120px;
   border: 1px solid $pink;
   border-width: 1px 0;
 
   &__menu {
     flex-direction: row;
     justify-content: space-around;
+    list-style: none;
+  }
+
+  .menu-item {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-link {
+    padding: 0;
+    font-family: $heading-font-family;
+    font-size: 38px;
+    color: $pink;
+    line-height: 36px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
   }
 }

@@ -11911,6 +11911,102 @@ fieldset:disabled .wp-block-button .wp-block-button__link,
   }
 }
 
+/*
+ * global styles
+*/
+body {
+  color: #2d457c;
+  font-family: "Dharma", Fallback, monospace;
+  background: #fbf8ea;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  font-family: "NauticGroteskBold", Fallback, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+@font-face {
+  font-family: 'NauticGroteskBold';
+  src: url("../fonts/nautic_grotesk_bold.woff2") format("woff2"), url("../fonts/nautic_grotesk_bold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Dharma';
+  src: url("../fonts/dharma_type_regular.woff2") format("woff2"), url("../fonts/dharma_type_regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.header {
+  background: #2d457c;
+}
+
+.header__logo {
+  background: #f7cbad;
+}
+
+.header__logo-image {
+  max-width: 80%;
+}
+
+.header__account .col-6 {
+  border-right: 1px solid #f7cbad;
+}
+
+.header__account .col-6 + .col-6 {
+  border: 1px;
+}
+
+.header__account-link {
+  color: #ffffff;
+}
+
+.footer {
+  background: #2d457c;
+}
+
+.primary-nav {
+  height: 120px;
+  border: 1px solid #f7cbad;
+  border-width: 1px 0;
+}
+
+.primary-nav__menu {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  list-style: none;
+}
+
+.primary-nav .menu-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.primary-nav .nav-link {
+  padding: 0;
+  font-family: "NauticGroteskBold", Fallback, sans-serif;
+  font-size: 38px;
+  color: #f7cbad;
+  line-height: 36px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
 /**
  * General
  */
@@ -12050,54 +12146,5 @@ body.admin-bar .edit-link a::before {
   #sidebar {
     margin-top: 60px;
   }
-}
-
-/*
- * global styles
-*/
-body {
-  background: #fbf8ea;
-}
-
-img {
-  max-width: 100%;
-}
-
-.header {
-  background: #2d457c;
-}
-
-.header__logo {
-  background: #f7cbad;
-}
-
-.header__logo-image {
-  max-width: 80%;
-}
-
-.header__account .col-6 {
-  border-right: 1px solid #f7cbad;
-}
-
-.header__account .col-6 + .col-6 {
-  border: 1px;
-}
-
-.footer {
-  background: #2d457c;
-}
-
-.primary-nav {
-  border: 1px solid #f7cbad;
-  border-width: 1px 0;
-}
-
-.primary-nav__menu {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
 }
 /*# sourceMappingURL=main.css.map */
