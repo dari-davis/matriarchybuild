@@ -16,6 +16,7 @@ class Ajax extends Lib\Base\Ajax
     {
         $disabled = Lib\Cloud\API::getInstance()->account->disableAutoRecharge();
         if ( $disabled !== false ) {
+            update_option( 'bookly_cloud_auto_recharge_gateway', '' );
             wp_send_json_success( array( 'message' => __( 'Auto-Recharge disabled', 'bookly' ) ) );
         } else {
             wp_send_json_error( array( 'message' => sprintf( __( 'Can\'t disable Auto-Recharge, please contact us at %s', 'bookly' ), '<a href="mailto:support@bookly.info">support@bookly.info</a>' ) ) );

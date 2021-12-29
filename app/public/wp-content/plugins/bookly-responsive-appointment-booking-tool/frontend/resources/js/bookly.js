@@ -1889,11 +1889,11 @@ var bookly = (function ($) {
 
 	var slice$6 = entryVirtual('Array').slice;
 
-	var ArrayPrototype$b = Array.prototype;
+	var ArrayPrototype$c = Array.prototype;
 
 	var slice_1 = function (it) {
 	  var own = it.slice;
-	  return it === ArrayPrototype$b || (it instanceof Array && own === ArrayPrototype$b.slice) ? slice$6 : own;
+	  return it === ArrayPrototype$c || (it instanceof Array && own === ArrayPrototype$c.slice) ? slice$6 : own;
 	};
 
 	var slice$5 = slice_1;
@@ -1975,11 +1975,11 @@ var bookly = (function ($) {
 	});
 
 	var ITERATOR$3 = wellKnownSymbol('iterator');
-	var ArrayPrototype$a = Array.prototype;
+	var ArrayPrototype$b = Array.prototype;
 
 	// check on default Array iterator
 	var isArrayIteratorMethod = function (it) {
-	  return it !== undefined && (iterators.Array === it || ArrayPrototype$a[ITERATOR$3] === it);
+	  return it !== undefined && (iterators.Array === it || ArrayPrototype$b[ITERATOR$3] === it);
 	};
 
 	var ITERATOR$2 = wellKnownSymbol('iterator');
@@ -2449,11 +2449,11 @@ var bookly = (function ($) {
 
 	var find$2 = entryVirtual('Array').find;
 
-	var ArrayPrototype$9 = Array.prototype;
+	var ArrayPrototype$a = Array.prototype;
 
 	var find_1 = function (it) {
 	  var own = it.find;
-	  return it === ArrayPrototype$9 || (it instanceof Array && own === ArrayPrototype$9.find) ? find$2 : own;
+	  return it === ArrayPrototype$a || (it instanceof Array && own === ArrayPrototype$a.find) ? find$2 : own;
 	};
 
 	var find$1 = find_1;
@@ -2522,12 +2522,12 @@ var bookly = (function ($) {
 
 	var repeat$2 = entryVirtual('String').repeat;
 
-	var StringPrototype$1 = String.prototype;
+	var StringPrototype$2 = String.prototype;
 
 	var repeat_1 = function (it) {
 	  var own = it.repeat;
-	  return typeof it === 'string' || it === StringPrototype$1
-	    || (it instanceof String && own === StringPrototype$1.repeat) ? repeat$2 : own;
+	  return typeof it === 'string' || it === StringPrototype$2
+	    || (it instanceof String && own === StringPrototype$2.repeat) ? repeat$2 : own;
 	};
 
 	var repeat$1 = repeat_1;
@@ -2565,7 +2565,7 @@ var bookly = (function ($) {
 
 	var forEach$1 = forEach$2;
 
-	var ArrayPrototype$8 = Array.prototype;
+	var ArrayPrototype$9 = Array.prototype;
 
 	var DOMIterables = {
 	  DOMTokenList: true,
@@ -2574,7 +2574,7 @@ var bookly = (function ($) {
 
 	var forEach_1 = function (it) {
 	  var own = it.forEach;
-	  return it === ArrayPrototype$8 || (it instanceof Array && own === ArrayPrototype$8.forEach)
+	  return it === ArrayPrototype$9 || (it instanceof Array && own === ArrayPrototype$9.forEach)
 	    // eslint-disable-next-line no-prototype-builtins -- safe
 	    || DOMIterables.hasOwnProperty(classof(it)) ? forEach$1 : own;
 	};
@@ -2642,11 +2642,11 @@ var bookly = (function ($) {
 
 	var splice$2 = entryVirtual('Array').splice;
 
-	var ArrayPrototype$7 = Array.prototype;
+	var ArrayPrototype$8 = Array.prototype;
 
 	var splice_1 = function (it) {
 	  var own = it.splice;
-	  return it === ArrayPrototype$7 || (it instanceof Array && own === ArrayPrototype$7.splice) ? splice$2 : own;
+	  return it === ArrayPrototype$8 || (it instanceof Array && own === ArrayPrototype$8.splice) ? splice$2 : own;
 	};
 
 	var splice$1 = splice_1;
@@ -2668,11 +2668,11 @@ var bookly = (function ($) {
 
 	var every$2 = entryVirtual('Array').every;
 
-	var ArrayPrototype$6 = Array.prototype;
+	var ArrayPrototype$7 = Array.prototype;
 
 	var every_1 = function (it) {
 	  var own = it.every;
-	  return it === ArrayPrototype$6 || (it instanceof Array && own === ArrayPrototype$6.every) ? every$2 : own;
+	  return it === ArrayPrototype$7 || (it instanceof Array && own === ArrayPrototype$7.every) ? every$2 : own;
 	};
 
 	var every$1 = every_1;
@@ -2681,11 +2681,11 @@ var bookly = (function ($) {
 
 	var concat$2 = entryVirtual('Array').concat;
 
-	var ArrayPrototype$5 = Array.prototype;
+	var ArrayPrototype$6 = Array.prototype;
 
 	var concat_1 = function (it) {
 	  var own = it.concat;
-	  return it === ArrayPrototype$5 || (it instanceof Array && own === ArrayPrototype$5.concat) ? concat$2 : own;
+	  return it === ArrayPrototype$6 || (it instanceof Array && own === ArrayPrototype$6.concat) ? concat$2 : own;
 	};
 
 	var concat$1 = concat_1;
@@ -2708,11 +2708,11 @@ var bookly = (function ($) {
 
 	var map$5 = entryVirtual('Array').map;
 
-	var ArrayPrototype$4 = Array.prototype;
+	var ArrayPrototype$5 = Array.prototype;
 
 	var map_1 = function (it) {
 	  var own = it.map;
-	  return it === ArrayPrototype$4 || (it instanceof Array && own === ArrayPrototype$4.map) ? map$5 : own;
+	  return it === ArrayPrototype$5 || (it instanceof Array && own === ArrayPrototype$5.map) ? map$5 : own;
 	};
 
 	var map$4 = map_1;
@@ -2735,16 +2735,84 @@ var bookly = (function ($) {
 
 	var filter$2 = entryVirtual('Array').filter;
 
-	var ArrayPrototype$3 = Array.prototype;
+	var ArrayPrototype$4 = Array.prototype;
 
 	var filter_1 = function (it) {
 	  var own = it.filter;
-	  return it === ArrayPrototype$3 || (it instanceof Array && own === ArrayPrototype$3.filter) ? filter$2 : own;
+	  return it === ArrayPrototype$4 || (it instanceof Array && own === ArrayPrototype$4.filter) ? filter$2 : own;
 	};
 
 	var filter$1 = filter_1;
 
 	var filter = filter$1;
+
+	var $includes = arrayIncludes.includes;
+
+
+	// `Array.prototype.includes` method
+	// https://tc39.es/ecma262/#sec-array.prototype.includes
+	_export({ target: 'Array', proto: true }, {
+	  includes: function includes(el /* , fromIndex = 0 */) {
+	    return $includes(this, el, arguments.length > 1 ? arguments[1] : undefined);
+	  }
+	});
+
+	var includes$4 = entryVirtual('Array').includes;
+
+	var MATCH$1 = wellKnownSymbol('match');
+
+	// `IsRegExp` abstract operation
+	// https://tc39.es/ecma262/#sec-isregexp
+	var isRegexp = function (it) {
+	  var isRegExp;
+	  return isObject(it) && ((isRegExp = it[MATCH$1]) !== undefined ? !!isRegExp : classofRaw(it) == 'RegExp');
+	};
+
+	var notARegexp = function (it) {
+	  if (isRegexp(it)) {
+	    throw TypeError("The method doesn't accept regular expressions");
+	  } return it;
+	};
+
+	var MATCH = wellKnownSymbol('match');
+
+	var correctIsRegexpLogic = function (METHOD_NAME) {
+	  var regexp = /./;
+	  try {
+	    '/./'[METHOD_NAME](regexp);
+	  } catch (error1) {
+	    try {
+	      regexp[MATCH] = false;
+	      return '/./'[METHOD_NAME](regexp);
+	    } catch (error2) { /* empty */ }
+	  } return false;
+	};
+
+	// `String.prototype.includes` method
+	// https://tc39.es/ecma262/#sec-string.prototype.includes
+	_export({ target: 'String', proto: true, forced: !correctIsRegexpLogic('includes') }, {
+	  includes: function includes(searchString /* , position = 0 */) {
+	    return !!~String(requireObjectCoercible(this))
+	      .indexOf(notARegexp(searchString), arguments.length > 1 ? arguments[1] : undefined);
+	  }
+	});
+
+	var includes$3 = entryVirtual('String').includes;
+
+	var ArrayPrototype$3 = Array.prototype;
+	var StringPrototype$1 = String.prototype;
+
+	var includes$2 = function (it) {
+	  var own = it.includes;
+	  if (it === ArrayPrototype$3 || (it instanceof Array && own === ArrayPrototype$3.includes)) return includes$4;
+	  if (typeof it === 'string' || it === StringPrototype$1 || (it instanceof String && own === StringPrototype$1.includes)) {
+	    return includes$3;
+	  } return own;
+	};
+
+	var includes$1 = includes$2;
+
+	var includes = includes$1;
 
 	var non = '\u200B\u0085\u180E';
 
@@ -2906,8 +2974,12 @@ var bookly = (function ($) {
 	              betas: ['payment_intent_beta_3']
 	            });
 	            var elements = stripe.elements();
-	            var stripe_card = elements.create("card");
+	            var stripe_card = elements.create('cardNumber');
 	            stripe_card.mount("#bookly-stripe-card-field");
+	            var stripe_expiry = elements.create('cardExpiry');
+	            stripe_expiry.mount("#bookly-stripe-card-expiry-field");
+	            var stripe_cvc = elements.create('cardCvc');
+	            stripe_cvc.mount("#bookly-stripe-card-cvc-field");
 	          } else {
 	            find($container).call($container, '.bookly-stripe #bookly-stripe-card-field').hide();
 
@@ -2921,6 +2993,10 @@ var bookly = (function ($) {
 	            $apply_coupon_button = $__default['default']('.bookly-js-apply-coupon', $container),
 	            $coupon_input = $__default['default']('input.bookly-user-coupon', $container),
 	            $coupon_error = $__default['default']('.bookly-js-coupon-error', $container),
+	            $apply_tips_button = $__default['default']('.bookly-js-apply-tips', $container),
+	            $applied_tips_button = $__default['default']('.bookly-js-applied-tips', $container),
+	            $tips_input = $__default['default']('input.bookly-user-tips', $container),
+	            $tips_error = $__default['default']('.bookly-js-tips-error', $container),
 	            $deposit_mode = $__default['default']('input[type=radio][name=bookly-full-payment]', $container),
 	            $coupon_info_text = $__default['default']('.bookly-info-text-coupon', $container),
 	            $buttons = $__default['default']('.bookly-gateway-buttons,form.bookly-authorize_net,form.bookly-stripe', $container);
@@ -2985,6 +3061,40 @@ var bookly = (function ($) {
 	            }
 	          });
 	        });
+	        $tips_input.on('keyup', function () {
+	          $applied_tips_button.hide();
+	          $apply_tips_button.css('display', 'inline-block');
+	        });
+	        $apply_tips_button.on('click', function (e) {
+	          var ladda = laddaStart(this);
+	          $tips_error.text('');
+	          $tips_input.removeClass('bookly-error');
+	          var data = {
+	            action: 'bookly_pro_apply_tips',
+	            csrf_token: BooklyL10n.csrf_token,
+	            form_id: params.form_id,
+	            tips: $tips_input.val()
+	          };
+	          booklyAjax({
+	            type: 'POST',
+	            data: data,
+	            success: function success(response) {
+	              if (response.success) {
+	                stepPayment({
+	                  form_id: params.form_id
+	                });
+	              } else {
+	                $tips_error.html(response.error);
+	                $tips_input.addClass('bookly-error');
+	                scrollTo($tips_error, params.form_id);
+	                ladda.stop();
+	              }
+	            },
+	            error: function error() {
+	              ladda.stop();
+	            }
+	          });
+	        });
 	        $__default['default']('.bookly-js-next-step', $container).on('click', function (e) {
 	          var ladda = laddaStart(this),
 	              $form; // Execute custom JavaScript
@@ -3011,7 +3121,11 @@ var bookly = (function ($) {
 	                },
 	                success: function success(response) {
 	                  if (response.success) {
-	                    stripe.handleCardPayment(response.intent_secret, stripe_card).then(function (result) {
+	                    stripe.confirmCardPayment(response.intent_secret, {
+	                      payment_method: {
+	                        card: stripe_card
+	                      }
+	                    }).then(function (result) {
 	                      if (result.error) {
 	                        booklyAjax({
 	                          type: 'POST',
@@ -3364,27 +3478,34 @@ var bookly = (function ($) {
 	              id = $row.data('id'),
 	              $that = $__default['default'](this);
 	          $__default['default'].each(custom_fields_conditions, function (i, condition) {
+	            var _context7, _context8;
+
+	            var $target = $__default['default']('.bookly-custom-field-row[data-id="' + condition.target + '"]');
+
 	            if (_parseInt(condition.source) === id) {
 	              switch ($row.data('type')) {
 	                case 'drop-down':
 	                case 'radio-buttons':
-	                  if ($that.val() === condition.value && condition.equal === '1' || $that.val() !== condition.value && condition.equal !== '1') {
-	                    $__default['default']('.bookly-custom-field-row[data-id="' + condition.target + '"]').show();
+	                  if (includes(_context7 = condition.value).call(_context7, $that.val()) && condition.equal === '1' || !includes(_context8 = condition.value).call(_context8, $that.val()) && condition.equal !== '1') {
+	                    $target.show();
 	                  } else {
-	                    $__default['default']('.bookly-custom-field-row[data-id="' + condition.target + '"]').hide();
+	                    $target.hide();
 	                  }
 
 	                  break;
 
 	                case 'checkboxes':
+	                  var show = false;
+
 	                  find($row).call($row, 'input').each(function () {
-	                    if ($__default['default'](this).prop('checked') && $__default['default'](this).val() === condition.value && condition.equal === '1' || !$__default['default'](this).prop('checked') && $__default['default'](this).val() === condition.value && condition.equal !== '1') {
-	                      $__default['default']('.bookly-custom-field-row[data-id="' + condition.target + '"]').show();
-	                    } else if (!$__default['default'](this).prop('checked') && $__default['default'](this).val() === condition.value && condition.equal === '1' || $__default['default'](this).prop('checked') && $__default['default'](this).val() === condition.value && condition.equal !== '1') {
-	                      $__default['default']('.bookly-custom-field-row[data-id="' + condition.target + '"]').hide();
+	                    var _context9, _context10;
+
+	                    if ($__default['default'](this).prop('checked') && (includes(_context9 = condition.value).call(_context9, $__default['default'](this).val()) && condition.equal === '1' || !includes(_context10 = condition.value).call(_context10, $__default['default'](this).val()) && condition.equal !== '1')) {
+	                      show = true;
 	                    }
 	                  });
 
+	                  $target.toggle(show);
 	                  break;
 	              }
 	            }
@@ -3392,15 +3513,15 @@ var bookly = (function ($) {
 	        }); // Custom fields date fields
 
 	        $__default['default']('.bookly-js-cf-date', $container).each(function () {
-	          var _context7, _context8;
+	          var _context11, _context12;
 
 	          $__default['default'](this).pickadate({
 	            formatSubmit: 'yyyy-mm-dd',
 	            format: opt[params.form_id].date_format,
-	            min: $__default['default'](this).data('min') !== '' ? map$3(_context7 = $__default['default'](this).data('min').split('-')).call(_context7, function (value, index) {
+	            min: $__default['default'](this).data('min') !== '' ? map$3(_context11 = $__default['default'](this).data('min').split('-')).call(_context11, function (value, index) {
 	              if (index === 1) return value - 1;else return _parseInt(value);
 	            }) : false,
-	            max: $__default['default'](this).data('max') !== '' ? map$3(_context8 = $__default['default'](this).data('max').split('-')).call(_context8, function (value, index) {
+	            max: $__default['default'](this).data('max') !== '' ? map$3(_context12 = $__default['default'](this).data('max').split('-')).call(_context12, function (value, index) {
 	              if (index === 1) return value - 1;else return _parseInt(value);
 	            }) : false,
 	            clear: false,
@@ -3433,11 +3554,11 @@ var bookly = (function ($) {
 	        find($container).call($container, '.bookly-js-modal.' + params.form_id).remove();
 
 	        $modals.addClass(params.form_id).appendTo($container).on('click', '.bookly-js-close', function (e) {
-	          var _context9, _context10, _context11;
+	          var _context13, _context14, _context15;
 
 	          e.preventDefault();
 
-	          find(_context9 = find(_context10 = find(_context11 = $__default['default'](e.delegateTarget).removeClass('bookly-in')).call(_context11, 'form').trigger('reset').end()).call(_context10, 'input').removeClass('bookly-error').end()).call(_context9, '.bookly-label-error').html('');
+	          find(_context13 = find(_context14 = find(_context15 = $__default['default'](e.delegateTarget).removeClass('bookly-in')).call(_context15, 'form').trigger('reset').end()).call(_context14, 'input').removeClass('bookly-error').end()).call(_context13, '.bookly-label-error').html('');
 	        }); // Login modal.
 
 	        $__default['default']('.bookly-js-login-show', $container).on('click', function (e) {
@@ -3529,7 +3650,7 @@ var bookly = (function ($) {
 	          if ($terms.length && !$terms.prop('checked')) {
 	            $terms_error.html(terms_error);
 	          } else {
-	            var _context12, _context13;
+	            var _context16, _context17;
 
 	            var info_fields = [],
 	                custom_fields = {},
@@ -3698,8 +3819,8 @@ var bookly = (function ($) {
 	              first_name: $first_name_field.val(),
 	              last_name: $last_name_field.val(),
 	              phone: phone_number,
-	              email: trim(_context12 = $email_field.val()).call(_context12),
-	              email_confirm: $email_confirm_field.length === 1 ? trim(_context13 = $email_confirm_field.val()).call(_context13) : undefined,
+	              email: trim(_context16 = $email_field.val()).call(_context16),
+	              email_confirm: $email_confirm_field.length === 1 ? trim(_context17 = $email_confirm_field.val()).call(_context17) : undefined,
 	              birthday: {
 	                day: $birthday_day_field.val(),
 	                month: $birthday_month_field.val(),

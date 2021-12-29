@@ -60,7 +60,8 @@ class Ajax extends Page
             $staff_ids = array_map( function ( $staff ) { return $staff->getId(); }, $staff_members );
             $schedule  = Lib\Proxy\SpecialDays::getSchedule( $staff_ids, $start_date, $end_date ) ?: array();
             foreach ( $schedule as $day ) {
-                if ( $location_ids == '' || $location_ids == 'all' || in_array( $day['location_id'], $location_ids ) ) {
+                $staff_location_ids = array_unique( array_map( function ( $l ) use ( $day ) { return Lib\Proxy\Locations::prepareStaffLocationId( $l, $day['staff_id'] ); }, $location_ids ) );
+                if ( $location_ids == '' || $location_ids == 'all' || in_array( $day['location_id'], $staff_location_ids ) ) {
                     $special_days[ $day['staff_id'] ][ $day['date'] ][] = $day;
                 }
             }

@@ -21,6 +21,7 @@ use Bookly\Backend\Modules\Settings\Proxy;
         Selects::renderSingle( 'bookly_gen_show_powered_by', __( 'Powered by Bookly' ), __( 'Allow the plugin to set a Powered by Bookly notice on the booking widget to spread information about the plugin. This will allow the team to improve the product and enhance its functionality', 'bookly' ) );
         Selects::renderSingle( 'bookly_gen_prevent_caching', __( 'Prevent caching of pages with booking form', 'bookly' ), __( 'Select "Enabled" if you want Bookly to prevent caching by third-party caching plugins by adding a DONOTCACHEPAGE constant on pages with booking form', 'bookly' ) );
         Selects::renderSingle( 'bookly_gen_prevent_session_locking', __( 'Prevent PHP session locking', 'bookly' ), __( 'Enable this option to make Bookly close the PHP session as soon as it is done with it. This should prevent locking the session, which could cause various other processes to timeout or fail', 'bookly' ) );
+        Selects::renderSingle( 'bookly_gen_badge_consider_news', __( 'Show news notifications', 'bookly' ), __( 'If enabled, News notification icon will be displayed', 'bookly' ) );
     ?>
     </div>
     <div class="card-footer bg-transparent d-flex justify-content-end">

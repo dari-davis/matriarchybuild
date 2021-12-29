@@ -56,6 +56,10 @@ jQuery(function($) {
             } else if (hashObj['auto-recharge'] === 'enabled') {
                 $('.bookly-js-message', showSlide('accepted')).html(BooklyRechargeDialogL10n.payment.auto.enabled);
                 showModal = true;
+            } else if (hashObj['auto-recharge'] === 'renewed') {
+                $('#bookly-js-renew').remove();
+                $('.bookly-js-message', showSlide('accepted')).html(BooklyRechargeDialogL10n.payment.auto.renewed);
+                showModal = true;
             }
         } else if (hashObj.hasOwnProperty('recharge')) {
             window.location.href = '#';
@@ -127,7 +131,7 @@ jQuery(function($) {
             data: {
                 action: 'bookly_create_paypal_order',
                 url: document.URL.split('#')[0],
-                csrf_token: BooklyRechargeDialogL10n.csrfToken,
+                csrf_token: BooklyL10nGlobal.csrf_token,
                 recharge: payment.recharge.id,
             },
             dataType: 'json',
@@ -153,7 +157,7 @@ jQuery(function($) {
             data: {
                 action: 'bookly_init_auto_recharge_paypal',
                 url: document.URL.split('#')[0],
-                csrf_token: BooklyRechargeDialogL10n.csrfToken,
+                csrf_token: BooklyL10nGlobal.csrf_token,
                 recharge: payment.recharge.id
             },
             dataType: 'json',
@@ -183,7 +187,7 @@ jQuery(function($) {
             url: ajaxurl,
             data: {
                 action: 'bookly_create_stripe_checkout_session',
-                csrf_token: BooklyRechargeDialogL10n.csrfToken,
+                csrf_token: BooklyL10nGlobal.csrf_token,
                 recharge: payment.recharge.id,
                 mode: payment.type === 'manual' ? 'payment' : 'setup',
                 url: document.URL.split('#')[0],

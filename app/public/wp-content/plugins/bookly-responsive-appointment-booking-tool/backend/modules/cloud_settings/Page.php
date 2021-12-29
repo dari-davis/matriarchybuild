@@ -24,9 +24,8 @@ class Page extends Lib\Base\Component
             ) );
 
             self::enqueueScripts( array(
-                'backend' => array( 'js/select2.min.js' => array( 'bookly-backend-globals' ), ),
-                'bookly' => array( 'backend/components/cloud/account/resources/js/select-country.js' => array( 'bookly-select2.min.js' ), ),
-                'module' => array( 'js/cloud-settings.js' => array( 'bookly-select-country.js', ), ),
+                'bookly' => array( 'backend/components/cloud/account/resources/js/select-country.js' => array( 'bookly-backend-globals' ) ),
+                'module' => array( 'js/cloud-settings.js' => array( 'bookly-select-country.js' ) ),
             ) );
 
             wp_localize_script( 'bookly-cloud-settings.js', 'BooklyL10n', array(

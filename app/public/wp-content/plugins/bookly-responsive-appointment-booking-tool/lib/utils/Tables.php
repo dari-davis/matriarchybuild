@@ -10,25 +10,28 @@ use Bookly\Lib;
  */
 abstract class Tables
 {
-    const APPOINTMENTS        = 'appointments';
-    const CLOUD_PURCHASES     = 'cloud_purchases';
-    const COUPONS             = 'coupons';
-    const CUSTOM_STATUSES     = 'custom_statuses';
-    const CUSTOMER_GROUPS     = 'customer_groups';
-    const CUSTOMERS           = 'customers';
+    const APPOINTMENTS = 'appointments';
+    const CLOUD_PURCHASES = 'cloud_purchases';
+    const COUPONS = 'coupons';
+    const CUSTOM_STATUSES = 'custom_statuses';
+    const CUSTOMER_GROUPS = 'customer_groups';
+    const CUSTOMERS = 'customers';
+    const DISCOUNTS = 'discounts';
+    const EMAIL_LOGS = 'email_logs';
     const EMAIL_NOTIFICATIONS = 'email_notifications';
-    const EMAIL_LOGS          = 'email_logs';
-    const LOCATIONS           = 'locations';
-    const PACKAGES            = 'packages';
-    const PAYMENTS            = 'payments';
-    const SERVICES            = 'services';
-    const SMS_DETAILS         = 'sms_details';
-    const SMS_NOTIFICATIONS   = 'sms_notifications';
-    const SMS_PRICES          = 'sms_prices';
-    const SMS_SENDER          = 'sms_sender';
-    const STAFF_MEMBERS       = 'staff_members';
-    const TAXES               = 'taxes';
-    const DISCOUNTS           = 'discounts';
+    const LOCATIONS = 'locations';
+    const PACKAGES = 'packages';
+    const PAYMENTS = 'payments';
+    const SERVICES = 'services';
+    const SMS_DETAILS = 'sms_details';
+    const SMS_MAILING_LISTS = 'sms_mailing_lists';
+    const SMS_MAILING_RECIPIENTS_LIST = 'sms_mailing_recipients_list';
+    const SMS_NOTIFICATIONS = 'sms_notifications';
+    const SMS_MAILING_CAMPAIGNS = 'sms_mailing_campaigns';
+    const SMS_PRICES = 'sms_prices';
+    const SMS_SENDER = 'sms_sender';
+    const STAFF_MEMBERS = 'staff_members';
+    const TAXES = 'taxes';
 
     /**
      * Get columns for given table.
@@ -121,6 +124,28 @@ abstract class Tables
                     'price' => esc_html__( 'Price', 'bookly' ),
                 );
                 break;
+            case self::SMS_MAILING_CAMPAIGNS:
+                $columns = array(
+                    'id' => esc_html__( 'ID', 'bookly' ),
+                    'name' => esc_html__( 'Name', 'bookly' ),
+                    'send_at' => esc_html__( 'Start at', 'bookly' ),
+                    'state' => esc_html__( 'State', 'bookly' ),
+                );
+                break;
+            case self::SMS_MAILING_LISTS:
+                $columns = array(
+                    'id' => esc_html__( 'ID', 'bookly' ),
+                    'name' => esc_html__( 'Name', 'bookly' ),
+                    'number_of_recipients' => esc_html__( 'Number of recipients', 'bookly' ),
+                );
+                break;
+            case self::SMS_MAILING_RECIPIENTS_LIST:
+                $columns = array(
+                    'id' => esc_html__( 'ID', 'bookly' ),
+                    'name' => esc_html__( 'Name', 'bookly' ),
+                    'phone' => esc_html__( 'Phone', 'bookly' ),
+                );
+                break;
             case self::SMS_DETAILS:
                 $columns = array(
                     'date' => esc_html__( 'Date', 'bookly' ),
@@ -159,6 +184,7 @@ abstract class Tables
                     'wp_user' => esc_html__( 'User', 'bookly' ),
                 );
                 break;
+
         }
 
         return Lib\Proxy\Shared::prepareTableColumns( $columns, $table );
@@ -272,12 +298,15 @@ abstract class Tables
             case self::APPOINTMENTS:
                 $columns = array( 'internal_note' => false, );
                 break;
+            case self::EMAIL_LOGS:
             case self::EMAIL_NOTIFICATIONS:
-            case self::SMS_NOTIFICATIONS:
             case self::SERVICES:
             case self::SMS_DETAILS:
+            case self::SMS_MAILING_CAMPAIGNS:
+            case self::SMS_MAILING_LISTS:
+            case self::SMS_MAILING_RECIPIENTS_LIST:
+            case self::SMS_NOTIFICATIONS:
             case self::STAFF_MEMBERS:
-            case self::EMAIL_LOGS:
                 $columns = array( 'id' => false, );
                 break;
         }

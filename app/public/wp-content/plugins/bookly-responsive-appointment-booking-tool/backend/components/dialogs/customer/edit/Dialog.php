@@ -28,14 +28,11 @@ class Dialog extends Lib\Base\Component
         );
 
         self::enqueueScripts( array(
-            'backend' => array( 'js/select2.min.js' => array( 'bookly-backend-globals' ), ),
             'frontend' => $tel_input_enabled
                 ? array( 'js/intlTelInput.min.js' => array( 'jquery' ) )
                 : array(),
-            'module' => array( 'js/customer.js' => array( 'bookly-select2.min.js' ) ),
+            'module' => array( 'js/customer.js' => array( 'bookly-backend-globals' ) ),
         ) );
-
-        wp_add_inline_script( 'bookly-select2.min.js', 'delete jQuery.fn.select2;', 'before' );
 
         if ( $show_wp_users ) {
             $query = 'SELECT COUNT(*) FROM ' . $wpdb->users . ' AS u';

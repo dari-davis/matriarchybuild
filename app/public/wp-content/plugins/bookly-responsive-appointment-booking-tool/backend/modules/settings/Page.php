@@ -48,6 +48,7 @@ class Page extends Lib\Base\Ajax
                     update_option( 'bookly_cal_show_only_staff_with_appointments', self::parameter( 'bookly_cal_show_only_staff_with_appointments' ) );
                     update_option( 'bookly_cal_one_participant', self::parameter( 'bookly_cal_one_participant' ) );
                     update_option( 'bookly_cal_many_participants', self::parameter( 'bookly_cal_many_participants' ) );
+                    update_option( 'bookly_cal_month_view_style', self::parameter( 'bookly_cal_month_view_style' ) );
                     update_option( 'bookly_cal_coloring_mode', self::parameter( 'bookly_cal_coloring_mode' ) );
                     foreach ( self::parameter( 'status' ) as $status => $color ) {
                         if ( in_array( $status, array( CustomerAppointment::STATUS_PENDING, CustomerAppointment::STATUS_APPROVED, CustomerAppointment::STATUS_CANCELLED, CustomerAppointment::STATUS_REJECTED, 'mixed' ) ) ) {
@@ -89,6 +90,7 @@ class Page extends Lib\Base\Ajax
                     update_option( 'bookly_gen_show_powered_by', self::parameter( 'bookly_gen_show_powered_by' ) );
                     update_option( 'bookly_gen_prevent_caching', (int) self::parameter( 'bookly_gen_prevent_caching' ) );
                     update_option( 'bookly_gen_prevent_session_locking', (int) self::parameter( 'bookly_gen_prevent_session_locking' ) );
+                    update_option( 'bookly_gen_badge_consider_news', (int) self::parameter( 'bookly_gen_badge_consider_news' ) );
                     $alert['success'][] = __( 'Settings saved.', 'bookly' );
                     break;
                 case 'url': // URL settings form.
@@ -126,6 +128,7 @@ class Page extends Lib\Base\Ajax
                     update_option( 'bookly_co_phone', self::parameter( 'bookly_co_phone' ) );
                     update_option( 'bookly_co_website', self::parameter( 'bookly_co_website' ) );
                     update_option( 'bookly_co_industry', self::parameter( 'bookly_co_industry' ) );
+                    update_option( 'bookly_co_size', self::parameter( 'bookly_co_size' ) );
                     $alert['success'][] = __( 'Settings saved.', 'bookly' );
                     break;
                 case 'logs':  // Logs form.

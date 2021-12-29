@@ -119,7 +119,7 @@ class Staff
         if ( ! isset ( $this->workload[ $date ] ) ) {
             $this->workload[ $date ] = 0;
         }
-        $this->workload[ $date ] += $booking->rangeWithPadding()->length();
+        $this->workload[ $date ] += $booking->range()->length();
 
         return $this;
     }

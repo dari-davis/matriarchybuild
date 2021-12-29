@@ -23,6 +23,9 @@ class StaffSchedule extends Lib\Base\Form
                 $res_schedule = new Lib\Entities\StaffScheduleItem();
                 $res_schedule->load( $id );
                 $res_schedule->setDayIndex( $day_index );
+                if ( ! $res_schedule->getLocationId() ) {
+                    $res_schedule->setLocationId( null );
+                }
                 if ( $this->data['start_time'][ $id ] ) {
                     $res_schedule
                         ->setStartTime( $this->data['start_time'][ $id ] )

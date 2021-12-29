@@ -54,14 +54,15 @@ jQuery(function($) {
                 url: ajaxurl,
                 data: {
                     action: 'bookly_disable_auto_recharge',
-                    csrf_token: BooklyAutoRechargeL10n.csrfToken,
+                    csrf_token: BooklyL10nGlobal.csrf_token,
                 },
                 dataType: 'json',
                 success: function (response) {
                     if (response.success) {
                         booklyAlert({success: [response.data.message]});
                         $disableAutoRechargeModal.booklyModal('hide');
-                        autoRechageToggle(false);
+                        autoRechargeToggle(false);
+                        $('#bookly-js-renew').remove();
                     } else {
                         booklyAlert({error: [response.data.message]});
                     }
@@ -70,7 +71,7 @@ jQuery(function($) {
             });
         });
 
-    function autoRechageToggle(enabled) {
+    function autoRechargeToggle(enabled) {
         selector.$dropdown.prop('disabled', enabled).toggleClass('disabled', enabled);
         selector.$enable.toggle(!enabled);
         selector.$enabled.toggle(enabled);
@@ -85,6 +86,7 @@ jQuery(function($) {
             }
             selector.$container.hide();
         } else {
+            $('.bookly-js-auto-recharge-label', selector.$container).remove();
             if ($('.bookly-js-best-offer', selector.$items).length > 0) {
                 $('.bookly-js-best-offer', selector.$items).trigger('click');
             } else if ($('.bookly-js-users-choice', selector.$items).length > 0) {
@@ -93,14 +95,15 @@ jQuery(function($) {
                 selector.$items.first().trigger('click');
             }
             selector.$container.show();
+            $('.bookly-js-auto-recharge-label').html(BooklyAutoRechargeL10n.dont_have_auto_recharge);
         }
     }
 
-    autoRechageToggle(BooklyAutoRechargeL10n.auto_recharge.enabled);
+    autoRechargeToggle(BooklyAutoRechargeL10n.auto_recharge.enabled);
 
     $(document.body).on('bookly.auto-recharge.toggle', {},
         function (event, enabled) {
-            autoRechageToggle(enabled);
+            autoRechargeToggle(enabled);
         }
     );
 });

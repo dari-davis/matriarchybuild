@@ -80,7 +80,12 @@ use Bookly\Lib;
                                                 </div>
                                             <?php endif ?>
                                         </td>
-                                        <td><?php echo esc_html( $status ? 'OK' : '<button class="btn btn-success btn-sm py-0" type="button" data-action="fix-column">FIX…</button>' ) ?></td>
+                                        <td><?php if ( $status ) : ?>
+                                                OK
+                                            <?php else : ?>
+                                                <button class="btn btn-success btn-sm py-0" type="button" data-action="fix-column">FIX…</button>
+                                            <?php endif ?>
+                                        </td>
                                     </tr>
                                 <?php endforeach ?>
                                 <?php if ( isset( $table['fields_3d'] ) ) : ?>
@@ -126,7 +131,12 @@ use Bookly\Lib;
                                             <td><?php echo esc_html( $constraint['column_name'] ) ?></td>
                                             <td><?php echo esc_html( $constraint['referenced_table_name'] ) ?></td>
                                             <td><?php echo esc_html( $constraint['referenced_column_name'] ) ?></td>
-                                            <td><?php echo esc_html( $constraint['status'] ? 'OK' : '<button class="btn btn-success btn-sm py-0" type="button" data-action="fix-constraint">FIX…</button>' ) ?></td>
+                                            <td><?php if ( $constraint['status'] ) : ?>
+                                                    OK
+                                                <?php else : ?>
+                                                    <button class="btn btn-success btn-sm py-0" type="button" data-action="fix-constraint">FIX…</button>
+                                                <?php endif ?>
+                                            </td>
                                         </tr>
                                     <?php endforeach ?>
                                     </tbody>

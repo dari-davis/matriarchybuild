@@ -3,8 +3,10 @@ use Bookly\Backend\Components\Controls\Buttons;
 
 /**
  * @var array $recharges
+ * @var string $label
  */
 ?>
+<label class="bookly-js-auto-recharge-label"><?php echo esc_html( $label ) ?></label>
 <div class="form-row flex-nowrap bookly-js-auto-recharge-selector">
     <div class="col">
         <div class="dropdown">

@@ -111,12 +111,12 @@ class Notice extends Lib\Base\Component
     }
 
     /**
-     * Set dissmis class name.
+     * Set dismiss class name.
      *
      * @param string $js_class
      * @return $this
      */
-    public function setDissmisClass( $js_class )
+    public function setDismissClass( $js_class )
     {
         $this->dismiss_js_class = $js_class;
 

@@ -3,8 +3,8 @@ jQuery(function ($) {
 
     let $rate = $('#bookly-js-rate-bookly'),
         data = {
-            action:     'bookly_hide_until_rate_notice',
-            csrf_token: BooklyRateL10n.csrfToken,
+            action: 'bookly_hide_until_rate_notice',
+            csrf_token: BooklyL10nGlobal.csrf_token,
             hide_until: 'long-time'
         };
 

@@ -8,8 +8,8 @@ msgstr ""
 "Language: zh_TW\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-01 09:53+0000\n"
-"PO-Revision-Date: 2021-11-01 12:56+0000\n"
+"POT-Creation-Date: 2021-12-17 08:11+0000\n"
+"PO-Revision-Date: 2021-12-17 10:22+0000\n"
 "Last-Translator: Wina H <chillhchill@gmail.com>\n"
 "Language-Team: Chinese (Taiwan)\n"
 "X-Loco-Version: 2.3.1; wp-5.5"
@@ -345,9 +345,11 @@ msgstr "預約標題的模板"
 
 msgid ""
 "Configure what information should be placed in the title of Outlook Calendar "
-"event. Available codes are {service_name}, {staff_name} and {client_names}."
+"event. Available codes are {service_name}, {category_name}, {staff_name} and "
+"{client_names}."
 msgstr ""
-"配置應在Outlook日曆事件的標題中放置哪些信息。可用代碼為{service_name}，{staff_name}和{client_names}。"
+"應將配置信息放置在Outlook日曆活動標題中。可用代碼為{service_name}、{category_name}、{staff_name}"
+"以及{client_names}。"
 
 msgid "Template for event description"
 msgstr "事件描述樣板"
@@ -409,6 +411,9 @@ msgstr "必需"
 
 msgid "Combined values of all custom fields"
 msgstr "所有自定義欄目的價值"
+
+msgid "Custom field"
+msgstr "自定欄位"
 
 msgid "General"
 msgstr "通用"
@@ -518,11 +523,11 @@ msgstr "您只可以選擇核取方塊組、單選按鈕組或\"If\"語句中的
 msgid "Add condition"
 msgstr "添加條件"
 
-msgid "equals"
-msgstr "等於"
+msgid "in"
+msgstr "在"
 
-msgid "not equals"
-msgstr "不等於"
+msgid "not in"
+msgstr "不在"
 
 msgid "Enter a description"
 msgstr "輸入描述"
@@ -532,9 +537,6 @@ msgstr "顯示自定義字段"
 
 msgid "Custom field description"
 msgstr "自定欄位描述"
-
-msgid "Custom field"
-msgstr "自定欄位"
 
 msgid "Extended staff agenda for next day"
 msgstr "延長的下一天員工議程"
@@ -1586,6 +1588,21 @@ msgstr "最小容量不應大於最大容量。"
 
 msgid "Export to CSV"
 msgstr "導出 CSV"
+
+msgid "Auto-refresh Calendar"
+msgstr "自動更新月曆"
+
+msgid "Every 1 minute"
+msgstr "每一分鐘"
+
+msgid "Every 5 minutes"
+msgstr "每五分鐘"
+
+msgid "Every 15 minutes"
+msgstr "每十五分鐘"
+
+msgid "Disable"
+msgstr "禁止"
 
 msgid "Displayed appointments"
 msgstr "展示預約"
@@ -3140,6 +3157,12 @@ msgstr "主題"
 msgid "Customer"
 msgstr "客戶"
 
+msgid "Start at"
+msgstr "開始於"
+
+msgid "Number of recipients"
+msgstr "收件人數量"
+
 msgid "Text"
 msgstr "文字"
 
@@ -3255,6 +3278,9 @@ msgstr "驗證客戶的電郵"
 
 msgid "Verify customer's phone"
 msgstr "驗證客戶的電話"
+
+msgid "Mailing message"
+msgstr "郵件消息"
 
 msgid "Test message"
 msgstr "測試消息"
@@ -3527,6 +3553,12 @@ msgid ""
 "various other processes to timeout or fail"
 msgstr "啟用這個選項，Bookly在完成PHP會話後會自動關閉會話。這樣可以防止會話鎖定，否則可能導致其他各種進程超時或失敗"
 
+msgid "Show news notifications"
+msgstr "顯示新聞通知"
+
+msgid "If enabled, News notification icon will be displayed"
+msgstr "如啟用，將顯示新聞通知圖標"
+
 msgid "Service paid locally"
 msgstr "即場支付"
 
@@ -3636,6 +3668,18 @@ msgid ""
 "If this setting is enabled then only staff members who have associated "
 "appointments will be displayed in the Day view"
 msgstr "如果啟用此設置，則會以“天”顯示擁有相關約會的工作人員"
+
+msgid "Month view style"
+msgstr "月視圖樣式"
+
+msgid "Select the style for displaying appointments in Month view"
+msgstr "選擇在月視圖中顯示預約的樣式"
+
+msgid "Classic"
+msgstr "經典"
+
+msgid "Minimalistic"
+msgstr "簡約"
 
 msgid "Coloring mode"
 msgstr "上色模式"
@@ -3871,6 +3915,12 @@ msgstr "將發件人的姓名更改為您的電話號碼或其他名稱"
 msgid "Notifications"
 msgstr "通知"
 
+msgid "Campaigns"
+msgstr "活動"
+
+msgid "Mailing lists"
+msgstr "郵件列表"
+
 msgid "SMS Details"
 msgstr "SMS 短信內容"
 
@@ -3936,6 +3986,9 @@ msgstr "取消請求"
 
 msgid "Can only contain letters or digits (up to 11 characters)."
 msgstr "只能包含字母或數字（最多11個字符）。"
+
+msgid "Back to lists"
+msgstr "返回列表"
 
 msgid "Sender ID request is sent."
 msgstr "發件人ID發送請求。"
@@ -4013,6 +4066,9 @@ msgstr "輸入一個或多個用逗號分隔的電子郵件地址。"
 
 msgid "Save invoice settings"
 msgstr "保存發票設置"
+
+msgid "Show SMS notification icon"
+msgstr "顯示SMS通知圖標"
 
 msgid "Send email notification to administrators at low balance"
 msgstr "餘額過低時發電郵通知管理員"
@@ -4188,21 +4244,6 @@ msgstr "所有員工"
 
 msgid "No staff selected"
 msgstr "沒有選擇員工"
-
-msgid "Auto-refresh Calendar"
-msgstr "自動更新月曆"
-
-msgid "Every 1 minute"
-msgstr "每一分鐘"
-
-msgid "Every 5 minutes"
-msgstr "每五分鐘"
-
-msgid "Every 15 minutes"
-msgstr "每十五分鐘"
-
-msgid "Disable"
-msgstr "禁止"
 
 msgid "Welcome to Bookly and thank you for your choice!"
 msgstr "歡迎使用Bookly，並感謝您選擇我們！"
@@ -4835,11 +4876,14 @@ msgstr "付款選用"
 msgid "Continue with"
 msgstr "繼續"
 
+msgid "Auto-Recharge has been cancelled"
+msgstr "自動充值已被取消"
+
 msgid "Auto-Recharge has been enabled"
 msgstr "自動充值已被啟動"
 
-msgid "Auto-Recharge has been cancelled"
-msgstr "自動充值已被取消"
+msgid "Auto-Recharge has been renewed"
+msgstr "自動充值已續期"
 
 msgid "current<br/>balance"
 msgstr "目前淨值"
@@ -4858,6 +4902,13 @@ msgstr "用戶選項"
 
 msgid "Buy now"
 msgstr "即時購買"
+
+msgid "You don't have active auto-recharge"
+msgstr "您沒有有效的自動充值"
+
+#, php-format
+msgid "You have active auto-recharge till %s"
+msgstr "您的自動充值有效期至%s"
 
 msgid "Select amount of Auto-Recharge"
 msgstr "選擇自動充值數值"
@@ -4907,6 +4958,16 @@ msgstr "選擇地點"
 
 msgid "Empty"
 msgstr "空白"
+
+msgid "WARNING"
+msgstr "警告"
+
+msgid "Using <script> tag can be dangerous."
+msgstr "使用<script>標記可能會有危險。"
+
+msgid ""
+"Unless you understand exactly what you are doing, click Cancel and stay safe."
+msgstr "除非您清楚知道自己在做什麼，請點擊取消並保持安全。"
 
 #, php-format
 msgid ""
@@ -5088,6 +5149,9 @@ msgstr "找不到付款"
 msgid "Reason"
 msgstr "原因"
 
+msgid "Tips"
+msgstr "小費"
+
 msgid "order ID"
 msgstr "訂單ID"
 
@@ -5187,6 +5251,79 @@ msgstr "刪除客戶的WordPress帳戶（如果有）"
 msgid "Deleted Customer"
 msgstr "已刪除客戶"
 
+msgid "ago"
+msgstr "前"
+
+msgid "Add recipients"
+msgstr "添加收件人"
+
+msgid "Automatic selection"
+msgstr "自動選擇"
+
+msgid "Manual selection"
+msgstr "手動選擇"
+
+msgid ""
+"Add phone numbers using international phone format, one number per line."
+msgstr "添加電話號碼請使用國際電話格式，每行一個號碼。"
+
+msgid "E.g"
+msgstr "如，"
+
+#, php-format
+msgid "You can add no more than %s contacts"
+msgstr "您最多添加%s個聯繫人"
+
+msgid ""
+"Please note that only customers who meet all of the conditions will be added "
+"to the list. You can find more information in our documentation"
+msgstr "請注意，只有滿足所有條件的客戶才會被添加至列表。您可在我們的文檔中查找更多信息"
+
+msgid "Total sum of payments, greater or equal than"
+msgstr "支付總額大於或等於"
+
+msgid "Total number of appointment, greater or equal than"
+msgstr "預約總數大於或等於"
+
+msgid "Providers"
+msgstr "供應者"
+
+msgid "New mailing list"
+msgstr "新郵件列表"
+
+msgid "New list"
+msgstr "新列表"
+
+msgid "New campaign"
+msgstr "新活動"
+
+msgid "Edit campaign"
+msgstr "編輯活動"
+
+msgid "Start campaign"
+msgstr "開始活動"
+
+msgid "Immediately"
+msgstr "立即"
+
+msgid "Start sending messages at"
+msgstr "開始發送消息於"
+
+msgid "Set the time when the mailing will start"
+msgstr "設置郵件寄出開始的時間"
+
+msgid "Start time"
+msgstr "開始時間"
+
+msgid "Sms text"
+msgstr "SMS文本"
+
+msgid "Campaign"
+msgstr "活動"
+
+msgid "Select mailing list"
+msgstr "選擇郵件列表"
+
 msgid ""
 "You are going to delete item which is involved in upcoming appointments. All "
 "related appointments will be deleted. Please double check and edit "
@@ -5204,9 +5341,6 @@ msgstr "不要儲存"
 
 msgid "Create service"
 msgstr "建立服務"
-
-msgid "Providers"
-msgstr "供應者"
 
 msgid "Start and end times of the appointment"
 msgstr "預約的開始和結束時間"
@@ -5259,6 +5393,24 @@ msgstr "新電郵通知"
 msgid "Edit email notification"
 msgstr "編輯電子郵件通知"
 
+msgid "Renew"
+msgstr "更新"
+
+msgid "Dismiss"
+msgstr "解散"
+
+#, php-format
+msgid "Your Auto-Recharge will end in %d day."
+msgid_plural "Your Auto-Recharge will end in %d days."
+msgstr[0] "您的自動充值將在%d天內結束。"
+msgstr[1] ""
+
+msgid "Please renew the connection to keep using Bookly Cloud services."
+msgstr "請更新連接以繼續使用Bookly雲端服務。"
+
+msgid "Your Auto-Recharge will end today."
+msgstr "您的自動充值將於今天結束。"
+
 msgid ""
 "Could you please do me a BIG favor and give it a 5-star rating on WordPress?"
 msgstr "您可以幫我們一個大忙，在Wordpress中給我們五星評級嗎？"
@@ -5293,20 +5445,6 @@ msgstr "您剛剛使用Bookly插件完成了<b>第一千次銷售</b>!"
 msgid "You just made the <b>10000th Sale</b> using Bookly Plugin!"
 msgstr "您剛剛使用Bookly插件完成了<b>第一萬次銷售</b>!"
 
-msgid "This function is not available in the Bookly."
-msgstr "此功能在Bookly中不可用。"
-
-msgid ""
-"You are using the free version of Bookly, so you can't add more than 5 "
-"services. To remove this limitation, get access to all Bookly features, "
-"lifetime free updates and 24/7 support, please upgrade to the Pro version of "
-"Bookly."
-msgstr ""
-"您正在使用Bookly免費版，因此您無法添加超過5項服務。要移除該限制並獲取所有Bookly功能、終身免費更新和24小時支持，請更新至Bookly專業版。"
-
-msgid "For more information visit"
-msgstr "欲了解更多信息，請訪問"
-
 msgid ""
 "To help us improve Bookly, the plugin anonymously collects usage information."
 " You can opt out of sharing the information in Settings > General."
@@ -5323,6 +5461,27 @@ msgstr "同意"
 msgid "Disagree"
 msgstr "不同意"
 
+msgid "This function is not available in the Bookly."
+msgstr "此功能在Bookly中不可用。"
+
+msgid ""
+"You are using the free version of Bookly, so you can't add more than 5 "
+"services. To remove this limitation, get access to all Bookly features, "
+"lifetime free updates and 24/7 support, please upgrade to the Pro version of "
+"Bookly."
+msgstr ""
+"您正在使用Bookly免費版，因此您無法添加超過5項服務。要移除該限制並獲取所有Bookly功能、終身免費更新和24小時支持，請更新至Bookly專業版。"
+
+msgid "For more information visit"
+msgstr "欲了解更多信息，請訪問"
+
+msgid ""
+"You are using the free version of Bookly, so you can't add more than 1 staff."
+" To remove this limitation, get access to all Bookly features, lifetime free "
+"updates and 24/7 support, please upgrade to the Pro version of Bookly."
+msgstr ""
+"您正在使用Bookly免費版，因此您無法添加超過1名員工。要移除該限制並獲取所有Bookly功能、終身免費更新和24小時支持，請更新至Bookly專業版。"
+
 #, php-format
 msgid ""
 "<b>Bookly Lite rebrands into Bookly with more features available.</b><br/>"
@@ -5334,6 +5493,28 @@ msgstr ""
 "<b> Bookly Lite重新打造了Bookly，提供了更多可用功能。</b> <br/> <br/>我們已經更改了Bookly "
 "Lite和Bookly的結構，以優化兩個插件版本的開發並在新的免費版本中添加更多功能。想了解有關Bookly重大更新，請查看我們的<a "
 "href=\"%s\" target=\"_blank\">博客文章</a>。"
+
+msgid ""
+"How likely is it that you would recommend Bookly to a friend or colleague?"
+msgstr "您推薦Bookly給朋友或同事的可能性有多大？"
+
+msgid "What do you think should be improved?"
+msgstr "你認為有什麼應該改善呢？"
+
+msgid "Please enter your email (optional)"
+msgstr "請輸入您的電子郵件（可選）"
+
+msgid "Subscribe to monthly emails about Bookly improvements and new releases."
+msgstr "訂閱Bookly每月電子郵件，獲得有關的改善和新功能。"
+
+msgid "Please, check your email to confirm the subscription. Thank you!"
+msgstr "請檢查您的電子郵件以確認訂閱。謝謝！"
+
+msgid "Given email address is already subscribed, thank you!"
+msgstr "提供的電子郵件地址已經訂閱，謝謝！"
+
+msgid "This email address is not valid."
+msgstr "該電郵地址無效。"
 
 #, php-format
 msgid "Recharge your account balance and get up to %s extra."
@@ -5355,39 +5536,10 @@ msgid "Remind me later"
 msgstr "稍後提醒"
 
 msgid ""
-"You are using the free version of Bookly, so you can't add more than 1 staff."
-" To remove this limitation, get access to all Bookly features, lifetime free "
-"updates and 24/7 support, please upgrade to the Pro version of Bookly."
-msgstr ""
-"您正在使用Bookly免費版，因此您無法添加超過1名員工。要移除該限制並獲取所有Bookly功能、終身免費更新和24小時支持，請更新至Bookly專業版。"
-
-msgid "Subscribe to monthly emails about Bookly improvements and new releases."
-msgstr "訂閱Bookly每月電子郵件，獲得有關的改善和新功能。"
-
-msgid ""
 "Allow the plugin to set a Powered by Bookly notice on the booking widget to "
 "spread information about the plugin. This will allow the team to improve the "
 "product and enhance its functionality."
 msgstr "允許插件在預約小部件上設置Powered by Bookly的字眼，以傳播有關插件的信息。這將使團隊能夠改進產品並增強其功能。"
-
-msgid ""
-"How likely is it that you would recommend Bookly to a friend or colleague?"
-msgstr "您推薦Bookly給朋友或同事的可能性有多大？"
-
-msgid "What do you think should be improved?"
-msgstr "你認為有什麼應該改善呢？"
-
-msgid "Please enter your email (optional)"
-msgstr "請輸入您的電子郵件（可選）"
-
-msgid "Please, check your email to confirm the subscription. Thank you!"
-msgstr "請檢查您的電子郵件以確認訂閱。謝謝！"
-
-msgid "Given email address is already subscribed, thank you!"
-msgstr "提供的電子郵件地址已經訂閱，謝謝！"
-
-msgid "This email address is not valid."
-msgstr "該電郵地址無效。"
 
 msgid "Revenue"
 msgstr "收入"
@@ -6019,6 +6171,9 @@ msgstr ""
 "{company_phone}\n"
 "{company_website}"
 
+msgid "Applied"
+msgstr "已應用"
+
 msgid "I will pay now with PayPal"
 msgstr "我會現在使用Paypal支付"
 
@@ -6248,9 +6403,9 @@ msgid "Make address mandatory"
 msgstr "將地址設為必填項"
 
 msgid ""
-"Customers are required to enter address to proceed with a booking. To "
-"disable, deactivate Invoices add-on first."
-msgstr "客戶必須輸入地址才能繼續預約。要禁用，請先停用發票附加組件。"
+"If enabled, a customer will be required to enter address to proceed with a "
+"booking."
+msgstr "如啟用，客戶將需要輸入地址以進行預訂。"
 
 msgid "Customer's address fields"
 msgstr "客戶的地址欄"
@@ -6379,9 +6534,11 @@ msgstr "如果Google日曆中有很多事件，那麼當Bookly嘗試獲取所有
 
 msgid ""
 "Configure what information should be placed in the title of Google Calendar "
-"event. Available codes are {service_name}, {staff_name} and {client_names}."
+"event. Available codes are {service_name}, {category_name}, {staff_name} and "
+"{client_names}."
 msgstr ""
-"設定那些資料放置在Google日曆預約的標題。可用的代碼是{service_name}，{staff_name}和{client_names}。"
+"應將配置信息放置在Google日曆活動標題中。可用代碼為{service_name}、{category_name}、{staff_name}"
+"以及{client_names}。"
 
 msgid "To set up Facebook integration, do the following:"
 msgstr "要連結Facebook，請執行以下操作："
@@ -6677,6 +6834,9 @@ msgstr "網上會議"
 msgid "User Permissions"
 msgstr "用戶權限"
 
+msgid "Show tips"
+msgstr "顯示小費"
+
 msgid "Form view in case of single booking"
 msgstr "單人預訂時的表格視圖"
 
@@ -6692,11 +6852,6 @@ msgstr "如果客戶和員工沒有常用的付款方式，則查看表單視圖
 
 msgid "Show birthday field"
 msgstr "顯示生日字段"
-
-msgid ""
-"Address information is needed for Invoices add-on. To disable, deactivate "
-"Invoices add-on first."
-msgstr "如要發票功能，地址為必要資訊。如要取消，請取消發票功能。"
 
 msgid "Show address fields"
 msgstr "顯示地址欄"
@@ -7961,6 +8116,9 @@ msgid ""
 msgstr ""
 "您可以在下方看到預約項目列表.\n"
 "如果您想預約更多服務請點擊\"繼續添加預約\"。"
+
+msgid "Show \"Book more\" near \"Next\" button"
+msgstr "在\"下一步\"按鈕附近顯示\"預訂更多\""
 
 msgid "Show Cart step"
 msgstr "顯示購物車步驟"

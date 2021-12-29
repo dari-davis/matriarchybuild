@@ -218,12 +218,16 @@ define('ace/mode/bookly_completer', function(require, exports, module) {
                 callback(null, completions);
 
                 function escapeHtml(description) {
-                    return description
-                    .replace(/&/g, "&amp;")
-                    .replace(/</g, "&lt;")
-                    .replace(/>/g, "&gt;")
-                    .replace(/"/g, "&quot;")
-                    .replace(/'/g, "&#039;");
+                    if (Array.isArray(description)) {
+                        return description;
+                    } else {
+                        return description
+                        .replace(/&/g, "&amp;")
+                        .replace(/</g, "&lt;")
+                        .replace(/>/g, "&gt;")
+                        .replace(/"/g, "&quot;")
+                        .replace(/'/g, "&#039;");
+                    }
                 }
             }
         }

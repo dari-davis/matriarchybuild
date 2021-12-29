@@ -72,6 +72,8 @@ class UserBookingData
     protected $coupon_code;
     /** @var bool */
     protected $deposit_full = 0;
+    /** @var float */
+    protected $tips;
 
     // Cart item keys being edited
     /** @var array */
@@ -129,6 +131,7 @@ class UserBookingData
         'info_fields',
         // Step payment
         'coupon_code',
+        'tips',
         'deposit_full',
         // Cart item keys being edited
         'edit_cart_keys',
@@ -1615,6 +1618,29 @@ class UserBookingData
     public function setOrderId( $order_id )
     {
         $this->order_id = $order_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets tips
+     *
+     * @return float|null
+     */
+    public function getTips()
+    {
+        return $this->tips;
+    }
+
+    /**
+     * Sets tips
+     *
+     * @param float $tips
+     * @return $this
+     */
+    public function setTips( $tips )
+    {
+        $this->tips = $tips;
 
         return $this;
     }

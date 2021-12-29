@@ -26,7 +26,7 @@
                         return moment(date).locale('bookly').format('ddd');
                     },
                     displayEventEnd: true,
-                    dayMaxEvents: true
+                    dayMaxEvents: obj.options.l10n.monthDayMaxEvents === '1'
                 },
                 timeGridDay: {
                     dayHeaderFormat: function (date) {
@@ -344,6 +344,11 @@
 
         // Export calendar
         this.ec = calendar;
+        if (obj.options.l10n.monthDayMaxEvents == '1') {
+            let theme = this.ec.getOption('theme');
+            theme.month += ' ec-minimalistic';
+            this.ec.setOption('theme', theme);
+        }
     };
 
     var locationChanged = false;

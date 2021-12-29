@@ -208,6 +208,234 @@ class Ajax extends Lib\Base\Ajax
     }
 
     /**
+     * Get mailing list
+     */
+    public static function getMailingList()
+    {
+        global $wpdb;
+
+        $columns = self::parameter( 'columns' );
+        $order   = self::parameter( 'order', array() );
+        $filter  = self::parameter( 'filter' );
+        $limits  = array(
+            'length' => self::parameter( 'length' ),
+            'start'  => self::parameter( 'start' ),
+        );
+
+        $query = Lib\Entities\MailingList::query( 'm' )
+            ->select( 'm.id, m.name, COUNT(r.id) AS number_of_recipients' )
+            ->leftJoin( 'MailingListRecipient', 'r', 'r.mailing_list_id = m.id' )
+            ->groupBy( 'm.id' );
+
+        foreach ( $order as $sort_by ) {
+            $query->sortBy( str_replace( '.', '_', $columns[ $sort_by['column'] ]['data'] ) )
+                ->order( $sort_by['dir'] == 'desc' ? Lib\Query::ORDER_DESCENDING : Lib\Query::ORDER_ASCENDING );
+        }
+
+        $total = $query->count();
+
+        if ( $filter['search'] != '' ) {
+            $fields = array();
+            foreach ( $columns as $column ) {
+                switch ( $column['data'] ) {
+                    case 'name':
+                    case 'id':
+                        $fields[] = 'm.' . $column['data'];
+                        break;
+                }
+            }
+            $search_columns = array();
+            foreach ( $fields as $field ) {
+                $search_columns[] = $field . ' LIKE "%%%s%"';
+            }
+            if ( ! empty( $search_columns ) ) {
+                $query->whereRaw( implode( ' OR ', $search_columns ), array_fill( 0, count( $search_columns ), $wpdb->esc_like( $filter['search'] ) ) );
+            }
+        }
+
+        $filtered = $query->count();
+
+        if ( ! empty( $limits ) ) {
+            $query->limit( $limits['length'] )->offset( $limits['start'] );
+        }
+
+        $data = $query->fetchArray();
+
+        unset( $filter['search'] );
+
+        Lib\Utils\Tables::updateSettings( Lib\Utils\Tables::SMS_MAILING_LISTS, $columns, $order, $filter );
+
+        wp_send_json( array(
+            'draw' => ( int ) self::parameter( 'draw' ),
+            'data' => $data,
+            'recordsTotal' => $total,
+            'recordsFiltered' => $filtered,
+        ) );
+    }
+
+    /**
+     * Get mailing list
+     */
+    public static function getMailingRecipients()
+    {
+        global $wpdb;
+
+        $columns = self::parameter( 'columns' );
+        $order   = self::parameter( 'order', array() );
+        $filter  = self::parameter( 'filter' );
+        $limits  = array(
+            'length' => self::parameter( 'length' ),
+            'start'  => self::parameter( 'start' ),
+        );
+
+        $query = Lib\Entities\MailingListRecipient::query()
+            ->select( 'id, name, phone' )
+            ->where( 'mailing_list_id', self::parameter( 'mailing_list_id' ) );
+
+        foreach ( $order as $sort_by ) {
+            $query->sortBy( str_replace( '.', '_', $columns[ $sort_by['column'] ]['data'] ) )
+                ->order( $sort_by['dir'] == 'desc' ? Lib\Query::ORDER_DESCENDING : Lib\Query::ORDER_ASCENDING );
+        }
+
+        $total = $query->count();
+
+        if ( $filter['search'] != '' ) {
+            $fields = array();
+            foreach ( $columns as $column ) {
+                switch ( $column['data'] ) {
+                    case 'name':
+                    case 'phone':
+                        $fields[] = 'name';
+                        break;
+                }
+            }
+            $search_columns = array();
+            foreach ( $fields as $field ) {
+                $search_columns[] = $field . ' LIKE "%%%s%"';
+            }
+            if ( ! empty( $search_columns ) ) {
+                $query->whereRaw( implode( ' OR ', $search_columns ), array_fill( 0, count( $search_columns ), $wpdb->esc_like( $filter['search'] ) ) );
+            }
+        }
+
+        $filtered = $query->count();
+
+        if ( ! empty( $limits ) ) {
+            $query->limit( $limits['length'] )->offset( $limits['start'] );
+        }
+
+        $data = $query->fetchArray();
+
+        unset( $filter['search'] );
+
+        Lib\Utils\Tables::updateSettings( Lib\Utils\Tables::SMS_MAILING_RECIPIENTS_LIST, $columns, $order, $filter );
+
+        wp_send_json( array(
+            'draw' => ( int ) self::parameter( 'draw' ),
+            'data' => $data,
+            'recordsTotal' => $total,
+            'recordsFiltered' => $filtered,
+        ) );
+    }
+
+    /**
+     * Delete mailing lists
+     */
+    public function deleteMailingLists()
+    {
+        $ids = array_map( 'intval', self::parameter( 'ids', array() ) );
+        Lib\Entities\MailingList::query()->delete()->whereIn( 'id', $ids )->execute();
+
+        wp_send_json_success();
+    }
+
+    /**
+     * Delete recipients from mailing list
+     */
+    public function deleteMailingRecipients()
+    {
+        $ids = array_map( 'intval', self::parameter( 'ids', array() ) );
+        Lib\Entities\MailingListRecipient::query()->delete()->whereIn( 'id', $ids )->execute();
+
+        wp_send_json_success();
+    }
+
+    /**
+     * Get mailing list
+     */
+    public static function getCampaignList()
+    {
+        global $wpdb;
+
+        $columns = self::parameter( 'columns' );
+        $order   = self::parameter( 'order', array() );
+        $filter  = self::parameter( 'filter' );
+        $limits  = array(
+            'length' => self::parameter( 'length' ),
+            'start'  => self::parameter( 'start' ),
+        );
+
+        $query = Lib\Entities\MailingCampaign::query()
+            ->select( 'id, name, state, send_at' );
+
+        foreach ( $order as $sort_by ) {
+            $query->sortBy( str_replace( '.', '_', $columns[ $sort_by['column'] ]['data'] ) )
+                ->order( $sort_by['dir'] == 'desc' ? Lib\Query::ORDER_DESCENDING : Lib\Query::ORDER_ASCENDING );
+        }
+
+        $total = $query->count();
+
+        if ( $filter['search'] != '' ) {
+            $fields = array();
+            foreach ( $columns as $column ) {
+                switch ( $column['data'] ) {
+                    case 'name':
+                    case 'id':
+                        $fields[] = $column['data'];
+                        break;
+                }
+            }
+            $search_columns = array();
+            foreach ( $fields as $field ) {
+                $search_columns[] = $field . ' LIKE "%%%s%"';
+            }
+            if ( ! empty( $search_columns ) ) {
+                $query->whereRaw( implode( ' OR ', $search_columns ), array_fill( 0, count( $search_columns ), $wpdb->esc_like( $filter['search'] ) ) );
+            }
+        }
+
+        $filtered = $query->count();
+
+        if ( ! empty( $limits ) ) {
+            $query->limit( $limits['length'] )->offset( $limits['start'] );
+        }
+
+        $data = $query->fetchArray();
+
+        unset( $filter['search'] );
+
+        Lib\Utils\Tables::updateSettings( Lib\Utils\Tables::SMS_MAILING_CAMPAIGNS, $columns, $order, $filter );
+
+        wp_send_json( array(
+            'draw' => ( int ) self::parameter( 'draw' ),
+            'data' => $data,
+            'recordsTotal' => $total,
+            'recordsFiltered' => $filtered,
+        ) );
+    }
+
+    /**
+     * Delete mailing lists
+     */
+    public function deleteCampaigns()
+    {
+        $ids = array_map( 'intval', self::parameter( 'ids', array() ) );
+        Lib\Entities\MailingCampaign::query()->delete()->whereIn( 'id', $ids )->execute();
+
+        wp_send_json_success();
+    }
+
+    /**
      * Delete attachment files
      *
      * @param $attachments

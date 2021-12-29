@@ -9,6 +9,7 @@ use Bookly\Lib\Config;
     <?php include '_progress_tracker.php' ?>
     <div class="bookly-js-payment-gateways-intersected">
         <?php Proxy\Coupons::renderCouponBlock() ?>
+        <?php Proxy\Pro::renderTips() ?>
         <?php Proxy\DepositPayments::renderAppearance() ?>
         <div class="bookly-payment-nav">
             <div class="bookly-box bookly-js-payment-single-app">

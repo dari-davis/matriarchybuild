@@ -4,6 +4,16 @@ use Bookly\Backend\Components\Controls\Inputs as ControlsInputs;
 use Bookly\Backend\Components\Settings\Inputs;
 use Bookly\Backend\Components\Settings\Selects;
 use Bookly\Lib\Utils\Common;
+$sizes = array(
+    array( '1', __( '1 - 9 employees', 'bookly' ) ),
+    array( '10', __( '10 - 19 employees', 'bookly' ) ),
+    array( '20', __( '20 - 49 employees', 'bookly' ) ),
+    array( '50', __( '50 - 249 employees', 'bookly' ) ),
+    array( '250', __( '250 or more employees', 'bookly' ) ),
+);
+if (! get_option( 'bookly_co_size' ) ) {
+    array_unshift( $sizes, array( '', __( 'Select company size', 'bookly' ) ) );
+}
 ?>
 <form method="post" action="<?php echo esc_url( add_query_arg( 'tab', 'company' ) ) ?>">
     <div class="card-body">
@@ -41,7 +51,8 @@ use Bookly\Lib\Utils\Common;
         <?php Inputs::renderTextArea( 'bookly_co_address', __( 'Address', 'bookly' ), '', 5 ) ?>
         <?php Inputs::renderText( 'bookly_co_phone', __( 'Phone', 'bookly' ) ) ?>
         <?php Inputs::renderText( 'bookly_co_website', __( 'Website', 'bookly' ) ) ?>
-        <?php Selects::renderSingleWithCategories( 'bookly_co_industry', __( 'Industry', 'bookly' ), null, get_option( 'bookly_co_industry' ) ? Common::getIndustries() : array_merge( array( __( 'Select industry', 'bookly' ) ), Common::getIndustries() ) ); ?>
+        <?php Selects::renderSingleWithCategories( 'bookly_co_industry', __( 'Industry', 'bookly' ), null, get_option( 'bookly_co_industry' ) ? Common::getIndustries() : array_merge( array( __( 'Select industry', 'bookly' ) ), Common::getIndustries() ) ) ?>
+        <?php Selects::renderSingle( 'bookly_co_size', __( 'Company size', 'bookly' ), null, $sizes ) ?>
     </div>
 
     <div class="card-footer bg-transparent d-flex justify-content-end">

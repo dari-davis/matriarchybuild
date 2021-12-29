@@ -19,8 +19,7 @@ class Page extends Lib\Base\Component
         ) );
 
         self::enqueueScripts( array(
-            'backend' => array( 'js/select2.min.js' => array( 'bookly-backend-globals' ), ),
-            'module' => array( 'js/staff-list.js' => array( 'bookly-select2.min.js' ), ),
+            'module' => array( 'js/staff-list.js' => array( 'bookly-backend-globals' ) ),
         ) );
 
         // Allow add-ons to enqueue their assets.

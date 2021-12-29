@@ -21,10 +21,9 @@ class Dialog extends Lib\Base\Component
 
         self::enqueueScripts( array(
             'backend' => array(
-                'js/select2.min.js' => array( 'bookly-backend-globals' ),
                 'js/sortable.min.js' => array( 'bookly-backend-globals' ),
             ),
-            'module' => array( 'js/service-edit-dialog.js' => array( 'bookly-sortable.min.js', 'bookly-select2.min.js' ) ),
+            'module' => array( 'js/service-edit-dialog.js' => array( 'bookly-sortable.min.js' ) ),
         ) );
 
         // Allow add-ons to enqueue their assets.

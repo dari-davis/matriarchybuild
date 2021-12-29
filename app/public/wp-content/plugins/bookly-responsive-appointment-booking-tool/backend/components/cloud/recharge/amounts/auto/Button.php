@@ -23,16 +23,17 @@ class Button extends Lib\Base\Component
         $cloud = Lib\Cloud\API::getInstance();
         $auto_recharge = array(
             'enabled' => $cloud->account->autoRechargeEnabled(),
-            'amount'  => $cloud->account->getAutoRechargeAmount(),
-            'bonus'   => $cloud->account->getAutoRechargeBonus()
+            'amount' => $cloud->account->getAutoRechargeAmount(),
+            'bonus' => $cloud->account->getAutoRechargeBonus(),
         );
-
+        $dont_have_auto_recharge = __( 'You don\'t have active auto-recharge', 'bookly' );
+        $label = $auto_recharge['enabled'] ? sprintf( __( 'You have active auto-recharge till %s', 'bookly' ), Lib\Utils\DateTime::formatDate( $cloud->account->getAutoRechargeEndAt() ) ) : $dont_have_auto_recharge;
         wp_localize_script( 'bookly-recharge-auto.js', 'BooklyAutoRechargeL10n', array(
-            'csrfToken'     => Lib\Utils\Common::getCsrfToken(),
             'auto_recharge' => $auto_recharge,
+            'dont_have_auto_recharge' => $dont_have_auto_recharge,
         ) );
 
-        self::renderTemplate( 'selector', array( 'recharges' => Amounts::getInstance()->getItems( Amounts::RECHARGE_TYPE_AUTO ) ) );
+        self::renderTemplate( 'selector', array( 'recharges' => Amounts::getInstance()->getItems( Amounts::RECHARGE_TYPE_AUTO ), 'label' => $label ) );
     }
 
     public static function renderRecharges()

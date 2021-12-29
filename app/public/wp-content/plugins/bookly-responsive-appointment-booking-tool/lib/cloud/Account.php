@@ -17,7 +17,9 @@ class Account extends Base
     const CONFIRM_EMAIL                  = '/1.3/users/%token%/confirm';                  //POST
     const CREATE_PAYPAL_ORDER            = '/1.0/users/%token%/paypal/order';             //POST
     const CREATE_PREAPPROVAL             = '/1.1/users/%token%/paypal/pre-approvals';     //POST
+    const RENEW_PAYPAL_AUTO_RECHARGE     = '/1.1/users/%token%/paypal/renew/auto-recharge'; //POST
     const CREATE_STRIPE_CHECKOUT_SESSION = '/1.0/users/%token%/stripe/checkout/sessions'; //POST
+    const RENEW_STRIPE_AUTO_RECHARGE     = '/1.0/users/%token%/stripe/renew/auto-recharge'; //POST
     const DISABLE_AUTO_RECHARGE          = '/1.0/users/%token%/auto-recharge';            //DELETE
     const GET_INVOICE                    = '/1.2/users/%token%/invoice';                  //GET
     const GET_BILLING                    = '/1.1/users/%token%/billing';                  //GET
@@ -244,7 +246,7 @@ class Account extends Base
      *
      * @param string $recharge_id
      * @param string $url
-     * @return bool|mixed
+     * @return bool|string
      */
     public function getPreApprovalUrl( $recharge_id, $url )
     {
@@ -263,6 +265,52 @@ class Account extends Base
         }
 
         return false;
+    }
+
+    /**
+     * Get PayPal PreApproval url, (for renew auto recharge)
+     *
+     * @param string $return_url
+     * @return bool|string
+     */
+    public function getPayPalRenewAutoRechargeUrl( $return_url )
+    {
+        if ( $this->api->getToken() ) {
+            $response = $this->api->sendPostRequest(
+                self::RENEW_PAYPAL_AUTO_RECHARGE,
+                array(
+                    'enabled_url' => $return_url . '#auto-recharge=renewed',
+                    'cancelled_url' => $return_url . '#auto-recharge=cancelled',
+                )
+            );
+            if ( $response ) {
+                return $response['redirect_url'];
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Create Stripe Checkout session, (for renew auto recharge)
+     *
+     * @param string $return_url
+     * @return bool|string
+     */
+    public function getStripeRenewAutoRechargeUrl( $return_url )
+    {
+        if ( $this->api->getToken() ) {
+            $response = $this->api->sendPostRequest(
+                self::RENEW_STRIPE_AUTO_RECHARGE,
+                array(
+                    'enabled_url' => $return_url . '#auto-recharge=renewed',
+                    'cancelled_url' => $return_url . '#auto-recharge=cancelled',
+                )
+            );
+            if ( $response ) {
+                return $response['redirect_url'];
+            }
+        }
     }
 
     /**
@@ -462,6 +510,28 @@ class Account extends Base
     }
 
     /**
+     * Get auto-recharge till at.
+     *
+     * @return string
+     */
+    public function getAutoRechargeEndAt()
+    {
+        return $this->autoRechargeEnabled()
+            ? $this->auto_recharge['end_at']
+            : '';
+    }
+
+    /**
+     * @return string
+     */
+    public function getAutoRechargeGateway()
+    {
+        return $this->autoRechargeEnabled()
+            ? $this->auto_recharge['gateway']
+            : '';
+    }
+
+    /**
      * Client data for invoice.
      *
      * @return array
@@ -596,6 +666,19 @@ class Account extends Base
                 $account->notify_summary  = $response['account']['notify_summary'];
 
                 update_option( 'bookly_cloud_account_products', $account->products );
+
+                if ( $account->autoRechargeEnabled() ) {
+                    $end_at = get_option( 'bookly_cloud_auto_recharge_end_at' );
+                    if ( $end_at != $account->getAutoRechargeEndAt() ) {
+                        $end_at_ts = date_create( $account->getAutoRechargeEndAt() )->getTimestamp();
+                        update_option( 'bookly_cloud_auto_recharge_end_at_ts', $end_at_ts );
+                        update_option( 'bookly_cloud_renew_auto_recharge_notice_hide_until', $end_at_ts - 2 * WEEK_IN_SECONDS );
+
+                        Utils\Common::updateBlogUsersMeta( 'bookly_notice_renew_auto_recharge_hide_until', '0' );
+                    }
+                }
+                update_option( 'bookly_cloud_auto_recharge_gateway', $account->getAutoRechargeGateway() );
+                update_option( 'bookly_cloud_auto_recharge_end_at', $account->getAutoRechargeEndAt() );
 
                 $account->api->dispatch( Events::ACCOUNT_PROFILE_LOADED, $response );
             } else {

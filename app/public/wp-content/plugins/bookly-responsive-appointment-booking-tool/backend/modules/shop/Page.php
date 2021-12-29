@@ -19,12 +19,7 @@ class Page extends Lib\Base\Component
         ) );
 
         self::enqueueScripts( array(
-            'backend' => array( 'js/select2.min.js' => array( 'bookly-backend-globals' ), ),
-            'module' => array( 'js/shop.js' => array( 'bookly-select2.min.js' ) ),
-        ) );
-
-        wp_localize_script( 'bookly-shop.js', 'BooklyL10n', array(
-            'csrf_token' => Lib\Utils\Common::getCsrfToken(),
+            'module' => array( 'js/shop.js' => array( 'bookly-backend-globals' ) ),
         ) );
 
         $has_new_items = Lib\Entities\Shop::query()

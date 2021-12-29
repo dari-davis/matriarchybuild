@@ -24,7 +24,7 @@ class Notice extends Base\Notice
             )
             ->addMainButton( __( 'Ok, you deserve it', 'bookly' ), 'bookly-js-ok' )
             ->addDefaultButton( __( 'Nope, maybe later', 'bookly' ), 'bookly-js-maybe-later' )
-            ->setDissmisClass( 'bookly-js-dismiss' );
+            ->setDismissClass( 'bookly-js-dismiss' );
     }
 
     /**
@@ -59,7 +59,6 @@ class Notice extends Base\Notice
             }
 
             wp_localize_script( 'bookly-rate.js', 'BooklyRateL10n', array(
-                'csrfToken'  => Lib\Utils\Common::getCsrfToken(),
                 'reviewsUrl' => Lib\Utils\Common::prepareUrlReferrers( Urls::REVIEWS_PAGE, 'notification_bar' ),
             ) );
             parent::render();

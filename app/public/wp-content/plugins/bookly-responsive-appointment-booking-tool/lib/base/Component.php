@@ -176,6 +176,7 @@ abstract class Component extends Cache
                     'js/daterangepicker.js' => array( 'bookly-moment.min.js', 'jquery' ),
                     'js/dropdown.js' => array( 'jquery' ),
                     'js/alert.js' => array( 'jquery' ),
+                    'js/select2.min.js' => array( 'jquery' ),
                 ),
                 'frontend' => array(
                     'js/spin.min.js' => array( 'jquery' ),
@@ -183,7 +184,7 @@ abstract class Component extends Cache
                 ),
                 'alias' => array(
                     'bookly-frontend-globals' => array( 'bookly-spin.min.js', 'bookly-ladda.min.js' ),
-                    'bookly-backend-globals' => array( 'bookly-bootstrap.min.js', 'bookly-datatables.min.js', 'bookly-daterangepicker.js', 'bookly-dropdown.js', 'bookly-alert.js', 'bookly-spin.min.js', 'bookly-ladda.min.js',  ),
+                    'bookly-backend-globals' => array( 'bookly-bootstrap.min.js', 'bookly-datatables.min.js', 'bookly-daterangepicker.js', 'bookly-dropdown.js', 'bookly-select2.min.js', 'bookly-alert.js', 'bookly-spin.min.js', 'bookly-ladda.min.js', ),
                 )
             ) );
 
@@ -200,6 +201,8 @@ abstract class Component extends Cache
                 'csrf_token' => Lib\Utils\Common::getCsrfToken(),
                 'addons' => array(),
             ) ) );
+
+            wp_add_inline_script( 'bookly-select2.min.js', 'delete jQuery.fn.select2;', 'before' );
         }
     }
 

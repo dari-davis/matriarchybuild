@@ -332,8 +332,7 @@ class API extends Cache
         if ( strncmp( $error_code, 'ERROR_', 6 ) === 0 ) {
             $error_code = substr( $error_code, 6 );
         }
-        $msg = __( ucfirst( strtolower ( str_replace( '_', ' ', $error_code ) ) ), 'bookly' );
 
-        return $msg;
+        return __( ucfirst( strtolower ( str_replace( '_', ' ', $error_code ) ) ), 'bookly' );
     }
 }

@@ -20,8 +20,7 @@ class Dialog extends Lib\Base\Component
         ) );
 
         self::enqueueScripts( array(
-            'backend' => array( 'js/select2.min.js' => array( 'bookly-backend-globals' ), ),
-            'module' => array( 'js/service-create-dialog.js' => array( 'bookly-select2.min.js', ) ),
+            'module' => array( 'js/service-create-dialog.js' => array( 'bookly-backend-globals' ) ),
         ) );
 
         $type_icons = Proxy\Shared::prepareServiceIcons( array( Lib\Entities\Service::TYPE_SIMPLE => 'far fa-calendar-check' ) );

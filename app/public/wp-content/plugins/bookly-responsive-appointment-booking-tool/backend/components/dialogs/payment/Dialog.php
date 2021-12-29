@@ -71,6 +71,7 @@ class Dialog extends Lib\Base\Component
                 'status' => __( 'Status', 'bookly' ),
                 'subtotal' => __( 'Subtotal', 'bookly' ),
                 'tax' => __( 'Tax', 'bookly' ),
+                'tips' => __( 'Tips', 'bookly' ),
                 'total' => __( 'Total', 'bookly' ),
                 'type' => __( 'Type', 'bookly' ),
                 'wc_order_id' => __( 'order ID', 'bookly' ),

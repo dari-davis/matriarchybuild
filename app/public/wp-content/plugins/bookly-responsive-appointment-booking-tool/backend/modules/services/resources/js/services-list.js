@@ -80,6 +80,8 @@ jQuery(function ($) {
                                     return '<span class="badge badge-secondary"><i class="fas fa-video fa-fw"></i> Zoom</span>';
                                 case 'google_meet':
                                     return '<span class="badge badge-secondary"><i class="fas fa-video fa-fw"></i> Meet</span>';
+                                case 'jitsi':
+                                    return '<span class="badge badge-secondary"><i class="fas fa-video fa-fw"></i> Jitsi Meet</span>';
                                 default:
                                     return '';
                             }

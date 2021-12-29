@@ -5,6 +5,7 @@ use Bookly\Lib;
 
 /**
  * Class Pro
+ *
  * @package Bookly\Backend\Modules\Appearance\Proxy
  *
  * @method static void renderAddress() Render inputs for address fields in appearance.
@@ -16,6 +17,8 @@ use Bookly\Lib;
  * @method static void renderShowAddress() render 'Show Address Fields' on Details Step.
  * @method static void renderShowBirthday() render 'Show Birthday Fields' on Details Step.
  * @method static void renderShowFacebookButton() Render 'Show facebook login button switcher' on Time step.
+ * @method static void renderShowTips() Render 'Show tips' on Payment step.
+ * @method static void renderTips() Render tips on Payment step.
  * @method static void renderTimeZoneSwitcher() Render timezone switcher on Time step.
  * @method static void renderTimeZoneSwitcherCheckbox() Render 'Show time zone switcher' on Time step.
  */

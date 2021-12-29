@@ -37,7 +37,7 @@ class Buttons extends Lib\Base\Component
         // Whether to show contact us notice or not.
         $show_contact_us_notice = $days_in_use < 7 &&
             ! get_user_meta( get_current_user_id(), Lib\Plugin::getPrefix() . 'dismiss_contact_us_notice', true ) &&
-            ! Notices\CollectStats::needShowCollectStatNotice();
+            ! Notices\Statistic\Notice::needShowCollectStatNotice();
 
         // Whether to show feedback notice.
         $show_feedback_notice = $days_in_use >= 7 &&

@@ -28,7 +28,7 @@ abstract class Codes
      */
     public static function replace( $text, $codes, $bold = true )
     {
-        return Lib\Utils\Common::stripScripts( self::stringify( self::tokenize( $text ), $codes, $bold ) );
+        return self::stringify( self::tokenize( $text ), $codes, $bold );
     }
 
     /**

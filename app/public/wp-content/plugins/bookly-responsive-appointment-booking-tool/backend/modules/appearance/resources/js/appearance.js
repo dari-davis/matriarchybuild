@@ -63,6 +63,9 @@ jQuery(function ($) {
         $repeat_monthly_week_day = $('.bookly-js-monthly-week-day'),
         // Step Cart.
         $show_cart_extras = $('#bookly-show-cart-extras'),
+        $book_more_place = $('#bookly-js-app-button-book-more-near-next'),
+        $book_more_in_body = $('.bookly-js-app-button-book-more-near-next-related:eq(0)', steps.$cart),
+        $book_more_in_footer =  $('.bookly-js-app-button-book-more-near-next-related:eq(1)', steps.$cart),
         // Step details.
         $required_details = $('#bookly-cst-required-details'),
         $show_login_button = $('#bookly-show-login-button'),
@@ -79,6 +82,7 @@ jQuery(function ($) {
         $show_terms = $('#bookly-show-terms'),
         // Step payment.
         $show_coupons = $('#bookly-show-coupons'),
+        $show_tips = $('#bookly-show-tips'),
         // Step done.
         $done_nav_container = $('#bookly-step-8 .bookly-nav-steps'),
         $show_start_over = $('#bookly-show-start-over'),
@@ -649,6 +653,11 @@ jQuery(function ($) {
         $('.bookly-js-extras-cart').toggle(this.checked);
     }).trigger('change');
 
+    $book_more_place.change(function () {
+        $book_more_in_body.toggle(!this.checked);
+        $book_more_in_footer.toggle(this.checked);
+    }).trigger('change');
+
     /**
      * Step Details
      */
@@ -817,6 +826,10 @@ jQuery(function ($) {
         $('.bookly-js-payment-coupons').toggle(this.checked);
     });
 
+    $show_tips.on('change', function () {
+        $('.bookly-js-payment-tips').toggle(this.checked);
+    }).trigger('change');
+
     /**
      * Step Done.
      */
@@ -977,6 +990,7 @@ jQuery(function ($) {
                 'bookly_tasks_show_time_step': Number($bookly_tasks_show_time_step.prop('checked')),
                 'bookly_chain_appointments_enabled': Number($show_chain_appointments.prop('checked')),
                 'bookly_coupons_enabled': Number($show_coupons.prop('checked')),
+                'bookly_app_show_tips': Number($show_tips.prop('checked')),
                 'bookly_custom_fields_enabled': Number($show_custom_fields.prop('checked')),
                 'bookly_customer_information_enabled': Number($show_customer_information.prop('checked')),
                 'bookly_files_enabled': Number($show_files.prop('checked')),
@@ -986,7 +1000,8 @@ jQuery(function ($) {
                 'bookly_service_extras_show_in_cart': Number($show_cart_extras.prop('checked')),
                 'bookly_service_extras_show': bookly_service_extras_show,
                 'bookly_invoices_show_download_invoice': Number($show_download_invoice.prop('checked')),
-                'bookly_app_show_download_ics': Number($show_download_ics.prop('checked'))
+                'bookly_app_show_download_ics': Number($show_download_ics.prop('checked')),
+                'bookly_app_button_book_more_near_next': Number($book_more_place.prop('checked'))
             }
         };
         // Add data from editable elements.

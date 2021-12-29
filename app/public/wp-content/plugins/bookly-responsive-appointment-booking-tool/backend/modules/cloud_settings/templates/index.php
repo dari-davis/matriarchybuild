@@ -100,13 +100,21 @@ $invoice = $cloud->account->getInvoiceData();
                        <div class="tab-pane" id="bookly-account-notifications-tab" style="min-height: 200px;">
                            <div class="form-group">
                                <div class="custom-control custom-checkbox">
+                                   <input class="custom-control-input" type="checkbox" id="bookly_cloud_badge_consider_sms" name="bookly_cloud_badge_consider_sms" <?php checked( get_option( 'bookly_cloud_badge_consider_sms' ) ) ?>>
+                                   <label class="custom-control-label" for="bookly_cloud_badge_consider_sms"><span><?php esc_html_e( 'Show SMS notification icon', 'bookly' ) ?></span></label>
+                               </div>
+                           </div>
+                           <div class="form-group">
+                               <div class="custom-control custom-checkbox">
                                    <input class="custom-control-input" type="checkbox" id="bookly_cloud_notify_low_balance" name="bookly_cloud_notify_low_balance" <?php checked( get_option( 'bookly_cloud_notify_low_balance' ) ) ?>>
                                    <label class="custom-control-label" for="bookly_cloud_notify_low_balance"><span><?php esc_html_e( 'Send email notification to administrators at low balance', 'bookly' ) ?></span></label>
                                </div>
                            </div>
-                           <div class="custom-control custom-checkbox">
-                               <input class="custom-control-input" type="checkbox" id="notify_summary" name="notify_summary" <?php checked( $cloud->account->getNotifySummary() ) ?>>
-                               <label class="custom-control-label" for="notify_summary"><span><?php esc_html_e( 'Send weekly summary', 'bookly' ) ?></span></label>
+                           <div class="form-group">
+                               <div class="custom-control custom-checkbox">
+                                   <input class="custom-control-input" type="checkbox" id="notify_summary" name="notify_summary" <?php checked( $cloud->account->getNotifySummary() ) ?>>
+                                   <label class="custom-control-label" for="notify_summary"><span><?php esc_html_e( 'Send weekly summary', 'bookly' ) ?></span></label>
+                               </div>
                            </div>
                        </div>
                        <div class="tab-pane" id="bookly-country-tab" style="min-height: 200px;">

@@ -22,8 +22,7 @@ class Dialog extends Lib\Base\Component
         ) );
 
         self::enqueueScripts( array(
-            'backend' => array( 'js/select2.min.js' => array( 'bookly-backend-globals' ), ),
-            'module' => array( 'js/notification-dialog.js' => array( 'bookly-select2.min.js', 'bookly-editor.js' ), ),
+            'module' => array( 'js/notification-dialog.js' => array( 'bookly-backend-globals', 'bookly-editor.js' ) ),
         ) );
 
         $codes = new Codes( 'sms' );

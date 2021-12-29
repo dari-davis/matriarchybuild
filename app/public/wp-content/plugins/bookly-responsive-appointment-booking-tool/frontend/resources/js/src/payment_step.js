@@ -36,9 +36,16 @@ export default function stepPayment(params) {
                             betas: ['payment_intent_beta_3']
                         });
                         var elements = stripe.elements();
-                        var stripe_card = elements.create("card");
 
+                        var stripe_card = elements.create('cardNumber');
                         stripe_card.mount("#bookly-stripe-card-field");
+
+                        var stripe_expiry = elements.create('cardExpiry');
+                        stripe_expiry.mount("#bookly-stripe-card-expiry-field");
+
+                        var stripe_cvc = elements.create('cardCvc');
+                        stripe_cvc.mount("#bookly-stripe-card-cvc-field");
+
                     } else {
                         $container.find('.bookly-stripe #bookly-stripe-card-field').hide();
                         $container.find('.pay-card .bookly-js-next-step').prop('disabled', true);
@@ -50,6 +57,10 @@ export default function stepPayment(params) {
                     $apply_coupon_button = $('.bookly-js-apply-coupon', $container),
                     $coupon_input = $('input.bookly-user-coupon', $container),
                     $coupon_error = $('.bookly-js-coupon-error', $container),
+                    $apply_tips_button = $('.bookly-js-apply-tips', $container),
+                    $applied_tips_button = $('.bookly-js-applied-tips', $container),
+                    $tips_input = $('input.bookly-user-tips', $container),
+                    $tips_error = $('.bookly-js-tips-error', $container),
                     $deposit_mode = $('input[type=radio][name=bookly-full-payment]', $container),
                     $coupon_info_text = $('.bookly-info-text-coupon', $container),
                     $buttons = $('.bookly-gateway-buttons,form.bookly-authorize_net,form.bookly-stripe', $container)
@@ -115,6 +126,42 @@ export default function stepPayment(params) {
                     });
                 });
 
+                $tips_input.on('keyup', function () {
+                    $applied_tips_button.hide();
+                    $apply_tips_button.css('display', 'inline-block');
+                });
+
+                $apply_tips_button.on('click', function (e) {
+                    var ladda = laddaStart(this);
+                    $tips_error.text('');
+                    $tips_input.removeClass('bookly-error');
+
+                    var data = {
+                        action: 'bookly_pro_apply_tips',
+                        csrf_token: BooklyL10n.csrf_token,
+                        form_id: params.form_id,
+                        tips: $tips_input.val()
+                    };
+
+                    booklyAjax({
+                        type: 'POST',
+                        data: data,
+                        success: function (response) {
+                            if (response.success) {
+                                stepPayment({form_id: params.form_id});
+                            } else {
+                                $tips_error.html(response.error);
+                                $tips_input.addClass('bookly-error');
+                                scrollTo($tips_error, params.form_id);
+                                ladda.stop();
+                            }
+                        },
+                        error: function () {
+                            ladda.stop();
+                        }
+                    });
+                });
+
                 $('.bookly-js-next-step', $container).on('click', function (e) {
                     var ladda = laddaStart(this),
                         $form
@@ -145,9 +192,13 @@ export default function stepPayment(params) {
                                 },
                                 success: function (response) {
                                     if (response.success) {
-                                        stripe.handleCardPayment(
+                                        stripe.confirmCardPayment(
                                             response.intent_secret,
-                                            stripe_card
+                                            {
+                                                payment_method: {
+                                                    card: stripe_card
+                                                }
+                                            }
                                         ).then(function (result) {
                                             if (result.error) {
                                                 booklyAjax({

@@ -48,8 +48,9 @@ class Ajax extends Page
                     case 'category_name':
                         $fields[] = 'c.name';
                         break;
+                    case 'id':
                     case 'title':
-                        $fields[] = 's.title';
+                        $fields[] = 's.' . $column['data'];
                         break;
                 }
             }
@@ -126,7 +127,7 @@ class Ajax extends Page
         ! Lib\Config::proActive() &&
         get_option( 'bookly_updated_from_legacy_version' ) != 'lite' &&
         Lib\Entities\Service::query()->count() > 4 &&
-        wp_send_json_error( array( 'message' => Limitation::forNewService() ) );
+        wp_send_json_error( array( 'message' => Limitation\Notice::forNewService() ) );
 
         $form = new Forms\Service();
         $form->bind( self::postParameters() );
@@ -258,7 +259,7 @@ class Ajax extends Page
         ! Lib\Config::proActive() &&
         get_option( 'bookly_updated_from_legacy_version' ) != 'lite' &&
         Lib\Entities\Service::query()->count() > 4 &&
-        wp_send_json_error( array( 'message' => Limitation::forNewService() ) );
+        wp_send_json_error( array( 'message' => Limitation\Notice::forNewService() ) );
         $service_id = self::parameter( 'service_id' );
         $service    = Lib\Entities\Service::find( $service_id );
         if ( $service ) {

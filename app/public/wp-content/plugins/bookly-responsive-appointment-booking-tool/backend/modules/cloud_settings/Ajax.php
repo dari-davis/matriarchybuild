@@ -35,6 +35,7 @@ class Ajax extends Lib\Base\Ajax
                     : Lib\Cloud\API::getInstance()->account->disableSendingWeeklySummary();
                 break;
             case 'bookly_cloud_notify_low_balance':
+            case 'bookly_cloud_badge_consider_sms':
                 update_option( self::parameter( 'option_name' ), self::parameter( 'value' ) );
                 break;
         }

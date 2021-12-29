@@ -248,7 +248,7 @@ class CartInfo
                         $amount = min( $cost, $this->total );
                     }
 
-                    return $amount + $this->price_correction;
+                    return $amount + $this->price_correction + $this->userData->getTips();
                 }
 
                 return $this->getPayNow();
@@ -360,9 +360,9 @@ class CartInfo
     public function getTotal()
     {
         if ( $this->tax_included ) {
-            return $this->subtotal + $this->getDiscount();
+            return $this->subtotal + $this->getDiscount() + $this->userData->getTips();
         } else {
-            return $this->subtotal + $this->getDiscount() + $this->getTotalTax();
+            return $this->subtotal + $this->getDiscount() + $this->userData->getTips() + $this->getTotalTax();
         }
     }
 
@@ -430,9 +430,9 @@ class CartInfo
     public function getDepositPay()
     {
         if ( $this->tax_included ) {
-            return min( $this->deposit, $this->total ) + $this->price_correction;
+            return min( $this->deposit, $this->total ) + $this->price_correction + $this->userData->getTips();
         } else {
-            return min( $this->deposit + $this->getDepositTax(), $this->total + $this->getTotalTax() ) + $this->price_correction;
+            return min( $this->deposit + $this->getDepositTax(), $this->total + $this->getTotalTax() ) + $this->price_correction + $this->userData->getTips();
         }
     }
 

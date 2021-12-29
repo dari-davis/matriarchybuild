@@ -34,10 +34,9 @@ class Panel extends Lib\Base\Component
         ) );
 
         self::enqueueScripts( array(
-            'backend' => array( 'js/select2.min.js' => array( 'bookly-backend-globals' ), ),
             'module' => array(
-                'js/select-country.js' => array( 'bookly-select2.min.js' ),
-                'js/cloud-auth.js' => array( 'bookly-select-country.js', ),
+                'js/select-country.js' => array( 'bookly-backend-globals' ),
+                'js/cloud-auth.js' => array( 'bookly-select-country.js' ),
             ),
         ) );
 

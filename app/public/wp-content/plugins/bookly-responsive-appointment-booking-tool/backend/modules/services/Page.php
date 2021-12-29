@@ -25,10 +25,9 @@ class Page extends Lib\Base\Ajax
             'wp' => array( 'wp-color-picker' ),
             'backend' => array(
                 'js/range-tools.js' => array( 'bookly-backend-globals' ),
-                'js/select2.min.js' => array( 'bookly-range-tools.js' ),
                 'js/sortable.min.js',
             ),
-            'module' => array( 'js/services-list.js' => array( 'bookly-select2.min.js' ) ),
+            'module' => array( 'js/services-list.js' => array( 'bookly-range-tools.js' ) ),
         ) );
 
         $staff = array();

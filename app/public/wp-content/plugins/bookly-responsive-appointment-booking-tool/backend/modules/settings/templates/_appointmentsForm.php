@@ -6,7 +6,7 @@ use Bookly\Backend\Modules\Settings\Proxy;
 use Bookly\Lib\Utils\Common;
 use Bookly\Lib\Config;
 
-$help =__( 'Select status for newly booked appointments.', 'bookly' );
+$help = __( 'Select status for newly booked appointments.', 'bookly' );
 if ( Config::customerGroupsActive() ) {
     $help .= ' ' . sprintf( __( 'Please note that this setting will be overridden by Customer Groups > General settings > <a href="%s" target="_blank">Default appointment status</a>.', 'bookly' ), Common::escAdminUrl( 'bookly-customer-groups' ) );
 }

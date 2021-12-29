@@ -136,6 +136,7 @@ class Payment extends Lib\Base\Entity
             'extras_multiply_nop' => $extras_multiply_nop,
             'gateway' => $cart_info->getGateway(),
             'gateway_ref_id' => isset( $extra['reference_id'] ) ? $extra['reference_id'] : null,
+            'tips' => $cart_info->getUserData()->getTips(),
         );
 
         $rates = Lib\Proxy\Taxes::getServiceTaxRates() ?: array();
@@ -266,6 +267,7 @@ class Payment extends Lib\Base\Entity
                 'tax_in_price' => $details['tax_in_price'],
                 'from_backend' => (bool) ( isset( $details['from_backend'] ) ? $details['from_backend'] : false ),
                 'extras_multiply_nop' => (bool) ( isset ( $details['extras_multiply_nop'] ) ? $details['extras_multiply_nop'] : true ),
+                'tips' => (float) ( isset ( $details['tips'] ) ? $details['tips'] : 0 ),
             ),
             'adjustments' => isset( $details['adjustments'] ) ? $details['adjustments'] : array(),
         );

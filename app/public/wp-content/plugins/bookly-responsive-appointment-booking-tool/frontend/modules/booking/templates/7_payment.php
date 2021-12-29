@@ -4,6 +4,7 @@ use Bookly\Frontend\Modules\Booking\Proxy;
 
 echo Common::stripScripts( $progress_tracker );
 Proxy\Coupons::renderPaymentStep( $userData );
+Proxy\Pro::renderPaymentStep( $userData );
 Proxy\DepositPayments::renderPaymentStep( $userData );
 ?>
 

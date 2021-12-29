@@ -8,8 +8,8 @@ msgstr ""
 "Language: pt_PT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-01 09:54+0000\n"
-"PO-Revision-Date: 2021-11-02 14:36+0000\n"
+"POT-Creation-Date: 2021-12-17 08:17+0000\n"
+"PO-Revision-Date: 2021-12-19 21:37+0000\n"
 "Last-Translator: Isabel Andrade <estgf_nemo@hotmail.com>\n"
 "Language-Team: Portuguese (Portugal)\n"
 "X-Loco-Version: 2.3.1; wp-5.5"
@@ -399,11 +399,12 @@ msgstr "Template para o nome do evento"
 
 msgid ""
 "Configure what information should be placed in the title of Outlook Calendar "
-"event. Available codes are {service_name}, {staff_name} and {client_names}."
+"event. Available codes are {service_name}, {category_name}, {staff_name} and "
+"{client_names}."
 msgstr ""
-"Configure que informações devem ser colocadas no nome do evento do "
-"Calendário do Outlook. Os códigos disponíveis são {service_name}, "
-"{staff_name} e {client_names}."
+"Configure quais as informações que devem ser colocadas no título do evento "
+"Outlook Calendar. Os códigos disponíveis são {service_name}, {category_name},"
+" {staff_name} e {client_names}."
 
 msgid "Template for event description"
 msgstr "Template para a descrição do evento"
@@ -471,6 +472,9 @@ msgstr "Obrigatório"
 
 msgid "Combined values of all custom fields"
 msgstr "Valores combinados de todos os campos personalizados"
+
+msgid "Custom field"
+msgstr "Campo personalizado"
 
 msgid "General"
 msgstr "Geral"
@@ -589,11 +593,11 @@ msgstr ""
 msgid "Add condition"
 msgstr "Adicione condição"
 
-msgid "equals"
-msgstr "iguais"
+msgid "in"
+msgstr "em"
 
-msgid "not equals"
-msgstr "não é igual"
+msgid "not in"
+msgstr "não está"
 
 msgid "Enter a description"
 msgstr "Introduza uma descrição "
@@ -603,9 +607,6 @@ msgstr "Exibir campos personalizados"
 
 msgid "Custom field description"
 msgstr "Descrição do campo personalizado"
-
-msgid "Custom field"
-msgstr "Campo personalizado"
 
 msgid "Extended staff agenda for next day"
 msgstr ""
@@ -1712,6 +1713,25 @@ msgstr "A capacidade mínima não deve ser superior que a capacidade máxima."
 
 msgid "Export to CSV"
 msgstr "Exportar para CSV"
+
+msgid "Auto-refresh Calendar"
+msgstr "Atualizar automaticamente o Calendário"
+
+msgid "Every 1 minute"
+msgstr ""
+"A cada 1 minuto\n"
+
+msgid "Every 5 minutes"
+msgstr ""
+"A cada 5 minuto\n"
+
+msgid "Every 15 minutes"
+msgstr ""
+"A cada 15 minuto\n"
+
+msgid "Disable"
+msgstr ""
+"Desativar\n"
 
 msgid "Displayed appointments"
 msgstr "Compromissos exibidos"
@@ -3355,6 +3375,14 @@ msgstr "Assunto"
 msgid "Customer"
 msgstr "Cliente"
 
+msgid "Start at"
+msgstr "Começar às"
+
+msgid "Number of recipients"
+msgstr ""
+"Número de destinatários\n"
+"\n"
+
 msgid "Text"
 msgstr "Texto"
 
@@ -3483,6 +3511,12 @@ msgstr "Verificar email do cliente"
 
 msgid "Verify customer's phone"
 msgstr "Verificar telefone do cliente"
+
+msgid "Mailing message"
+msgstr ""
+"Mensagem de correio\n"
+"\n"
+"\n"
 
 msgid "Test message"
 msgstr "Mensagem de teste"
@@ -3796,6 +3830,15 @@ msgstr ""
 "terminado. Isto evita que a sessão bloqueie, o que poderia causar vários "
 "problemas como a sessão expirar ou falhas."
 
+msgid "Show news notifications"
+msgstr ""
+"Mostrar notificações de notícias\n"
+"\n"
+
+msgid "If enabled, News notification icon will be displayed"
+msgstr ""
+"Se estiver ativado, será apresentado o ícone de notificação de notícias"
+
 msgid "Service paid locally"
 msgstr "Serviço pago localmente"
 
@@ -3932,6 +3975,22 @@ msgid ""
 msgstr ""
 "Se está opção estiver habilitada então apenas os membros do staff que "
 "associaram as suas marcações serão mostrados na visão do dia.\n"
+
+msgid "Month view style"
+msgstr ""
+"Estilo de vista do mês\n"
+"\n"
+
+msgid "Select the style for displaying appointments in Month view"
+msgstr ""
+"Selecione o estilo para exibir marcações na vista do mês\n"
+"\n"
+
+msgid "Classic"
+msgstr "Clássico"
+
+msgid "Minimalistic"
+msgstr "Minimalista"
 
 msgid "Coloring mode"
 msgstr "Modo de cor"
@@ -4200,6 +4259,14 @@ msgstr ""
 msgid "Notifications"
 msgstr "Notificações"
 
+msgid "Campaigns"
+msgstr "Campanhas"
+
+msgid "Mailing lists"
+msgstr ""
+"Listas de correio\n"
+"\n"
+
 msgid "SMS Details"
 msgstr "Detalhes SMS"
 
@@ -4274,6 +4341,9 @@ msgstr "Cancelar solicitação"
 
 msgid "Can only contain letters or digits (up to 11 characters)."
 msgstr "Só pode conter letras ou dígitos (até 11 caracteres)."
+
+msgid "Back to lists"
+msgstr "De volta às listas"
 
 msgid "Sender ID request is sent."
 msgstr "Pedido de ID do remetente foi enviado."
@@ -4353,6 +4423,11 @@ msgstr "Digite um ou mais endereços de e-mail separados por virgulas."
 
 msgid "Save invoice settings"
 msgstr "Salvar as definições de fatura"
+
+msgid "Show SMS notification icon"
+msgstr ""
+"Mostrar ícone de notificação de SMS\n"
+"\n"
 
 msgid "Send email notification to administrators at low balance"
 msgstr "Enviar notificação via email para os administradores com saldo baixo"
@@ -4552,25 +4627,6 @@ msgstr "Todos os funcionários"
 
 msgid "No staff selected"
 msgstr "Nenhum funcionário escolhido"
-
-msgid "Auto-refresh Calendar"
-msgstr "Atualizar automaticamente o Calendário"
-
-msgid "Every 1 minute"
-msgstr ""
-"A cada 1 minuto\n"
-
-msgid "Every 5 minutes"
-msgstr ""
-"A cada 5 minuto\n"
-
-msgid "Every 15 minutes"
-msgstr ""
-"A cada 15 minuto\n"
-
-msgid "Disable"
-msgstr ""
-"Desativar\n"
 
 msgid "Welcome to Bookly and thank you for your choice!"
 msgstr "Bem-vindo ao Bookly e obrigado pela sua escolha!"
@@ -5290,11 +5346,16 @@ msgid "Continue with"
 msgstr ""
 "Continuar com\n"
 
+msgid "Auto-Recharge has been cancelled"
+msgstr "O carregamento automático foi cancelado"
+
 msgid "Auto-Recharge has been enabled"
 msgstr "O carregamento automático foi ativado"
 
-msgid "Auto-Recharge has been cancelled"
-msgstr "O carregamento automático foi cancelado"
+msgid "Auto-Recharge has been renewed"
+msgstr ""
+"Auto Recarregamento foi renovado\n"
+"\n"
 
 msgid "current<br/>balance"
 msgstr "saldo<br/>atual"
@@ -5315,6 +5376,17 @@ msgstr ""
 
 msgid "Buy now"
 msgstr "Comprar agora"
+
+msgid "You don't have active auto-recharge"
+msgstr ""
+"Não tem auto carregamento ativo\n"
+"\n"
+
+#, php-format
+msgid "You have active auto-recharge till %s"
+msgstr ""
+"Tem auto carregamento ativo até %s\n"
+"\n"
 
 msgid "Select amount of Auto-Recharge"
 msgstr ""
@@ -5372,6 +5444,20 @@ msgstr "Selecionar local"
 
 msgid "Empty"
 msgstr "Vazio"
+
+msgid "WARNING"
+msgstr "AVISO"
+
+msgid "Using <script> tag can be dangerous."
+msgstr ""
+"Usar <script>tag pode ser perigoso.\n"
+"\n"
+
+msgid ""
+"Unless you understand exactly what you are doing, click Cancel and stay safe."
+msgstr ""
+"A menos que compreenda exatamente o que está a fazer, clique em Cancelar e "
+"mantenha-se seguro."
 
 #, php-format
 msgid ""
@@ -5571,6 +5657,9 @@ msgstr "O pagamento não foi encontrado."
 msgid "Reason"
 msgstr "Motivo"
 
+msgid "Tips"
+msgstr "Gratificação"
+
 msgid "order ID"
 msgstr "ID pedido "
 
@@ -5679,6 +5768,101 @@ msgstr "Apagar as contas WordPress dos clientes, se houver"
 msgid "Deleted Customer"
 msgstr "Cliente apagado"
 
+msgid "ago"
+msgstr "passado"
+
+msgid "Add recipients"
+msgstr "Adicionar destinatários"
+
+msgid "Automatic selection"
+msgstr "Seleção automática"
+
+msgid "Manual selection"
+msgstr ""
+"Seleção manual\n"
+"\n"
+
+msgid ""
+"Add phone numbers using international phone format, one number per line."
+msgstr ""
+"Adicione números de telefone usando o formato de telefone internacional, um "
+"número por linha."
+
+msgid "E.g"
+msgstr "Ex"
+
+#, php-format
+msgid "You can add no more than %s contacts"
+msgstr ""
+"Não pode adicionar mais do que %s contactos\n"
+"\n"
+
+msgid ""
+"Please note that only customers who meet all of the conditions will be added "
+"to the list. You can find more information in our documentation"
+msgstr ""
+"Por favor, note que apenas os clientes que satisfaçam todas as condições "
+"serão adicionados à lista. Pode encontrar mais informações na nossa "
+"documentação\n"
+"\n"
+
+msgid "Total sum of payments, greater or equal than"
+msgstr ""
+"Soma total dos pagamentos, superior ou igual\n"
+"\n"
+
+msgid "Total number of appointment, greater or equal than"
+msgstr "Número total de nomeações, maior ou igual do que"
+
+msgid "Providers"
+msgstr "Fornecedores"
+
+msgid "New mailing list"
+msgstr ""
+"Nova lista de e-mails\n"
+"\n"
+
+msgid "New list"
+msgstr "Nova lista"
+
+msgid "New campaign"
+msgstr "Nova campanha"
+
+msgid "Edit campaign"
+msgstr "Editar campanha"
+
+msgid "Start campaign"
+msgstr "Começar campanha"
+
+msgid "Immediately"
+msgstr "Imediatamente"
+
+msgid "Start sending messages at"
+msgstr ""
+"Comece a enviar mensagens em\n"
+"\n"
+
+msgid "Set the time when the mailing will start"
+msgstr ""
+"Estabeleça a hora quando o correio vai começar\n"
+"\n"
+
+msgid "Start time"
+msgstr "Começar tempo"
+
+msgid "Sms text"
+msgstr ""
+"Texto sms\n"
+"\n"
+
+msgid "Campaign"
+msgstr "Campanha"
+
+msgid "Select mailing list"
+msgstr ""
+"Selecione lista de correio\n"
+"\n"
+
 msgid ""
 "You are going to delete item which is involved in upcoming appointments. All "
 "related appointments will be deleted. Please double check and edit "
@@ -5699,9 +5883,6 @@ msgstr "Não guardar"
 
 msgid "Create service"
 msgstr "Criar um serviço"
-
-msgid "Providers"
-msgstr "Fornecedores"
 
 msgid "Start and end times of the appointment"
 msgstr "Horas de início e término da reserva"
@@ -5762,6 +5943,32 @@ msgstr "Notificação de novo email"
 msgid "Edit email notification"
 msgstr "Editar notificação de email"
 
+msgid "Renew"
+msgstr "Renovar"
+
+msgid "Dismiss"
+msgstr "Dispensar"
+
+#, php-format
+msgid "Your Auto-Recharge will end in %d day."
+msgid_plural "Your Auto-Recharge will end in %d days."
+msgstr[0] ""
+"O seu auto carregamento terminará em %d dia.\n"
+"\n"
+msgstr[1] ""
+"Os seus auto carregamentos terminaram em %d dia.\n"
+
+msgid "Please renew the connection to keep using Bookly Cloud services."
+msgstr ""
+"Por favor, renove a ligação para continuar a utilizar os serviços Bookly "
+"Cloud.\n"
+"\n"
+
+msgid "Your Auto-Recharge will end today."
+msgstr ""
+"O seu auto carregamento terminará hoje.\n"
+"\n"
+
 msgid ""
 "Could you please do me a BIG favor and give it a 5-star rating on WordPress?"
 msgstr ""
@@ -5798,23 +6005,6 @@ msgstr "Acabou de fazer sua <b>1000.a venda</b> a utilizar o plugin Bookly!"
 msgid "You just made the <b>10000th Sale</b> using Bookly Plugin!"
 msgstr "Acabou de fazer sua <b>10000.a venda</b> a utilizar o plugin Bookly!"
 
-msgid "This function is not available in the Bookly."
-msgstr "Esta função não está disponível no Bookly."
-
-msgid ""
-"You are using the free version of Bookly, so you can't add more than 5 "
-"services. To remove this limitation, get access to all Bookly features, "
-"lifetime free updates and 24/7 support, please upgrade to the Pro version of "
-"Bookly."
-msgstr ""
-"Está a usar a versão gratuita da Bookly, por isso não pode adicionar mais de "
-"5 serviços. Para remover esta limitação, tenha acesso a todas as "
-"funcionalidades bookly, atualizações gratuitas vitalícias e suporte 24/7, "
-"por favor atualize para a versão Pro da Bookly."
-
-msgid "For more information visit"
-msgstr "Para mais informação visite "
-
 msgid ""
 "To help us improve Bookly, the plugin anonymously collects usage information."
 " You can opt out of sharing the information in Settings > General."
@@ -5836,6 +6026,34 @@ msgstr "Concordo"
 msgid "Disagree"
 msgstr "Discordo"
 
+msgid "This function is not available in the Bookly."
+msgstr "Esta função não está disponível no Bookly."
+
+msgid ""
+"You are using the free version of Bookly, so you can't add more than 5 "
+"services. To remove this limitation, get access to all Bookly features, "
+"lifetime free updates and 24/7 support, please upgrade to the Pro version of "
+"Bookly."
+msgstr ""
+"Está a usar a versão gratuita da Bookly, por isso não pode adicionar mais de "
+"5 serviços. Para remover esta limitação, tenha acesso a todas as "
+"funcionalidades bookly, atualizações gratuitas vitalícias e suporte 24/7, "
+"por favor atualize para a versão Pro da Bookly."
+
+msgid "For more information visit"
+msgstr "Para mais informação visite "
+
+msgid ""
+"You are using the free version of Bookly, so you can't add more than 1 staff."
+" To remove this limitation, get access to all Bookly features, lifetime free "
+"updates and 24/7 support, please upgrade to the Pro version of Bookly."
+msgstr ""
+"Estás a usar a versão gratuita da Bookly, por isso não podes adicionar mais "
+"do que 1 funcionário. Para remover esta limitação, tenha acesso a todas as "
+"funcionalidades bookly, atualizações gratuitas vitalícias e suporte 24/7, "
+"por favor atualize para a versão Pro da Bookly.\n"
+"\n"
+
 #, php-format
 msgid ""
 "<b>Bookly Lite rebrands into Bookly with more features available.</b><br/>"
@@ -5850,6 +6068,30 @@ msgstr ""
 "novo Bookly gratuito. Para saber mais sobre essa grande atualização do "
 "Bookly, visite a nossa <a href=\"%s\" target=\"_blank\">publicação do "
 "blog</a>."
+
+msgid ""
+"How likely is it that you would recommend Bookly to a friend or colleague?"
+msgstr "Qual é a probabilidade de recomendar o Bookly a um amigo ou colega?"
+
+msgid "What do you think should be improved?"
+msgstr "O que acha que deveria melhorar?"
+
+msgid "Please enter your email (optional)"
+msgstr "Por favor, digite seu e-mail (opcional)"
+
+msgid "Subscribe to monthly emails about Bookly improvements and new releases."
+msgstr ""
+"Inscreva-se para e-mails mensais sobre as melhorias do Bookly e novos "
+"lançamentos."
+
+msgid "Please, check your email to confirm the subscription. Thank you!"
+msgstr "Por favor, verifique seu e-mail para confirmar a subscrição. Obrigado!"
+
+msgid "Given email address is already subscribed, thank you!"
+msgstr "O endereço e-mail digitado já se encontra registado. Obrigado! "
+
+msgid "This email address is not valid."
+msgstr "Este endereço é e-mail inválido."
 
 #, php-format
 msgid "Recharge your account balance and get up to %s extra."
@@ -5876,22 +6118,6 @@ msgstr ""
 "Lembrar-me depois\n"
 
 msgid ""
-"You are using the free version of Bookly, so you can't add more than 1 staff."
-" To remove this limitation, get access to all Bookly features, lifetime free "
-"updates and 24/7 support, please upgrade to the Pro version of Bookly."
-msgstr ""
-"Estás a usar a versão gratuita da Bookly, por isso não podes adicionar mais "
-"do que 1 funcionário. Para remover esta limitação, tenha acesso a todas as "
-"funcionalidades bookly, atualizações gratuitas vitalícias e suporte 24/7, "
-"por favor atualize para a versão Pro da Bookly.\n"
-"\n"
-
-msgid "Subscribe to monthly emails about Bookly improvements and new releases."
-msgstr ""
-"Inscreva-se para e-mails mensais sobre as melhorias do Bookly e novos "
-"lançamentos."
-
-msgid ""
 "Allow the plugin to set a Powered by Bookly notice on the booking widget to "
 "spread information about the plugin. This will allow the team to improve the "
 "product and enhance its functionality."
@@ -5899,25 +6125,6 @@ msgstr ""
 "Permitir que o plugin exiba a informação com processadores Bookly no widget "
 "de reservas e divulgue a informação através do plugin. Isto vai ajudar a "
 "equipa a aprimorar o produto e melhorar as suas funcionalidades"
-
-msgid ""
-"How likely is it that you would recommend Bookly to a friend or colleague?"
-msgstr "Qual é a probabilidade de recomendar o Bookly a um amigo ou colega?"
-
-msgid "What do you think should be improved?"
-msgstr "O que acha que deveria melhorar?"
-
-msgid "Please enter your email (optional)"
-msgstr "Por favor, digite seu e-mail (opcional)"
-
-msgid "Please, check your email to confirm the subscription. Thank you!"
-msgstr "Por favor, verifique seu e-mail para confirmar a subscrição. Obrigado!"
-
-msgid "Given email address is already subscribed, thank you!"
-msgstr "O endereço e-mail digitado já se encontra registado. Obrigado! "
-
-msgid "This email address is not valid."
-msgstr "Este endereço é e-mail inválido."
 
 msgid "Revenue"
 msgstr "Receita"
@@ -6579,6 +6786,9 @@ msgstr ""
 "{company_phone}\n"
 "{company_website}"
 
+msgid "Applied"
+msgstr "Aplicado"
+
 msgid "I will pay now with PayPal"
 msgstr "Vou pagar com PayPal"
 
@@ -6857,11 +7067,12 @@ msgid "Make address mandatory"
 msgstr "Tornar o endereço obrigatório"
 
 msgid ""
-"Customers are required to enter address to proceed with a booking. To "
-"disable, deactivate Invoices add-on first."
+"If enabled, a customer will be required to enter address to proceed with a "
+"booking."
 msgstr ""
-"Os clientes são solicitados a inserir um endereço para prosseguir com a "
-"reserva. Para desabilitar, desative o add-on Invoices primeiro."
+"Se estiver habilitado, um cliente será obrigado a inserir o endereço para "
+"proceder a uma reserva.\n"
+"\n"
 
 msgid "Customer's address fields"
 msgstr "Campos de endereço do cliente"
@@ -7024,11 +7235,12 @@ msgstr ""
 
 msgid ""
 "Configure what information should be placed in the title of Google Calendar "
-"event. Available codes are {service_name}, {staff_name} and {client_names}."
-msgstr ""
-"Configure as informações que devem ser colocadas no nome do evento do "
-"Calendário Google. Os códigos disponíveis são {service_name}, {staff_name} e "
+"event. Available codes are {service_name}, {category_name}, {staff_name} and "
 "{client_names}."
+msgstr ""
+"Configure quais as informações que devem ser colocadas no título do evento "
+"Google Calendar. Os códigos disponíveis são {service_name}, {category_name}, "
+"{staff_name} e {client_names}."
 
 msgid "To set up Facebook integration, do the following:"
 msgstr "Para configurar a integração do Facebook, faça o seguinte:"
@@ -7398,6 +7610,9 @@ msgstr "Reuniões on-line"
 msgid "User Permissions"
 msgstr "Permissões do Utilizador"
 
+msgid "Show tips"
+msgstr "Mostrar gratificações"
+
 msgid "Form view in case of single booking"
 msgstr "Visualização de formulário em caso de reserva única"
 
@@ -7416,13 +7631,6 @@ msgstr ""
 
 msgid "Show birthday field"
 msgstr "Exibir campo de aniversário"
-
-msgid ""
-"Address information is needed for Invoices add-on. To disable, deactivate "
-"Invoices add-on first."
-msgstr ""
-"A informação de endereço é necessária para o add-on Faturas. Para desativar, "
-"desative primeiro o add-on Faturas."
 
 msgid "Show address fields"
 msgstr "Exibir os campos de endereço"
@@ -8855,6 +9063,9 @@ msgid ""
 msgstr ""
 "Abaixo pode encontrar uma lista de serviços selecionados para a reserva.\n"
 "Clique em RESERVAR MAIS se quiser adicionar mais serviços."
+
+msgid "Show \"Book more\" near \"Next\" button"
+msgstr "Mostrar \"Reserve mais\" perto do botão \"Seguinte\""
 
 msgid "Show Cart step"
 msgstr "Exibir o passo do Carrinho"

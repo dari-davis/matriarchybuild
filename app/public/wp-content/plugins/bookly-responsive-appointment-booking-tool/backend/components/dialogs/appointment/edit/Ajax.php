@@ -146,12 +146,12 @@ class Ajax extends Lib\Base\Ajax
                 );
             }
             $result['staff'][] = array(
-                'id'        => (int) $staff_member->getId(),
+                'id' => (int) $staff_member->getId(),
                 'full_name' => $staff_member->getFullName() . ( $staff_member->getVisibility() == 'archive' ? $postfix_archived : '' ),
-                'archived'  => $staff_member->getVisibility() == 'archive',
-                'services'  => $services,
+                'archived' => $staff_member->getVisibility() == 'archive',
+                'services' => $services,
                 'locations' => $locations,
-                'category'  => Lib\Proxy\Pro::getStaffCategoryName( $staff_member->getCategoryId() ),
+                'category' => Lib\Proxy\Pro::getStaffCategoryName( $staff_member->getCategoryId() ),
             );
         }
 
@@ -345,30 +345,56 @@ class Ajax extends Lib\Base\Ajax
                     'timezone'          => Lib\Proxy\Pro::getLastCustomerTimezone( $customer['customer_id'] ),
                 );
                 $response['data']['customers'][] = array(
-                    'id'                       => (int) $customer['customer_id'],
-                    'ca_id'                    => $customer['id'],
-                    'series_id'                => $customer['series_id'],
-                    'package_id'               => $customer['package_id'],
-                    'collaborative_service'    => $collaborative_service,
-                    'collaborative_token'      => $customer['collaborative_token'],
-                    'compound_service'         => $compound_service,
-                    'compound_token'           => $customer['compound_token'],
-                    'custom_fields'            => $custom_fields,
-                    'files'                    => Lib\Proxy\Files::getFileNamesForCustomFields( $custom_fields ),
-                    'extras'                   => (array) json_decode( $customer['extras'], true ),
-                    'extras_multiply_nop'      => (int) $customer['extras_multiply_nop'],
+                    'id' => (int) $customer['customer_id'],
+                    'ca_id' => $customer['id'],
+                    'series_id' => $customer['series_id'],
+                    'package_id' => $customer['package_id'],
+                    'collaborative_service' => $collaborative_service,
+                    'collaborative_token' => $customer['collaborative_token'],
+                    'compound_service' => $compound_service,
+                    'compound_token' => $customer['compound_token'],
+                    'custom_fields' => $custom_fields,
+                    'files' => Lib\Proxy\Files::getFileNamesForCustomFields( $custom_fields ),
+                    'extras' => (array) json_decode( $customer['extras'], true ),
+                    'extras_multiply_nop' => (int) $customer['extras_multiply_nop'],
                     'extras_consider_duration' => (int) $customer['extras_consider_duration'],
-                    'number_of_persons'        => (int) $customer['number_of_persons'],
-                    'notes'                    => $customer['notes'],
-                    'payment_id'               => $customer['payment_id'],
-                    'payment_type'             => $customer['payment_id']
+                    'number_of_persons' => (int) $customer['number_of_persons'],
+                    'notes' => $customer['notes'],
+                    'payment_id' => $customer['payment_id'],
+                    'payment_type' => $customer['payment_id']
                         ? ( $customer['payment'] != $customer['payment_total'] ? 'partial' : 'full' )
                         : null,
-                    'payment_title'            => $payment_title,
-                    'group_id'                 => $customer['group_id'],
-                    'status'                   => $customer['status'],
-                    'timezone'                 => Lib\Proxy\Pro::getCustomerTimezone( $customer['time_zone'], $customer['time_zone_offset'] ),
+                    'payment_title' => $payment_title,
+                    'group_id' => $customer['group_id'],
+                    'status' => $customer['status'],
+                    'timezone' => Lib\Proxy\Pro::getCustomerTimezone( $customer['time_zone'], $customer['time_zone_offset'] ),
                 );
+            }
+            // Service data
+            if ( $info['service_id'] ) {
+                $service = Service::find( $info['service_id'] );
+                if ( $service ) {
+                    $category = '';
+                    if ( $service->getCategoryId() ) {
+                        $category = Category::find( $service->getCategoryId() );
+                        $category = $category->getName();
+                    }
+                    $response['data']['service'] = array(
+                        'id' => (int) $service->getId(),
+                        'name' => sprintf( '%s (%s)', $service->getTitle(), DateTime::secondsToInterval( $service->getDuration() ) ),
+                        'category' => $category,
+                        'duration' => (int) $service->getDuration(),
+                        'units_min' => (int) $service->getUnitsMin(),
+                        'units_max' => (int) $service->getUnitsMax(),
+                        'locations' => array(
+                            array(
+                                'capacity_min' => Lib\Config::groupBookingActive() ? (int) $service->getCapacityMin() : 1,
+                                'capacity_max' => Lib\Config::groupBookingActive() ? (int) $service->getCapacityMax() : 1,
+                            ),
+                        ),
+                        'online_meetings' => $service->getOnlineMeetings(),
+                    );
+                }
             }
         }
 

@@ -19,7 +19,7 @@ jQuery(function ($) {
             type    : 'GET',
             data    : {
                 action    : 'bookly_get_shop_data',
-                csrf_token: BooklyL10n.csrf_token,
+                csrf_token: BooklyL10nGlobal.csrf_token,
                 sort      : $sort.val()
             },
             dataType: 'json',

@@ -3,6 +3,7 @@ namespace Bookly\Lib\Base;
 
 /**
  * Class Updater
+ *
  * @package Bookly\Lib\Base
  */
 abstract class Updater extends Schema
@@ -12,16 +13,16 @@ abstract class Updater extends Schema
      */
     public function run()
     {
-        $plugin_class   = Plugin::getPluginFor( $this );
+        $plugin_class = Plugin::getPluginFor( $this );
         $transient_name = $plugin_class::getPrefix() . 'updating_db';
-        $lock           = (int) get_transient( $transient_name );
+        $lock = (int) get_transient( $transient_name );
         if ( $lock + 30 < time() ) {
             $version_option_name = $plugin_class::getPrefix() . 'db_version';
-            $db_version          = get_option( $version_option_name );
-            $plugin_version      = $plugin_class::getVersion();
+            $db_version = get_option( $version_option_name );
+            $plugin_version = $plugin_class::getVersion();
             if ( $db_version !== false && version_compare( $plugin_version, $db_version, '>' ) ) {
                 // Lock concurrent updates for 30 seconds.
-                set_transient( $transient_name, time() );
+                set_transient( $transient_name, time(), 30 );
                 set_time_limit( 0 );
 
                 $updates = array_filter(
@@ -42,8 +43,6 @@ abstract class Updater extends Schema
                 }
                 // Make sure db_version is set to plugin version (even though there were no updates).
                 update_option( $version_option_name, $plugin_version );
-                // Remove the lock.
-                delete_transient( $transient_name );
             }
         }
     }
@@ -154,14 +153,14 @@ abstract class Updater extends Schema
      * This method allows one-time code execution,
      * at multiple calls to the same update_ * method, (for example, in case of timeout)
      *
-     * @param string   $token
+     * @param string $token
      * @param callable $callable
      * @return string
      */
     protected function disposable( $token, $callable )
     {
         $disposable_key = strtolower( strtok( __NAMESPACE__, '\\' ) ) . '_disposable_' . $token . '_completed';
-        $completed      = (int) get_option( $disposable_key );
+        $completed = (int) get_option( $disposable_key );
         if ( $completed === 0 ) {
             call_user_func( $callable );
             add_option( $disposable_key, '1' );
@@ -241,7 +240,7 @@ abstract class Updater extends Schema
                      AND CHARACTER_SET_NAME != %%s',
                     implode( ', ', array_fill( 0, count( $tables ), '%s' ) )
                 );
-                $alter  = 'ALTER TABLE `%s` CONVERT TO CHARACTER SET ' . $wpdb->charset;
+                $alter = 'ALTER TABLE `%s` CONVERT TO CHARACTER SET ' . $wpdb->charset;
                 $params = array_map( array( $this, 'getTableName' ), $tables );
                 $params[] = $wpdb->charset;
                 if ( $wpdb->collate ) {
@@ -249,7 +248,7 @@ abstract class Updater extends Schema
                      AND COLLATION_NAME IS NOT NULL
                      AND COLLATION_NAME != %s';
                     $params[] = $wpdb->collate;
-                    $alter .=' COLLATE ' . $wpdb->collate;
+                    $alter .= ' COLLATE ' . $wpdb->collate;
                 }
 
                 $records = $wpdb->get_results( $wpdb->prepare( $query, $params ) );
@@ -281,4 +280,5 @@ abstract class Updater extends Schema
             }
         }
     }
+
 }

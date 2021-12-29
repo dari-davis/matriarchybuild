@@ -14,7 +14,7 @@ if ( $balance <= 0 ) {
 }
 ?>
 <div class="btn-group mr-2">
-    <div class="border border-right-0 rounded pl-2 d-flex align-items-center">
+    <div class="border border-right-0 rounded-left pl-2 d-flex align-items-center">
         <h6 class="small m-0"><b><?php _e( 'current<br/>balance', 'bookly' ) ?></b></h6>
     </div>
     <div class="border border-left-0 px-2 d-flex align-items-center">

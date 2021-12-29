@@ -24,19 +24,19 @@ class Dialog extends Lib\Base\Component
 
             $recharge = $cloud->account->getRechargeData();
             wp_localize_script( 'bookly-recharge-dialog.js', 'BooklyRechargeDialogL10n', array(
-                'csrfToken' => Lib\Utils\Common::getCsrfToken(),
                 'country' => $cloud->account->getCountry(),
                 'no_card' => $recharge['no_card'],
                 'payment' => array(
                     'manual' => array(
-                        'action'    => __( 'Pay using', 'bookly' ),
-                        'accepted'  => __( 'Your payment has been accepted for processing', 'bookly' ),
+                        'action' => __( 'Pay using', 'bookly' ),
+                        'accepted' => __( 'Your payment has been accepted for processing', 'bookly' ),
                         'cancelled' => __( 'Your payment has been cancelled', 'bookly' ),
                     ),
                     'auto' => array(
-                        'action'    => __( 'Continue with', 'bookly' ),
-                        'enabled'   => __( 'Auto-Recharge has been enabled', 'bookly' ),
+                        'action' => __( 'Continue with', 'bookly' ),
                         'cancelled' => __( 'Auto-Recharge has been cancelled', 'bookly' ),
+                        'enabled' => __( 'Auto-Recharge has been enabled', 'bookly' ),
+                        'renewed' => __( 'Auto-Recharge has been renewed', 'bookly' ),
                     ),
                 ),
             ) );

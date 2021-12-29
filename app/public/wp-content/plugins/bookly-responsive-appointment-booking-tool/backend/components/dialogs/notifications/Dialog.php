@@ -52,8 +52,7 @@ class Dialog extends SmsDialog
         ) );
 
         self::enqueueScripts( array(
-            'backend' => array( 'js/select2.min.js' => array( 'bookly-backend-globals' ), ),
-            'bookly' => array( 'backend/components/dialogs/sms/resources/js/notification-dialog.js' => array( 'bookly-select2.min.js' ), ),
+            'bookly' => array( 'backend/components/dialogs/sms/resources/js/notification-dialog.js' => array( 'bookly-backend-globals' ) ),
         ) );
 
         $codes = new Codes( 'email' );

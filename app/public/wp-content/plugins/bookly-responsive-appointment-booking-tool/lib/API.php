@@ -348,6 +348,7 @@ abstract class API
                 'wp_locale' => get_locale(),
                 'company' => get_option( 'bookly_co_name' ),
                 'industry' => get_option( 'bookly_co_industry' ),
+                'size' => get_option( 'bookly_co_size' ),
                 'completed_payments' => $completed_payments,
                 'custom_fields_count' => count( (array) Proxy\CustomFields::getAll() ),
                 'description' => get_bloginfo( 'description' ),

@@ -2,6 +2,9 @@
 namespace Bookly\Lib;
 
 use Bookly\Lib\Entities\CustomerAppointment;
+use Bookly\Lib\Entities\MailingCampaign;
+use Bookly\Lib\Entities\MailingListRecipient;
+use Bookly\Lib\Entities\MailingQueue;
 use Bookly\Lib\Entities\Payment;
 
 /**
@@ -35,6 +38,8 @@ abstract class Routines
             Notifications\Routine::sendNotifications();
             // Handle outdated unpaid payments
             Routines::handleUnpaidPayments();
+            // Handle mailing campaigns
+            Routines::mailing();
         }, 10, 0 );
 
         // Schedule daily routine.
@@ -199,6 +204,40 @@ abstract class Routines
             ) );
 
             update_option( 'bookly_сa_count', $current );
+        }
+    }
+
+    public static function mailing()
+    {
+        $cloud = Cloud\API::getInstance();
+        if ( $cloud->getToken() ) {
+            global $wpdb;
+            /** @var MailingCampaign[] $mc_list */
+            $mc_list = MailingCampaign::query()
+                ->where( 'state', MailingCampaign::STATE_PENDING )
+                ->whereLte( 'send_at', current_time( 'mysql' ) )
+                ->find();
+            foreach ( $mc_list as $mc ) {
+                $mc->setState( MailingCampaign::STATE_COMPLETED )->save();
+                $query = 'INSERT INTO `' . MailingQueue::getTableName() . '` (phone, text, sent, created_at)
+                          SELECT mlr.phone, %s, 0, %s
+                            FROM `' . MailingListRecipient::getTableName() . '` AS mlr
+                           WHERE mlr.mailing_list_id = %s';
+                $wpdb->query( $wpdb->prepare( $query, $mc->getText(), current_time( 'mysql' ), $mc->getMailingListId() ) );
+            }
+
+            $lock = (int) get_transient( 'bookly_mailing_campaign' );
+            if ( $lock + 120 < time() ) {
+                set_transient( 'bookly_mailing_campaign', time(), 120 );
+                set_time_limit( 0 );
+                /** @var MailingQueue[] $sms_items */
+                $sms_items = MailingQueue::query()->where( 'sent', '0' )->find();
+                $notification_type_id = 60;
+                foreach ( $sms_items as $sms ) {
+                    $sms->setSent( 1 )->save();
+                    $cloud->sms->sendSms( $sms->getPhone(), $sms->getText(), $sms->getText(), $notification_type_id );
+                }
+            }
         }
     }
 }

@@ -213,24 +213,25 @@ export default function stepDetails(params) {
                         $that = $(this)
                     ;
                     $.each(custom_fields_conditions, function(i, condition){
+                        let $target = $('.bookly-custom-field-row[data-id="' + condition.target + '"]');
                         if (parseInt(condition.source) === id) {
                             switch ($row.data('type')) {
                                 case 'drop-down':
                                 case 'radio-buttons':
-                                    if (($that.val() === condition.value && condition.equal === '1') || ($that.val() !== condition.value && condition.equal !== '1')) {
-                                        $('.bookly-custom-field-row[data-id="' + condition.target + '"]').show();
+                                    if ((condition.value.includes($that.val()) && condition.equal === '1') || (!condition.value.includes($that.val()) && condition.equal !== '1')) {
+                                        $target.show();
                                     } else {
-                                        $('.bookly-custom-field-row[data-id="' + condition.target + '"]').hide();
+                                        $target.hide();
                                     }
                                     break;
                                 case 'checkboxes':
+                                    let show = false;
                                     $row.find('input').each(function () {
-                                        if (($(this).prop('checked') && $(this).val() === condition.value && condition.equal === '1') || (!$(this).prop('checked') && $(this).val() === condition.value && condition.equal !== '1')) {
-                                            $('.bookly-custom-field-row[data-id="' + condition.target + '"]').show();
-                                        } else if ((!$(this).prop('checked') && $(this).val() === condition.value && condition.equal === '1') || ($(this).prop('checked') && $(this).val() === condition.value && condition.equal !== '1')) {
-                                            $('.bookly-custom-field-row[data-id="' + condition.target + '"]').hide();
+                                        if ($(this).prop('checked') && ((condition.value.includes($(this).val()) && condition.equal === '1') || (!condition.value.includes($(this).val()) && condition.equal !== '1'))) {
+                                            show = true;
                                         }
                                     });
+                                    $target.toggle(show);
                                     break;
                             }
                         }

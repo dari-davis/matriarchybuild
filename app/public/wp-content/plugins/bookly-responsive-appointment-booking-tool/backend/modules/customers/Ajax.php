@@ -67,7 +67,7 @@ class Ajax extends Lib\Base\Ajax
             $search_value   = Lib\Query::escape( $filter );
             $search_columns = array( 'c.info_fields LIKE "%%%s%"' );
             foreach ( $columns as $column ) {
-                if ( in_array( $column['data'], array( 'first_name', 'last_name', 'full_name', 'phone', 'email' ) ) ) {
+                if ( in_array( $column['data'], array( 'first_name', 'last_name', 'full_name', 'phone', 'email', 'id' ) ) ) {
                     $search_columns[] = 'c.' . $column['data'] . ' LIKE "%%%s%"';
                 }
             }

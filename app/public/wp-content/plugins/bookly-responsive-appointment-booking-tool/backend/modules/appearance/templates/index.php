@@ -155,6 +155,7 @@ use Bookly\Backend\Modules\Appearance\Proxy;
                     <div class="bookly-js-payment-settings collapse">
                         <div class="row">
                             <?php Proxy\Coupons::renderShowCoupons() ?>
+                            <?php Proxy\Pro::renderShowTips() ?>
                         </div>
                         <?php Proxy\Pro::renderBookingStatesSelector() ?>
                     </div>

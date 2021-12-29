@@ -83,7 +83,7 @@ class Schema
                 ELSE COLUMN_TYPE
             END AS DATA_TYPE, 
             IS_NULLABLE, COLUMN_KEY, COLUMN_DEFAULT, EXTRA
-         FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = %s', $table ), ARRAY_A );
+         FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = %s ORDER BY ORDINAL_POSITION', $table ), ARRAY_A );
         if ( $results ) {
             foreach ( $results as $row ) {
                 $tableStructure[ $row['COLUMN_NAME'] ] = $this->getColumnStructure( $row );

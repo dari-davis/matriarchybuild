@@ -21,9 +21,8 @@ class Dialog extends Lib\Base\Component
         self::enqueueScripts( array(
             'backend' => array(
                 'js/sortable.min.js' => array( 'bookly-backend-globals' ),
-                'js/select2.min.js' => array( 'bookly-backend-globals' ),
             ),
-            'module' => array( 'js/service-categories-dialog.js' => array( 'bookly-sortable.min.js', 'bookly-select2.min.js' ) ),
+            'module' => array( 'js/service-categories-dialog.js' => array( 'bookly-sortable.min.js' ) ),
         ) );
 
         self::renderTemplate( 'dialog' );

@@ -42,8 +42,8 @@ class Page extends Lib\Base\Component
     public static function addBooklyMenuItem()
     {
         $news = __( 'News', 'bookly' );
-        $count = self::getNewsCount();
-        if ( $count ) {
+        if ( get_option( 'bookly_gen_badge_consider_news' ) ) {
+            $count = self::getNewsCount();
             add_submenu_page( 'bookly-menu', $news, sprintf( '%s <span class="update-plugins count-%d"><span class="update-count">%d</span></span>', $news, $count, $count ), Lib\Utils\Common::getRequiredCapability(),
                 self::pageSlug(), function () { Page::render(); } );
         } else {

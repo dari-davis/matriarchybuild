@@ -569,6 +569,7 @@ abstract class Common
             'slotMaxTime' => $max_time,
             'scrollTime' => $scroll_time,
             'locale' => Lib\Config::getShortLocale(),
+            'monthDayMaxEvents' => (int) ( get_option( 'bookly_cal_month_view_style' ) == 'minimalistic' ),
             'mjsTimeFormat' => DateTime::convertFormat( 'time', DateTime::FORMAT_MOMENT_JS ),
             'datePicker' => DateTime::datePickerOptions(),
             'dateRange' => DateTime::dateRangeOptions(),
@@ -704,5 +705,28 @@ abstract class Common
     public static function css( $css )
     {
         return trim( preg_replace( '#<style[^>]*>(.*)</style>#is', '$1', $css ) );
+    }
+
+    /**
+     * Update user meta only for blog users.
+     *
+     * @param string $meta_key
+     * @param string $meta_value
+     */
+    public static function updateBlogUsersMeta( $meta_key, $meta_value, $blog_id = null )
+    {
+        global $wpdb;
+        if ( is_multisite() ) {
+            $prefix = $wpdb->get_blog_prefix( $blog_id );
+            $query = 'UPDATE `' . $wpdb->usermeta . '` AS um
+                   LEFT JOIN `' . $wpdb->usermeta . '` AS um2
+                          ON (um2.user_id = um.user_id)
+                         SET um.meta_value = %s 
+                       WHERE um2.meta_key = %s
+                         AND um.meta_key = %s';
+            $wpdb->query( $wpdb->prepare( $query, $meta_value, $prefix . 'capabilities', $meta_key ) );
+        } else {
+            $wpdb->update( $wpdb->usermeta, compact( 'meta_value' ), compact( 'meta_key' ) );
+        }
     }
 }

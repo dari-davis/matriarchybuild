@@ -77,8 +77,9 @@ class Ajax extends Lib\Base\Ajax
                     case 'user':
                         $fields[] = 'wpu.display_name';
                         break;
-                    case 'full_name':
                     case 'email':
+                    case 'full_name':
+                    case 'id':
                     case 'phone':
                         $fields[] = 's.' . $column['data'];
                         break;

@@ -32,13 +32,16 @@ use Bookly\Lib\Utils\DateTime;
             </div>
             <ul class="nav nav-tabs mb-3" id="sms_tabs">
                 <li class="nav-item"><a class="nav-link active" data-toggle="bookly-tab" href="#notifications"><?php esc_html_e( 'Notifications', 'bookly' ) ?></a></li>
-                <li class="nav-item"><a class="nav-link" data-toggle="bookly-tab" href="#sms_details"><?php esc_html_e( 'SMS Details', 'bookly' );
-                        if ( $undelivered_count ) : ?> <span class="badge bg-danger"><?php echo esc_html( $undelivered_count ) ?></span><?php endif ?></a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="bookly-tab" href="#campaigns"><?php esc_html_e( 'Campaigns', 'bookly' ) ?></a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="bookly-tab" href="#mailing"><?php esc_html_e( 'Mailing lists', 'bookly' ) ?></a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="bookly-tab" href="#sms_details"><?php esc_html_e( 'SMS Details', 'bookly' ); if ( $undelivered_count ) : ?> <span class="badge bg-danger"><?php echo esc_html( $undelivered_count ) ?></span><?php endif ?></a></li>
                 <li class="nav-item"><a class="nav-link" data-toggle="bookly-tab" href="#price_list"><?php esc_html_e( 'Price list', 'bookly' ) ?></a></li>
                 <li class="nav-item"><a class="nav-link" data-toggle="bookly-tab" href="#sender_id"><?php esc_html_e( 'Sender ID', 'bookly' ) ?></a></li>
             </ul>
             <div class="tab-content mt-3">
                 <div class="tab-pane active" id="notifications"><?php include '_notifications.php' ?></div>
+                <div class="tab-pane" id="campaigns"><?php include '_campaigns.php' ?></div>
+                <div class="tab-pane" id="mailing"><?php include '_mailing.php' ?></div>
                 <div class="tab-pane" id="sms_details"><?php include '_sms_details.php' ?></div>
                 <div class="tab-pane" id="price_list"><?php include '_price.php' ?></div>
                 <div class="tab-pane" id="sender_id"><?php include '_sender_id.php' ?></div>

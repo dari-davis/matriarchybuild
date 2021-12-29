@@ -25,22 +25,24 @@ class Page extends Lib\Base\Component
             ) );
 
             self::enqueueScripts( array(
-                'backend' => array( 'js/select2.min.js' => array( 'bookly-backend-globals' ), ),
                 'frontend' => get_option( 'bookly_cst_phone_default_country' ) == 'disabled'
                     ? array()
                     : array( 'js/intlTelInput.min.js' => array( 'jquery' ) ),
                 'module' => array(
-                    'js/notifications-list.js' => array( 'bookly-notification-dialog.js', ),
+                    'js/notifications-list.js' => array( 'bookly-backend-globals', 'bookly-notification-dialog.js', ),
                     'js/sms.js' => array( 'bookly-notifications-list.js', ),
                 ),
             ) );
 
             // Prepare tables settings.
             $datatables = Lib\Utils\Tables::getSettings( array(
-                'sms_notifications',
-                'sms_details',
-                'sms_prices',
-                'sms_sender',
+                Lib\Utils\Tables::SMS_NOTIFICATIONS,
+                Lib\Utils\Tables::SMS_DETAILS,
+                Lib\Utils\Tables::SMS_PRICES,
+                Lib\Utils\Tables::SMS_SENDER,
+                Lib\Utils\Tables::SMS_MAILING_LISTS,
+                Lib\Utils\Tables::SMS_MAILING_RECIPIENTS_LIST,
+                Lib\Utils\Tables::SMS_MAILING_CAMPAIGNS
             ) );
 
             $current_tab = self::hasParameter( 'tab' ) ? self::parameter( 'tab' ) : 'notifications';
@@ -50,6 +52,7 @@ class Page extends Lib\Base\Component
 
             wp_localize_script( 'bookly-sms.js', 'BooklyL10n',
                 array(
+                    'moment_format_date_time' => Lib\Utils\DateTime::convertFormat( 'date', Lib\Utils\DateTime::FORMAT_MOMENT_JS ) . ' ' . Lib\Utils\DateTime::convertFormat( 'time', Lib\Utils\DateTime::FORMAT_MOMENT_JS ),
                     'areYouSure' => __( 'Are you sure?', 'bookly' ),
                     'country' => $cloud->account->getCountry(),
                     'current_tab' => $current_tab,
@@ -72,6 +75,8 @@ class Page extends Lib\Base\Component
                     'edit' => __( 'Edit', 'bookly' ),
                     'settingsSaved' => __( 'Settings saved.', 'bookly' ),
                     'na' => __( 'N/A', 'bookly' ),
+                    'pending' => __( 'Pending', 'bookly' ),
+                    'completed' => __( 'Completed', 'bookly' ),
                     'gateway' => 'sms',
                     'datatables' => $datatables,
                 )
@@ -94,7 +99,7 @@ class Page extends Lib\Base\Component
         if ( $promotion ) {
             $title = sprintf( '%s <span class="update-plugins"><span class="update-count">$</span></span>', $sms );
         } else {
-            $count = Lib\Cloud\SMS::getUndeliveredSmsCount();
+            $count = get_option( 'bookly_cloud_badge_consider_sms' ) ? Lib\Cloud\SMS::getUndeliveredSmsCount() : 0;
             $title = $count ? sprintf( '%s <span class="update-plugins"><span class="update-count">%d</span></span>', $sms, $count ) : $sms;
         }
 
@@ -119,7 +124,7 @@ class Page extends Lib\Base\Component
     {
         $sms = $product['texts']['title'];
 
-        $count = Lib\Cloud\SMS::getUndeliveredSmsCount();
+        $count = get_option( 'bookly_cloud_badge_consider_sms' ) ? Lib\Cloud\SMS::getUndeliveredSmsCount() : 0;
         $title = $count ? sprintf( '%s <span class="update-plugins"><span class="update-count">%d</span></span>', $sms, $count ) : $sms;
 
         add_submenu_page(

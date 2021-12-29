@@ -23,17 +23,19 @@ abstract class Backend
             if ( ! Lib\Config::setupMode() ) {
                 if ( $bookly_page ) {
                     // Subscribe notice.
-                    Components\Notices\Subscribe::render();
+                    Components\Notices\Subscribe\Notice::render();
                     // Subscribe notice.
-                    Components\Notices\LiteRebranding::render();
+                    Components\Notices\Lite\Notice::render();
                     // NPS notice.
-                    Components\Notices\Nps::render();
+                    Components\Notices\Nps\Notice::render();
                     // Collect stats notice.
-                    Components\Notices\CollectStats::render();
+                    Components\Notices\Statistic\Notice::render();
                     // Show Powered by Bookly notice.
-                    Components\Notices\PoweredBy::render();
+                    Components\Notices\PoweredBy\Notice::render();
                     // Show SMS promotion notice.
-                    Components\Notices\SmsPromotion::render();
+                    Components\Notices\Promotion\Notice::render();
+                    // Show renew auto-recharge notice.
+                    Components\Notices\RenewAutoRecharge\Notice::create( 'bookly-js-renew' )->render();
                 }
                 // Let add-ons render admin notices.
                 Lib\Proxy\Shared::renderAdminNotices( $bookly_page );
@@ -80,10 +82,16 @@ abstract class Backend
         $required_capability = Lib\Utils\Common::getRequiredCapability();
         if ( $current_user->has_cap( $required_capability ) || $current_user->has_cap( 'manage_bookly_appointments' ) || $is_staff ) {
             $dynamic_position = '80.0000001' . mt_rand( 1, 1000 ); // position always is under `Settings`
-            $badge_number = Modules\News\Page::getNewsCount() +
-                Modules\Shop\Page::getNotSeenCount() +
-                Lib\Cloud\SMS::getUndeliveredSmsCount();
-
+            $badge_number = 0;
+            if ( Lib\Utils\Common::isCurrentUserSupervisor() ) {
+                $badge_number = Modules\Shop\Page::getNotSeenCount();
+                if ( get_option( 'bookly_gen_badge_consider_news' ) ) {
+                    $badge_number += Modules\News\Page::getNewsCount();
+                }
+                if ( get_option( 'bookly_cloud_badge_consider_sms' ) ) {
+                    $badge_number += Lib\Cloud\SMS::getUndeliveredSmsCount();
+                }
+            }
             if ( $badge_number ) {
                 add_menu_page( 'Bookly', sprintf( 'Bookly <span class="update-plugins count-%d"><span class="update-count">%d</span></span>', $badge_number, $badge_number ), 'read', 'bookly-menu', '',
                     plugins_url( 'resources/images/menu.png', __FILE__ ), $dynamic_position );

@@ -152,15 +152,12 @@ jQuery(function ($) {
     /**
      * Init locations filter.
      */
-    $locationsFilter.booklyDropdown();
-    $locationsFilter.on('changed', function () {
-        if ($locationsFilter.booklyDropdown('getSelectedAllState')) {
-            locationIds = 'all';
-        } else {
-            locationIds = $locationsFilter.booklyDropdown('getSelected');
+    $locationsFilter.booklyDropdown({
+        onChange: function (values, selected, all) {
+            locationIds = this.booklyDropdown('getSelected');
+            setCookie('bookly_cal_location_ids', locationIds);
+            calendar.ec.refetchEvents();
         }
-        setCookie('bookly_cal_location_ids', locationIds);
-        calendar.ec.refetchEvents();
     });
     if (locationIds === null || locationIds === 'all') {
         $locationsFilter.booklyDropdown('selectAll');
@@ -179,9 +176,9 @@ jQuery(function ($) {
         let $refresh = $('input[name="bookly_calendar_refresh_rate"]:checked');
         clearTimeout(calendarTimer);
         if ($refresh.val() > 0) {
-            calendarTimer = setTimeout(function () {
+            calendarTimer = setInterval(function () {
                 calendar.ec.refetchEvents();
-            }, $refresh.val() * 1000)
+            }, $refresh.val() * 1000);
         }
     }
 

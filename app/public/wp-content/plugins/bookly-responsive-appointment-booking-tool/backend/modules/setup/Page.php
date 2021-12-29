@@ -31,8 +31,7 @@ class Page extends Lib\Base\Component
             'frontend' => $tel_input_enabled
                 ? array( 'js/intlTelInput.min.js' => array( 'jquery' ) )
                 : array(),
-            'backend' => array( 'js/select2.min.js' => array( 'bookly-backend-globals' ), ),
-            'module' => array( 'js/setup.js' => array( 'bookly-select2.min.js' ) ),
+            'module' => array( 'js/setup.js' => array( 'bookly-backend-globals' ) ),
         ) );
 
         $industries = Lib\Utils\Common::getIndustries();
