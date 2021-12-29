@@ -12,10 +12,15 @@
       </div>
       <div>
         <?php $terms = get_the_terms(get_the_ID(), 'pros'); ?>
-        <?php foreach ($terms as $term): ?>
-          <a href="<?= get_term_link($term->slug, 'pros') ?>"><?= $term->name ?></a>
-        <?php endforeach; ?>
+        <?php if ($terms): ?>
+          <?php foreach ($terms as $term): ?>
+            <a href="<?= get_term_link($term->slug, 'pros') ?>"><?= $term->name ?></a>
+          <?php endforeach; ?>
+        <?php endif; ?>
       </div>
+
+      <?php echo do_shortcode('[bookly-form service_id="1" staff_member_id="2" hide="categories,services,staff_members,date,week_days,time_range"]
+'); ?>
       
       <div class="booking-card my-5">
         <div class="row m-0">
@@ -44,3 +49,5 @@
 <?php wp_reset_postdata(); ?>
 
 <? get_footer(); ?>
+
+<!-- [bookly-form service_id="1" staff_member_id="1" hide="categories,services,staff_members,date,week_days,time_range"] -->
