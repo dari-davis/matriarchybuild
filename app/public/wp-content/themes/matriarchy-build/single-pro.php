@@ -16,6 +16,27 @@
           <a href="<?= get_term_link($term->slug, 'pros') ?>"><?= $term->name ?></a>
         <?php endforeach; ?>
       </div>
+      
+      <div class="booking-card my-5">
+        <div class="row m-0">
+          <div class="col-4 p-0">
+            <div class="booking-card__label m-0 p-3">Duration</div>
+            <div class="booking-card__detail p-3">1hr</div>
+          </div>
+          <div class="col-4 p-0">
+            <div class="booking-card__label m-0 p-3">Price</div>
+            <div class="booking-card__detail p-3">$100</div>
+          </div>
+          <div class="col-4 p-0">
+            <div class="booking-card__label m-0 p-3">Consultation Type</div>
+            <div class="booking-card__detail p-3">1:1</div>
+          </div>
+        </div>
+        <div class="co booking-card__action text-center p-3">
+          <a href="#">Book a Time</a>
+        </div>
+      </div>
+
     <?php endwhile; ?>
   </div>
 <?php endif; ?>
