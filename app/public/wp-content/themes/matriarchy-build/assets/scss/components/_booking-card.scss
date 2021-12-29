@@ -1,0 +1,21 @@
+.booking-card {
+  background: $white;
+  border: 1px solid $blue;
+
+  &__label {
+    border-bottom: 1px solid $blue;
+  }
+
+  .col-4 + .col-4 {
+    border-left: 1px solid $blue;
+  }
+
+  &__detail {
+    font-size: 36px;
+  }
+
+  &__action {
+    border-top: 1px solid $blue;
+    background: $pink;
+  }
+}
