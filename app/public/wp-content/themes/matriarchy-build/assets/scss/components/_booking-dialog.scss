@@ -1,0 +1,13 @@
+.bookly-form {
+  display: none;
+
+  .ui-dialog & {
+    display: block;
+  }
+}
+
+.ui-dialog.booking-dialog {
+  display: block;
+  min-width: 800px;
+  max-width: 90%;
+}

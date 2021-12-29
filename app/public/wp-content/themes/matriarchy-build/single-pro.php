@@ -19,8 +19,24 @@
         <?php endif; ?>
       </div>
 
-      <?php echo do_shortcode('[bookly-form service_id="1" staff_member_id="2" hide="categories,services,staff_members,date,week_days,time_range"]
-'); ?>
+      <?php wp_enqueue_script( 'jquery-ui-dialog' ); ?>
+
+      <div id="dialog">
+        <?php echo do_shortcode('[bookly-form service_id="1" staff_member_id="2" hide="categories,services,staff_members,date,week_days,time_range"]'); ?>
+      </div>
+
+      <script>
+        var $ = jQuery.noConflict();
+        $(document).ready(function($) {
+          $('[data-bookly]').on('click', function() {
+            $('#dialog').dialog({
+              classes: {
+                'ui-dialog': 'booking-dialog'
+              }
+            });
+          });
+        });
+      </script>
       
       <div class="booking-card my-5">
         <div class="row m-0">
@@ -38,7 +54,7 @@
           </div>
         </div>
         <div class="co booking-card__action text-center p-3">
-          <a href="#">Book a Time</a>
+          <a data-bookly href="#">Book a Time</a>
         </div>
       </div>
 
