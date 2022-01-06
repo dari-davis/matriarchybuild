@@ -9,7 +9,7 @@ get_header();
 
 the_post();
 ?>
-<div class="row">
+<div class="row px-2 px-md-4">
 	<div class="col-12">
 		<div id="post-<?php the_ID(); ?>" <?php post_class( 'content' ); ?>>
 			<h1 class="entry-title"><?php the_title(); ?></h1>
