@@ -516,4 +516,43 @@ function matriarchy_build_scripts_loader() {
 }
 add_action( 'wp_enqueue_scripts', 'matriarchy_build_scripts_loader' );
 
+// Skip the cart and redirect to check out url when clicking on Add to cart
+add_filter ( 'add_to_cart_redirect', 'redirect_to_checkout' );
+function redirect_to_checkout() {
+    
+	global $woocommerce;
+
+	// Remove the default `Added to cart` message
+	wc_clear_notices();
+
+	return $woocommerce->cart->get_checkout_url();
+	
+}
+
+// Global redirect to check out when hitting cart page
+add_action( 'template_redirect', 'redirect_to_checkout_if_cart' );
+function redirect_to_checkout_if_cart() {
+	
+	if ( !is_cart() ) return;
+
+	global $woocommerce;
+
+	if ( $woocommerce->cart->is_empty() ) {
+		// If empty cart redirect to home
+		wp_redirect( get_home_url(), 302 );
+	} else {
+		// Else redirect to check out url
+		wp_redirect( $woocommerce->cart->get_checkout_url(), 302 );
+	}
+	
+	exit;
+}
+
+// Empty cart each time you click on add cart to avoid multiple element selected
+add_action( 'woocommerce_add_cart_item_data', 'clear_cart', 0 );
+function clear_cart () {
+	global $woocommerce;
+	$woocommerce->cart->empty_cart();
+}
+
 ?>

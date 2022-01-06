@@ -14,6 +14,7 @@ echo Common::stripScripts( $progress_tracker );
 <?php endif ?>
 <?php if ( ! get_current_user_id() && ! $userData->getFacebookId() && ( Lib\Config::showLoginButton() || Lib\Proxy\Pro::showFacebookLoginButton() ) ) : ?>
 <div class="bookly-box bookly-guest bookly-js-guest">
+    <h3>Sign In</h3>
     <?php if ( Lib\Config::showLoginButton() ) : ?>
         <button class="bookly-btn bookly-js-login-show ladda-button"><?php echo Common::getTranslatedOption( 'bookly_l10n_step_details_button_login' ) ?></button>
     <?php endif ?>
@@ -22,8 +23,9 @@ echo Common::stripScripts( $progress_tracker );
 <?php endif ?>
 
 <div class="bookly-details-step">
+    <h3>Don't Have An Account? Sign up.</h3>
     <?php if ( Lib\Config::showFirstLastName() ) : ?>
-    <div class="bookly-box bookly-table">
+    <div class="bookly-box bookly-table d-flex flex-column">
         <div class="bookly-form-group">
             <label><?php echo Common::getTranslatedOption( 'bookly_l10n_label_first_name' ) ?></label>
             <div>
@@ -41,7 +43,7 @@ echo Common::stripScripts( $progress_tracker );
     </div>
 
     <?php endif ?>
-    <div class="bookly-box bookly-table">
+    <div class="bookly-box bookly-table d-flex flex-column">
         <?php if ( ! Lib\Config::showFirstLastName() ) : ?>
         <div class="bookly-form-group">
             <label><?php echo Common::getTranslatedOption( 'bookly_l10n_label_name' ) ?></label>
@@ -51,6 +53,13 @@ echo Common::stripScripts( $progress_tracker );
             <div class="bookly-js-full-name-error bookly-label-error"></div>
         </div>
         <?php endif ?>
+        
+        <?php if ( Lib\Config::showFirstLastName() || ( ! Lib\Config::showFirstLastName() && ! Lib\Config::showEmailConfirm() ) ) : ?>
+            <?php $self::renderTemplate( '_details_email', compact('userData') ) ?>
+        <?php endif ?>
+        <?php if ( Lib\Config::showFirstLastName() && Lib\Config::showEmailConfirm() ) : ?>
+            <?php $self::renderTemplate( '_details_email_confirm', compact('userData') ) ?>
+        <?php endif ?>
         <div class="bookly-form-group">
             <label><?php echo Common::getTranslatedOption( 'bookly_l10n_label_phone' ) ?></label>
             <div>
@@ -58,12 +67,6 @@ echo Common::stripScripts( $progress_tracker );
             </div>
             <div class="bookly-js-user-phone-error bookly-label-error"></div>
         </div>
-        <?php if ( Lib\Config::showFirstLastName() || ( ! Lib\Config::showFirstLastName() && ! Lib\Config::showEmailConfirm() ) ) : ?>
-            <?php $self::renderTemplate( '_details_email', compact('userData') ) ?>
-        <?php endif ?>
-        <?php if ( Lib\Config::showFirstLastName() && Lib\Config::showEmailConfirm() ) : ?>
-            <?php $self::renderTemplate( '_details_email_confirm', compact('userData') ) ?>
-        <?php endif ?>
     </div>
     <?php if ( ! Lib\Config::showFirstLastName() && Lib\Config::showEmailConfirm() ) : ?>
         <div class="bookly-box bookly-table">
@@ -77,16 +80,7 @@ echo Common::stripScripts( $progress_tracker );
 
     <?php Proxy\CustomerInformation::renderDetailsStep( $userData ) ?>
     <?php Proxy\Shared::renderCustomFieldsOnDetailsStep( $userData ) ?>
-    <?php if ( Lib\Config::showNotes() ): ?>
-        <div class="bookly-box">
-            <div class="bookly-form-group">
-                <label><?php echo Common::getTranslatedOption( 'bookly_l10n_label_notes' ) ?></label>
-                <div>
-                    <textarea class="bookly-js-user-notes" rows="3"><?php echo esc_html( $userData->getNotes() ) ?></textarea>
-                </div>
-            </div>
-        </div>
-    <?php endif ?>
+    
     <?php if ( get_option( 'bookly_app_show_terms', false ) ): ?>
         <div class="bookly-box">
             <div class="bookly-checkbox-group" style="line-height: 28px;">
