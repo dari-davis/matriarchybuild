@@ -4,7 +4,13 @@ use Bookly\Frontend\Modules\Booking\Proxy;
 use Bookly\Lib\Utils\Common;
 ?>
 <?php echo Common::stripScripts( $progress_tracker ) ?>
-<div class="bookly-box"><?php echo Common::html( $info_text ) ?></div>
+<div class="bookly-box p-2 mb-0 pb-0">
+  <h3>Book A Consultation</h3>
+  <div class="bookly-box__details d-flex row">
+    <div class="col-6 py-3"><?php echo Common::html( $info_text ) ?></div>
+    <div class="col-6 py-3">1hr<br/>$150</div>
+  </div>
+</div>
 <?php Proxy\Shared::renderWaitingListInfoText() ?>
 <div class="bookly-box bookly-label-error"></div>
 <?php if ( $has_slots ) : ?>

@@ -12,8 +12,51 @@ img {
   max-width: 100%;
 }
 
+/* Basis for rem function; increase/decrease to change sizes globally */
+html { font-size: 100%; }
+
+/* Function */
+@function rem($pixels) {
+
+    @return #{$pixels / 16px}rem;
+
+}
+
+// headings
 h1, h2, h3, h4, h5, h6 {
   font-family: $heading-font-family;
+  font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 0.03em;
+
+  .bookly-form & {
+    font-family: $heading-font-family !important;
+  }
+}
+
+h1 {
+  font-size: rem(80px);
+  line-height: rem(77px);
+
+  .bookly-form & {
+    font-size: rem(80px);
+  }
+}
+
+h2 {
+  font-size: rem(38px);
+  line-height: rem(36px);
+
+  .bookly-form & {
+    font-size: rem(36px);
+  }
+}
+
+h3 {
+  font-size: rem(28px);
+  line-height: rem(27px);
+
+  .bookly-form & {
+    font-size: rem(28px);
+  }
 }
