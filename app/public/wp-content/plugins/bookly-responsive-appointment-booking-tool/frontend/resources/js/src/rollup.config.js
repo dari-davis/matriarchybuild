@@ -14,7 +14,7 @@ export default {
 		sourcemap: !production || minify,
 		name: 'bookly',
 		format: 'iife',
-		file: !production || minify ? '../bookly.min.js' : '../bookly.js',
+		file: !production || minify ? '../bookly.js' : '../bookly.js',
 		globals: {
 			jquery: 'jQuery'
 		}
