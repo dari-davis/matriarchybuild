@@ -72,7 +72,7 @@ class ShortCode extends Lib\Base\Component
                     'frontend/resources/js/jquery.hammer.min.js' => array( 'jquery' ),
                     'frontend/resources/js/picker.js' => array( 'jquery' ),
                     'frontend/resources/js/picker.date.js' => array( 'bookly-picker.js' ),
-                    'frontend/resources/js/bookly.min.js' => Proxy\Shared::enqueueBookingScripts( array( 'bookly-hammer.min.js', 'bookly-picker.date.js' ) ),
+                    'frontend/resources/js/bookly.js' => Proxy\Shared::enqueueBookingScripts( array( 'bookly-hammer.min.js', 'bookly-picker.date.js' ) ),
                 ),
             ) );
             if ( get_option( 'bookly_cst_phone_default_country' ) != 'disabled' ) {
@@ -89,7 +89,7 @@ class ShortCode extends Lib\Base\Component
                 $ajaxurl = add_query_arg( array( 'lang' => $sitepress->get_current_language() ), $ajaxurl );
             }
 
-            wp_localize_script( 'bookly-bookly.min.js', 'BooklyL10n', array(
+            wp_localize_script( 'bookly-bookly.js', 'BooklyL10n', array(
                 'ajaxurl' => $ajaxurl,
                 'csrf_token' => Lib\Utils\Common::getCsrfToken(),
                 'today' => __( 'Today', 'bookly' ),
