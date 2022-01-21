@@ -499,7 +499,6 @@ export default function stepTime(params, error_message) {
                 });
 
                 // Columnizer width & height.
-                $('.bookly-time-step', $container).width(columns_per_screen * column_width);
                 $columnizer_wrap.height(form_hidden
                     ? $('.bookly-column.bookly-js-first-column button', $current_screen).length * (slot_height + 3)
                     : $current_screen.height());

@@ -1,0 +1,67 @@
+$picker-date-size:    35px;
+
+.bookly-form {
+  background: $yellow;
+
+  .picker--opened {
+    .picker__holder {
+      color: $blue;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+    } 
+  }
+
+  input[type="text"].bookly-js-selected-date {
+    width: 150px !important;
+    background: transparent;
+    border: 0 !important;
+  }
+
+  .picker__day {
+    &.picker__day--selected,
+    &.picker__day--infocus {
+      margin: 0 auto;
+      padding: 0;
+      height: $picker-date-size;
+      width: $picker-date-size;
+      line-height: $picker-date-size;
+      text-align: center;
+      border-radius: 50% !important;
+    }
+
+    &.picker__day--infocus {
+      background: $pink !important;
+    }
+
+    &.picker__day--infocus.picker__day--selected {
+      background: $blue !important;
+    }
+
+    &.picker__day--infocus.picker__day--disabled,
+    &.picker__day--disabled {
+      opacity: 1;
+      color: $blue !important;
+      background: transparent !important;
+    }
+  }
+
+  .bookly-columnizer .bookly-hour {
+    background: $pink !important;
+    border: 0 !important;
+
+    span {
+      color: $blue !important;
+    }
+
+    .bookly-hour-icon {
+      display: none;
+    }
+
+    &:hover {
+      .bookly-hour-icon {
+        display: none;
+      }
+    }
+  }
+}

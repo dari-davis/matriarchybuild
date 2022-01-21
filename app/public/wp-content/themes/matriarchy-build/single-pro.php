@@ -30,6 +30,7 @@
         $(document).ready(function($) {
           $('[data-bookly]').on('click', function() {
             $('#dialog').dialog({
+              minWidth: 836,
               classes: {
                 'ui-dialog': 'booking-dialog'
               }
