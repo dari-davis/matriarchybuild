@@ -5231,7 +5231,7 @@ var bookly = (function ($) {
 	        }); // Insert slots for selected day.
 
 	        var date = $input.pickadate('picker').get('select', 'yyyy-mm-dd');
-	        $columnizer.html(slots[date]);
+			$columnizer.html(slots[date]);
 	      } else {
 	        // Insert all slots.
 	        var slots_data = '';
@@ -5434,7 +5434,7 @@ var bookly = (function ($) {
 	              if (!$buttons.length || $buttons.eq(0).hasClass('bookly-day')) {
 	                $button.addClass('bookly-last-child');
 	                $column.append($button);
-	                $columnizer.append($column);
+					$columnizer.append($column);
 	              } else {
 	                $column.append($button);
 	              }
@@ -5474,6 +5474,9 @@ var bookly = (function ($) {
 	                $button.addClass('bookly-last-child');
 	              }
 
+				  // hide the Day button - dd 01.19.22
+				  $('.bookly-day.bookly-js-first-child').remove();
+
 	              $column.append($button);
 	            }
 
@@ -5511,6 +5514,7 @@ var bookly = (function ($) {
 	            $screen.append($column);
 	          }
 
+			  // adds time slots
 	          $columnizer.append($screen);
 	        }
 
@@ -5600,7 +5604,7 @@ var bookly = (function ($) {
 	          });
 	        }); // Columnizer width & height.
 
-	        $__default['default']('.bookly-time-step', $container).width(columns_per_screen * column_width);
+	        //$__default['default']('.bookly-time-step', $container).width(columns_per_screen * column_width);
 	        $columnizer_wrap.height(form_hidden ? $__default['default']('.bookly-column.bookly-js-first-column button', $current_screen).length * (slot_height + 3) : $current_screen.height());
 	        form_hidden = false;
 	      }

@@ -6,6 +6,10 @@
 	background-color: #fff;
 	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 	overflow: hidden;
+
+	&.booking-dialog {
+		min-width: 863px;
+	}
 }
 
 .ui-dialog-titlebar {
@@ -64,6 +68,10 @@
 .ui-dialog-content {
 	padding: 40px;
 	overflow: auto;
+
+	.booking-dialog & {
+		padding-top: 10px;
+	}
 }
 
 .ui-dialog-buttonpane {
