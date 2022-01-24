@@ -20,9 +20,9 @@
       </div>
 
       <?php wp_enqueue_script( 'jquery-ui-dialog' ); ?>
-
+      
       <div id="dialog">
-        <?php echo do_shortcode('[bookly-form service_id="1" staff_member_id="2" hide="categories,services,staff_members,date,week_days,time_range"]'); ?>
+        <?php echo do_shortcode('[bookly-form category_id="-1" service_id="4" staff_member_id="4" hide="categories,services,staff_members,date,week_days,time_range"]'); ?>
       </div>
 
       <script>
