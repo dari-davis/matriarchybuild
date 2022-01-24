@@ -60,3 +60,22 @@ h3 {
     font-size: rem(28px);
   }
 }
+
+// form controls
+input[type="text"],
+.input-text {
+  padding: 0 10px;
+  height: 35px;
+  color: $blue !important;
+  font-size: 0.88rem; // 14px
+  line-height: 35px !important;
+  background: transparent;
+  border: 1px solid $olive;
+}
+
+.woocommerce-billing-fields {
+  label {
+    visibility: hidden;
+    height: 0;
+  }
+}
