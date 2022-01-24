@@ -530,29 +530,29 @@ function redirect_to_checkout() {
 }
 
 // Global redirect to check out when hitting cart page
-add_action( 'template_redirect', 'redirect_to_checkout_if_cart' );
-function redirect_to_checkout_if_cart() {
+// add_action( 'template_redirect', 'redirect_to_checkout_if_cart' );
+// function redirect_to_checkout_if_cart() {
 	
-	if ( !is_cart() ) return;
+// 	if ( !is_cart() ) return;
 
-	global $woocommerce;
+// 	global $woocommerce;
 
-	if ( $woocommerce->cart->is_empty() ) {
-		// If empty cart redirect to home
-		wp_redirect( get_home_url(), 302 );
-	} else {
-		// Else redirect to check out url
-		wp_redirect( $woocommerce->cart->get_checkout_url(), 302 );
-	}
+// 	if ( $woocommerce->cart->is_empty() ) {
+// 		// If empty cart redirect to home
+// 		wp_redirect( get_home_url(), 302 );
+// 	} else {
+// 		// Else redirect to check out url
+// 		wp_redirect( $woocommerce->cart->get_checkout_url(), 302 );
+// 	}
 	
-	exit;
-}
+// 	exit;
+// }
 
 // Empty cart each time you click on add cart to avoid multiple element selected
-add_action( 'woocommerce_add_cart_item_data', 'clear_cart', 0 );
-function clear_cart () {
-	global $woocommerce;
-	$woocommerce->cart->empty_cart();
-}
+// add_action( 'woocommerce_add_cart_item_data', 'clear_cart', 0 );
+// function clear_cart () {
+// 	global $woocommerce;
+// 	$woocommerce->cart->empty_cart();
+// }
 
 ?>
