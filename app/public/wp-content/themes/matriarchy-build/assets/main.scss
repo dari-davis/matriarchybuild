@@ -113,12 +113,13 @@ $link-decoration: none;
 @import "scss/components/primary-nav";
 @import "scss/components/dialog";
 @import "scss/components/booking-dialog";
-
-
-@import "scss/components/bookly-box";
-@import "scss/components/bookly-form";
-@import "scss/components/bookly-time-step";
 @import "scss/components/picker";
+
+@import "scss/components/bookly/box";
+@import "scss/components/bookly/form";
+@import "scss/components/bookly/time-step";
+
+
 
 
 /**

@@ -91,56 +91,7 @@
 .bookly-form input[type="password"],
 .bookly-form select,
 .bookly-form textarea {
-    font-size: 14px !important;
-    line-height: normal !important;
-    border: 1px solid silver !important;
-    border-radius: 4px !important;
     width: 100% !important;
-}
-
-.bookly-form input[type="text"],
-.bookly-form input[type="number"],
-.bookly-form input[type="password"],
-.bookly-form select {
-    height: auto !important;
-}
-
-.bookly-form input[type="checkbox"],
-.bookly-form input[type="radio"] {
-    width: auto !important;
-    height: auto !important;
-    min-width: 16px !important;
-    min-height: 16px !important;
-}
-
-.bookly-form input[type="text"],
-.bookly-form input[type="checkbox"],
-.bookly-form input[type="radio"],
-.bookly-form input[type="number"],
-.bookly-form input[type="password"],
-.bookly-form select,
-.bookly-form textarea {
-    display: inline-block;
-    margin: 0 !important;
-    outline: none !important;
-}
-
-.bookly-form input[type="text"],
-.bookly-form input[type="number"],
-.bookly-form input[type="password"],
-.bookly-form textarea {
-    padding: 6px 7px 5px !important;
-}
-
-.bookly-form select {
-    padding: 5px 6px 4px !important;
-}
-
-.bookly-form label {
-    display: inline;
-    float: none;
-    width: auto;
-    font-size: 14px;
 }
 
 .bookly-form img {
@@ -174,7 +125,6 @@
 /* Buttons */
 .bookly-nav-steps {
     padding-top: 20px !important;
-    border-top: 1px solid silver !important;
     overflow: hidden;
 }
 
@@ -488,13 +438,6 @@ span.bookly-round {
 }
 
 /* Time */
-.bookly-time-step {
-    overflow: hidden;
-    position: relative;
-    margin-bottom: 20px !important;
-    margin-left: auto;
-    margin-right: auto;
-}
 
 .bookly-columnizer-wrap {
     position: relative;
@@ -503,15 +446,6 @@ span.bookly-round {
 #bookly-tbs .bookly-columnizer .bookly-time-screen {
     overflow: hidden;
     overflow-x: auto;
-}
-
-.bookly-columnizer .bookly-column {
-    min-width: 127px;
-    padding: 0 5px;
-    display: inline-block;
-    zoom: 1;
-    vertical-align: top;
-    float: none !important;
 }
 
 .bookly-columnizer .bookly-column.bookly-column-wide {
@@ -1055,14 +989,6 @@ label.bookly-square {
     margin: 10px 0 0 !important;
 }
 
-.bookly-details-step .bookly-form-group .intl-tel-input {
-    display: block;
-}
-
-.bookly-details-step .bookly-form-group .intl-tel-input input {
-    padding-left: 45px !important;
-}
-
 .bookly-details-step .bookly-table,
 .bookly-details-step .bookly-table > * {
     overflow: visible !important;
@@ -1265,13 +1191,6 @@ label.bookly-square {
     margin-top: .75em !important;
     margin-bottom: .75em !important;
     line-height: normal !important;
-    background: none !important;
-}
-
-.bookly-form .picker__table td {
-    text-align: center !important;
-    margin: 0 !important;
-    padding: 0 !important;
     background: none !important;
 }
 
@@ -1619,18 +1538,6 @@ label.bookly-square {
         width: 90px !important;
     }
 }
-
-/* intlTelInput.js */
-.iti-flag {
-    background-image: url("../images/flags.png");
-}
-
-@media only screen and (min-resolution: 2dppx) {
-    .iti-flag {
-        background-image: url("../images/flags@2x.png")
-    }
-}
-
 
 .bookly-radio-loading {
     border: 2px solid lightgrey;

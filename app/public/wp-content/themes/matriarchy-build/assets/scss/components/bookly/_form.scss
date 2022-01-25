@@ -3,6 +3,10 @@ $picker-date-size:    35px;
 .bookly-form {
   background: $yellow;
 
+  &--simple {
+    background: transparent;
+  }
+
   .picker--opened {
     .picker__holder {
       color: $blue;
@@ -10,6 +14,30 @@ $picker-date-size:    35px;
       border: 0;
       box-shadow: none;
     } 
+  }
+
+  &__time-date {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $olive;
+
+    .bookly-js-time-zone-switcher {
+      border: 0 !important;
+      background: transparent;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -o-appearance: none;
+      -ms-appearance: none;
+      appearance: none;
+    }
+  }
+
+  #service-info {
+    display: none;
+  }
+
+  .intl-tel-input {
+    display: none !important;
   }
 
   input[type="text"].bookly-js-selected-date {

@@ -6,6 +6,7 @@
 	background-color: #fff;
 	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 	overflow: hidden;
+	border: 1px solid $blue;
 
 	&.booking-dialog {
 		min-width: 863px;
@@ -39,30 +40,16 @@
 	overflow: hidden;
 }
 
-.ui-dialog-titlebar-close:before {
-	font: normal 20px/1 dashicons;
-	vertical-align: top;
-	speak: never;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	line-height: 1.8;
-	width: 36px;
-	height: 36px;
-	content: "\f158";
-}
-
-.ui-button.ui-dialog-titlebar-close:hover,
-.ui-button.ui-dialog-titlebar-close:focus {
-	color: #135e96;
-}
-
-.ui-button.ui-dialog-titlebar-close:focus {
-	box-shadow:
-		0 0 0 1px #4f94d4,
-		0 0 2px 1px rgba(79, 148, 212, 0.8);
-	/* Only visible in Windows High Contrast mode */
-	outline: 2px solid transparent;
-	outline-offset: -2px;
+.ui-dialog-titlebar-close {
+	position: absolute;
+	top: -2px;
+	right: 0;
+	height: 20px;
+	width: 20px;
+	padding: 0;
+	border: 0;
+	background: url('../images/dialog-close.png');
+	-webkit-appearance: none;
 }
 
 .ui-dialog-content {
