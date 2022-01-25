@@ -36,8 +36,9 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
       <script>
         var $ = jQuery.noConflict();
         $(document).ready(function($) {
-          $('[data-bookly]').on('click', function() {
-            $('#dialog').dialog({
+          $('[data-bookly]').on('click', function(e) {
+            let dialog = $(e.currentTarget).data('bookly');
+            $(dialog).dialog({
               minWidth: 836,
               classes: {
                 'ui-dialog': 'booking-dialog'
@@ -53,7 +54,10 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
         <?php $service = Bookly\Lib\Entities\Service::find( $row->service_id ); ?>
         <!-- <?php print_r($service->duration); ?> -->
 
-        <?php echo do_shortcode('[bookly-form category_id="-1" service_id="'.$row->service_id.'" staff_member_id="'.$row->staff_id.'" hide="categories,services,staff_members,date,week_days,time_range"]'); ?>
+        <div id="dialog-<?= $row->service_id; ?>">
+          <?php echo do_shortcode('[bookly-form category_id="-1" service_id="'.$row->service_id.'" staff_member_id="'.$row->staff_id.'" hide="categories,services,staff_members,date,week_days,time_range"]'); ?>
+        </div>
+
         <div class="booking-card my-5">
           <div class="row m-0">
             <div class="col-4 p-0">
@@ -74,7 +78,7 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
             </div>
           </div>
           <div class="co booking-card__action text-center p-3">
-            <a data-bookly href="#">Book a Time</a>
+            <a data-bookly="#dialog-<?= $row->service_id; ?>" href="#">Book a Time</a>
           </div>
         </div>
       <?php endforeach; ?>
