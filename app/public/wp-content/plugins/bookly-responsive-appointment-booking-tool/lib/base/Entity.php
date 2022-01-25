@@ -16,7 +16,7 @@ abstract class Entity extends Cache
      * Entity field id
      * @var   int
      */
-    protected $id;
+    public $id;
 
     // Protected static properties
 

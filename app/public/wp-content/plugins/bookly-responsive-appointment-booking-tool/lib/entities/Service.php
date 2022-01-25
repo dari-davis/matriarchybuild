@@ -42,7 +42,7 @@ class Service extends Lib\Base\Entity
     /** @var  int */
     protected $attachment_id;
     /** @var  int */
-    protected $duration = 900;
+    public $duration = 900;
     /** @var  string */
     protected $slot_length = 'default';
     /** @var  float */

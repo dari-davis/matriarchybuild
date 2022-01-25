@@ -11,7 +11,7 @@ use Bookly\Backend\Components\Dialogs\Staff\Edit\Proxy;
 class Ajax extends BooklyLib\Base\Ajax
 {
     /** @var BooklyLib\Entities\Staff */
-    protected static $staff;
+    public static $staff;
 
     /**
      * @inheritDoc
