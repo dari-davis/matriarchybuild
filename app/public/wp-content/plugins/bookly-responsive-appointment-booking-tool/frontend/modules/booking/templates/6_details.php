@@ -8,7 +8,6 @@ use Bookly\Frontend\Components;
 echo Common::stripScripts( $progress_tracker );
 ?>
 
-<div class="bookly-box"><?php echo Common::html( $info_text ) ?></div>
 <?php if ( $info_text_guest ) : ?>
     <div class="bookly-box bookly-js-guest"><?php echo Common::html( $info_text_guest ) ?></div>
 <?php endif ?>
@@ -24,7 +23,6 @@ echo Common::stripScripts( $progress_tracker );
 
 <div class="bookly-details-step">
     <h3>Don't Have An Account? Sign up.</h3>
-    <?php if ( Lib\Config::showFirstLastName() ) : ?>
     <div class="bookly-box bookly-table d-flex flex-column">
         <div class="bookly-form-group">
             <label><?php echo Common::getTranslatedOption( 'bookly_l10n_label_first_name' ) ?></label>
@@ -40,31 +38,15 @@ echo Common::stripScripts( $progress_tracker );
             </div>
             <div class="bookly-js-last-name-error bookly-label-error"></div>
         </div>
-    </div>
 
-    <?php endif ?>
-    <div class="bookly-box bookly-table d-flex flex-column">
-        <?php if ( ! Lib\Config::showFirstLastName() ) : ?>
-        <div class="bookly-form-group">
-            <label><?php echo Common::getTranslatedOption( 'bookly_l10n_label_name' ) ?></label>
-            <div>
-                <input class="bookly-js-full-name" type="text" value="<?php echo esc_attr( $userData->getFullName() ) ?>"/>
-            </div>
-            <div class="bookly-js-full-name-error bookly-label-error"></div>
-        </div>
-        <?php endif ?>
-        
-        <?php if ( Lib\Config::showFirstLastName() || ( ! Lib\Config::showFirstLastName() && ! Lib\Config::showEmailConfirm() ) ) : ?>
-            <?php $self::renderTemplate( '_details_email', compact('userData') ) ?>
-        <?php endif ?>
+        <?php $self::renderTemplate( '_details_email', compact('userData') ) ?>
+
         <?php if ( Lib\Config::showFirstLastName() && Lib\Config::showEmailConfirm() ) : ?>
             <?php $self::renderTemplate( '_details_email_confirm', compact('userData') ) ?>
         <?php endif ?>
+        <!-- hidden phone field -->
         <div class="bookly-form-group">
-            <label><?php echo Common::getTranslatedOption( 'bookly_l10n_label_phone' ) ?></label>
-            <div>
-                <input class="bookly-js-user-phone-input<?php if ( get_option( 'bookly_cst_phone_default_country' ) != 'disabled' ) : ?> bookly-user-phone<?php endif ?>" value="<?php echo esc_attr( $userData->getPhone() ) ?>" type="text" />
-            </div>
+            <input class="bookly-js-user-phone-input" type="hidden" value="1234567890">
             <div class="bookly-js-user-phone-error bookly-label-error"></div>
         </div>
     </div>
