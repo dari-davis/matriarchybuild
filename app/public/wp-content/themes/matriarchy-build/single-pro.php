@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
-
 <?php
+use Bookly\Lib\Utils\Common;
 use Bookly\Lib\Entities\Staff;
 use Bookly\Lib\Entities\StaffService;
 $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro_user') )->findOne();
@@ -28,10 +28,6 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
       </div>
 
       <?php wp_enqueue_script( 'jquery-ui-dialog' ); ?>
-      
-      <div id="dialog">
-        <?php echo do_shortcode('[bookly-form category_id="-1" service_id="4" staff_member_id="4" hide="categories,services,staff_members,date,week_days,time_range"]'); ?>
-      </div>
 
       <script>
         var $ = jQuery.noConflict();
@@ -42,6 +38,12 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
               minWidth: 836,
               classes: {
                 'ui-dialog': 'booking-dialog'
+              },
+              open: function() {
+                $(this).parent().promise().done(function () {
+                  let content = $(dialog).find('#service-info').html();
+                  $('[data-consultation-details]').html(content).removeClass('invisible');
+                });
               }
             });
           });
@@ -55,6 +57,13 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
         <!-- <?php print_r($service->duration); ?> -->
 
         <div id="dialog-<?= $row->service_id; ?>">
+          <div class="bookly-box p-2 mb-0 pb-0">
+            <h3>Book A Consultation</h3>
+            <div class="bookly-box__details d-flex row">
+              <div class="col-6 py-3" data-consultation-details></div>
+              <div class="col-6 py-3"><?= $service->duration == 1800 ? '30mins' : '1hr'; ?><br/>$<?= $row->price; ?></div>
+            </div>
+          </div>
           <?php echo do_shortcode('[bookly-form category_id="-1" service_id="'.$row->service_id.'" staff_member_id="'.$row->staff_id.'" hide="categories,services,staff_members,date,week_days,time_range"]'); ?>
         </div>
 
