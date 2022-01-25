@@ -57,7 +57,7 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
         <!-- <?php print_r($service->duration); ?> -->
 
         <div id="dialog-<?= $row->service_id; ?>">
-          <div class="bookly-box p-2 mb-0 pb-0">
+          <div class="bookly-box bookly-box--heading p-2 mb-0 pb-0">
             <h3>Book A Consultation</h3>
             <div class="bookly-box__details d-flex row">
               <div class="col-6 py-3" data-consultation-details></div>
