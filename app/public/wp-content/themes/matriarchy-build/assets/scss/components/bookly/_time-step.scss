@@ -3,6 +3,11 @@
   margin-bottom: 30px;
   width: 246px;
   overflow-y: scroll;
+
+  .bookly-columnizer-wrap {
+    position: relative;
+    width: 100%;
+  }
 }
 
 .bookly-column {

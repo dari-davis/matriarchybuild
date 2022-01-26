@@ -93,3 +93,10 @@ $picker-date-size:    35px;
     }
   }
 }
+
+.bookly-form-group label {
+  height: 0;
+  font-size: 0;
+  position: absolute;
+  visibility: hidden;
+}
