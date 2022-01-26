@@ -4134,7 +4134,8 @@ var bookly = (function ($) {
 												data: data,
 												success: function success(response) {
 													if (response.success) {
-														window.location.href = woocommerce.cart_url;
+														// take user directly to checkout
+														window.location.href = '/checkout';
 													} else {
 														ladda.stop();
 														stepTime({
@@ -12698,7 +12699,9 @@ var bookly = (function ($) {
 		}
 
 		if (options.hasOwnProperty('stripe') && options.stripe.enabled) {
-			importScript('https://js.stripe.com/v3/', true);
+			//console.log($('script[src="https://js.stripe.com/v3/"]').length);
+			if ($('script[src="https://js.stripe.com/v3/"]').length) { return; }
+			//importScript('https://js.stripe.com/v3/', true);
 		}
 	}
 	/**

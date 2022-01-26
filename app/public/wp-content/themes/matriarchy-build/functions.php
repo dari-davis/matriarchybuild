@@ -529,30 +529,39 @@ function redirect_to_checkout() {
 	
 }
 
-// Global redirect to check out when hitting cart page
-// add_action( 'template_redirect', 'redirect_to_checkout_if_cart' );
-// function redirect_to_checkout_if_cart() {
-	
-// 	if ( !is_cart() ) return;
-
-// 	global $woocommerce;
-
-// 	if ( $woocommerce->cart->is_empty() ) {
-// 		// If empty cart redirect to home
-// 		wp_redirect( get_home_url(), 302 );
-// 	} else {
-// 		// Else redirect to check out url
-// 		wp_redirect( $woocommerce->cart->get_checkout_url(), 302 );
-// 	}
-	
-// 	exit;
-// }
-
-// Empty cart each time you click on add cart to avoid multiple element selected
-// add_action( 'woocommerce_add_cart_item_data', 'clear_cart', 0 );
-// function clear_cart () {
-// 	global $woocommerce;
-// 	$woocommerce->cart->empty_cart();
-// }
+/**
+ * @snippet       Simplify Checkout if Only Virtual Products
+ * @how-to        Get CustomizeWoo.com FREE
+ * @sourcecode    https://businessbloomer.com/?p=78351
+ * @author        Rodolfo Melogli
+ * @compatible    WooCommerce 3.5.4
+ * @donate $9     https://businessbloomer.com/bloomer-armada/
+ */
+ 
+add_filter( 'woocommerce_checkout_fields' , 'bbloomer_simplify_checkout_virtual' );
+ 
+function bbloomer_simplify_checkout_virtual( $fields ) {
+    
+   $only_virtual = true;
+    
+   foreach( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+      // Check if there are non-virtual products
+      if ( ! $cart_item['data']->is_virtual() ) $only_virtual = false;   
+   }
+     
+    if( $only_virtual ) {
+       unset($fields['billing']['billing_company']);
+       unset($fields['billing']['billing_address_1']);
+       unset($fields['billing']['billing_address_2']);
+       unset($fields['billing']['billing_city']);
+       unset($fields['billing']['billing_postcode']);
+       unset($fields['billing']['billing_country']);
+       unset($fields['billing']['billing_state']);
+       unset($fields['billing']['billing_phone']);
+       add_filter( 'woocommerce_enable_order_notes_field', '__return_false' );
+     }
+     
+     return $fields;
+}
 
 ?>
