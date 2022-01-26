@@ -60,11 +60,6 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 	</div>
 
 	<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
-
-	<div class="woocommerce-checkout-payment">
-		<?php do_action( 'woocommerce_checkout_payment' ); ?>
-	</div>
-
 </form>
 
 <?php do_action( 'woocommerce_after_checkout_form', $checkout ); ?>
