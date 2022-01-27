@@ -7,6 +7,11 @@ $picker-date-size:    35px;
     background: transparent;
   }
 
+  .bookly-slim & {
+    margin: 0 auto;
+    max-width: 360px;
+  }
+
   .picker--opened {
     .picker__holder {
       color: $blue;
@@ -75,6 +80,7 @@ $picker-date-size:    35px;
   }
 
   .bookly-columnizer .bookly-hour {
+    margin-bottom: 8px;
     background: $pink !important;
     border: 0 !important;
 

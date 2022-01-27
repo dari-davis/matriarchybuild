@@ -3574,6 +3574,8 @@ var bookly = (function ($) {
 		booklyAjax({
 			data: data,
 			success: function success(response) {
+				$('body').addClass('bookly-slim');
+
 				if (response.success) {
 					var _context, _context2;
 
@@ -5359,6 +5361,9 @@ var bookly = (function ($) {
 		xhr_render_time = booklyAjax({
 			data: data,
 			success: function success(response) {
+				$('.booking-dialog').find('.bookly-form').removeClass('bookly-form--simple')
+				$('body').removeClass('bookly-slim');
+
 				if (response.success == false) {
 					// The session doesn't contain data.
 					stepService({
@@ -12699,9 +12704,8 @@ var bookly = (function ($) {
 		}
 
 		if (options.hasOwnProperty('stripe') && options.stripe.enabled) {
-			//console.log($('script[src="https://js.stripe.com/v3/"]').length);
 			if ($('script[src="https://js.stripe.com/v3/"]').length) { return; }
-			//importScript('https://js.stripe.com/v3/', true);
+			importScript('https://js.stripe.com/v3/', true);
 		}
 	}
 	/**
