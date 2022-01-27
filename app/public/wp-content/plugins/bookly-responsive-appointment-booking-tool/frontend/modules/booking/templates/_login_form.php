@@ -4,20 +4,20 @@
         <div class="bookly-modal-content">
             <form>
                 <div class="bookly-modal-header">
-                    <div><?php esc_html_e( 'Login', 'bookly' ) ?></div>
                     <button type="button" class="bookly-close bookly-js-close">×</button>
                 </div>
                 <div class="bookly-modal-body bookly-form">
+                <h3 class="bookly-form__heading"><?php esc_html_e( 'Login', 'bookly' ) ?></h3>
                     <div class="bookly-form-group">
                         <label><?php esc_html_e( 'Username' ) ?></label>
                         <div>
-                            <input type="text" name="log" required />
+                            <input type="text" name="log" required placeholder="Username or Email Address"/>
                         </div>
                     </div>
                     <div class="bookly-form-group">
                         <label><?php esc_html_e( 'Password' ) ?></label>
                         <div>
-                            <input type="password" name="pwd" required />
+                            <input type="password" name="pwd" required placeholder="Password"/>
                         </div>
                     </div>
                     <div class="bookly-label-error"></div>
@@ -31,11 +31,11 @@
                     </div>
                 </div>
                 <div class="bookly-modal-footer">
-                    <a class="bookly-left bookly-btn-cancel" href="<?php echo esc_url( wp_lostpassword_url() ) ?>" target="_blank"><?php esc_html_e( 'Lost your password?' ) ?></a>
-                    <button class="bookly-btn-submit ladda-button" type="submit" data-spinner-size="40" data-style="zoom-in">
+                    <a class="bookly-left bookly-btn-cancel mb-3 button--text" href="<?php echo esc_url( wp_lostpassword_url() ) ?>" target="_blank"><?php esc_html_e( 'Lost your password?' ) ?></a>
+                    <button class="bookly-btn-submit ladda-button mb-3" type="submit" data-spinner-size="40" data-style="zoom-in">
                         <span class="ladda-label"><?php esc_html_e( 'Log In' ) ?></span>
                     </button>
-                    <a href="#" class="bookly-btn-cancel bookly-js-close"><?php esc_html_e( 'Cancel' ) ?></a>
+                    <a href="#" class="bookly-btn-cancel bookly-js-close button--text"><?php esc_html_e( 'Cancel' ) ?></a>
                 </div>
             </form>
         </div>

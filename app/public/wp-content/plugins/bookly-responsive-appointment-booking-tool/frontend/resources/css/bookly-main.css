@@ -71,13 +71,6 @@
     margin: 0 auto;
 }
 
-.bookly-form * {
-    box-sizing: border-box;
-    font-family: inherit;
-    font-size: 14px;
-    line-height: inherit;
-}
-
 .bookly-form input[type="text"],
 .bookly-form input[type="number"],
 .bookly-form input[type="password"],
@@ -406,7 +399,6 @@ span.bookly-round {
 
 .bookly-columnizer .bookly-day,
 .bookly-columnizer .bookly-hour {
-    display: block !important;
     min-width: 0;
     width: 100%;
     background: white;
@@ -1037,16 +1029,8 @@ label.bookly-square {
 }
 
 .bookly-modal .bookly-modal-content .bookly-modal-header {
-    min-height: 16.5px;
+    min-height: 20px;
     padding: 15px;
-    border-bottom: 1px solid #e5e5e5;
-    color: #666;
-}
-
-.bookly-modal .bookly-modal-content .bookly-modal-header h4 {
-    margin: 0;
-    padding: 0;
-    font-size: 22px;
 }
 
 .bookly-modal .bookly-modal-content .bookly-modal-footer {

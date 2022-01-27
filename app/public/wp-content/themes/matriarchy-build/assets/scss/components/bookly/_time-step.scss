@@ -2,11 +2,17 @@
   display: inline-flex;
   margin-bottom: 30px;
   width: 246px;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   .bookly-columnizer-wrap {
     position: relative;
     width: 100%;
+  }
+
+  .bookly-time-screen {
+    .bookly-day.bookly-js-first-child {
+      display: none;
+    }
   }
 }
 

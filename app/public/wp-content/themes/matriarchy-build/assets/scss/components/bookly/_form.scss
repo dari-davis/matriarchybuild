@@ -12,6 +12,12 @@ $picker-date-size:    35px;
     max-width: 360px;
   }
 
+  &__heading {
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid $olive;
+  }
+
   .picker--opened {
     .picker__holder {
       color: $blue;
