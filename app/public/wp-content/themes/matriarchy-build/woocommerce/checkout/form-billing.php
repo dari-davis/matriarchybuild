@@ -25,7 +25,7 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php else : ?>
 
-		<h3><?php esc_html_e( 'Billing details', 'woocommerce' ); ?></h3>
+		<h3><?php esc_html_e( 'Billing Info', 'woocommerce' ); ?></h3>
 
 	<?php endif; ?>
 
@@ -43,29 +43,3 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php do_action( 'woocommerce_after_checkout_billing_form', $checkout ); ?>
 </div>
-
-<!-- Account Details -->
-<?php if ( ! is_user_logged_in() && $checkout->is_registration_enabled() ) : ?>
-	<div class="woocommerce-account-fields">
-		<?php if ( ! $checkout->is_registration_required() ) : ?>
-
-			<h3>Your Account</h3>
-
-		<?php endif; ?>
-
-		<?php do_action( 'woocommerce_before_checkout_registration_form', $checkout ); ?>
-
-		<?php if ( $checkout->get_checkout_fields( 'account' ) ) : ?>
-
-			<div class="create-account d-block">
-				<?php foreach ( $checkout->get_checkout_fields( 'account' ) as $key => $field ) : ?>
-					<?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
-				<?php endforeach; ?>
-				<div class="clear"></div>
-			</div>
-
-		<?php endif; ?>
-
-		<?php do_action( 'woocommerce_after_checkout_registration_form', $checkout ); ?>
-	</div>
-<?php endif; ?>

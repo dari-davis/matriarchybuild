@@ -24,12 +24,14 @@ html { font-size: 100%; }
 
 // headings
 h1, h2, h3, h4, h5, h6 {
+  color: $green;
   font-family: $heading-font-family;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.03em;
 
   .bookly-form & {
+    color: $blue;
     font-family: $heading-font-family !important;
   }
 }

@@ -1,0 +1,43 @@
+.woocommerce__section {
+    margin-bottom: 100px;
+}
+
+.woocommerce-message,
+.woocommerce-error,
+.woocommerce-info {
+	padding: 1em 2em 1em 3.5em;
+	margin: 0 0 2em;
+	position: relative;
+    color: $green;
+	background-color: transparent;
+	list-style: none outside;
+    border: 1px solid $green;
+
+	@include clearfix();
+	width: auto;
+	word-wrap: break-word;
+
+    a {
+        color: $green;
+        text-decoration: underline;
+    }
+
+	&::before {
+		font-family: "WooCommerce";
+		content: "\e028";
+		display: inline-block;
+		position: absolute;
+		top: 1em;
+		left: 1.5em;
+	}
+
+	.button {
+		float: right;
+	}
+
+	li {
+		list-style: none outside !important; // Required for default theme compatibility
+		padding-left: 0 !important; // Required for default theme compatibility
+		margin-left: 0 !important; // Required for default theme compatibility
+	}
+}

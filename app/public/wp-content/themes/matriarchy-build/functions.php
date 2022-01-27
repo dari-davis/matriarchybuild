@@ -564,4 +564,8 @@ function bbloomer_simplify_checkout_virtual( $fields ) {
      return $fields;
 }
 
+// Modify Woocommerce Checkout Form
+remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20);
+add_action( 'woocommerce_checkout_payment', 'woocommerce_checkout_payment', 20 );
+
 ?>
