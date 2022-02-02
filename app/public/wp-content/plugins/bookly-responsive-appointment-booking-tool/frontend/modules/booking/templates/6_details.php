@@ -51,8 +51,10 @@ echo Common::stripScripts( $progress_tracker );
         <?php endif ?>
         <!-- hidden phone field -->
         <div class="bookly-form-group">
-            <input class="bookly-js-user-phone-input" type="hidden" value="1234567890">
-            <div class="bookly-js-user-phone-error bookly-label-error"></div>
+        <label><?php echo Common::getTranslatedOption( 'bookly_l10n_label_phone' ) ?></label>
+            <div>
+                <input class="bookly-js-user-phone-input<?php if ( get_option( 'bookly_cst_phone_default_country' ) != 'disabled' ) : ?> bookly-user-phone<?php endif ?>" value="<?php echo esc_attr( $userData->getPhone() ) ?>" type="text" placeholder="Phone Number" />
+            </div>
         </div>
     </div>
     <?php if ( ! Lib\Config::showFirstLastName() && Lib\Config::showEmailConfirm() ) : ?>
@@ -87,14 +89,7 @@ echo Common::stripScripts( $progress_tracker );
 <?php Proxy\RecurringAppointments::renderInfoMessage( $userData ) ?>
 
 <div class="bookly-box bookly-nav-steps">
-    <?php if ( $show_back_btn ) : ?>
-    <button class="bookly-back-step bookly-js-back-step bookly-btn ladda-button" data-style="zoom-in" data-spinner-size="40">
-        <span class="ladda-label"><?php echo Common::getTranslatedOption( 'bookly_l10n_button_back' ) ?></span>
+    <button class="bookly-next-step bookly-js-next-step bookly-btn ladda-button" data-style="zoom-in" data-spinner-size="40">
+        <span class="ladda-label"><?php echo Common::getTranslatedOption( 'bookly_l10n_step_details_button_next' ) ?></span>
     </button>
-    <?php endif ?>
-    <div class="<?php echo get_option( 'bookly_app_align_buttons_left' ) ? 'bookly-left' : 'bookly-right' ?>">
-        <button class="bookly-next-step bookly-js-next-step bookly-btn ladda-button" data-style="zoom-in" data-spinner-size="40">
-            <span class="ladda-label"><?php echo Common::getTranslatedOption( 'bookly_l10n_step_details_button_next' ) ?></span>
-        </button>
-    </div>
 </div>

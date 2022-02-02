@@ -4118,11 +4118,24 @@ var bookly = (function ($) {
 							};
 							booklyAjax({
 								type: 'POST',
+								xhrFields: { withCredentials: true },
 								data: data,
+								sentData: data,
 								success: function success(response) {
 									// Error messages
 									$errors.empty();
 									$fields.removeClass('bookly-error');
+
+									// set cookie for checkout name
+									function setCookie(name,value,exp_days) {
+										var d = new Date();
+										d.setTime(d.getTime() + (exp_days*24*60*60*1000));
+										var expires = "expires=" + d.toGMTString();
+										document.cookie = name + "=" + value + ";" + expires + ";path=/";
+									}
+
+									setCookie("firstname", this.sentData.first_name);
+									setCookie("lastname", this.sentData.last_name);
 
 									if (response.success) {
 										if (woocommerce.enabled) {
@@ -5896,10 +5909,10 @@ var bookly = (function ($) {
 					let $timeZone = $('.bookly-js-time-zone-switcher', $container);
 					let $date = $('.bookly-js-selected-date', $container);
 		
-					$timeZone.wrap('<div class="bookly-form__time-date p-3 mb-4"></div>');
+					$date.wrap('<div class="bookly-form__time-date p-3 mb-4"></div>');
 		
 					let $timeDateContainer = $('.bookly-form__time-date', $container);
-					$timeDateContainer.append($date);
+					$timeDateContainer.append($timeZone);
 				}
 			}
 		});
