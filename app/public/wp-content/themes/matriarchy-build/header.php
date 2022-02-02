@@ -30,7 +30,7 @@
 
       <div class="col-md-7 text-center">
         <div class="header__account row">
-          <div class="col-6 py-4">
+          <div class="col-md-6 py-4">
             <a class="header__account-link" href="#">Sign In</a>
           </div>
           <div class="col-6 py-4">
@@ -75,7 +75,7 @@
       </div>
     </header>
 
-    <main id="main"
+    <main id="main" class="main m-auto py-3 py-md-5 px-3 px-md-0"
       <?php if ( isset( $navbar_position ) && 'fixed_top' === $navbar_position ) : echo ' style="padding-top: 100px;"'; elseif ( isset( $navbar_position ) && 'fixed_bottom' === $navbar_position ) : echo ' style="padding-bottom: 100px;"'; endif; ?>>
       <?php
 			// If Single or Archive (Category, Tag, Author or a Date based page).

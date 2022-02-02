@@ -1,3 +1,11 @@
+.woocommerce {
+	form.login,
+	form.register {
+		padding: 0;
+		border: 0;
+	}
+}
+
 .woocommerce__section {
     margin-bottom: 100px;
 }

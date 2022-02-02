@@ -23,6 +23,15 @@ button.button--text {
   color: $blue;
 }
 
+.woocommerce button.button {
+  color: $pink;
+  background-color: $blue;
+
+  &:after {
+    background-image: url('../images/arrow_white.png');
+  }
+}
+
 .woocommerce button.button.alt {
   color: $pink;
   background-color: $blue;

@@ -58,12 +58,12 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 			<h3>Note For Your Pro</h3>
 			<p>What would you like to discuss during your consultation? (optional)</p>
 			<div class="row">
-				<div class="col-6">
+				<div class="col-md-6">
 					<?php foreach ( $checkout->get_checkout_fields( 'order' ) as $key => $field ) : ?>
 						<?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
 					<?php endforeach; ?>
 				</div>
-				<div class="col-6">
+				<div class="col-md-6">
 					After completing your booking you will be able to give your Expert more project details by filling out a quick survey & you can upload files to review during your consultation.
 				</div>
     		</div>
@@ -74,7 +74,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 			<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
 
 			<div class="row">
-				<div id="customer_details" class="col-6">
+				<div id="customer_details" class="col-md-6">
 					<?php do_action( 'woocommerce_checkout_billing' ); ?>
 				</div>
 			</div>
@@ -84,7 +84,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 			<?php if ( ! is_user_logged_in() && $checkout->is_registration_enabled() ) : ?>
 				<?php do_action( 'woocommerce_before_checkout_registration_form', $checkout ); ?>
 				<div class="row align-items-center">
-					<div class="col-6">
+					<div class="col-md-6">
 						<?php if ( $checkout->get_checkout_fields( 'account' ) ) : ?>
 							<?php foreach ( $checkout->get_checkout_fields( 'account' ) as $key => $field ) : ?>
 								<?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
@@ -92,7 +92,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 							<div class="clear"></div>
 						<?php endif; ?>
 					</div>
-					<div class="col-6">set your password</div>
+					<div class="col-md-6">set your password</div>
 				</div>
 				<?php do_action( 'woocommerce_after_checkout_registration_form', $checkout ); ?>
 			<?php endif; ?>
