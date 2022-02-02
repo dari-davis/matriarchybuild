@@ -23,4 +23,14 @@ import * as bootstrap from 'bootstrap';
 			trigger: 'focus',
 		} );
 	} );
+
+	// set billing name and address from Bookly data
+	$(document).ready(function() {
+		if ($('.woocommerce-checkout').length) {
+			let firstName = document.cookie.split('; ').find(row => row.startsWith('firstname=')).split('=')[1];
+			let lastName = document.cookie.split('; ').find(row => row.startsWith('lastname=')).split('=')[1];
+			$('#billing_first_name').attr('value', firstName);
+			$('#billing_last_name').attr('value', lastName);
+		}
+	});
 } )();

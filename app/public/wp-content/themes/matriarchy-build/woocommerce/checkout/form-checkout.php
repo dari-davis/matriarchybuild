@@ -47,56 +47,61 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 	<div class="woocommerce__section">
 		<!-- Account Details -->
-		<?php if ( ! is_user_logged_in() && $checkout->is_registration_enabled() ) : ?>
-			<div class="woocommerce-account-fields">
-				<?php if ( ! $checkout->is_registration_required() ) : ?>
-
-					<h3>Your Account</h3>
-
-				<?php endif; ?>
-
-				<?php do_action( 'woocommerce_before_checkout_registration_form', $checkout ); ?>
-
-				<?php if ( $checkout->get_checkout_fields( 'account' ) ) : ?>
-
-					<div class="create-account d-block">
-						<?php foreach ( $checkout->get_checkout_fields( 'account' ) as $key => $field ) : ?>
-							<?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
-						<?php endforeach; ?>
-						<div class="clear"></div>
-					</div>
-
-				<?php endif; ?>
-
-				<?php do_action( 'woocommerce_after_checkout_registration_form', $checkout ); ?>
-			</div>
-		<?php endif; ?>
+		
 
 	</div>
 
 	<?php if ( $checkout->get_checkout_fields() ) : ?>
 
 		<div class="woocommerce__section">
+		<div class="woocommerce-additional-fields__field-wrapper">
+			<h3>Note For Your Pro</h3>
+			<p>What would you like to discuss during your consultation? (optional)</p>
+			<div class="row">
+				<div class="col-6">
+					<?php foreach ( $checkout->get_checkout_fields( 'order' ) as $key => $field ) : ?>
+						<?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
+					<?php endforeach; ?>
+				</div>
+				<div class="col-6">
+					After completing your booking you will be able to give your Expert more project details by filling out a quick survey & you can upload files to review during your consultation.
+				</div>
+    		</div>
+		</div>
+					</div>
+		
+		<div class="woocommerce__section">
 			<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
 
-			<div class="col2-set" id="customer_details">
-				<div class="col-1">
+			<div class="row">
+				<div id="customer_details" class="col-6">
 					<?php do_action( 'woocommerce_checkout_billing' ); ?>
-				</div>
-
-				<div class="col-2">
-					<?php do_action( 'woocommerce_checkout_shipping' ); ?>
 				</div>
 			</div>
 
 			<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
+
+			<?php if ( ! is_user_logged_in() && $checkout->is_registration_enabled() ) : ?>
+				<?php do_action( 'woocommerce_before_checkout_registration_form', $checkout ); ?>
+				<div class="row align-items-center">
+					<div class="col-6">
+						<?php if ( $checkout->get_checkout_fields( 'account' ) ) : ?>
+							<?php foreach ( $checkout->get_checkout_fields( 'account' ) as $key => $field ) : ?>
+								<?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
+							<?php endforeach; ?>
+							<div class="clear"></div>
+						<?php endif; ?>
+					</div>
+					<div class="col-6">set your password</div>
+				</div>
+				<?php do_action( 'woocommerce_after_checkout_registration_form', $checkout ); ?>
+			<?php endif; ?>
 		</div>
 
 		<div class="woocommerce__section">
 			<h3>Payment Info</h3>
 			<?php do_action( 'woocommerce_checkout_payment' ); ?>
 		</div>
-
 	<?php endif; ?>
 </form>
 

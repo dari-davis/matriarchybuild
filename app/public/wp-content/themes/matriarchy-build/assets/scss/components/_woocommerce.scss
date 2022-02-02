@@ -41,3 +41,48 @@
 		margin-left: 0 !important; // Required for default theme compatibility
 	}
 }
+
+#account_password_field label,
+#order_comments_field label {
+	display: none;
+}
+
+.woocommerce-checkout {
+	ul.payment_methods {
+		padding: 0 !important;
+		border-bottom: 0 !important;
+	}
+
+	#payment {
+		background: transparent;
+		border-radius: 0;
+
+		div.form-row {
+			padding: 0;
+
+			&.place-order {
+				margin-top: 10px;
+			}
+		}
+	}
+
+	#stripe-payment-data p:first-child {
+		display: none;
+	}
+
+	.wc-stripe-elements-field {
+		border: 1px solid $olive;
+		margin: 0;
+		padding: 0 10px;
+		height: 35px;
+		background-color: transparent;
+	}
+
+	#stripe-card-element iframe {
+		height: 35px !important;
+	}
+
+	.woocommerce-privacy-policy-text p {
+		margin-bottom: 0;
+	}
+}

@@ -8,6 +8,10 @@ body {
   background: $background-color;
 }
 
+a {
+  color: $blue;
+}
+
 img {
   max-width: 100%;
 }
@@ -66,7 +70,8 @@ h3 {
 // form controls
 input[type="text"],
 input[type="password"],
-.input-text {
+.input-text,
+.wc-stripe-elements-field { // woocommerce
   padding: 0 10px;
   height: 35px;
   color: $blue !important;

@@ -25,7 +25,7 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php else : ?>
 
-		<h3><?php esc_html_e( 'Billing Info', 'woocommerce' ); ?></h3>
+		<h3><?php esc_html_e( 'Account Info', 'woocommerce' ); ?></h3>
 
 	<?php endif; ?>
 

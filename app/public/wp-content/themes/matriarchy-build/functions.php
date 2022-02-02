@@ -568,4 +568,33 @@ function bbloomer_simplify_checkout_virtual( $fields ) {
 remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20);
 add_action( 'woocommerce_checkout_payment', 'woocommerce_checkout_payment', 20 );
 
+// Set checkout form fields
+add_filter('woocommerce_checkout_fields', 'update_checkout_fields');
+ 
+function update_checkout_fields($fields) {
+	$fields['billing']['billing_first_name']['placeholder'] = 'First Name';
+	$fields['billing']['billing_first_name']['class'][0] = '';
+	$fields['billing']['billing_last_name']['placeholder'] = 'Last Name';
+	$fields['billing']['billing_last_name']['class'][0] = '';
+	$fields['billing']['billing_email']['placeholder'] = 'Email Address ';
+	$fields['billing']['billing_phone']['placeholder'] = 'Phone ';
+ 	return $fields;
+}
+
+// style stripe form elements
+add_filter("wc_stripe_elements_styling", "snippetpress_style_stripe_1");
+function snippetpress_style_stripe_1($styles) {
+	$styles = array(
+        "base" => array( 
+            "color" => "#2d457c",
+			"fontFamily" => "'Dharma', Fallback, monospace",
+			"lineHeight" => "35px",
+			"iconColor" => "#2d457c",
+            "::placeholder" => array(
+                "color" => "#2d457c",
+            ),
+        ),
+    );
+    return $styles;
+}
 ?>

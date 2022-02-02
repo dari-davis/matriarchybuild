@@ -265,7 +265,7 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 				</div>
 			<?php } else { ?>
 				<div class="form-row form-row-wide">
-					<label for="stripe-card-element"><?php esc_html_e( 'Card Number', 'woocommerce-gateway-stripe' ); ?> <span class="required">*</span></label>
+					<label for="stripe-card-element" class="visually-hidden"><?php esc_html_e( 'Card Number', 'woocommerce-gateway-stripe' ); ?> <span class="required">*</span></label>
 					<div class="stripe-card-group">
 						<div id="stripe-card-element" class="wc-stripe-elements-field">
 						<!-- a Stripe Element will be inserted here. -->
@@ -276,7 +276,7 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 				</div>
 
 				<div class="form-row form-row-first">
-					<label for="stripe-exp-element"><?php esc_html_e( 'Expiry Date', 'woocommerce-gateway-stripe' ); ?> <span class="required">*</span></label>
+					<label for="stripe-exp-element" class="visually-hidden"><?php esc_html_e( 'Expiry Date', 'woocommerce-gateway-stripe' ); ?> <span class="required">*</span></label>
 
 					<div id="stripe-exp-element" class="wc-stripe-elements-field">
 					<!-- a Stripe Element will be inserted here. -->
@@ -284,7 +284,7 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 				</div>
 
 				<div class="form-row form-row-last">
-					<label for="stripe-cvc-element"><?php esc_html_e( 'Card Code (CVC)', 'woocommerce-gateway-stripe' ); ?> <span class="required">*</span></label>
+					<label for="stripe-cvc-element" class="visually-hidden"><?php esc_html_e( 'Card Code (CVC)', 'woocommerce-gateway-stripe' ); ?> <span class="required">*</span></label>
 				<div id="stripe-cvc-element" class="wc-stripe-elements-field">
 				<!-- a Stripe Element will be inserted here. -->
 				</div>
