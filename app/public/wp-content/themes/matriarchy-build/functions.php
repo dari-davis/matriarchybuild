@@ -600,4 +600,13 @@ function snippetpress_style_stripe_1($styles) {
     );
     return $styles;
 }
+
+// redirect to Pros browse page if cart is empty
+add_action("template_redirect", 'redirection_function');
+function redirection_function(){
+    global $woocommerce;
+    if( is_cart() && WC()->cart->cart_contents_count == 0){
+        wp_safe_redirect( get_permalink( woocommerce_get_page_id( 'pro' ) ) );
+    }
+}
 ?>
