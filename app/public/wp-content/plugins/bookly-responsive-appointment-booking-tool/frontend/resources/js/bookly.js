@@ -4137,6 +4137,8 @@ var bookly = (function ($) {
 									setCookie("firstname", this.sentData.first_name);
 									setCookie("lastname", this.sentData.last_name);
 
+									setCookie("orderData", JSON.stringify(this.sentData));
+
 									if (response.success) {
 										if (woocommerce.enabled) {
 											var data = {
@@ -4147,6 +4149,7 @@ var bookly = (function ($) {
 											booklyAjax({
 												type: 'POST',
 												data: data,
+												sentData: data,
 												success: function success(response) {
 													if (response.success) {
 														// take user directly to checkout

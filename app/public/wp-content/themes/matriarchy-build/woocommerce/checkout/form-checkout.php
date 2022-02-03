@@ -54,23 +54,6 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 	<?php if ( $checkout->get_checkout_fields() ) : ?>
 
 		<div class="woocommerce__section">
-		<div class="woocommerce-additional-fields__field-wrapper">
-			<h3>Note For Your Pro</h3>
-			<p>What would you like to discuss during your consultation? (optional)</p>
-			<div class="row">
-				<div class="col-md-6">
-					<?php foreach ( $checkout->get_checkout_fields( 'order' ) as $key => $field ) : ?>
-						<?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
-					<?php endforeach; ?>
-				</div>
-				<div class="col-md-6">
-					After completing your booking you will be able to give your Expert more project details by filling out a quick survey & you can upload files to review during your consultation.
-				</div>
-    		</div>
-		</div>
-					</div>
-		
-		<div class="woocommerce__section">
 			<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
 
 			<div class="row">

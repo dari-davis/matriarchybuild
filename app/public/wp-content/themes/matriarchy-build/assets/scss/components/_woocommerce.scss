@@ -4,6 +4,17 @@
 		padding: 0;
 		border: 0;
 	}
+
+	.woocommerce-checkout & {
+		margin: 0 auto;
+		max-width: 1008px;
+	}
+
+	#order_comments {
+		padding: 10px;
+		height: 12em;
+		line-height: normal !important;
+	}
 }
 
 .woocommerce__section {

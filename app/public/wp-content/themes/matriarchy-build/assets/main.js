@@ -31,6 +31,9 @@ import * as bootstrap from 'bootstrap';
 			let lastName = document.cookie.split('; ').find(row => row.startsWith('lastname=')).split('=')[1];
 			$('#billing_first_name').attr('value', firstName);
 			$('#billing_last_name').attr('value', lastName);
+
+			let orderData = document.cookie.split('; ').find(row => row.startsWith('orderData')).split('=')[1];
+			console.log(orderData);
 		}
 	});
 } )();

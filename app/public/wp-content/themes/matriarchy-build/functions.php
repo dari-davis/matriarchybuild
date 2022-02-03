@@ -578,6 +578,9 @@ function update_checkout_fields($fields) {
 	$fields['billing']['billing_last_name']['class'][0] = '';
 	$fields['billing']['billing_email']['placeholder'] = 'Email Address ';
 	$fields['billing']['billing_phone']['placeholder'] = 'Phone ';
+
+	$fields['order']['order_comments']['placeholder'] = _x('', 'placeholder', 'woocommerce');
+	$fields['order']['order_comments']['rows'] = 10;
  	return $fields;
 }
 
