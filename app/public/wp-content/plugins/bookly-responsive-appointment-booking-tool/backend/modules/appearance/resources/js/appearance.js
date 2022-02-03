@@ -124,6 +124,65 @@ jQuery(function ($) {
     // Menu fix for WP 3.8.1
     $('#toplevel_page_ab-system > ul').css('margin-left', '0px');
 
+    var applyColor = function () {
+        var color = $color_picker.wpColorPicker('color'),
+            color_important = color + '!important;';
+        $('.bookly-progress-tracker').find('.active').css('color', color).find('.step').css('background', color);
+        $('.bookly-js-mobile-step-1 label').css('color', color);
+        $('.bookly-label-error').css('color', color);
+        $('.bookly-js-actions > a').css('background-color', color);
+        $('.bookly-js-mobile-next-step').css('background', color);
+        $('.bookly-js-week-days label').css('background-color', color);
+        $('.picker__frame').attr('style', 'background: ' + color_important);
+        $('.picker__header').attr('style', 'border-bottom: ' + '1px solid ' + color_important);
+        $('.picker__day').off().mouseenter(function () {
+            $(this).attr('style', 'color: ' + color_important);
+        }).mouseleave(function () {
+            $(this).attr('style', $(this).hasClass('picker__day--selected') ? 'color: ' + color_important : '')
+        });
+        $('.picker__day--selected').attr('style', 'color: ' + color_important);
+        $('.picker__button--clear').attr('style', 'color: ' + color_important);
+        $('.picker__button--today').attr('style', 'color: ' + color_important);
+        $('.bookly-extra-step .bookly-extras-thumb.bookly-extras-selected').css('border-color', color);
+        $('.bookly-columnizer .bookly-day, .bookly-schedule-date,.bookly-pagination li.active').css({
+            'background': color,
+            'border-color': color
+        });
+        $('.bookly-columnizer .bookly-hour').off().hover(
+            function () { // mouse-on
+                $(this).css({
+                    'color': color,
+                    'border': '2px solid ' + color
+                });
+                $(this).find('.bookly-hour-icon').css({
+                    'border-color': color,
+                    'color': color
+                });
+                $(this).find('.bookly-hour-icon > span').css({
+                    'background': color
+                });
+            },
+            function () { // mouse-out
+                $(this).css({
+                    'color': '#333333',
+                    'border': '1px solid #cccccc'
+                });
+                $(this).find('.bookly-hour-icon').css({
+                    'border-color': '#333333',
+                    'color': '#cccccc'
+                });
+                $(this).find('.bookly-hour-icon > span').css({
+                    'background': '#cccccc'
+                });
+            }
+        );
+        $('.bookly-details-step label').css('color', color);
+        $('.bookly-card-form label').css('color', color);
+        $('.bookly-nav-tabs .ladda-button, .bookly-nav-steps .ladda-button, .bookly-btn, .bookly-round, .bookly-square').css('background-color', color);
+        $('.bookly-triangle').css('border-bottom-color', color);
+        $('#bookly-pickadate-style').html('.picker__nav--next:before { border-left: 6px solid ' + color_important + ' } .picker__nav--prev:before { border-right: 6px solid ' + color_important + ' }');
+    };
+
     // Init color picker.
     $color_picker.wpColorPicker({
         change: applyColor
