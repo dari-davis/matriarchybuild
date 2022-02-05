@@ -13,7 +13,7 @@
     margin-left: 8px;
     height: 8px;
     width: 24px;
-    background-image: url('../images/arrow_blue.png');
+    background-image: url('../images/icons/arrow_blue.svg');
     background-repeat: no-repeat;
   }
 }
@@ -28,7 +28,7 @@ button.button--text {
   background-color: $blue;
 
   &:after {
-    background-image: url('../images/arrow_white.png');
+    background-image: url('../images/icons/arrow_white.svg');
   }
 }
 
@@ -43,7 +43,7 @@ button.button--text {
     margin-left: 8px;
     height: 8px;
     width: 24px;
-    background-image: url('../images/arrow_white.png');
+    background-image: url('../images/icons/arrow_white.svg');
     background-repeat: no-repeat;
   }
 

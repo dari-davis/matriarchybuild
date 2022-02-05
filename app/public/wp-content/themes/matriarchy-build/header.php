@@ -23,18 +23,18 @@
     class="visually-hidden-focusable"><?php esc_html_e( 'Skip to main content', 'matriarchy-build' ); ?></a>
 
   <div id="wrapper">
-    <header id="header" class="header row mb-4">
-      <div class="header__logo col-md-5 p-4 d-flex">
-        <img class="header__logo-image mx-auto" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo_2x.png">
+    <header id="header" class="header row no-gutters m-0">
+      <div class="header__logo col-md p-4 d-flex">
+        <a href="/"><img class="header__logo-image mx-auto" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg"></a>
       </div>
 
-      <div class="col-md-7 text-center">
+      <div class="col-md text-center px-md-5">
         <div class="header__account row">
           <div class="col-md-6 py-4">
-            <a class="header__account-link" href="#">Sign In</a>
+            <a class="text-button" href="/my-account">Sign In</a>
           </div>
-          <div class="col-6 py-4">
-            <a class="header__account-link" href="#">Sign Up</a>
+          <div class="col-md-6 py-4">
+            <a class="text-button" href="/create-account">Sign Up</a>
           </div>
         </div>
 
@@ -53,16 +53,15 @@
               ?>
         </div>
 
-        <div class="row search p-4">
+        <div class="row search py-4">
           <?php if ( '1' === $search_enabled ) : ?>
-          <form class="search-form my-2 my-lg-0" role="search" method="get"
+          <form class="search-form my-2 my-lg-0 p-0" role="search" method="get"
             action="<?php echo esc_url( home_url( '/' ) ); ?>">
             <div class="input-group">
               <input type="text" name="s" class="form-control"
                 placeholder="<?php esc_attr_e( 'Search', 'matriarchy-build' ); ?>"
                 title="<?php esc_attr_e( 'Search', 'matriarchy-build' ); ?>" />
-              <button type="submit" name="submit"
-                class="btn btn-outline-secondary"><?php esc_html_e( 'Search', 'matriarchy-build' ); ?></button>
+              <button type="submit" name="submit"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/search.svg"/></button>
             </div>
           </form>
           <?php

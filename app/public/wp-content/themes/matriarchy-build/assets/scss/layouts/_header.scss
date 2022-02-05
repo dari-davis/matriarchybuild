@@ -2,24 +2,25 @@
   background: $blue;
 
   &__logo {
+    align-items: center;
+    justify-content: space-around;
     background: $pink;
-  }
 
-  &__logo-image {
-    max-width: 80%;
+    @include media-breakpoint-up (md) {
+      max-width: 540px;
+    }
   }
 
   &__account {
-    .col-6 {
-      border-right: 1px solid $pink;
+    .col-md-6 {
+
+      @include media-breakpoint-up(md) {
+        border-right: 1px solid $pink;
+      }
     }
 
-    .col-6 + .col-6 {
-      border: 1px;
+    .col-md-6 + .col-md-6 {
+      border: 0;
     }
-  }
-
-  &__account-link {
-    color: $white;
   }
 }
