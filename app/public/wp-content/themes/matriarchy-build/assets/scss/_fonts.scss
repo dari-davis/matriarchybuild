@@ -13,3 +13,11 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'BNTGothic';
+  src: url('../fonts/bnt_times_gothic.woff2') format('woff2'),
+       url('../fonts/bnt_times_gothic.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

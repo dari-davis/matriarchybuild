@@ -14,4 +14,12 @@
     &:hover {
         color: $pink;
     }
+
+    &--blue {
+        color: $blue;
+
+        &:after {
+            background-image: url('../images/icons/arrow_blue.svg');
+        }
+    }
 }

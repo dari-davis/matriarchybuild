@@ -8,8 +8,8 @@
         width: 31px;
         border-right: 0;
 
-        & + & {
-            border-top: 0;
+        &.bookable {
+            background: $pink;
         }
     }
 
@@ -50,12 +50,44 @@
         border-bottom: 1px solid $blue;
     }
 
+    &__image img {
+        padding: 0;
+        height: auto;
+        outline: 1px solid $blue;
+    }
+
     &__content {
+        font-size: 20px;
+        line-height: 25px;
+        font-family: $sans-serif-font-family;
         font-weight: bold;
+
+        p {
+            margin-bottom: 0;
+        }
+    }
+
+    &__services {
+        h3 {
+            color: $olive;
+        }
+    }
+
+    &__service {
+        line-height: 30px;
+        border-bottom: 1px solid $olive;
+
+        &:last-child {
+            border-bottom: 0;
+        }
     }
 
     &__booking {
         background: $olive;
+
+        .text-button:hover {
+            color: $blue;
+        }
     }
 
     &__booking-heading {
