@@ -13,6 +13,7 @@
   &__details {
     @include media-breakpoint-up(md) {
       padding: 30px;
+    }
   }
 
   &__menu {

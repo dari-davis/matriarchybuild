@@ -1,0 +1,68 @@
+.pro {
+    .scfold {
+        border: 1px solid $blue;
+    }
+
+    &__header-button.scfold {
+        height: 31px;
+        width: 31px;
+        border-right: 0;
+
+        & + & {
+            border-top: 0;
+        }
+    }
+
+    &__title.scfold {
+        flex: 1;
+        height: 189px;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 0;
+    }
+
+    &__name {
+        color: $blue;
+    }
+
+    &__attributes {
+        color: $green;
+
+        a {
+            color: $green;
+        }
+
+        div {
+            align-items: center;
+            height: 50px;
+            border: 1px solid $blue;
+            border-width: 0 1px 1px 0;
+
+            &:first-child {
+                border-top: 1px solid $blue;
+            }
+        }
+    }
+
+    &__details {
+        background: $white;
+        border-top: 1px solid $blue;
+        border-bottom: 1px solid $blue;
+    }
+
+    &__content {
+        font-weight: bold;
+    }
+
+    &__booking {
+        background: $olive;
+    }
+
+    &__booking-heading {
+        border: 1px solid $blue;
+
+        h2 {
+            color: $blue;
+        }
+    }
+}
