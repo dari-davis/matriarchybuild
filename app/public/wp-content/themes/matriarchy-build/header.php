@@ -78,8 +78,8 @@
 			// If Single or Archive (Category, Tag, Author or a Date based page).
 			if ( is_single() || is_archive() ) :
 		?>
-      <div class="row no-gutters">
-        <div class="col-12">
+      <div class="row no-gutters m-0">
+        <div class="col-12 p-0">
           <?php
 			endif;
 		?>

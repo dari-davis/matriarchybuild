@@ -1,0 +1,55 @@
+.pros {
+    margin: 0 auto;
+    max-width: 1440px;
+
+    .scfold {
+        border: 1px solid $blue;
+    }
+
+    &__row:after {
+        @include media-breakpoint-up(lg) {
+        content: "";
+        flex: auto;
+        }
+    }
+
+    &__pro {
+        max-width: 321px;
+    }
+
+    &__details {
+        max-width: 281px;
+    }
+
+    &__bookable {
+        max-width: 31px;
+    }
+
+    &__header-button.scfold {
+        height: 31px;
+        width: 31px;
+        border-left: 0;
+
+        &.bookable {
+            background: $pink;
+        }
+    }
+
+    &__title {
+        background: $white;
+    }
+
+    &__name {
+        font-family: $heading-font-family;
+        font-size: 28px;
+        text-transform: uppercase;
+    }
+
+    &__image {
+        height: 228px;
+    }
+
+    &__trade {
+        color: $green;
+    }
+}

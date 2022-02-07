@@ -17,7 +17,7 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
         <div class="col-md-8 p-0 d-flex">
           <div class="d-flex flex-column">
             <a class="d-none pro__header-button scfold text-center" href="#" title="Favorite This Pro"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/heart.svg"/></a>
-            <a class="pro__header-button scfold text-center <?php if (!empty($services)): ?>bookable<?php endif; ?>" href="#" title="Pro Is Available for Booking"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/calendar.svg"/></a>
+            <div class="pro__header-button scfold text-center <?php if (!empty($services)): ?>bookable<?php endif; ?>" title="Pro Is Available for Booking"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/calendar.svg"/></div>
           </div>
           <div class="pro__title scfold text-center d-flex"><h1 class="pro__name m-0"><?= the_title(); ?></h1></div>
         </div>
@@ -34,9 +34,9 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
       </div>
 
       <div class="row pro__image col-md-8">
-      <?php if (has_post_thumbnail()): ?>
-                    <?php the_post_thumbnail('large', ['class' => 'artist-single__image']); ?>
-                  <?php endif; ?>
+        <?php if (has_post_thumbnail()): ?>
+          <?php the_post_thumbnail('large', ['class' => 'pro__image']); ?>
+        <?php endif; ?>
       </div>
 
       <div class="pro__details row no-gutters py-4">

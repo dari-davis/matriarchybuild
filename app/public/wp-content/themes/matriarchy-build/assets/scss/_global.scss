@@ -18,6 +18,10 @@ body {
 
 a {
   color: $blue;
+
+  &:hover {
+    color: $blue;
+  }
 }
 
 img {
