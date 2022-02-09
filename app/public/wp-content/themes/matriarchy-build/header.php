@@ -31,7 +31,7 @@
       <div class="col-md text-center px-md-5">
         <div class="header__account row">
           <div class="col-md-6 py-4">
-            <a class="text-button" href="/my-account">Sign In</a>
+            <a class="text-button" href="/my-account"><?php echo is_user_logged_in() ? 'My Account' : 'Sign In'?></a>
           </div>
           <div class="col-md-6 py-4">
             <a class="text-button" href="/create-account">Sign Up</a>

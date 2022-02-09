@@ -16,7 +16,15 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
+global $wpdb;
+foreach ( WC()->cart->get_cart() as $wc_key => $wc_item ) {
+	$staffId = $wc_item['bookly']['items'][0]['staff_ids'][0];
+	$serviceId = $wc_item['bookly']['items'][0]['service_id'];
+	$staffInfo = $wpdb->get_results('SELECT * FROM wp_bookly_staff WHERE id="'.$staffId.'";');
+}
 ?>
+
 <table class="shop_table woocommerce-checkout-review-order-table">
 	<thead>
 		<tr>
@@ -34,6 +42,7 @@ defined( 'ABSPATH' ) || exit;
 
 			if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_checkout_cart_item_visible', true, $cart_item, $cart_item_key ) ) {
 				?>
+				<tr><td><?php echo $staffInfo[0]->full_name; ?></td></tr>
 				<tr class="<?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
                     <td class="product-remove">
                         <?php
@@ -49,7 +58,7 @@ defined( 'ABSPATH' ) || exit;
                                 $cart_item_key
                             );
                         ?>
-                        <a href="/">Edit</a>
+                        <a href="/pro/<?= str_replace(' ', '-', strtolower($staffInfo[0]->full_name)); ?>?service=<?= $serviceId; ?>">Edit (<?= $serviceId; ?>)</a>
                     </td>
                     <td class="product-name">
 						<?php echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ) ) . '&nbsp;'; ?>
