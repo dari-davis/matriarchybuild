@@ -2,10 +2,6 @@
     margin: 0 auto;
     max-width: 1440px;
 
-    .scfold {
-        border: 1px solid $blue;
-    }
-
     &__row:after {
         @include media-breakpoint-up(lg) {
         content: "";
@@ -25,7 +21,7 @@
         max-width: 31px;
     }
 
-    &__header-button.scfold {
+    &__header-button.mb-borders {
         height: 31px;
         width: 31px;
         border-left: 0;

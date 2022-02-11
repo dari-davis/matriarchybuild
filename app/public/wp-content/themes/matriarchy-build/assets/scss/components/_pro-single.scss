@@ -1,9 +1,6 @@
 .pro {
-    .scfold {
-        border: 1px solid $blue;
-    }
 
-    &__header-button.scfold {
+    &__header-button.mb-borders {
         height: 31px;
         width: 31px;
         border-right: 0;
@@ -13,7 +10,7 @@
         }
     }
 
-    &__title.scfold {
+    &__title.mb-borders {
         flex: 1;
         height: 189px;
         align-items: center;

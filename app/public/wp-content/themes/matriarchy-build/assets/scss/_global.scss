@@ -99,3 +99,17 @@ input[type="password"],
     height: 0;
   }
 }
+
+
+// custom matriarchy build classes
+.mb-borders {
+  border: 1px solid $blue;
+
+  &--left {
+    border-left: 1px solid $blue;
+  }
+
+  &--right {
+    border-right: 1px solid $blue;
+  }
+}
