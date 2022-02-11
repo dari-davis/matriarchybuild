@@ -18,12 +18,68 @@
 defined( 'ABSPATH' ) || exit;
 
 global $wpdb;
+
+// gets all the cart data
 foreach ( WC()->cart->get_cart() as $wc_key => $wc_item ) {
+	// staff details
 	$staffId = $wc_item['bookly']['items'][0]['staff_ids'][0];
-	$serviceId = $wc_item['bookly']['items'][0]['service_id'];
 	$staffInfo = $wpdb->get_results('SELECT * FROM wp_bookly_staff WHERE id="'.$staffId.'";');
+	$staffName = $staffInfo[0]->full_name;
+	$staffSlug = str_replace(" ", "-", strtolower($staffName));
+	$staffTrade = get_post_meta(get_page_by_path($staffSlug, OBJECT, 'pro')->ID, 'trade', true);
+
+	// service details
+	$serviceId = $wc_item['bookly']['items'][0]['service_id'];
+	$serviceInfo = $wpdb->get_results('SELECT * FROM wp_bookly_services WHERE id="'.$serviceId.'";');
+
+	// appointment time and date
+	$unixTime = strtotime($wc_item['bookly']['items'][0]['slots'][0][2]);
+	$date = date('M j, Y', $unixTime);
+	$UTCTime = date('g:i', $unixTime);
+
+	// convert to users timezone
+	$startTime = date_timezone_set(new DateTime($UTCTime), timezone_open('America/New_York'));
+
+	// time and date info
+	$timeOfDay = date('a', $unixTime);
+	$duration = floor($serviceInfo[0]->duration/60);
+	$endTime = new DateTime(date_format($startTime, 'g:i'));
+	$endTime->add(new DateInterval('PT' . $duration . 'M'));
 }
 ?>
+
+<div>
+<?php
+		do_action( 'woocommerce_review_order_before_cart_contents' );
+
+		foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+			$_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
+
+			if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_checkout_cart_item_visible', true, $cart_item, $cart_item_key ) ) {
+				?>
+				
+				<div class="consultation-card row mb-borders m-0 mb-4">
+					<div class="col mb-borders--right bg-white p-3">
+						<div class="consultation-card__detail mb-2"><?= $serviceInfo[0]->title;?></div>
+						<div class="consultation-card__pro"><?= $staffName; ?></div>
+						<div class="consultation-card__detail"><?= $staffTrade; ?></div>
+					</div>
+					<div class="col mb-borders--right p-3">
+						<div><?= $date; ?></div>
+						<div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
+						<div><a class="text-button text-button--green" href="/pro/<?= str_replace(' ', '-', strtolower($staffInfo[0]->full_name)); ?>?service=<?= $serviceId; ?>">Change Time</a></div>
+					</div>
+					<div class="col p-3 d-flex justify-content-end">
+						<div><?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
+					</div>
+				</div>
+				<?php
+			}
+		}
+
+		do_action( 'woocommerce_review_order_after_cart_contents' );
+		?>
+	</div>
 
 <table class="shop_table woocommerce-checkout-review-order-table">
 	<thead>

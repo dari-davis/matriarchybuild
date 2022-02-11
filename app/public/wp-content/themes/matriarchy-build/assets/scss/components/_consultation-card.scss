@@ -1,0 +1,18 @@
+.consultation-card {
+    font-size: 24px;
+
+    .text-button,
+    &__detail {
+        font-size: 16px;
+        color: $green;
+    }
+
+    &__pro {
+        display: table-caption;
+        font-size: 80px;
+        line-height: 75px;
+        font-family: $heading-font-family;
+        text-transform: uppercase;
+        line-height: normal;
+    }
+}

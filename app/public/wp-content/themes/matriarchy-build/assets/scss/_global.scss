@@ -113,3 +113,9 @@ input[type="password"],
     border-right: 1px solid $blue;
   }
 }
+
+.mb-hr,
+hr.mb:not([size]) {
+  color: $blue;
+  opacity: 1;
+}
