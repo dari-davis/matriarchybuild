@@ -91,6 +91,10 @@ input[type="password"],
   line-height: 35px !important;
   background: transparent;
   border: 1px solid $olive;
+
+  &::placeholder {
+    color: $blue;
+  }
 }
 
 .woocommerce-billing-fields {

@@ -32,8 +32,13 @@ import * as bootstrap from 'bootstrap';
 			$('#billing_first_name').attr('value', firstName);
 			$('#billing_last_name').attr('value', lastName);
 
-			let orderData = document.cookie.split('; ').find(row => row.startsWith('orderData')).split('=')[1];
-			console.log(orderData);
+			$('.coupon-form-input').on('change', function() {
+				$('form.checkout_coupon input[name="coupon_code"]').val($(this).val());
+			});
+			
+			$('.coupon-form-submit').on('click', function() {
+				$('form.checkout_coupon').submit();
+			});
 		}
 	});
 } )();

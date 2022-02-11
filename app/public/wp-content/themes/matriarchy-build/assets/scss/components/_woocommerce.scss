@@ -15,6 +15,10 @@
 		height: 12em;
 		line-height: normal !important;
 	}
+
+	.coupon-form-submit {
+		cursor: pointer;
+	}
 }
 
 .woocommerce__section {
@@ -108,4 +112,10 @@
 
 .woocommerce-checkout-review-order {
 	margin-top: 30px;
+
+	.woocommerce-Price-amount {
+		font-size: 36px;
+		height: 30px;
+		line-height: 30px;
+	}
 }

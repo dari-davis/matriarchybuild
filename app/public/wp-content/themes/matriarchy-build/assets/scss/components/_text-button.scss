@@ -1,5 +1,7 @@
 .text-button {
     color: $white;
+    border: 0;
+    background: transparent;
 
     &:after {
         content: '';
@@ -37,5 +39,9 @@
         &:hover {
             color: $green;
         }
+    }
+
+    &[type="submit"] {
+        -webkit-appearance: none;
     }
 }
