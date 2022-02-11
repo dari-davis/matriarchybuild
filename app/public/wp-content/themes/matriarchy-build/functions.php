@@ -542,26 +542,26 @@ add_filter( 'woocommerce_checkout_fields' , 'bbloomer_simplify_checkout_virtual'
  
 function bbloomer_simplify_checkout_virtual( $fields ) {
     
-   $only_virtual = true;
+    $only_virtual = true;
     
-   foreach( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
-      // Check if there are non-virtual products
-      if ( ! $cart_item['data']->is_virtual() ) $only_virtual = false;   
-   }
+    foreach( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+        // Check if there are non-virtual products
+        if ( ! $cart_item['data']->is_virtual() ) $only_virtual = false;   
+    }
      
     if( $only_virtual ) {
-       unset($fields['billing']['billing_company']);
-       unset($fields['billing']['billing_address_1']);
-       unset($fields['billing']['billing_address_2']);
-       unset($fields['billing']['billing_city']);
-       unset($fields['billing']['billing_postcode']);
-       unset($fields['billing']['billing_country']);
-       unset($fields['billing']['billing_state']);
-       unset($fields['billing']['billing_phone']);
-       add_filter( 'woocommerce_enable_order_notes_field', '__return_false' );
-     }
+        unset($fields['billing']['billing_company']);
+        unset($fields['billing']['billing_address_1']);
+        unset($fields['billing']['billing_address_2']);
+        unset($fields['billing']['billing_city']);
+        unset($fields['billing']['billing_postcode']);
+        unset($fields['billing']['billing_country']);
+        unset($fields['billing']['billing_state']);
+        unset($fields['billing']['billing_phone']);
+        add_filter( 'woocommerce_enable_order_notes_field', '__return_false' );
+    }
      
-     return $fields;
+    return $fields;
 }
 
 // Modify Woocommerce Checkout Form
@@ -618,32 +618,48 @@ function redirect_login_page() {
 	$page_viewed   = basename($_SERVER['REQUEST_URI']);
    
 	if( $page_viewed == "wp-login.php" && $_SERVER['REQUEST_METHOD'] == 'GET') {
-	  wp_redirect($login_page);
-	  exit;
+        wp_redirect($login_page);
+        exit;
 	}
 	
 	if( $page_viewed == "wp-login.php?action=register" && $_SERVER['REQUEST_METHOD'] == 'GET') {
-	  wp_redirect($register_page);
-	  exit;
+	    wp_redirect($register_page);
+	    exit;
 	}
-  }
-  add_action('init','redirect_login_page');
+}
+
+add_action('init','redirect_login_page');
    
-  // Redirect For Login Failed
-  function login_failed() {
+    // Redirect For Login Failed
+    function login_failed() {
 	
 	wp_redirect( home_url( '/create-account?action=login&login=failed' ) );
 	exit;
-  }
-  add_action( 'wp_login_failed', 'login_failed' );
+}
+
+add_action( 'wp_login_failed', 'login_failed' );
    
-  // Redirect For Empty Username Or Password
-  function verify_username_password( $user, $username, $password ) {
-	if ( $username == "" || $password == "" ) {
-	  
-	  wp_redirect( home_url( '/create-account?action=login&login=empty' ) );
-	  exit;
-	}
-  }
-  add_filter( 'authenticate', 'verify_username_password', 1, 3);
+    // Redirect For Empty Username Or Password
+    function verify_username_password( $user, $username, $password ) {
+        if ( $username == "" || $password == "" ) {
+        
+        wp_redirect( home_url( '/create-account?action=login&login=empty' ) );
+        exit;
+    }
+}
+  
+add_filter( 'authenticate', 'verify_username_password', 1, 3);
+
+// Allow only 1 item in the cart
+add_filter( 'woocommerce_add_cart_item_data', 'woo_custom_add_to_cart' );
+
+	function woo_custom_add_to_cart( $cart_item_data ) {
+
+    global $woocommerce;
+    $woocommerce->cart->empty_cart();
+
+    // Do nothing with the data and return
+    return $cart_item_data;
+}
+
 ?>
