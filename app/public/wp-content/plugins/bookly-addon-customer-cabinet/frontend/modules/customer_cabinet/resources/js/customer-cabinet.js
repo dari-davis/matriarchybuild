@@ -142,64 +142,65 @@
                 }
             });
             // Date range filter
-            let pickerRanges = {};
+            // let pickerRanges = {};
 
-            pickerRanges[BooklyCustomerCabinetL10n.dateRange.anyTime]   = [moment(), moment().add(100, 'years')];
-            pickerRanges[BooklyCustomerCabinetL10n.dateRange.yesterday] = [moment().subtract(1, 'days'), moment().subtract(1, 'days')];
-            pickerRanges[BooklyCustomerCabinetL10n.dateRange.today]     = [moment(), moment()];
-            pickerRanges[BooklyCustomerCabinetL10n.dateRange.tomorrow]  = [moment().add(1, 'days'), moment().add(1, 'days')];
-            pickerRanges[BooklyCustomerCabinetL10n.dateRange.last_7]    = [moment().subtract(7, 'days'), moment()];
-            pickerRanges[BooklyCustomerCabinetL10n.dateRange.last_30]   = [moment().subtract(30, 'days'), moment()];
-            pickerRanges[BooklyCustomerCabinetL10n.dateRange.thisMonth] = [moment().startOf('month'), moment().endOf('month')];
-            pickerRanges[BooklyCustomerCabinetL10n.dateRange.nextMonth] = [moment().add(1, 'month').startOf('month'), moment().add(1, 'month').endOf('month')];
-            if (BooklyCustomerCabinetL10n.tasks.enabled) {
-                pickerRanges[BooklyCustomerCabinetL10n.tasks.title] = [moment(), moment().add(1, 'days')];
-            }
-            $appointmentDateFilter.daterangepicker(
-                {
-                    parentEl : $appointmentDateFilter.closest('div'),
-                    startDate: moment(),
-                    endDate  : moment().add(100, 'years'),
-                    ranges   : pickerRanges,
-                    showDropdowns  : true,
-                    linkedCalendars: false,
-                    autoUpdateInput: false,
-                    locale: $.extend({},BooklyCustomerCabinetL10n.dateRange, BooklyCustomerCabinetL10n.datePicker)
-                },
-                function(start, end, label) {
-                    switch (label) {
-                        case BooklyCustomerCabinetL10n.tasks.title:
-                            $appointmentDateFilter
-                            .data('date', 'null')
-                            .find('span')
-                            .html(BooklyCustomerCabinetL10n.tasks.title);
-                            break;
-                        case BooklyCustomerCabinetL10n.dateRange.anyTime:
-                            $appointmentDateFilter
-                            .data('date', 'any')
-                            .find('span')
-                            .html(BooklyCustomerCabinetL10n.dateRange.anyTime);
-                            break;
-                        default:
-                            $appointmentDateFilter
-                            .data('date', start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD'))
-                            .find('span')
-                            .html(start.format(BooklyCustomerCabinetL10n.dateRange.format) + ' - ' + end.format(BooklyCustomerCabinetL10n.dateRange.format));
-                    }
-                }
-            ).data('date', 'any').find('span')
-            .html(BooklyCustomerCabinetL10n.dateRange.anyTime);
 
-            $appointmentDateFilter.on('apply.daterangepicker', function () {
-                appointments_datatable.ajax.reload();
-            });
+            // pickerRanges[BooklyCustomerCabinetL10n.dateRange.anyTime]   = [moment(), moment().add(100, 'years')];
+            // pickerRanges[BooklyCustomerCabinetL10n.dateRange.yesterday] = [moment().subtract(1, 'days'), moment().subtract(1, 'days')];
+            // pickerRanges[BooklyCustomerCabinetL10n.dateRange.today]     = [moment(), moment()];
+            // pickerRanges[BooklyCustomerCabinetL10n.dateRange.tomorrow]  = [moment().add(1, 'days'), moment().add(1, 'days')];
+            // pickerRanges[BooklyCustomerCabinetL10n.dateRange.last_7]    = [moment().subtract(7, 'days'), moment()];
+            // pickerRanges[BooklyCustomerCabinetL10n.dateRange.last_30]   = [moment().subtract(30, 'days'), moment()];
+            // pickerRanges[BooklyCustomerCabinetL10n.dateRange.thisMonth] = [moment().startOf('month'), moment().endOf('month')];
+            // pickerRanges[BooklyCustomerCabinetL10n.dateRange.nextMonth] = [moment().add(1, 'month').startOf('month'), moment().add(1, 'month').endOf('month')];
+            // if (BooklyCustomerCabinetL10n.tasks.enabled) {
+            //     pickerRanges[BooklyCustomerCabinetL10n.tasks.title] = [moment(), moment().add(1, 'days')];
+            // }
+            // $appointmentDateFilter.daterangepicker(
+            //     {
+            //         parentEl : $appointmentDateFilter.closest('div'),
+            //         startDate: moment(),
+            //         endDate  : moment().add(100, 'years'),
+            //         ranges   : pickerRanges,
+            //         showDropdowns  : true,
+            //         linkedCalendars: false,
+            //         autoUpdateInput: false,
+            //         locale: $.extend({},BooklyCustomerCabinetL10n.dateRange, BooklyCustomerCabinetL10n.datePicker)
+            //     },
+            //     function(start, end, label) {
+            //         switch (label) {
+            //             case BooklyCustomerCabinetL10n.tasks.title:
+            //                 $appointmentDateFilter
+            //                 .data('date', 'null')
+            //                 .find('span')
+            //                 .html(BooklyCustomerCabinetL10n.tasks.title);
+            //                 break;
+            //             case BooklyCustomerCabinetL10n.dateRange.anyTime:
+            //                 $appointmentDateFilter
+            //                 .data('date', 'any')
+            //                 .find('span')
+            //                 .html(BooklyCustomerCabinetL10n.dateRange.anyTime);
+            //                 break;
+            //             default:
+            //                 $appointmentDateFilter
+            //                 .data('date', start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD'))
+            //                 .find('span')
+            //                 .html(start.format(BooklyCustomerCabinetL10n.dateRange.format) + ' - ' + end.format(BooklyCustomerCabinetL10n.dateRange.format));
+            //         }
+            //     }
+            // ).data('date', 'any').find('span')
+            // .html(BooklyCustomerCabinetL10n.dateRange.anyTime);
 
-            $staffFilter.on('change', function () {
-                appointments_datatable.ajax.reload();
-            })
-            $serviceFilter.on('change', function () {
-                appointments_datatable.ajax.reload();
-            })
+            // $appointmentDateFilter.on('apply.daterangepicker', function () {
+            //     appointments_datatable.ajax.reload();
+            // });
+
+            // $staffFilter.on('change', function () {
+            //     appointments_datatable.ajax.reload();
+            // })
+            // $serviceFilter.on('change', function () {
+            //     appointments_datatable.ajax.reload();
+            // })
 
             $('.bookly-js-select')
             .val(null)
@@ -230,17 +231,34 @@
                 ajax: {
                     url: Options.ajaxurl,
                     type: 'POST',
+                    dataType: 'json',
                     data: function (d) {
                         return $.extend({
                             action: 'bookly_customer_cabinet_get_appointments',
                             appointment_columns: Options.appointment_columns,
                             csrf_token: BooklyL10nGlobal.csrf_token,
                             date: $appointmentDateFilter.data('date'),
+
                             staff: $staffFilter.val(),
                             service: $serviceFilter.val(),
                         }, {
                             filter: {}
                         }, d);
+                    },
+                    success: function success(response) {
+                        // Get Appointments Data
+
+                        var apt = response.data;
+                        var appointments = document.getElementById('appointments');
+
+                        for (var key in apt) {
+                            if (!apt.hasOwnProperty(key)) continue;
+
+                            var obj = apt[key];
+                            console.log(obj);
+
+                            appointments.insertAdjacentHTML('beforeend', `<div><p>${obj.price}</p><p>${obj.staff_name}</p><p>${obj.start_date}</p><p>${obj.online_meeting_url}</p></div>`);
+                        }
                     }
                 },
                 columns: appointments_columns,
@@ -250,6 +268,8 @@
                     processing: BooklyCustomerCabinetL10n.processing
                 }
             });
+
+
 
             $appointments_table.on('click', 'button', function () {
                 if ($(this).closest('tr').hasClass('child')) {
@@ -373,128 +393,128 @@
         }
 
         // Profile section
-        function initProfile($container) {
-            var $profile_content = $('.bookly-js-customer-cabinet-content-profile', $container),
-                $form = $('form', $profile_content),
-                $delete_btn = $('button.bookly-js-delete-profile', $profile_content),
-                $delete_modal = $('.bookly-js-customer-cabinet-delete-dialog', $container),
-                $delete_loading = $('.bookly-loading', $delete_modal),
-                $approve_deleting = $('.bookly-js-approve-deleting', $delete_modal),
-                $denied_deleting = $('.bookly-js-denied-deleting', $delete_modal),
-                $confirm_delete_btn = $('.bookly-js-confirm-delete', $delete_modal),
-                $phone_field = $('.bookly-js-user-phone-input', $profile_content),
-                $save_btn = $('button.bookly-js-save-profile', $profile_content);
-            if (Options.intlTelInput.enabled) {
-                $phone_field.intlTelInput({
-                    preferredCountries: [Options.intlTelInput.country],
-                    initialCountry: Options.intlTelInput.country,
-                    geoIpLookup: function (callback) {
-                        $.get('https://ipinfo.io', function() {}, 'jsonp').always(function(resp) {
-                            var countryCode = (resp && resp.country) ? resp.country : '';
-                            callback(countryCode);
-                        });
-                    },
-                    utilsScript: Options.intlTelInput.utils
-                });
-            }
-            $save_btn.on('click', function (e) {
-                e.preventDefault();
-                var ladda = Ladda.create(this);
-                ladda.start();
-                $('.is-invalid', $profile_content).removeClass('is-invalid');
-                $('.form-group .bookly-js-error').remove();
-                var phone_number = $phone_field.val();
-                try {
-                    phone_number = Options.intlTelInput.enabled ? $phone_field.intlTelInput('getNumber') : $phone_field.val();
-                    if (phone_number == '') {
-                        phone_number = $phone_field.val();
-                    }
-                } catch (error) {}
-                $phone_field.val(phone_number);
+        // function initProfile($container) {
+        //     var $profile_content = $('.bookly-js-customer-cabinet-content-profile', $container),
+        //         $form = $('form', $profile_content),
+        //         $delete_btn = $('button.bookly-js-delete-profile', $profile_content),
+        //         $delete_modal = $('.bookly-js-customer-cabinet-delete-dialog', $container),
+        //         $delete_loading = $('.bookly-loading', $delete_modal),
+        //         $approve_deleting = $('.bookly-js-approve-deleting', $delete_modal),
+        //         $denied_deleting = $('.bookly-js-denied-deleting', $delete_modal),
+        //         $confirm_delete_btn = $('.bookly-js-confirm-delete', $delete_modal),
+        //         $phone_field = $('.bookly-js-user-phone-input', $profile_content),
+        //         $save_btn = $('button.bookly-js-save-profile', $profile_content);
+        //     if (Options.intlTelInput.enabled) {
+        //         $phone_field.intlTelInput({
+        //             preferredCountries: [Options.intlTelInput.country],
+        //             initialCountry: Options.intlTelInput.country,
+        //             geoIpLookup: function (callback) {
+        //                 $.get('https://ipinfo.io', function() {}, 'jsonp').always(function(resp) {
+        //                     var countryCode = (resp && resp.country) ? resp.country : '';
+        //                     callback(countryCode);
+        //                 });
+        //             },
+        //             utilsScript: Options.intlTelInput.utils
+        //         });
+        //     }
+        //     $save_btn.on('click', function (e) {
+        //         e.preventDefault();
+        //         var ladda = Ladda.create(this);
+        //         ladda.start();
+        //         $('.is-invalid', $profile_content).removeClass('is-invalid');
+        //         $('.form-group .bookly-js-error').remove();
+        //         var phone_number = $phone_field.val();
+        //         try {
+        //             phone_number = Options.intlTelInput.enabled ? $phone_field.intlTelInput('getNumber') : $phone_field.val();
+        //             if (phone_number == '') {
+        //                 phone_number = $phone_field.val();
+        //             }
+        //         } catch (error) {}
+        //         $phone_field.val(phone_number);
 
-                var data = $form.serializeArray();
-                data.push({name: 'action', value: 'bookly_customer_cabinet_save_profile'});
-                data.push({name: 'csrf_token', value: BooklyL10nGlobal.csrf_token});
-                data.push({name: 'columns', value: Options.profile_parameters});
-                $.ajax({
-                    url     : Options.ajaxurl,
-                    type    : 'POST',
-                    data    : data,
-                    dataType: 'json',
-                    success : function (response) {
-                        if (response.success) {
-                            booklyAlert({success: [BooklyCustomerCabinetL10n.profile_update_success]});
-                            if ($('[name="current_password"]', $profile_content).val()) {
-                                window.location.reload();
-                            }
-                        } else {
-                            $.each(response.errors, function (name, value) {
-                                if (name == 'info_fields') {
-                                    $.each(value, function (id, text) {
-                                        var $form_group = $('.form-group[data-id="customer_information_' + id + '"]', $profile_content);
-                                        $form_group.find('.bookly-js-control-input').addClass('is-invalid');
-                                        $form_group.append('<div class="bookly-js-error text-danger">' + text + '</div>');
-                                    });
-                                } else {
-                                    var $form_group = $('.form-group [id="bookly_' + name + '"]', $profile_content).closest('.form-group');
-                                    $form_group.find('.bookly-js-control-input').addClass('is-invalid');
-                                    $form_group.append('<div class="bookly-js-error text-danger">' + value + '</div>');
-                                }
-                            });
-                            $('html, body').animate({
-                                scrollTop: $profile_content.find('.is-invalid').first().offset().top - 100
-                            }, 1000);
-                        }
-                        ladda.stop();
-                    }
-                });
-            });
-            $delete_btn.on('click', function (e) {
-                e.preventDefault();
-                $approve_deleting.hide();
-                $denied_deleting.hide();
-                $delete_loading.show();
-                $delete_modal.booklyModal('show');
-                $.ajax({
-                    url     : Options.ajaxurl,
-                    type    : 'POST',
-                    data    : {
-                        action    : 'bookly_customer_cabinet_check_future_appointments',
-                        csrf_token: BooklyL10nGlobal.csrf_token,
-                    },
-                    dataType: 'json',
-                    success : function (response) {
-                        $delete_loading.hide();
-                        if (response.success) {
-                            $approve_deleting.show();
-                        } else {
-                            $denied_deleting.show()
-                        }
-                    }
-                });
-            });
-            $confirm_delete_btn.on('click', function (e) {
-                e.preventDefault();
-                var ladda = Ladda.create(this);
-                ladda.start();
-                $.ajax({
-                    url     : Options.ajaxurl,
-                    type    : 'POST',
-                    data    : {
-                        action    : 'bookly_customer_cabinet_delete_profile',
-                        csrf_token: BooklyL10nGlobal.csrf_token,
-                    },
-                    dataType: 'json',
-                    success : function (response) {
-                        ladda.stop();
-                        if (response.success) {
-                            $delete_modal.booklyModal('hide');
-                            window.location.reload();
-                        }
-                    }
-                });
-            });
-        }
+        //         var data = $form.serializeArray();
+        //         data.push({name: 'action', value: 'bookly_customer_cabinet_save_profile'});
+        //         data.push({name: 'csrf_token', value: BooklyL10nGlobal.csrf_token});
+        //         data.push({name: 'columns', value: Options.profile_parameters});
+        //         $.ajax({
+        //             url     : Options.ajaxurl,
+        //             type    : 'POST',
+        //             data    : data,
+        //             dataType: 'json',
+        //             success : function (response) {
+        //                 if (response.success) {
+        //                     booklyAlert({success: [BooklyCustomerCabinetL10n.profile_update_success]});
+        //                     if ($('[name="current_password"]', $profile_content).val()) {
+        //                         window.location.reload();
+        //                     }
+        //                 } else {
+        //                     $.each(response.errors, function (name, value) {
+        //                         if (name == 'info_fields') {
+        //                             $.each(value, function (id, text) {
+        //                                 var $form_group = $('.form-group[data-id="customer_information_' + id + '"]', $profile_content);
+        //                                 $form_group.find('.bookly-js-control-input').addClass('is-invalid');
+        //                                 $form_group.append('<div class="bookly-js-error text-danger">' + text + '</div>');
+        //                             });
+        //                         } else {
+        //                             var $form_group = $('.form-group [id="bookly_' + name + '"]', $profile_content).closest('.form-group');
+        //                             $form_group.find('.bookly-js-control-input').addClass('is-invalid');
+        //                             $form_group.append('<div class="bookly-js-error text-danger">' + value + '</div>');
+        //                         }
+        //                     });
+        //                     $('html, body').animate({
+        //                         scrollTop: $profile_content.find('.is-invalid').first().offset().top - 100
+        //                     }, 1000);
+        //                 }
+        //                 ladda.stop();
+        //             }
+        //         });
+        //     });
+        //     $delete_btn.on('click', function (e) {
+        //         e.preventDefault();
+        //         $approve_deleting.hide();
+        //         $denied_deleting.hide();
+        //         $delete_loading.show();
+        //         $delete_modal.booklyModal('show');
+        //         $.ajax({
+        //             url     : Options.ajaxurl,
+        //             type    : 'POST',
+        //             data    : {
+        //                 action    : 'bookly_customer_cabinet_check_future_appointments',
+        //                 csrf_token: BooklyL10nGlobal.csrf_token,
+        //             },
+        //             dataType: 'json',
+        //             success : function (response) {
+        //                 $delete_loading.hide();
+        //                 if (response.success) {
+        //                     $approve_deleting.show();
+        //                 } else {
+        //                     $denied_deleting.show()
+        //                 }
+        //             }
+        //         });
+        //     });
+        //     $confirm_delete_btn.on('click', function (e) {
+        //         e.preventDefault();
+        //         var ladda = Ladda.create(this);
+        //         ladda.start();
+        //         $.ajax({
+        //             url     : Options.ajaxurl,
+        //             type    : 'POST',
+        //             data    : {
+        //                 action    : 'bookly_customer_cabinet_delete_profile',
+        //                 csrf_token: BooklyL10nGlobal.csrf_token,
+        //             },
+        //             dataType: 'json',
+        //             success : function (response) {
+        //                 ladda.stop();
+        //                 if (response.success) {
+        //                     $delete_modal.booklyModal('hide');
+        //                     window.location.reload();
+        //                 }
+        //             }
+        //         });
+        //     });
+        // }
 
         function initSection(section) {
             if ($.inArray(section, sections_ready) === -1) {
@@ -513,13 +533,13 @@
 
         if (Options.tabs.length > 1) {
             // Tabs
-            $tabs.on('click', function () {
-                var section = $(this).attr('href').substring(1);
-                $('.bookly-js-customer-cabinet-content', $container).hide();
-                $('.bookly-js-customer-cabinet-content-' + section, $container).show();
-                initSection(section);
-            });
-            $tabs.first().trigger('click');
+            // $tabs.on('click', function () {
+            //     var section = $(this).attr('href').substring(1);
+            //     $('.bookly-js-customer-cabinet-content', $container).hide();
+            //     $('.bookly-js-customer-cabinet-content-' + section, $container).show();
+            //     initSection(section);
+            // });
+            // $tabs.first().trigger('click');
         } else {
             var section = Options.tabs[0];
             $('.bookly-js-customer-cabinet-content', $container).show();

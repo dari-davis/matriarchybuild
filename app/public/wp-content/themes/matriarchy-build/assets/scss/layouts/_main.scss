@@ -1,6 +1,9 @@
 .main {
-    .woocommerce-account & {
-        display: flex;
-        max-width: 960px;
-    }
+   // do things in here
+
+   .woocommerce-account & {
+       &.pt-md-5 {
+           padding-top: 0 !important;
+       }
+   }
 }
