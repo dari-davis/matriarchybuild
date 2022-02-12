@@ -4,13 +4,9 @@
 
     &__nav {
         background: $yellow;
-    }
 
-    .woocommerce-account & {
-        .woocommerce-MyAccount-navigation {
-            @include media-breakpoint-up(md) {
-                width: 345px;
-            }
+        @include media-breakpoint-up(md) {
+            max-width: 345px;
         }
     }
 }

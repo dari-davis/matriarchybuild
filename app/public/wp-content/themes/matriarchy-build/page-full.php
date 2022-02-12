@@ -18,7 +18,7 @@ the_post();
 			'before' => '<div class="page-links">' . __( 'Pages:', 'matriarchy-build' ),
 			'after'  => '</div>',
 		) );
-		edit_post_link( __( 'Edit', 'matriarchy-build' ), '<span class="edit-link">', '</span>' );
+		edit_post_link( __( 'Edit', 'matriarchy-build' ), '<span class="d-none edit-link">', '</span>' );
 	?>
 </div><!-- /#post-<?php the_ID(); ?> -->
 <?php

@@ -15,4 +15,8 @@
         text-transform: uppercase;
         line-height: normal;
     }
+
+    &__yellow-bg {
+        background: $yellow;
+    }
 }

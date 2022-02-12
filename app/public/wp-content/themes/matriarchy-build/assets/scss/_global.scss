@@ -123,3 +123,9 @@ hr.mb:not([size]) {
   color: $blue;
   opacity: 1;
 }
+
+.mb-hr {
+  &--olive {
+    color: $olive;
+  }
+}
