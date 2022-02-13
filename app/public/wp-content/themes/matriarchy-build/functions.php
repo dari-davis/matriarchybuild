@@ -662,4 +662,70 @@ add_filter( 'woocommerce_add_cart_item_data', 'woo_custom_add_to_cart' );
     return $cart_item_data;
 }
 
+
+// Create custom account endpoints
+
+add_action('init', function() {
+	add_rewrite_endpoint('past-consultations', EP_PAGES);
+	add_rewrite_endpoint('upcoming-consultations', EP_PAGES);
+});
+
+add_filter('woocommerce_account_menu_items', function($items) {
+	$logout = $items['customer-logout'];
+	unset($items['customer-logout']);
+	$items['past-consultations'] = __('Past Consultations', 'txtdomain');
+	$items['upcoming-consultations'] = __('Upcoming Consultations', 'txtdomain');
+	$items['customer-logout'] = $logout;
+	return $items;
+});
+
+
+add_action('woocommerce_account_past-consultations_endpoint', function() {
+	
+	$current_page    = empty( $current_page ) ? 1 : absint( $current_page );
+		$customer_orders = wc_get_orders(
+			apply_filters(
+				'woocommerce_my_account_my_orders_query',
+				array(
+					'customer' => get_current_user_id(),
+					'page'     => $current_page,
+					'paginate' => true,
+				)
+			)
+		);
+
+		wc_get_template(
+			'myaccount/past-consultations.php',
+			array(
+				'current_page'    => absint( $current_page ),
+				'customer_orders' => $customer_orders,
+				'has_orders'      => 0 < $customer_orders->total,
+			)
+		);
+});
+
+add_action('woocommerce_account_upcoming-consultations_endpoint', function() {
+	
+	$current_page    = empty( $current_page ) ? 1 : absint( $current_page );
+		$customer_orders = wc_get_orders(
+			apply_filters(
+				'woocommerce_my_account_my_orders_query',
+				array(
+					'customer' => get_current_user_id(),
+					'page'     => $current_page,
+					'paginate' => true,
+				)
+			)
+		);
+
+		wc_get_template(
+			'myaccount/upcoming-consultations.php',
+			array(
+				'current_page'    => absint( $current_page ),
+				'customer_orders' => $customer_orders,
+				'has_orders'      => 0 < $customer_orders->total,
+			)
+		);
+});
+
 ?>
