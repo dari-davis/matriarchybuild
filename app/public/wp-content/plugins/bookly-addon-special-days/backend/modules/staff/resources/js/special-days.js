@@ -37,8 +37,8 @@
 
             $addButton.daterangepicker({
                 parentEl: obj.options.container,
-                singleDatePicker: false,
-                showDropdowns: true,
+                singleDatePicker: true,
+                showDropdowns: false,
                 autoUpdateInput: false,
                 locale: obj.options.l10n.datePicker
             }).on('apply.daterangepicker', function (ev, picker) {
@@ -282,7 +282,7 @@
             $('.bookly-js-date', $content).daterangepicker({
                 parentEl        : obj.options.container,
                 singleDatePicker: true,
-                showDropdowns   : true,
+                showDropdowns   : false,
                 autoUpdateInput : false,
                 locale          : obj.options.l10n.datePicker
             }).on('apply.daterangepicker', function (ev, picker) {

@@ -3,7 +3,7 @@
     <div class="form-row py-1 rounded-lg mb-1">
         <div class="col-lg-3">
             <div>
-                <input class="form-control bookly-js-date mb-2 mb-lg-0" type="text" name="list[<?php echo $day['id'] ?>][date]" value="<?php echo $day['date'] !== null ? \Bookly\Lib\Utils\DateTime::formatDate( $day['date'] ) : '' ?>" data-date="<?php echo $day['date'] ?>" autocomplete="off">
+                <input readonly class="form-control bookly-js-date mb-2 mb-lg-0" type="text" name="list[<?php echo $day['id'] ?>][date]" value="<?php echo $day['date'] !== null ? \Bookly\Lib\Utils\DateTime::formatDate( $day['date'] ) : '' ?>" data-date="<?php echo $day['date'] ?>" autocomplete="off">
                 <input type="hidden" name="list[<?php echo $day['id'] ?>][id]" value="<?php echo $day['id'] ?>">
                 <div class="col-xs-12 bookly-js-staff-special-days-error"></div>
             </div>
@@ -21,7 +21,7 @@
                     ?>
                 </div>
                 <div class="mt-2">
-                    <?php esc_html_e( 'to', 'bookly' ) ?>
+                    <?php esc_html_e( 'and', 'bookly' ) ?>
                 </div>
                 <div class="col">
                     <?php
@@ -39,7 +39,7 @@
             <div class="bookly-js-breaks-wrapper">
                 <button type="button" data-ssd_id="<?php echo $day['id'] ?>"
                         class="bookly-js-special-days-toggle-popover btn btn-link pl-0">
-                    <?php esc_html_e( 'add break', 'bookly' ) ?>
+                    <?php esc_html_e( 'except for', 'bookly' ) ?>
                 </button>
                 <div class="custom-control custom-checkbox float-right mt-2">
                     <input class="custom-control-input" type="checkbox" id="bookly-delete-ssd-<?php echo $day['id'] ?>" data-ssd_id="<?php echo $day['id'] ?>"/>
