@@ -29,6 +29,14 @@ do_action( 'woocommerce_before_account_navigation' );
 		<li><a class="text-button text-button--blue-pink" href="<?= wc_get_account_endpoint_url('past-consultations'); ?>">Past</a></li>
 	</ul>
 	<hr/>
+	<?php if (in_array('pro_user', (array) wp_get_current_user()->roles)): ?>
+		<div class="account-nav__heading">Consultation Settings</div>
+			<ul class="list-unstyled">
+				<li><a class="text-button text-button--blue-pink" href="<?= wc_get_account_endpoint_url('upcoming-consultations'); ?>">Set Schedule</a></li>
+				<li><a class="text-button text-button--blue-pink" href="<?= wc_get_account_endpoint_url('past-consultations'); ?>">Set Pricing</a></li>
+			</ul>
+		<hr/>
+	<?php endif; ?>
 	<div class="account-nav__heading">Settings</div>
 	<ul class="list-unstyled">
 		<?php foreach ( wc_get_account_menu_items() as $endpoint => $label ) : ?>

@@ -668,6 +668,8 @@ add_filter( 'woocommerce_add_cart_item_data', 'woo_custom_add_to_cart' );
 add_action('init', function() {
 	add_rewrite_endpoint('past-consultations', EP_PAGES);
 	add_rewrite_endpoint('upcoming-consultations', EP_PAGES);
+	add_rewrite_endpoint('schedule', EP_PAGES);
+	add_rewrite_endpoint('pricing', EP_PAGES);
 });
 
 add_action('woocommerce_account_past-consultations_endpoint', function() {
@@ -718,6 +720,14 @@ add_action('woocommerce_account_upcoming-consultations_endpoint', function() {
 		);
 });
 
+add_action('woocommerce_account_schedule_endpoint', function() {
+	wc_get_template('myaccount/schedule.php');
+});
+
+add_action('woocommerce_account_pricing_endpoint', function() {
+	wc_get_template('myaccount/pricing.php');
+});
+
 // Remove account links
 add_filter('woocommerce_account_menu_items', 'remove_my_account_links');
 function remove_my_account_links($menu_links) {
@@ -739,5 +749,23 @@ function my_account_menu_order() {
 	return $menuOrder;
 }
 add_filter ( 'woocommerce_account_menu_items', 'my_account_menu_order' );
+
+/* Create Pro Member User Role */
+add_role(
+    'pro_user', //  System name of the role.
+    __( 'Pro'  ), // Display name of the role.
+    array(
+        'read'  => true,
+        'delete_posts'  => false,
+        'delete_published_posts' => false,
+        'edit_posts'   => false,
+        'publish_posts' => false,
+        'upload_files'  => true,
+        'edit_pages'  => false,
+        'edit_published_pages'  =>  false,
+        'publish_pages'  => false,
+        'delete_published_pages' => false, // This user will NOT be able to  delete published pages.
+    )
+);
 
 ?>
