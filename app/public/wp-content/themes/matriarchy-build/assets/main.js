@@ -26,6 +26,15 @@ import * as bootstrap from 'bootstrap';
 
 	// set billing name and address from Bookly data
 	$(document).ready(function() {
+		if ($('.woocommerce-account').length) {
+			$('[data-upcoming-consultations]').on('click', function() {
+				console.log('upcoming');
+			});
+			$('[data-past-consultations]').on('click', function() {
+				console.log('past');
+			});
+		}
+
 		if ($('.woocommerce-checkout').length) {
 			let firstName = document.cookie.split('; ').find(row => row.startsWith('firstname=')).split('=')[1];
 			let lastName = document.cookie.split('; ').find(row => row.startsWith('lastname=')).split('=')[1];

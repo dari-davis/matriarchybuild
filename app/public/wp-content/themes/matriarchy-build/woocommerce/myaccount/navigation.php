@@ -22,14 +22,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 do_action( 'woocommerce_before_account_navigation' );
 ?>
 
-<nav class="pt-md-5 woocommerce-MyAccount-navigation">
-	<ul>
+<nav class="py-4 ms-md-4 me-md-3 woocommerce-MyAccount-navigation account-nav">
+	<div class="account-nav__heading">Consultations</div>
+	<ul class="list-unstyled">
+		<li><a class="text-button text-button--blue-pink" href="<?= wc_get_account_endpoint_url('upcoming-consultations'); ?>">Upcoming</a></li>
+		<li><a class="text-button text-button--blue-pink" href="<?= wc_get_account_endpoint_url('past-consultations'); ?>">Past</a></li>
+	</ul>
+	<hr/>
+	<div class="account-nav__heading">Settings</div>
+	<ul class="list-unstyled">
 		<?php foreach ( wc_get_account_menu_items() as $endpoint => $label ) : ?>
 			<li class="<?php echo wc_get_account_menu_item_classes( $endpoint ); ?>">
-				<a href="<?php echo esc_url( wc_get_account_endpoint_url( $endpoint ) ); ?>"><?php echo esc_html( $label ); ?></a>
+				<a class="text-button text-button--blue-pink" href="<?php echo esc_url( wc_get_account_endpoint_url( $endpoint ) ); ?>"><?php echo esc_html( $label ); ?></a>
 			</li>
 		<?php endforeach; ?>
 	</ul>
+	<hr/>
+	<a class="text-button text-button--blue-pink" href="<?= wc_logout_url(); ?>">Logout</a>
 </nav>
 
 <?php do_action( 'woocommerce_after_account_navigation' ); ?>

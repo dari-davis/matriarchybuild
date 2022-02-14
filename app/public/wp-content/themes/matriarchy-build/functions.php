@@ -670,16 +670,6 @@ add_action('init', function() {
 	add_rewrite_endpoint('upcoming-consultations', EP_PAGES);
 });
 
-add_filter('woocommerce_account_menu_items', function($items) {
-	$logout = $items['customer-logout'];
-	unset($items['customer-logout']);
-	$items['past-consultations'] = __('Past Consultations', 'txtdomain');
-	$items['upcoming-consultations'] = __('Upcoming Consultations', 'txtdomain');
-	$items['customer-logout'] = $logout;
-	return $items;
-});
-
-
 add_action('woocommerce_account_past-consultations_endpoint', function() {
 	
 	$current_page    = empty( $current_page ) ? 1 : absint( $current_page );
@@ -727,5 +717,27 @@ add_action('woocommerce_account_upcoming-consultations_endpoint', function() {
 			)
 		);
 });
+
+// Remove account links
+add_filter('woocommerce_account_menu_items', 'remove_my_account_links');
+function remove_my_account_links($menu_links) {
+	unset($menu_links['downloads']);
+	unset($menu_links['orders']);
+	unset($menu_links['edit-address']);
+	unset($menu_links['dashboard']);
+	unset($menu_links['customer-logout']);
+
+	return $menu_links;
+}
+
+// Edit account settings order
+function my_account_menu_order() {
+	$menuOrder = array(
+		'edit-account'    	=> __( 'Account Details', 'woocommerce' ),
+		'payment-methods'	=> __( 'Payment Methods', 'woocommerce'),
+	);
+	return $menuOrder;
+}
+add_filter ( 'woocommerce_account_menu_items', 'my_account_menu_order' );
 
 ?>

@@ -29,6 +29,14 @@
         }
     }
 
+    &--blue-pink {
+        color: $blue;
+
+        &:hover {
+            color: $blue;
+        }
+    }
+
     &--green {
         color: $green;
 
