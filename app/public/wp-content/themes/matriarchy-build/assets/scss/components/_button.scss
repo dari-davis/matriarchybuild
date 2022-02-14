@@ -52,3 +52,34 @@ button.button--text {
     background: $blue;
   }
 }
+
+#bookly-tbs {
+  .bookly-button.ladda-button.btn.btn-success,
+  .bookly-button.ladda-button.btn.btn-danger {
+    padding: 0 24px;
+    width: auto;
+    height: 40px;
+    color: $blue;
+    font-family: $font-family;
+    background-color: $olive;
+    border: 0;
+    border-radius: 0;
+    -webkit-appearance: none;
+
+    &#bookly-js-special-days-delete-all:after {
+      display: none;
+    }
+
+    &#bookly-js-special-days-save-days {
+      background-color: $pink;
+
+      &:after {
+        background-image: url('../images/icons/arrow_blue.svg');
+      }
+    }
+
+    &:after {
+      background-image: url('../images/icons/arrow_white.svg');
+    }
+  }
+}

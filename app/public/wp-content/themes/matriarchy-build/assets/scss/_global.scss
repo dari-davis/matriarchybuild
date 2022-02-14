@@ -28,6 +28,18 @@ img {
   max-width: 100%;
 }
 
+p {
+  &.p-explainer {
+    color: $green;
+  }
+
+  .p-emphasis {
+    color: $blue;
+    background: $yellow;
+    font-style: italic;
+  }
+}
+
 /* Basis for rem function; increase/decrease to change sizes globally */
 html { font-size: 100%; }
 

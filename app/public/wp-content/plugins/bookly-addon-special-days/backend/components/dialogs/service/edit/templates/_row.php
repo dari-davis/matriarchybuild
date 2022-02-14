@@ -26,7 +26,7 @@ use Bookly\Lib\Utils\DateTime;
                     ?>
                 </div>
                 <div class="mt-2 bookly-js-invisible-on-off">
-                    <?php esc_html_e( 'to', 'bookly' ) ?>
+                    <?php esc_html_e( 'and', 'bookly' ) ?>
                 </div>
                 <div class="col bookly-js-invisible-on-off">
                     <?php
@@ -42,7 +42,7 @@ use Bookly\Lib\Utils\DateTime;
         <div class="col-lg-4 bookly-js-service-special-days-breaks-list bookly-js-invisible-on-off">
             <button type="button" data-ssd_id="<?php echo $day['id'] ?>"
                     class="bookly-js-toggle-popover btn btn-link pl-0">
-                <?php esc_html_e( 'add break', 'bookly' ) ?>
+                <?php esc_html_e( 'except for', 'bookly' ) ?>
             </button>
             <div class="custom-control custom-checkbox float-right mt-2">
                 <input id="bookly-sd-delete-<?php echo $day['id'] ?>" type="checkbox" class="custom-control-input" data-ssd_id="<?php echo $day['id'] ?>">

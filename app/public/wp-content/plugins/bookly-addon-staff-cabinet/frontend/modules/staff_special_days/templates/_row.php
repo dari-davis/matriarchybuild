@@ -3,7 +3,7 @@
     <div class="form-row py-1 rounded-lg mb-1">
         <div class="col-lg-3">
             <div>
-                <input readonly class="form-control bookly-js-date mb-2 mb-lg-0" type="text" name="list[<?php echo $day['id'] ?>][date]" value="<?php echo $day['date'] !== null ? \Bookly\Lib\Utils\DateTime::formatDate( $day['date'] ) : '' ?>" data-date="<?php echo $day['date'] ?>" autocomplete="off">
+                <input class="form-control bookly-js-date mb-2 mb-lg-0" type="text" name="list[<?php echo $day['id'] ?>][date]" value="<?php echo $day['date'] !== null ? \Bookly\Lib\Utils\DateTime::formatDate( $day['date'] ) : '' ?>" data-date="<?php echo $day['date'] ?>" autocomplete="off">
                 <input type="hidden" name="list[<?php echo $day['id'] ?>][id]" value="<?php echo $day['id'] ?>">
                 <div class="col-xs-12 bookly-js-staff-special-days-error"></div>
             </div>

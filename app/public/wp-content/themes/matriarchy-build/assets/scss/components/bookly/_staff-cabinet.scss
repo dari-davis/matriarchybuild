@@ -1,0 +1,30 @@
+.bookly-staff-cabinet {
+    padding: 30px;
+    color: $blue;
+    font-family: $font-family;
+    background: rgba($olive, 0.2);
+
+    .bookly-js-range-row {
+        padding: 10px 0;
+        border-bottom: 1px solid $olive;
+    }
+
+    .bookly-js-special-days-toggle-popover.btn.btn-link {
+        #bookly-tbs & {
+        color: $blue;
+        font-family: $font-family;
+        text-decoration: underline;
+        }
+    }
+
+    #bookly-tbs & {
+        .btn.btn-info {
+            padding: 10px;
+            color: $blue;
+            font-family: $font-family;
+            background-color: $pink;
+            border: 0;
+            border-radius: 0;
+        }
+    }
+}

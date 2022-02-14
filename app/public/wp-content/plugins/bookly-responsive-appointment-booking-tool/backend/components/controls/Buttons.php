@@ -54,7 +54,7 @@ class Buttons
      * @param array  $attrs
      * @param bool $ellipsis
      */
-    public static function renderAdd( $id = 'bookly-add', $extra_class = null, $caption = null, array $attrs = array(), $ellipsis = true )
+    public static function renderAdd( $id = 'bookly-add', $extra_class = null, $caption = null, array $attrs = array(), $ellipsis = false )
     {
         echo self::_createButton(
             'button',
@@ -78,7 +78,7 @@ class Buttons
      * @param array  $attrs
      * @param bool $ellipsis
      */
-    public static function renderDelete( $id = 'bookly-delete', $extra_class = null, $caption = null, array $attrs = array(), $ellipsis = true )
+    public static function renderDelete( $id = 'bookly-delete', $extra_class = null, $caption = null, array $attrs = array(), $ellipsis = false )
     {
         echo self::_createButton(
             'button',
@@ -87,9 +87,7 @@ class Buttons
             $extra_class,
             $attrs,
             $caption !== null ? $caption : __( 'Delete', 'bookly' ),
-            '{caption}' . ( $ellipsis ? '…' : '' ),
-            '<i class="far fa-fw fa-trash-alt mr-lg-1"></i>',
-            true
+            '{caption}' . ( $ellipsis ? '…' : '' )
         );
     }
 

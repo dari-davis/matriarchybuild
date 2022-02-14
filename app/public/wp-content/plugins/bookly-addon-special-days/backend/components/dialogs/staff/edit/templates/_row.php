@@ -21,7 +21,7 @@
                     ?>
                 </div>
                 <div class="mt-2">
-                    <?php esc_html_e( 'to', 'bookly' ) ?>
+                    <?php esc_html_e( 'and', 'bookly' ) ?>
                 </div>
                 <div class="col">
                     <?php
@@ -39,7 +39,7 @@
             <div class="bookly-js-breaks-wrapper">
                 <button type="button" data-ssd_id="<?php echo $day['id'] ?>"
                         class="bookly-js-special-days-toggle-popover btn btn-link pl-0">
-                    <?php esc_html_e( 'add break', 'bookly' ) ?>
+                    <?php esc_html_e( 'except for', 'bookly' ) ?>
                 </button>
                 <div class="custom-control custom-checkbox float-right mt-2">
                     <input class="custom-control-input" type="checkbox" id="bookly-delete-ssd-<?php echo $day['id'] ?>" data-ssd_id="<?php echo $day['id'] ?>"/>
