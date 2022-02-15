@@ -2,6 +2,14 @@
     min-height: 220px;
     font-size: 24px;
 
+    .mb-borders {
+        border-color: $green;
+    }
+
+    .mb-border--right {
+        border-color: $green;
+    }
+
     .text-button,
     &__detail {
         font-size: 16px;
@@ -25,5 +33,12 @@
 
     &__yellow-bg {
         background: $yellow;
+    }
+
+    &__order {
+        color: $white;
+        font-size: 16px;
+        background: $olive;
+        border-top: 1px solid $green;
     }
 }

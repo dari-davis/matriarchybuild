@@ -23,18 +23,33 @@ button.button--text {
   color: $blue;
 }
 
-.woocommerce button.button {
-  color: $pink;
-  background-color: $blue;
+.woocommerce button.button,
+.woocommerce input.button,
+.woocommerce a.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $blue;
+  background-color: $pink;
+  border: 1px solid $olive;
+  border-radius: 0;
 
   &:after {
     background-image: url('../images/icons/arrow_white.svg');
   }
+
+  &:hover {
+    background: $pink;
+    color: $blue;
+  }
 }
 
-.woocommerce button.button.alt {
+.woocommerce button.button.alt,
+.woocommerce input.button.alt,
+.woocommerce a.button.alt {
   color: $pink;
   background-color: $blue;
+  border: 1px solid $olive;
   border-radius: 0;
 
   &:after {

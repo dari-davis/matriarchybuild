@@ -1,0 +1,11 @@
+.questionnaire {
+    background: rgba($olive, 0.2);
+
+    &__label {
+        font-size: 14px;
+    }
+
+    .form-group {
+        border-bottom: 1px solid $olive;
+    }
+}

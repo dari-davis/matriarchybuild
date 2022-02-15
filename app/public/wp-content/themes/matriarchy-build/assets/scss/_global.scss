@@ -40,6 +40,17 @@ p {
   }
 }
 
+textarea {
+  border: 1px solid $olive;
+  border-radius: 0;
+  resize: none;
+
+  &.form-control {
+    border: 1px solid $olive;
+    border-radius: 0;
+  }
+}
+
 /* Basis for rem function; increase/decrease to change sizes globally */
 html { font-size: 100%; }
 
