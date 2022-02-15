@@ -76,7 +76,7 @@ class ShortCode extends BooklyLib\Base\Component
                     'months'      => array_values( $wp_locale->month ),
                     'close'       => __( 'Close', 'bookly' ),
                     'repeat'      => __( 'Repeat every year', 'bookly' ),
-                    'we_are_not_working' => __( 'We are not working on this day', 'bookly' ),
+                    'we_are_not_working' => __( 'Unavailable for consultations', 'bookly' ),
                 ) );
             }
         }

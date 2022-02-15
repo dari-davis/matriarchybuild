@@ -1,3 +1,4 @@
+#bookly-tbs.bookly-staff-cabinet,
 .bookly-staff-cabinet {
     padding: 30px;
     color: $blue;
@@ -9,11 +10,16 @@
         border-bottom: 1px solid $olive;
     }
 
-    .bookly-js-special-days-toggle-popover.btn.btn-link {
-        #bookly-tbs & {
+    .bookly-js-special-days-toggle-popover.btn.btn-link,
+    .bookly-js-toggle-popover.btn.btn-link {
         color: $blue;
         font-family: $font-family;
         text-decoration: underline;
+
+        #bookly-tbs & {
+            color: $blue;
+            font-family: $font-family;
+            text-decoration: underline;
         }
     }
 
@@ -26,5 +32,15 @@
             border: 0;
             border-radius: 0;
         }
+    }
+
+    .btn {
+        font-size: inherit;
+    }
+
+    .jCalMo {
+        width: 100% !important;
+        height: auto;
+        float: none;
     }
 }

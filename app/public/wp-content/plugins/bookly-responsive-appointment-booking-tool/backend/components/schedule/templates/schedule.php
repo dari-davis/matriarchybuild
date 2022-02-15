@@ -11,11 +11,12 @@
                     <div class="col-3">
                         <?php echo esc_html( $title ) ?>
                     </div>
+                    <div>between</div>
                     <div class="col">
                         <?php $schedule->start_select->render() ?>
                     </div>
                     <div class="col-auto bookly-js-invisible-on-off">
-                        <?php esc_html_e( 'to', 'bookly' ) ?>
+                        <?php esc_html_e( 'and', 'bookly' ) ?>
                     </div>
                     <div class="col bookly-js-invisible-on-off">
                         <?php $schedule->end_select->render() ?>
@@ -25,7 +26,7 @@
             <?php if ( $schedule->withBreaks() ) : ?>
                 <div class="col-12 col-lg bookly-js-breaks-wrapper bookly-js-hide-on-off">
                     <button type="button" class="bookly-js-toggle-popover btn btn-link pl-0">
-                        <?php esc_html_e( 'add break', 'bookly' ) ?>
+                        <?php esc_html_e( 'except for', 'bookly' ) ?>
                     </button>
                     <div class="bookly-js-breaks-list">
                         <?php foreach ( $schedule->day_breaks as $break ) $break->render() ?>

@@ -35,8 +35,6 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 
 		global $wpdb;
 
-		$orderDate = $order->get_date_created()->date('M j, Y');
-
 		foreach ($order->get_items() as $item_id => $item) {
 			$data =  $item->get_meta("bookly");
 

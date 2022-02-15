@@ -55,7 +55,8 @@ button.button--text {
 
 #bookly-tbs {
   .bookly-button.ladda-button.btn.btn-success,
-  .bookly-button.ladda-button.btn.btn-danger {
+  .bookly-button.ladda-button.btn.btn-danger,
+  .bookly-button.ladda-button.btn.btn-default {
     padding: 0 24px;
     width: auto;
     height: 40px;
@@ -80,6 +81,11 @@ button.button--text {
 
     &:after {
       background-image: url('../images/icons/arrow_white.svg');
+    }
+
+    &#bookly-schedule-save {
+      color: $pink;
+      background-color: $blue;
     }
   }
 }
