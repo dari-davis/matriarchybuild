@@ -118,46 +118,62 @@ foreach ($order->get_items() as $item_id => $item) {
 		<p>Get acquainted with the project details by reviewing the images and questionnaire answers below.</p>
 	</div>
 
-    <form class="questionnaire px-4 py-5" method="post">
-        <?php function submitQuestionnaire($order_id) {
-            echo "Your questionnarie has been successfully submitted!";
-            $order = wc_get_order($order_id);
-            $order->update_meta_data('answer1', $_POST["question1"]);
-            $order->update_meta_data('answer2', $_POST["question2"]);
-            $order->update_meta_data('answer3', $_POST["question3"]);
-            $order->update_meta_data('answer4', $_POST["question4"]);
-            $order->save();
-            var_dump($order->get_meta_data());
-        }
-        if (isset($_POST['submit'])) { submitQuestionnaire($order_id); } ?>
+    <?php if( get_post_meta($order_id, 'answer1', true)): ?>
+        <div class="questionnaire">
+            <div>
+            <?php
+                echo get_post_meta($order_id, 'answer1', true);
+                echo '<br/>';
+                echo get_post_meta($order_id, 'answer2', true);
+                echo '<br/>';
+                echo get_post_meta($order_id, 'answer3', true);
+                echo '<br/>';
+                echo get_post_meta($order_id, 'answer4', true);
+            ?>
+            </div>
+        </div>
+    <?php else: ?>
+        <form class="questionnaire px-4 py-5" method="post">
+            <?php function submitQuestionnaire($order_id) {
+                echo "Your questionnarie has been successfully submitted!";
+                $order = wc_get_order($order_id);
+                $order->update_meta_data('answer1', $_POST["question1"]);
+                $order->update_meta_data('answer2', $_POST["question2"]);
+                $order->update_meta_data('answer3', $_POST["question3"]);
+                $order->update_meta_data('answer4', $_POST["question4"]);
+                $order->save();
+                var_dump($order->get_meta_data());
+            }
+            if (isset($_POST['submit'])) { submitQuestionnaire($order_id); } ?>
 
-        <div class="form-group row py-3 m-0">
-            <label for="question1" class="questionnaire__label col-sm-2 col-form-label p-0">Question 1</label>
-            <div class="col-sm-10">
-                <textarea class="form-control" rows="3" id="question1" name="question1"></textarea>
+            <div class="form-group row py-3 m-0">
+                <label for="question1" class="questionnaire__label col-sm-2 col-form-label p-0">Question 1</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" rows="3" id="question1" name="question1"></textarea>
+                </div>
             </div>
-        </div>
-        <div class="form-group row py-3 m-0">
-            <label for="question2" class="questionnaire__label col-sm-2 col-form-label p-0">Question 2</label>
-            <div class="col-sm-10">
-                <textarea class="form-control" rows="3" id="question2" name="question2"></textarea>
+            <div class="form-group row py-3 m-0">
+                <label for="question2" class="questionnaire__label col-sm-2 col-form-label p-0">Question 2</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" rows="3" id="question2" name="question2"></textarea>
+                </div>
             </div>
-        </div>
-        <div class="form-group row py-3 m-0">
-            <label for="question3" class="questionnaire__label col-sm-2 col-form-label p-0">Question 3</label>
-            <div class="col-sm-10">
-                <textarea class="form-control" rows="3" id="question3" name="question3"></textarea>
+            <div class="form-group row py-3 m-0">
+                <label for="question3" class="questionnaire__label col-sm-2 col-form-label p-0">Question 3</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" rows="3" id="question3" name="question3"></textarea>
+                </div>
             </div>
-        </div>
-        <div class="form-group row py-3 m-0">
-            <label for="question4" class="questionnaire__label col-sm-2 col-form-label p-0">Question 4</label>
-            <div class="col-sm-10">
-                <textarea class="form-control" rows="3" id="question4" name="question4"></textarea>
+            <div class="form-group row py-3 m-0">
+                <label for="question4" class="questionnaire__label col-sm-2 col-form-label p-0">Question 4</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" rows="3" id="question4" name="question4"></textarea>
+                </div>
             </div>
-        </div>
-        <div class="d-flex py-3"><input type="submit" value="Save" name="submit" class="w-auto button alt"></div>
+            <div class="d-flex py-3"><input type="submit" value="Save" name="submit" class="w-auto button alt"></div>
 
-    </form>
+        </form>
+    <?php endif; ?>
 </div>
 
 <div class="row no-gutters m-0">
