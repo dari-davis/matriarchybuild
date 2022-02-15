@@ -9,6 +9,15 @@
             max-width: 345px;
         }
     }
+
+    &__wrapper {
+        margin-top: 24px;
+
+        @include media-breakpoint-up(md) {
+            margin: 135px auto;
+            max-width: 1008px;
+        }
+    }
 }
 
 .woocommerce-account {

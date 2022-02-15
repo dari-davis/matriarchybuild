@@ -1,7 +1,8 @@
 .main {
    // do things in here
 
-   .woocommerce-account & {
+   .woocommerce-account &,
+   .page-template-page-create-account & {
        &.pt-md-5 {
            padding-top: 0 !important;
        }
