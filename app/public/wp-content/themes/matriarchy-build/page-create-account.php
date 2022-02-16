@@ -39,7 +39,7 @@
 
 				<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
 					<label>
-						<input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="terms" <?php checked( apply_filters( 'woocommerce_terms_is_checked_default', isset( $_POST['terms'] ) ), true ); ?> id="terms" /> <span><?php printf( __( 'I agree to Matriarchy Build&rsquo;s <a href="%s" target="_blank" class="woocommerce-terms-and-conditions-link">terms of use</a>', 'woocommerce' ), site_url('terms-of-use') ); ?></span>
+						<input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="terms" <?php checked( apply_filters( 'woocommerce_terms_is_checked_default', isset( $_POST['terms'] ) ), true ); ?> id="terms" /> <span><?php printf( __( 'I agree to Matriarchy Build&rsquo;s <a href="%s" target="_blank" class="woocommerce-terms-and-conditions-link">terms of use</a>', 'woocommerce' ), site_url('privacy-terms') ); ?></span>
 					</label>
 					<input type="hidden" name="terms-field" value="1" />
 				</p>
