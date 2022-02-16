@@ -3,33 +3,7 @@
 <?php if ( have_posts() ): ?>
   <div class="pros px-md-4">
 
-  <div class="filters py-3 d-flex">
-    <p class="m-0 me-3">Filter</p>
-    <?php
-      $categories = get_categories('taxonomy=pros');
-      $select = "<select name='cat' id='cat' class='postform'>n";
-      $select.= "<option value='-1'>Trade</option>n";
-    
-      foreach($categories as $category){
-        if($category->count > 0){
-            $select.= "<option value='".$category->slug."'>".$category->name."</option>";
-        }
-      }
-      $select.= "</select>";
-    
-      echo $select;
-    ?>
-  
-    <script type="text/javascript">
-        var dropdown = document.getElementById("cat");
-        function onCatChange() {
-            if ( dropdown.options[dropdown.selectedIndex].value != -1 ) {
-                location.href = "<?php echo home_url();?>/pros/"+dropdown.options[dropdown.selectedIndex].value+"/";
-            }
-        }
-        dropdown.onchange = onCatChange;
-    </script>
-  </div>
+    <?= get_template_part('partials/filters') ?>
 
     <div class="pros__row row m-0">
       <?php while (have_posts()): the_post(); ?>
@@ -47,7 +21,8 @@
               <div class="pros__trade p-2"><?= get_field('trade'); ?></div>
             </div>
             <div class="pros__bookable col d-flex flex-column p-0">
-              <a class="pros__header-button mb-borders text-center <?php if (!empty($services)): ?>bookable<?php endif; ?>" href="<?php the_permalink(); ?>" title="Pro Is Available for Booking"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/calendar.svg"/></a>
+              <?php $title_tag = empty($services) ? "Pro is not available for booking" : "Pro is available for booking"; ?>
+              <a class="pros__header-button mb-borders text-center <?php if (!empty($services)): ?>bookable<?php endif; ?>" href="<?php the_permalink(); ?>" title="<?= $title_tag; ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/calendar.svg"/></a>
             </div>
           </div>
         </div>

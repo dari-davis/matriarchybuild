@@ -1,0 +1,46 @@
+.filters {
+    &__wrapper {
+        @include media-breakpoint-down(md) {
+            flex-direction: column;
+        }
+    }
+
+    &__heading {
+        font-family: $sans-serif-font-family;
+        font-size: 20px;
+    }
+
+    &__filter {
+        min-width: 170px;
+    }
+
+    &__select {
+        position: relative;
+        border: 1px solid $blue;
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            height: 20px;
+            width: 8px;
+            background-image: url('../images/icons/small_arrow_down.svg');
+            background-repeat: no-repeat;
+        }
+
+        select {
+            height: 31px;
+            width: 100%;
+            line-height: 31px;
+            background: transparent;
+            color: $blue;
+            border: 0;
+            border-radius: 0;
+    
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+    }
+} 
