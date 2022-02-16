@@ -2,6 +2,35 @@
 
 <?php if ( have_posts() ): ?>
   <div class="pros px-md-4">
+
+  <div class="filters py-3 d-flex">
+    <p class="m-0 me-3">Filter</p>
+    <?php
+      $categories = get_categories('taxonomy=pros');
+      $select = "<select name='cat' id='cat' class='postform'>n";
+      $select.= "<option value='-1'>Trade</option>n";
+    
+      foreach($categories as $category){
+        if($category->count > 0){
+            $select.= "<option value='".$category->slug."'>".$category->name."</option>";
+        }
+      }
+      $select.= "</select>";
+    
+      echo $select;
+    ?>
+  
+    <script type="text/javascript">
+        var dropdown = document.getElementById("cat");
+        function onCatChange() {
+            if ( dropdown.options[dropdown.selectedIndex].value != -1 ) {
+                location.href = "<?php echo home_url();?>/pros/"+dropdown.options[dropdown.selectedIndex].value+"/";
+            }
+        }
+        dropdown.onchange = onCatChange;
+    </script>
+  </div>
+
     <div class="pros__row row m-0">
       <?php while (have_posts()): the_post(); ?>
         <?php $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro_user') )->findOne(); ?>
@@ -12,6 +41,8 @@
               <a class="pros__name" href="<?php the_permalink(); ?>"><div class="pros__title p-2"><?= the_title(); ?></div></a>
               <?php if (has_post_thumbnail()): ?>
                 <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('large', ['class' => 'pros__image']); ?></a>
+              <?php else: ?>
+                <div class="pros__image"></div>
               <?php endif; ?>
               <div class="pros__trade p-2"><?= get_field('trade'); ?></div>
             </div>
