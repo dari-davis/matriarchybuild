@@ -122,6 +122,10 @@ input[type="password"],
   &::placeholder {
     color: $blue;
   }
+
+  .search-form & {
+    color: $white !important;
+  }
 }
 
 .woocommerce-billing-fields {
