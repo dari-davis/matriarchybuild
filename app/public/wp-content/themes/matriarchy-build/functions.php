@@ -610,46 +610,6 @@ function redirection_function(){
     }
 }
 
-// separate registration page
-function redirect_login_page() {
-    
-	$register_page  = home_url( '/create-account' );
-	$login_page    = home_url( '/create-account?action=login' );
-	$page_viewed   = basename($_SERVER['REQUEST_URI']);
-   
-	if( $page_viewed == "wp-login.php" && $_SERVER['REQUEST_METHOD'] == 'GET') {
-        wp_redirect($login_page);
-        exit;
-	}
-	
-	if( $page_viewed == "wp-login.php?action=register" && $_SERVER['REQUEST_METHOD'] == 'GET') {
-	    wp_redirect($register_page);
-	    exit;
-	}
-}
-
-add_action('init','redirect_login_page');
-   
-    // Redirect For Login Failed
-    function login_failed() {
-	
-	wp_redirect( home_url( '/create-account?action=login&login=failed' ) );
-	exit;
-}
-
-add_action( 'wp_login_failed', 'login_failed' );
-   
-    // Redirect For Empty Username Or Password
-    function verify_username_password( $user, $username, $password ) {
-        if ( $username == "" || $password == "" ) {
-        
-        wp_redirect( home_url( '/create-account?action=login&login=empty' ) );
-        exit;
-    }
-}
-  
-add_filter( 'authenticate', 'verify_username_password', 1, 3);
-
 // Allow only 1 item in the cart
 add_filter( 'woocommerce_add_cart_item_data', 'woo_custom_add_to_cart' );
 
@@ -777,5 +737,78 @@ add_role(
         'delete_published_pages' => false, // This user will NOT be able to  delete published pages.
     )
 );
+
+
+
+/**
+ * @snippet       Add First & Last Name to My Account Register Form - WooCommerce
+ * @how-to        Get CustomizeWoo.com FREE
+ * @author        Rodolfo Melogli
+ * @compatible    WC 3.9
+ * @donate $9     https://businessbloomer.com/bloomer-armada/
+ */
+  
+///////////////////////////////
+// 1. ADD FIELDS
+  
+add_action( 'woocommerce_register_form_start', 'bbloomer_add_name_woo_account_registration' );
+  
+function bbloomer_add_name_woo_account_registration() {
+    ?>
+	<p class="subtext">or with email</p>
+    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+    <label for="reg_billing_first_name" class="visually-hidden"><?php _e( 'First Name', 'woocommerce' ); ?> <span class="required">*</span></label>
+    <input type="text" class="input-text" name="billing_first_name" id="reg_billing_first_name" placeholder="First Name" value="<?php if ( ! empty( $_POST['billing_first_name'] ) ) esc_attr_e( $_POST['billing_first_name'] ); ?>" />
+    </p>
+  
+    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+    <label for="reg_billing_last_name" class="visually-hidden"><?php _e( 'Last Name', 'woocommerce' ); ?> <span class="required">*</span></label>
+    <input type="text" class="input-text" name="billing_last_name" id="reg_billing_last_name" placeholder="Last Name" value="<?php if ( ! empty( $_POST['billing_last_name'] ) ) esc_attr_e( $_POST['billing_last_name'] ); ?>" />
+    </p>
+  
+    <div class="clear"></div>
+  
+    <?php
+}
+  
+///////////////////////////////
+// 2. VALIDATE FIELDS
+  
+add_filter( 'woocommerce_registration_errors', 'bbloomer_validate_name_fields', 10, 3 );
+  
+function bbloomer_validate_name_fields( $errors, $username, $email ) {
+    if ( isset( $_POST['billing_first_name'] ) && empty( $_POST['billing_first_name'] ) ) {
+        $errors->add( 'billing_first_name_error', __( '<strong>Error</strong>: First name is required!', 'woocommerce' ) );
+    }
+    if ( isset( $_POST['billing_last_name'] ) && empty( $_POST['billing_last_name'] ) ) {
+        $errors->add( 'billing_last_name_error', __( '<strong>Error</strong>: Last name is required!.', 'woocommerce' ) );
+    }
+    return $errors;
+}
+  
+///////////////////////////////
+// 3. SAVE FIELDS
+  
+add_action( 'woocommerce_created_customer', 'bbloomer_save_name_fields' );
+  
+function bbloomer_save_name_fields( $customer_id ) {
+    if ( isset( $_POST['billing_first_name'] ) ) {
+        update_user_meta( $customer_id, 'billing_first_name', sanitize_text_field( $_POST['billing_first_name'] ) );
+        update_user_meta( $customer_id, 'first_name', sanitize_text_field($_POST['billing_first_name']) );
+    }
+    if ( isset( $_POST['billing_last_name'] ) ) {
+        update_user_meta( $customer_id, 'billing_last_name', sanitize_text_field( $_POST['billing_last_name'] ) );
+        update_user_meta( $customer_id, 'last_name', sanitize_text_field($_POST['billing_last_name']) );
+    }
+  
+}
+
+// Validate terms checkbox on registration form
+add_action( 'woocommerce_register_post', 'terms_and_conditions_validation', 20, 3 );
+function terms_and_conditions_validation( $username, $email, $validation_errors ) {
+    if ( ! isset( $_POST['terms'] ) )
+        $validation_errors->add( 'terms_error', __( 'Please accept our terms of use.', 'woocommerce' ) );
+    return $validation_errors;
+}
 
 ?>
