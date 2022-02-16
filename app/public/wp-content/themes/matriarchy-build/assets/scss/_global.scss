@@ -153,6 +153,10 @@ input[type="password"],
       border: 0 !important;
     }
   }
+
+  &--pink {
+    border-color: $pink;
+  }
 }
 
 .mb-hr,
