@@ -8,13 +8,12 @@
 
         @include media-breakpoint-up(md) {
             height: 622px;
-            background-color: $olive;
+            background-color: rgba($olive, 0.4);
         }
     }
 
     &__featured-image {
         height: auto !important;
-        background: $green;
     }
 
     &__content-wrapper {
