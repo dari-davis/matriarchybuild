@@ -3,8 +3,8 @@
 
     .woocommerce-account &,
     .page-template-page-create-account & {
-        &.pt-md-5 {
-            padding-top: 0 !important;
+        @include media-breakpoint-up(md) {
+            padding: 0 !important;
         }
     }
 

@@ -1,5 +1,6 @@
-.page {
-    &__image-wrapper {
+.page:not(.woocommerce-page) {
+
+    .page__image-wrapper {
         position: absolute;
         z-index: -1;
         top: 0;
@@ -12,11 +13,12 @@
         }
     }
 
-    &__featured-image {
+    .page__featured-image {
         height: auto !important;
     }
 
-    &__content-wrapper {
+    .page__content-wrapper {
+        display: flex;
         flex-direction: column;
         margin: 44px 24px;
 
@@ -33,12 +35,13 @@
         }
     }
 
-    &__title,
-    &__content {
+    .page__title,
+    .page__content {
+        border: 1px solid $pink;
         background: $white;
     }
 
-    &__title {
+    .page__title {
         @include media-breakpoint-up(lg) {
             width: 344px;
         }
@@ -48,7 +51,7 @@
         }
     }
 
-    &__content {
+    .page__content {
 
         @include media-breakpoint-up(lg) {
             margin: 88px 0 88px -1px;
@@ -64,10 +67,16 @@
         }
     }
 
-    &__content-inner {
+    .page__content-inner {
         @include media-breakpoint-up(lg) {
             margin: 60px auto;
             max-width: 664px;
         }
+    }
+}
+
+.woocommerce-page {
+    .page__title {
+        display: none;
     }
 }

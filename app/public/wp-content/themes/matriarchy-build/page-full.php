@@ -18,10 +18,10 @@ the_post();
 			<div class="page__image-wrapper"><div class="page__featured-image"></div></div>
 		<?php endif; ?>
 
-		<div id="post-<?php the_ID(); ?>" <?php post_class( 'page__content-wrapper d-flex' ); ?>>
+		<div id="post-<?php the_ID(); ?>" class="page__content-wrapper">
 			<h1 class="page__title entry-title mb-borders mb-borders--pink pt-4 pb-3 mb-0 text-center"><?php the_title(); ?></h1>
 
-			<div class="page__content mb-borders mb-borders--pink">
+			<div class="page__content">
 				<div class="page__content-inner mx-auto">
 					<?php
 						the_content();
