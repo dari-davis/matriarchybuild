@@ -8,11 +8,13 @@
 
         @include media-breakpoint-up(md) {
             height: 622px;
+            background-color: $olive;
         }
     }
 
     &__featured-image {
         height: auto !important;
+        background: $green;
     }
 
     &__content-wrapper {
@@ -50,7 +52,7 @@
     &__content {
 
         @include media-breakpoint-up(lg) {
-            margin: 88px 0;
+            margin: 88px 0 88px -1px;
             width: 834px;
         }
 

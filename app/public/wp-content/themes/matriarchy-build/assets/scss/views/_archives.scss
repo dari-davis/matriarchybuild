@@ -15,17 +15,13 @@
         max-width: 321px;
     }
 
-    &__details {
-        max-width: 281px;
-    }
-
     &__bookable {
-        max-width: 31px;
+        max-width: 41px;
     }
 
     &__header-button.mb-borders {
-        height: 31px;
-        width: 31px;
+        height: 41px;
+        width: 41px;
         border-left: 0;
 
         &.bookable {
@@ -53,6 +49,10 @@
         height: 228px;
         background: rgba($olive, 0.2);
     }
+
+    &__details {
+        max-width: 281px;
+    }
 }
 
 .archives {
@@ -64,5 +64,9 @@
     &__name {
         font-size: 20px;
         font-family: $sans-serif-font-family;
+    }
+
+    &__details {
+        max-width: 324px;
     }
 }

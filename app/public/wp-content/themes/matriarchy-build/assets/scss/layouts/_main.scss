@@ -1,14 +1,16 @@
 .main {
    // do things in here
 
-   .woocommerce-account &,
-   .page-template-page-create-account & {
-       &.pt-md-5 {
-           padding-top: 0 !important;
-       }
-   }
+    .woocommerce-account &,
+    .page-template-page-create-account & {
+        &.pt-md-5 {
+            padding-top: 0 !important;
+        }
+    }
 
-   .page-template-page-full & {
-       padding-top: 0 !important;
-   }
+    .page-template-page-full,
+    .page,
+    .single-post & {
+        padding-top: 0 !important;
+    }
 }

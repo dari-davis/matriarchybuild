@@ -1,0 +1,115 @@
+.single-post {
+    &__image-wrapper {
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        overflow: hidden;
+        width: 100%;
+
+        @include media-breakpoint-up(md) {
+            height: 760px;
+            background-color: rgba($olive, 0.2);
+        }
+    }
+
+    &__featured-image {
+        height: auto !important;
+    }
+
+    &__content-wrapper {
+        flex-direction: column;
+        margin: 44px 24px;
+
+        @include media-breakpoint-up(lg) {
+            flex-direction: row;
+            align-items: start;
+        }
+
+        @include media-breakpoint-up(xl) {
+            flex-direction: row;
+            margin-top: 124px;
+            margin-left: 215px;
+            align-items: start;
+        }
+    }
+
+
+
+    &__title {
+        align-items: center;
+        font-size: 38px;
+        color: $blue;
+        height: 191px;
+        line-height: normal;
+        background: $white;
+    
+        @include media-breakpoint-up(lg) {
+            width: 344px;
+        }
+    }
+
+    &__content {
+
+        @include media-breakpoint-up(lg) {
+            margin: 0 0 88px -1px;
+            width: 834px;
+        }
+
+        // @include media-breakpoint-up(sm) {
+        //    padding: 44px;
+        // }
+
+        // @include media-breakpoint-down(sm) {
+        //    padding: 44px 20px;
+        // }
+
+        .mb-borders {
+            background: $white;
+            border-top: 0;
+        }
+    }
+
+    &__content-inner {
+        padding: 60px 44px;
+
+        @include media-breakpoint-up(lg) {
+            max-width: 664px;
+        }
+    }
+
+    &__date {
+        width: 120px;
+        border: 1px solid $pink;
+
+        span {
+            padding: 0 12px;
+            line-height: 33px;
+            border-right: 1px solid $pink;
+        }
+    }
+
+    &__meta {
+        flex: 1;
+        margin-top: 33px;
+        border: 1px solid $pink;
+        border-bottom: 0;
+
+        span + span {
+            border-top: 1px solid $pink;
+        }
+    }
+
+    .entry-meta {
+        margin-top: -1px;
+
+        span {
+            height: 33px;
+            line-height: 33px;
+            background: $white;
+        }
+
+        .row {
+            align-items: flex-start;
+        }
+    }
+}

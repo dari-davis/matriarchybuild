@@ -15,7 +15,7 @@ the_post();
 		<?php if (has_post_thumbnail()): ?>
 			<a class="page__image-wrapper" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('full', ['class' => 'page__featured-image']); ?></a>
 		<?php else: ?>
-			<div class="page__featured-image"></div>
+			<div class="page__image-wrapper"><div class="page__featured-image"></div></div>
 		<?php endif; ?>
 
 		<div id="post-<?php the_ID(); ?>" <?php post_class( 'page__content-wrapper d-flex' ); ?>>
