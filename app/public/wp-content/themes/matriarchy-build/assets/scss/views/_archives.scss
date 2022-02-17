@@ -23,9 +23,15 @@
         height: 41px;
         width: 41px;
         border-left: 0;
+        align-items: center;
 
         &.bookable {
             background: $pink;
+        }
+
+        img {
+            height: 18px;
+            width: 18px;
         }
     }
 

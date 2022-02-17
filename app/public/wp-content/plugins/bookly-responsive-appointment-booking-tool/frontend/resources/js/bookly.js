@@ -3582,7 +3582,7 @@ var bookly = (function ($) {
 					$container.html(response.html);
 
 					$('.booking-dialog').find('.bookly-box--heading').hide();
-					$('.booking-dialog').find('.bookly-form').addClass('bookly-form--simple')
+					$('.booking-dialog').find('.bookly-form').addClass('bookly-form--simple py-5');
 
 					scrollTo($container, params.form_id);
 					var intlTelInput = response.intlTelInput,
@@ -5377,7 +5377,7 @@ var bookly = (function ($) {
 		xhr_render_time = booklyAjax({
 			data: data,
 			success: function success(response) {
-				$('.booking-dialog').find('.bookly-form').removeClass('bookly-form--simple')
+				$('.booking-dialog').find('.bookly-form').removeClass('bookly-form--simple py-5');
 				$('body').removeClass('bookly-slim');
 
 				if (response.success == false) {

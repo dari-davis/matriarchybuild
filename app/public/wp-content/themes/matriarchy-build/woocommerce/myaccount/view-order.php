@@ -163,7 +163,7 @@ foreach ($order->get_items() as $item_id => $item) {
                 $order = wc_get_order($order_id);
                 $order->update_meta_data('photo1', $_POST["photo1"]);
                 $order->save();
-                var_dump($order->get_meta_data());
+                //var_dump($order->get_meta_data());
             }
             if (isset($_POST['upload'])) { submitPhoto($order_id); } ?>
             <div class="form-group row py-3 m-0">
@@ -183,7 +183,7 @@ foreach ($order->get_items() as $item_id => $item) {
                 $order->update_meta_data('answer4', $_POST["question4"]);
                 $order->update_meta_data('answer5', $_POST["question4"]);
                 $order->save();
-                var_dump($order->get_meta_data());
+                //var_dump($order->get_meta_data());
             }
             if (isset($_POST['submit'])) { submitQuestionnaire($order_id); } ?>
 

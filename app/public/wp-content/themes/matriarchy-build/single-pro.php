@@ -91,7 +91,7 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
                 <h3>Book A Consultation</h3>
                 <div class="bookly-box__details d-flex row">
                   <div class="col-6 py-3" data-consultation-details></div>
-                  <div class="col-6 py-3"><?= $service->duration == 1800 ? '30mins' : '1hr'; ?><br/>$<?= $row->price; ?></div>
+                  <div class="col-6 py-3"><?= $service->duration == 1800 ? '25min' : '55min'; ?><br/>$<?= $row->price; ?></div>
                 </div>
               </div>
               <?php echo do_shortcode('[bookly-form category_id="-1" service_id="'.$row->service_id.'" staff_member_id="'.$row->staff_id.'" hide="categories,services,staff_members,date,week_days,time_range"]'); ?>
@@ -102,7 +102,7 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
                 <div class="col-4 p-0">
                   <div class="booking-card__label m-0 p-3">Duration</div>
                   <div class="booking-card__detail p-3">
-                    <?= $service->duration == 1800 ? '30mins' : '1hr'; ?>
+                    <?= $service->duration == 1800 ? '25min' : '55min'; ?>
                   </div>
                 </div>
                 <div class="col-4 p-0">

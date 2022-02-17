@@ -51,10 +51,11 @@ echo Common::stripScripts( $progress_tracker );
         <?php endif ?>
         <!-- hidden phone field -->
         <div class="bookly-form-group">
-        <label><?php echo Common::getTranslatedOption( 'bookly_l10n_label_phone' ) ?></label>
+            <label><?php echo Common::getTranslatedOption( 'bookly_l10n_label_phone' ) ?></label>
             <div>
                 <input class="bookly-js-user-phone-input<?php if ( get_option( 'bookly_cst_phone_default_country' ) != 'disabled' ) : ?> bookly-user-phone<?php endif ?>" value="<?php echo esc_attr( $userData->getPhone() ) ?>" type="text" placeholder="Phone Number" />
             </div>
+            <div class="bookly-js-user-phone-error bookly-label-error"></div>
         </div>
     </div>
     <?php if ( ! Lib\Config::showFirstLastName() && Lib\Config::showEmailConfirm() ) : ?>
