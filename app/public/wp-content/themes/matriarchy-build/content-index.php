@@ -12,7 +12,7 @@
 		<div class="row m-0">
 			<div class="archives__details col p-0 mb-borders">
 				<?php if (has_post_thumbnail()): ?>
-                	<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('large', ['class' => 'archives__image']); ?></a>
+                	<a href="<?php the_permalink(); ?>" style="background-image: url('<?= get_the_post_thumbnail_url(); ?>');"></a>
 				<?php else: ?>
 					<a href="<?php the_permalink(); ?>"><div class="archives__image"></div></a>
 				<?php endif; ?>

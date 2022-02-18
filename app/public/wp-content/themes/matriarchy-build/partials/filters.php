@@ -19,20 +19,6 @@
                 ?>
             </div>
         </div>
-        
-        <div class="filters__filter me-2 mb-3 mb-md-0">  <!-- Availability -->
-            <div class="filters__select">
-                <?php
-                    $select = "<select class='px-2' name='cat' id='cat2' class='postform'>n";
-                    $select.= "<option value='-1'>Availability</option>n";
-                    $select.= "<option value='bookable'>Available</option>n";
-                    $select.= "<option value='nonbookable'>Unavailable</option>n";
-
-                    $select.= "</select>";
-                    echo $select;
-                ?>
-            </div>
-        </div>
     </div>
 
     <script type="text/javascript">

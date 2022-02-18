@@ -42,6 +42,12 @@ p {
   &.subtext {
     line-height: 1;
   }
+
+  .bold-text {
+    font-family: $sans-serif-font-family;
+    font-size: 18px;
+    font-weight: bold;
+  }
 }
 
 textarea {

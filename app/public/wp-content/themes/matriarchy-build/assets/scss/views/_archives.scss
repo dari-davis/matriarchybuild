@@ -68,11 +68,19 @@
     }
 
     &__name {
+        height: auto !important;
         font-size: 20px;
         font-family: $sans-serif-font-family;
     }
 
     &__details {
         max-width: 324px;
+
+        a {
+            display: block;
+            background-size: cover;
+            height: 317px;
+            width: 319px;
+        }
     }
 }

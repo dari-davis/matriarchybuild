@@ -1,5 +1,7 @@
 .woocommerce {
-	padding-top: 4rem;
+	.woocommerce-checkout & {
+		padding-top: 4rem;
+	}
 
 	form.login,
 	form.register {
