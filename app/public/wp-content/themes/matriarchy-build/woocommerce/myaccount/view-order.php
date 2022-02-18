@@ -17,11 +17,8 @@
  * @version 3.0.0
  */
 
-defined( 'ABSPATH' ) || exit;
 
-$notes = $order->get_customer_order_notes();
 ?>
-<p>
 
 <?php if ( $notes ) : ?>
 	<h2><?php esc_html_e( 'Order updates', 'woocommerce' ); ?></h2>
@@ -224,13 +221,8 @@ foreach ($order->get_items() as $item_id => $item) {
 </div>
 
 <div class="row no-gutters m-0">
-    <div class="col-md-8 p-0">
-		<div class="pt-md-5">
-			<h2><?php esc_html_e( 'Need To Cancel Or Reschedule', 'woocommerce' ); ?></h2>
-			<hr class="mb-hr mb-hr--olive" />
-		</div>
-
-		<p>Give your Expert more project details by filling out a quick survey & you can upload files to review during your consultation.</p>
+    <div class="col-md-8 px-0 py-5">
+		<p><span class="bold-text">Need to cancel or reschedule?</span> Give your Expert more project details by filling out a quick survey & you can upload files to review during your consultation.</p>
         <a href="/contact" class="d-inline-flex button w-auto">Contact Matriarchy Build</a>
 	</div>
 </div>

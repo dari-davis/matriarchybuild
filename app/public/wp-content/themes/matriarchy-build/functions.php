@@ -631,7 +631,8 @@ add_action('init', function() {
 	add_rewrite_endpoint('schedule', EP_PAGES);
 	add_rewrite_endpoint('pricing', EP_PAGES);
 	add_rewrite_endpoint('pro-past-consultations', EP_PAGES);
-	add_rewrite_endpoint('pro-upcoming-consultations', EP_PAGES);
+	add_rewrite_endpoint('consultations', EP_PAGES);
+	add_rewrite_endpoint('booking-details', EP_PAGES);
 });
 
 add_action('woocommerce_account_past-consultations_endpoint', function() {
@@ -690,12 +691,16 @@ add_action('woocommerce_account_pricing_endpoint', function() {
 	wc_get_template('myaccount/pricing.php');
 });
 
-add_action('woocommerce_account_pro-upcoming-consultations_endpoint', function() {
-	wc_get_template('myaccount/pro/upcoming-consultations.php');
+add_action('woocommerce_account_consultations_endpoint', function() {
+	wc_get_template('myaccount/pro/consultations.php');
 });
 
 add_action('woocommerce_account_pro-past-consultations_endpoint', function() {
 	wc_get_template('myaccount/pro/past-consultations.php');
+});
+
+add_action('woocommerce_account_booking-details_endpoint', function() {
+	wc_get_template('myaccount/pro/booking-details.php');
 });
 
 // Remove account links
