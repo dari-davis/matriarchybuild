@@ -31,7 +31,9 @@
       <div class="col-md text-center px-md-5">
         <div class="header__account row">
           <div class="col-md-6 py-4">
-            <?php if (is_user_logged_in()): ?>
+            <?php if (is_user_logged_in() && in_array('pro_user', (array) wp_get_current_user()->roles)): ?>
+              <a class="text-button" href="/my-account/consultations">My Account</a>
+            <?php elseif (is_user_logged_in()): ?>
               <a class="text-button" href="/my-account/upcoming-consultations">My Account</a>
             <?php else: ?>
               <a class="text-button" href="/my-account">Sign In</a>

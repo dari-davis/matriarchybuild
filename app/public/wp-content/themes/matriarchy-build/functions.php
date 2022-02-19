@@ -816,4 +816,20 @@ function terms_and_conditions_validation( $username, $email, $validation_errors 
     return $validation_errors;
 }
 
+
+// login directs
+add_action( 'wp_login', 'prefix_login_redirect_based_on_roles', 10, 2 );
+/**
+ * Redirect Shop Manager to WC Orders
+ * @link https://stackoverflow.com/questions/30124931/how-to-redirect-a-user-with-specific-role-to-a-specific-page-after-login-in-wo
+ */
+function prefix_login_redirect_based_on_roles( $user_login, $user ) {
+
+    if( in_array( 'pro_user',$user->roles ) ){
+        exit( wp_redirect('/my-account/consultations' ) );
+    } else {
+		exit( wp_redirect('/my-account/upcoming-consultations' ) );
+	}
+}
+
 ?>
