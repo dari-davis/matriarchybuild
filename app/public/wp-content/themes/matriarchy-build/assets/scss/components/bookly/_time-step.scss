@@ -1,24 +1,24 @@
 .bookly-time-step {
-  display: inline-flex;
-  margin-bottom: 30px;
-  width: 246px;
-  overflow-y: auto;
+    display: inline-flex;
+    margin-bottom: 30px;
+    width: 246px;
+    overflow-y: auto;
 
-  .bookly-columnizer-wrap {
-    position: relative;
-    width: 100%;
-  }
-
-  .bookly-time-screen {
-    .bookly-day.bookly-js-first-child {
-      display: none;
+    .bookly-columnizer-wrap {
+        position: relative;
+        width: 100%;
     }
-  }
+
+    .bookly-time-screen {
+        .bookly-day.bookly-js-first-child {
+            display: none;
+        }
+    }
 }
 
 .bookly-column {
-  display: inline-block;
-  zoom: 1;
-  vertical-align: top;
-  width: 100%;
+    display: inline-block;
+    zoom: 1;
+    vertical-align: top;
+    width: 100%;
 }

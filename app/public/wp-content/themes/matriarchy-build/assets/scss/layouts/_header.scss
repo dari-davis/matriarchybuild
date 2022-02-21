@@ -1,26 +1,26 @@
 .header {
-  background: $blue;
+    background: $blue;
 
-  &__logo {
-    align-items: center;
-    justify-content: space-around;
-    background: $pink;
+    &__logo {
+        align-items: center;
+        justify-content: space-around;
+        background: $pink;
 
-    @include media-breakpoint-up (md) {
-      max-width: 540px;
-    }
-  }
-
-  &__account {
-    .col-md-6 {
-
-      @include media-breakpoint-up(md) {
-        border-right: 1px solid $pink;
-      }
+        @include media-breakpoint-up (md) {
+            max-width: 540px;
+        }
     }
 
-    .col-md-6 + .col-md-6 {
-      border: 0;
+    &__account {
+        .col-md-6 {
+
+            @include media-breakpoint-up(md) {
+                border-right: 1px solid $pink;
+            }
+        }
+
+        .col-md-6 + .col-md-6 {
+            border: 0;
+        }
     }
-  }
 }
