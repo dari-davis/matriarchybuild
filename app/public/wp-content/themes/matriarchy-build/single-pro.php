@@ -13,14 +13,14 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
   <div class="pro">
     <?php while ( have_posts() ) : the_post(); ?>
 
-      <div class="pro__header row px-md-5">
-        <div class="col-md-8 p-0 d-flex">
+      <div class="pro__header row px-md-5 mx-0">
+        <div class="pro__header-title col-md-8 p-0 d-flex">
           <div class="d-flex flex-column">
             <a class="d-none pro__header-button mb-borders text-center" href="#" title="Favorite This Pro"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/heart.svg"/></a>
             <?php $title_tag = empty($services) ? "Pro is not available for booking" : "Pro is available for booking"; ?>
             <div class="pro__header-button mb-borders text-center <?php if (!empty($services)): ?>bookable<?php endif; ?>" title="<?= $title_tag ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/calendar.svg"/></div>
           </div>
-          <div class="pro__title mb-borders text-center d-flex"><h1 class="pro__name m-0"><?= the_title(); ?></h1></div>
+          <div class="pro__title mb-borders text-center d-flex"><h1 class="pro__name m-0"><span><?= the_title(); ?><span></h1></div>
         </div>
         <div class="pro__attributes col-md-4 p-0">
           <?php if (get_field('trade')): ?><div class="d-flex px-3"><?= get_field('trade'); ?></div><?php endif; ?>
@@ -34,15 +34,17 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
         </div>
       </div>
 
-      <div class="row pro__image col-md-8">
-        <?php if (has_post_thumbnail()): ?>
-          <?php the_post_thumbnail('large', ['class' => 'pro__image']); ?>
-        <?php endif; ?>
+      <div class="pro__image col-md-8">
+        <div class="pro__image-inner">
+          <?php if (has_post_thumbnail()): ?>
+            <?php the_post_thumbnail('large', ['class' => 'pro__image']); ?>
+          <?php endif; ?>
+        </div>
       </div>
 
-      <div class="pro__details row no-gutters py-4">
-        <div class="px-md-5 py-3 row no-gutters">
-          <div class="pro__content <?= get_field('services') ? 'col-md-8' : 'col-md' ?> px-4"><?= the_content(); ?></div>
+      <div class="pro__details py-4">
+        <div class="py-3 row">
+          <div class="pro__content <?= get_field('services') ? 'col-md-8' : 'col-md' ?>"><?= the_content(); ?></div>
           <?php if (get_field('services')): ?>
             <div class="pro__services col-md-4">
               <h3>Services</h3>

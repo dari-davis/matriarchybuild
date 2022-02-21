@@ -4,10 +4,11 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'archives__archive mb-5 mx-md-2 p-0' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'archives__archive mb-5 col-md-4' ); ?>>
 
 	<?php if (get_post_type() === 'pro'): ?>
-		<?= get_template_part('partials/pro-card'); ?>
+		<div class="pros__pro mb-5">
+		<?= get_template_part('partials/pro-card'); ?></div>
 	<?php else: ?>
 		<div class="row m-0">
 			<div class="archives__details col p-0 mb-borders">

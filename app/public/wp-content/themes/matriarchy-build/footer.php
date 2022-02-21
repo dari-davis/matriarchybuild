@@ -13,21 +13,21 @@
 				endif;
 			?>
 		</main><!-- /#main -->
-		<footer id="footer" class="footer row no-gutters m-0">
-			<div class="footer__details col-md d-flex">
-				<div class="row no-gutters">
-					<div class="col-md-4 footer__logo py-4 py-md-0 text-center">
+		<footer id="footer" class="footer container-fluid p-0 m-0 row">
+			<div class="footer__details col-md d-flex py-md-4 align-items-center">
+				<div class="footer__details-inner row m-0">
+					<div class="col-md-4 footer__logo py-4 p-md-0 text-center py-lg-4">
 						<a href="/" class="d-md-none"><img class="m-auto" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-footer-blue.svg"></a>
 						<a href="/" class="d-none d-md-block"><img class="m-auto" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-footer.svg"></a>
 					</div>
-					<div class="col-md-8 py-4">
+					<div class="col-md-8 py-5 py-md-4 px-md-4 px-xl-5">
 						<h3 class="text-white">Apply To Be A "Pro"</h3>
 						<p>Duis id volutpat urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque lectus lorem, mollis ac purus vitae, aliquam finibus nunc.</p>
 						<a href="/" class="text-button">Apply Today</a>
 					</div>
 				</div>
 			</div>
-			<div class="footer__menu d-flex flex-column col-md px-4 py-3 py-md-5">
+			<div class="footer__menu d-flex flex-column col-md px-md-4 py-4 py-md-5">
 				<?php
 					if ( has_nav_menu( 'footer-menu' ) ) : // See function register_nav_menus() in functions.php
 						/*
@@ -49,7 +49,7 @@
 					endif;
 
 				?>
-				<ul class="footer__social-menu d-flex flex-row p-0 m-0">
+				<ul class="footer__social-menu d-flex flex-row p-0 m-0 pt-md-5">
 					<li class="footer__social-menu-item"><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/twitter.svg"></a></li>
 					<li class="footer__social-menu-item"><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/facebook.svg"></a></li>
 				</ul>

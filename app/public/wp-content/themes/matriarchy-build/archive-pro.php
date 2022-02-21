@@ -7,7 +7,9 @@
 
     <div class="pros__row row m-0">
       <?php while (have_posts()): the_post(); ?>
-        <?= get_template_part('partials/pro-card'); ?>
+        <div class="col-md-4 pros__pro mb-5">
+          <?= get_template_part('partials/pro-card'); ?>
+        </div>
       <?php endwhile; ?>
     </div>
   </div>

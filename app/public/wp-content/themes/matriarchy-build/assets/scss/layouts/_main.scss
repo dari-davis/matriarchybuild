@@ -1,5 +1,10 @@
 .main {
-    margin-top: 65px;
+    margin-top: 33px;
+    padding: 0 20px;
+
+    @include media-breakpoint-up(md) {
+        margin-top: 65px;
+    }
 
     .woocommerce-account &,
     .page-template-page-create-account & {
@@ -12,5 +17,9 @@
     .page &,
     .single-post & {
         margin-top: 0 !important;
+    }
+
+    .single-pro & {
+        padding: 0;
     }
 }

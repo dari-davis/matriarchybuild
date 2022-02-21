@@ -81,13 +81,13 @@
       </div>
     </header>
 
-    <main id="main" class="main mx-auto px-md-0"
+    <main id="main" class="main mx-auto px-md-0 container-fluid"
       <?php if ( isset( $navbar_position ) && 'fixed_top' === $navbar_position ) : echo ' style="padding-top: 100px;"'; elseif ( isset( $navbar_position ) && 'fixed_bottom' === $navbar_position ) : echo ' style="padding-bottom: 100px;"'; endif; ?>>
       <?php
 			// If Single or Archive (Category, Tag, Author or a Date based page).
 			if ( is_single() || is_archive() ) :
 		?>
-      <div class="row no-gutters m-0">
+      <div class="row m-0">
         <div class="col-12 p-0">
           <?php
 			endif;

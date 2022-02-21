@@ -1,4 +1,4 @@
-.archives {
+.pros {
     margin: 0 auto;
     max-width: 1440px;
 
@@ -14,10 +14,6 @@
 
         @include media-breakpoint-up(lg) {
             max-width: 321px;
-        }
-
-        @include media-breakpoint-down(md) {
-            padding: 0;
         }
 
         &:last-child {
@@ -54,7 +50,6 @@
     }
 
     &__title {
-        border-top: 1px solid $olive;
         padding: 14px 10px 10px 10px;
         line-height: 26px;
         background: $white;
@@ -71,23 +66,34 @@
     }
 }
 
-.archives {
-    &__image {
-        background: rgba($olive, 0.2);
+.pros {
+
+    &__image-wrapper {
+        display: block;
+        height: 208px;
+        overflow: hidden;
     }
 
-    &__name {
-        height: auto !important;
-        font-size: 20px;
-        font-family: $sans-serif-font-family;
+    &__image {
+        min-height: 228px;
+        background: rgba($olive, 0.2);
+
+        @include media-breakpoint-up(md) {
+            height: 228px;
+        }
     }
 
     &__details {
-
-        a {
-            display: block;
-            background-size: cover;
-            height: 321px;
+        @include media-breakpoint-up(md) {
+            max-width: 281px;
         }
+    }
+
+    &__pro-name {
+        background: $white;
+    }
+
+    &__title {
+        display: table-caption;
     }
 }
