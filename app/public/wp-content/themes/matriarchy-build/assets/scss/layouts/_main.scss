@@ -4,13 +4,13 @@
     .woocommerce-account &,
     .page-template-page-create-account & {
         @include media-breakpoint-up(md) {
-            padding: 0 !important;
+            margin-top: 0 !important;
         }
     }
 
     .page-template-page-full &,
     .page &,
     .single-post & {
-        padding-top: 0 !important;
+        margin-top: 0 !important;
     }
 }

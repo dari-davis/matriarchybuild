@@ -15,3 +15,13 @@ $font-color:            $blue;
 $font-family: 'Dharma', Fallback, monospace;
 $heading-font-family: 'NauticGroteskBold', Fallback, sans-serif;
 $sans-serif-font-family:  'BNTGothic', Fallback, sans-serif;
+
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 1024px,
+    xl: 1200px,
+    xxl: 1400px
+);

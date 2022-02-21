@@ -1,10 +1,19 @@
 .primary-nav {
     @include media-breakpoint-up(md) {
-        height: 120px;
+        height: 80px;
         border: 1px solid $pink;
         border-width: 1px 0;
-
     }
+
+    @include media-breakpoint-up(xl) {
+        height: 120px;
+    }
+
+    @include media-breakpoint-down(md) {
+        background: $green;
+        border-bottom: 1px solid $pink;
+    }
+
 
     &__menu {
         flex-direction: column;
@@ -19,11 +28,12 @@
     .menu-item {
         display: flex;
         flex: 1;
-        padding: 4px 0;
+        padding: 5px 0;
         align-items: center;
-        justify-content: center;
 
         @include media-breakpoint-up(md) {
+            justify-content: center;
+            padding-top: 10px; // font sizing fix;
             border-left: 1px solid $pink;
         }
 
@@ -35,11 +45,21 @@
     .nav-link {
         padding: 0;
         font-family: $heading-font-family;
-        font-size: 38px;
+        font-size: 28px;
         color: $pink;
-        line-height: 36px;
+        line-height: 26px;
         letter-spacing: 2px;
         text-align: center;
         text-transform: uppercase;
+
+        @include media-breakpoint-up(md) {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        @include media-breakpoint-up(xl) {
+            font-size: 38px;
+            line-height: 36px;
+        }
     }
 }

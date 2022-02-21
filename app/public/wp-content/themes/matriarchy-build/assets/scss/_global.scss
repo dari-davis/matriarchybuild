@@ -185,3 +185,9 @@ hr.mb:not([size]) {
         color: $olive;
     }
 }
+
+.desktop-break {
+    @include media-breakpoint-down(md) {
+        display: none;
+    }
+}

@@ -50,4 +50,9 @@ import * as bootstrap from 'bootstrap';
 			});
 		}
 	});
+
+	$('.header__hamburger').on('click', function(e) {
+		e.preventDefault();
+		$('.header__nav-container').toggleClass('invisible');
+	});
 } )();
