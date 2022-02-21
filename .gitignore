@@ -5,3 +5,6 @@
 
 .DS_Store
 wp-config.php
+
+# uploads
+app/public/wp-content/uploads/
