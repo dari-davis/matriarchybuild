@@ -1,6 +1,9 @@
 .pro {
 
     &__header-button.mb-borders {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         height: 41px;
         width: 41px;
         border-right: 0;
