@@ -13,46 +13,50 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
   <div class="pro">
     <?php while ( have_posts() ) : the_post(); ?>
 
-      <div class="pro__header row px-md-5 mx-0">
-        <div class="pro__header-title col-md-8 p-0 d-flex">
-          <div class="d-flex flex-column">
-            <a class="d-none pro__header-button mb-borders text-center" href="#" title="Favorite This Pro"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/heart.svg"/></a>
-            <?php $title_tag = empty($services) ? "Pro is not available for booking" : "Pro is available for booking"; ?>
-            <div class="pro__header-button mb-borders text-center <?php if (!empty($services)): ?>bookable<?php endif; ?>" title="<?= $title_tag ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/calendar.svg"/></div>
+      <div class="pro__header">
+        <div class="pro__header-inner row px-md-5 px-lg-0 mx-0 col-lg-6">
+          <div class="pro__header-title col-md-8 p-0 d-flex">
+            <div class="d-flex flex-column">
+              <a class="d-none pro__header-button mb-borders text-center" href="#" title="Favorite This Pro"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/heart.svg"/></a>
+              <?php $title_tag = empty($services) ? "Pro is not available for booking" : "Pro is available for booking"; ?>
+              <div class="pro__header-button mb-borders text-center <?php if (!empty($services)): ?>bookable<?php endif; ?>" title="<?= $title_tag ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/calendar.svg"/></div>
+            </div>
+            <div class="pro__title mb-borders text-center d-flex"><h1 class="pro__name m-0"><span><?= the_title(); ?><span></h1></div>
           </div>
-          <div class="pro__title mb-borders text-center d-flex"><h1 class="pro__name m-0"><span><?= the_title(); ?><span></h1></div>
-        </div>
-        <div class="pro__attributes col-md-4 p-0">
-          <?php if (get_field('trade')): ?><div class="d-flex px-3"><?= get_field('trade'); ?></div><?php endif; ?>
-          <?php if (get_field('location')): ?><div class="d-flex px-3"><?= get_field('location'); ?></div><?php endif; ?>
-          <?php if (get_field('website') || get_field('social')): ?>
-            <div class="d-flex px-3">
-              <?php if (get_field('website')): ?><a href="<?= get_field('website'); ?>" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/link.svg"/></a><?php endif; ?>
-              <?php if (get_field('social')): ?><a class="px-1" href="<?= get_field('social'); ?>" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/instagram.svg"/></a><?php endif; ?>
-            </div>
-          <?php endif; ?>
-        </div>
-      </div>
-
-      <div class="pro__image col-md-8">
-        <div class="pro__image-inner">
-          <?php if (has_post_thumbnail()): ?>
-            <?php the_post_thumbnail('large', ['class' => 'pro__image']); ?>
-          <?php endif; ?>
+          <div class="pro__attributes col-md-4 p-0">
+            <?php if (get_field('trade')): ?><div class="d-flex px-3"><?= get_field('trade'); ?></div><?php endif; ?>
+            <?php if (get_field('location')): ?><div class="d-flex px-3"><?= get_field('location'); ?></div><?php endif; ?>
+            <?php if (get_field('website') || get_field('social')): ?>
+              <div class="d-flex px-3">
+                <?php if (get_field('website')): ?><a href="<?= get_field('website'); ?>" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/link.svg"/></a><?php endif; ?>
+                <?php if (get_field('social')): ?><a class="px-1" href="<?= get_field('social'); ?>" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/instagram.svg"/></a><?php endif; ?>
+              </div>
+            <?php endif; ?>
+          </div>
         </div>
       </div>
 
-      <div class="pro__details py-4">
-        <div class="py-3 row">
-          <div class="pro__content <?= get_field('services') ? 'col-md-8' : 'col-md' ?>"><?= the_content(); ?></div>
-          <?php if (get_field('services')): ?>
-            <div class="pro__services col-md-4">
-              <h3>Services</h3>
-              <?php foreach(get_field('services') as $service): ?>
-                <div class="pro__service"><?= $service ?></div>
-              <?php endforeach; ?>
-            </div>
-          <?php endif; ?>
+      <div class="row m-0 px-lg-4">
+        <div class="pro__image col-md-8 col-lg p-0">
+          <div class="pro__image-inner p-lg-0">
+            <?php if (has_post_thumbnail()): ?>
+              <?php the_post_thumbnail('large', ['class' => 'pro__image']); ?>
+            <?php endif; ?>
+          </div>
+        </div>
+
+        <div class="pro__details py-4 col-lg-6">
+          <div class="py-3 row">
+            <div class="pro__content <?= get_field('services') ? 'col-md-8' : 'col-md' ?>"><?= the_content(); ?></div>
+            <?php if (get_field('services')): ?>
+              <div class="pro__services col-md-4">
+                <h3>Services</h3>
+                <?php foreach(get_field('services') as $service): ?>
+                  <div class="pro__service"><?= $service ?></div>
+                <?php endforeach; ?>
+              </div>
+            <?php endif; ?>
+          </div>
         </div>
       </div>
 
