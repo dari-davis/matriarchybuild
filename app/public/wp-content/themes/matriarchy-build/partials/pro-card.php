@@ -4,11 +4,12 @@
     <div class="pros__details col p-0 mb-borders">
         <a class="pros__pro-name d-block" href="<?php the_permalink(); ?>"><div class="pros__title"><?= the_title(); ?></div></a>
         <?php if (has_post_thumbnail()): ?>
-            <a class="pros__image-wrapper" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('large', ['class' => 'pros__image']); ?></a>
+            <a class="pros__image-wrapper" href="<?php the_permalink(); ?>" style="background-image: url('<?= get_the_post_thumbnail_url(); ?>');"><div class="pros__image"></div></a>
+
         <?php else: ?>
             <a class="pros__image-wrapper" href="<?php the_permalink(); ?>"><div class="pros__image"></div></a>
         <?php endif; ?>
-        <div class="pros__trade p-2"><?= get_field('trade'); ?></div>
+        <div class="pros__trade px-2"><?= get_field('trade'); ?></div>
     </div>
     <div class="pros__bookable col d-flex flex-column p-0">
         <?php $title_tag = empty($services) ? "Pro is not available for booking" : "Pro is available for booking"; ?>
