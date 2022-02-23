@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <?php wp_head(); ?>
+
+  <!-- BUG HERD -->
+  <script type="text/javascript" src="https://www.bugherd.com/sidebarv2.js?apikey=17uyxyqtgbj0wovxn3mb9w" async="true"></script>
 </head>
 
 <?php
