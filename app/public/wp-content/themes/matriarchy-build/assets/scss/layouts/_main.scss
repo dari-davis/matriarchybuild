@@ -1,8 +1,8 @@
 .main {
     margin-top: 33px;
-    padding: 0 20px;
+    padding: 0 $padding-small;
 
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(lg) {
         margin-top: 65px;
     }
 

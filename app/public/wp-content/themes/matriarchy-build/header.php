@@ -27,11 +27,11 @@
 
   <div id="wrapper">
     <header id="header" class="header row no-gutters m-0">
-      <div class="header__logo col-md p-4 p-md-3 p-lg-4 d-flex">
+      <div class="header__logo col-md py-4 py-md-0 p-lg-4 d-flex">
         <a href="/"><img class="header__logo-image mx-auto" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg"></a>
       </div>
 
-      <div class="header__nav col-md text-md-center">
+      <div class="header__nav col-md text-md-center gx-0">
         <div class="header__nav-container invisible d-md-flex">
           <div class="header__account row pt-3 pb-4 py-md-0 px-2 px-md-0">
             <div class="col-md-6 py-2 py-md-3 py-lg-4">
@@ -64,7 +64,7 @@
           </div>
         </div>
 
-        <div class="row py-4 no-gutters px-4 px-md-0 pt-md-2 pb-md-3 py-lg-4">
+        <div class="header__search-container row pt-md-2 pb-md-3 py-lg-4 gx-0">
           <a class="header__hamburger col-auto p-0 me-3 me-md-0 mb-borders d-flex d-md-none" href="/"><img class="" src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/menu.svg"></a>
           <div class="search col p-0">
             <?php if ( '1' === $search_enabled ) : ?>

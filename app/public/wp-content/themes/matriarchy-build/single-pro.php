@@ -36,7 +36,7 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
         </div>
       </div>
 
-      <div class="row m-0 px-lg-4">
+      <div class="pro__details-container row m-0">
         <div class="pro__image col-md-8 col-lg p-0">
           <div class="pro__image-inner p-lg-0">
             <?php if (has_post_thumbnail()): ?>
@@ -45,8 +45,8 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
           </div>
         </div>
 
-        <div class="pro__details py-4 col-lg-6">
-          <div class="py-3 row">
+        <div class="pro__details py-4 col-lg-6 gx-0">
+          <div class="py-3 row gx-0">
             <div class="pro__content <?= get_field('services') ? 'col-md-8' : 'col-md' ?>"><?= the_content(); ?></div>
             <?php if (get_field('services')): ?>
               <div class="pro__services col-md-4">

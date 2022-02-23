@@ -1,5 +1,5 @@
-<div class="filters row no-gutters m-0 mb-3 mb-md-5">
-    <div class="filters__wrapper d-flex p-0 ms-md-2">
+<div class="filters row gx-0 m-0 mb-3 mb-md-5">
+    <div class="filters__wrapper d-flex p-0">
         <p class="filters__heading me-md-3">Filter <img class="d-md-none" src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/arrow_blue.svg"></p>
         <div class="filters__filter me-md-2 mb-3 mb-md-0"> <!-- Trade -->
             <div class="filters__select">
