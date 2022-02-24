@@ -21,7 +21,15 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
               <?php $title_tag = empty($services) ? "Pro is not available for booking" : "Pro is available for booking"; ?>
               <div class="pro__header-button mb-borders text-center <?php if (!empty($services)): ?>bookable<?php endif; ?>" title="<?= $title_tag ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/calendar.svg"/></div>
             </div>
-            <div class="pro__title mb-borders text-center d-flex"><h1 class="pro__name m-0"><span><?= the_title(); ?><span></h1></div>
+            <div class="pro__title mb-borders text-center d-flex">
+              <?php if (have_rows('display_name')): ?>
+                <?php while (have_rows('display_name')): the_row(); ?>
+                  <h1 class="pro__name m-0"><?= get_sub_field('line_1'); ?><br/><?= get_sub_field('line_2'); ?></h1>
+                <?php endwhile; ?>
+              <?php else: ?>
+                <h1 class="pro__name m-0"><span><?= the_title(); ?><span></h1>
+              <?php endif; ?>
+            </div>
           </div>
           <div class="pro__attributes col-md-4 p-0">
             <?php if (get_field('trade')): ?><div class="d-flex px-3"><?= get_field('trade'); ?></div><?php endif; ?>
