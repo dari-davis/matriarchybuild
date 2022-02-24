@@ -8,15 +8,15 @@
 <div class="row no-gutters m-0 position-relative">
 	<div class="col-12 p-0">
 		<?php if (has_post_thumbnail()): ?>
-			<a class="single-post__image-wrapper" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('full', ['class' => 'single-post__featured-image']); ?></a>
-		<?php else: ?>
-			<div class="single-post__image-wrapper"><div class="single-post__featured-image"></div></div>
+			<a class="single-post__image-wrapper" style="background-image: url('<?= get_the_post_thumbnail_url(); ?>');" href="<?php the_permalink(); ?>"><div class="single-post__featured-image"></div></a>
 		<?php endif; ?>
 
 		<div id="post-<?php the_ID(); ?>" <?php post_class( 'single-post__content-wrapper d-flex' ); ?>>
 			<div class="single-post__header">
-				<h1 class="single-post__title entry-title mb-borders mb-borders--pink px-4 mb-0 text-center d-flex"><?php the_title(); ?></h1>
-
+				<div class="single-post__title-container">
+					<img class="d-none d-lg-block" src="<?php echo get_template_directory_uri(); ?>/assets/images/scafolding-posts-small.png">
+					<h1 class="single-post__title entry-title mb-borders mb-borders--pink px-3 mb-0 text-center d-flex"><?php the_title(); ?></h1>
+				</div>
 				<?php if ( 'post' === get_post_type() ): ?>
 					<div class="entry-meta">
 						<div class="row m-0">
@@ -35,7 +35,7 @@
 			</div>
 
 			<div class="single-post__content">
-				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/scafolding_posts.png">
+				<img class="d-none d-md-block" src="<?php echo get_template_directory_uri(); ?>/assets/images/scafolding-posts.png">
 				<div class="mb-borders mb-borders--pink">
 					<div class="single-post__content-inner mx-auto">
 						<?php

@@ -5,9 +5,12 @@
         top: 0;
         overflow: hidden;
         width: 100%;
+        height: 350px;
+        background-size: cover;
 
         @include media-breakpoint-up(md) {
             height: 760px;
+            overflow: hidden;
             background-color: rgba($olive, 0.2);
         }
     }
@@ -18,33 +21,50 @@
 
     &__content-wrapper {
         flex-direction: column;
-        margin: 44px 24px;
+        padding: 0 $padding-small;
+        margin-top: $margin-top-medium;
 
-        @include media-breakpoint-up(lg) {
+        @include media-breakpoint-up(md) {
+            margin-top: $margin-top-large;
+            margin-bottom: $margin-bottom;
+            padding: 0 $padding-medium;
             flex-direction: row;
             align-items: start;
+        }
+
+        @include media-breakpoint-up(lg) {
+            margin-top: $margin-top-large;
+            padding: 0 $padding-large;
         }
 
         @include media-breakpoint-up(xl) {
             flex-direction: row;
             margin-top: 124px;
-            margin-left: 215px;
             align-items: start;
         }
     }
 
-
+    &__title-container {
+        display: flex;
+    }
 
     &__title {
-        align-items: center;
+        flex-direction: column;
+        justify-content: center;
         font-size: 38px;
         color: $blue;
         height: 191px;
         line-height: normal;
         background: $white;
+
+        @include media-breakpoint-up(md) {
+            border-right: 0;
+        }
     
         @include media-breakpoint-up(lg) {
             width: 344px;
+            height: 193px;
+            border-left: 0;
         }
     }
 
@@ -57,14 +77,21 @@
 
         .mb-borders {
             background: $white;
-            border-top: 0;
+
+            @include media-breakpoint-up(md) {
+                border-top: 0;
+            }
         }
     }
 
     &__content-inner {
-        padding: 60px 44px;
+        padding: $padding-medium 44px;
+        font-family: $sans-serif-font-family;
+        font-size: 20px;
+        font-weight: bold;
 
-        @include media-breakpoint-up(lg) {
+        @include media-breakpoint-up(md) {
+            padding: $padding-large 44px;
             max-width: 664px;
         }
     }
@@ -78,16 +105,27 @@
             line-height: 33px;
             border-right: 1px solid $pink;
         }
+
+        @include media-breakpoint-up(lg) {
+            border-width: 0 1px 1px;
+        }
     }
 
     &__meta {
         flex: 1;
         margin-top: 33px;
         border: 1px solid $pink;
-        border-bottom: 0;
 
         span + span {
             border-top: 1px solid $pink;
+        }
+
+        @include media-breakpoint-down(md) {
+            border-bottom: 0;
+        }
+
+        @include media-breakpoint-up(md) {
+            border-right: 0;
         }
     }
 
@@ -102,6 +140,10 @@
 
         .row {
             align-items: flex-start;
+        }
+
+        @include media-breakpoint-up(lg) {
+            margin-left: 172px;
         }
     }
 }

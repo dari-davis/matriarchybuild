@@ -16,7 +16,7 @@
         }
 
         &:after {
-            @include media-breakpoint-up(lg) {
+            @include media-breakpoint-up(md) {
                 content: "";
                 flex: auto;
             }

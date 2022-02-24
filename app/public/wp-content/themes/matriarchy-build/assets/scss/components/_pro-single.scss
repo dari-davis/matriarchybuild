@@ -1,7 +1,4 @@
 .pro {
-    @include media-breakpoint-up(lg) {
-        margin-bottom: 42px;
-    }
 
     &__header {
         padding: 0 $padding-small;
@@ -92,6 +89,7 @@
 
     &__details-container {
         @include media-breakpoint-up(lg) {
+            margin-bottom: $margin-bottom;
             padding-left: $padding-large;
             padding-right: $padding-large;
         }
