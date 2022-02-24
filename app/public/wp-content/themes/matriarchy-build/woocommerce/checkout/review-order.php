@@ -41,7 +41,8 @@ foreach ( WC()->cart->get_cart() as $wc_key => $wc_item ) {
 	$startTime = date_timezone_set(new DateTime($UTCTime), timezone_open($wc_item['bookly']['time_zone']));
 
 	// time and date info
-	$duration = floor($serviceInfo[0]->duration/60);
+	$booklyDuration = floor($serviceInfo[0]->duration/60);
+	$duration = $booklyDuration > 0 ? ($booklyDuration - 5) : $booklyDuration;
 	$endTime = new DateTime(date_format($startTime, 'g:i a'));
 	$endTime->add(new DateInterval('PT' . $duration . 'M'));
 	$timeOfDay = date_format($endTime, 'a');

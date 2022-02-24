@@ -20,26 +20,6 @@
 
 ?>
 
-<?php if ( $notes ) : ?>
-	<h2><?php esc_html_e( 'Order updates', 'woocommerce' ); ?></h2>
-	<ol class="woocommerce-OrderUpdates commentlist notes">
-		<?php foreach ( $notes as $note ) : ?>
-		<li class="woocommerce-OrderUpdate comment note">
-			<div class="woocommerce-OrderUpdate-inner comment_container">
-				<div class="woocommerce-OrderUpdate-text comment-text">
-					<p class="woocommerce-OrderUpdate-meta meta"><?php echo date_i18n( esc_html__( 'l jS \o\f F Y, h:ia', 'woocommerce' ), strtotime( $note->comment_date ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-					<div class="woocommerce-OrderUpdate-description description">
-						<?php echo wpautop( wptexturize( $note->comment_content ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-					</div>
-					<div class="clear"></div>
-				</div>
-				<div class="clear"></div>
-			</div>
-		</li>
-		<?php endforeach; ?>
-	</ol>
-<?php endif; ?>
-
 <?php global $wpdb;
 
 foreach ($order->get_items() as $item_id => $item) {
@@ -61,14 +41,16 @@ foreach ($order->get_items() as $item_id => $item) {
         // appointment time and date
         $unixTime = strtotime($data['items'][0]['slots'][0][2]);
         $date = date('M j, Y', $unixTime);
-        $UTCTime = date('g:i a', $unixTime);
+        $UTCTime = date('M j, Y g:i a', $unixTime);
+        $apptTime = date('Y-m-d g:i:s', $unixTime);
 
         // convert to users timezone
         $startTime = date_timezone_set(new DateTime($UTCTime), timezone_open($data['time_zone']));
         $dateTime = date_format($startTime, 'M j, Y g:i a'); // appt date & time
 
         // time and date info
-        $duration = floor($serviceInfo[0]->duration/60);
+        $booklyDuration = floor($serviceInfo[0]->duration/60);
+        $duration = $booklyDuration > 0 ? ($booklyDuration - 5) : $booklyDuration;
         $endTime = new DateTime(date_format($startTime, 'g:i a'));
         $endTime->add(new DateInterval('PT' . $duration . 'M'));
         $timeOfDay = date_format($endTime, 'a');
@@ -78,12 +60,20 @@ foreach ($order->get_items() as $item_id => $item) {
         // get current date and time in users timezone
         $currentDateTime = date_timezone_set(new DateTime('now'), timezone_open($data['time_zone']));
         $currentDateTime = date_format($currentDateTime, 'M j, Y g:i a');
-        $apptIsWhen = $dateTime < $currentDateTime ? "upcoming" : "past";
+        $apptIsWhen = $dateTime < $currentDateTime ? "past" : "upcoming";
+
+        $currentMonth = date("Y-m-d", strtotime($currentDateTime));
+		$apptMonth = date("Y-m-d", strtotime($dateTime));
+		$isPastMonth = $apptMonth < $currentMonth;
+
+        // Zoom ID
+		$appointment = $wpdb->get_results('SELECT * FROM wp_bookly_appointments WHERE start_date="'.$apptTime.'";');
+		$zoomId = $appointment[0]->online_meeting_id;
     }
 } ?>
 
 <?php if (isset($data['items']) && !empty($serviceInfo)): ?>
-    <div class="consultation-card consultation-card--<?= $apptIsWhen; ?> row mb-borders m-0 mb-4">
+    <div class="consultation-card row mb-borders m-0 mb-4">
         <div class="col mb-borders--right consultation-card__yellow-bg p-3">
             <div class="consultation-card__detail mb-2"><?= $serviceInfo[0]->title;?></div>
             <div class="consultation-card__pro"><?= $staffName; ?></div>
@@ -92,6 +82,9 @@ foreach ($order->get_items() as $item_id => $item) {
         <div class="col mb-borders--right p-3">
             <div><?= $date; ?></div>
             <div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
+            <?php if(!empty($zoomId) && ($apptIsWhen == 'upcoming')): ?>
+                <a class="consultation-card__zoom-link" href="https://zoom.us/j/<?= $zoomId; ?>"><img class="" src="<?php echo get_template_directory_uri(); ?>/assets/images/zoom.png"></a>
+            <?php endif; ?>
         </div>
         <div class="col p-3 d-flex justify-content-end">
             <div><?= wc_price($price); ?></div>
@@ -103,6 +96,19 @@ foreach ($order->get_items() as $item_id => $item) {
         </div>
     </div>
     <?php $hasConsultations = true; ?>
+<?php endif; ?>
+
+<?php if (!empty($order->customer_note)): ?>
+    <div class="row no-gutters m-0">
+        <div class="col-md-8 p-0">
+            <div class="pt-md-5">
+                <h2><?php esc_html_e( 'Your Note To The Pro', 'woocommerce' ); ?></h2>
+                <hr class="mb-hr mb-hr--olive" />
+            </div>
+
+            <p><?= $order->customer_note ?></p>
+        </div>
+    </div>
 <?php endif; ?>
 
 <div class="row no-gutters m-0">
@@ -220,9 +226,11 @@ foreach ($order->get_items() as $item_id => $item) {
     <?php endif; ?>
 </div>
 
-<div class="row no-gutters m-0">
-    <div class="col-md-8 px-0 py-5">
-		<p><span class="bold-text">Need to cancel or reschedule?</span> Give your Expert more project details by filling out a quick survey & you can upload files to review during your consultation.</p>
-        <a href="/contact" class="d-inline-flex button w-auto">Contact Matriarchy Build</a>
-	</div>
-</div>
+<?php if ($apptIsWhen == "upcoming" && !$isPastMonth): ?>
+    <div class="row no-gutters m-0">
+        <div class="col-md-8 px-0 py-5">
+            <p><span class="bold-text">Need to cancel or reschedule?</span> Give your Expert more project details by filling out a quick survey & you can upload files to review during your consultation.</p>
+            <a href="/contact" class="d-inline-flex button w-auto">Contact Matriarchy Build</a>
+        </div>
+    </div>
+<?php endif; ?>
