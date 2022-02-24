@@ -52,4 +52,10 @@
     &[type="submit"] {
         -webkit-appearance: none;
     }
+
+    .account-nav--dashboard & {
+        &:after {
+            background: transparent !important;
+        }
+    }
 }

@@ -24,8 +24,7 @@ class Page extends Lib\Base\Component
                     ? array()
                     : array( 'css/intlTelInput.css' ) ),
                 array(
-                    'css/picker.classic.css',
-                    'css/picker.classic.date.css',
+                    '',
                 ),
                 is_rtl()
                     ? array( 'css/bookly-rtl.css', 'css/bookly-main.css', )

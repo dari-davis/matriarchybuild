@@ -32,8 +32,8 @@ class ShortCode extends Lib\Base\Component
         if ( get_option( 'bookly_gen_link_assets_method' ) == 'enqueue' || self::postsHaveShortCode() ) {
             $styles = array(
                 'bookly' => array(
-                    'frontend/resources/css/picker.classic.css' => array( 'bookly-frontend-globals' ),
-                    'frontend/resources/css/picker.classic.date.css',
+                    '' => array( 'bookly-frontend-globals' ),
+                    '',
                 ),
             );
             if ( get_option( 'bookly_cst_phone_default_country' ) == 'disabled' ) {

@@ -177,51 +177,54 @@ foreach ($order->get_items() as $item_id => $item) {
         </form>
 
         <form class="questionnaire px-4 py-5" method="post">
+            <?php $showQuestions = true; ?>
             <?php function submitQuestionnaire($order_id) {
                 echo "Your questionnarie has been successfully submitted!";
+                $showQuestions = false;
                 $order = wc_get_order($order_id);
                 $order->update_meta_data('answer1', $_POST["question1"]);
                 $order->update_meta_data('answer2', $_POST["question2"]);
                 $order->update_meta_data('answer3', $_POST["question3"]);
                 $order->update_meta_data('answer4', $_POST["question4"]);
-                $order->update_meta_data('answer5', $_POST["question4"]);
+                $order->update_meta_data('answer5', $_POST["question5"]);
                 $order->save();
                 //var_dump($order->get_meta_data());
             }
             if (isset($_POST['submit'])) { submitQuestionnaire($order_id); } ?>
 
-            <div class="form-group row py-3 m-0">
-                <label for="question1" class="questionnaire__label col-sm-4 col-form-label p-0">What project are you looking to tackle?</label>
-                <div class="col-sm-8 ps-md-4">
-                    <textarea class="form-control" rows="3" id="question1" name="question1"></textarea>
+            <?php if ($showQuestions): ?>
+                <div class="form-group row py-3 m-0">
+                    <label for="question1" class="questionnaire__label col-sm-4 col-form-label p-0">What project are you looking to tackle?</label>
+                    <div class="col-sm-8 ps-md-4">
+                        <textarea class="form-control" rows="3" id="question1" name="question1"></textarea>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row py-3 m-0">
-                <label for="question2" class="questionnaire__label col-sm-4 col-form-label p-0">What are your goals for your session?</label>
-                <div class="col-sm-8 ps-md-4">
-                    <textarea class="form-control" rows="3" id="question2" name="question2"></textarea>
+                <div class="form-group row py-3 m-0">
+                    <label for="question2" class="questionnaire__label col-sm-4 col-form-label p-0">What are your goals for your session?</label>
+                    <div class="col-sm-8 ps-md-4">
+                        <textarea class="form-control" rows="3" id="question2" name="question2"></textarea>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row py-3 m-0">
-                <label for="question3" class="questionnaire__label col-sm-4 col-form-label p-0">Are there any tools, parts, materials, or obstacles specific to your project that you want to share with your Pro in advance of the session? If so, please do so here.</label>
-                <div class="col-sm-8 ps-md-4">
-                    <textarea class="form-control" rows="3" id="question3" name="question3"></textarea>
+                <div class="form-group row py-3 m-0">
+                    <label for="question3" class="questionnaire__label col-sm-4 col-form-label p-0">Are there any tools, parts, materials, or obstacles specific to your project that you want to share with your Pro in advance of the session? If so, please do so here.</label>
+                    <div class="col-sm-8 ps-md-4">
+                        <textarea class="form-control" rows="3" id="question3" name="question3"></textarea>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row py-3 m-0">
-                <label for="question4" class="questionnaire__label col-sm-4 col-form-label p-0">On a scale of 1 to 5 how would you rate your experience level? (For example, 1: I want to hang shelves but I’ve never used a drill; 5: I want to do a full kitchen remodel and I’ve just completed a bathroom remodel.)</label>
-                <div class="col-sm-8 ps-md-4">
-                    <textarea class="form-control" rows="3" id="question4" name="question4"></textarea>
+                <div class="form-group row py-3 m-0">
+                    <label for="question4" class="questionnaire__label col-sm-4 col-form-label p-0">On a scale of 1 to 5 how would you rate your experience level? (For example, 1: I want to hang shelves but I’ve never used a drill; 5: I want to do a full kitchen remodel and I’ve just completed a bathroom remodel.)</label>
+                    <div class="col-sm-8 ps-md-4">
+                        <textarea class="form-control" rows="3" id="question4" name="question4"></textarea>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row py-3 m-0">
-                <label for="question5" class="questionnaire__label col-sm-4 col-form-label p-0">Do you have any questions you’d like your Pro to be prepared to address in your session? Are there any additional notes for your Pro?</label>
-                <div class="col-sm-8 ps-md-4">
-                    <textarea class="form-control" rows="3" id="question5" name="question5"></textarea>
+                <div class="form-group row py-3 m-0">
+                    <label for="question5" class="questionnaire__label col-sm-4 col-form-label p-0">Do you have any questions you’d like your Pro to be prepared to address in your session? Are there any additional notes for your Pro?</label>
+                    <div class="col-sm-8 ps-md-4">
+                        <textarea class="form-control" rows="3" id="question5" name="question5"></textarea>
+                    </div>
                 </div>
-            </div>
-            <div class="d-flex py-3"><input type="submit" value="Save" name="submit" class="w-auto button alt"></div>
-
+                <div class="d-flex py-3"><input type="submit" value="Save" name="submit" class="w-auto button alt"></div>
+            <?php endif; ?>
         </form>
     <?php endif; ?>
 </div>

@@ -28,7 +28,7 @@ $allowed_html = array(
 );
 ?>
 
-<p>
+<p class="mt-3">
 	<?php
 	printf(
 		/* translators: 1: user display name 2: logout url */
@@ -38,6 +38,39 @@ $allowed_html = array(
 	);
 	?>
 </p>
+
+
+<nav class="py-4 ms-md-4 me-md-3 woocommerce-MyAccount-navigation account-nav account-nav--dashboard">
+	<div class="account-nav__heading">Consultations</div>
+	<ul class="list-unstyled">
+		<?php if (in_array('pro_user', (array) wp_get_current_user()->roles)): ?>
+			<li><a class="text-button text-button--blue-pink" href="<?= wc_get_account_endpoint_url('consultations'); ?>">Upcoming</a></li>
+			<li><a class="text-button text-button--blue-pink" href="<?= wc_get_account_endpoint_url('pro-past-consultations'); ?>">Past</a></li>
+		<?php else: ?>
+			<li><a class="text-button text-button--blue-pink" href="<?= wc_get_account_endpoint_url('upcoming-consultations'); ?>">Upcoming</a></li>
+			<li><a class="text-button text-button--blue-pink" href="<?= wc_get_account_endpoint_url('past-consultations'); ?>">Past</a></li>
+		<?php endif; ?>
+	</ul>
+	<hr/>
+	<?php if (in_array('pro_user', (array) wp_get_current_user()->roles)): ?>
+		<div class="account-nav__heading">Consultation Settings</div>
+			<ul class="list-unstyled">
+				<li><a class="text-button text-button--blue-pink" href="<?= wc_get_account_endpoint_url('schedule'); ?>">Set Schedule</a></li>
+				<li><a class="text-button text-button--blue-pink" href="<?= wc_get_account_endpoint_url('pricing'); ?>">Set Pricing</a></li>
+			</ul>
+		<hr/>
+	<?php endif; ?>
+	<div class="account-nav__heading">Settings</div>
+	<ul class="list-unstyled">
+		<?php foreach ( wc_get_account_menu_items() as $endpoint => $label ) : ?>
+			<li class="<?php echo wc_get_account_menu_item_classes( $endpoint ); ?>">
+				<a class="text-button text-button--blue-pink" href="<?php echo esc_url( wc_get_account_endpoint_url( $endpoint ) ); ?>"><?php echo esc_html( $label ); ?></a>
+			</li>
+		<?php endforeach; ?>
+	</ul>
+	<hr/>
+	<a class="text-button text-button--blue-pink" href="<?= wc_logout_url(); ?>">Logout</a>
+</nav>
 
 <?php
 	/**
