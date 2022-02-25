@@ -843,4 +843,23 @@ function redirect_woo_checkout( $order_id ){
     }
 }
 
+/* Create Matriarchy Team Role */
+add_role(
+    'matriarchy_user', //  System name of the role.
+    __( 'Matriarchy Build'  ), // Display name of the role.
+    array(
+        'read'  => true,
+        'delete_posts'  => true,
+        'delete_published_posts' => true,
+        'edit_posts'   => true,
+        'publish_posts' => true,
+        'upload_files'  => true,
+        'edit_pages'  => true,
+        'edit_published_pages'  =>  true,
+        'publish_pages'  => true,
+        'delete_published_pages' => true,
+		'manage_options' => true
+    )
+);
+
 ?>
