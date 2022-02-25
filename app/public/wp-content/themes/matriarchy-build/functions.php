@@ -858,7 +858,9 @@ add_role(
         'edit_published_pages'  =>  true,
         'publish_pages'  => true,
         'delete_published_pages' => true,
-		'manage_options' => true
+		'manage_options' => true,
+		'edit_users' => true,
+		'add_users' => true
     )
 );
 
