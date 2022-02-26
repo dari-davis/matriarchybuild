@@ -19,20 +19,22 @@
                 ?>
             </div>
         </div>
-        <div class="filters__filter me-md-2 mb-3 mb-md-0"> <!-- Category -->
-            <div class="filters__select">
-                <?php
-                    $categories = ['pro', 'post'];
-                    $select = "<select class='px-2' name='cat' id='cat2' class='postform'>n";
-                    $select.= "<option value='-1'>Category</option>n";
-                    $select.= "<option value='pro'>Pros</option>n";
-                    $select.= "<option value='post'>Articles</option>n";
+        <?php if (is_search()): ?>
+            <div class="filters__filter me-md-2 mb-3 mb-md-0"> <!-- Category -->
+                <div class="filters__select">
+                    <?php
+                        $categories = ['pro', 'post'];
+                        $select = "<select class='px-2' name='cat' id='cat2' class='postform'>n";
+                        $select.= "<option value='-1'>Category</option>n";
+                        $select.= "<option value='pro'>Pros</option>n";
+                        $select.= "<option value='post'>Articles</option>n";
 
-                    $select.= "</select>";
-                    echo $select;
-                ?>
+                        $select.= "</select>";
+                        echo $select;
+                    ?>
+                </div>
             </div>
-        </div>
+        <?php endif; ?>
     </div>
 
     <script type="text/javascript">
