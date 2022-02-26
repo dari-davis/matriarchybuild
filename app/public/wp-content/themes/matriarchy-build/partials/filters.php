@@ -19,6 +19,20 @@
                 ?>
             </div>
         </div>
+        <div class="filters__filter me-md-2 mb-3 mb-md-0"> <!-- Category -->
+            <div class="filters__select">
+                <?php
+                    $categories = ['pro', 'post'];
+                    $select = "<select class='px-2' name='cat' id='cat2' class='postform'>n";
+                    $select.= "<option value='-1'>Category</option>n";
+                    $select.= "<option value='pro'>Pros</option>n";
+                    $select.= "<option value='post'>Articles</option>n";
+
+                    $select.= "</select>";
+                    echo $select;
+                ?>
+            </div>
+        </div>
     </div>
 
     <script type="text/javascript">
@@ -33,7 +47,12 @@
         var cat2dropdown = document.getElementById("cat2");
         function onCat2Change() {
             if ( cat2dropdown.options[cat2dropdown.selectedIndex].value != -1 ) {
-                location.href = "<?php echo home_url();?>/pros/"+cat2dropdown.options[cat2dropdown.selectedIndex].value+"/";
+                var selection = cat2dropdown.options[cat2dropdown.selectedIndex].value;
+                if (selection == 'pro') {
+                    location.href = "<?php echo home_url();?>/?s=<?= get_search_query(); ?>&post_type=pro";
+                } else {
+                    location.href = "<?php echo home_url();?>/?s=<?= get_search_query(); ?>&post_type=post";
+                }
             }
         }
         cat2dropdown.onchange = onCat2Change;
