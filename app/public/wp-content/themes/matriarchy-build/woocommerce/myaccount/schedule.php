@@ -32,7 +32,7 @@
 	<?php echo do_shortcode('[bookly-staff-schedule]'); ?>
 </div>
 
-<div class="row no-gutters">
+<div class="row no-gutters days-off d-none">
 	<div class="col-8">
 		<div class="pt-md-5">
 			<h2><?php esc_html_e( 'Select Days Off', 'woocommerce' ); ?></h2>
@@ -45,3 +45,11 @@
 		<?php echo do_shortcode('[bookly-staff-days-off]'); ?>
 	</div>
 </div>
+
+<script type="text/javascript">
+	var $ = jQuery;
+	$('.time-off-btn').on('click', function(e) {
+		e.preventDefault();
+		$('.days-off').removeClass('d-none');
+	});
+</script>
