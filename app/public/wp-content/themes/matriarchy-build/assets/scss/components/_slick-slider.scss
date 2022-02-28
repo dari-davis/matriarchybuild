@@ -13,6 +13,7 @@
 .slick-slide {
     .pro__image-inner & {
         border: 1px solid $blue;
+        overflow: hidden;
 
         @include media-breakpoint-down(md) {
             border-width: 1px 0;
