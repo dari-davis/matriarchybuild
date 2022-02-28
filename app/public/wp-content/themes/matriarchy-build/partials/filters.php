@@ -1,6 +1,22 @@
 <div class="filters row gx-0 m-0 mb-3 mb-md-5">
     <div class="filters__wrapper d-flex p-0">
         <p class="filters__heading me-md-3">Filter <img class="d-md-none" src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/arrow_blue.svg"></p>
+        <?php if (is_search()): ?>
+            <div class="filters__filter me-md-2 mb-3 mb-md-0"> <!-- Category -->
+                <div class="filters__select">
+                    <?php
+                        $categories = ['pro', 'post'];
+                        $select = "<select class='px-2' name='cat' id='cat2' class='postform'>n";
+                        $select.= "<option value='-1'>Category</option>n";
+                        $select.= "<option value='pro'>Pros</option>n";
+                        $select.= "<option value='post'>Articles</option>n";
+
+                        $select.= "</select>";
+                        echo $select;
+                    ?>
+                </div>
+            </div>
+        <?php endif; ?>
         <div class="filters__filter me-md-2 mb-3 mb-md-0"> <!-- Trade -->
             <div class="filters__select">
                 <?php
@@ -19,22 +35,6 @@
                 ?>
             </div>
         </div>
-        <?php if (is_search()): ?>
-            <div class="filters__filter me-md-2 mb-3 mb-md-0"> <!-- Category -->
-                <div class="filters__select">
-                    <?php
-                        $categories = ['pro', 'post'];
-                        $select = "<select class='px-2' name='cat' id='cat2' class='postform'>n";
-                        $select.= "<option value='-1'>Category</option>n";
-                        $select.= "<option value='pro'>Pros</option>n";
-                        $select.= "<option value='post'>Articles</option>n";
-
-                        $select.= "</select>";
-                        echo $select;
-                    ?>
-                </div>
-            </div>
-        <?php endif; ?>
     </div>
 
     <script type="text/javascript">
