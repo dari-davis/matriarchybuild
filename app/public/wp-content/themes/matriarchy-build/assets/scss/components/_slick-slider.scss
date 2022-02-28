@@ -1,0 +1,85 @@
+.slick-track {
+    .pro__image-inner & {
+        @include media-breakpoint-up(md) {
+            height: 455px;
+        }
+
+        @include media-breakpoint-up(lg) {
+            height: 417px;
+        }
+    }
+}
+
+.slick-slide {
+    .pro__image-inner & {
+        border: 1px solid $blue;
+
+        @include media-breakpoint-down(md) {
+            border-width: 1px 0;
+        }
+
+        @include media-breakpoint-up(md) {
+            border-width: 1px 1px 1px 0;
+        }
+
+        @include media-breakpoint-up(lg) {
+
+            border-width: 1px 0 1px 1px;
+        }
+    }
+}
+
+.slick-prev, .slick-next {
+    .pro__image-inner & {
+        left: auto;
+        right: auto;
+        position: absolute;
+        bottom: 0;
+        top: auto;
+    }
+}
+
+.slick-prev {
+    .pro__image-inner & {
+        right: -43px;
+    }
+}
+
+.slick-next {
+    .pro__image-inner & {
+        right: -86px;
+    }
+}
+
+.slick-arrow {
+    border: 0;
+    height: 33px;
+    width: 40px;
+    line-height: 25px;
+    float: left;
+    border: 1px solid $blue;
+    background: transparent;
+
+    &:after {
+        content: '';
+        display: inline-flex;
+        height: 8px;
+        width: 24px;
+        background-image: url('../images/icons/arrow_blue.svg');
+        background-repeat: no-repeat;
+    }
+
+    &.prev:after {
+        transform: rotate(180deg);
+    }
+
+    @include media-breakpoint-down(md) {
+        background: $white;
+    }
+}
+
+.slick-arrow + .slick-arrow {
+    .pro__arrows & {
+        border-left: 0;
+    }
+}

@@ -22,13 +22,13 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
               <div class="pro__header-button mb-borders text-center <?php if (!empty($services)): ?>bookable<?php endif; ?>" title="<?= $title_tag ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/calendar.svg"/></div>
             </div>
             <div class="pro__title mb-borders text-center d-flex">
-              <?php if (have_rows('display_name')): ?>
-                <?php while (have_rows('display_name')): the_row(); ?>
+              <?php while (have_rows('display_name')): the_row(); ?>
+                <?php if (get_sub_field('line_1')): ?>
                   <h1 class="pro__name m-0"><?= get_sub_field('line_1'); ?><br/><?= get_sub_field('line_2'); ?></h1>
-                <?php endwhile; ?>
-              <?php else: ?>
-                <h1 class="pro__name m-0"><span><?= the_title(); ?><span></h1>
-              <?php endif; ?>
+                <?php else: ?>
+                  <h1 class="pro__name m-0"><span><?= the_title(); ?><span></h1>
+                <?php endif; ?>
+              <?php endwhile; ?>
             </div>
           </div>
           <div class="pro__attributes col-md-4 p-0">
@@ -47,11 +47,35 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
       <div class="pro__details-container row m-0">
         <div class="pro__image col-md-8 col-lg p-0">
           <div class="pro__image-inner p-lg-0">
+            <ul class="slides list-unstyled m-0">
             <?php if (has_post_thumbnail()): ?>
-              <?php the_post_thumbnail('large', ['class' => 'pro__image']); ?>
+              <li>
+              <?php the_post_thumbnail('large', ['class' => 'pro__image']); ?></li>
             <?php endif; ?>
+
+            <?php if (have_rows('assets')): ?>
+              <?php while (have_rows('assets')): the_row();
+                $image = get_sub_field('asset'); ?>
+                <li><img src="<?= $image; ?>"/></li>
+              <?php endwhile; ?>  
+            <?php endif; ?>
+            </ul>
+          </div>
+          <div class="pro__arrows">
+            <button class="prev" aria-label="Previous" type="button"></button>
+            <button class="next" aria-label="Next" type="button"></button>
           </div>
         </div>
+
+        <script type="text/javascript">
+          var $ = jQuery || $;
+          $(document).ready(function() {
+            $('.slides').slick({
+              prevArrow: $('.prev'),
+              nextArrow: $('.next')
+            });
+          });
+        </script>
 
         <div class="pro__details py-4 col-lg-6 gx-0">
           <div class="py-3 row gx-0">

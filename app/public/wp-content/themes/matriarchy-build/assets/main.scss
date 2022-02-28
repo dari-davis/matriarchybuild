@@ -105,6 +105,8 @@ $link-decoration: none;
 @import "scss/variables";
 @import "scss/global";
 @import "scss/fonts";
+@import "scss/slick";
+@import "scss/slick-theme";
 
 @import "scss/layouts/header";
 @import "scss/layouts/footer";
@@ -123,6 +125,7 @@ $link-decoration: none;
 @import "scss/components/pro-single";
 @import "scss/components/questionnaire";
 @import "scss/components/search-form";
+@import "scss/components/slick-slider";
 @import "scss/components/text-button";
 @import "scss/components/woocommerce";
 
