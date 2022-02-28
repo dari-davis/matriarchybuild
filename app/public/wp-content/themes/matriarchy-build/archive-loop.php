@@ -3,8 +3,6 @@
  * The template for displaying the archive loop.
  */
 
-matriarchy_build_content_nav( 'nav-above' );
-
 if ( have_posts() ) :
 ?>
 	<div class="row no-gutters m-0">
@@ -35,5 +33,3 @@ if ( have_posts() ) :
 endif;
 
 wp_reset_postdata();
-
-matriarchy_build_content_nav( 'nav-below' );
