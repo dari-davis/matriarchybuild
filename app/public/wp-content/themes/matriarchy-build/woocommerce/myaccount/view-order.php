@@ -121,6 +121,10 @@ foreach ($order->get_items() as $item_id => $item) {
 		<p>Get acquainted with the project details by reviewing the images and questionnaire answers below.</p>
 	</div>
 
+    <?= get_template_part('partials/image-uploads', null, array(
+        'order_id' => 'featured-home'
+    )); ?>
+
     <?php if( get_post_meta($order_id, 'answer1', true)): ?>
         <?php if (get_post_meta($order_id, 'photo1', true)): ?>
             <div class="questionnaire questionnaire--photos px-4 py-2 mb-4">
