@@ -121,115 +121,12 @@ foreach ($order->get_items() as $item_id => $item) {
 		<p>Get acquainted with the project details by reviewing the images and questionnaire answers below.</p>
 	</div>
 
-    <?= get_template_part('partials/image-uploads', null, array(
-        'order_id' => 'featured-home'
-    )); ?>
+    <?= get_template_part('partials/image-uploads', null, array('orderId' => $order_id)); ?>
 
-    <?php if( get_post_meta($order_id, 'answer1', true)): ?>
-        <?php if (get_post_meta($order_id, 'photo1', true)): ?>
-            <div class="questionnaire questionnaire--photos px-4 py-2 mb-4">
-                <?= get_post_meta($order_id, 'photo1', true); ?>
-            </div>
-        <?php endif; ?>
-        <div class="questionnaire px-4 py-5">
-            <div class="form-group row py-3 m-0">
-                <div class="questionnaire__label col-sm-4 col-form-label p-0">What project are you looking to tackle?</div>
-                <div class=" col-sm-8 ps-md-4">
-                    <p class="questionnaire__answer"><?= get_post_meta($order_id, 'answer1', true); ?></p>
-                </div>
-            </div>
-            <div class="form-group row py-3 m-0">
-                <div class="questionnaire__label col-sm-4 col-form-label p-0">What are your goals for your session?</div>
-                <div class="col-sm-8 ps-md-4">
-                    <p class="questionnaire__answer"><?= get_post_meta($order_id, 'answer2', true); ?></p>
-                </div>
-            </div>
-            <div class="form-group row py-3 m-0">
-                <div class="questionnaire__label col-sm-4 col-form-label p-0">Are there any tools, parts, materials, or obstacles specific to your project that you want to share with your Pro in advance of the session? If so, please do so here.</div>
-                <div class="col-sm-8 ps-md-4">
-                    <p class="questionnaire__answer"><?= get_post_meta($order_id, 'answer3', true); ?></p>
-                </div>
-            </div>
-            <div class="form-group row py-3 m-0">
-                <div class="questionnaire__label col-sm-4 col-form-label p-0">On a scale of 1 to 5 how would you rate your experience level? (For example, 1: I want to hang shelves but I’ve never used a drill; 5: I want to do a full kitchen remodel and I’ve just completed a bathroom remodel.)</div>
-                <div class="col-sm-8 ps-md-4">
-                    <p class="questionnaire__answer"><?= get_post_meta($order_id, 'answer4', true); ?></p>
-                </div>
-            </div>
-            <div class="form-group row py-3 m-0">
-                <div class="questionnaire__label col-sm-4 col-form-label p-0">Do you have any questions you’d like your Pro to be prepared to address in your session? Are there any additional notes for your Pro?</div>
-                <div class="col-sm-8 ps-md-4">
-                    <p class="questionnaire__answer"><?= get_post_meta($order_id, 'answer5', true); ?></p>
-                </div>
-            </div>
-        </div>
+    <?php if( !get_post_meta($order_id, 'answer1', true)): ?>
+        <?= get_template_part('partials/questionnaire-answers', null, array('orderId' => $order_id)); ?>
     <?php else: ?>
-        <form class="questionnaire questionnaire--photos px-4 py-2 mb-4" method="post">
-            <?php function submitPhoto($order_id) {
-                echo "Your photo has been added!";
-                $order = wc_get_order($order_id);
-                $order->update_meta_data('photo1', $_POST["photo1"]);
-                $order->save();
-                //var_dump($order->get_meta_data());
-            }
-            if (isset($_POST['upload'])) { submitPhoto($order_id); } ?>
-            <div class="form-group row py-3 m-0">
-                <p class="p-0">Please upload up to 5 images.</p>
-                <input type="file" name="photo1" class="custom-file-input p-0">
-            </div>
-            <div class="d-flex py-3"><button type="submit" value="Upload Project Photos" name="upload" class="w-auto button">Upload Project Photos</button></div>
-        </form>
-
-        <form class="questionnaire px-4 py-5" method="post">
-            <?php $showQuestions = true; ?>
-            <?php function submitQuestionnaire($order_id) {
-                echo "Your questionnarie has been successfully submitted!";
-                $showQuestions = false;
-                $order = wc_get_order($order_id);
-                $order->update_meta_data('answer1', $_POST["question1"]);
-                $order->update_meta_data('answer2', $_POST["question2"]);
-                $order->update_meta_data('answer3', $_POST["question3"]);
-                $order->update_meta_data('answer4', $_POST["question4"]);
-                $order->update_meta_data('answer5', $_POST["question5"]);
-                $order->save();
-                //var_dump($order->get_meta_data());
-            }
-            if (isset($_POST['submit'])) { submitQuestionnaire($order_id); } ?>
-
-            <?php if ($showQuestions): ?>
-                <div class="form-group row py-3 m-0">
-                    <label for="question1" class="questionnaire__label col-sm-4 col-form-label p-0">What project are you looking to tackle?</label>
-                    <div class="col-sm-8 ps-md-4">
-                        <textarea class="form-control" rows="3" id="question1" name="question1"></textarea>
-                    </div>
-                </div>
-                <div class="form-group row py-3 m-0">
-                    <label for="question2" class="questionnaire__label col-sm-4 col-form-label p-0">What are your goals for your session?</label>
-                    <div class="col-sm-8 ps-md-4">
-                        <textarea class="form-control" rows="3" id="question2" name="question2"></textarea>
-                    </div>
-                </div>
-                <div class="form-group row py-3 m-0">
-                    <label for="question3" class="questionnaire__label col-sm-4 col-form-label p-0">Are there any tools, parts, materials, or obstacles specific to your project that you want to share with your Pro in advance of the session? If so, please do so here.</label>
-                    <div class="col-sm-8 ps-md-4">
-                        <textarea class="form-control" rows="3" id="question3" name="question3"></textarea>
-                    </div>
-                </div>
-                <div class="form-group row py-3 m-0">
-                    <label for="question4" class="questionnaire__label col-sm-4 col-form-label p-0">On a scale of 1 to 5 how would you rate your experience level? (For example, 1: I want to hang shelves but I’ve never used a drill; 5: I want to do a full kitchen remodel and I’ve just completed a bathroom remodel.)</label>
-                    <div class="col-sm-8 ps-md-4">
-                        <textarea class="form-control" rows="3" id="question4" name="question4"></textarea>
-                    </div>
-                </div>
-                <div class="form-group row py-3 m-0">
-                    <label for="question5" class="questionnaire__label col-sm-4 col-form-label p-0">Do you have any questions you’d like your Pro to be prepared to address in your session? Are there any additional notes for your Pro?</label>
-                    <div class="col-sm-8 ps-md-4">
-                        <textarea class="form-control" rows="3" id="question5" name="question5"></textarea>
-                    </div>
-                </div>
-                <div class="d-flex py-3"><input type="submit" value="Save" name="submit" class="w-auto button alt"></div>
-            <?php endif; ?>
-        </form>
+        <?= get_template_part('partials/questionnaire-questions', null, array('orderId' => $order_id)); ?>
     <?php endif; ?>
 </div>
 

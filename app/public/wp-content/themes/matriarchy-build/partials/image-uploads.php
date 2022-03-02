@@ -1,71 +1,95 @@
-<form method="post" enctype="multipart/form-data">
-	Your Photo: <input type="file" name="profilepicture" size="25" multiple/>
-	<input type="submit" name="submit" value="Submit" />
+<form class="questionnaire questionnaire--photos px-4 py-2 mb-4" method="post" enctype="multipart/form-data">
+    <div class="form-group row py-3 m-0">
+        <p>Please upload up to 5 images.</p>
+	    <input class="custom-file-input p-0" type="file" name="upload_attachment[]" size="2" multiple/>
+    </div>
+    <div class="d-flex py-3"><button type="submit" value="Upload Project Photos" name="submitPhotos" class="w-auto button">Upload Project Photos</button></div>
 </form>
 
-<?php function submitPhotos() {
+<?php 
+$order = wc_get_order($args['orderId']);
+//echo $order->get_meta("photo-0");
 
-// WordPress environment
-require( dirname(__FILE__) . '../../../../../wp-load.php' );
+//var_dump($order->get_meta_data());
+function submitPhotos($order) {
 
-$wordpress_upload_dir = wp_upload_dir();
-// $wordpress_upload_dir['path'] is the full server path to wp-content/uploads/2017/05, for multisite works good as well
-// $wordpress_upload_dir['url'] the absolute URL to the same folder, actually we do not need it, just to show the link to file
-$i = 1; // number of tries when the file with the same name is already exists
+    if (!empty($_FILES['upload_attachment']['name'][0])) {
 
-$profilepicture = $_FILES['profilepicture'];
-$new_file_path = $wordpress_upload_dir['path'] . '/' . $profilepicture['name'];
-$new_file_mime = mime_content_type( $profilepicture['tmp_name'] );
+        require_once( ABSPATH . 'wp-admin/includes/image.php' );
+        require_once( ABSPATH . 'wp-admin/includes/file.php' );
+        require_once( ABSPATH . 'wp-admin/includes/media.php' );
 
-var_dump($profilepicture);
 
-if( empty( $profilepicture ) )
-	die( 'File is not selected.' );
+        $files = $_FILES['upload_attachment'];
+        $count = 0;
+        $galleryImages = array();
 
-if( $profilepicture['error'] )
-	die( $profilepicture['error'] );
-	
-if( $profilepicture['size'] > wp_max_upload_size() )
-	die( 'It is too large than expected.' );
-	
-if( !in_array( $new_file_mime, get_allowed_mime_types() ) )
-	die( 'WordPress doesn\'t allow this type of uploads.' );
-	
-while( file_exists( $new_file_path ) ) {
-	$i++;
-	$new_file_path = $wordpress_upload_dir['path'] . '/' . $i . '_' . $profilepicture['name'];
-}
+        foreach ($files['name'] as $count => $value) {
+            if ($files['name'][$count]) {
 
-// looks like everything is OK
-if( move_uploaded_file( $profilepicture['tmp_name'], $new_file_path ) ) {
-	
+                $file = array(
+                    'name'     => $files['name'][$count],
+                    'type'     => $files['type'][$count],
+                    'tmp_name' => $files['tmp_name'][$count],
+                    'error'    => $files['error'][$count],
+                    'size'     => $files['size'][$count]
+                );
 
-	$upload_id = wp_insert_attachment( array(
-		'guid'           => $new_file_path, 
-		'post_mime_type' => $new_file_mime,
-		'post_title'     => preg_replace( '/\.[^.]+$/', '', $profilepicture['name'] ),
-		'post_content'   => '',
-		'post_status'    => 'inherit'
-	), $new_file_path );
+                $upload_overrides = array( 'test_form' => false );
+                $upload = wp_handle_upload($file, $upload_overrides);
 
-	// wp_generate_attachment_metadata() won't work if you do not include this file
-	require_once( ABSPATH . 'wp-admin/includes/image.php' );
 
-	// Generate and save the attachment metas into the database
-	wp_update_attachment_metadata( $upload_id, wp_generate_attachment_metadata( $upload_id, $new_file_path ) );
+                // $filename should be the path to a file in the upload directory.
+                $filename = $upload['file'];
 
-	// Show the uploaded file in browser
-	//wp_redirect( $wordpress_upload_dir['url'] . '/' . basename( $new_file_path ) );
+                // The ID of the post this attachment is for.
+                $parent_post_id = $post_id;
 
-    $file = basename($new_file_path);
-    $dir = wp_get_upload_dir()['url'];
-    echo "$dir/$file";
+                // Check the type of tile. We'll use this as the 'post_mime_type'.
+                $filetype = wp_check_filetype( basename( $filename ), null );
 
-    //echo "<img src='$dir/$file'/>";
-}
+                // Get the path to the upload directory.
+                $wp_upload_dir = wp_upload_dir();
 
-}
+                // Prepare an array of post data for the attachment.
+                $attachment = array(
+                    'guid'           => $wp_upload_dir['url'] . '/' . basename( $filename ), 
+                    'post_mime_type' => $filetype['type'],
+                    'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $filename ) ),
+                    'post_content'   => '',
+                    'post_status'    => 'inherit'
+                );
 
-if (isset($_POST['submit'])) { submitPhotos(); }
+                // Insert the attachment.
+                $attach_id = wp_insert_attachment( $attachment, $filename, $parent_post_id );
+
+                // Make sure that this file is included, as wp_generate_attachment_metadata() depends on it.
+                require_once( ABSPATH . 'wp-admin/includes/image.php' );
+
+                // Generate the metadata for the attachment, and update the database record.
+                $attach_data = wp_generate_attachment_metadata( $attach_id, $filename );
+                wp_update_attachment_metadata( $attach_id, $attach_data );
+
+                array_push($galleryImages, $attach_id);
+
+                $dir = wp_get_upload_dir()['url'];
+                $image = $file['name'];
+
+                // add photo to order data
+                //$order->update_meta_data("photo-$count", "$dir/$image");
+
+                echo "$dir/$image";
+
+            }
+
+            $count++;
+
+        }
+    }
+} ?>
+
+<?php
+
+if (isset($_POST['submitPhotos'])) { submitPhotos($order); }
 
 ?>
