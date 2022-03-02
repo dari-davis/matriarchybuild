@@ -17,10 +17,12 @@
  * @version 3.0.0
  */
 
-
+$images = get_attached_media('', $order->ID);
+global $wpdb;
+global $post;
 ?>
 
-<?php global $wpdb;
+<?php 
 
 foreach ($order->get_items() as $item_id => $item) {
     $data =  $item->get_meta("bookly");
@@ -121,7 +123,18 @@ foreach ($order->get_items() as $item_id => $item) {
 		<p>Get acquainted with the project details by reviewing the images and questionnaire answers below.</p>
 	</div>
 
-    <?= get_template_part('partials/image-uploads', null, array('orderId' => $order_id)); ?>
+    <?php if ($images): ?>
+        <div class="questionnaire questionnaire--photos p-4 mb-4 d-flex">
+            <?php foreach($images as $image): ?>
+                <div class="questionnaire__image me-3">
+                    <img src="<?= wp_get_attachment_url($image->ID); ?>"/>
+                    <a href="#" data-image-id="<?= $image->ID; ?>" class="photo-remove-btn">Remove</a>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    <?php else: ?>
+        <?= get_template_part('partials/image-uploads', null, array('orderId' => $order_id)); ?>
+    <?php endif; ?>
 
     <?php if( !get_post_meta($order_id, 'answer1', true)): ?>
         <?= get_template_part('partials/questionnaire-answers', null, array('orderId' => $order_id)); ?>
@@ -138,3 +151,11 @@ foreach ($order->get_items() as $item_id => $item) {
         </div>
     </div>
 <?php endif; ?>
+
+<script>
+    $ = jQuery || $;
+    $('.photo-remove-btn').on('click', function(e) {
+        e.preventDefault();
+        console.log($(this).data('image-id'));
+    });
+</script>

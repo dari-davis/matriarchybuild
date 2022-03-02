@@ -23,4 +23,9 @@
             border-bottom: 0;
         }
     }
+
+    &__image {
+        position: relative;
+        max-width: 94px;
+    }
 }
