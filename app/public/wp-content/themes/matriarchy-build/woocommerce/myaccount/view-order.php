@@ -133,13 +133,17 @@ foreach ($order->get_items() as $item_id => $item) {
             <?php endforeach; ?>
         </div>
     <?php else: ?>
-        <?= get_template_part('partials/image-uploads', null, array('orderId' => $order_id)); ?>
+        <?php if ($apptIsWhen == "upcoming"): ?>
+            <?= get_template_part('partials/image-uploads', null, array('orderId' => $order_id)); ?>
+        <?php endif; ?>
     <?php endif; ?>
 
     <?php if( !get_post_meta($order_id, 'answer1', true)): ?>
         <?= get_template_part('partials/questionnaire-answers', null, array('orderId' => $order_id)); ?>
     <?php else: ?>
-        <?= get_template_part('partials/questionnaire-questions', null, array('orderId' => $order_id)); ?>
+        <?php if ($apptIsWhen == "upcoming"): ?>
+            <?= get_template_part('partials/questionnaire-questions', null, array('orderId' => $order_id)); ?>
+        <?php endif; ?>
     <?php endif; ?>
 </div>
 
