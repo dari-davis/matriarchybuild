@@ -37,7 +37,21 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
             <?php if (get_field('website') || get_field('social')): ?>
               <div class="d-flex px-3">
                 <?php if (get_field('website')): ?><a href="<?= get_field('website'); ?>" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/link.svg"/></a><?php endif; ?>
-                <?php if (get_field('social')): ?><a class="px-1" href="<?= get_field('social'); ?>" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/instagram.svg"/></a><?php endif; ?>
+
+                <?php while (have_rows('social')): the_row(); ?>
+                  <?php if (get_sub_field('instagram')): ?>
+                    <a class="px-1" href="<?= get_sub_field('instagram'); ?>" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/instagram.svg"/></a>
+                  <?php endif; ?>
+                  <?php if (get_sub_field('facebook')): ?>
+                    <a class="px-1" href="<?= get_sub_field('facebook'); ?>" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/facebook-pro.svg"/></a>
+                  <?php endif; ?>
+                  <?php if (get_sub_field('twitter')): ?>
+                    <a class="px-1" href="<?= get_sub_field('twitter'); ?>" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/twitter-pro.svg"/></a>
+                  <?php endif; ?>
+                  <?php if (get_sub_field('youtube')): ?>
+                    <a class="px-1" href="<?= get_sub_field('youtube'); ?>" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/link.svg"/></a>
+                  <?php endif; ?>  
+                <?php endwhile; ?>
               </div>
             <?php endif; ?>
           </div>
@@ -135,21 +149,21 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
               <?php echo do_shortcode('[bookly-form category_id="-1" service_id="'.$row->service_id.'" staff_member_id="'.$row->staff_id.'" hide="categories,services,staff_members,date,week_days,time_range"]'); ?>
             </div>
 
-            <div class="booking-card my-5">
+            <div class="booking-card my-3 my-md-5">
               <div class="row m-0">
-                <div class="col-4 p-0">
-                  <div class="booking-card__label m-0 p-3">Duration</div>
-                  <div class="booking-card__detail p-3">
+                <div class="col-md-4 p-0 row m-0 flex-md-column">
+                  <div class="booking-card__label m-0 p-2 p-md-3 col-6 col-md-auto">Duration</div>
+                  <div class="booking-card__detail p-2 p-md-3 col-6 col-md-auto">
                     <?= $service->duration == 1800 ? '25min' : '55min'; ?>
                   </div>
                 </div>
-                <div class="col-4 p-0">
-                  <div class="booking-card__label m-0 p-3">Price</div>
-                  <div class="booking-card__detail p-3">$<?= $row->price; ?></div>
+                <div class="col-md-4 p-0 row m-0 flex-md-column">
+                  <div class="booking-card__label m-0 p-2 p-md-3 col-6 col-md-auto">Price</div>
+                  <div class="booking-card__detail p-2 p-md-3 col-6 col-md-auto">$<?= $row->price; ?></div>
                 </div>
-                <div class="col-4 p-0">
-                  <div class="booking-card__label m-0 p-3">Consultation Type</div>
-                  <div class="booking-card__detail p-3">
+                <div class="col-md-4 p-0 row m-0 flex-md-column">
+                  <div class="booking-card__label m-0 p-2 p-md-3 col-6 col-md-auto">Consultation Type</div>
+                  <div class="booking-card__detail p-2 p-md-3 col-6 col-md-auto">
                     <?= $row->capacity_max == 1 ? '1:1' : 'Class'; ?>
                   </div>
                 </div>

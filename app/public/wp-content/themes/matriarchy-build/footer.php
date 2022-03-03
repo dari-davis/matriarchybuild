@@ -21,7 +21,7 @@
 						<a href="/" class="d-none d-md-block"><img class="m-auto" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-footer.svg"></a>
 					</div>
 					<div class="col-md-8 py-5 py-md-4 px-md-4 px-xl-5">
-						<h3 class="text-white">Apply To Be A "Pro"</h3>
+						<h3 class="text-white">Apply To Be A Pro</h3>
 						<p>Duis id volutpat urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque lectus lorem, mollis ac purus vitae, aliquam finibus nunc.</p>
 						<a href="/" class="text-button">Apply Today</a>
 					</div>

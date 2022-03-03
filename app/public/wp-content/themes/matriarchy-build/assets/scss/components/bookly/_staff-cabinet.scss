@@ -54,3 +54,34 @@
         float: none;
     }
 }
+
+.bookly-js-staff-cabinet-special-days-wrap {
+    padding: 0;
+}
+
+.bookly-js-category-services li,
+.bookly-js-category-header {
+    border-bottom: 1px solid $olive;
+
+    &:last-child {
+        border-bottom: 0;
+    }
+}
+
+.bookly-js-category-header {
+    color: $olive;
+}
+
+.days-off {
+    background: rgba($olive, 0.2);
+
+    &__header {
+        @include media-breakpoint-up(md) {
+            padding-left: 30px;
+        }
+    }
+}
+
+.bookly-staff-cabinet-days-off {
+    background: transparent !important;
+}

@@ -76,12 +76,11 @@ button.button--text {
 
 #bookly-tbs {
 
-    .bookly-button.ladda-button.btn.btn-success,
     .bookly-button.ladda-button.btn.btn-danger,
     .bookly-button.ladda-button.btn.btn-default {
         padding: 0 24px;
         width: auto;
-        height: 40px;
+        height: 60px;
         color: $blue;
         font-family: $font-family;
         background-color: $olive;
@@ -105,9 +104,39 @@ button.button--text {
             background-image: url('../images/icons/arrow_white.svg');
         }
 
-        &#bookly-schedule-save {
-            color: $pink;
-            background-color: $blue;
+        &#bookly-schedule-save,
+        &#bookly-services-save {
+            color: $pink !important;
+            background-color: $blue !important;
         }
     }
+
+    .bookly-button.ladda-button.btn.btn-success,
+    .ladda-button.btn.btn-success {
+        padding: 0 24px;
+        width: auto;
+        height: 60px;
+        color: $pink;
+        font-family: $font-family;
+        background-color: $blue;
+        border: 0;
+        border-radius: 0;
+        -webkit-appearance: none;
+
+        &:after {
+            background-image: url('../images/icons/arrow_white.svg');
+        }
+    }
+
+    &#bookly-schedule-save,
+    &#bookly-services-save {
+        color: $pink !important;
+        background-color: $blue !important;
+    }
+
+}
+
+#bookly-tbs .btn-success, #bookly-tbs .daterangepicker.show-calendar .drp-buttons .btn-primary {
+    color: $pink;
+    background-color: $blue !important;
 }

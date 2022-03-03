@@ -7,10 +7,10 @@
 ?>
 
 
-<div class="row no-gutters">
-	<div class="col-8">
+<div class="row no-gutters pt-4 pt-md-0">
+	<div class="col-lg-8">
 		<div class="pt-md-5">
-			<h2><?php esc_html_e( 'Create Schedule', 'woocommerce' ); ?></h2>
+			<h2><?php esc_html_e( 'Create Custom Schedule', 'woocommerce' ); ?></h2>
 			<hr class="mb-hr mb-hr--olive" />
 		</div>
 
@@ -21,7 +21,7 @@
 </div>
 
 <div class="row no-gutters">
-	<div class="col-8">
+	<div class="col-lg-8 pt-5 pt-md-0">
 		<div class="pt-md-5">
 			<h2><?php esc_html_e( 'Create Recurring Schedule', 'woocommerce' ); ?></h2>
 			<hr class="mb-hr mb-hr--olive" />
@@ -33,7 +33,7 @@
 </div>
 
 <div class="row no-gutters days-off d-none">
-	<div class="col-8">
+	<div class="col-lg-8 pt-5 pt-md-0 days-off__header">
 		<div class="pt-md-5">
 			<h2><?php esc_html_e( 'Select Days Off', 'woocommerce' ); ?></h2>
 			<hr class="mb-hr mb-hr--olive" />
@@ -41,7 +41,7 @@
 
 		<p class="p-explainer">Curabitur ut nunc sed arcu faucibus luctus at sed eros. Nam nec congue nisi. Nullam ultrices maximus enim at malesuada. Etiam ornare augue ac bibendum porttitor. Quisque sed volutpat enim.</p>
 	</div>
-	<div class="col-8">
+	<div class="col-lg-8">
 		<?php echo do_shortcode('[bookly-staff-days-off]'); ?>
 	</div>
 </div>

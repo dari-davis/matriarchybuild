@@ -203,6 +203,10 @@
         .text-button:hover {
             color: $blue;
         }
+
+        @include media-breakpoint-down(md) {
+            padding: $padding-small;
+        }
     }
 
     &__booking-heading {
@@ -210,6 +214,14 @@
 
         h2 {
             color: $blue;
+
+            @include media-breakpoint-down(md) {
+                max-width: 250px;
+            }
+        }
+
+        @include media-breakpoint-down(md) {
+            width: 100%;
         }
     }
 }

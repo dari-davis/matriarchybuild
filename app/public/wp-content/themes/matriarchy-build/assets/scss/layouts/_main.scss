@@ -20,7 +20,8 @@
     }
 
     .single-pro &,
-    .single-post & {
+    .single-post &,
+    .woocommerce-account & {
         padding: 0;
     }
 }

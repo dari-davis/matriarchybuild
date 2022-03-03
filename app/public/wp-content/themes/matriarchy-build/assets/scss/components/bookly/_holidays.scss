@@ -1,0 +1,44 @@
+#bookly-tbs .bookly-js-holidays {
+
+    .jCalMo {
+        .dow, .day, .pday {
+            margin: 10px;
+            line-height: 58px;
+            height: 58px;
+            width: 58px;
+            background: transparent;
+            border: 0 !important;
+        }
+
+        .pday {
+            color: $olive;
+        }
+
+        .selectedDay {
+            background: $pink !important;
+            border-radius: 30px;
+            color: $blue;
+        }
+    }
+}
+
+.btn.btn-default.bookly-js-jCalBtn {
+    color: $blue !important;
+    background-color: transparent !important;
+    border: 0;
+    border-color: transparent !important;
+
+    &:disabled {
+        color: $blue !important;
+        background-color: transparent !important;
+        border: 0;
+        border-color: transparent;
+    }
+}
+
+#bookly-tbs .btn-default:disabled {
+    background-color: transparent;
+    border: 0;
+    border-color: transparent;
+}
+

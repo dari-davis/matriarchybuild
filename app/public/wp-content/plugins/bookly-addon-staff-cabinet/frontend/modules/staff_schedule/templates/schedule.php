@@ -13,11 +13,5 @@ use Bookly\Backend\Components\Controls\Buttons;
             <?php Buttons::renderSubmit( 'bookly-schedule-save', 'bookly-button' ) ?>
             <button class="time-off-btn btn ladda-button btn-default bookly-button ms-2">Schedule Time Off</button>
         </div>
-        <div class="col-6 d-flex justify-content-end">
-            <?php Buttons::renderReset( 'bookly-schedule-reset', 'bookly-button', null, array(
-                'data-default-breaks' => json_encode( $schedule->getBreaksArray() ),
-                'data-spinner-color' => 'rgb(62, 66, 74)',
-            ) ) ?>
-        </div>
     </div>
 </form>

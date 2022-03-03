@@ -132,4 +132,8 @@
 .woocommerce-info,
 .woocommerce-message {
 	margin-bottom: 8px;
+
+	.woocommerce-checkout & {
+		margin-bottom: 30px;
+	}
 }

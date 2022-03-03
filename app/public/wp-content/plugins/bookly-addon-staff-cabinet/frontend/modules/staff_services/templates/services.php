@@ -7,17 +7,14 @@ $services_data = $form->getServicesData();
 ?>
 <form>
     <?php if ( $form->getUncategorizedServices() ) : ?>
-        <div class="card bg-light p-3">
+        <div class="pt-3 px-3 bookly-js-category-header">
             <div class="row">
                 <div class="col-lg-5">
-                    <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" id="bookly-check-all-entities" type="checkbox" <?php disabled( isset( $attributes['read-only']['services'] ) ) ?>/>
-                        <label class="custom-control-label" for="bookly-check-all-entities"><?php esc_html_e( 'All services', 'bookly' ) ?></label>
-                    </div>
+                    <div for="bookly-check-all-entities"><?php esc_html_e( 'Service', 'bookly' ) ?></div>
                 </div>
                 <div class="col-lg-7">
-                    <div class="form-row text-muted d-none d-lg-flex">
-                        <div class="col-lg-3 text-center">
+                    <div class="form-row d-none d-lg-flex">
+                        <div class="col-lg-3">
                             <?php esc_html_e( 'Price', 'bookly' ) ?>
                         </div>
                         <?php Proxy\Shared::renderStaffServiceLabels() ?>
@@ -70,7 +67,7 @@ $services_data = $form->getServicesData();
     <?php endif ?>
 
     <?php foreach ( $form->getCategories() as $category ) : ?>
-        <div class="card bg-light p-3">
+        <div class="p-3">
             <div class="row">
                 <div class="col-lg-5">
                     <div class="custom-control custom-checkbox">
@@ -79,8 +76,8 @@ $services_data = $form->getServicesData();
                     </div>
                 </div>
                 <div class="col-lg-7">
-                    <div class="form-row text-muted d-none d-lg-flex">
-                        <div class="col-lg-3 text-center">
+                    <div class="form-row d-none d-lg-flex">
+                        <div class="col-lg-3">
                             <?php esc_html_e( 'Price', 'bookly' ) ?>
                         </div>
                         <?php Proxy\Shared::renderStaffServiceLabels() ?>
@@ -148,11 +145,11 @@ $services_data = $form->getServicesData();
 
     <input type="hidden" name="staff_id" value="<?php echo $staff_id ?>">
 
-    <div class="text-right">
-        <hr/>
+    <div class="row no-gutters pt-3">
+        <div class="col-6 d-inline-flex">
         <span class="bookly-js-services-error text-danger"></span>
         <?php Buttons::renderSubmit( 'bookly-services-save', 'bookly-js-save' ) ?>
-        <?php Buttons::renderReset( 'bookly-services-reset' ) ?>
+        </div>
     </div>
 </form>
 <div style="display: none">

@@ -1,21 +1,34 @@
+$border:    1px solid $blue;
+
 .booking-card {
     background: $white;
-    border: 1px solid $blue;
+    border: $border;
 
     &__label {
-        border-bottom: 1px solid $blue;
+        border-bottom: $border;
+        border-right: $border;
     }
 
     .col-4+.col-4 {
-        border-left: 1px solid $blue;
+        border-left: $border;
     }
 
     &__detail {
-        font-size: 36px;
+        @include media-breakpoint-up(md) {
+            border-right: $border;
+            font-size: 36px;
+        }
+
+        @include media-breakpoint-down(md) {
+            border-bottom: $border;
+        }
     }
 
     &__action {
-        border-top: 1px solid $blue;
         background: $pink;
+
+        @include media-breakpoint-up(md) {
+            border-top: $border;
+        }
     }
 }
