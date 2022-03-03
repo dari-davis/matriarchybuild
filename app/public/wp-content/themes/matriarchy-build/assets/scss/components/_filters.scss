@@ -24,7 +24,10 @@
 
     &__select {
         position: relative;
+        padding-right: 30px;
+        -webkit-padding-end: 30px !important;
         border: 1px solid $blue;
+        max-width: 171px;
 
         &:after {
             content: '';

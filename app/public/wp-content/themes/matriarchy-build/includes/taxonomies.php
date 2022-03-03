@@ -22,4 +22,24 @@ add_action('init', function() {
     'hierarchial' => true,
     'show_in_rest' => true
   ));
+
+  register_taxonomy('projects', ['pro'], array(
+    'labels' => array(
+      'name' => __('Project Types'),
+      'sinular_name' => __('Project Type'),
+      'search_items' => __('Serach Project Types'),
+      'all_items' => __('All Project Types'),
+      'parent_item' => __('Parent Project Types'),
+      'parent_item_colon' => __('Parent Project Types:'),
+      'edit_item' => __('Edit Project Type'),
+      'update_item' => __('Update Project Type'),
+      'add_new_item' => __('Add New Project Type'),
+      'new_item_name' => __('New Project Type Name'),
+      'menu_name' => __('Project Types'),
+      'not_found' => __('No Project Types found.'),
+      'not_found_in_trash' => __('No Project Types found in Trash.')
+    ),
+    'hierarchial' => true,
+    'show_in_rest' => true
+  ));
 });

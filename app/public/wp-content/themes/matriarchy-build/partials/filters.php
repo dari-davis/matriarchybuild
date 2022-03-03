@@ -17,6 +17,24 @@
                 </div>
             </div>
         <?php endif; ?>
+        <div class="filters__filter me-md-2 mb-3 mb-md-0"> <!-- Project Types -->
+            <div class="filters__select">
+                <?php
+                    $categories = get_categories('taxonomy=projects');
+                    $select = "<select class='px-2' name='cat' id='cat3' class='postform'>n";
+                    $select.= "<option value='-1'>Project Type</option>n";
+                    
+                    foreach($categories as $category){
+                        if($category->count > 0){
+                            $select.= "<option value='".$category->slug."'>".$category->name."</option>";
+                        }
+                    }
+                    
+                    $select.= "</select>";
+                    echo $select;
+                ?>
+            </div>
+        </div>
         <div class="filters__filter me-md-2 mb-3 mb-md-0"> <!-- Trade -->
             <div class="filters__select">
                 <?php
@@ -41,22 +59,34 @@
         var cat1dropdown = document.getElementById("cat1");
         function onCat1Change() {
             if ( cat1dropdown.options[cat1dropdown.selectedIndex].value != -1 ) {
-                location.href = "<?php echo home_url();?>/pros/"+cat1dropdown.options[cat1dropdown.selectedIndex].value+"/";
+                //location.href = "<?php echo home_url();?>/pros/"+cat1dropdown.options[cat1dropdown.selectedIndex].value+"/";
             }
         }
         cat1dropdown.onchange = onCat1Change;
 
-        var cat2dropdown = document.getElementById("cat2");
-        function onCat2Change() {
-            if ( cat2dropdown.options[cat2dropdown.selectedIndex].value != -1 ) {
-                var selection = cat2dropdown.options[cat2dropdown.selectedIndex].value;
-                if (selection == 'pro') {
-                    location.href = "<?php echo home_url();?>/?s=<?= get_search_query(); ?>&post_type=pro";
-                } else {
-                    location.href = "<?php echo home_url();?>/?s=<?= get_search_query(); ?>&post_type=post";
-                }
+        var cat3dropdown = document.getElementById("cat3");
+        function onCat3Change() {
+            if ( cat3dropdown.options[cat3dropdown.selectedIndex].value != -1 ) {
+                location.href = "<?php echo home_url();?>/projects/"+cat3dropdown.options[cat3dropdown.selectedIndex].value+"/";
             }
         }
-        cat2dropdown.onchange = onCat2Change;
+        cat3dropdown.onchange = onCat3Change;
     </script>
+
+    <?php if (is_search()): ?>
+        <script>
+            var cat2dropdown = document.getElementById("cat2");
+            function onCat2Change() {
+                if ( cat2dropdown.options[cat2dropdown.selectedIndex].value != -1 ) {
+                    var selection = cat2dropdown.options[cat2dropdown.selectedIndex].value;
+                    if (selection == 'pro') {
+                        location.href = "<?php echo home_url();?>/?s=<?= get_search_query(); ?>&post_type=pro";
+                    } else {
+                        location.href = "<?php echo home_url();?>/?s=<?= get_search_query(); ?>&post_type=post";
+                    }
+                }
+            }
+            cat2dropdown.onchange = onCat2Change;
+        </script>
+    <?php endif; ?>
 </div>
