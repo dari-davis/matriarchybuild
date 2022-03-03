@@ -856,18 +856,27 @@ add_role(
     __( 'Matriarchy Build'  ), // Display name of the role.
     array(
         'read'  => true,
+		'edit_posts' => true,
+		'edit_published_posts'  =>  true,
+		'edit_others_posts' => true,
+		'edit_pages'  => true,
+        'edit_published_pages'  =>  true,
+		'edit_others_pages' => true,
+		'edit_users' => true,
         'delete_posts'  => true,
         'delete_published_posts' => true,
-        'edit_posts'   => true,
+		'delete_others_posts' => true,
+		'delete_pages' => true,
+		'delete_published_pages' => true,
+		'delete_others_pages' => true,
         'publish_posts' => true,
-        'upload_files'  => true,
-        'edit_pages'  => true,
-        'edit_published_pages'  =>  true,
         'publish_pages'  => true,
-        'delete_published_pages' => true,
 		'manage_options' => true,
-		'edit_users' => true,
-		'add_users' => true
+        'upload_files'  => true,
+		'add_users' => true,
+		'manage_categories' => true,
+		'manage_links' => true,
+		'moderate_comments' => true
     )
 );
 
