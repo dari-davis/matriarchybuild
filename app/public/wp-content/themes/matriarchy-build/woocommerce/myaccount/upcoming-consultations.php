@@ -96,7 +96,7 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 					<div><?= $date; ?></div>
 					<div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
 					<?php if(!empty($zoomId)): ?>
-						<a class="consultation-card__zoom-link" href="https://zoom.us/j/<?= $zoomId; ?>"><img class="" src="<?php echo get_template_directory_uri(); ?>/assets/images/zoom.png"></a>
+						<a class="consultation-card__zoom-link badge badge-primary" href="https://zoom.us/j/<?= $zoomId; ?>" target="_blank"><i class="fas fa-video fa-fw"></i> Zoom <i class="fas fa-external-link-alt fa-fw"></i></a>
 					<?php endif; ?>
 					<div><a class="text-button text-button--green" href="../view-order/<?= $order->ID;?>">View Details</a></div>
 				</div>
