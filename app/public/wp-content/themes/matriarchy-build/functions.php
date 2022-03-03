@@ -811,9 +811,9 @@ function bbloomer_save_name_fields( $customer_id ) {
 // Validate terms checkbox on registration form
 add_action( 'woocommerce_register_post', 'terms_and_conditions_validation', 20, 3 );
 function terms_and_conditions_validation( $username, $email, $validation_errors ) {
-    if ( ! isset( $_POST['terms'] ) )
-        $validation_errors->add( 'terms_error', __( 'Please accept our terms of use.', 'woocommerce' ) );
-    return $validation_errors;
+    // if ( ! isset( $_POST['terms'] ) )
+    //     $validation_errors->add( 'terms_error', __( 'Please accept our terms of use.', 'woocommerce' ) );
+    // return $validation_errors;
 }
 
 
@@ -863,5 +863,12 @@ add_role(
 		'add_users' => true
     )
 );
+
+// Do not require Display Name in account details
+add_filter('woocommerce_save_account_details_required_fields', 'wc_save_account_details_required_fields' );
+function wc_save_account_details_required_fields( $required_fields ){
+    unset( $required_fields['account_display_name'] );
+    return $required_fields;
+}
 
 ?>
