@@ -850,41 +850,17 @@ function redirect_woo_checkout( $order_id ){
     }
 }
 
-/* Create Matriarchy Team Role */
-add_role(
-    'matriarchy_user', //  System name of the role.
-    __( 'Matriarchy Build'  ), // Display name of the role.
-    array(
-        'read'  => true,
-		'edit_posts' => true,
-		'edit_published_posts'  =>  true,
-		'edit_others_posts' => true,
-		'edit_pages'  => true,
-        'edit_published_pages'  =>  true,
-		'edit_others_pages' => true,
-		'edit_users' => true,
-        'delete_posts'  => true,
-        'delete_published_posts' => true,
-		'delete_others_posts' => true,
-		'delete_pages' => true,
-		'delete_published_pages' => true,
-		'delete_others_pages' => true,
-        'publish_posts' => true,
-        'publish_pages'  => true,
-		'manage_options' => true,
-        'upload_files'  => true,
-		'add_users' => true,
-		'manage_categories' => true,
-		'manage_links' => true,
-		'moderate_comments' => true
-    )
-);
-
 // Do not require Display Name in account details
 add_filter('woocommerce_save_account_details_required_fields', 'wc_save_account_details_required_fields' );
 function wc_save_account_details_required_fields( $required_fields ){
     unset( $required_fields['account_display_name'] );
     return $required_fields;
 }
+
+// Allow editors to use ACF
+function my_acf_settings_capability( $capability ) {
+    return 'edit_pages';
+}
+add_filter('acf/settings/capability', __NAMESPACE__ . '\\my_acf_settings_capability');
 
 ?>
