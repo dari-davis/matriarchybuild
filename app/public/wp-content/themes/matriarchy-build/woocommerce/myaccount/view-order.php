@@ -115,14 +115,18 @@ foreach ($order->get_items() as $item_id => $item) {
 <?php endif; ?>
 
 <div class="row no-gutters m-0">
-	<div class="col-md-8 p-0">
-		<div class="pt-md-5">
-			<h2><?php esc_html_e( 'Project Details', 'woocommerce' ); ?></h2>
-			<hr class="mb-hr mb-hr--olive" />
-		</div>
 
-		<p>Get acquainted with the project details by reviewing the images and questionnaire answers below.</p>
-	</div>
+    <div class="col-md-8 p-0">
+        <div class="pt-md-5">
+            <h2><?php esc_html_e( 'Project Details', 'woocommerce' ); ?></h2>
+            <hr class="mb-hr mb-hr--olive" />
+        </div>
+        <?php if ($apptIsWhen == "future" || get_post_meta($order_id, 'answer1', true)): ?>
+            <p>Get acquainted with the project details by reviewing the images and questionnaire answers below.</p>
+        <?php else: ?>
+            <p>No questionnaire was submitted for this consultation.</p>
+        <?php endif; ?>
+    </div>
 
     <?php if ($images): ?>
         <div class="questionnaire questionnaire--photos p-4 mb-4 d-flex">
