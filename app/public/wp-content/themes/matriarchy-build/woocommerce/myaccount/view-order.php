@@ -139,7 +139,7 @@ foreach ($order->get_items() as $item_id => $item) {
         <?php endif; ?>
     <?php endif; ?>
 
-    <?php if( !get_post_meta($order_id, 'answer1', true)): ?>
+    <?php if( get_post_meta($order_id, 'answer1', true)): ?>
         <?= get_template_part('partials/questionnaire-answers', null, array('orderId' => $order_id)); ?>
     <?php else: ?>
         <?php if ($apptIsWhen == "future"): ?>
