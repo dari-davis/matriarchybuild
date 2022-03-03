@@ -44,7 +44,7 @@ foreach ($order->get_items() as $item_id => $item) {
         $unixTime = strtotime($data['items'][0]['slots'][0][2]);
         $date = date('M j, Y', $unixTime);
         $UTCTime = date('M j, Y g:i a', $unixTime);
-        $apptTime = date('Y-m-d g:i:s', $unixTime);
+        $apptTime = date('Y-m-d H:i:s', $unixTime);
 
         // convert to users timezone
         $startTime = date_timezone_set(new DateTime($UTCTime), timezone_open($data['time_zone']));
@@ -62,11 +62,12 @@ foreach ($order->get_items() as $item_id => $item) {
         // get current date and time in users timezone
         $currentDateTime = date_timezone_set(new DateTime('now'), timezone_open($data['time_zone']));
         $currentDateTime = date_format($currentDateTime, 'M j, Y g:i a');
-        $apptIsWhen = $dateTime < $currentDateTime ? "past" : "upcoming";
 
-        $currentMonth = date("Y-m-d", strtotime($currentDateTime));
-		$apptMonth = date("Y-m-d", strtotime($dateTime));
-		$isPastMonth = $apptMonth < $currentMonth;
+        if (new DateTime($dateTime) <= new DateTime($currentDateTime)) {
+            $apptIsWhen = "past";
+        } else {
+            $apptIsWhen = "future";
+        }
 
         // Zoom ID
 		$appointment = $wpdb->get_results('SELECT * FROM wp_bookly_appointments WHERE start_date="'.$apptTime.'";');
@@ -84,7 +85,7 @@ foreach ($order->get_items() as $item_id => $item) {
         <div class="col mb-borders--right p-3">
             <div><?= $date; ?></div>
             <div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
-            <?php if(!empty($zoomId) && ($apptIsWhen == 'upcoming')): ?>
+            <?php if(!empty($zoomId) && ($apptIsWhen == 'future')): ?>
                 <a class="consultation-card__zoom-link" href="https://zoom.us/j/<?= $zoomId; ?>"><img class="" src="<?php echo get_template_directory_uri(); ?>/assets/images/zoom.png"></a>
             <?php endif; ?>
         </div>
@@ -133,7 +134,7 @@ foreach ($order->get_items() as $item_id => $item) {
             <?php endforeach; ?>
         </div>
     <?php else: ?>
-        <?php if ($apptIsWhen == "upcoming"): ?>
+        <?php if ($apptIsWhen == "future"): ?>
             <?= get_template_part('partials/image-uploads', null, array('orderId' => $order_id)); ?>
         <?php endif; ?>
     <?php endif; ?>
@@ -141,13 +142,13 @@ foreach ($order->get_items() as $item_id => $item) {
     <?php if( !get_post_meta($order_id, 'answer1', true)): ?>
         <?= get_template_part('partials/questionnaire-answers', null, array('orderId' => $order_id)); ?>
     <?php else: ?>
-        <?php if ($apptIsWhen == "upcoming"): ?>
+        <?php if ($apptIsWhen == "future"): ?>
             <?= get_template_part('partials/questionnaire-questions', null, array('orderId' => $order_id)); ?>
         <?php endif; ?>
     <?php endif; ?>
 </div>
 
-<?php if ($apptIsWhen == "upcoming" && !$isPastMonth): ?>
+<?php if ($apptIsWhen == "future"): ?>
     <div class="row no-gutters m-0">
         <div class="col-md-8 px-0 py-5">
             <p><span class="bold-text">Need to cancel or reschedule?</span> Give your Expert more project details by filling out a quick survey & you can upload files to review during your consultation.</p>

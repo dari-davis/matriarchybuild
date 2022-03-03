@@ -54,7 +54,7 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 				$unixTime = strtotime($data['items'][0]['slots'][0][2]);
 				$date = date('M j, Y', $unixTime);
 				$UTCTime = date('M j, Y g:i a', $unixTime);
-				$apptTime = date('Y-m-d g:i:s', $unixTime);
+				$apptTime = date('Y-m-d H:i:s', $unixTime);
 
 				// convert to users timezone
 				$startTime = date_timezone_set(new DateTime($UTCTime), timezone_open($data['time_zone']));
@@ -72,11 +72,12 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 				// get current date and time in users timezone
 				$currentDateTime = date_timezone_set(new DateTime('now'), timezone_open($data['time_zone']));
 				$currentDateTime = date_format($currentDateTime, 'M j, Y g:i a');
-				$apptIsWhen = $dateTime < $currentDateTime ? "past" : "upcoming";
 
-				$currentMonth = date("Y-m-d", strtotime($currentDateTime));
-				$apptMonth = date("Y-m-d", strtotime($dateTime));
-				$isPastMonth = $apptMonth < $currentMonth;
+				if (new DateTime($dateTime) <= new DateTime($currentDateTime)) {
+					$apptIsWhen = "past";
+				} else {
+					$apptIsWhen = "future";
+				}
 
 				// Zoom ID
 				$appointment = $wpdb->get_results('SELECT * FROM wp_bookly_appointments WHERE start_date="'.$apptTime.'";');
@@ -84,7 +85,7 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 			}
 		} ?>
 
-		<?php if (isset($data['items']) && !empty($serviceInfo) && ($apptIsWhen == 'upcoming') && !$isPastMonth): ?>
+		<?php if (isset($data['items']) && !empty($serviceInfo) && ($apptIsWhen == 'future')): ?>
 			<div class="consultation-card consultation-card--<?= $apptIsWhen; ?> row mb-borders m-0 mb-4">
 				<div class="col mb-borders--right consultation-card__yellow-bg p-3">
 					<div class="consultation-card__detail mb-2"><?= $serviceInfo[0]->title;?></div>

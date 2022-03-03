@@ -55,11 +55,12 @@ global $wpdb;
             // get current date and time in users timezone
             $currentDateTime = date_timezone_set(new DateTime('now'), timezone_open($data['time_zone']));
             $currentDateTime = date_format($currentDateTime, 'M j, Y g:i a');
-            $apptIsWhen = $dateTime < $currentDateTime ? "past" : "upcoming";
 
-            $currentMonth = date("Y-m-d", strtotime($currentDateTime));
-            $apptMonth = date("Y-m-d", strtotime($dateTime));
-            $isPastMonth = $apptMonth < $currentMonth;
+            if (new DateTime($dateTime) <= new DateTime($currentDateTime)) {
+                $apptIsWhen = "past";
+            } else {
+                $apptIsWhen = "future";
+            }
         }
     } ?>
 <?php endif; ?>
@@ -146,7 +147,7 @@ global $wpdb;
         </div>
     <?php endif; ?>
 
-    <?php if ($apptIsWhen == "upcoming" && !$isPastMonth): ?>
+    <?php if ($apptIsWhen == "future"): ?>
         <div class="row no-gutters m-0">
             <div class="col-md-8 px-0 py-5">
                 <p><span class="bold-text">Need to cancel or reschedule?</span> Give your Expert more project details by filling out a quick survey & you can upload files to review during your consultation.</p>
