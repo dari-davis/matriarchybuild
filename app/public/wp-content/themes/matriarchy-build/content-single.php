@@ -11,7 +11,7 @@
 			<a class="single-post__image-wrapper" style="background-image: url('<?= get_the_post_thumbnail_url(); ?>');" href="<?php the_permalink(); ?>"><div class="single-post__featured-image"></div></a>
 		<?php endif; ?>
 
-		<div id="post-<?php the_ID(); ?>" <?php post_class( 'single-post__content-wrapper d-flex' ); ?>>
+		<div class="single-post__content-wrapper d-flex">
 			<div class="single-post__header">
 				<div class="single-post__title-container">
 					<img class="d-none d-lg-block" src="<?php echo get_template_directory_uri(); ?>/assets/images/scafolding-posts-small.png">
@@ -38,18 +38,25 @@
 				<img class="d-none d-md-block" src="<?php echo get_template_directory_uri(); ?>/assets/images/scafolding-posts.png">
 				<div class="mb-borders mb-borders--pink">
 					<div class="single-post__content-inner mx-auto">
-						<?php
-							the_content();
-
-							wp_link_pages( array(
-								'before' => '<div class="page-links">' . __( 'Pages:', 'matriarchy-build' ),
-								'after'  => '</div>',
-							) );
-							edit_post_link( __( 'Edit', 'matriarchy-build' ), '<span class="d-none edit-link">', '</span>' );
-						?>
+						<?php if (get_field('content')) { echo get_field('content'); } ?>
 					</div>
 				</div>
 			</div>
-		</div><!-- /#post-<?php the_ID(); ?> -->
+		</div>
+
+		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+			<div class="col-12 p-0">
+				<?php the_content(); ?>
+			</div>
+		</div>
+
+		<?php
+		wp_link_pages( array(
+			'before' => '<div class="page-links">' . __( 'Pages:', 'matriarchy-build' ),
+			'after'  => '</div>',
+		) );
+		edit_post_link( __( 'Edit', 'matriarchy-build' ), '<span class="d-none edit-link">', '</span>' );
+		?>
+
 	</div>
 </div>
