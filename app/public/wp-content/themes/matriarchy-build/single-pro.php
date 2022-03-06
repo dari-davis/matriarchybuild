@@ -58,7 +58,7 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
         </div>
       </div>
 
-      <div class="pro__details-container row m-0">
+      <div class="pro__details-container row mx-auto">
         <div class="pro__image col-md-8 col-lg p-0">
           <div class="pro__image-inner p-lg-0">
             <ul class="slides list-unstyled m-0">
@@ -93,15 +93,18 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
 
         <div class="pro__details py-4 col-lg-6 gx-0">
           <div class="py-3 row gx-0">
-            <div class="pro__content <?= get_field('services') ? 'col-md-8' : 'col-md' ?>"><?= the_content(); ?></div>
             <?php if (get_field('services')): ?>
-              <div class="pro__services col-md-4">
+              <div class="pro__services col-md-8">
                 <h3>Services</h3>
                 <?php foreach(get_field('services') as $service): ?>
                   <div class="pro__service"><?= $service ?></div>
                 <?php endforeach; ?>
               </div>
             <?php endif; ?>
+            <div class="pro__content <?= get_field('services') ? 'col-md-4' : 'col-md' ?>">
+              <h3>Bio</h3>
+              <?= the_content(); ?>
+            </div>
           </div>
         </div>
       </div>
@@ -109,70 +112,72 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
       <?php wp_enqueue_script( 'jquery-ui-dialog' ); ?>
 
       <?php if (!empty($services)): ?>
-        <div class="pro__booking p-md-5">
-          <script>
-            var $ = jQuery.noConflict();
-            $(document).ready(function($) {
-              $('[data-bookly]').on('click', function(e) {
-                let dialog = $(e.currentTarget).data('bookly');
-                $(dialog).dialog({
-                  minWidth: 836,
-                  classes: {
-                    'ui-dialog': 'booking-dialog'
-                  },
-                  open: function() {
-                    $(this).parent().promise().done(function () {
-                      let content = $(dialog).find('#service-info').html();
-                      $('[data-consultation-details]').html(content).removeClass('invisible');
-                    });
-                  }
+        <div class="pro__booking-container m-0">
+          <div class="pro__booking mx-auto p-md-5">
+            <script>
+              var $ = jQuery.noConflict();
+              $(document).ready(function($) {
+                $('[data-bookly]').on('click', function(e) {
+                  let dialog = $(e.currentTarget).data('bookly');
+                  $(dialog).dialog({
+                    minWidth: 836,
+                    classes: {
+                      'ui-dialog': 'booking-dialog'
+                    },
+                    open: function() {
+                      $(this).parent().promise().done(function () {
+                        let content = $(dialog).find('#service-info').html();
+                        $('[data-consultation-details]').html(content).removeClass('invisible');
+                      });
+                    }
+                  });
                 });
               });
-            });
-          </script>
+            </script>
 
-          <div class="pro__booking-heading d-inline-flex"><h2 class="p-3 m-0">Book A Consultation</h2></div>
+            <div class="pro__booking-heading d-inline-flex"><h2 class="p-3 m-0">Book A Consultation</h2></div>
 
-          <?php foreach($services as $row): ?>
-            <!-- <?php print_r($row); ?> -->
-            <?php $service = Bookly\Lib\Entities\Service::find( $row->service_id ); ?>
-            <!-- <?php print_r($service->duration); ?> -->
+            <?php foreach($services as $row): ?>
+              <!-- <?php print_r($row); ?> -->
+              <?php $service = Bookly\Lib\Entities\Service::find( $row->service_id ); ?>
+              <!-- <?php print_r($service->duration); ?> -->
 
-            <div id="dialog-<?= $row->service_id; ?>">
-              <div class="bookly-box bookly-box--heading p-2 mb-0 pb-0">
-                <h3>Book A Consultation</h3>
-                <div class="bookly-box__details d-flex row">
-                  <div class="col-6 py-3" data-consultation-details></div>
-                  <div class="col-6 py-3"><?= $service->duration == 1800 ? '25min' : '55min'; ?><br/>$<?= $row->price; ?></div>
-                </div>
-              </div>
-              <?php echo do_shortcode('[bookly-form category_id="-1" service_id="'.$row->service_id.'" staff_member_id="'.$row->staff_id.'" hide="categories,services,staff_members,date,week_days,time_range"]'); ?>
-            </div>
-
-            <div class="booking-card my-3 my-md-5">
-              <div class="row m-0">
-                <div class="col-md-4 p-0 row m-0 flex-md-column">
-                  <div class="booking-card__label m-0 p-2 p-md-3 col-6 col-md-auto">Duration</div>
-                  <div class="booking-card__detail p-2 p-md-3 col-6 col-md-auto">
-                    <?= $service->duration == 1800 ? '25min' : '55min'; ?>
+              <div id="dialog-<?= $row->service_id; ?>">
+                <div class="bookly-box bookly-box--heading p-2 mb-0 pb-0">
+                  <h3>Book A Consultation</h3>
+                  <div class="bookly-box__details d-flex row">
+                    <div class="col-6 py-3" data-consultation-details></div>
+                    <div class="col-6 py-3"><?= $service->duration == 1800 ? '25min' : '55min'; ?><br/>$<?= $row->price; ?></div>
                   </div>
                 </div>
-                <div class="col-md-4 p-0 row m-0 flex-md-column">
-                  <div class="booking-card__label m-0 p-2 p-md-3 col-6 col-md-auto">Price</div>
-                  <div class="booking-card__detail p-2 p-md-3 col-6 col-md-auto">$<?= $row->price; ?></div>
-                </div>
-                <div class="col-md-4 p-0 row m-0 flex-md-column">
-                  <div class="booking-card__label m-0 p-2 p-md-3 col-6 col-md-auto">Consultation Type</div>
-                  <div class="booking-card__detail p-2 p-md-3 col-6 col-md-auto">
-                    <?= $row->capacity_max == 1 ? '1:1' : 'Class'; ?>
+                <?php echo do_shortcode('[bookly-form category_id="-1" service_id="'.$row->service_id.'" staff_member_id="'.$row->staff_id.'" hide="categories,services,staff_members,date,week_days,time_range"]'); ?>
+              </div>
+
+              <div class="booking-card my-3 my-md-5">
+                <div class="row m-0">
+                  <div class="col-md-4 p-0 row m-0 flex-md-column">
+                    <div class="booking-card__label m-0 p-2 p-md-3 col-6 col-md-auto">Duration</div>
+                    <div class="booking-card__detail p-2 p-md-3 col-6 col-md-auto">
+                      <?= $service->duration == 1800 ? '25min' : '55min'; ?>
+                    </div>
+                  </div>
+                  <div class="col-md-4 p-0 row m-0 flex-md-column">
+                    <div class="booking-card__label m-0 p-2 p-md-3 col-6 col-md-auto">Price</div>
+                    <div class="booking-card__detail p-2 p-md-3 col-6 col-md-auto">$<?= $row->price; ?></div>
+                  </div>
+                  <div class="col-md-4 p-0 row m-0 flex-md-column">
+                    <div class="booking-card__label m-0 p-2 p-md-3 col-6 col-md-auto">Consultation Type</div>
+                    <div class="booking-card__detail p-2 p-md-3 col-6 col-md-auto">
+                      <?= $row->capacity_max == 1 ? '1:1' : 'Class'; ?>
+                    </div>
                   </div>
                 </div>
+                <div class="co booking-card__action text-center p-3">
+                  <a class="text-button text-button--blue" data-bookly="#dialog-<?= $row->service_id; ?>" href="#">Book a Time</a>
+                </div>
               </div>
-              <div class="co booking-card__action text-center p-3">
-                <a class="text-button text-button--blue" data-bookly="#dialog-<?= $row->service_id; ?>" href="#">Book a Time</a>
-              </div>
-            </div>
-          <?php endforeach; ?>
+            <?php endforeach; ?>
+          </div>
         </div>
       <?php endif; ?>
       

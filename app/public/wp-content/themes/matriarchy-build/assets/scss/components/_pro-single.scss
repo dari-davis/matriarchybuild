@@ -2,6 +2,8 @@
 
     &__header {
         padding: 0 $padding-small;
+        margin: 0 auto;
+        max-width: $max-content-width;
 
         @include media-breakpoint-up(lg) {
             display: flex;
@@ -88,6 +90,8 @@
     }
 
     &__details-container {
+        max-width: $max-content-width;
+
         @include media-breakpoint-up(lg) {
             margin-bottom: $margin-bottom;
             padding-left: $padding-large;
@@ -97,16 +101,25 @@
 
     &__details {
         position: relative;
-        padding-left: $padding-small;
-        padding-right: $padding-small;
+        padding: $padding-medium;
         background: $white;
         border-top: 1px solid $blue;
         border-bottom: 1px solid $blue;
+
+        @include media-breakpoint-up(md) {
+            padding: $padding-medium;
+        }
 
         @include media-breakpoint-up(lg) {
             min-height: 544px;
             width: calc(100% - 494px);
             border: 1px solid $blue;
+        }
+
+        h3 {
+            padding-bottom: 8px;
+            color: $olive;
+            border-bottom: 1px solid $olive;
         }
     }
 
@@ -163,28 +176,23 @@
         }
     }
 
-    &__content {
+    &__services {
+        padding: 0 $padding-small;
         font-size: 20px;
         line-height: 25px;
         font-family: $sans-serif-font-family;
         font-weight: bold;
 
-        @include media-breakpoint-up(md) {
-            padding-right: 23px;
-        }
-
-        p {
-            margin-bottom: 0;
-        }
-    }
-
-    &__services {
         @include media-breakpoint-down(md) {
             margin-top: 40px;
         }
 
-        h3 {
-            color: $olive;
+        @include media-breakpoint-up(md) {
+            padding: 0 $padding-medium 0 0;
+        }
+
+        @include media-breakpoint-up(lg) {
+            padding: 0 $padding-large 0 0;
         }
     }
 
@@ -197,8 +205,12 @@
         }
     }
 
-    &__booking {
+    &__booking-container {
         background: $olive;
+    }
+
+    &__booking {
+        max-width: $max-content-width;
 
         .text-button:hover {
             color: $blue;

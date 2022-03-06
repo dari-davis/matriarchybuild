@@ -146,13 +146,4 @@ global $wpdb;
             </div>
         </div>
     <?php endif; ?>
-
-    <?php if ($apptIsWhen == "future"): ?>
-        <div class="row no-gutters m-0">
-            <div class="col-md-8 px-0 py-5">
-                <p><span class="bold-text">Need to cancel or reschedule?</span> Give your Expert more project details by filling out a quick survey & you can upload files to review during your consultation.</p>
-                <a href="/contact" class="d-inline-flex button w-auto">Contact Matriarchy Build</a>
-            </div>
-        </div>
-    <?php endif; ?>
 <?php endif; ?>

@@ -1,7 +1,7 @@
 .pros,
 .archives {
     margin: 0 auto;
-    max-width: 1440px;
+    max-width: $max-content-width;
 
     &__row {
         @include media-breakpoint-up(md) {
