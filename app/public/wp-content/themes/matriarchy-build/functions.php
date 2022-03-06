@@ -863,4 +863,13 @@ function my_acf_settings_capability( $capability ) {
 }
 add_filter('acf/settings/capability', __NAMESPACE__ . '\\my_acf_settings_capability');
 
+
+// Custom Post order
+add_action( 'admin_init', 'mb_pro_archive_ordering' );
+
+function mb_pro_archive_ordering() 
+{
+    add_post_type_support( 'pro', 'page-attributes' );
+}
+
 ?>
