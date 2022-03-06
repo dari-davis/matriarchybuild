@@ -5,7 +5,7 @@
  */
 ?>
 
-<div class="row no-gutters m-0 position-relative">
+<div class="main__row row no-gutters m-0 position-relative">
 	<div class="col-12 p-0">
 		<?php if (has_post_thumbnail()): ?>
 			<a class="single-post__image-wrapper" style="background-image: url('<?= get_the_post_thumbnail_url(); ?>');" href="<?php the_permalink(); ?>"><div class="single-post__featured-image"></div></a>

@@ -1,9 +1,14 @@
 .main {
+    flex: 1 0 auto;
     margin-top: 33px;
     padding: 0 $padding-small;
 
     @include media-breakpoint-up(lg) {
         margin-top: 65px;
+    }
+
+    &__row {
+        min-height: 100%;
     }
 
     .woocommerce-account &,

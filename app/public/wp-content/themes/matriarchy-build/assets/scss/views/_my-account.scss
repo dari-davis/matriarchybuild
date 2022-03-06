@@ -1,11 +1,21 @@
 .my-account {
     display: flex;
+    flex-direction: column;
     background: $white;
+    height: 100%;
+
+    @include media-breakpoint-up(md) {
+        flex-direction: row;
+    }
 
     &__nav {
         background: $yellow;
 
         @include media-breakpoint-up(md) {
+            max-width: 327px;
+        }
+
+        @include media-breakpoint-up(lg) {
             max-width: 345px;
         }
 
@@ -25,13 +35,14 @@
 }
 
 .woocommerce-account {
-    .woocommerce-MyAccount-navigation {
+
+    .woocommerce-MyAccount-navigation,
+    .woocommerce-MyAccount-content {
         float: none;
         width: auto;
     }
 
     .woocommerce-MyAccount-content {
-        margin-bottom: 100px;
 
         @include media-breakpoint-down(md) {
             padding: 30px $padding-small;
