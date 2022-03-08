@@ -149,6 +149,7 @@
 
     .post {
         padding: 0 $padding-small;
+        font-family: $sans-serif-font-family;
         
         @include media-breakpoint-up(md) {
             padding: 0 $padding-large;
