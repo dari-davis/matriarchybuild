@@ -24,14 +24,16 @@
 
     &__select {
         position: relative;
-        padding-right: 30px;
-        -webkit-padding-end: 30px !important;
         border: 1px solid $blue;
-        max-width: 171px;
+
+        @include media-breakpoint-up(md) {
+            max-width: 171px;
+        }
 
         &:after {
             content: '';
             position: absolute;
+            z-index: -1;
             top: 8px;
             right: 10px;
             height: 20px;
@@ -41,17 +43,24 @@
         }
 
         select {
+            padding-right: 0 !important;
             height: 31px;
-            width: 100%;
+            min-width: 170px;
+            max-width: 100%;
             line-height: 31px;
             background: transparent;
             color: $blue;
             border: 0;
             border-radius: 0;
+            cursor: pointer;
     
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
+
+            @include media-breakpoint-down(md) {
+                width: 100%;
+            }
         }
     }
 } 
