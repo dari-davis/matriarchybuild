@@ -104,10 +104,24 @@
             padding: 0 12px;
             line-height: 33px;
             border-right: 1px solid $pink;
+
+            .archives & {
+                border-color: $olive;
+            }
         }
 
         @include media-breakpoint-up(lg) {
             border-width: 0 1px 1px;
+        }
+
+        .archives & {
+            height: 33px;
+            border-right: 0;
+            border-color: $olive;
+
+            span:last-child {
+                border-right: 0;
+            }
         }
     }
 
@@ -118,6 +132,10 @@
 
         span + span {
             border-top: 1px solid $pink;
+
+            .archives & {
+                border-color: $olive;
+            }
         }
 
         @include media-breakpoint-down(md) {
@@ -126,6 +144,17 @@
 
         @include media-breakpoint-up(md) {
             border-right: 0;
+        }
+
+        .archives & {
+            padding-top: 33px !important;
+            margin-top: 0;
+            border: 1px solid $olive;
+            border-top: 0;
+
+            span {
+                border-top: 1px solid $olive;
+            }
         }
     }
 
