@@ -26,7 +26,9 @@
 
     .single-pro &,
     .single-post &,
-    .woocommerce-account & {
+    .woocommerce-account &,
+    .search-results &,
+    .archive & {
         padding: 0;
     }
 }

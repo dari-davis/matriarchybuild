@@ -1,7 +1,8 @@
 .pros,
 .archives {
-    margin: 0 auto;
+    margin: 0 auto $padding-large;
     max-width: $max-content-width;
+    padding: 0 $padding-small;
 
     &__row {
         @include media-breakpoint-up(md) {

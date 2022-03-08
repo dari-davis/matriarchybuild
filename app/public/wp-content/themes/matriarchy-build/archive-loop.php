@@ -7,7 +7,7 @@ if ( have_posts() ) :
 ?>
 	<div class="row no-gutters m-0">
 		<div class="col-12 p-0">
-			<div class="archives mb-5">
+			<div class="archives">
 				<?php if (is_search() || is_tax()): ?>
 					<?= get_template_part('partials/filters'); ?>
 				<?php endif; ?>
@@ -27,6 +27,9 @@ if ( have_posts() ) :
 				?>
 				</div>
 			</div>
+			<?php if (is_search()): ?>
+				<?= get_template_part('partials/search-callout'); ?>
+			<?php endif; ?>
 		</div>
 	</div>
 <?php

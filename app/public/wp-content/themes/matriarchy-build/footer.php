@@ -49,7 +49,7 @@
 				endif;
 
 			?>
-			<ul class="footer__social-menu d-flex flex-row p-0 m-0 pt-md-5">
+			<ul class="footer__social-menu d-flex flex-row p-0 m-0 pt-3 pt-md-5">
 				<li class="footer__social-menu-item"><a href="https://www.instagram.com/matriarchybuild/" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/footer/instagram.svg"></a></li>
 				<li class="footer__social-menu-item"><a href="https://www.tiktok.com/@matriarchybuild" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/footer/tiktok.svg"></a></li>
 				<li class="footer__social-menu-item"><a href="https://www.facebook.com/Matriarchy-Build-100699602430280" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/footer/facebook.svg"></a></li>
