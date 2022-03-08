@@ -5,7 +5,7 @@
         margin: 0 auto;
         max-width: $max-content-width;
 
-        @include media-breakpoint-up(lg) {
+        @include media-breakpoint-up(xl) {
             display: flex;
             justify-content: end;
             padding-left: $padding-large;
@@ -14,7 +14,7 @@
     }
 
     &__header-inner {
-        @include media-breakpoint-up(lg) {
+        @include media-breakpoint-up(xl) {
             width: calc(100% - 453px);
         }
     }
@@ -92,7 +92,7 @@
     &__details-container {
         max-width: $max-content-width;
 
-        @include media-breakpoint-up(lg) {
+        @include media-breakpoint-up(xl) {
             margin-bottom: $margin-bottom;
             padding-left: $padding-large;
             padding-right: $padding-large;
@@ -110,7 +110,7 @@
             padding: $padding-medium;
         }
 
-        @include media-breakpoint-up(lg) {
+        @include media-breakpoint-up(xl) {
             min-height: 544px;
             width: calc(100% - 494px);
             border: 1px solid $blue;
@@ -133,7 +133,7 @@
             height: auto;
         }
 
-        @include media-breakpoint-up(lg) {
+        @include media-breakpoint-up(xl) {
             width: 494px;
         }
 
@@ -169,7 +169,7 @@
             right: -56px;
         }
 
-        @include media-breakpoint-up(lg) {
+        @include media-breakpoint-up(xl) {
             bottom: auto;
             right: -1px;
             margin-top: -1px;
@@ -191,7 +191,7 @@
             padding: 0 $padding-medium 0 0;
         }
 
-        @include media-breakpoint-up(lg) {
+        @include media-breakpoint-up(xl) {
             padding: 0 $padding-large 0 0;
         }
     }

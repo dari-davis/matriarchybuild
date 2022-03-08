@@ -14,7 +14,7 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
     <?php while ( have_posts() ) : the_post(); ?>
 
       <div class="pro__header">
-        <div class="pro__header-inner row px-md-5 px-lg-0 mx-0 col-lg-6">
+        <div class="pro__header-inner row px-md-5 px-lg-0 mx-0 col-xl-6">
           <div class="pro__header-title col-md-8 p-0 d-flex">
             <div class="d-flex flex-column">
               <a class="d-none pro__header-button mb-borders text-center" href="#" title="Favorite This Pro"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/heart.svg"/></a>
@@ -59,7 +59,7 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
       </div>
 
       <div class="pro__details-container row mx-auto">
-        <div class="pro__image col-md-8 col-lg p-0">
+        <div class="pro__image col-md-8 col-xl p-0">
           <div class="pro__image-inner p-lg-0">
             <ul class="slides list-unstyled m-0">
             <?php if (has_post_thumbnail()): ?>
@@ -91,7 +91,7 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
           });
         </script>
 
-        <div class="pro__details py-4 col-lg-6 gx-0">
+        <div class="pro__details py-4 col-xl-6 gx-0">
           <div class="py-3 row gx-0">
             <?php if (get_field('services')): ?>
               <div class="pro__services col-md-8">
