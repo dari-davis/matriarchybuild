@@ -59,7 +59,7 @@
         var cat1dropdown = document.getElementById("cat1");
         function onCat1Change() {
             if ( cat1dropdown.options[cat1dropdown.selectedIndex].value != -1 ) {
-                //location.href = "<?php echo home_url();?>/pros/"+cat1dropdown.options[cat1dropdown.selectedIndex].value+"/";
+                location.href = "<?php echo home_url();?>/pros/"+cat1dropdown.options[cat1dropdown.selectedIndex].value+"/";
             }
         }
         cat1dropdown.onchange = onCat1Change;
