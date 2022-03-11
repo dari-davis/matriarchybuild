@@ -1,0 +1,19 @@
+.wp-block-columns {
+    margin: 0 auto;
+    max-width: 1010px;
+
+    p {
+        margin-bottom: 20px;
+        font-size: 20px;
+        line-height: 25px;
+    }
+}
+
+.wp-block-image {
+    figcaption {
+        font-family: $font-family;
+        font-size: 14px;
+        color: $olive;
+
+    }
+}

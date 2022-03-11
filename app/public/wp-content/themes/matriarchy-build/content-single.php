@@ -44,7 +44,7 @@
 			</div>
 		</div>
 
-		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+		<div id="post-<?php the_ID(); ?>" class="single-post__content-blocks mx-auto">
 			<div class="col-12 p-0">
 				<?php the_content(); ?>
 			</div>

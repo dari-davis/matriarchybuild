@@ -176,12 +176,9 @@
         }
     }
 
-    .post {
+    &__content-blocks {
         padding: 0 $padding-small;
+        max-width: $max-content-width;
         font-family: $sans-serif-font-family;
-        
-        @include media-breakpoint-up(md) {
-            padding: 0 $padding-large;
-        }
     }
 }

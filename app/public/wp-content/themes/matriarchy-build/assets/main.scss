@@ -137,7 +137,9 @@ $link-decoration: none;
 @import "scss/components/bookly/staff-cabinet";
 @import "scss/components/bookly/time-step";
 
-@import "scss/blocks/related-articles.scss";
+@import "scss/blocks/wp-block-columns";
+@import "scss/blocks/featured-pros";
+@import "scss/blocks/related-articles";
 
 @import "scss/views/content-blocks";
 @import "scss/views/my-account";
