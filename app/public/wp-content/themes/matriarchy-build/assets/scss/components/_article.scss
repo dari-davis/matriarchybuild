@@ -2,12 +2,20 @@
     &__details {
         display: flex;
         flex-direction: column;
-        border-color: $olive;
+        border: 1px solid $olive;
+
+        .related-articles & {
+            border-color: $blue;
+        }
     }
 
     &__image-container {
         height: 311px;
         background-size: cover;
+
+        .related-articles & {
+            height: 330px;
+        }
     }
 
     &__title {
@@ -41,6 +49,10 @@
         border: 1px solid $olive;
         border-width: 0 0 1px 1px;
 
+        .related-articles & {
+            border-color: $blue;
+        }
+
         span {
             display: inline-flex;
             justify-content: center;
@@ -50,6 +62,10 @@
 
             &:last-child {
                 border-right: 0;
+            }
+
+            .related-articles & {
+                border-color: $blue;
             }
         }
     }
@@ -62,6 +78,14 @@
 
         span {
             border-top: 1px solid $olive;
+
+            .related-articles & {
+                border-color: $blue;
+            }
+        }
+
+        .related-articles & {
+            border-color: $blue;
         }
     }
 

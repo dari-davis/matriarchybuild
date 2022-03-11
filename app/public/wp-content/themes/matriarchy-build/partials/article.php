@@ -7,7 +7,7 @@
         <?php endif; ?>
         <a class="article__name" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'matriarchy-build' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><div class="article__title p-2"><?php the_title(); ?></div></a>
     </div>
-    <?php if ( 'post' === get_post_type() ): ?>
+    <?php if (!is_search()): ?>
         <div class="entry-meta m-0">
             <div class="row m-0">
                 <div class="article__date col-auto p-0 d-flex">

@@ -103,7 +103,7 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
             <?php endif; ?>
             <div class="pro__content <?= get_field('services') ? 'col-md-4' : 'col-md' ?>">
               <h3>Bio</h3>
-              <?= the_content(); ?>
+              <?= get_field('content'); ?>
             </div>
           </div>
         </div>
@@ -180,8 +180,8 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
           </div>
         </div>
       <?php endif; ?>
-      
-      
+
+      <?= the_content(); ?>
 
     <?php endwhile; ?>
   </div>
