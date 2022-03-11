@@ -13,5 +13,15 @@ add_action('acf/init', function() {
             'icon' => 'grid-view',
             'keywords' => array('pro', 'article')
         ));
+
+        acf_register_block_type(array(
+            'name' => 'featured-pros',
+            'title' => __('Featured Pros'),
+            'description' => __('Shows a post card for featured Pros.'),
+            'render_template' => './templates/blocks/featured-pros.php',
+            'category' => 'layout',
+            'icon' => 'grid-view',
+            'keywords' => array('pros', 'pro', 'cards')
+        ));
     endif;
 });
