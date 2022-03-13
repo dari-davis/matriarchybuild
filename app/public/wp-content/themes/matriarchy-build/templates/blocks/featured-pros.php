@@ -3,7 +3,10 @@
  * Block: Featured Pros
  */
 
+global $wpdb;
 $articles = get_field('pros');
+$staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro_user') )->findOne();
+$services = $wpdb->get_results('SELECT * FROM wp_bookly_staff_services WHERE staff_id="'.$staff->id.'";');
 ?>
 
 <div class="featured-pros py-5">
@@ -32,10 +35,15 @@ $articles = get_field('pros');
                                 <?= implode(', ', $categories); ?>
                             </div>
                         </div>
-                        <div class="featured-pros__bottom"></div>
+                        <div class="featured-pros__bottom">
+                            <a class="featured-pros__button d-flex justify-content-center text-center <?php if (!empty($services)): ?>bookable<?php endif; ?>" href="<?php the_permalink(); ?>" title="<?= $title_tag; ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/calendar.svg"/></a>
+                        </div>
                     </div>
                 </div>
             <?php endforeach; ?>
+            <div class="featured-pros__view-all col-md-6 col-lg-4 article d-flex mb-3 mb-lg-0 mt-lg-3">
+                <div class="col-12 mb-borders mb-borders--green"><a href="#">View All Pros</a></div>
+            </div>
         </div>
     </div>
 </div>

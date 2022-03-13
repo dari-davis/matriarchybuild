@@ -92,8 +92,20 @@
     }
 
     &__bottom {
+        display: flex;
+        justify-content: flex-end;
         height: 30px;
         border-top: 1px solid $green;
         background: $yellow;
+    }
+
+    &__button {
+        width: 28px;
+        height: 30px;
+        border-left: 1px solid $green;
+
+        img {
+            width: 16px;
+        }
     }
 }

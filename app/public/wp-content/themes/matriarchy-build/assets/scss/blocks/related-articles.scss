@@ -1,9 +1,9 @@
 .related-articles {
+    padding: 106px 0;
     background: $olive;
 
     &__wrapper {
-        padding: 0 $padding-small;
-        max-width: 1006px;
+        max-width: 1034px;
 
         @include media-breakpoint-up(md) {
             padding: 0 $padding-medium;

@@ -110,6 +110,14 @@
         }
     }
 
+    .related-articles & {
+        margin-right: 20px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
     .featured-pros & {
         padding: 0;
         height: 177px;
@@ -122,6 +130,12 @@
 
         .col-6 + .col-6 {
             border-left: 0;
+        }
+
+        &.featured-pros__view-all {
+            height: 78px;
+            line-height: 78px;
+            text-align: center;
         }
     }
 }
