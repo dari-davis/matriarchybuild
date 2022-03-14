@@ -91,7 +91,7 @@ foreach ( WC()->cart->get_cart() as $wc_key => $wc_item ) {
 			</div>
 		</div>
 	</div>
-	<div class="col p-0 d-flex justify-content-end align-items-center">
+	<div class="col p-0 d-flex justify-content-end align-items-center total">
 		<span>Total&nbsp;&nbsp;</span><?= wc_cart_totals_order_total_html(); ?>
 	</div>
 </div>

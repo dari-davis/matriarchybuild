@@ -1,4 +1,8 @@
 .single-post {
+    p {
+        font-size: 20px;
+    }
+
     &__image-wrapper {
         position: absolute;
         z-index: -1;

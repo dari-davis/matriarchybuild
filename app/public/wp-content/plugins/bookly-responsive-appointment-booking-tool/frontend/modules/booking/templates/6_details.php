@@ -13,7 +13,7 @@ echo Common::stripScripts( $progress_tracker );
 <?php endif ?>
 <?php if ( ! get_current_user_id() && ! $userData->getFacebookId() && ( Lib\Config::showLoginButton() || Lib\Proxy\Pro::showFacebookLoginButton() ) ) : ?>
 <div class="bookly-box bookly-guest bookly-js-guest">
-    <h3 class="bookly-form__heading">Sign In</h3>
+    <h3 class="bookly-form__heading">Confirm your appointment details</h3>
     <?php if ( Lib\Config::showLoginButton() ) : ?>
         <button class="bookly-btn bookly-js-login-show ladda-button"><?php echo Common::getTranslatedOption( 'bookly_l10n_step_details_button_login' ) ?></button>
     <?php endif ?>
@@ -24,7 +24,7 @@ echo Common::stripScripts( $progress_tracker );
 
 <div class="bookly-details-step">
     <?php if (is_user_logged_in()): ?>
-        <h3 class="bookly-form__heading">Sign In</h3>
+        <h3 class="bookly-form__heading">Confirm your appointment details</h3>
     <?php else: ?>
         <h3 class="bookly-form__heading">Don't Have An Account? Sign up.</h3>
     <?php endif; ?>

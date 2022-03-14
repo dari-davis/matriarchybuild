@@ -9,10 +9,11 @@ defined( 'ABSPATH' ) || exit;
 //$notes = $order->get_customer_order_notes();
 $order_id = $_GET['id'];
 global $wpdb;
+global $post;
+$order = wc_get_order($order_id);
+$images = get_attached_media('', $order->ID);
 ?>
 
-
-<?php $order = wc_get_order($order_id); ?>
 <?php if (!empty($order)): ?>
     <?php $customerFName = $order->get_data()["billing"]["first_name"];
 	      $customerLName = $order->get_data()["billing"]["last_name"];
@@ -96,54 +97,31 @@ global $wpdb;
         </div>
     <?php endif; ?>
 
-    <?php if( get_post_meta($order_id, 'answer1', true)): ?>
-        <div class="row no-gutters m-0">
-            <div class="col-md-8 p-0">
-                <div class="pt-md-5">
-                    <h2><?php esc_html_e( 'Project Details', 'woocommerce' ); ?></h2>
-                    <hr class="mb-hr mb-hr--olive" />
-                </div>
-
+    <div class="row no-gutters m-0">
+        <div class="col-md-8 p-0">
+            <div class="pt-md-5">
+                <h2><?php esc_html_e( 'Project Details', 'woocommerce' ); ?></h2>
+                <hr class="mb-hr mb-hr--olive" />
+            </div>
+            <?php if ($apptIsWhen == "future" || get_post_meta($order_id, 'answer1', true)): ?>
                 <p>Get acquainted with the project details by reviewing the images and questionnaire answers below.</p>
-            </div>
-
-            <?php if (get_post_meta($order_id, 'photo1', true)): ?>
-                <div class="questionnaire questionnaire--photos px-4 py-2 mb-4">
-                    <?= get_post_meta($order_id, 'photo1', true); ?>
-                </div>
+            <?php else: ?>
+                <p>No questionnaire was submitted for this consultation.</p>
             <?php endif; ?>
-            <div class="questionnaire px-4 py-5">
-                <div class="form-group row py-3 m-0">
-                    <div class="questionnaire__label col-sm-4 col-form-label p-0">What project are you looking to tackle?</div>
-                    <div class=" col-sm-8 ps-md-4">
-                        <p class="questionnaire__answer"><?= get_post_meta($order_id, 'answer1', true); ?></p>
-                    </div>
-                </div>
-                <div class="form-group row py-3 m-0">
-                    <div class="questionnaire__label col-sm-4 col-form-label p-0">What are your goals for your session?</div>
-                    <div class="col-sm-8 ps-md-4">
-                        <p class="questionnaire__answer"><?= get_post_meta($order_id, 'answer2', true); ?></p>
-                    </div>
-                </div>
-                <div class="form-group row py-3 m-0">
-                    <div class="questionnaire__label col-sm-4 col-form-label p-0">Are there any tools, parts, materials, or obstacles specific to your project that you want to share with your Pro in advance of the session? If so, please do so here.</div>
-                    <div class="col-sm-8 ps-md-4">
-                        <p class="questionnaire__answer"><?= get_post_meta($order_id, 'answer3', true); ?></p>
-                    </div>
-                </div>
-                <div class="form-group row py-3 m-0">
-                    <div class="questionnaire__label col-sm-4 col-form-label p-0">On a scale of 1 to 5 how would you rate your experience level? (For example, 1: I want to hang shelves but I’ve never used a drill; 5: I want to do a full kitchen remodel and I’ve just completed a bathroom remodel.)</div>
-                    <div class="col-sm-8 ps-md-4">
-                        <p class="questionnaire__answer"><?= get_post_meta($order_id, 'answer4', true); ?></p>
-                    </div>
-                </div>
-                <div class="form-group row py-3 m-0">
-                    <div class="questionnaire__label col-sm-4 col-form-label p-0">Do you have any questions you’d like your Pro to be prepared to address in your session? Are there any additional notes for your Pro?</div>
-                    <div class="col-sm-8 ps-md-4">
-                        <p class="questionnaire__answer"><?= get_post_meta($order_id, 'answer5', true); ?></p>
-                    </div>
-                </div>
-            </div>
         </div>
-    <?php endif; ?>
+
+        <?php if ($images): ?>
+            <div class="questionnaire questionnaire--photos p-4 mb-4 d-flex">
+                <?php foreach(array_slice($images, 0, 5) as $image): ?>
+                    <div class="questionnaire__image me-3">
+                        <img src="<?= wp_get_attachment_url($image->ID); ?>"/>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+        
+        <?php if( get_post_meta($order_id, 'answer1', true)): ?>
+            <?= get_template_part('partials/questionnaire-answers', null, array('orderId' => $order_id)); ?>
+        <?php endif; ?>
+    </div>
 <?php endif; ?>

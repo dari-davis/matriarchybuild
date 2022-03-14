@@ -27,7 +27,7 @@
 			<hr class="mb-hr mb-hr--olive" />
 		</div>
 
-		<p class="p-explainer">Curabitur ut nunc sed arcu faucibus luctus at sed eros. Nam nec congue nisi. Nullam ultrices maximus enim at malesuada. Etiam ornare augue ac bibendum porttitor. Quisque sed volutpat enim.</p>
+		<p class="p-explainer">Example: I am available for consultations every Thursday between 10:00am and 5:00pm, except for Noon to 1:00pm. (If you're going on vacation or need to take a day off please click on "Schedule Time Off" below.)</p>
 	</div>
 	<?php echo do_shortcode('[bookly-staff-schedule]'); ?>
 </div>

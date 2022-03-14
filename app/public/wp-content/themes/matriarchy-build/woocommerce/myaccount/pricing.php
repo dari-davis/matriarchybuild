@@ -13,7 +13,7 @@
 			<hr class="mb-hr mb-hr--olive" />
 		</div>
 
-		<p class="p-explainer">Curabitur ut nunc sed arcu faucibus luctus at sed eros. Nam nec congue nisi. Nullam ultrices maximus enim at malesuada. Etiam ornare augue ac bibendum porttitor. Quisque sed volutpat enim.</p>
+		<p class="p-explainer">Please set your rates for 25 minute and 55 minute consultations.</p>
 	</div>
 	<?php echo do_shortcode('[bookly-staff-services]'); ?>
 </div>

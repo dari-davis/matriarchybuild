@@ -815,15 +815,6 @@ function bbloomer_save_name_fields( $customer_id ) {
   
 }
 
-// Validate terms checkbox on registration form
-add_action( 'woocommerce_register_post', 'terms_and_conditions_validation', 20, 3 );
-function terms_and_conditions_validation( $username, $email, $validation_errors ) {
-    // if ( ! isset( $_POST['terms'] ) )
-    //     $validation_errors->add( 'terms_error', __( 'Please accept our terms of use.', 'woocommerce' ) );
-    // return $validation_errors;
-}
-
-
 // login directs
 add_action( 'wp_login', 'prefix_login_redirect_based_on_roles', 10, 2 );
 /**
@@ -871,5 +862,15 @@ function mb_pro_archive_ordering()
 {
     add_post_type_support( 'pro', 'page-attributes' );
 }
+
+//Page Slug Body Class
+function add_slug_body_class( $classes ) {
+	global $post;
+	if ( isset( $post ) ) {
+	$classes[] = $post->post_type . '-' . $post->post_name;
+	}
+	return $classes;
+	}
+	add_filter( 'body_class', 'add_slug_body_class' );
 
 ?>

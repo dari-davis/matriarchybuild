@@ -13,7 +13,7 @@ global $wpdb;
 
 // get appointments by staff id
 $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', wp_get_current_user()->ID )->findOne();
-$staffAppointments = $wpdb->get_results('SELECT * FROM wp_bookly_appointments WHERE staff_id="'.$staff->id.'";');
+$staffAppointments = $wpdb->get_results("SELECT * FROM wp_bookly_appointments WHERE staff_id='$staff->id' ORDER BY start_date;");
 
 ?>
 

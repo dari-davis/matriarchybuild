@@ -121,3 +121,20 @@ $picker-date-size: 35px;
     position: absolute;
     visibility: hidden;
 }
+
+#bookly-tbs .custom-control-input:checked~.custom-control-label::before {
+    border-color: $blue;
+    background-color: $blue;
+}
+
+#bookly-tbs .custom-control-label {
+    color: $green;
+}
+
+#bookly-tbs .form-control {
+    font-size: 14px;
+    height: 35px;
+    width: 152px;
+    border: 1px solid $olive;
+    border-radius: 0;
+}

@@ -120,10 +120,15 @@
 	margin-top: 30px;
 
 	.woocommerce-Price-amount {
-		font-size: 36px;
+		font-size: 24px;
 		height: 30px;
 		line-height: 30px;
 	}
+}
+
+.total .woocommerce-Price-amount {
+	font-size: 36px;
+	font-weight: 400;
 }
 
 .woocommerce-terms-and-conditions-link {

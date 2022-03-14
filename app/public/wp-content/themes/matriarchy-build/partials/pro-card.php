@@ -21,6 +21,12 @@
     </div>
     <div class="pros__bookable col d-flex flex-column p-0">
         <?php $title_tag = empty($services) ? "Pro is not available for booking" : "Pro is available for booking"; ?>
-        <a class="pros__header-button d-flex justify-content-center mb-borders text-center <?php if (!empty($services)): ?>bookable<?php endif; ?>" href="<?php the_permalink(); ?>" title="<?= $title_tag; ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/calendar.svg"/></a>
+        <a class="pros__header-button d-flex justify-content-center mb-borders text-center <?php if (!empty($services)): ?>bookable<?php endif; ?>" href="<?php the_permalink(); ?>" title="<?= $title_tag; ?>">
+            <?php if (!empty($services)): ?>
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/calendar.svg"/>
+            <?php else: ?>
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/x.svg"/>
+            <?php endif; ?>
+        </a>
     </div>
 </div>

@@ -48,8 +48,7 @@ $services_data = $form->getServicesData();
                         <div class="col-lg-7">
                             <div class="form-row">
                                 <div class="col-3">
-                                    <div class="d-lg-none"><?php esc_html_e( 'Price', 'bookly' ) ?></div>
-                                    <input class="form-control text-right" type="text" <?php disabled( ! array_key_exists( $service->getId(), $services_data ) ) ?>
+                                    <input class="form-control" type="text" <?php disabled( ! array_key_exists( $service->getId(), $services_data ) ) ?>
                                            name="price[<?php echo $service->getId() ?>]"
                                            value="<?php echo array_key_exists( $service->getId(), $services_data ) ? $services_data[ $service->getId() ]['price'] : $service->getPrice() ?>"
                                            <?php if ( isset( $attributes['read-only']['price'] ) ) : ?>readonly<?php endif ?>
@@ -126,8 +125,7 @@ $services_data = $form->getServicesData();
                         <div class="col-lg-7">
                             <div class="form-row">
                                 <div class="col-3">
-                                    <div class="d-lg-none"><?php esc_html_e( 'Price', 'bookly' ) ?></div>
-                                    <input class="form-control text-right" type="text" <?php disabled( ! array_key_exists( $service->getId(), $services_data ) ) ?>
+                                    <input class="form-control" type="text" <?php disabled( ! array_key_exists( $service->getId(), $services_data ) ) ?>
                                            name="price[<?php echo $service->getId() ?>]"
                                            value="<?php echo array_key_exists( $service->getId(), $services_data ) ? $services_data[ $service->getId() ]['price'] : $service->getPrice() ?>"
                                            <?php if ( isset( $attributes['read-only']['price'] ) ) : ?>readonly<?php endif ?>
@@ -145,7 +143,7 @@ $services_data = $form->getServicesData();
 
     <input type="hidden" name="staff_id" value="<?php echo $staff_id ?>">
 
-    <div class="row no-gutters pt-3">
+    <div class="row no-gutters pt-4">
         <div class="col-6 d-inline-flex">
         <span class="bookly-js-services-error text-danger"></span>
         <?php Buttons::renderSubmit( 'bookly-services-save', 'bookly-js-save' ) ?>

@@ -142,7 +142,6 @@ foreach ($order->get_items() as $item_id => $item) {
 
                     <?php
                         if (!empty($_POST["photo-id-$imageId"])) {
-                            echo 'removed photo clicked!';
                             wp_delete_attachment($imageId);
                             echo "<script>location.reload();</script>";
                         }

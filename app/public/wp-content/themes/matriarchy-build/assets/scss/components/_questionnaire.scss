@@ -28,4 +28,10 @@
         position: relative;
         max-width: 94px;
     }
+
+    &__reload-button {
+        font-family: $font-family-sans-serif;
+        font-weight: bold;
+        text-decoration: underline;
+    }
 }

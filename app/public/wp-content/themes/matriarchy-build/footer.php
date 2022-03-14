@@ -22,7 +22,7 @@
 				</div>
 				<div class="col-md-8 py-5 py-md-4 px-md-4 px-xl-5">
 					<h3 class="text-white">Apply To Be A Pro</h3>
-					<p>Duis id volutpat urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque lectus lorem, mollis ac purus vitae, aliquam finibus nunc.</p>
+					<p>If you’d like to join our roster of Matriarchy Build Pros please click here to fill out our simple questionnaire. The Matriarchy Build roster features Pros that are available for 1:1 video consultations with folks tackling DIY and home renovation projects.</p>
 					<a href="/" class="text-button">Apply Today</a>
 				</div>
 			</div>

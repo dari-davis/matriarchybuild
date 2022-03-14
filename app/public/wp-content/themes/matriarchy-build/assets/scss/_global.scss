@@ -32,7 +32,8 @@ img {
 }
 
 p {
-    letter-spacing: 0.03em;
+    font-size: 15px;
+    letter-spacing: 0;
 
     &.p-explainer {
         color: $green;
