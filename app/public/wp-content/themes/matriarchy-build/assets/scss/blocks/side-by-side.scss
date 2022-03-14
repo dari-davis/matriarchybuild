@@ -1,0 +1,50 @@
+.side-by-side {
+    padding: 0 $padding-small;
+    background: $white;
+
+    @include media-breakpoint-up(md) {
+        padding: 0 $padding-medium;
+    }
+
+    &__wrapper {
+        margin: 0 auto;
+        max-width: 1006px;
+    }
+
+    &__heading {
+        border-bottom: 1px solid $olive;
+    }
+
+    &__subheading {
+        color: $olive;
+    }
+
+    &__step {
+        flex-direction: column;
+        padding-top: 16px;
+        border-top: 1px solid $olive;
+    
+        @include media-breakpoint-up(md) {
+            flex-direction: row;
+        }
+    }
+
+    &__label {
+        color: $pink;
+    }
+
+    &__content p {
+        font-family: $sans-serif-font-family;
+        font-size: 20px;
+    }
+
+    &__supply {
+        font-size: 16px;
+        line-height: 33px;
+        border-bottom: 1px solid $olive;
+
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+}

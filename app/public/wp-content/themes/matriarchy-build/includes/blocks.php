@@ -25,13 +25,13 @@ add_action('acf/init', function() {
         ));
 
         acf_register_block_type(array(
-            'name' => 'step-by-step',
-            'title' => __('Step by Step'),
+            'name' => 'side-by-side',
+            'title' => __('Side by Side'),
             'description' => __('Display a set of instructions'),
-            'render_template' => './templates/blocks/step-by-step.php',
+            'render_template' => './templates/blocks/side-by-side.php',
             'category' => 'layout',
             'icon' => 'grid-view',
-            'keywords' => array('steps', 'instructions', 'step by step')
+            'keywords' => array('steps', 'instructions', 'side by side')
         ));
     endif;
 });
