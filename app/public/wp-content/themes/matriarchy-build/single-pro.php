@@ -14,12 +14,18 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
     <?php while ( have_posts() ) : the_post(); ?>
 
       <div class="pro__header">
-        <div class="pro__header-inner row px-md-5 px-lg-0 mx-0 col-xl-6">
+        <div class="pro__header-inner row px-lg-0 mx-0 col-xl-6">
           <div class="pro__header-title col-md-8 p-0 d-flex">
             <div class="d-flex flex-column">
               <a class="d-none pro__header-button mb-borders text-center" href="#" title="Favorite This Pro"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/heart.svg"/></a>
               <?php $title_tag = empty($services) ? "Pro is not available for booking" : "Pro is available for booking"; ?>
-              <div class="pro__header-button mb-borders text-center <?php if (!empty($services)): ?>bookable<?php endif; ?>" title="<?= $title_tag ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/calendar.svg"/></div>
+              <div class="pro__header-button mb-borders text-center <?php if (!empty($services)): ?>bookable<?php endif; ?>" title="<?= $title_tag ?>">
+                <?php if (!empty($services)): ?>
+                  <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/calendar.svg"/>
+                <?php else: ?>
+                  <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/x.svg"/>
+                <?php endif; ?>
+              </div>
             </div>
             <div class="pro__title mb-borders text-center d-flex">
               <?php while (have_rows('display_name')): the_row(); ?>
@@ -49,7 +55,7 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
                     <a class="px-1" href="<?= get_sub_field('twitter'); ?>" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/twitter-pro.svg"/></a>
                   <?php endif; ?>
                   <?php if (get_sub_field('youtube')): ?>
-                    <a class="px-1" href="<?= get_sub_field('youtube'); ?>" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/link.svg"/></a>
+                    <a class="px-1" href="<?= get_sub_field('youtube'); ?>" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/youtube.svg"/></a>
                   <?php endif; ?>  
                 <?php endwhile; ?>
               </div>
@@ -58,9 +64,9 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
         </div>
       </div>
 
-      <div class="pro__details-container row mx-auto">
+      <div class="pro__details-container row mx-xl-auto gx-0">
         <div class="pro__image col-md-8 col-xl p-0">
-          <div class="pro__image-inner p-lg-0">
+          <div class="pro__image-inner">
             <ul class="slides list-unstyled m-0">
             <?php if (has_post_thumbnail()): ?>
               <li>
@@ -70,7 +76,7 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
             <?php if (have_rows('assets')): ?>
               <?php while (have_rows('assets')): the_row();
                 $image = get_sub_field('asset'); ?>
-                <li><img src="<?= $image; ?>"/></li>
+                <li><img class="pro__image-position--<?= get_sub_field('crop_position'); ?>" src="<?= $image; ?>"/></li>
               <?php endwhile; ?>  
             <?php endif; ?>
             </ul>
@@ -95,7 +101,7 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
           <div class="py-3 row gx-0">
             <?php if (get_field('services')): ?>
               <div class="pro__services col-md-8">
-                <h3>Services</h3>
+                <h3 class="h3 pb-0">Services</h3>
                 <?php foreach(get_field('services') as $service): ?>
                   <div class="pro__service"><?= $service ?></div>
                 <?php endforeach; ?>
