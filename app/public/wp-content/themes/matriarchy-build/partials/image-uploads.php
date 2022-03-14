@@ -78,7 +78,7 @@ function submitPhotos($order) {
 	    <input class="custom-file-input p-0" type="file" name="upload_attachment[]" size="5" multiple/>
     </div>
     <?php if ($args['imageCount'] < 5): ?>
-        <div class="d-flex py-3"><input type="submit" value="submitPhotos" name="submitPhotos" class="w-auto button">Upload Project Photos</input></div>
+        <div class="d-flex py-3"><button type="submit" value="Upload Project Photos" name="submitPhotos" class="w-auto button">Upload Project Photos</button></div>
         <?php endif; ?>
 </form>
 
