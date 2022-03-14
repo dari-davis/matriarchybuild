@@ -23,5 +23,15 @@ add_action('acf/init', function() {
             'icon' => 'grid-view',
             'keywords' => array('pros', 'pro', 'cards')
         ));
+
+        acf_register_block_type(array(
+            'name' => 'step-by-step',
+            'title' => __('Step by Step'),
+            'description' => __('Display a set of instructions'),
+            'render_template' => './templates/blocks/step-by-step.php',
+            'category' => 'layout',
+            'icon' => 'grid-view',
+            'keywords' => array('steps', 'instructions', 'step by step')
+        ));
     endif;
 });
