@@ -17,15 +17,26 @@ $services = $wpdb->get_results('SELECT * FROM wp_bookly_staff_services WHERE sta
         </div>
         <div class="featured-pros__posts row mx-0 ms-lg-3">
             <?php foreach ($articles as $article):
-                $permalink = get_permalink($article->ID); ?>
+                $postId = $article->ID;
+                $permalink = get_permalink($postId); ?>
                 <div class="col-md-6 col-lg-4 article d-flex mb-3 mb-lg-0 mt-lg-3">
                     <div class="col-6 mb-borders mb-borders--green">
-                        <a class="article__image-container d-flex" href="<?= $permalink; ?>" style="background-image: url('<?= get_the_post_thumbnail_url($article->ID, 'medium'); ?>');"></a>
+                        <a class="article__image-container d-flex" href="<?= $permalink; ?>" style="background-image: url('<?= get_the_post_thumbnail_url($postId, 'medium'); ?>');"></a>
                     </div>
                     <div class="featured-pros__details col-6 has-white-background-color mb-borders mb-borders--green">
                         <div class="featured-pros__top">
                             <a class="article__name" href="<?= $permalink; ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'matriarchy-build' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
-                                <div class="article__title"><?= $article->post_title; ?></div>
+                                <div class="article__title">
+                                    <?php if (have_rows('display_name', $postId)): ?>
+                                        <?php while (have_rows('display_name', $postId)): the_row(); ?>
+                                            <?php if (get_sub_field('line_1', $postId)): ?>
+                                                <?= get_sub_field('line_1', $postId); ?><br/><?= get_sub_field('line_2', $postId); ?></h1>
+                                            <?php else: ?>
+                                                <?= $article->post_title; ?>
+                                            <?php endif; ?>
+                                        <?php endwhile; ?>
+                                    <?php endif; ?>
+                                </div>
                             </a>
                             <div class="article__terms">
                                 <?php $terms = get_the_terms($article, 'pros'); $categories = []; ?>
