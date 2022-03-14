@@ -1,14 +1,7 @@
-<form class="questionnaire questionnaire--photos px-4 py-2 mb-4" method="post" enctype="multipart/form-data">
-    <div class="form-group row py-3 m-0">
-        <p>Please upload up to 5 images.</p>
-	    <input class="custom-file-input p-0" type="file" name="upload_attachment[]" size="5" multiple/>
-    </div>
-    <div class="d-flex py-3"><button type="submit" value="Upload Project Photos" name="submitPhotos" class="w-auto button">Upload Project Photos</button></div>
-</form>
-
 <?php 
 $order = wc_get_order($args['orderId']);
 function submitPhotos($order) {
+    echo "<div class='questionnaire-reload pb-4'><span>Your photos have been uploaded! <a href='#' class='questionnaire__reload-button'>Refresh</a></span></div>";
 
     if (!empty($_FILES['upload_attachment']['name'][0])) {
 
@@ -73,12 +66,26 @@ function submitPhotos($order) {
             $count++;
 
         }
-        echo "<script>location.reload();</script>";
     }
+    //echo '<script>location.reload();</script>';
 } ?>
 
-<?php
+<?php if (isset($_POST['submitPhotos'])) { submitPhotos($order); } ?>
 
-if (isset($_POST['submitPhotos'])) { submitPhotos($order); }
+<form class="questionnaire questionnaire--photos px-4 py-2 mb-4" method="post" enctype="multipart/form-data">
+    <div class="form-group row py-3 m-0">
+        <p>Please upload up to 5 images.</p>
+	    <input class="custom-file-input p-0" type="file" name="upload_attachment[]" size="5" multiple/>
+    </div>
+    <?php if ($args['imageCount'] < 5): ?>
+        <div class="d-flex py-3"><input type="submit" value="submitPhotos" name="submitPhotos" class="w-auto button">Upload Project Photos</input></div>
+        <?php endif; ?>
+</form>
 
-?>
+<script>
+    var $ = jQuery.noConflict();
+    $('.questionnaire__reload-button').on('click', function(e) {
+        e.preventDefault();
+        location.reload();
+    });
+</script>

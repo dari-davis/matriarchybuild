@@ -131,16 +131,30 @@ foreach ($order->get_items() as $item_id => $item) {
     <?php if ($images): ?>
         <div class="questionnaire questionnaire--photos p-4 mb-4 d-flex">
             <?php foreach($images as $image): ?>
+                <?php $imageId = $image->ID; ?>
                 <div class="questionnaire__image me-3">
                     <img src="<?= wp_get_attachment_url($image->ID); ?>"/>
-                    <a href="#" data-image-id="<?= $image->ID; ?>" class="photo-remove-btn">Remove</a>
+
+                    <form method="post">
+                        <input type="submit" name="remove-photo" value="Remove">
+                        <input type="hidden" name="photo-id-<?= $imageId; ?>" value="<?= $image->ID; ?>"/>
+                    </form>
+
+                    <?php
+                        if (!empty($_POST["photo-id-$imageId"])) {
+                            echo 'removed photo clicked!';
+                            wp_delete_attachment($imageId);
+                            echo "<script>location.reload();</script>";
+                        }
+
+                    ?>
                 </div>
             <?php endforeach; ?>
         </div>
-    <?php else: ?>
-        <?php if ($apptIsWhen == "future"): ?>
-            <?= get_template_part('partials/image-uploads', null, array('orderId' => $order_id)); ?>
-        <?php endif; ?>
+    <?php endif; ?>
+
+    <?php if ($apptIsWhen == "future"): ?>
+        <?= get_template_part('partials/image-uploads', null, array('orderId' => $order_id, 'imageCount' => count($images))); ?>
     <?php endif; ?>
 
     <?php if( get_post_meta($order_id, 'answer1', true)): ?>
@@ -155,8 +169,8 @@ foreach ($order->get_items() as $item_id => $item) {
 <?php if ($apptIsWhen == "future"): ?>
     <div class="row no-gutters m-0">
         <div class="col-md-8 px-0 py-5">
-            <p><span class="bold-text">Need to cancel or reschedule?</span> Give your Expert more project details by filling out a quick survey & you can upload files to review during your consultation.</p>
-            <a href="/contact" class="d-inline-flex button w-auto">Contact Matriarchy Build</a>
+            <p><span class="bold-text">Need to cancel or reschedule?</span> Consultations can be rescheduled or canceled until 48 hours before your meeting time. Please email us at <a href="mailto:support@matriarchybuild.com">support@matriarchybuild.com</a> to cancel your appointment. If you need to reschedule an appointment with a Pro, contact us to cancel your session and rebook with your Pro at another time. Cancellations or reschedules with fewer than 48 hours notice will not be refunded.</p>
+            <a href="mailto:support@matriarchybuild.com" class="d-inline-flex button w-auto">Contact Matriarchy Build</a>
         </div>
     </div>
 <?php endif; ?>
