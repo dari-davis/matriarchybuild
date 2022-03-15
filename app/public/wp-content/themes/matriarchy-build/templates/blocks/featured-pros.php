@@ -53,7 +53,7 @@ $services = $wpdb->get_results('SELECT * FROM wp_bookly_staff_services WHERE sta
                 </div>
             <?php endforeach; ?>
             <div class="featured-pros__view-all col-md-6 col-lg-4 article d-flex mb-3 mb-lg-0 mt-lg-3">
-                <div class="col-12 mb-borders mb-borders--green"><a href="#">View All Pros</a></div>
+                <div class="col-12 mb-borders mb-borders--green"><a href="/pro">View All Pros</a></div>
             </div>
         </div>
     </div>

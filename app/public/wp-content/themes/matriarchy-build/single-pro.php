@@ -119,7 +119,7 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
 
       <?php if (!empty($services)): ?>
         <div class="pro__booking-container m-0">
-          <div class="pro__booking mx-auto p-md-5">
+          <div class="pro__booking mx-auto py-md-5">
             <script>
               var $ = jQuery.noConflict();
               $(document).ready(function($) {

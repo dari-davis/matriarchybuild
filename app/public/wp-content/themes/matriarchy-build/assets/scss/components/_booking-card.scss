@@ -7,11 +7,20 @@ $border:    1px solid $blue;
     &__label {
         border-bottom: $border;
         border-right: $border;
+
+        .col-md-4:last-child & {
+            @include media-breakpoint-up(md) {
+               border-right: 0; 
+            }
+        }
     }
 
-    .col-4+.col-4 {
-        border-left: $border;
+    .col-md-4:last-child {
+        @include media-breakpoint-up(md) {
+            
+        }
     }
+
 
     &__detail {
         @include media-breakpoint-up(md) {
@@ -21,6 +30,12 @@ $border:    1px solid $blue;
 
         @include media-breakpoint-down(md) {
             border-bottom: $border;
+        }
+
+        .col-md-4:last-child & {
+            @include media-breakpoint-up(md) {
+               border-right: 0; 
+            }
         }
     }
 

@@ -108,4 +108,14 @@
             width: 16px;
         }
     }
+
+    &__view-all a:after {
+        content: '';
+        display: inline-flex;
+        margin-left: 8px;
+        height: 8px;
+        width: 24px;
+        background-image: url('../images/icons/arrow_blue.svg');
+        background-repeat: no-repeat;
+    }
 }

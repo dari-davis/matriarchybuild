@@ -15,7 +15,11 @@
         background-position: 50%;
 
         .related-articles & {
-            height: 330px;
+            height: 317px;
+
+            @include media-breakpoint-up(md) {
+                height: 317px;
+            }
         }
 
         .featured-pros & {
@@ -47,7 +51,7 @@
     &__terms {
         .featured-pros & {
             font-size: 14px;
-            line-height: 20px;
+            line-height: 18px;
         }
     }
 
@@ -65,7 +69,7 @@
     }
 
     &__date {
-        width: 120px;
+        width: 110px;
         height: 33px;
         border: 1px solid $olive;
         border-width: 0 0 1px 1px;
@@ -107,14 +111,6 @@
 
         .related-articles & {
             border-color: $blue;
-        }
-    }
-
-    .related-articles & {
-        margin-right: 20px;
-
-        &:last-child {
-            margin-right: 0;
         }
     }
 

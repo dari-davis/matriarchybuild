@@ -45,4 +45,10 @@
             }
         }
     }
+
+    &__posts.justify-content-end {
+        .article {
+            padding-left: 0;
+        }
+    }
 }
