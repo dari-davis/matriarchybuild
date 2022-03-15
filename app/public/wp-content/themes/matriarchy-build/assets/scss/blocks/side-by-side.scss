@@ -1,15 +1,5 @@
 .side-by-side {
-    padding: 0 $padding-small;
     background: $white;
-
-    @include media-breakpoint-up(md) {
-        padding: 0 $padding-medium;
-    }
-
-    &__wrapper {
-        margin: 0 auto;
-        max-width: 1006px;
-    }
 
     &__heading {
         border-bottom: 1px solid $olive;

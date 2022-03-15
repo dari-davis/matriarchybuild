@@ -3,6 +3,7 @@
     background: $olive;
 
     &__wrapper {
+        padding: 0 $padding-small;
         max-width: 1034px;
 
         @include media-breakpoint-up(md) {
