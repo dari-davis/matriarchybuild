@@ -11,7 +11,8 @@
         }
 
         .pro-application &,
-        .newsletter & {
+        .newsletter &,
+        .hero & {
             max-width: $max-content-width;
         }
     }

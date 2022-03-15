@@ -28,27 +28,27 @@ $header-height:     169px;
         @include media-breakpoint-up(md) {
             flex-direction: row;
         }
+    }
 
-        .diy-inspiration__left {
-            @include media-breakpoint-up(md) {
-                width: calc(50% + 16px);
-                height: calc($header-height + 1px); // border
-                border-right: 0;
-            }
+    &__left {
+        @include media-breakpoint-up(md) {
+            width: calc(50% + 16px);
+            height: calc($header-height + 1px); // border
+            border-right: 0;
         }
+    }
 
-        .diy-inspiration__right {
-            @include media-breakpoint-up(md) {
-                width: calc(50% - 16px);
-                height: $header-height;
-            }
+    &__right {
+        @include media-breakpoint-up(md) {
+            width: calc(50% - 16px);
+            height: $header-height;
         }
+    }
 
-        .diy-inspiration__scafolding {
-            height: calc($header-height - 60px); // button
-            border: 1px solid $olive;
-            background: linear-gradient(to top right, $blue calc(50% - 1px), $olive, $blue calc(50% + 1px) )
-        }
+    &__scafolding {
+        height: calc($header-height - 60px); // button
+        border: 1px solid $olive;
+        background: linear-gradient(to top right, $blue calc(50% - 1px), $olive, $blue calc(50% + 1px) )
     }
 
     &__title {

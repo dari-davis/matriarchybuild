@@ -74,5 +74,15 @@ add_action('acf/init', function() {
             'icon' => 'grid-view',
             'keywords' => array('newsletter', 'sign up')
         ));
+
+        acf_register_block_type(array(
+            'name' => 'hero',
+            'title' => __('Hero'),
+            'description' => __('Displays a hero image with descriptive text and buttons.'),
+            'render_template' => './templates/blocks/hero.php',
+            'category' => 'layout',
+            'icon' => 'grid-view',
+            'keywords' => array('hero', 'banner')
+        ));
     endif;
 });
