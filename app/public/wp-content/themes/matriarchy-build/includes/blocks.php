@@ -15,6 +15,16 @@ add_action('acf/init', function() {
         ));
 
         acf_register_block_type(array(
+            'name' => 'diy-inspiration',
+            'title' => __('DIY & Inspiration'),
+            'description' => __('Displays an article card for a selected set of posts.'),
+            'render_template' => './templates/blocks/diy-inspiration.php',
+            'category' => 'layout',
+            'icon' => 'grid-view',
+            'keywords' => array('diy', 'inspiration', 'post')
+        ));
+
+        acf_register_block_type(array(
             'name' => 'featured-pros',
             'title' => __('Featured Pros'),
             'description' => __('Shows a post card for featured Pros.'),

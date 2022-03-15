@@ -28,9 +28,10 @@
     }
 
     &__title {
-        padding: 14px 10px 10px 10px;
+        padding: 14px 16px;
         line-height: 26px;
         background: $white;
+        border-top: 1px solid $olive;
 
         .featured-pros & {
             padding: 0;
@@ -39,6 +40,17 @@
             font-size: 28px;
             display: table-caption;
             letter-spacing: 0.03em;
+        }
+
+        .diy-inspiration & {
+            height: 118px;
+            color: $yellow;
+            background: transparent;
+
+            @include media-breakpoint-up(md) {
+                height: 114px;
+            }
+
         }
     }
 
@@ -111,6 +123,12 @@
 
         .related-articles & {
             border-color: $blue;
+        }
+    }
+
+    &__author {
+        .diy-inspiration & {
+            color: $pink;
         }
     }
 

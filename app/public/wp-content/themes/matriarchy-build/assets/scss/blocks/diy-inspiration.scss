@@ -1,0 +1,81 @@
+$header-height:     169px;
+
+.diy-inspiration {
+    padding: 106px 0;
+    background: $blue;
+    color: $olive;
+
+    a {
+        color: $olive;
+    }
+
+    .mb-borders {
+        border-color: $olive;
+    }
+
+    &__wrapper {
+        padding: 0 $padding-small;
+        max-width: 1034px;
+
+        @include media-breakpoint-up(md) {
+            padding: 0 $padding-medium;
+        }
+    }
+
+    &__header {
+        flex-direction: column;
+
+        @include media-breakpoint-up(md) {
+            flex-direction: row;
+        }
+
+        .diy-inspiration__left {
+            @include media-breakpoint-up(md) {
+                width: calc(50% + 16px);
+                height: calc($header-height + 1px); // border
+                border-right: 0;
+            }
+        }
+
+        .diy-inspiration__right {
+            @include media-breakpoint-up(md) {
+                width: calc(50% - 16px);
+                height: $header-height;
+            }
+        }
+
+        .diy-inspiration__scafolding {
+            height: calc($header-height - 60px); // button
+            border: 1px solid $olive;
+            background: linear-gradient(to top right, $blue calc(50% - 1px), $olive, $blue calc(50% + 1px) )
+        }
+    }
+
+    &__title {
+        color: $pink;
+
+        @include media-breakpoint-down(md) {
+            font-size: 38px;
+        }
+
+        span {
+            @include media-breakpoint-up(md) {
+                display: table-caption;
+                font-size: 55px;
+                line-height: 53px;
+            }
+        }
+    }
+
+    &__posts.justify-content-end {
+        .article {
+            padding-left: 0;
+        }
+    }
+
+    .button {
+        justify-content: center;
+        align-items: center;
+        color: $green;
+    }
+}
