@@ -23,6 +23,9 @@
                     </div>
                 <?php endif; ?>
             <?php endwhile; ?>
+            <?php if (get_field('style') == 'condensed'): ?>
+                <a href="" class="button">View All</a>
+            <?php endif; ?>
         <?php endif; ?>
     </div>
 </div>

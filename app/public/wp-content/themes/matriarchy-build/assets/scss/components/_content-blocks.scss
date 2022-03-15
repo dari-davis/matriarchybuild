@@ -9,5 +9,9 @@
         @include media-breakpoint-up(md) {
             padding: 0 $padding-medium;
         }
+
+        .pro-application & {
+            max-width: $max-content-width;
+        }
     }
 }

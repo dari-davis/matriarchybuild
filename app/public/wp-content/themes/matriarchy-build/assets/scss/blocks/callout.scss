@@ -1,0 +1,107 @@
+$content-height:    342px;
+
+.callout {
+    background: $green;
+    padding: 83px 0;
+
+    @include media-breakpoint-up(md) {
+        padding: 83px 0;
+    }
+
+    &__heading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        line-height: 36px;
+        border-left: 0;
+
+        .h1 {
+            padding: 20px 0 0;
+            color: $yellow;
+            font-size: 38px;
+            line-height: 36.5px;
+            max-width: 160px;
+            
+            @include media-breakpoint-up(md) {
+                font-size: 55px;
+                line-height: 52px;
+                max-width: 220px;
+            }
+
+            @include media-breakpoint-up(xl) {
+                font-size: 80px;
+                line-height: 72px;
+                max-width: 320px;
+            }
+        }
+
+        @include media-breakpoint-up(md) {
+            height: $content-height;
+            border-left: 1px solid $pink;
+            border-right: 0;
+        }
+    }
+
+    .col-md-4 {
+        @include media-breakpoint-up(md) {
+            width: 274px;
+        }
+
+        @include media-breakpoint-up(xl) {
+            width: 515px;
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        @include media-breakpoint-up(md) {
+            height: $content-height;
+        }
+
+        @include media-breakpoint-up(lg) {
+            border-right: 0;
+        }
+    }
+
+    &__copy {
+        padding: 28px;
+        font-family: $sans-serif-font-family;
+        color: $pink;
+        font-size: 20px;
+        line-height: 25px;
+
+        @include media-breakpoint-down(md) {
+            text-align: center;
+        }
+
+        @include media-breakpoint-up(md) {
+            padding: 50px 36px;
+            line-height: 35px;
+        }
+
+        @include media-breakpoint-up(lg) {
+            padding: 36px;
+            font-size: 28px;
+        }
+    }
+
+    .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: $yellow;
+        color: $green;
+        height: 60px;
+    }
+
+    img {
+        @include media-breakpoint-up(md) {
+            height: 345px;
+            margin: -2px 0 0 -1px;
+        }
+    }
+}

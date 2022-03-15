@@ -35,4 +35,10 @@
     &__active:before {
         transform: rotate(90deg);
     }
+
+    .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }

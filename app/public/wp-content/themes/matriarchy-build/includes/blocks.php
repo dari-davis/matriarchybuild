@@ -44,5 +44,15 @@ add_action('acf/init', function() {
             'icon' => 'grid-view',
             'keywords' => array('faq', 'q and a', 'accordion')
         ));
+
+        acf_register_block_type(array(
+            'name' => 'pro-application-callout',
+            'title' => __('Pro Application Callout'),
+            'description' => __('Displays a callout for the Pro application.'),
+            'render_template' => './templates/blocks/pro-application-callout.php',
+            'category' => 'layout',
+            'icon' => 'grid-view',
+            'keywords' => array('pro', 'application', 'apply to pro')
+        ));
     endif;
 });
