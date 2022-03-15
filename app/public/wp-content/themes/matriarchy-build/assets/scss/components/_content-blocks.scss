@@ -10,7 +10,8 @@
             padding: 0 $padding-medium;
         }
 
-        .pro-application & {
+        .pro-application &,
+        .newsletter & {
             max-width: $max-content-width;
         }
     }

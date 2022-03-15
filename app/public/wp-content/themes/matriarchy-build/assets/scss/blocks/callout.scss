@@ -17,22 +17,37 @@ $content-height:    342px;
         border-left: 0;
 
         .h1 {
-            padding: 20px 0 0;
+            padding: 12px 0 0;
             color: $yellow;
             font-size: 38px;
             line-height: 36.5px;
             max-width: 160px;
+
+            .newsletter & {
+                max-width: 170px;
+            }
             
             @include media-breakpoint-up(md) {
+                padding: 20px 0 0;
                 font-size: 55px;
                 line-height: 52px;
                 max-width: 220px;
+
+                .newsletter & {
+                    max-width: 245px;
+                    font-size: 52px;
+                }
             }
 
             @include media-breakpoint-up(xl) {
                 font-size: 80px;
                 line-height: 72px;
                 max-width: 320px;
+
+                .newsletter & {
+                    max-width: 360px;
+                    font-size: 80px;
+                }
             }
         }
 
@@ -101,6 +116,7 @@ $content-height:    342px;
     img {
         @include media-breakpoint-up(md) {
             height: 345px;
+            width: 151px;
             margin: -2px 0 0 -1px;
         }
     }

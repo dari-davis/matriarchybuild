@@ -54,5 +54,15 @@ add_action('acf/init', function() {
             'icon' => 'grid-view',
             'keywords' => array('pro', 'application', 'apply to pro')
         ));
+
+        acf_register_block_type(array(
+            'name' => 'newsletter',
+            'title' => __('Newsletter Callout'),
+            'description' => __('Displays a callout for the newsletter signup.'),
+            'render_template' => './templates/blocks/newsletter-callout.php',
+            'category' => 'layout',
+            'icon' => 'grid-view',
+            'keywords' => array('newsletter', 'sign up')
+        ));
     endif;
 });
