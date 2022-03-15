@@ -117,6 +117,7 @@ $link-decoration: none;
 @import "scss/components/booking-card";
 @import "scss/components/button";
 @import "scss/components/consultation-card";
+@import "scss/components/content-blocks";
 @import "scss/components/custom-file-input";
 @import "scss/components/primary-nav";
 @import "scss/components/booking-dialog";
@@ -138,11 +139,11 @@ $link-decoration: none;
 @import "scss/components/bookly/time-step";
 
 @import "scss/blocks/wp-block-columns";
+@import "scss/blocks/faqs";
 @import "scss/blocks/featured-pros";
 @import "scss/blocks/related-articles";
 @import "scss/blocks/side-by-side";
 
-@import "scss/views/content-blocks";
 @import "scss/views/my-account";
 @import "scss/views/page";
 @import "scss/views/pros-archives";

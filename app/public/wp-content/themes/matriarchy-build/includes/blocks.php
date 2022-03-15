@@ -27,11 +27,22 @@ add_action('acf/init', function() {
         acf_register_block_type(array(
             'name' => 'side-by-side',
             'title' => __('Side by Side'),
-            'description' => __('Display a set of instructions'),
+            'description' => __('Displays a set of instructions.'),
             'render_template' => './templates/blocks/side-by-side.php',
             'category' => 'layout',
             'icon' => 'grid-view',
             'keywords' => array('steps', 'instructions', 'side by side')
+        ));
+
+        acf_register_block_type(array(
+            'name' => 'faq',
+            'title' => __('FAQ'),
+            'description' => __('Displays a full list of FAQs within an accordion.'),
+            'render_template' => './templates/blocks/faq.php',
+            'enqueue_script' => get_template_directory_uri() . '/assets/js/accordion.js',
+            'category' => 'layout',
+            'icon' => 'grid-view',
+            'keywords' => array('faq', 'q and a', 'accordion')
         ));
     endif;
 });

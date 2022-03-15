@@ -1,0 +1,13 @@
+.content-blocks {
+    max-width: $max-content-width;
+
+    &__wrapper {
+        padding: 0 $padding-small;
+        margin: 0 auto;
+        max-width: 1006px;
+
+        @include media-breakpoint-up(md) {
+            padding: 0 $padding-medium;
+        }
+    }
+}
