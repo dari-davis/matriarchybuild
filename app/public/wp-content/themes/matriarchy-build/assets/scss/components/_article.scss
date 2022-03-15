@@ -29,15 +29,14 @@
 
     &__title {
         padding: 14px 16px;
-        line-height: 26px;
         background: $white;
-        border-top: 1px solid $olive;
 
         .featured-pros & {
             padding: 0;
             font-family: $heading-font-family;
             text-transform: uppercase;
             font-size: 28px;
+            line-height: 26px;
             display: table-caption;
             letter-spacing: 0.03em;
         }
@@ -46,11 +45,11 @@
             height: 118px;
             color: $yellow;
             background: transparent;
+            border-top: 1px solid $olive;
 
             @include media-breakpoint-up(md) {
                 height: 114px;
             }
-
         }
     }
 

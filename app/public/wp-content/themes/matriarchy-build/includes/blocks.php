@@ -84,5 +84,15 @@ add_action('acf/init', function() {
             'icon' => 'grid-view',
             'keywords' => array('hero', 'banner')
         ));
+
+        acf_register_block_type(array(
+            'name' => 'diy-carousel',
+            'title' => __('DIY Carousel'),
+            'description' => __('Displays a carousel of diy & inspiration posts.'),
+            'render_template' => './templates/blocks/diy-carousel.php',
+            'category' => 'layout',
+            'icon' => 'grid-view',
+            'keywords' => array('diy', 'articles', 'carousel')
+        ));
     endif;
 });
