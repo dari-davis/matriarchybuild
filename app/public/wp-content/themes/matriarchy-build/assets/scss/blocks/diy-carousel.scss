@@ -1,3 +1,5 @@
+$slick-arrow-height:    33px;
+
 .diy-carousel {
     background-size: cover;
 
@@ -7,7 +9,12 @@
         background: linear-gradient(to top right, transparent calc(50% - 1px), $pink, transparent calc(50% + 1px));
 
         &--left {
+            margin-top: $slick-arrow-height;
             height: 191px;
+
+            .diy-carousel--slider & {
+                margin-top: $slick-arrow-height * 2; // button height
+            }
         }
 
         &--right {
@@ -16,8 +23,48 @@
     }
 
     &__articles {
+        position: relative;
+        border-color: $pink;
+
         @include media-breakpoint-up(md) {
+            margin-top: $slick-arrow-height;
             max-width: 344px;
+            border: 0;
+        }
+
+        .diy-carousel--slider & {
+            @include media-breakpoint-up(md) {
+                margin-top: $slick-arrow-height; // button height
+            }
+        }
+    }
+
+    &__slides {
+        @include media-breakpoint-up(md) {
+            border: 1px solid $pink;
+            border-width: 1px 0 1px 1px;
+
+            .diy-carousel--slider & {
+                margin-top: $slick-arrow-height; // button height
+            }
+        }
+    }
+
+    &__arrows {
+        position: absolute;
+        top: 0;
+        z-index: 1;
+
+        @include media-breakpoint-down(md) {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        @include media-breakpoint-up(md) {
+            bottom: auto;
+            right: -1px;
+            margin-top: -1px;
         }
     }
 
@@ -27,7 +74,6 @@
         justify-content: space-between;
         height: calc(191px + 50px); // button
         text-align: center;
-        border-color: $pink;
 
         @include media-breakpoint-up(md) {
             border-width: 1px 0;
@@ -69,8 +115,7 @@
         height: 50px;
         color: $pink;
         background: $blue;
-        border-color: $pink;
-        border-width: 0 0 0 1px;
+        border: 0;
 
         &:after {
             background-image: url('../images/icons/arrow_pink.svg');
