@@ -26,8 +26,7 @@
 			<h2><?php esc_html_e( 'Create Recurring Schedule', 'woocommerce' ); ?></h2>
 			<hr class="mb-hr mb-hr--olive" />
 		</div>
-
-		<p class="p-explainer">Example: I am available for consultations every Thursday between 10:00am and 5:00pm, except for Noon to 1:00pm. (If you're going on vacation or need to take a day off please click on "Schedule Time Off" below.)</p>
+		<p class="p-explainer">Example: I am available for consultations <span class="p-emphasis">every Thursday</span> between <span class="p-emphasis">10:00am and 5:00pm</span>, except for <span class="p-emphasis">Noon to 1:00pm</span>. (If you're going on vacation or need to take a day off please click on "Schedule Time Off" below.)</p>
 	</div>
 	<?php echo do_shortcode('[bookly-staff-schedule]'); ?>
 </div>
