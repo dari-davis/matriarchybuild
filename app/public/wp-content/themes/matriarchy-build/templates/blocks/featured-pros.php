@@ -12,8 +12,8 @@ $services = $wpdb->get_results('SELECT * FROM wp_bookly_staff_services WHERE sta
 <div class="featured-pros py-5">
     <div class="featured-pros__wrapper mx-auto d-flex">
         <div class="featured-pros__image mb-4 mb-lg-0 mx-auto mx-md-0">
-            <img class="d-none d-lg-block" src="<?php echo get_template_directory_uri(); ?>/assets/images/scafolding-featured-pros.png">
-            <img class="d-lg-none" src="<?php echo get_template_directory_uri(); ?>/assets/images/scafolding-featured-pros-mobile.png">
+            <img class="d-none d-lg-block" src="<?php echo get_template_directory_uri(); ?>/assets/images/featured-pros-big.svg">
+            <img class="d-lg-none" src="<?php echo get_template_directory_uri(); ?>/assets/images/featured-pros-small.svg">
         </div>
         <div class="featured-pros__posts row mx-0 ms-lg-3">
             <?php foreach ($articles as $article):
