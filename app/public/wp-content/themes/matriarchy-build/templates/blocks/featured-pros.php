@@ -47,7 +47,13 @@ $services = $wpdb->get_results('SELECT * FROM wp_bookly_staff_services WHERE sta
                             </div>
                         </div>
                         <div class="featured-pros__bottom">
-                            <a class="featured-pros__button d-flex justify-content-center text-center <?php if (!empty($services)): ?>bookable<?php endif; ?>" href="<?php the_permalink(); ?>" title="<?= $title_tag; ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/calendar.svg"/></a>
+                            <a class="featured-pros__button d-flex justify-content-center text-center <?php if (!empty($services)): ?>bookable<?php endif; ?>" href="<?php the_permalink(); ?>" title="<?= $title_tag; ?>">
+                                <?php if (!empty($services)): ?>
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/icon-bookable.svg"/>
+                                <?php else: ?>
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/icon-not-bookable.svg"/>
+                                <?php endif; ?>
+                            </a>
                         </div>
                     </div>
                 </div>
