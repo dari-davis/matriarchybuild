@@ -19,6 +19,12 @@
             height: 100%;
         }
     }
+
+    &__image-wrapper {
+        .woocommerce-page & {
+            display: none;
+        }
+    }
 }
 
 .page:not(.woocommerce-page) {
