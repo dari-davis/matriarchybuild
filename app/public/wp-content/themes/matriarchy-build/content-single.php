@@ -9,6 +9,8 @@
 	<div class="col-12 p-0">
 		<?php if (has_post_thumbnail()): ?>
 			<a class="single-post__image-wrapper" style="background-image: url('<?= get_the_post_thumbnail_url(); ?>');" href="<?php the_permalink(); ?>"><div class="single-post__featured-image"></div></a>
+		<?php else: ?>
+			<a class="single-post__image-wrapper" style="background-image: url('<?= get_template_directory_uri(); ?>/assets/images/page-background-03.png ?>');" href="<?php the_permalink(); ?>"><div class="single-post__featured-image"></div></a>
 		<?php endif; ?>
 
 		<div class="single-post__content-wrapper d-flex">
