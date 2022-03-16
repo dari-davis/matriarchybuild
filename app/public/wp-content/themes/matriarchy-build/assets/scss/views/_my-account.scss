@@ -32,6 +32,10 @@
             max-width: 1008px;
         }
     }
+
+    .woocommerce-account__no-nav & {
+        background: $yellow;
+    }
 }
 
 .woocommerce-account {
@@ -46,6 +50,12 @@
 
         @include media-breakpoint-down(md) {
             padding: 30px $padding-small;
+        }
+    }
+
+    .woocommerce-account__no-nav {
+        .my-account__nav {
+            display: none;
         }
     }
 }

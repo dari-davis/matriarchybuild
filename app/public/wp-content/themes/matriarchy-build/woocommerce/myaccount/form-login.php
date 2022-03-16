@@ -34,7 +34,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 
 				<?php do_action( 'woocommerce_login_form_start' ); ?>
 
-				<p class="subtext">or with email</p>
+				<p class="subtext d-none">or with email</p>
 				<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
 					<label for="username" class="visually-hidden"><?php esc_html_e( 'Email Address', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
 					<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="username" autocomplete="username" placeholder="Email" value="<?php echo ( ! empty( $_POST['username'] ) ) ? esc_attr( wp_unslash( $_POST['username'] ) ) : ''; ?>" /><?php // @codingStandardsIgnoreLine ?>

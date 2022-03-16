@@ -767,7 +767,7 @@ add_action( 'woocommerce_register_form_start', 'bbloomer_add_name_woo_account_re
   
 function bbloomer_add_name_woo_account_registration() {
     ?>
-	<p class="subtext">or with email</p>
+	<p class="subtext d-none">or with email</p>
     <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
     <label for="reg_billing_first_name" class="visually-hidden"><?php _e( 'First Name', 'woocommerce' ); ?> <span class="required">*</span></label>
     <input type="text" class="input-text" name="billing_first_name" id="reg_billing_first_name" placeholder="First Name" value="<?php if ( ! empty( $_POST['billing_first_name'] ) ) esc_attr_e( $_POST['billing_first_name'] ); ?>" />
@@ -853,24 +853,5 @@ function my_acf_settings_capability( $capability ) {
     return 'edit_pages';
 }
 add_filter('acf/settings/capability', __NAMESPACE__ . '\\my_acf_settings_capability');
-
-
-// Custom Post order
-add_action( 'admin_init', 'mb_pro_archive_ordering' );
-
-function mb_pro_archive_ordering() 
-{
-    add_post_type_support( 'pro', 'page-attributes' );
-}
-
-//Page Slug Body Class
-function add_slug_body_class( $classes ) {
-	global $post;
-	if ( isset( $post ) ) {
-	$classes[] = $post->post_type . '-' . $post->post_name;
-	}
-	return $classes;
-	}
-	add_filter( 'body_class', 'add_slug_body_class' );
 
 ?>

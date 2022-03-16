@@ -6,13 +6,13 @@
  */
 
 get_header();
-
 the_post();
+global $wp;
+$request = explode('/', $wp->request);
 ?>
 
 <div class="main__row row no-gutters m-0 position-relative">
-	<div class="col-12 p-0">
-
+	<div class="col-12 p-0<?php if (count($request) == 1): ?> woocommerce-account__no-nav<?php endif; ?>">
 		<div id="post-<?php the_ID(); ?>" class="page__content-wrapper m-0">
 			<h1 class="page__title entry-title mb-borders mb-borders--pink pt-4 pb-3 mb-0 text-center"><?php the_title(); ?></h1>
 
