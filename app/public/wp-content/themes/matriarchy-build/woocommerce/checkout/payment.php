@@ -42,7 +42,7 @@ if ( ! is_ajax() ) {
         <div class="woocommerce__section">
 			<div class="woocommerce-additional-fields__field-wrapper">
 				<h3>Note For Your Pro</h3>
-				<p>Give us an overview of your project. (Optional)</p>
+				<p>Give us an overview of your project.</p>
 				<div class="row">
 					<div class="col-md-8">
 						<?php foreach ( $checkout->get_checkout_fields( 'order' ) as $key => $field ) : ?>
