@@ -18,20 +18,28 @@
         font-weight: bold;
     }
 
-    &--photos {
-        .form-group {
-            border-bottom: 0;
-        }
-    }
-
     &__image {
         position: relative;
         max-width: 94px;
     }
 
-    &__reload-button {
-        font-family: $font-family-sans-serif;
-        font-weight: bold;
-        text-decoration: underline;
+    &__photos {
+        background: rgba($olive, 0.2);
+    }
+
+    &__photo-form .form-group {
+        border-bottom: 0;
+    }
+
+    &__remove-button {
+        padding: 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 24px;
+        width: 24px;
+        background: transparent;
+        border: 0;
+        -webkit-appearance: none;
     }
 }

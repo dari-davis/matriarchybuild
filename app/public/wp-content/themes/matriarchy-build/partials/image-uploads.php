@@ -1,8 +1,6 @@
 <?php 
 $order = wc_get_order($args['orderId']);
 function submitPhotos($order) {
-    echo "<div class='questionnaire-reload pb-4'><span>Your photos have been uploaded! <a href='#' class='questionnaire__reload-button'>Refresh</a></span></div>";
-
     if (!empty($_FILES['upload_attachment']['name'][0])) {
 
         require_once( ABSPATH . 'wp-admin/includes/image.php' );
@@ -67,25 +65,7 @@ function submitPhotos($order) {
 
         }
     }
-    //echo '<script>location.reload();</script>';
+    echo "<script>var $ = jQuery.noConflict(); $('.photos__section').load('view-order.php .photos__content');</script>";
 } ?>
 
-<?php if (isset($_POST['submitPhotos'])) { submitPhotos($order); } ?>
-
-<form class="questionnaire questionnaire--photos px-4 py-2 mb-4" method="post" enctype="multipart/form-data">
-    <div class="form-group row py-3 m-0">
-        <p>Please upload up to 5 images.</p>
-	    <input class="custom-file-input p-0" type="file" name="upload_attachment[]" size="5" multiple/>
-    </div>
-    <?php if ($args['imageCount'] < 5): ?>
-        <div class="d-flex py-3"><button type="submit" value="Upload Project Photos" name="submitPhotos" class="w-auto button">Upload Project Photos</button></div>
-        <?php endif; ?>
-</form>
-
-<script>
-    var $ = jQuery.noConflict();
-    $('.questionnaire__reload-button').on('click', function(e) {
-        e.preventDefault();
-        location.reload();
-    });
-</script>
+<?php if (array_key_exists('submitPhotos', $_POST)) { submitPhotos($order); } ?>

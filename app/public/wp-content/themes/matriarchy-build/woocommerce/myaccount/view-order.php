@@ -128,29 +128,47 @@ foreach ($order->get_items() as $item_id => $item) {
         <?php endif; ?>
     </div>
 
-    <?php if ($images): ?>
-        <div class="questionnaire questionnaire--photos p-4 mb-4 d-flex">
-            <?php foreach($images as $image): ?>
-                <?php $imageId = $image->ID; ?>
-                <div class="questionnaire__image me-3">
-                    <img src="<?= wp_get_attachment_url($image->ID); ?>"/>
+    <div class="photos__section p-0">
+        <div class="photos__content">
+            <?php if ($images): ?>
+                <div class="questionnaire__photos mb-4">
+                    <div class="questionnaire--attachments p-4 d-flex">
+                        <?php foreach($images as $image): ?>
+                            <?php $imageId = $image->ID; ?>
+                            <div class="questionnaire__image me-3">
+                                <img src="<?= wp_get_attachment_url($image->ID); ?>"/>
 
-                    <form method="post">
-                        <input type="submit" name="remove-photo" value="Remove">
-                        <input type="hidden" name="photo-id-<?= $imageId; ?>" value="<?= $image->ID; ?>"/>
-                    </form>
+                                <form method="post">
+                                    <button class="questionnaire__remove-button" type="submit" name="remove-photo"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/x-circle.svg"></button>
+                                    <input type="hidden" name="photo-id-<?= $imageId; ?>" value="<?= $image->ID; ?>"/>
+                                </form>
 
-                    <?php
-                        if (!empty($_POST["photo-id-$imageId"])) {
-                            wp_delete_attachment($imageId);
-                            echo "<script>location.reload();</script>";
-                        }
+                                <?php
+                                    if (!empty($_POST["photo-id-$imageId"])) {
+                                        wp_delete_attachment($imageId);
+                                        echo "<script>location.reload();</script>";
+                                    }
 
-                    ?>
+                                ?>
+                            </div>
+                        <?php endforeach; ?>
+                                </div>
                 </div>
-            <?php endforeach; ?>
+            <?php endif; ?>
+
+            <?php if ($apptIsWhen == "future"): ?>
+                <form class="questionnaire questionnaire__photo-form px-4 py-2 mb-4" method="post" enctype="multipart/form-data">
+                    <div class="form-group row py-3 m-0">
+                        <p>Please upload up to 5 images.</p>
+                        <input class="custom-file-input p-0" type="file" name="upload_attachment[]" size="5"/>
+                    </div>
+                    <div class="upload-button">
+                        <div class="d-flex py-3"><button type="submit" value="Upload Project Photos" name="submitPhotos" class="w-auto button <?php if (count($images) >= 5): ?>disabled<?php endif; ?>">Upload Project Photos</button></div>
+                    </div>
+                </form>
+            <?php endif; ?>
         </div>
-    <?php endif; ?>
+    </div>
 
     <?php if ($apptIsWhen == "future"): ?>
         <?= get_template_part('partials/image-uploads', null, array('orderId' => $order_id, 'imageCount' => count($images))); ?>
@@ -173,11 +191,3 @@ foreach ($order->get_items() as $item_id => $item) {
         </div>
     </div>
 <?php endif; ?>
-
-<script>
-    $ = jQuery || $;
-    $('.photo-remove-btn').on('click', function(e) {
-        e.preventDefault();
-        console.log($(this).data('image-id'));
-    });
-</script>
