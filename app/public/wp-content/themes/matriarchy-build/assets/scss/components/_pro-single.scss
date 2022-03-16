@@ -89,6 +89,10 @@ $bookable-button-size:     41px;
             @include media-breakpoint-down(md) {
                 margin-right: $bookable-button-size;
                 border-width: 0px 1px 1px 1px;
+
+                &:last-child {
+                    border-bottom: 0;
+                }
             }
         }
     }
@@ -97,7 +101,7 @@ $bookable-button-size:     41px;
         max-width: 1510px;
 
         @include media-breakpoint-up(md) {
-            margin-left: -20px;
+            margin-left: -24px;
         }
 
         @include media-breakpoint-up(xl) {
@@ -136,15 +140,17 @@ $bookable-button-size:     41px;
         position: relative;
         height: 0;
         width: 100%;
-        padding-bottom: 100%;
+        padding-bottom: 92vw;
         overflow: hidden;
 
         @include media-breakpoint-up(md) {
-            padding-bottom: 0;
-            height: auto;
+            width: calc(66.66% + 1px); // col-md-6 + border
+            padding-bottom: 60.66%; // col-md-6
+            overflow: visible;
         }
 
         @include media-breakpoint-up(xl) {
+            padding-bottom: 421px;
             width: 494px;
         }
 
