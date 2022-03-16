@@ -7,7 +7,7 @@
         $('.bookly-js-holidays').jCal({
             day: new Date(d.getFullYear(), 0, 1),
             days: 1,
-            showMonths: 1,
+            showMonths: 12,
             scrollSpeed: 350,
             action: 'bookly_update_staff_holidays',
             csrf_token: BooklyL10nGlobal.csrf_token,

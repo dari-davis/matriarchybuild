@@ -1,5 +1,6 @@
 #bookly-tbs.bookly-staff-cabinet,
 .bookly-staff-cabinet {
+    position: relative;
     padding: 30px;
     color: $blue;
     font-family: $font-family;
@@ -47,12 +48,10 @@
         border: 0;
         border-radius: 0;
     }
+}
 
-    .jCalMo {
-        width: 100% !important;
-        height: auto;
-        float: none;
-    }
+.bookly-staff-cabinet-days-off {
+    padding: 15px 20px;
 }
 
 .bookly-js-staff-cabinet-special-days-wrap {

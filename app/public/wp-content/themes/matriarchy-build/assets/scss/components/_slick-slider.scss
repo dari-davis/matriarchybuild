@@ -93,6 +93,17 @@
         height: 0;
         line-height: 0;
     }
+
+    .bookly-js-holidays__arrows & {
+        width: 50px;
+        border: 0;
+        background: rgba($olive, 0.2);
+
+        &:after {
+            height: 16px;
+            background-image: url('../images/icons/chevron.svg');
+        }
+    }
 }
 
 .slick-arrow + .slick-arrow {

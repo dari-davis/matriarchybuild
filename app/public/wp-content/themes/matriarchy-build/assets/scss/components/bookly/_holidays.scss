@@ -1,6 +1,10 @@
 #bookly-tbs .bookly-js-holidays {
+    height: 633px;
+    width: 633px;
 
     .jCalMo {
+        padding: 0;
+
         .dow, .day, .pday {
             margin: 10px;
             line-height: 58px;
@@ -14,11 +18,30 @@
             color: $olive;
         }
 
-        .selectedDay {
+        .selectedDay,
+        .holidayDay {
             background: $pink !important;
             border-radius: 30px;
             color: $blue;
         }
+    }
+
+    .jCal .month {
+        padding-bottom: 8px;
+        border-bottom: 1px solid $olive;
+    }
+
+    .jCal .monthName {
+        margin-left: 80px;
+        font-size: 13px;
+        text-align: left;
+    }
+
+    &__arrows {
+        position: absolute;
+        top: 16px;
+        left: 0;
+        z-index: 1;
     }
 }
 
