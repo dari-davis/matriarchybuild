@@ -40,6 +40,10 @@ $slick-arrow-height:    33px;
     }
 
     &__slides {
+        .diy-carousel--slider & {
+            margin-top: 52px; // button + border;
+        }
+
         @include media-breakpoint-up(md) {
             border: 1px solid $pink;
             border-width: 1px 0 1px 1px;
@@ -59,6 +63,10 @@ $slick-arrow-height:    33px;
             display: flex;
             justify-content: space-between;
             width: 100%;
+
+            .diy-carousel--slider & {
+                border-top: 1px solid $pink;
+            }
         }
 
         @include media-breakpoint-up(md) {

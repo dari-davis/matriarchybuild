@@ -11,7 +11,7 @@ if ( have_posts() ) :
 				<?php if (is_search() || is_tax()): ?>
 					<?= get_template_part('partials/filters'); ?>
 				<?php endif; ?>
-				<div class="archives__row row m-0">
+				<div class="archives__row row m-0 p-0 gx-3">
 				<?php
 					while ( have_posts() ) :
 						the_post();

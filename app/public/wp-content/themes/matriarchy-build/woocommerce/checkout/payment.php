@@ -49,7 +49,7 @@ if ( ! is_ajax() ) {
 							<?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
 						<?php endforeach; ?>
 					</div>
-					<div class="col-md-4">After completing your booking, you will receive a questionnaire to provide more detail about your project and also upload images for your Pro.</div>
+					<div class="col-md-4">After completing your booking you will be able to share more details and upload photos to review during your session.</div>
 				</div>
 			</div>
 		</div>

@@ -122,7 +122,7 @@ foreach ($order->get_items() as $item_id => $item) {
             <hr class="mb-hr mb-hr--olive" />
         </div>
         <?php if ($apptIsWhen == "future" || get_post_meta($order_id, 'answer1', true)): ?>
-            <p>Get acquainted with the project details by reviewing the images and questionnaire answers below.</p>
+            <p>We strongly recommend completing your pre-consultation questionnaire and submitting all relevant photos, pdfs, videos and links to your Pro prior to your session. </p>
         <?php else: ?>
             <p>No questionnaire was submitted for this consultation.</p>
         <?php endif; ?>

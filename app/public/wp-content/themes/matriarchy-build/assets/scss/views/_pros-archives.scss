@@ -7,13 +7,6 @@
     &__row {
         @include media-breakpoint-up(md) {
             justify-content: space-between;
-            padding-left: $padding-medium;
-            padding-right: $padding-medium;
-        }
-
-        @include media-breakpoint-up(lg) {
-            padding-left: $padding-large;
-            padding-right: $padding-large;
         }
 
         &:after {
@@ -126,6 +119,11 @@
 }
 
 .archives {
+    margin-top: 20px;
+
+    @include media-breakpoint-up(md) {
+        margin-top: 80px;
+    }
 
     &__pro {
         .archives__archive & {

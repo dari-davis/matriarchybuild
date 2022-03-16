@@ -39,7 +39,7 @@
 			<hr class="mb-hr mb-hr--olive" />
 		</div>
 
-		<p class="p-explainer">Curabitur ut nunc sed arcu faucibus luctus at sed eros. Nam nec congue nisi. Nullam ultrices maximus enim at malesuada. Etiam ornare augue ac bibendum porttitor. Quisque sed volutpat enim.</p>
+		<p class="p-explainer">Example: I am going on vacation and would like to block time off from my recurring schedule.</p>
 	</div>
 	<div class="col-lg-8">
 		<?php echo do_shortcode('[bookly-staff-days-off]'); ?>

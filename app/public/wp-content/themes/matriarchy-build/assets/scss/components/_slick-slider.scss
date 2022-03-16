@@ -1,15 +1,3 @@
-.slick-track {
-    .pro__image-inner & {
-        @include media-breakpoint-up(md) {
-            height: 455px;
-        }
-
-        @include media-breakpoint-up(lg) {
-            height: 417px;
-        }
-    }
-}
-
 .slick-slide {
     .pro__image-inner & {
         border: 1px solid $blue;

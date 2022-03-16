@@ -1,7 +1,7 @@
 .main {
     flex: 1 0 auto;
     margin-top: 33px;
-    padding: 0 $padding-small;
+    padding: 0;
 
     @include media-breakpoint-up(lg) {
         margin-top: 65px;
@@ -20,15 +20,16 @@
 
     .page-template-page-full &,
     .page &,
-    .single-post & {
+    .single-post &,
+    .blog & {
         margin-top: 0 !important;
     }
 
-    .single-pro &,
-    .single-post &,
-    .woocommerce-account &,
-    .search-results &,
-    .archive & {
-        padding: 0;
+    .page-checkout & {
+        padding: 0 $padding-small;
+
+        @include media-breakpoint-up {
+            padding: 0 $padding-medium;
+        }
     }
 }
