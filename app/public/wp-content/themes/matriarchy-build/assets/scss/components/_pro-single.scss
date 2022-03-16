@@ -134,11 +134,13 @@ $bookable-button-size:     41px;
 
     &__image {
         position: relative;
+        height: 0;
+        width: 100%;
+        padding-bottom: 100%;
+        overflow: hidden;
 
-        @include media-breakpoint-down(md) {
-            margin-top: -1px;
-            width: 100%;
-            min-height: 228px;
+        @include media-breakpoint-up(md) {
+            padding-bottom: 0;
             height: auto;
         }
 

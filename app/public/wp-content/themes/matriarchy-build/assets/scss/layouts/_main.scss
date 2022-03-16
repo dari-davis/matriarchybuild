@@ -28,7 +28,7 @@
     .page-checkout & {
         padding: 0 $padding-small;
 
-        @include media-breakpoint-up {
+        @include media-breakpoint-up(md) {
             padding: 0 $padding-medium;
         }
     }

@@ -65,7 +65,7 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
       </div>
 
       <div class="pro__details-container row mx-xl-auto gx-0">
-        <div class="pro__image col-md-8 col-xl p-0">
+        <div class="pro__image col-md-8 col-xl">
           <div class="pro__image-inner">
             <ul class="slides list-unstyled m-0">
             <?php if (has_post_thumbnail()): ?>
@@ -77,7 +77,7 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
               <?php while (have_rows('assets')): the_row();
                 $image = get_sub_field('asset'); ?>
                 <li><img class="pro__image-position--<?= get_sub_field('crop_position'); ?>" src="<?= $image; ?>"/></li>
-              <?php endwhile; ?>  
+              <?php endwhile; ?>
             <?php endif; ?>
             </ul>
           </div>
