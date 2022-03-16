@@ -4,7 +4,7 @@
     align-items: center;
     background-size: cover;
 
-    &__headline {
+    &__header {
         text-align: center;
         background: $white;
         border: 1px solid $blue;
@@ -14,22 +14,42 @@
         }
 
         p {
-            padding: $padding-medium;
+            padding: 48px $padding-medium;
             margin: 0;
-            min-height: 111px;
-            line-height: 23px;
 
             @include media-breakpoint-up(md) {
-                font-size: 24px;
-                line-height: 32px;
+                padding: 48px;
             }
 
-            @include media-breakpoint-up(lg) {
-                padding: $padding-large;
-                font-size: 36px;
-                line-height: 48px;
+            @include media-breakpoint-up(xl) {
+                padding: 58px 105px;
             }
         }
+    }
+
+    &__heading {
+        display: flex;
+        font-family: $font-family-sans-serif;
+        font-size: 32px;
+        line-height: 38px;
+        font-weight: bold;
+
+        @include media-breakpoint-up(md) {
+            font-size: 38px;
+            line-height: 45px;
+        }
+
+        @include media-breakpoint-up(lg) {
+            font-size: 44px;
+            line-height: 51px;
+        }
+    }
+
+    &__subheading {
+        display: flex;
+        max-width: 510px;
+        font-size: 16px;
+        line-height: 23px;
     }
 
     &__bottom {

@@ -8,8 +8,15 @@
 <div class="hero py-5" <?php if (get_field('background_image')): ?>style="background-image: url('<?= get_field('background_image'); ?>');"<?php endif; ?>>
     <div class="content-blocks__wrapper mx-auto d-flex flex-column col-12">
         <div class="hero__content row gx-0">
-            <div class="col-md-6 hero__header">
-                <div class="hero__headline d-flex justify-content-center align-items-center"><p class="mx-auto"><?= get_field('headline'); ?></p></div>
+            <div class="col-md-6">
+                <div class="hero__header">
+                <p class="d-flex flex-column justify-content-center align-items-center">
+                    <span class="hero__heading pb-4"><?= get_field('heading'); ?></span>
+                    <?php if (get_field('subheading')): ?>
+                        <span class="hero__subheading"><?= get_field('subheading'); ?></span>
+                    <?php endif; ?>
+                </p>
+                </div>
                 <div class="hero__bottom d-none d-md-block"></div>
             </div>
             <div class="col-md-6 hero__actions">
