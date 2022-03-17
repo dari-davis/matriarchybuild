@@ -12,8 +12,8 @@ $background_color = get_field('background_color');
         <div class="content-blocks__wrapper py-5">
             <div class="row gx-0 justify-content-md-end">
                 <div class="col-md-7">
-                    <h2 class="side-by-side__heading mb-5 pb-2"><?= get_field('heading'); ?></h2>
                     <?php if (have_rows('supplies')): ?>
+                        <h2 class="side-by-side__heading mb-5 pb-2"><?= get_field('heading'); ?></h2>
                         <div class="side-by-side__supplies pb-5">
                             <h3 class="side-by-side__subheading">Supplies</h3>
                             <?php while (have_rows('supplies')): the_row(); ?>

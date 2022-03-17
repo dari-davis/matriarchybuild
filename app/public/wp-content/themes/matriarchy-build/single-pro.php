@@ -100,14 +100,14 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
         <div class="pro__details py-4 col-xl-6 gx-0">
           <div class="py-3 row gx-0">
             <?php if (get_field('services')): ?>
-              <div class="pro__services col-md-8">
+              <div class="pro__services col-md-8 col-xl-12 col-xxl-8">
                 <h3 class="h3 pb-0">Services</h3>
                 <?php foreach(get_field('services') as $service): ?>
                   <div class="pro__service"><?= $service ?></div>
                 <?php endforeach; ?>
               </div>
             <?php endif; ?>
-            <div class="pro__content <?= get_field('services') ? 'col-md-4' : 'col-md' ?>">
+            <div class="pro__content <?= get_field('services') ? 'col-md-4 col-xl-12 col-xxl-4' : 'col-md' ?>">
               <h3>Bio</h3>
               <?= get_field('content'); ?>
             </div>

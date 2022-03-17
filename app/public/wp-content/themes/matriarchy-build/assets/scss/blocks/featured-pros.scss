@@ -73,12 +73,6 @@
         @include media-breakpoint-down(md) {
             font-size: 38px;
         }
-
-        span {
-            @include media-breakpoint-up(md) {
-                display: table-caption;
-            }
-        }
     }
 
     &__details {

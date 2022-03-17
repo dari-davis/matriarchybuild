@@ -120,8 +120,6 @@ $bookable-button-size:     41px;
 
         @include media-breakpoint-up(md) {
             margin-left: 20px;
-            padding-right: 48px;
-            margin-left: 20px;
         }
 
         @include media-breakpoint-up(xl) {
@@ -218,7 +216,12 @@ $bookable-button-size:     41px;
         }
 
         @include media-breakpoint-up(xl) {
+            margin-bottom: $padding-medium;
             padding: 0 $padding-large 0 0;
+        }
+
+        @include media-breakpoint-up(xxl) {
+            margin-bottom: 0;
         }
 
         @include media-breakpoint-down(md) {

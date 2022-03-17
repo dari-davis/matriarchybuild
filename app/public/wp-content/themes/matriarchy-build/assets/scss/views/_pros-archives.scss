@@ -123,6 +123,10 @@
 
     @include media-breakpoint-up(md) {
         margin-top: 80px;
+
+        .search-results & {
+            margin-top: 0;
+        }
     }
 
     &__pro {

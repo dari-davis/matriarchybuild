@@ -1,7 +1,6 @@
 .page {
 
     &__content-wrapper {
-        min-height: 100%;
 
         .page-template-page-account & {
             display: flex;
@@ -25,6 +24,12 @@
             display: none;
         }
     }
+
+    &__content-blocks {
+        padding: 0 $padding-small;
+        max-width: $max-content-width;
+        font-family: $sans-serif-font-family;
+    }
 }
 
 .page:not(.woocommerce-page) {
@@ -35,9 +40,14 @@
         top: 0;
         overflow: hidden;
         width: 100%;
+        height: 350px;
+        background-size: cover;
+        background-position: 50%;
 
         @include media-breakpoint-up(md) {
-            height: 622px;
+            height: 760px;
+            overflow: hidden;
+            background-color: rgba($olive, 0.2);
         }
     }
 

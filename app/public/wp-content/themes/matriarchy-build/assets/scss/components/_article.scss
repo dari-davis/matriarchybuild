@@ -37,19 +37,13 @@
             text-transform: uppercase;
             font-size: 28px;
             line-height: 26px;
-            display: table-caption;
             letter-spacing: 0.03em;
         }
 
         .diy-inspiration & {
-            height: 118px;
             color: $yellow;
             background: transparent;
             border-top: 1px solid $olive;
-
-            @include media-breakpoint-up(md) {
-                height: 114px;
-            }
         }
     }
 

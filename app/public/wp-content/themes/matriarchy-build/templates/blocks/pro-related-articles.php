@@ -10,7 +10,7 @@ $articles = get_field('articles');
     <div class="related-articles__wrapper mx-auto">
         <div class="related-articles__header d-flex mb-4">
             <div class="col-md-4">
-                <img class="d-none d-md-block" src="<?php echo get_template_directory_uri(); ?>/assets/images/related-articles-title.png">
+                <img class="d-none d-md-block" src="<?php echo get_template_directory_uri(); ?>/assets/images/related-articles-title.svg">
                 <img class="d-md-none" src="<?php echo get_template_directory_uri(); ?>/assets/images/related-articles-title-mobile.png">
             </div>
             <div class="col-md-8 d-flex justify-content-center align-items-center mb-borders">
