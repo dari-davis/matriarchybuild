@@ -854,4 +854,14 @@ function my_acf_settings_capability( $capability ) {
 }
 add_filter('acf/settings/capability', __NAMESPACE__ . '\\my_acf_settings_capability');
 
+// Remove subtotal from order confirmation email
+add_filter( 'woocommerce_get_order_item_totals', 'reordering_order_item_totals', 10, 3 );
+function reordering_order_item_totals( $total_rows, $order, $tax_display ){
+    $shipping = $total_rows['cart_subtotal'];
+    $order_total = $total_rows['order_total'];
+
+    unset($total_rows['cart_subtotal']);
+    return $total_rows;
+}
+
 ?>
