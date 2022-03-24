@@ -6,14 +6,13 @@ use Bookly\Backend\Components\Controls\Buttons;
  */
 ?>
 <form>
-    <div>
+    <div class="row gx-0 d-flex align-items-center">
+        <div class="col-md-9">
         <?php echo Proxy\Pro::getAdvancedHtml( $staff, array(), false ) ?>
-        <?php if ( $calendars ) Proxy\Pro::renderGoogleCalendarsList( $calendars, $selected_calendar_id ) ?>
-    </div>
-    <div class="text-right">
-        <hr/>
+        </div>
+        <div class="col-md-3 text-end">
         <span class="bookly-js-advanced-error text-danger"></span>
         <?php Buttons::renderSubmit( 'bookly-advanced-save' ) ?>
-        <?php Buttons::renderReset() ?>
+        </div>
     </div>
 </form>

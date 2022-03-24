@@ -47,6 +47,6 @@
     });
     var ajaxurl = <?php echo json_encode( admin_url( 'admin-ajax.php' ) ) ?>;
 </script>
-<div id="bookly-tbs" class="bookly-staff-cabinet bookly-staff-cabinet-advanced <?php echo $form_id ?>">
+<div id="bookly-tbs" class="bookly-staff-cabinet bookly-staff-cabinet-advanced <?php echo $form_id ?> mb-4">
     <?php self::renderTemplate( 'advanced', compact( 'staff', 'calendars', 'selected_calendar_id' ) ) ?>
 </div>

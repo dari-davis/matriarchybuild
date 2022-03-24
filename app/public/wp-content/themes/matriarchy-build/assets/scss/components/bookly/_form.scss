@@ -33,13 +33,10 @@ $picker-date-size: 35px;
         border-bottom: 1px solid $olive;
 
         .bookly-js-time-zone-switcher {
+            width: 120px;
+            color: $blue;
             border: 0 !important;
             background: transparent;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            -o-appearance: none;
-            -ms-appearance: none;
-            appearance: none;
         }
     }
 
