@@ -606,15 +606,22 @@ add_action("template_redirect", 'redirection_function');
 function redirection_function(){
     global $woocommerce;
     if( is_cart() && WC()->cart->cart_contents_count == 0){
-        wp_safe_redirect( get_permalink( woocommerce_get_page_id( 'pro' ) ) );
+        wp_safe_redirect( home_url() ); 
+        exit;
     } elseif ( is_cart() && WC()->cart->cart_contents_count > 0) {
-		wp_redirect( wc_get_checkout_url() );
+		wp_safe_redirect( wc_get_checkout_url() );
+		exit;
 	}
 
 	if( is_checkout() && 0 == sprintf(_n('%d', '%d', $woocommerce->cart->cart_contents_count, 'woothemes'), $woocommerce->cart->cart_contents_count) && !isset($_GET['key']) ) {
-        wp_redirect( home_url() ); 
+        wp_safe_redirect( home_url() ); 
         exit;
     }
+
+	if (is_page('my-account') && !is_wc_endpoint_url()) {
+		wp_safe_redirect(home_url('/my-account/upcoming-consultations'));
+		exit;
+	}
 }
 
 // Allow only 1 item in the cart
