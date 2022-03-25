@@ -5915,6 +5915,7 @@ var bookly = (function ($) {
 					$date.wrap('<div class="bookly-form__time-date p-3 mb-4"></div>');
 		
 					let $timeDateContainer = $('.bookly-form__time-date', $container);
+					$timeDateContainer.append('<span>Timezone: </span>');
 					$timeDateContainer.append($timeZone);
 				}
 			}
