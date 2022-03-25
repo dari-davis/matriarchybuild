@@ -605,6 +605,7 @@ function snippetpress_style_stripe_1($styles) {
 add_action("template_redirect", 'redirection_function');
 function redirection_function(){
     global $woocommerce;
+	global $wp;
     if( is_cart() && WC()->cart->cart_contents_count == 0){
         wp_safe_redirect( home_url() ); 
         exit;
@@ -618,9 +619,14 @@ function redirection_function(){
         exit;
     }
 
-	if (is_page('my-account') && !is_wc_endpoint_url()) {
-		wp_safe_redirect(home_url('/my-account/upcoming-consultations'));
-		exit;
+	$request = explode('/', $wp->request);
+	if (end($request) == 'my-account') {
+		if (in_array('pro_user', (array) wp_get_current_user()->roles)) {
+			wp_safe_redirect(home_url('/my-account/consultations'));
+			exit;
+		} else{
+			wp_safe_redirect(home_url('/my-account/upcoming-consultations'));
+		}
 	}
 }
 
