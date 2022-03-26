@@ -37,10 +37,10 @@ class ShortCode extends Lib\Base\Component
                 ),
             );
             if ( get_option( 'bookly_cst_phone_default_country' ) == 'disabled' ) {
-                $styles['bookly']['frontend/resources/css/bookly-main.css'] = array( 'bookly-picker.classic.date.css' );
+                //$styles['bookly']['frontend/resources/css/bookly-main.css'] = array( 'bookly-picker.classic.date.css' );
             } else {
                 $styles['bookly']['frontend/resources/css/intlTelInput.css'] = array();
-                $styles['bookly']['frontend/resources/css/bookly-main.css'] = array( 'bookly-intlTelInput.css', 'bookly-picker.classic.date.css' );
+                //$styles['bookly']['frontend/resources/css/bookly-main.css'] = array( 'bookly-intlTelInput.css', 'bookly-picker.classic.date.css' );
             }
             if ( is_rtl() ) {
                 $styles['bookly']['frontend/resources/css/bookly-rtl.css'] = array();
