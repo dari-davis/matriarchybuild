@@ -12,10 +12,10 @@
             <?php endwhile; ?>
         <?php endif; ?>
         <?php if (has_post_thumbnail()): ?>
-            <a class="pros__image-wrapper" href="<?php the_permalink(); ?>" style="background-image: url('<?= get_the_post_thumbnail_url(); ?>');"><div class="pros__image"></div></a>
+            <a class="pros__image-wrapper" aria-label="Pro" href="<?php the_permalink(); ?>" style="background-image: url('<?= get_the_post_thumbnail_url(); ?>');"><div class="pros__image"></div></a>
 
         <?php else: ?>
-            <a class="pros__image-wrapper" href="<?php the_permalink(); ?>"><div class="pros__image"></div></a>
+            <a class="pros__image-wrapper" aria-label="Pro" href="<?php the_permalink(); ?>"><div class="pros__image"></div></a>
         <?php endif; ?>
         <div class="pros__trade px-2"><?= get_field('trade'); ?></div>
     </div>
@@ -23,9 +23,9 @@
         <?php $title_tag = empty($services) ? "Pro is not available for booking" : "Pro is available for booking"; ?>
         <a class="pros__header-button d-flex justify-content-center mb-borders text-center <?php if (!empty($services)): ?>bookable<?php endif; ?>" href="<?php the_permalink(); ?>" title="<?= $title_tag; ?>">
             <?php if (!empty($services)): ?>
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/icon-bookable.svg"/>
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/icon-bookable.svg" alt="Pros bookable card icon"/>
             <?php else: ?>
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/icon-not-bookable.svg"/>
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/icon-not-bookable.svg" alt="Pros non-bookable card icon"/>
             <?php endif; ?>
         </a>
     </div>

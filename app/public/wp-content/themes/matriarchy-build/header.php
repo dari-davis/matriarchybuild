@@ -4,6 +4,7 @@
 <head>
   <meta charset="<?php bloginfo( 'charset' ); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Built by Women. Built for Everyone. Matriarchy Build wants to empower you to take on your next project with confidence.">
 
   <?php wp_head(); ?>
 
@@ -27,7 +28,7 @@
 
   <header id="header" class="header row no-gutters m-0">
     <div class="header__logo col-md py-4 py-md-0 p-lg-4 d-flex">
-      <a href="/"><img class="header__logo-image mx-auto" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg"></a>
+      <a href="/"><img class="header__logo-image mx-auto" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" alt="Matriarchy Build logo"></a>
     </div>
 
     <div class="header__nav col-md text-md-center gx-0">
@@ -73,7 +74,7 @@
                 <input type="text" name="s" class="form-control"
                   placeholder="<?php esc_attr_e( 'Search', 'matriarchy-build' ); ?>"
                   title="<?php esc_attr_e( 'Search', 'matriarchy-build' ); ?>" />
-                <button type="submit" name="submit"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/search.svg"/></button>
+                <button type="submit" name="submit" aria-label="Search"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/search.svg" alt="Search icon"/></button>
               </div>
             </form>
           <?php endif; ?>

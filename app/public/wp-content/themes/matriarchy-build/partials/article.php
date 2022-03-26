@@ -1,11 +1,11 @@
 <div class="article">
     <div class="article__details col p-0 mb-borders">
         <?php if (has_post_thumbnail()): ?>
-            <a class="article__image-container" href="<?php the_permalink(); ?>" style="background-image: url('<?= get_the_post_thumbnail_url(); ?>');"></a>
+            <a class="article__image-container" href="<?php the_permalink(); ?>" style="background-image: url('<?= get_the_post_thumbnail_url(); ?>');" aria-label="<?= the_title(); ?>"></a>
         <?php else: ?>
-            <a class="article__image-container" href="<?php the_permalink(); ?>"><div class="article__image"></div></a>
+            <a class="article__image-container" href="<?php the_permalink(); ?>" aria-label="<?php the_title(); ?>"><div class="article__image"></div></a>
         <?php endif; ?>
-        <a class="article__name" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'matriarchy-build' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><div class="article__title p-2"><?php the_title(); ?></div></a>
+        <a class="article__name" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'matriarchy-build' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark" aria-label="<?php the_title(); ?>"><div class="article__title p-2"><?= the_title(); ?></div></a>
     </div>
     <?php if (!is_search()): ?>
         <div class="entry-meta m-0">

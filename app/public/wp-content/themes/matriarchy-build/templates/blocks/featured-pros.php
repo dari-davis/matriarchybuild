@@ -12,8 +12,8 @@ $services = $wpdb->get_results('SELECT * FROM wp_bookly_staff_services WHERE sta
 <div class="featured-pros py-5">
     <div class="featured-pros__wrapper mx-auto d-flex">
         <div class="featured-pros__image mb-4 mb-lg-0 mx-auto mx-md-0">
-            <img class="d-none d-lg-block" src="<?php echo get_template_directory_uri(); ?>/assets/images/featured-pros-big.svg">
-            <img class="d-lg-none" src="<?php echo get_template_directory_uri(); ?>/assets/images/featured-pros-small.svg">
+            <img class="d-none d-lg-block" src="<?php echo get_template_directory_uri(); ?>/assets/images/featured-pros-big.svg" alt="Featured Pros heading">
+            <img class="d-lg-none" src="<?php echo get_template_directory_uri(); ?>/assets/images/featured-pros-small.svg" alt="Featured Pros heading">
         </div>
         <div class="featured-pros__posts row mx-0 ms-lg-3">
             <?php foreach ($articles as $article):
@@ -21,7 +21,7 @@ $services = $wpdb->get_results('SELECT * FROM wp_bookly_staff_services WHERE sta
                 $permalink = get_permalink($postId); ?>
                 <div class="col-md-6 col-lg-4 article d-flex mb-3 mb-lg-0 mt-lg-3">
                     <div class="col-6 mb-borders mb-borders--green">
-                        <a class="article__image-container d-flex" href="<?= $permalink; ?>" style="background-image: url('<?= get_the_post_thumbnail_url($postId, 'medium'); ?>');"></a>
+                        <a class="article__image-container d-flex" href="<?= $permalink; ?>" style="background-image: url('<?= get_the_post_thumbnail_url($postId, 'medium'); ?>');" aria-label="<?= $article->post_title; ?>"></a>
                     </div>
                     <div class="featured-pros__details col-6 has-white-background-color mb-borders mb-borders--green">
                         <div class="featured-pros__top">
@@ -47,11 +47,11 @@ $services = $wpdb->get_results('SELECT * FROM wp_bookly_staff_services WHERE sta
                             </div>
                         </div>
                         <div class="featured-pros__bottom">
-                            <a class="featured-pros__button d-flex justify-content-center text-center <?php if (!empty($services)): ?>bookable<?php endif; ?>" href="<?php the_permalink(); ?>" title="<?= $title_tag; ?>">
+                            <a class="featured-pros__button d-flex justify-content-center text-center <?php if (!empty($services)): ?>bookable<?php endif; ?>" href="<?php the_permalink(); ?>" title="<?= $title_tag; ?>" aria-label="Pro">
                                 <?php if (!empty($services)): ?>
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/icon-bookable.svg"/>
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/icon-bookable.svg" alt="Pros bookable card icon"/>
                                 <?php else: ?>
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/icon-not-bookable.svg"/>
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/icon-not-bookable.svg" alt="Pros non-bookable card icon"/>
                                 <?php endif; ?>
                             </a>
                         </div>

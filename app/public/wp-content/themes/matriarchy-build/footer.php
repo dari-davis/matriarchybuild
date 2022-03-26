@@ -17,8 +17,8 @@
 		<div class="footer__details col-md d-flex py-md-4 align-items-center">
 			<div class="footer__details-inner row m-0">
 				<div class="col-md-4 footer__logo py-4 p-md-0 text-center py-lg-4">
-					<a href="/" class="d-md-none"><img class="m-auto" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-footer-blue.svg"></a>
-					<a href="/" class="d-none d-md-block"><img class="m-auto" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-footer.svg"></a>
+					<a href="/" class="d-md-none" aria-label="Matriarchy Build logo"><img class="m-auto" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-footer-blue.svg" alt="Matriarchy Build logo"></a>
+					<a href="/" class="d-none d-md-block" aria-label="Matriarchy Build logo"><img class="m-auto" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-footer.svg" alt="Matriarchy Build logo"></a>
 				</div>
 				<div class="col-md-8 py-5 py-md-4 px-md-4 px-xl-5">
 					<h3 class="text-white">Apply To Be A Pro</h3>
@@ -50,12 +50,12 @@
 
 			?>
 			<ul class="footer__social-menu d-flex flex-row p-0 m-0 pt-3 pt-md-5">
-				<li class="footer__social-menu-item"><a href="https://www.instagram.com/matriarchybuild/" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/footer/instagram.svg"></a></li>
-				<li class="footer__social-menu-item"><a href="https://www.tiktok.com/@matriarchybuild" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/footer/tiktok.svg"></a></li>
-				<li class="footer__social-menu-item"><a href="https://www.facebook.com/Matriarchy-Build-100699602430280" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/footer/facebook.svg"></a></li>
-				<li class="footer__social-menu-item"><a href="https://www.pinterest.com/04dexx5gswbh2v4on157ftn5y7pzq9/_saved/" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/footer/pinterest.svg"></a></li>
-				<li class="footer__social-menu-item"><a href="https://twitter.com/MatriarchyBuild" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/footer/twitter.svg"></a></li>
-				<li class="footer__social-menu-item"><a href="https://www.youtube.com/channel/UCVIsS1vBde3-csSrrLrJQ9Q" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/footer/youtube.svg"></a></li>
+				<li class="footer__social-menu-item"><a href="https://www.instagram.com/matriarchybuild/" target="_blank"><img height="22" width="22" src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/footer/instagram.svg" alt="Instagram icon for Matriarchy Build footer"></a></li>
+				<li class="footer__social-menu-item"><a href="https://www.tiktok.com/@matriarchybuild" target="_blank"><img height="22" width="22" src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/footer/tiktok.svg" alt="TikTok icon for Matriarchy Build footer"></a></li>
+				<li class="footer__social-menu-item"><a href="https://www.facebook.com/Matriarchy-Build-100699602430280" target="_blank"><img height="22" width="22" src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/footer/facebook.svg" alt="Facebook icon for Matriarchy Build footer"></a></li>
+				<li class="footer__social-menu-item"><a href="https://www.pinterest.com/04dexx5gswbh2v4on157ftn5y7pzq9/_saved/" target="_blank"><img height="22" width="22" src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/footer/pinterest.svg" alt="Pinterest icon for Matriarchy Build footer"></a></li>
+				<li class="footer__social-menu-item"><a href="https://twitter.com/MatriarchyBuild" target="_blank"><img height="22" width="22" src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/footer/twitter.svg" alt="Twitter icon for Matriarchy Build footer"></a></li>
+				<li class="footer__social-menu-item"><a href="https://www.youtube.com/channel/UCVIsS1vBde3-csSrrLrJQ9Q" target="_blank"><img height="22" width="22" src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/footer/youtube.svg" alt="YouTube icon for Matriarchy Build footer"></a></li>
 			</ul>
 		</div>
 	</footer><!-- /#footer -->

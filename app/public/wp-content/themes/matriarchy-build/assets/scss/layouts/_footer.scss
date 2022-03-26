@@ -87,6 +87,11 @@
 
     &__social-menu-item {
         display: flex;
-        padding-right: 8px;
+        padding-right: 6px;
+
+        a, img {
+            height: 22px;
+            width: 22px;
+        }
     }
 }
