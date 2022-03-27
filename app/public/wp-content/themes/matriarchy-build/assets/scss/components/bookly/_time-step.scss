@@ -1,8 +1,14 @@
 .bookly-time-step {
     display: inline-flex;
     margin-bottom: 30px;
-    width: 246px;
+    padding: 8px 16px;
+    width: 100%;
     overflow-y: auto;
+
+    @include media-breakpoint-up(md) {
+        padding: 0;
+        width: 246px;
+    }
 
     .bookly-columnizer-wrap {
         position: relative;

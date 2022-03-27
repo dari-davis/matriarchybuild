@@ -9,7 +9,9 @@
 	border: 1px solid $blue;
 
 	&.booking-dialog {
-		min-width: 863px;
+		@include media-breakpoint-up(lg) {
+			min-width: 863px;
+		}
 	}
 }
 
@@ -53,11 +55,15 @@
 }
 
 .ui-dialog-content {
-	padding: 40px;
+	padding: 16px;
 	overflow: auto;
 
 	.booking-dialog & {
 		padding-top: 10px;
+	}
+
+	@include media-breakpoint-up(md) {
+		padding: 40px;
 	}
 }
 

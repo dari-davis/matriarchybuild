@@ -1,9 +1,11 @@
 .picker {
-    display: inline-flex;
-    width: calc(100% - 264px);
-
     &__day--selected {
         color: $white;
+    }
+
+    @include media-breakpoint-up(md) {
+        display: inline-flex;
+        width: calc(100% - 264px);
     }
 }
 

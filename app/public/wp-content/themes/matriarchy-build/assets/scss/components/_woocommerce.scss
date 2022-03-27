@@ -2,7 +2,17 @@
 	flex: 1;
 
 	.woocommerce-checkout & {
-		padding-top: 4rem;
+		padding: 4rem $padding-small 0;
+
+		@include media-breakpoint-up(md) {
+			padding-left: $padding-medium;
+			padding-right: $padding-medium;
+		}
+
+		@include media-breakpoint-up(lg) {
+			padding-left: 0;
+			padding-right: 0;
+		}
 	}
 
 	form.login,
