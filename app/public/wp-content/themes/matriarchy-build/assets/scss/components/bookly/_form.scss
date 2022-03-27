@@ -30,11 +30,9 @@ $picker-date-size: 35px;
     &__time-date {
         display: flex;
         justify-content: space-between;
-        font-size: 14px;
         border-bottom: 1px solid $olive;
 
         .bookly-js-time-zone-switcher {
-            width: 120px !important;
             color: $blue;
             border: 0 !important;
             background: transparent;
