@@ -159,11 +159,11 @@ foreach ($order->get_items() as $item_id => $item) {
             <?php if ($apptIsWhen == "future"): ?>
                 <form class="questionnaire questionnaire__photo-form px-4 py-2 mb-4" method="post" enctype="multipart/form-data">
                     <div class="form-group row py-3 m-0">
-                        <p>Please upload up to 5 images.</p>
+                        <p>Please upload up to 5 images. Submit each image one at a time.</p>
                         <input class="custom-file-input p-0" type="file" name="upload_attachment[]" size="5"/>
                     </div>
                     <div class="upload-button">
-                        <div class="d-flex py-3"><button type="submit" value="Upload Project Photos" name="submitPhotos" class="w-auto button <?php if (count($images) >= 5): ?>disabled<?php endif; ?>">Upload Project Photos</button></div>
+                        <div class="d-flex py-3"><button type="submit" value="Upload Project Photos" name="submitPhotos" class="w-auto button <?php if (count($images) >= 5): ?>disabled<?php endif; ?>">Upload Project Photo</button></div>
                     </div>
                 </form>
             <?php endif; ?>
