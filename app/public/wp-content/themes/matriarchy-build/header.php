@@ -7,9 +7,6 @@
   <meta name="description" content="Built by Women. Built for Everyone. Matriarchy Build wants to empower you to take on your next project with confidence.">
 
   <?php wp_head(); ?>
-
-  <!-- BUG HERD -->
-  <script type="text/javascript" src="https://www.bugherd.com/sidebarv2.js?apikey=17uyxyqtgbj0wovxn3mb9w" async="true"></script>
 </head>
 
 <?php
