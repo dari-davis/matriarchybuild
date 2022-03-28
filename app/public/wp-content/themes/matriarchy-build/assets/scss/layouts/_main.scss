@@ -32,4 +32,10 @@
             padding: 0 $padding-medium;
         }
     }
+
+    .post-type-archive-pro & {
+        @include media-breakpoint-down(md) {
+            margin-top: 16px;
+        }
+    }
 }
