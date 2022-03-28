@@ -5,6 +5,7 @@
   <meta charset="<?php bloginfo( 'charset' ); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Built by Women. Built for Everyone. Matriarchy Build wants to empower you to take on your next project with confidence.">
+  <meta name="p:domain_verify" content="ba15d92dd5d02f5fb6cf46d5be0e3149"/>
 
   <?php wp_head(); ?>
 </head>

@@ -245,7 +245,7 @@ $bookable-button-size:     41px;
 
     &__booking {
         padding: $padding-small;
-        max-width: $max-content-width;
+        max-width: 1510px;
 
         .text-button:hover {
             color: $blue;
@@ -259,6 +259,12 @@ $bookable-button-size:     41px;
             display: block;
             top: -100px;
             visibility: hidden;
+        }
+
+        @include media-breakpoint-up(xl) {
+            margin-bottom: $margin-bottom;
+            padding-left: $padding-large;
+            padding-right: $padding-large;
         }
     }
 
@@ -275,6 +281,22 @@ $bookable-button-size:     41px;
 
         @include media-breakpoint-down(md) {
             width: 100%;
+        }
+
+        @include media-breakpoint-up(lg) {
+            margin-right: 20px;
+            width: 323px;
+            height: 121px;
+
+            h2 {
+                max-width: 220px;
+            }
+        }
+    }
+
+    &__booking-content {
+        @include media-breakpoint-up(lg) {
+            width: 906px;
         }
     }
 }

@@ -119,7 +119,7 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
 
       <?php if (!empty($services)): ?>
         <div class="pro__booking-container m-0">
-          <div class="pro__booking mx-auto py-md-5">
+          <div class="pro__booking mx-auto py-md-5 d-lg-flex">
             <script>
               var $ = jQuery.noConflict();
               $(document).ready(function($) {
@@ -143,46 +143,46 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
 
             <div class="pro__booking-heading d-inline-flex"><h2 class="p-3 m-0">Book A Consultation</h2></div>
 
-            <?php foreach($services as $row): ?>
-              <!-- <?php print_r($row); ?> -->
-              <?php $service = Bookly\Lib\Entities\Service::find( $row->service_id ); ?>
-              <!-- <?php print_r($service->duration); ?> -->
+            <div class="pro__booking-content">
+              <?php foreach($services as $row): ?>
+                <?php $service = Bookly\Lib\Entities\Service::find( $row->service_id ); ?>
 
-              <div id="dialog-<?= $row->service_id; ?>">
-                <div class="bookly-box bookly-box--heading py-2 mb-0 pb-0">
-                  <h3>Book A Consultation</h3>
-                  <div class="bookly-box__details d-flex row px-0 gx-0">
-                    <div class="col-6 p-2 py-md-3" data-consultation-details></div>
-                    <div class="col-6 p-2 py-md-3"><?= $service->duration == 1800 ? '25min' : '55min'; ?><br/>$<?= $row->price; ?></div>
-                  </div>
-                </div>
-                <?php echo do_shortcode('[bookly-form category_id="-1" service_id="'.$row->service_id.'" staff_member_id="'.$row->staff_id.'" hide="categories,services,staff_members,date,week_days,time_range"]'); ?>
-              </div>
-              <a class="anchor" id="booking-<?= $row->service_id; ?>"></a>
-              <div class="booking-card my-3 my-md-5">
-                <div class="row m-0">
-                  <div class="col-md-4 p-0 row m-0 flex-md-column">
-                    <div class="booking-card__label m-0 p-2 p-md-3 col-6 col-md-auto">Duration</div>
-                    <div class="booking-card__detail p-2 p-md-3 col-6 col-md-auto">
-                      <?= $service->duration == 1800 ? '25min' : '55min'; ?>
+                <div id="dialog-<?= $row->service_id; ?>">
+                  <div class="bookly-box bookly-box--heading py-2 mb-0 pb-0">
+                    <h3>Book A Consultation</h3>
+                    <div class="bookly-box__details d-flex row px-0 gx-0">
+                      <div class="col-6 p-2 py-md-3" data-consultation-details></div>
+                      <div class="col-6 p-2 py-md-3"><?= $service->duration == 1800 ? '25min' : '55min'; ?><br/>$<?= $row->price; ?></div>
                     </div>
                   </div>
-                  <div class="col-md-4 p-0 row m-0 flex-md-column">
-                    <div class="booking-card__label m-0 p-2 p-md-3 col-6 col-md-auto">Price</div>
-                    <div class="booking-card__detail p-2 p-md-3 col-6 col-md-auto">$<?= $row->price; ?></div>
-                  </div>
-                  <div class="col-md-4 p-0 row m-0 flex-md-column">
-                    <div class="booking-card__label m-0 p-2 p-md-3 col-6 col-md-auto">Consultation Type</div>
-                    <div class="booking-card__detail p-2 p-md-3 col-6 col-md-auto">
-                      <?= $row->capacity_max == 1 ? '1:1' : 'Class'; ?>
+                  <?php echo do_shortcode('[bookly-form category_id="-1" service_id="'.$row->service_id.'" staff_member_id="'.$row->staff_id.'" hide="categories,services,staff_members,date,week_days,time_range"]'); ?>
+                </div>
+                <a class="anchor" id="booking-<?= $row->service_id; ?>"></a>
+                <div class="booking-card my-3 my-md-5">
+                  <div class="row m-0">
+                    <div class="col-md-4 p-0 row m-0 flex-md-column">
+                      <div class="booking-card__label m-0 p-2 p-md-3 col-6 col-md-auto">Duration</div>
+                      <div class="booking-card__detail p-2 p-md-3 col-6 col-md-auto">
+                        <?= $service->duration == 1800 ? '25min' : '55min'; ?>
+                      </div>
+                    </div>
+                    <div class="col-md-4 p-0 row m-0 flex-md-column">
+                      <div class="booking-card__label m-0 p-2 p-md-3 col-6 col-md-auto">Price</div>
+                      <div class="booking-card__detail p-2 p-md-3 col-6 col-md-auto">$<?= $row->price; ?></div>
+                    </div>
+                    <div class="col-md-4 p-0 row m-0 flex-md-column">
+                      <div class="booking-card__label m-0 p-2 p-md-3 col-6 col-md-auto">Consultation Type</div>
+                      <div class="booking-card__detail p-2 p-md-3 col-6 col-md-auto">
+                        <?= $row->capacity_max == 1 ? '1:1' : 'Class'; ?>
+                      </div>
                     </div>
                   </div>
+                  <div class="booking-card__action text-center">
+                    <a class="text-button text-button--blue d-flex justify-content-center align-items-center p-3" data-bookly="#dialog-<?= $row->service_id; ?>" href="#">Book a Time</a>
+                  </div>
                 </div>
-                <div class="booking-card__action text-center">
-                  <a class="text-button text-button--blue d-flex justify-content-center align-items-center p-3" data-bookly="#dialog-<?= $row->service_id; ?>" href="#">Book a Time</a>
-                </div>
-              </div>
-            <?php endforeach; ?>
+              <?php endforeach; ?>
+            </div>
           </div>
         </div>
       <?php endif; ?>
