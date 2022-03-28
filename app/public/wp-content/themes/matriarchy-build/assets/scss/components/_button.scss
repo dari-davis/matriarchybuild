@@ -3,6 +3,7 @@
     height: 60px;
     color: $blue;
     font-size: 16px;
+    font-weight: normal;
     width: 100%;
     background: $pink;
     border: 1px solid $olive;
@@ -36,6 +37,7 @@ button.button--text {
     justify-content: center;
     align-items: center;
     color: $blue;
+    font-weight: normal;
     background-color: $pink;
     border: 1px solid $olive;
     border-radius: 0;
@@ -54,6 +56,7 @@ button.button--text {
 .woocommerce input.button.alt,
 .woocommerce a.button.alt {
     color: $pink;
+    font-weight: normal;
     background-color: $blue;
     border: 1px solid $olive;
     border-radius: 0;
@@ -83,6 +86,7 @@ button.button--text {
         height: 60px;
         color: $blue;
         font-family: $font-family;
+        font-weight: normal;
         background-color: $olive;
         border: 0;
         border-radius: 0;
@@ -118,6 +122,7 @@ button.button--text {
         height: 60px;
         color: $pink;
         font-family: $font-family;
+        font-weight: normal;
         background-color: $blue;
         border: 0;
         border-radius: 0;

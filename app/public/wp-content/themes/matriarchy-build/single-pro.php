@@ -178,8 +178,8 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
                     </div>
                   </div>
                 </div>
-                <div class="co booking-card__action text-center p-3">
-                  <a class="text-button text-button--blue" data-bookly="#dialog-<?= $row->service_id; ?>" href="#">Book a Time</a>
+                <div class="booking-card__action text-center">
+                  <a class="text-button text-button--blue d-flex justify-content-center align-items-center p-3" data-bookly="#dialog-<?= $row->service_id; ?>" href="#">Book a Time</a>
                 </div>
               </div>
             <?php endforeach; ?>

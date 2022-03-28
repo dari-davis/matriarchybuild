@@ -86,13 +86,13 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 		} ?>
 
 		<?php if (isset($data['items']) && !empty($serviceInfo) && ($apptIsWhen == 'future')): ?>
-			<div class="consultation-card consultation-card--<?= $apptIsWhen; ?> row mb-borders m-0 mb-4">
-				<div class="col mb-borders--right consultation-card__yellow-bg p-3">
+			<div class="consultation-card consultation-card--<?= $apptIsWhen; ?> row m-0 mb-4">
+				<div class="col-6 col-lg consultation-card__yellow-bg p-3">
 					<div class="consultation-card__detail mb-2"><?= $serviceInfo[0]->title;?></div>
 					<div class="consultation-card__pro"><?= $staffName; ?></div>
 					<div class="consultation-card__detail"><?= $staffTrade; ?></div>
 				</div>
-				<div class="col mb-borders--right p-3">
+				<div class="col-6 col-lg p-3">
 					<div><?= $date; ?></div>
 					<div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
 					<?php if(!empty($zoomId)): ?>
@@ -100,7 +100,7 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 					<?php endif; ?>
 					<div><a class="text-button text-button--green" href="../view-order/<?= $order->ID;?>">View Details</a></div>
 				</div>
-				<div class="col p-3 d-flex justify-content-end">
+				<div class="col-12 col-lg p-3 d-flex justify-content-end">
 					<div><?= wc_price($price); ?></div>
 				</div>
 			</div>

@@ -69,15 +69,15 @@ $images = get_attached_media('', $order->ID);
 <?php if (!empty($order)): ?>
     <?php if (isset($data['items']) && !empty($serviceInfo)): ?>
         <div class="consultation-card consultation-card--<?= $apptIsWhen; ?> row mb-borders m-0 mb-4">
-            <div class="col mb-borders--right consultation-card__yellow-bg p-3">
+            <div class="col-6 col-lg consultation-card__yellow-bg p-3">
                 <div class="consultation-card__detail mb-2"><?= $serviceInfo[0]->title;?></div>
                 <div class="consultation-card__pro consultation-card__pro--customer"><?= "$customerFName $customerLName"; ?></div>
             </div>
-            <div class="col mb-borders--right p-3">
+            <div class="col-6 col-lg p-3">
                 <div><?= $date; ?></div>
                 <div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
             </div>
-            <div class="col p-3 d-flex justify-content-end">
+            <div class="col-12 col-lg p-3 d-flex justify-content-end">
                 <div><?= wc_price($price); ?></div>
             </div>
         </div>

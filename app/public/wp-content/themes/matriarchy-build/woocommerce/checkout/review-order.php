@@ -59,17 +59,17 @@ foreach ( WC()->cart->get_cart() as $wc_key => $wc_item ) {
 			?>
 			
 			<div class="consultation-card row mb-borders m-0 mb-4">
-				<div class="col mb-borders--right bg-white p-3">
+				<div class="col-6 col-lg bg-white p-3">
 					<div class="consultation-card__detail mb-2"><?= $serviceInfo[0]->title;?></div>
 					<div class="consultation-card__pro"><?= $staffName; ?></div>
 					<div class="consultation-card__detail"><?= $staffTrade; ?></div>
 				</div>
-				<div class="col mb-borders--right p-3">
+				<div class="col-6 col-lg p-3">
 					<div><?= $date; ?></div>
 					<div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
 					<div><a class="text-button text-button--green" href="/pro/<?= str_replace(' ', '-', strtolower($staffInfo[0]->full_name)); ?>/#booking-<?= $serviceId; ?>">Change Time</a></div>
 				</div>
-				<div class="col p-3 d-flex justify-content-end">
+				<div class="col-12 col-lg p-3 d-flex justify-content-end">
 					<div><?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
 				</div>
 			</div>

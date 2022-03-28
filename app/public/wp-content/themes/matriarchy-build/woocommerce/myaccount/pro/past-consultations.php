@@ -90,16 +90,16 @@ $staffAppointments = $wpdb->get_results('SELECT * FROM wp_bookly_appointments WH
 	<?php if (!empty($order)): ?>
 		<?php if (isset($data['items']) && !empty($serviceInfo) && $apptIsWhen == "past"): ?>
 			<div class="consultation-card consultation-card--<?= $apptIsWhen; ?> row mb-borders m-0 mb-4">
-				<div class="col mb-borders--right consultation-card__yellow-bg p-3">
+				<div class="col-6 col-lg consultation-card__yellow-bg p-3">
 					<div class="consultation-card__detail mb-2"><?= $serviceInfo[0]->title.' with' ?></div>
 					<div class="consultation-card__pro consultation-card__pro--customer"><?= "$customerFName $customerLName"; ?></div>
 				</div>
-				<div class="col mb-borders--right p-3">
+				<div class="col-6 col-lg p-3">
 					<div><?= $date; ?></div>
 					<div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
 					<div><a class="text-button text-button--green" href="../booking-details?id=<?= $order->ID;?>">View Details</a></div>
 				</div>
-				<div class="col p-3 d-flex justify-content-end">
+				<div class="col-12 col-lg p-3 d-flex justify-content-end">
 					<div><?= wc_price($price); ?></div>
 				</div>
 			</div>
