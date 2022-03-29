@@ -18,8 +18,10 @@ $request = explode('/', $wp->request);
 
 			<div class="page__content">
 				<div class="page__content-inner mx-auto">
-                    <div class="my-account m-0">
-                        <div class="my-account__nav col-md py-md-5"><?php do_action( 'woocommerce_account_navigation' ); ?></div>
+                    <div class="my-account <?php if (!is_user_logged_in()): ?>my-account--sign-in<?php endif; ?> m-0">
+						<?php if (is_user_logged_in()): ?>
+                        	<div class="my-account__nav col-md py-md-5"><?php do_action( 'woocommerce_account_navigation' ); ?></div>
+						<?php endif; ?>
                         <?php the_content(); ?>
                     </div>
 				</div>
