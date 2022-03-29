@@ -10,6 +10,7 @@ $bookable-button-size:     41px;
         @include media-breakpoint-up(xl) {
             display: flex;
             justify-content: end;
+            -webkit-justify-content: flex-end;
             padding-left: $padding-large;
             padding-right: $padding-large;
         }

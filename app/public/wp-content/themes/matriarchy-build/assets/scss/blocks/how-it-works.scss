@@ -1,0 +1,182 @@
+.how-it-works {
+    padding: 36px 0 36px $padding-small;
+    background: $pink;
+
+    @include media-breakpoint-up(md) {
+        padding: 46px 0 46px $padding-small;
+    }
+
+    @include media-breakpoint-up(lg) {
+        justify-content: center;
+        padding: 36px 0 36px $padding-large;
+        height: 640px;
+    }
+    
+    &__header {
+        position: relative;
+        height: 106px;
+
+        @include media-breakpoint-up(lg) {
+            height: 186px;
+            max-width: 345px;
+        }
+    }
+
+    &__scafolding {
+        border: 1px solid $blue;
+        border-width: 1px 0 0 1px;
+        background: linear-gradient(to top right, transparent calc(50% - 1px), $blue, transparent calc(50% + 1px));
+        
+        @include media-breakpoint-up(lg) {
+            border-width: 1px;
+        }
+    }
+
+    &__heading {
+        border-width: 1px 1px 0 1px;
+
+        h2 {
+            max-width: 90px;
+            color: $blue;
+        }
+
+        @include media-breakpoint-up(lg) {
+            border-width: 1px 0;
+        }
+    }
+
+    &__content {
+        align-self: flex-start;
+        border-left: 1px solid $blue;
+    }
+
+    .slick-active {
+        background: $olive;
+    }
+
+    &__arrows {
+        @include media-breakpoint-up(lg) {
+            width: 100%;
+            justify-content: end;
+            -webkit-justify-content: end;
+        }
+    }
+
+    .slick-arrow {
+        border-left: 0;
+        background: transparent;
+
+        &.next {
+            border-top: 0;
+        }
+
+        @include media-breakpoint-up(lg) {
+            border-left: 1px solid $blue;
+            border-right: 0;
+
+            &.prev {
+                border-top: 0;
+            }
+        }
+    }
+
+    &__step {
+        padding: 8px 16px;
+        border-bottom: 1px solid $blue;
+
+        @include media-breakpoint-down(lg) {
+            &:after {
+                content: '';
+                display: inline-flex;
+                margin-left: 8px;
+                height: 10px;
+                width: 188px;
+                background-image: url('../images/icons/arrow_blue_long.svg');
+                background-repeat: no-repeat;
+            }
+        }
+
+        @include media-breakpoint-up(lg) {
+            position: absolute;
+            padding: 0 0 0 20px;
+            top: 60px;
+            left: -60px;
+            height: 70px;
+            width: 190px;
+            border: 0;
+            transform: rotate(90deg);
+        }
+
+        img {
+            display: inline-block;
+            transform: rotate(-90deg);
+
+            @include media-breakpoint-up(lg) {
+                margin: 0 0 0 40px;
+            }
+        }
+    }
+
+    &__title {
+        padding: 16px 16px 6px;
+        color: $blue;
+        border-bottom: 1px solid $blue;
+
+        @include media-breakpoint-up(lg) {
+            margin-left: 69px;
+            padding: 16px 24px;
+            font-size: 80px;
+            line-height: initial;
+            border-left: 1px solid $blue;
+            border-bottom: 0;
+        }
+    }
+
+    &__description {
+        padding: 20px 16px;
+        font-size: 20px;
+        height: 145px;
+        line-height: 125%;
+        color: $blue;
+        font-family: $sans-serif-font-family;
+
+        @include media-breakpoint-up(lg) {
+            display: flex;
+            padding: 0;
+            height: auto;
+            font-size: 28px;
+
+            .how-it-works__scafolding {
+                width: 69px;
+                border-width: 0 0 0 1px;
+            }
+
+            span {
+                padding: 28px 30px;
+            }
+        }
+    }
+
+    &__section {
+        width: calc(100vw - 72px);
+        border-left: 0;
+
+        @include media-breakpoint-up(md) {
+            width: 330px;
+        }
+
+        @include media-breakpoint-up(lg) {
+            width: 492px;
+            max-width: 492px;
+        }
+    }
+
+    &__top {
+        position: relative;
+
+        @include media-breakpoint-up(lg) {
+            height: 190px;
+            border-bottom: 1px solid $blue;
+        }
+    }
+}

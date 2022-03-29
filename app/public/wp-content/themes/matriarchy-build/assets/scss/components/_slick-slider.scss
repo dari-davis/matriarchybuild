@@ -104,6 +104,15 @@
             background-image: url('../images/icons/chevron.svg');
         }
     }
+
+    .testimonials & {
+        height: 39px; // height - border
+        border: 0;
+
+        &:after {
+            background-image: url('../images/icons/arrow_green.svg');
+        }
+    }
 }
 
 .slick-arrow + .slick-arrow {

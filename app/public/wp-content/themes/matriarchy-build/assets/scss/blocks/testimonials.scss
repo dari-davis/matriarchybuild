@@ -1,0 +1,148 @@
+.testimonials {
+    position: relative;
+
+    &__content {
+        width: 100%;
+
+        @include media-breakpoint-up(md) {
+            margin: 0 auto;
+            width: calc(100vw - 93px);
+        }
+
+        @include media-breakpoint-up(xl) {
+            position: relative;
+            max-width: 1007px;
+            border: 1px solid $olive;
+            border-width: 0 1px;
+        }
+    }
+
+    &__header {
+
+        @include media-breakpoint-up(xl) {
+            max-width: 1007px;
+        }
+    }
+
+    &__heading {
+        padding: 8px 0;
+        width: 100%;
+        color: $green;
+        font-size: 14px;
+        background: $white;
+        border: 1px solid $olive;
+        border-width: 1px 0;
+    }
+
+    &__slides {
+        max-width: 100vw;
+
+        @include media-breakpoint-up(md) {
+            border: 1px solid $olive;
+            border-width: 0 1px;
+        }
+
+        @include media-breakpoint-up(lg) {
+            height: 720px;
+        }
+
+        @include media-breakpoint-up(xl) {
+            border: 0;
+        }
+    }
+
+    &__slide {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 40px $padding-medium;
+        margin: 0 auto;
+        width: 100vw;
+
+        @include media-breakpoint-up(lg) {
+            padding: 0 $padding-medium;
+            margin: 0;
+            border: 0;
+            width: 1006px;
+            height: 720px;
+        }
+    }
+
+    &__inner-slide {
+        @include media-breakpoint-up(md) {
+            padding: 40px $padding-medium;
+            margin: 0 46px;
+        }
+
+        @include media-breakpoint-up(lg) {
+            margin: 0 auto;
+            max-width: 770px;
+            border: 0;
+        }
+    }
+
+    &__icon {
+        margin: 0 auto 15px;
+
+        @include media-breakpoint-up(md) {
+            margin: 0 auto 30px;
+        }
+    }
+
+    &__arrows {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+    }
+
+    .slick-arrow {
+        background: $white;
+        border: 1px solid $olive;
+
+        &.prev {
+            border-width: 1px 1px 1px 0;
+        }
+
+        &.next {
+            position: absolute;
+            right: 0;
+            border-width: 1px 0 1px 1px;
+        }
+    }
+
+    &__copy {
+       line-height: 24px;
+
+        @include media-breakpoint-up(md) {
+            font-size: 24px;
+            line-height: 32px;
+        }
+
+        @include media-breakpoint-up(lg) {
+            font-size: 36px;
+            line-height: 48px;
+        }
+    }
+
+    &__name {
+        margin-top: 30px;
+
+        &:before {
+            content: '';
+            display: inline-flex;
+            margin-right: 8px;
+            height: 14px;
+            width: 24px;
+            background-image: url('../images/icons/arrow_blue.svg');
+            background-repeat: no-repeat;
+        }
+
+        @include media-breakpoint-down(md) {
+            margin-top: 15px;
+            font-size: 20px;
+        }
+    }
+}

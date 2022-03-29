@@ -94,5 +94,25 @@ add_action('acf/init', function() {
             'icon' => 'grid-view',
             'keywords' => array('diy', 'articles', 'carousel')
         ));
+
+        acf_register_block_type(array(
+            'name' => 'testimonials',
+            'title' => __('Testimonials'),
+            'description' => __('Displays a carousel of testimonials.'),
+            'render_template' => './templates/blocks/testimonials.php',
+            'category' => 'layout',
+            'icon' => 'slides',
+            'keywords' => array('testimonials', 'carousel')
+        ));
+
+        acf_register_block_type(array(
+            'name' => 'how-it-works',
+            'title' => __('How It Works'),
+            'description' => __('Displays a step by step within a carousel.'),
+            'render_template' => './templates/blocks/how-it-works.php',
+            'category' => 'content',
+            'icon', 'slides',
+            'keywords' => array('how it works', 'carousel', 'steps')
+        ));
     endif;
 });
