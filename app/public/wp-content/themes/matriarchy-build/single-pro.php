@@ -141,7 +141,7 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
               });
             </script>
 
-            <div class="pro__booking-heading d-inline-flex"><h2 class="p-3 m-0">Book A Consultation</h2></div>
+            <div class="pro__booking-heading d-inline-flex mt-lg-5"><h2 class="p-3 m-0">Book A Consultation</h2></div>
 
             <div class="pro__booking-content">
               <?php foreach($services as $row): ?>

@@ -128,10 +128,10 @@
     .featured-pros & {
         padding: 0;
         height: 184px;
-        max-width: 337px;
+        max-width: 323px;
 
         @include media-breakpoint-up(md) {
-            padding: 0 16px 0 0;
+            flex-grow: 1;
             width: 323px;
         }
 
