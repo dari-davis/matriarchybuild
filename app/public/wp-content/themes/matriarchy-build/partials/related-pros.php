@@ -24,7 +24,8 @@ $services = $wpdb->get_results('SELECT * FROM wp_bookly_staff_services WHERE sta
             'post__in' => $post_ids,
             'taxonomy' => $taxonomy,
             'term' => $terms[0]->slug,
-            'post__not_in' => [$post_id]
+            'post__not_in' => [$post_id],
+            'posts_per_page' => 5
 
         ) );
         $query = new WP_Query( $args );
