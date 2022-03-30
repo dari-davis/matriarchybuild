@@ -1,7 +1,7 @@
 .how-it-works {
     padding: 36px 0 36px $padding-small;
 
-    .page-template-page-how-it-works & {
+    &.how-it-works--page {
         margin-top: 33px;
         margin-bottom: 4rem;
         padding: 0 $padding-small;
@@ -10,7 +10,7 @@
     @include media-breakpoint-up(md) {
         padding: 46px 0 46px $padding-small;
 
-        .page-template-page-how-it-works & {
+        &.how-it-works--page {
             padding: 33px $padding-medium;
         }
     }
@@ -19,11 +19,11 @@
         justify-content: center;
         padding: 36px 0 36px $padding-large;
 
-        .content-block & {
+        &.content-block {
             height: 640px;
         }
 
-        .page-template-page-how-it-works & {
+        &.how-it-works--page {
             padding: 33px $padding-large;
         }
     }
@@ -38,13 +38,13 @@
                 height: 186px;
             }
 
-            .page-template-page-how-it-works & {
+            .how-it-works--page & {
                 max-width: 290px;
             }
         }
 
         @include media-breakpoint-up(xl) {
-            .page-template-page-how-it-works & {
+            .how-it-works--page & {
                 max-width: 345px;
             }
         }
@@ -89,7 +89,7 @@
         border-left: 1px solid $blue;
 
         @include media-breakpoint-up(md) {
-            .page-template-page-how-it-works & {
+            .how-it-works--page & {
                 border-left: 0;
             }
         }
@@ -152,7 +152,7 @@
             transform: rotate(90deg);
         }
 
-        .page-template-page-how-it-works & {
+        .how-it-works--page & {
             @include media-breakpoint-up(md) {
                 position: absolute;
                 padding: 0 0 0 20px;
@@ -177,7 +177,7 @@
                 margin: 0 0 0 40px;
             }
 
-            .page-template-page-how-it-works & {
+            .how-it-works--page & {
                 @include media-breakpoint-up(md) {
                     margin: 0 0 0 40px;
                 }
@@ -202,7 +202,7 @@
             }
         }
 
-        .page-template-page-how-it-works & {
+        .how-it-works--page & {
             display: flex;
             justify-content: space-between;
             padding: 0;
@@ -247,7 +247,8 @@
         font-family: $sans-serif-font-family;
 
         @include media-breakpoint-up(md) {
-            .page-template-page-how-it-works & {
+            .how-it-works--page & {
+                min-height: 220px;
                 border-left: 1px solid $blue;
             }
         }
@@ -258,8 +259,9 @@
             height: auto;
             font-size: 28px;
 
-            .page-template-page-how-it-works & {
+            .how-it-works--page & {
                 padding: 28px 30px;
+                min-height: 240px;
             }
 
             .how-it-works__scafolding {
@@ -275,7 +277,11 @@
         }
 
         .content-block & {
-            height: 145px;
+            height: 170px;
+        }
+
+        .how-it-works--page & {
+            width: 100%;
         }
     }
 
@@ -304,7 +310,7 @@
             }
         }
 
-        .page-template-page-how-it-works & {
+        .how-it-works--page & {
             border-left: 0;
             border-bottom: 0;
 
@@ -326,7 +332,7 @@
         position: relative;
 
         @include media-breakpoint-up(md) {
-            .page-template-page-how-it-works & {
+            .how-it-works--page & {
                 height: 190px;
                 border-bottom: 1px solid $blue;
                 border-left: 1px solid $blue;
