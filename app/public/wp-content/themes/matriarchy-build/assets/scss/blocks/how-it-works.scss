@@ -316,6 +316,10 @@
                 flex-direction: column;
             }
         }
+
+        &:not(.slick-active) {
+            background: transparent !important;
+        }
     }
 
     &__top {
