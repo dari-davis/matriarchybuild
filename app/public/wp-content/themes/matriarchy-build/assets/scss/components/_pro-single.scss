@@ -297,7 +297,7 @@ $bookable-button-size:     41px;
 
     &__booking-content {
         @include media-breakpoint-up(lg) {
-            width: 1007px;
+            width: 100%;
         }
     }
 }
