@@ -1,15 +1,31 @@
 .how-it-works {
     padding: 36px 0 36px $padding-small;
-    background: $pink;
+
+    .page-template-page-how-it-works & {
+        margin-top: 33px;
+        margin-bottom: 4rem;
+        padding: 0 $padding-small;
+    }
 
     @include media-breakpoint-up(md) {
         padding: 46px 0 46px $padding-small;
+
+        .page-template-page-how-it-works & {
+            padding: 33px $padding-medium;
+        }
     }
 
     @include media-breakpoint-up(lg) {
         justify-content: center;
         padding: 36px 0 36px $padding-large;
-        height: 640px;
+
+        .content-block & {
+            height: 640px;
+        }
+
+        .page-template-page-how-it-works & {
+            padding: 33px $padding-large;
+        }
     }
     
     &__header {
@@ -17,9 +33,22 @@
         height: 106px;
 
         @include media-breakpoint-up(lg) {
-            height: 186px;
-            max-width: 345px;
+            .content-block & {
+                max-width: 345px;
+                height: 186px;
+            }
+
+            .page-template-page-how-it-works & {
+                max-width: 290px;
+            }
         }
+
+        @include media-breakpoint-up(xl) {
+            .page-template-page-how-it-works & {
+                max-width: 345px;
+            }
+        }
+
     }
 
     &__scafolding {
@@ -29,6 +58,16 @@
         
         @include media-breakpoint-up(lg) {
             border-width: 1px;
+        }
+
+        .page-template-page-how-it-works .how-it-works__header & {
+            @include media-breakpoint-up(md) {
+                max-width: 70px;
+            }
+
+            @include media-breakpoint-up(lg) {
+                max-width: none;
+            }
         }
     }
 
@@ -48,6 +87,12 @@
     &__content {
         align-self: flex-start;
         border-left: 1px solid $blue;
+
+        @include media-breakpoint-up(md) {
+            .page-template-page-how-it-works & {
+                border-left: 0;
+            }
+        }
     }
 
     .slick-active {
@@ -107,12 +152,35 @@
             transform: rotate(90deg);
         }
 
+        .page-template-page-how-it-works & {
+            @include media-breakpoint-up(md) {
+                position: absolute;
+                padding: 0 0 0 20px;
+                top: 60px;
+                left: -60px;
+                height: 70px;
+                width: 190px;
+                border: 0;
+                transform: rotate(90deg);
+
+                &:after {
+                    display: none;
+                }
+            } 
+        }
+
         img {
             display: inline-block;
             transform: rotate(-90deg);
 
             @include media-breakpoint-up(lg) {
                 margin: 0 0 0 40px;
+            }
+
+            .page-template-page-how-it-works & {
+                @include media-breakpoint-up(md) {
+                    margin: 0 0 0 40px;
+                }
             }
         }
     }
@@ -125,20 +193,64 @@
         @include media-breakpoint-up(lg) {
             margin-left: 69px;
             padding: 16px 24px;
-            font-size: 80px;
             line-height: initial;
             border-left: 1px solid $blue;
             border-bottom: 0;
+
+            .content-block & {
+                font-size: 80px;
+            }
+        }
+
+        .page-template-page-how-it-works & {
+            display: flex;
+            justify-content: space-between;
+            padding: 0;
+            width: 100%;
+
+            span {
+                padding: 16px;
+
+                @include media-breakpoint-up(md) {
+                    padding: 16px 24px;
+                }
+            }
+
+            @include media-breakpoint-up(md) {
+                margin-left: 69px;
+                padding: 0;
+                line-height: initial;
+                border-left: 1px solid $blue;
+                border-bottom: 0;
+            }
+
+            @include media-breakpoint-up(xl) {
+                font-size: 80px;
+            }
+        }
+
+        .how-it-works__scafolding {
+            width: 70px;
+            border-width: 0 0 0 1px;
+
+            @include media-breakpoint-up(lg) {
+                width: 70px;
+            }
         }
     }
 
     &__description {
         padding: 20px 16px;
         font-size: 20px;
-        height: 145px;
         line-height: 125%;
         color: $blue;
         font-family: $sans-serif-font-family;
+
+        @include media-breakpoint-up(md) {
+            .page-template-page-how-it-works & {
+                border-left: 1px solid $blue;
+            }
+        }
 
         @include media-breakpoint-up(lg) {
             display: flex;
@@ -146,33 +258,76 @@
             height: auto;
             font-size: 28px;
 
+            .page-template-page-how-it-works & {
+                padding: 28px 30px;
+            }
+
             .how-it-works__scafolding {
                 width: 69px;
                 border-width: 0 0 0 1px;
             }
 
-            span {
-                padding: 28px 30px;
+            .content-block & {
+                span {
+                    padding: 16px 24px;
+                }
             }
+        }
+
+        .content-block & {
+            height: 145px;
         }
     }
 
+    &__blurb {
+        margin-top: 10px;
+        line-height: 24px;
+        font-family: $font-family;
+    }
+
     &__section {
-        width: calc(100vw - 72px);
-        border-left: 0;
+        .content-block & {
+            width: calc(100vw - 72px);
+            border-left: 0;
+        }
 
         @include media-breakpoint-up(md) {
-            width: 330px;
+            .content-block & {
+                width: 330px;
+            }
         }
 
         @include media-breakpoint-up(lg) {
-            width: 492px;
-            max-width: 492px;
+            .content-block & {
+                width: 492px;
+                max-width: 492px;
+            }
+        }
+
+        .page-template-page-how-it-works & {
+            border-left: 0;
+            border-bottom: 0;
+
+            &:last-child .how-it-works__description {
+                border-bottom: 1px solid $blue;
+            }
+
+            @include media-breakpoint-down(md) {
+                flex-direction: column;
+            }
         }
     }
 
     &__top {
         position: relative;
+
+        @include media-breakpoint-up(md) {
+            .page-template-page-how-it-works & {
+                height: 190px;
+                border-bottom: 1px solid $blue;
+                border-left: 1px solid $blue;
+            }
+        }
 
         @include media-breakpoint-up(lg) {
             height: 190px;
