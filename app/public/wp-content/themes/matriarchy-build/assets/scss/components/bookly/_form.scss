@@ -3,6 +3,10 @@ $picker-date-size: 35px;
 .bookly-form {
     background: $yellow;
 
+    b {
+        font-weight: normal !important;
+    }
+
     &--simple {
         background: transparent;
     }
@@ -33,9 +37,12 @@ $picker-date-size: 35px;
         border-bottom: 1px solid $olive;
 
         .bookly-js-time-zone-switcher {
-            color: $blue;
+            width: 120px;
             border: 0 !important;
             background: transparent;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
         }
     }
 

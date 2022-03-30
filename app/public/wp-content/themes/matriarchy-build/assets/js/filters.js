@@ -43,14 +43,17 @@ $('input.checkbox-box').on('change', function () {
     $('input.select-box').not(this).prop('checked', false).removeClass('filter--selected');
 });
 
-$('#newfilters').on('change', "input:checkbox", function () {
+$('#filters').on('change', "input:checkbox", function () {
     var url = window.location.href;
-    if ($(this).val() == 'pro') {
+    var params = $(this).val();
+    if ($(this).attr('name') == 'category') {
+        location.href = `/?s=${$(this).val()}`;
+    } else if (params == 'pro') {
         location.href = `${url}&post_type=pro`;
-    } else if ($(this).val() == 'post') {
+    } else if (params == 'post') {
         location.href = `${url}&post_type=post`;
     } else {
-        $('#newfilters').submit();
+        $('#filters').submit();
     }
 });
 

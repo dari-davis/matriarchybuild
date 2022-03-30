@@ -25,13 +25,17 @@ a {
     &:hover {
         color: $blue;
     }
+
+    p & {
+        border-bottom: 1px solid $blue;
+    }
 }
 
 img {
     max-width: 100%;
 }
 
-p {
+p, li {
     font-size: 15px;
     letter-spacing: 0;
 
@@ -88,7 +92,7 @@ h5,
 h6 {
     color: $green;
     font-family: $heading-font-family;
-    font-weight: bold;
+    font-weight: normal;
     text-transform: uppercase;
     letter-spacing: 0.03em;
 
@@ -123,6 +127,10 @@ h3 {
     .bookly-form & {
         font-size: rem(28px);
     }
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-weight: normal;
 }
 
 // form controls

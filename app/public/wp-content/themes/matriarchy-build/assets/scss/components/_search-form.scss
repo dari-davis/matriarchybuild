@@ -1,6 +1,12 @@
 .search-form {
-    height: 38px;
-    border: 1px solid $pink;
+    .input-group {
+        height: 38px;
+        border: 1px solid $pink;
+
+        .search__container & {
+            border-color: $blue;
+        }
+    }
 
     input[type=text].form-control {
         color: $white;
@@ -21,6 +27,32 @@
 
         &:hover {
             background: transparent;
+        }
+    }
+
+    &--page {
+        border-bottom: 1px solid $olive;
+
+        .input-group {
+            border-color: $blue;
+        }
+
+        input[type=text].form-control {
+            color: $blue;
+            background: $white;
+
+            &::placeholder {
+                color: $blue;
+            }
+        }
+
+        button {
+            color: $blue;
+            background: $white;
+
+            &:hover {
+                background: $white;
+            }
         }
     }
 }
