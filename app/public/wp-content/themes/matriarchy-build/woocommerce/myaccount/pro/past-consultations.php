@@ -23,7 +23,7 @@ global $wpdb;
 
 // get appointments by staff id
 $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', wp_get_current_user()->ID )->findOne();
-$staffAppointments = $wpdb->get_results('SELECT * FROM wp_bookly_appointments WHERE staff_id="'.$staff->id.'";');
+$staffAppointments = $wpdb->get_results("SELECT * FROM wp_bookly_appointments WHERE staff_id='$staff->id' ORDER BY start_date DESC;");
 
 ?>
 <div class="pt-md-5">
@@ -55,14 +55,18 @@ $staffAppointments = $wpdb->get_results('SELECT * FROM wp_bookly_appointments WH
 				$serviceId = $data['items'][0]['service_id'];
 				$serviceInfo = $wpdb->get_results('SELECT * FROM wp_bookly_services WHERE id="'.$serviceId.'";');
 
+				// staff details
+				$staffId = $data['items'][0]['staff_ids'][0];
+				$staffInfo = $wpdb->get_results('SELECT * FROM wp_bookly_staff WHERE id="'.$staffId.'";');
+
 				// appointment time and date
 				$unixTime = strtotime($data['items'][0]['slots'][0][2]);
 				$date = date('M j, Y', $unixTime);
 				$UTCTime = date('M j, Y g:i a', $unixTime);
 				$apptTime = date('Y-m-d H:i:s', $unixTime);
 
-				// convert to users timezone
-				$startTime = date_timezone_set(new DateTime($UTCTime), timezone_open($data['time_zone']));
+				// convert to Pros timezone
+				$startTime = date_timezone_set(new DateTime($UTCTime), timezone_open($staffInfo[0]->time_zone));
 				$dateTime = date_format($startTime, 'M j, Y g:i a'); // appt date & time
 
 				// time and date info
@@ -75,7 +79,7 @@ $staffAppointments = $wpdb->get_results('SELECT * FROM wp_bookly_appointments WH
 				$price = $item->get_total();
 
 				// get current date and time in users timezone
-				$currentDateTime = date_timezone_set(new DateTime('now'), timezone_open($data['time_zone']));
+				$currentDateTime = date_timezone_set(new DateTime('now'), timezone_open($staffInfo[0]->time_zone));
 				$currentDateTime = date_format($currentDateTime, 'M j, Y g:i a');
 
 				if (new DateTime($dateTime) <= new DateTime($currentDateTime)) {

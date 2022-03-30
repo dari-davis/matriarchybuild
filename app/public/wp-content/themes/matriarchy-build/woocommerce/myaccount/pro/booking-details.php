@@ -41,7 +41,7 @@ $images = get_attached_media('', $order->ID);
             $UTCTime = date('M j, Y g:i a', $unixTime);
 
             // convert to users timezone
-            $startTime = date_timezone_set(new DateTime($UTCTime), timezone_open($data['time_zone']));
+            $startTime = date_timezone_set(new DateTime($UTCTime), timezone_open($staffInfo[0]->time_zone));
             $dateTime = date_format($startTime, 'M j, Y g:i a'); // appt date & time
 
             // time and date info
@@ -54,7 +54,7 @@ $images = get_attached_media('', $order->ID);
             $price = $item->get_total();
 
             // get current date and time in users timezone
-            $currentDateTime = date_timezone_set(new DateTime('now'), timezone_open($data['time_zone']));
+            $currentDateTime = date_timezone_set(new DateTime('now'), timezone_open($staffInfo[0]->time_zone));
             $currentDateTime = date_format($currentDateTime, 'M j, Y g:i a');
 
             if (new DateTime($dateTime) <= new DateTime($currentDateTime)) {
