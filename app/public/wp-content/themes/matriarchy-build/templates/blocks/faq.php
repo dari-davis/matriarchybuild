@@ -5,10 +5,16 @@
 
 ?>
 
+<?php
+$faqPage = get_page_by_path('faq')->ID;
+$post_blocks = parse_blocks(get_the_content('', false, $pageId));
+?>
+
 <div class="faqs faq--<?= get_field('style'); ?> py-5">
     <div class="content-blocks__wrapper mx-auto d-flex flex-column">
-        <?php if (have_rows('faq')): ?>
-            <?php while(have_rows('faq')): the_row(); ?>
+        <?php if (get_field('title')): ?><h3 class="faqs__title"><?= get_field('title'); ?></h3><?php endif; ?>
+        <?php if (have_rows('faq', $faqPage)): ?>
+            <?php while(have_rows('faq', $faqPage)): the_row(); ?>
                 <?php if (get_field('style') == 'condensed'): ?>
                     <?php if (get_sub_field('show_in_mini')): ?>
                         <button class="faqs__question"><?= get_sub_field('question'); ?></button>
@@ -24,7 +30,7 @@
                 <?php endif; ?>
             <?php endwhile; ?>
             <?php if (get_field('style') == 'condensed'): ?>
-                <a href="" class="button">View All</a>
+                <a href="<?= home_url('/faq'); ?>" class="button">View All</a>
             <?php endif; ?>
         <?php endif; ?>
     </div>

@@ -1,4 +1,25 @@
 .faqs {
+    margin: 0 auto;
+    max-width: 664px;
+
+    @include media-breakpoint-up(lg) {
+        padding: 90px $padding-medium;
+    }
+
+    &__title {
+        margin: 0 0 0 40px;
+
+        @include media-breakpoint-up(md) {
+            font-size: 55px;
+            line-height: 53px;
+        }
+
+        @include media-breakpoint-up(lg) {
+            font-size: 80px;
+            line-height: 72px;
+        }
+    }
+
     &__question {
         background: transparent;
         cursor: pointer;
@@ -21,15 +42,28 @@
             background-image: url('../images/icons/arrow_blue.svg');
             background-repeat: no-repeat;
         }
+
+        &.faqs__active {
+            border-bottom: 0;
+        }
     }
       
     &__panel {
-        padding: 16px 40px;
+        padding: 0 40px;
         display: none;
         overflow: hidden;
         font-family: $sans-serif-font-family;
         font-size: 20px;
         line-height: 25px;
+        border-bottom: 1px solid $olive;
+
+        &:last-child {
+            border-bottom: 0;
+        }
+
+        @include media-breakpoint-up(lg) {
+            font-size: 20px;
+        }
     }
     
     &__active:before {
