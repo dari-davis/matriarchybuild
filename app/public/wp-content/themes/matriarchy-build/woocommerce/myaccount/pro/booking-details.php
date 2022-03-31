@@ -11,7 +11,7 @@ $order_id = $_GET['id'];
 global $wpdb;
 global $post;
 $order = wc_get_order($order_id);
-$images = get_attached_media('', $order->ID);
+$images = get_attached_media('', $order->get_id());
 ?>
 
 <?php if (!empty($order)): ?>
@@ -39,6 +39,7 @@ $images = get_attached_media('', $order->ID);
             $unixTime = strtotime($data['items'][0]['slots'][0][2]);
             $date = date('M j, Y', $unixTime);
             $UTCTime = date('M j, Y g:i a', $unixTime);
+            $apptTime = date('Y-m-d H:i:s', $unixTime);
 
             // convert to users timezone
             $startTime = date_timezone_set(new DateTime($UTCTime), timezone_open($staffInfo[0]->time_zone));
@@ -62,6 +63,10 @@ $images = get_attached_media('', $order->ID);
             } else {
                 $apptIsWhen = "future";
             }
+
+            // Zoom ID
+		    $appointment = $wpdb->get_results('SELECT * FROM wp_bookly_appointments WHERE start_date="'.$apptTime.'";');
+		    $zoomId = $appointment[0]->online_meeting_id;
         }
     } ?>
 <?php endif; ?>
@@ -76,6 +81,9 @@ $images = get_attached_media('', $order->ID);
             <div class="col-6 col-lg p-3">
                 <div><?= $date; ?></div>
                 <div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
+                <?php if(!empty($zoomId) && ($apptIsWhen == 'future')): ?>
+                    <a class="consultation-card__zoom-link badge badge-primary" href="https://zoom.us/j/<?= $zoomId; ?>" target="_blank"><i class="fas fa-video fa-fw"></i> Zoom <i class="fas fa-external-link-alt fa-fw"></i></a>
+                <?php endif; ?>
             </div>
             <div class="col-12 col-lg p-3 d-flex justify-content-end">
                 <div><?= wc_price($price); ?></div>
@@ -84,7 +92,7 @@ $images = get_attached_media('', $order->ID);
         <?php $hasConsultations = true; ?>
     <?php endif; ?>
 
-    <?php if (!empty($order->customer_note)): ?>
+    <?php if (!empty($order->get_customer_note())): ?>
         <div class="row no-gutters m-0">
             <div class="col-md-8 p-0">
                 <div class="pt-md-5">
@@ -92,7 +100,7 @@ $images = get_attached_media('', $order->ID);
                     <hr class="mb-hr mb-hr--olive" />
                 </div>
 
-                <p><?= $order->customer_note ?></p>
+                <p><?= $order->get_customer_note(); ?></p>
             </div>
         </div>
     <?php endif; ?>

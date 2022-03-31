@@ -20,7 +20,7 @@ $services = $wpdb->get_results('SELECT * FROM wp_bookly_staff_services WHERE sta
         $post_type = get_post_type( $post );        
 
         $args = wp_parse_args( $args, array(
-            'post_type' => $type,
+            'post_type' => $post_type,
             'post__in' => $post_ids,
             'taxonomy' => $taxonomy,
             'term' => $terms[0]->slug,

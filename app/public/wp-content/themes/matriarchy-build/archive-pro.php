@@ -29,7 +29,7 @@
 
 <?php
   $args = wp_parse_args(
-      $args,
+      array(),
       array(
         'background_color'  => get_field('background_color'),
         'active_step_background_color' => get_field('active_step_background_color')

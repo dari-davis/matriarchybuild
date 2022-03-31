@@ -1,9 +1,4 @@
-<?php
-do_action( 'woocommerce_before_account_orders', $has_orders ); 
-
-global $wpdb;
-
-?>
+<?php global $wpdb; ?>
 <div class="pt-md-5">
 	<h2 id="order_review_heading"><?php esc_html_e( 'Your Upcoming Consultations', 'woocommerce' ); ?></h2>
 	<hr class="mb-hr mb-hr--olive" />
@@ -28,7 +23,7 @@ $staffAppointments = $wpdb->get_results("SELECT * FROM wp_bookly_appointments WH
 	$wpPost = $wpdb->get_results("SELECT * FROM wp_posts WHERE post_modified = '$createdDate'");
 
 	//$order = wc_get_order( $customer_order ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-	$order = wc_get_order($wpPost[0]->ID);
+	if ($wpPost) {$order = wc_get_order($wpPost[0]->ID);}
 	if (!empty($order)) {
 		$customerFName = $order->get_data()["billing"]["first_name"];
 		$customerLName = $order->get_data()["billing"]["last_name"];
@@ -97,7 +92,7 @@ $staffAppointments = $wpdb->get_results("SELECT * FROM wp_bookly_appointments WH
 					<?php if(!empty($zoomId)): ?>
 						<a class="consultation-card__zoom-link badge badge-primary" href="https://zoom.us/j/<?= $zoomId; ?>" target="_blank"><i class="fas fa-video fa-fw"></i> Zoom <i class="fas fa-external-link-alt fa-fw"></i></a>
 					<?php endif; ?>
-					<div><a class="text-button text-button--green" href="../booking-details?id=<?= $order->ID; ?>">View Details</a></div>
+					<div><a class="text-button text-button--green" href="../booking-details?id=<?= $order->get_id(); ?>">View Details</a></div>
 				</div>
 				<div class="col-12 col-lg p-3 d-flex justify-content-end">
 					<div><?= wc_price($price); ?></div>

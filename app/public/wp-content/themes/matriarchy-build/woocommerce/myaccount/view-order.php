@@ -17,7 +17,7 @@
  * @version 3.0.0
  */
 
-$images = get_attached_media('', $order->ID);
+$images = get_attached_media('', $order->get_id());
 global $wpdb;
 global $post;
 ?>
@@ -101,7 +101,7 @@ foreach ($order->get_items() as $item_id => $item) {
     <?php $hasConsultations = true; ?>
 <?php endif; ?>
 
-<?php if (!empty($order->customer_note)): ?>
+<?php if (!empty($order->get_customer_note())): ?>
     <div class="row no-gutters m-0">
         <div class="col-md-8 p-0">
             <div class="pt-md-5">
@@ -109,7 +109,7 @@ foreach ($order->get_items() as $item_id => $item) {
                 <hr class="mb-hr mb-hr--olive" />
             </div>
 
-            <p><?= $order->customer_note ?></p>
+            <p><?= $order->get_customer_note(); ?></p>
         </div>
     </div>
 <?php endif; ?>
@@ -122,7 +122,7 @@ foreach ($order->get_items() as $item_id => $item) {
             <hr class="mb-hr mb-hr--olive" />
         </div>
         <?php if ($apptIsWhen == "future" || get_post_meta($order_id, 'answer1', true)): ?>
-            <p>We strongly recommend completing your pre-consultation questionnaire and submitting all relevant photos, pdfs, videos and links to your Pro prior to your session. </p>
+            <p>We strongly recommend completing your pre-consultation questionnaire and submitting all relevant photos to your Pro prior to your session. </p>
         <?php else: ?>
             <p>No questionnaire was submitted for this consultation.</p>
         <?php endif; ?>

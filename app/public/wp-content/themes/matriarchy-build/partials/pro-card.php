@@ -1,5 +1,7 @@
 <?php $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro_user') )->findOne(); ?>
-<?php $services = $wpdb->get_results('SELECT * FROM wp_bookly_staff_services WHERE staff_id="'.$staff->id.'";'); ?>
+<?php if ($staff): ?>
+    <?php $services = $wpdb->get_results('SELECT * FROM wp_bookly_staff_services WHERE staff_id="'.$staff->id.'";'); ?>
+<?php endif; ?>
 <div class="row m-0">
     <div class="pros__details col p-0 mb-borders">
         <?php if (have_rows('display_name')): ?>

@@ -42,7 +42,7 @@ $staffAppointments = $wpdb->get_results("SELECT * FROM wp_bookly_appointments WH
 	$wpPost = $wpdb->get_results("SELECT * FROM wp_posts WHERE post_modified = '$createdDate'");
 
 	//$order = wc_get_order( $customer_order ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-	$order = wc_get_order($wpPost[0]->ID);
+	if ($wpPost) {$order = wc_get_order($wpPost[0]->ID);}
 	if (!empty($order)) {
 		$customerFName = $order->get_data()["billing"]["first_name"];
 		$customerLName = $order->get_data()["billing"]["last_name"];
@@ -101,7 +101,7 @@ $staffAppointments = $wpdb->get_results("SELECT * FROM wp_bookly_appointments WH
 				<div class="col-6 col-lg p-3">
 					<div><?= $date; ?></div>
 					<div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
-					<div><a class="text-button text-button--green" href="../booking-details?id=<?= $order->ID;?>">View Details</a></div>
+					<div><a class="text-button text-button--green" href="../booking-details?id=<?= $order->get_id();?>">View Details</a></div>
 				</div>
 				<div class="col-12 col-lg p-3 d-flex justify-content-end">
 					<div><?= wc_price($price); ?></div>
