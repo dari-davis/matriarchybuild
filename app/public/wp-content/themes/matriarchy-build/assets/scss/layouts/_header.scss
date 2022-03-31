@@ -37,12 +37,30 @@
     }
 
     &__top {
+        padding: 1rem 0;
         margin-top: 24px;
         border: 1px solid $pink;
         border-width: 1px 0;
 
         @include media-breakpoint-down(lg) {
+            margin-top: 0;
             background: $green;
+        }
+
+        @include media-breakpoint-up(lg) {
+            padding: 0;
+        }
+
+        &.invisible {
+            @include media-breakpoint-down(lg) {
+                padding: 0;
+                margin-top: 0;
+                max-height: 0;
+            }
+
+            @include media-breakpoint-up(lg) {
+                visibility: visible !important;
+            }             
         }
     } 
 
@@ -69,16 +87,6 @@
         @include media-breakpoint-up(lg) {
             flex-direction: column;
             overflow: hidden;
-        }
-
-        &.invisible {
-            @include media-breakpoint-down(lg) {
-                max-height: 0;
-            }
-
-            @include media-breakpoint-up(lg) {
-                visibility: visible !important;
-            }             
         }
     }
 

@@ -30,7 +30,7 @@
     </div>
 
     <div class="header__nav col-md text-lg-center gx-0">
-      <div class="header__top row gx-0 py-3 py-lg-0">
+      <div class="header__top row gx-0 invisible">
         <div class="header__nav-container col-lg-8">
           <div class="primary-nav pt-4 pb-3 py-lg-0 px-4 px-lg-0">
             <?php
