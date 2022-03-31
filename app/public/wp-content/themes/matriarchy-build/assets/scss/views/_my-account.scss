@@ -4,16 +4,12 @@
     background: $white;
     height: 100%;
 
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(lg) {
         flex-direction: row;
     }
 
     &__nav {
         background: $yellow;
-
-        @include media-breakpoint-up(md) {
-            max-width: 327px;
-        }
 
         @include media-breakpoint-up(lg) {
             max-width: 345px;

@@ -204,7 +204,7 @@ hr.mb:not([size]) {
 }
 
 .desktop-break {
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(lg) {
         display: none;
     }
 }

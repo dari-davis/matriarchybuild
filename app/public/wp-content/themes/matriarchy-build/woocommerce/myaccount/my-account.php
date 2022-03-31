@@ -23,7 +23,7 @@ defined( 'ABSPATH' ) || exit;
  * @since 2.6.0
  */
 ?>
-<div class="py-md-5 px-md-5 woocommerce-MyAccount-content col-md">
+<div class="py-md-3 py-lg-5 px-md-5 woocommerce-MyAccount-content col-md">
 	<?php
 		/**
 		 * My Account content.

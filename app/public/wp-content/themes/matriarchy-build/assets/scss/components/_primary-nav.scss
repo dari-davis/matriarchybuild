@@ -1,15 +1,13 @@
 .primary-nav {
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(lg) {
         height: 80px;
-        border: 1px solid $pink;
-        border-width: 1px 0;
     }
 
     @include media-breakpoint-up(xl) {
-        height: 120px;
+        height: 88px;
     }
 
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(lg) {
         background: $green;
         border-bottom: 1px solid $pink;
     }
@@ -20,8 +18,9 @@
         justify-content: space-around;
         list-style: none;
 
-        @include media-breakpoint-up(md) {
+        @include media-breakpoint-up(lg) {
             flex-direction: row;
+            height: 100%;
         }
     }
 
@@ -31,35 +30,32 @@
         padding: 5px 0;
         align-items: center;
 
-        @include media-breakpoint-up(md) {
+        @include media-breakpoint-up(lg) {
             justify-content: center;
             padding-top: 10px; // font sizing fix;
-            border-left: 1px solid $pink;
-        }
-
-        &:first-child {
-            border: 0;
+            height: 100%;
+            border-right: 1px solid $pink;
         }
     }
 
     .nav-link {
         padding: 0;
         font-family: $heading-font-family;
-        font-size: 28px;
+        font-size: 24px;
         color: $pink;
-        line-height: 26px;
+        line-height: 22px;
         letter-spacing: 2px;
         text-align: center;
         text-transform: uppercase;
 
-        @include media-breakpoint-up(md) {
+        @include media-breakpoint-up(lg) {
             padding-left: 20px;
             padding-right: 20px;
         }
 
         @include media-breakpoint-up(xl) {
-            font-size: 38px;
-            line-height: 36px;
+            font-size: 34px;
+            line-height: 32px;
         }
     }
 }

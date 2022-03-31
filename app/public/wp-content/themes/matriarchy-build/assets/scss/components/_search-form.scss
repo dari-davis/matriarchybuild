@@ -1,6 +1,5 @@
 .search-form {
     .input-group {
-        height: 38px;
         border: 1px solid $pink;
 
         .search__container & {
@@ -10,7 +9,8 @@
 
     input[type=text].form-control {
         color: $white;
-        font-size: 16px;
+        font-size: 14px;
+        line-height: 18px;
         border: 0;
         background: $blue;
 
