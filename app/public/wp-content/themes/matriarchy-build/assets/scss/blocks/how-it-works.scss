@@ -344,4 +344,14 @@
             border-bottom: 1px solid $blue;
         }
     }
+
+    &--page {
+        margin: 0 auto;
+        max-width: 1510px;
+    }
+
+    &__page-content {
+        margin: 0 auto;
+        max-width: 1510px;
+    }
 }

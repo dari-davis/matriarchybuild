@@ -6,7 +6,7 @@
 global $wpdb;
 $articles = get_field('pros');
 $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro_user') )->findOne();
-$services = $wpdb->get_results('SELECT * FROM wp_bookly_staff_services WHERE staff_id="'.$staff->id.'";');
+if ($staff) { $services = $wpdb->get_results('SELECT * FROM wp_bookly_staff_services WHERE staff_id="'.$staff->id.'";'); }
 ?>
 
 <div class="featured-pros py-5 mx-auto">

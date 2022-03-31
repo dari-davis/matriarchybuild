@@ -7,7 +7,7 @@
 
 <?php
 $faqPage = get_page_by_path('faq')->ID;
-$post_blocks = parse_blocks(get_the_content('', false, $pageId));
+$post_blocks = parse_blocks(get_the_content('', false, $faqPage));
 ?>
 
 <div class="faqs faq--<?= get_field('style'); ?> py-5">

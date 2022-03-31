@@ -6,6 +6,7 @@
 $page = is_page('how-it-works');
 $howItWorksPage = get_page_by_path('how-it-works')->ID;
 if (is_archive('pro')) { $backgroundColor = get_field('background_color', $howItWorksPage); } else { $backgroundColor = get_field('background_color'); }
+if (is_archive('pro')) { $activeBackgroundColor = get_field('active_step_background_color', $howItWorksPage); } else { $activeBackgroundColor = get_field('active_step_background_color'); }
 ?>
 
 <div class="how-it-works <?php if ($page): ?>how-it-works--page <?php endif; ?>d-lg-flex flex-column<?php if (!$page): ?> content-block" style="background-color: <?= $backgroundColor; ?>;<?php endif; ?>">
@@ -21,7 +22,7 @@ if (is_archive('pro')) { $backgroundColor = get_field('background_color', $howIt
         <div class="how-it-works__content how-it-works__slides row gx-0">
             <?php if (have_rows('steps', $howItWorksPage)): ?>
                 <?php while (have_rows('steps', $howItWorksPage)): the_row(); ?>
-                    <div class="how-it-works__section mb-borders <?php if ($page): ?>d-flex<?php endif; ?>" style="background-color: <?= get_field('active_step_background_color'); ?>;">
+                    <div class="how-it-works__section mb-borders <?php if ($page): ?>d-flex<?php endif; ?>" style="background-color: <?= $activeBackgroundColor; ?>;">
                         <div class="how-it-works__top <?php if ($page): ?>d-md-flex col-md-6<?php else: ?>d-lg-flex<?php endif; ?>">
                             <div class="how-it-works__step">Step <?= get_row_index(); ?><img data-no-lazy class="d-none <?php if ($page): ?>d-md-inline<?php else: ?>d-lg-inline<?php endif; ?>" src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/arrow_blue_medium.svg" alt="blue arrow"/></div>
                             <div class="how-it-works__title h2 mb-0">
