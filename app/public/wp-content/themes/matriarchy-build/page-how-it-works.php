@@ -32,6 +32,25 @@ the_post();
     <h1 class="invisible"><?php the_title(); ?></h1>
     <?php the_content(); ?>
 	</div>
+
+  <div class="how-it-works__faqs">
+    <?php
+      get_template_part( 'templates/blocks/faq', null, array(
+          'title'  => 'FAQ',
+          'style' => 'mini'
+      ) );
+    ?>
+
+    <?php
+      $args = wp_parse_args(
+          $args,
+          array(
+            'title'  => get_field('title'),
+            'style' => get_field('style')
+          )
+      );
+    ?>
+  </div>
 </div>
 
 <?php

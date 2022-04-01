@@ -22,14 +22,14 @@
 
 <?php
   get_template_part( 'templates/blocks/how-it-works', null, array(
-      'background_color'  => '#',
-      'active_step_background_color' => '#'
+      'background_color'  => '#bbb69b',
+      'active_step_background_color' => '#fbf8ea'
   ) );
 ?>
 
 <?php
   $args = wp_parse_args(
-      array(),
+      $args,
       array(
         'background_color'  => get_field('background_color'),
         'active_step_background_color' => get_field('active_step_background_color')

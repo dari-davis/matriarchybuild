@@ -189,6 +189,25 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
 
       <?= the_content(); ?>
 
+      <div class="pro__faqs">
+        <?php
+          get_template_part( 'templates/blocks/faq', null, array(
+              'title'  => '',
+              'style' => 'mini'
+          ) );
+        ?>
+
+        <?php
+          $args = wp_parse_args(
+              $args,
+              array(
+                'title'  => get_field('title'),
+                'style' => get_field('style')
+              )
+          );
+        ?>
+      </div>
+
       <?= get_template_part('partials/related-pros'); ?>
 
     <?php endwhile; ?>
