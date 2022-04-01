@@ -16,7 +16,7 @@
 </div>
 <div class="bookly-js-holidays jCal-wrap slides"></div>
 
-
+<?php if (!is_admin()): ?>
 <script type="text/javascript">
     var $ = jQuery || $;
     $(document).ready(function() {
@@ -26,3 +26,4 @@
     });
     });
 </script>
+<?php endif; ?>
