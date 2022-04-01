@@ -11,28 +11,38 @@ $services = $wpdb->get_results('SELECT * FROM wp_bookly_staff_services WHERE sta
 <?php
     function related_posts_by_taxonomy( $post_id, $taxonomy, $args=array() ) {
     $query = new WP_Query();
-    $terms = wp_get_object_terms( $post_id, $taxonomy );
+    $terms = wp_get_object_terms( $post_id, 'pros' );
 
     // Make sure we have terms from the current post
     if ( count( $terms ) ) {
         $post_ids = get_objects_in_term( $terms[0]->term_id, $taxonomy );
         $post = get_post( $post_id );
-        $post_type = get_post_type( $post );        
+        $post_type = get_post_type( $post );     
+        
+        $categories = get_the_terms( get_the_ID(), 'pros' );
+        foreach ( $categories as $category ) {
+            $category_ids[] = $category->term_id;
+        }
 
-        $args = wp_parse_args( $args, array(
-            'post_type' => $post_type,
-            'post__in' => $post_ids,
-            'taxonomy' => $taxonomy,
-            'term' => $terms[0]->slug,
-            'post__not_in' => [$post_id],
-            'posts_per_page' => 5
-
-        ) );
-        $query = new WP_Query( $args );
+        $related_args = array(
+            'post_type'      => array(
+                'pro',
+            ),
+            'post_status'    => 'publish',
+            'posts_per_page' => 5, // Get all posts
+            'post__not_in'   => array( get_the_ID() ), // Hide current post in list of related content
+            'tax_query'      => array(
+                array(
+                    'taxonomy' => 'pros',
+                    'field'    => 'term_id',
+                    'terms'    => $category_ids,
+                )
+            ),
+        );
     }
 
     // Return our results in query form
-    return $query;
+    return new WP_Query($related_args);
 } ?>
 
 <div class="featured-pros py-5 mx-auto">

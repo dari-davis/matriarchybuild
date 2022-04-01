@@ -24,13 +24,13 @@
        .image-desktop {
            display: none;
 
-            @include media-breakpoint-up(lg) {
+            @include media-breakpoint-up(1080px) {
                display: block;
             }
        }
 
        .image-mobile {
-            @include media-breakpoint-up(lg) {
+            @include media-breakpoint-up(1080px) {
                display: none;
             }
        }
@@ -50,6 +50,11 @@
             align-self: end;
             -webkit-align-items: flex-end;
             margin-left: 130px;
+        }
+
+        &:after {
+            content: "";
+            flex: auto;
         }
     }
 
@@ -89,7 +94,7 @@
     }
 
     &__top {
-        padding: 14px 8px;
+        padding: 8px;
     }
 
     &__bottom {
