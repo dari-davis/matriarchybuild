@@ -58,6 +58,7 @@
         @include media-breakpoint-up(lg) {
             padding: 0;
             border: 1px solid $pink;
+            border-width: 1px 0;
         }
 
         &.invisible {
