@@ -5,6 +5,15 @@
         flex-direction: column-reverse;
     }
 
+    &__hamburger {
+        height: 32px;
+        margin-top: -1px;
+
+        &.invisible {
+            display: none !important;
+        }
+    }
+
     &__logo {
         align-items: center;
         justify-content: space-around;
@@ -39,7 +48,6 @@
     &__top {
         padding: 1rem 0;
         margin-top: 24px;
-        border: 1px solid $pink;
         border-width: 1px 0;
 
         @include media-breakpoint-down(lg) {
@@ -49,6 +57,7 @@
 
         @include media-breakpoint-up(lg) {
             padding: 0;
+            border: 1px solid $pink;
         }
 
         &.invisible {
@@ -132,7 +141,7 @@
 
     &__search-container {
         @include media-breakpoint-down(lg) {
-            padding: 13px $padding-small;
+            padding: 16px $padding-small;
         }
 
         @include media-breakpoint-up(lg) {

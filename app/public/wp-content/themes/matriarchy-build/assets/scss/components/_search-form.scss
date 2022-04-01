@@ -10,7 +10,8 @@
     input[type=text].form-control {
         color: $white;
         font-size: 14px;
-        line-height: 18px;
+        line-height: 28px;
+        height: 28px;
         border: 0;
         background: $blue;
 
@@ -20,13 +21,18 @@
     }
 
     button {
-        width: 40px;
+        width: 30px;
+        height: 28px;
         color: $white;
         border: 0;
         background: transparent;
 
         &:hover {
             background: transparent;
+        }
+
+        img {
+            margin-bottom: 4px;
         }
     }
 

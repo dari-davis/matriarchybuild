@@ -54,5 +54,6 @@ import * as bootstrap from 'bootstrap';
 	$('.header__hamburger').on('click', function(e) {
 		e.preventDefault();
 		$('.header__top').toggleClass('invisible');
+		$('[data-menu-icon]').toggleClass('invisible');
 	});
 } )();
