@@ -35,6 +35,33 @@
 	.coupon-form-submit {
 		cursor: pointer;
 	}
+
+	.woocommerce-SavedPaymentMethods {
+		list-style: none;
+		margin: 0;
+		padding: 0 0 16px 0;
+
+
+		.woocommerce-SavedPaymentMethods-token,
+		.woocommerce-SavedPaymentMethods-new {
+			margin: 0 0 0.5em;
+
+			label {
+				cursor: pointer;
+			}
+		}
+
+		.woocommerce-SavedPaymentMethods-tokenInput {
+			vertical-align: middle;
+			margin: -3px 0 0 0 !important;
+			position: relative;
+			accent-color: $blue !important;
+		}
+
+		#wc-stripe-new-payment-method {
+			accent-color: $blue !important;
+		}
+	}
 }
 
 .woocommerce__section {
@@ -99,6 +126,23 @@
 		div.form-row {
 			padding: 0;
 		}
+
+		.payment_box {
+			color: $blue !important;
+			background-color: transparent !important;
+	
+			&:before {
+				display: none !important;
+			}
+
+			.wc-credit-card-form {
+				margin: 0 !important;
+			}
+		}
+		
+		ul.payment_methods li input {
+			margin: 0;
+		}
 	}
 
 	#stripe-payment-data p:first-child {
@@ -119,6 +163,11 @@
 
 	.woocommerce-privacy-policy-text p {
 		margin-bottom: 0;
+	}
+
+	fieldset#wc-stripe-cc-form label {
+		visibility: hidden;
+		height: 0;
 	}
 }
 
