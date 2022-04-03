@@ -13,6 +13,25 @@
 			endif;
 		?>
 	</main><!-- /#main -->
+
+	<?php if (!is_account_page()): ?>
+		<div class="newsletter callout">
+			<div class="content-blocks__wrapper mx-auto d-flex flex-column flex-md-row">
+				<div class="row gx-0">
+					<div class="d-flex col-md-4">
+						<div class="callout__scafolding col-3 d-md-none"></div>
+						<div class="col-9 col-md-12 callout__heading mb-borders mb-borders--pink"><div class="h1 mb-0">Stay Up To Date With Us</div></div>
+					</div>
+					<div class="col callout__content mb-borders mb-borders--pink">
+						<div class="callout__copy">Positive vibes. No mansplaining. Ever. Follow along to learn about the newest Pros on the MBuild roster, our favorite DIY + renovation tips, and stories about badass women in the trades. Let’s build the matriarchy one project at a time.</div>
+						<div class="callout__form"><div class="klaviyo-form-TyzdNh"></div></div>
+					</div>
+					<div class="callout__scafolding col-md-2 d-none d-lg-block"></div>
+				</div>
+			</div>
+		</div>
+	<?php endif; ?>
+
 	<footer id="footer" class="footer container-fluid p-0 m-0 row">
 		<div class="footer__details col-md d-flex py-md-4 align-items-center">
 			<div class="footer__details-inner row m-0">
@@ -63,6 +82,7 @@
 		wp_footer();
 	?>
 
+	<script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=WG95tq"></script>
 	<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/assets/js/slick.min.js"></script>
 </body>
 </html>
