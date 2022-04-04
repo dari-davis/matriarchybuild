@@ -19,4 +19,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
+do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
+
 <?= get_template_part('partials/pro-upcoming'); ?>
+
+<?php do_action( 'woocommerce_after_account_orders', $has_orders ); ?>
