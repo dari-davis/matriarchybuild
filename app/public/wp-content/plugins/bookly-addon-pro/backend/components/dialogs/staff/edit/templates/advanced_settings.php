@@ -64,7 +64,7 @@ use Bookly\Backend\Components\Controls\Buttons;
         <label for="bookly-timezone"><?php esc_html_e( 'Timezone', 'bookly' ) ?></label>
         <select name="time_zone" class="form-control custom-select mb-2" id="bookly-timezone">
             <option value=""><?php esc_html_e( 'Default', 'bookly' ) ?></option>
-            <?php echo wp_timezone_choice( $staff->getTimeZone( false ) ?: 'default' ) ?>
+            <?php echo matriarchy_timezone_choice( $staff->getTimeZone( false ) ?: 'default' ) ?>
         </select>
         <small class="form-text text-muted"><?php esc_html_e( 'Default: UTC (Coordinated Universal Time)', 'bookly' ) ?></small>
     </div>
