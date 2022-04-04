@@ -956,7 +956,6 @@ function matriarchy_timezone_choice( $selected_zone, $locale = null ) {
 			// Continent optgroup.
 			if ( ! isset( $zonen[ $key - 1 ] ) || $zonen[ $key - 1 ]['continent'] !== $zone['continent'] ) {
 				$label       = $zone['t_continent'];
-				$structure[] = '<optgroup label="' . esc_attr( $label ) . '">';
 			}
 
 			// Add the city to the value.
@@ -982,28 +981,28 @@ function matriarchy_timezone_choice( $selected_zone, $locale = null ) {
 
 		if (in_array($value, $regions)) {
 			if ($value == 'America/New_York') {
-				$display = 'Eastern';
+				$display = 'Eastern Time';
 			}
 			if ($value == 'America/Chicago') {
-				$display = 'Central';
+				$display = 'Central Time';
 			}
 			if ($value == 'America/Denver') {
-				$display = 'Mountain';
+				$display = 'Mountain Time';
 			}
 			if ($value == 'America/Pheonix') {
 				$display = 'Mountain (No Daylight Savings Time)';
 			}
 			if ($value == 'America/Los_Angeles') {
-				$display = 'Pacific';
+				$display = 'Pacific Time';
 			}
 			if ($value == 'America/Anchorage') {
-				$display = 'Alaska';
+				$display = 'Alaska Time';
 			}
 			if ($value == 'America/Adak') {
-				$display = 'Hawaii';
+				$display = 'Hawaii-Aleutian Daylight Time';
 			}
 			if ($value == 'Pacific/Honolulu') {
-				$display = 'Hawaii (No Daylight Savings Time)';
+				$display = 'Hawaii Standard Time';
 			}
 			$structure[] = '<option ' . $selected . 'value="' . esc_attr( $value ) . '">' . esc_html($display) . '</option>';
 		}
