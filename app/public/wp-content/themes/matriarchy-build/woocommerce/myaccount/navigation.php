@@ -26,7 +26,7 @@ do_action( 'woocommerce_before_account_navigation' );
 	<div class="account-nav__heading">Consultations</div>
 	<ul class="list-unstyled">
 		<?php if (in_array('pro_user', (array) wp_get_current_user()->roles)): ?>
-			<li><a class="text-button text-button--blue-pink" href="<?= wc_get_account_endpoint_url('consultations'); ?>">Upcoming</a></li>
+			<li><a class="text-button text-button--blue-pink" href="<?= wc_get_account_endpoint_url('pro-upcoming-consultations'); ?>">Upcoming</a></li>
 			<li><a class="text-button text-button--blue-pink" href="<?= wc_get_account_endpoint_url('pro-past-consultations'); ?>">Past</a></li>
 		<?php else: ?>
 			<li><a class="text-button text-button--blue-pink" href="<?= wc_get_account_endpoint_url('upcoming-consultations'); ?>">Upcoming</a></li>

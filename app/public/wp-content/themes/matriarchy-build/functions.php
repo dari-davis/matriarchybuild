@@ -622,7 +622,7 @@ function redirection_function(){
 	$request = explode('/', $wp->request);
 	if (end($request) == 'my-account') {
 		if (in_array('pro_user', (array) wp_get_current_user()->roles)) {
-			wp_safe_redirect(home_url('/my-account/consultations'));
+			wp_safe_redirect(home_url('/my-account/pro/upcoming-consultations'));
 			exit;
 		} else{
 			wp_safe_redirect(home_url('/my-account/upcoming-consultations'));
@@ -651,7 +651,7 @@ add_action('init', function() {
 	add_rewrite_endpoint('schedule', EP_PAGES);
 	add_rewrite_endpoint('pricing', EP_PAGES);
 	add_rewrite_endpoint('pro-past-consultations', EP_PAGES);
-	add_rewrite_endpoint('consultations', EP_PAGES);
+	add_rewrite_endpoint('pro-upcoming-consultations', EP_PAGES);
 	add_rewrite_endpoint('booking-details', EP_PAGES);
 });
 
@@ -711,8 +711,8 @@ add_action('woocommerce_account_pricing_endpoint', function() {
 	wc_get_template('myaccount/pricing.php');
 });
 
-add_action('woocommerce_account_consultations_endpoint', function() {
-	wc_get_template('myaccount/pro/consultations.php');
+add_action('woocommerce_account_pro-upcoming-consultations_endpoint', function() {
+	wc_get_template('myaccount/pro/upcoming-consultations.php');
 });
 
 add_action('woocommerce_account_pro-past-consultations_endpoint', function() {
@@ -837,7 +837,7 @@ add_action( 'wp_login', 'prefix_login_redirect_based_on_roles', 10, 2 );
 function prefix_login_redirect_based_on_roles( $user_login, $user ) {
 
     if( in_array( 'pro_user',$user->roles ) ){
-        exit( wp_redirect('/my-account/consultations' ) );
+        exit( wp_redirect('/my-account/pro/upcoming-consultations' ) );
     } else {
 		exit( wp_redirect('/my-account/upcoming-consultations' ) );
 	}

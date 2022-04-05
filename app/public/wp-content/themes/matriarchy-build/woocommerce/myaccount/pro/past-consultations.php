@@ -36,13 +36,8 @@ $staffAppointments = $wpdb->get_results("SELECT * FROM wp_bookly_appointments WH
 
 <div class="consultations mt-md-4">
 <?php foreach ( $staffAppointments as $booking ) {
-	$createdDate = $booking->created_at;
+	$order = wc_get_order($booking->order_id);
 
-	// get wp_posts from appointments by created date
-	$wpPost = $wpdb->get_results("SELECT * FROM wp_posts WHERE post_modified = '$createdDate'");
-
-	//$order = wc_get_order( $customer_order ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-	if ($wpPost) {$order = wc_get_order($wpPost[0]->ID);}
 	if (!empty($order)) {
 		$customerFName = $order->get_data()["billing"]["first_name"];
 		$customerLName = $order->get_data()["billing"]["last_name"];

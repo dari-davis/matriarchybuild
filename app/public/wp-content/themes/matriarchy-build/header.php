@@ -52,9 +52,9 @@
           <?php if (is_user_logged_in()): ?>
             <div class="header__account-link d-flex justify-content-center align-items-lg-center flex-column">
               <?php if (in_array('pro_user', (array) wp_get_current_user()->roles)): ?>
-                <a class="text-button" href="/my-account/consultations">My Account</a>
+                <a class="text-button" href="<?= wc_get_account_endpoint_url('pro-upcoming-consultations'); ?>">My Account</a>
               <?php else: ?>
-                <a class="text-button" href="/my-account/upcoming-consultations">My Account</a>
+                <a class="text-button" href="<?= wc_get_account_endpoint_url('upcoming-consultations'); ?>">My Account</a>
               <?php endif; ?>
               <span class="header__user d-flex mt-1 mt-lg-0">Logged in as&nbsp;<span class="header__user-name"><?= wp_get_current_user()->first_name; ?></span><span>
             </div>

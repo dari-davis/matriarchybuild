@@ -1,29 +1,43 @@
-<?php global $wpdb; ?>
+<?php
+/**
+ * Pro Past Consultations
+ *
+ * Shows orders on the account page.
+ *
+ * This template can be overridden by copying it to yourtheme/woocommerce/myaccount/orders.php.
+ *
+ * HOWEVER, on occasion WooCommerce will need to update template files and you
+ * (the theme developer) will need to copy the new files to your theme to
+ * maintain compatibility. We try to do this as little as possible, but it does
+ * happen. When this occurs the version of the template file will be bumped and
+ * the readme will list any important changes.
+ *
+ * @see https://docs.woocommerce.com/document/template-structure/
+ * @package WooCommerce\Templates
+ * @version 3.7.0
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+global $wpdb;
+
+// get appointments by staff id
+$staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', wp_get_current_user()->ID )->findOne();
+$staffAppointments = $wpdb->get_results("SELECT * FROM wp_bookly_appointments WHERE staff_id='$staff->id' ORDER BY start_date ASC;");
+
+?>
 <div class="pt-md-5">
 	<h2 id="order_review_heading"><?php esc_html_e( 'Your Upcoming Consultations', 'woocommerce' ); ?></h2>
 	<hr class="mb-hr mb-hr--olive" />
 </div>
 
-<?php
-
-// get appointments by staff id
-$staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', wp_get_current_user()->ID )->findOne();
-$staffAppointments = $wpdb->get_results("SELECT * FROM wp_bookly_appointments WHERE staff_id='$staff->id' ORDER BY start_date;");
-?>
-
 <?php // loop through staff orders ?>
-
 <?php $hasConsultations = false; ?>
 
 <div class="consultations mt-md-4">
 <?php foreach ( $staffAppointments as $booking ) {
-	$createdDate = $booking->created_at;
+	$order = wc_get_order($booking->order_id);
 
-	// get wp_posts from appointments by created date
-	$wpPost = $wpdb->get_results("SELECT * FROM wp_posts WHERE post_modified = '$createdDate'");
-
-	//$order = wc_get_order( $customer_order ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-	if ($wpPost) {$order = wc_get_order($wpPost[0]->ID);}
 	if (!empty($order)) {
 		$customerFName = $order->get_data()["billing"]["first_name"];
 		$customerLName = $order->get_data()["billing"]["last_name"];
@@ -39,9 +53,6 @@ $staffAppointments = $wpdb->get_results("SELECT * FROM wp_bookly_appointments WH
 				// staff details
 				$staffId = $data['items'][0]['staff_ids'][0];
 				$staffInfo = $wpdb->get_results('SELECT * FROM wp_bookly_staff WHERE id="'.$staffId.'";');
-				$staffName = $staffInfo[0]->full_name;
-				$staffSlug = str_replace(" ", "-", strtolower($staffName));
-				$staffTrade = get_post_meta(get_page_by_path($staffSlug, OBJECT, 'pro')->ID, 'trade', true);
 
 				// appointment time and date
 				$unixTime = strtotime($data['items'][0]['slots'][0][2]);
@@ -72,7 +83,7 @@ $staffAppointments = $wpdb->get_results("SELECT * FROM wp_bookly_appointments WH
 					$apptIsWhen = "future";
 				}
 
-				// Zoom ID
+                // Zoom ID
 				$appointment = $wpdb->get_results('SELECT * FROM wp_bookly_appointments WHERE start_date="'.$apptTime.'";');
 				$zoomId = $appointment[0]->online_meeting_id;
 			}
@@ -80,13 +91,13 @@ $staffAppointments = $wpdb->get_results("SELECT * FROM wp_bookly_appointments WH
 	} ?>
 
 	<?php if (!empty($order)): ?>
-		<?php if (isset($data['items']) && !empty($serviceInfo) && ($apptIsWhen == 'future')): ?>
+		<?php if (isset($data['items']) && !empty($serviceInfo) && $apptIsWhen == "future"): ?>
 			<div class="consultation-card consultation-card--<?= $apptIsWhen; ?> row mb-borders m-0 mb-4">
-				<div class="col-6 col-lg consultation-card__yellow-bg p-3">
+            <div class="col-6 col-lg consultation-card__yellow-bg p-3">
 					<div class="consultation-card__detail mb-2"><?= $serviceInfo[0]->title;?></div>
 					<div class="consultation-card__pro consultation-card__pro--customer"><?= "$customerFName $customerLName"; ?></div>
 				</div>
-				<div class="col-6 col-lg p-3">
+                <div class="col-6 col-lg p-3">
 					<div><?= $date; ?></div>
 					<div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
 					<?php if(!empty($zoomId)): ?>
@@ -104,5 +115,5 @@ $staffAppointments = $wpdb->get_results("SELECT * FROM wp_bookly_appointments WH
 <?php } ?>
 
 <?php if(!$hasConsultations):?>
-	<p>You have no upcoming consultations at this time.</p>
+	<p>You have no past consultations at this time.</p>
 <?php endif; ?>
