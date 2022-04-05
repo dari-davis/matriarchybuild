@@ -38,7 +38,7 @@ foreach ( WC()->cart->get_cart() as $wc_key => $wc_item ) {
 	$UTCTime = date('g:i a', $unixTime);
 
 	// convert to users timezone
-	$startTime = date_timezone_set(new DateTime($UTCTime), timezone_open($wc_item['bookly']['time_zone']));
+	$startTime = new DateTime($UTCTime);
 
 	// time and date info
 	$booklyDuration = floor($serviceInfo[0]->duration/60);
