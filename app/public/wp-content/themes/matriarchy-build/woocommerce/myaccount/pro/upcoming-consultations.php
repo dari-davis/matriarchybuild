@@ -59,18 +59,29 @@ $staffAppointments = $wpdb->get_results("SELECT * FROM wp_bookly_appointments WH
 				$date = date('M j, Y', $unixTime);
 				$UTCTime = date('M j, Y g:i a', $unixTime);
 				$apptTime = date('Y-m-d H:i:s', $unixTime);
-				//var_dump($UTCTime->getTimezone());
 
-				// convert to Pros timezone
-				$startTime = date_timezone_set(new DateTime($UTCTime), timezone_open($staffInfo[0]->time_zone));
+				$startTime = new DateTime($UTCTime); // get start time
 
-				//var_dump($startTime);
-				$dateTime = date_format($startTime, 'M j, Y g:i a'); // appt date & time
+				// bookly appointment
+				$appointment = $wpdb->get_results('SELECT * FROM wp_bookly_appointments WHERE start_date="'.$apptTime.'";');
+				$appointmentId = $appointment[0]->id;
+
+				// get timezones
+				$userTimezone = $wpdb->get_results("SELECT time_zone FROM wp_bookly_customer_appointments WHERE appointment_id='$appointmentId'");
+				$proTimezone = $staffInfo[0]->time_zone;
+
+				// users timezone
+				date_default_timezone_set($userTimezone[0]->time_zone);
+				$usersTime = new DateTime($UTCTime);
+
+				// convert to pros timezone
+				$prosTime = date_timezone_set($usersTime, timezone_open($proTimezone));
+				$dateTime = date_format($prosTime, 'M j, Y g:i a'); // appt date & time
 
 				// time and date info
 				$booklyDuration = floor($serviceInfo[0]->duration/60);
 				$duration = $booklyDuration > 0 ? ($booklyDuration - 5) : $booklyDuration;
-				$endTime = new DateTime(date_format($startTime, 'g:i a'));
+				$endTime = new DateTime(date_format($prosTime, 'g:i a'));
 				$endTime->add(new DateInterval('PT' . $duration . 'M'));
 				$timeOfDay = date_format($endTime, 'a');
 
@@ -87,7 +98,6 @@ $staffAppointments = $wpdb->get_results("SELECT * FROM wp_bookly_appointments WH
 				}
 
                 // Zoom
-				$appointment = $wpdb->get_results('SELECT * FROM wp_bookly_appointments WHERE start_date="'.$apptTime.'";');
 				if ($appointment) {
 					$zoomId = $appointment[0]->online_meeting_id;
 					$appointmentData = explode(",", $appointment[0]->online_meeting_data);
@@ -116,7 +126,7 @@ $staffAppointments = $wpdb->get_results("SELECT * FROM wp_bookly_appointments WH
 				</div>
                 <div class="col-6 col-lg p-3">
 					<div><?= $date; ?></div>
-					<div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
+					<div><?= date_format($prosTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
 					<?php if(!empty($zoomId)): ?>
 						<a class="consultation-card__zoom-link badge badge-primary" href="<?= $joinUrl; ?>" target="_blank"><i class="fas fa-video fa-fw"></i> Zoom <i class="fas fa-external-link-alt fa-fw"></i></a>
 						<?php if ($password): ?><span class="consultation-card__zoom-passcode" class="my-2">Passcode: <?= $password; ?></span><?php endif; ?>
