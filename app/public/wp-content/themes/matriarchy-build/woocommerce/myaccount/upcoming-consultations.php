@@ -35,7 +35,9 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 
 		global $wpdb;
 
-		if (!$order->get_status == 'failed') {
+		if ($order->get_status() != 'failed') {
+			echo order_id_to_bookly($order->get_id());
+
 			foreach ($order->get_items() as $item_id => $item) {
 				$data =  $item->get_meta("bookly");
 
@@ -58,7 +60,7 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 					$apptTime = date('Y-m-d H:i:s', $unixTime);
 
 					// convert to users timezone
-					$startTime = date_timezone_set(new DateTime($UTCTime), timezone_open($data['time_zone']));
+					$startTime = new DateTime($UTCTime);
 					$dateTime = date_format($startTime, 'M j, Y g:i a'); // appt date & time
 
 					// time and date info
@@ -80,39 +82,54 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 						$apptIsWhen = "future";
 					}
 
-					// Zoom ID
+					// Zoom
 					$appointment = $wpdb->get_results('SELECT * FROM wp_bookly_appointments WHERE start_date="'.$apptTime.'";');
 					if ($appointment) {
 						$zoomId = $appointment[0]->online_meeting_id;
+						$appointmentData = explode(",", $appointment[0]->online_meeting_data);
+						$object = json_decode (json_encode ($appointmentData), FALSE);
+
+						// Join Url
+						$joinArray = explode('":"', str_replace("\/", "/", $object[12]));
+						$joinUrl = str_replace('"', '', $joinArray[1]);
+
+						// Password
+						$passwordArray = explode(":", $object[13]);
+						if (strpos($passwordArray[0], 'password')) {
+							$password = str_replace('"', '', $passwordArray[1]);
+						}
 					}
 				}
 			}
 		}
 		?>
 
-		<?php if (!$order->get_status == 'failed'): ?>
-			<?php if (isset($data['items']) && !empty($serviceInfo) && ($apptIsWhen == 'future')): ?>
-				<div class="consultation-card consultation-card--<?= $apptIsWhen; ?> row m-0 mb-4">
-					<div class="col-6 col-lg consultation-card__yellow-bg p-3">
-						<div class="consultation-card__detail mb-2"><?= $serviceInfo[0]->title;?></div>
-						<div class="consultation-card__pro"><?= $staffName; ?></div>
-						<div class="consultation-card__detail"><?= $staffTrade; ?></div>
+		<?php if ($order->get_status() != 'failed'): ?>
+			<?php foreach ($order->get_items() as $item_id => $item): ?>
+				<?php $data =  $item->get_meta("bookly"); ?>
+				<?php if (isset($data['items']) && !empty($serviceInfo) && ($apptIsWhen == 'future')): ?>
+					<div class="consultation-card consultation-card--<?= $apptIsWhen; ?> row m-0 mb-4">
+						<div class="col-6 col-lg consultation-card__yellow-bg p-3">
+							<div class="consultation-card__detail mb-2"><?= $serviceInfo[0]->title;?></div>
+							<div class="consultation-card__pro"><?= $staffName; ?></div>
+							<div class="consultation-card__detail"><?= $staffTrade; ?></div>
+						</div>
+						<div class="col-6 col-lg p-3">
+							<div><?= $date; ?></div>
+							<div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
+							<?php if(!empty($zoomId)): ?>
+								<a class="consultation-card__zoom-link badge badge-primary" href="<?= $joinUrl; ?>" target="_blank"><i class="fas fa-video fa-fw"></i> Zoom <i class="fas fa-external-link-alt fa-fw"></i></a>
+								<?php if ($password): ?><span class="consultation-card__zoom-passcode" class="my-2">Passcode: <?= $password; ?></span><?php endif; ?>
+							<?php endif; ?>
+							<div class="mt-4"><a class="text-button text-button--green" href="../view-order/<?= $order->get_id();?>">View Details</a></div>
+						</div>
+						<div class="col-12 col-lg p-3 d-flex justify-content-end">
+							<div><?= wc_price($price); ?></div>
+						</div>
 					</div>
-					<div class="col-6 col-lg p-3">
-						<div><?= $date; ?></div>
-						<div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
-						<?php if(!empty($zoomId)): ?>
-							<a class="consultation-card__zoom-link badge badge-primary" href="https://zoom.us/j/<?= $zoomId; ?>" target="_blank"><i class="fas fa-video fa-fw"></i> Zoom <i class="fas fa-external-link-alt fa-fw"></i></a>
-							<span style="font-size: 14px;" class="small my-2">Passcode: matriarchy</span>
-						<?php endif; ?>
-						<div class="mt-4"><a class="text-button text-button--green" href="../view-order/<?= $order->get_id();?>">View Details</a></div>
-					</div>
-					<div class="col-12 col-lg p-3 d-flex justify-content-end">
-						<div><?= wc_price($price); ?></div>
-					</div>
-				</div>
-				<?php $hasConsultations = true; ?>
-			<?php endif; ?>
+					<?php $hasConsultations = true; ?>
+				<?php endif; ?>
+			<?php endforeach; ?>
 		<?php endif; ?>
 	<?php } ?>
 

@@ -1016,7 +1016,25 @@ function matriarchy_timezone_choice( $selected_zone, $locale = null ) {
 	return implode( "\n", $structure );
 }
 
+// adds order id to Bookly appointments table
+function order_id_to_bookly($order_id) {
+	global $wpdb;
+	$order = wc_get_order($order_id);
+	$orderId = $order->get_id();
 
+	foreach ($order->get_items() as $item_id => $item) {
+		$data = wc_get_order_item_meta( $item_id, 'bookly' );
+
+		if ( isset ( $data['processed'], $data['ca_ids'] ) && $data['processed'] ) {
+			/** @var Bookly\Lib\Entities\CustomerAppointment[] $ca_list */
+			$ca_list = Bookly\Lib\Entities\CustomerAppointment::query()->whereIn( 'id', $data['ca_ids'] )->find();
+			foreach ( $ca_list as $ca ) {
+				$appointmentId = $ca->getAppointmentId();
+				$wpdb->query($wpdb->prepare("UPDATE wp_bookly_appointments SET order_id='$orderId' WHERE order_id IS NULL AND id=$appointmentId"));
+			}
+		}
+	}
+}
 
 
 ?>
