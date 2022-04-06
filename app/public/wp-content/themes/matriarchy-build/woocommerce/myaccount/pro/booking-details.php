@@ -64,9 +64,23 @@ $images = get_attached_media('', $order->get_id());
                 $apptIsWhen = "future";
             }
 
-            // Zoom ID
-		    $appointment = $wpdb->get_results('SELECT * FROM wp_bookly_appointments WHERE start_date="'.$apptTime.'";');
-		    $zoomId = $appointment[0]->online_meeting_id;
+            // Zoom
+            $appointment = $wpdb->get_results('SELECT * FROM wp_bookly_appointments WHERE start_date="'.$apptTime.'";');
+            if ($appointment) {
+                $zoomId = $appointment[0]->online_meeting_id;
+                $appointmentData = explode(",", $appointment[0]->online_meeting_data);
+                $object = json_decode (json_encode ($appointmentData), FALSE);
+
+                // Join Url
+                $joinArray = explode('":"', str_replace("\/", "/", $object[12]));
+                $joinUrl = str_replace('"', '', $joinArray[1]);
+
+                // Password
+                $passwordArray = explode(":", $object[13]);
+                if (strpos($passwordArray[0], 'password')) {
+                    $password = str_replace('"', '', $passwordArray[1]);
+                }
+            }
         }
     } ?>
 <?php endif; ?>
@@ -81,8 +95,9 @@ $images = get_attached_media('', $order->get_id());
             <div class="col-6 col-lg p-3">
                 <div><?= $date; ?></div>
                 <div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
-                <?php if(!empty($zoomId) && ($apptIsWhen == 'future')): ?>
-                    <a class="consultation-card__zoom-link badge badge-primary" href="https://zoom.us/j/<?= $zoomId; ?>" target="_blank"><i class="fas fa-video fa-fw"></i> Zoom <i class="fas fa-external-link-alt fa-fw"></i></a>
+                <?php if(!empty($zoomId)): ?>
+                    <a class="consultation-card__zoom-link badge badge-primary" href="<?= $joinUrl; ?>" target="_blank"><i class="fas fa-video fa-fw"></i> Zoom <i class="fas fa-external-link-alt fa-fw"></i></a>
+                    <?php if ($password): ?><span class="consultation-card__zoom-passcode" class="my-2">Passcode: <?= $password; ?></span><?php endif; ?>
                 <?php endif; ?>
             </div>
             <div class="col-12 col-lg p-3 d-flex justify-content-end">

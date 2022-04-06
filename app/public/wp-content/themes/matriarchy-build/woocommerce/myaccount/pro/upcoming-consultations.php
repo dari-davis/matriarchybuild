@@ -59,9 +59,12 @@ $staffAppointments = $wpdb->get_results("SELECT * FROM wp_bookly_appointments WH
 				$date = date('M j, Y', $unixTime);
 				$UTCTime = date('M j, Y g:i a', $unixTime);
 				$apptTime = date('Y-m-d H:i:s', $unixTime);
+				//var_dump($UTCTime->getTimezone());
 
 				// convert to Pros timezone
 				$startTime = date_timezone_set(new DateTime($UTCTime), timezone_open($staffInfo[0]->time_zone));
+
+				//var_dump($startTime);
 				$dateTime = date_format($startTime, 'M j, Y g:i a'); // appt date & time
 
 				// time and date info
@@ -83,9 +86,23 @@ $staffAppointments = $wpdb->get_results("SELECT * FROM wp_bookly_appointments WH
 					$apptIsWhen = "future";
 				}
 
-                // Zoom ID
+                // Zoom
 				$appointment = $wpdb->get_results('SELECT * FROM wp_bookly_appointments WHERE start_date="'.$apptTime.'";');
-				$zoomId = $appointment[0]->online_meeting_id;
+				if ($appointment) {
+					$zoomId = $appointment[0]->online_meeting_id;
+					$appointmentData = explode(",", $appointment[0]->online_meeting_data);
+					$object = json_decode (json_encode ($appointmentData), FALSE);
+
+					// Join Url
+					$joinArray = explode('":"', str_replace("\/", "/", $object[12]));
+					$joinUrl = str_replace('"', '', $joinArray[1]);
+
+					// Password
+					$passwordArray = explode(":", $object[13]);
+					if (strpos($passwordArray[0], 'password')) {
+						$password = str_replace('"', '', $passwordArray[1]);
+					}
+				}
 			}
 		}
 	} ?>
@@ -101,9 +118,10 @@ $staffAppointments = $wpdb->get_results("SELECT * FROM wp_bookly_appointments WH
 					<div><?= $date; ?></div>
 					<div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
 					<?php if(!empty($zoomId)): ?>
-						<a class="consultation-card__zoom-link badge badge-primary" href="https://zoom.us/j/<?= $zoomId; ?>" target="_blank"><i class="fas fa-video fa-fw"></i> Zoom <i class="fas fa-external-link-alt fa-fw"></i></a>
+						<a class="consultation-card__zoom-link badge badge-primary" href="<?= $joinUrl; ?>" target="_blank"><i class="fas fa-video fa-fw"></i> Zoom <i class="fas fa-external-link-alt fa-fw"></i></a>
+						<?php if ($password): ?><span class="consultation-card__zoom-passcode" class="my-2">Passcode: <?= $password; ?></span><?php endif; ?>
 					<?php endif; ?>
-					<div><a class="text-button text-button--green" href="../booking-details?id=<?= $order->get_id(); ?>">View Details</a></div>
+					<div><a class="text-button text-button--green" href="../booking-details?id=<?= $order->get_id();?>">View Details</a></div>
 				</div>
 				<div class="col-12 col-lg p-3 d-flex justify-content-end">
 					<div><?= wc_price($price); ?></div>
@@ -115,5 +133,5 @@ $staffAppointments = $wpdb->get_results("SELECT * FROM wp_bookly_appointments WH
 <?php } ?>
 
 <?php if(!$hasConsultations):?>
-	<p>You have no past consultations at this time.</p>
+	<p>You have no upcoming consultations at this time.</p>
 <?php endif; ?>
