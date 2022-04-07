@@ -2045,7 +2045,7 @@ class Updater extends Base\Updater
             'bookly_l10n_required_email'    => __( 'Please tell us your email', 'bookly' ),
             'bookly_l10n_required_employee' => __( 'Please select an employee', 'bookly' ),
             'bookly_l10n_required_name'     => __( 'Please tell us your name',  'bookly' ),
-            'bookly_l10n_required_phone'    => __( 'Please tell us your phone', 'bookly' ),
+            'bookly_l10n_required_phone'    => __( 'Please tell us your phone number', 'bookly' ),
             'bookly_l10n_required_service'  => __( 'Please select a service',   'bookly' ),
         );
         foreach ( $options as $option_name => $option_value ) {

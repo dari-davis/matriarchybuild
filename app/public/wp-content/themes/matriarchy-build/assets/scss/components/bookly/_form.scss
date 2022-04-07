@@ -50,7 +50,7 @@ $picker-date-size: 35px;
         display: none;
     }
 
-    .intl-tel-input {
+    .intl-tel-input .flag-container {
         display: none !important;
     }
 
@@ -140,4 +140,9 @@ $picker-date-size: 35px;
     width: 152px;
     border: 1px solid $olive;
     border-radius: 0;
+}
+
+.bookly-modal-body.bookly-form--simple {
+    padding-top: 0 !important;
+    padding-bottom: 10px !important;
 }

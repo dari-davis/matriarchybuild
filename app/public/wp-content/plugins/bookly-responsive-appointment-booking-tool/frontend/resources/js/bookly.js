@@ -3835,7 +3835,8 @@ var bookly = (function ($) {
 
 					$__default['default']('.bookly-js-login-show', $container).on('click', function (e) {
 						e.preventDefault();
-						$login_modal.addClass('bookly-in');
+						$login_modal.toggleClass('d-none');
+						$('.bookly-guest').toggleClass('d-none');
 					});
 					$__default['default']('button:submit', $login_modal).on('click', function (e) {
 						e.preventDefault();

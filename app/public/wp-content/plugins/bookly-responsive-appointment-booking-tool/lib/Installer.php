@@ -285,7 +285,7 @@ class Installer extends Base\Installer
             'bookly_l10n_required_name' => __( 'Please tell us your name', 'bookly' ),
             'bookly_l10n_required_first_name' => __( 'Please tell us your first name', 'bookly' ),
             'bookly_l10n_required_last_name' => __( 'Please tell us your last name', 'bookly' ),
-            'bookly_l10n_required_phone' => __( 'Please tell us your phone', 'bookly' ),
+            'bookly_l10n_required_phone' => __( 'Please tell us your phone number', 'bookly' ),
             'bookly_l10n_required_service' => __( 'Please select a service', 'bookly' ),
             'bookly_l10n_step_service' => __( 'Service', 'bookly' ),
             'bookly_l10n_step_time' => __( 'Time', 'bookly' ),

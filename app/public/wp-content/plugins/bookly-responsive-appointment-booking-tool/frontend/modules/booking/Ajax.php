@@ -531,17 +531,8 @@ class Ajax extends Lib\Base\Ajax
                 ? Lib\Utils\Common::getTranslatedOption( 'bookly_l10n_info_details_step_guest' )
                 : '';
 
-            // Render main template.
-            $html = self::renderTemplate( '6_details', array(
-                'progress_tracker' => self::_prepareProgressTracker( Steps::DETAILS, $userData ),
-                'info_text'        => InfoText::prepare( Steps::DETAILS, $info_text, $userData ),
-                'info_text_guest'  => InfoText::prepare( Steps::DETAILS, $info_text_guest, $userData ),
-                'userData'         => $userData,
-                'show_back_btn'    => $userData->getFirstStep() != Steps::DETAILS,
-            ), false );
-
             // Render additional templates.
-            $html .= self::renderTemplate( '_customer_duplicate_msg', array(), false );
+            $html = self::renderTemplate( '_customer_duplicate_msg', array(), false );
             if ( get_option( 'bookly_cst_verify_customer_details', false ) ) {
                 $html .= self::renderTemplate( '_customer_verification_code', array(), false );
             }
@@ -554,6 +545,15 @@ class Ajax extends Lib\Base\Ajax
             ) {
                 $html .= self::renderTemplate( '_login_form', array(), false );
             }
+
+            // Render main template.
+            $html .= self::renderTemplate( '6_details', array(
+                'progress_tracker' => self::_prepareProgressTracker( Steps::DETAILS, $userData ),
+                'info_text'        => InfoText::prepare( Steps::DETAILS, $info_text, $userData ),
+                'info_text_guest'  => InfoText::prepare( Steps::DETAILS, $info_text_guest, $userData ),
+                'userData'         => $userData,
+                'show_back_btn'    => $userData->getFirstStep() != Steps::DETAILS,
+            ), false );
 
             $woocommerce_enabled = (int) Lib\Config::wooCommerceEnabled();
 

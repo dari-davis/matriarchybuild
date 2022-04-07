@@ -502,6 +502,7 @@ function matriarchy_build_scripts_loader() {
 	// 1. Styles.
 	wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css', array(), $theme_version, 'all' );
 	wp_enqueue_style( 'main', get_template_directory_uri() . '/assets/css/main.css', array(), $theme_version, 'all' ); // main.scss: Compiled Framework source + custom styles.
+	wp_enqueue_style( 'bookly-main', get_template_directory_uri() . '/assets/css/bookly-main.css', array(), $theme_version, 'all');
 
 	if ( is_rtl() ) {
 		wp_enqueue_style( 'rtl', get_template_directory_uri() . '/assets/css/rtl.css', array(), $theme_version, 'all' );

@@ -74,9 +74,16 @@
 .bookly-form input[type="text"],
 .bookly-form input[type="number"],
 .bookly-form input[type="password"],
+.bookly-form input[type="tel"],
+.bookly-form .intl-tel-input,
 .bookly-form select,
 .bookly-form textarea {
     width: 100% !important;
+}
+
+.bookly-form input[type="tel"] {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
 }
 
 .bookly-form img {
@@ -94,10 +101,6 @@
     font-weight: bold;
     padding: 0 !important;
     margin: 0 !important;
-}
-
-.bookly-form-group > div {
-    margin: 5px 14px 0 0;
 }
 
 /* Buttons */
@@ -301,11 +304,6 @@ span.bookly-round {
 
 .bookly-service-step .bookly-time-range select {
     width: auto !important;
-}
-
-.bookly-mobile-step-1,
-.bookly-details-step {
-    margin: 0 -14px 0 0;
 }
 
 .bookly-mobile-step-1 .bookly-nav-steps {
