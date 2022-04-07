@@ -28,10 +28,12 @@ the_post();
     );
   ?>
 
-	<div class="how-it-works__page-content col-12 p-0">
-    <h1 class="invisible"><?php the_title(); ?></h1>
-    <?php the_content(); ?>
-	</div>
+  <div class="how-it-works__wrapper">
+    <div class="how-it-works__page-content col-12">
+      <h1 class="sr-only sr-only-focusable"><?php the_title(); ?></h1>
+      <?php the_content(); ?>
+    </div>
+  </div>
 
   <div class="how-it-works__faqs">
     <?php
