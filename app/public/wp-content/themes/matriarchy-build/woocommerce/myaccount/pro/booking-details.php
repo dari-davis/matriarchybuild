@@ -109,7 +109,7 @@ $images = get_attached_media('', $order->get_id());
             <div class="col-6 col-lg p-3">
                 <div><?= $date; ?></div>
                 <div><?= date_format($prosTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
-                <?php if(!empty($zoomId)): ?>
+                <?php if(!empty($zoomId) && $apptIsWhen == "future"): ?>
                     <a class="consultation-card__zoom-link badge badge-primary" href="<?= $joinUrl; ?>" target="_blank"><i class="fas fa-video fa-fw"></i> Zoom <i class="fas fa-external-link-alt fa-fw"></i></a>
                     <?php if ($password): ?><span class="consultation-card__zoom-passcode" class="my-2">Passcode: <?= $password; ?></span><?php endif; ?>
                 <?php endif; ?>
@@ -140,10 +140,14 @@ $images = get_attached_media('', $order->get_id());
                 <h2><?php esc_html_e( 'Project Details', 'woocommerce' ); ?></h2>
                 <hr class="mb-hr mb-hr--olive" />
             </div>
-            <?php if ($apptIsWhen == "future" || get_post_meta($order_id, 'answer1', true)): ?>
+            <?php if (!empty(get_post_meta($order_id, 'answer1', true))): ?>
                 <p>Get acquainted with the project details by reviewing the images and questionnaire answers below.</p>
             <?php else: ?>
-                <p>No questionnaire was submitted for this consultation.</p>
+                <?php if ($apptIsWhen == "past"): ?>
+                    <p>No questionnaire was submitted for this consultation.</p>
+                <?php else: ?>
+                    <p>A questionnaire has not yet been submitted for this consultation.</p>
+                <?php endif; ?>
             <?php endif; ?>
         </div>
 
