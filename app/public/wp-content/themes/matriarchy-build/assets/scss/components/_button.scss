@@ -23,6 +23,13 @@
         background-color: $pink;
         border-color: $blue;
     }
+
+    &:disabled,
+    &[disabled] {
+        &:after {
+            background-image: none;
+        }
+    }
 }
 
 a.button--text,
