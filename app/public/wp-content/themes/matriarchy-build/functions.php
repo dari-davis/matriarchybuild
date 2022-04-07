@@ -622,7 +622,7 @@ function redirection_function(){
 	$request = explode('/', $wp->request);
 	if (end($request) == 'my-account') {
 		if (in_array('pro_user', (array) wp_get_current_user()->roles)) {
-			wp_safe_redirect(home_url('/my-account/pro/upcoming-consultations'));
+			wp_safe_redirect(home_url('/my-account/pro-upcoming-consultations'));
 			exit;
 		} else{
 			wp_safe_redirect(home_url('/my-account/upcoming-consultations'));
@@ -837,7 +837,7 @@ add_action( 'wp_login', 'prefix_login_redirect_based_on_roles', 10, 2 );
 function prefix_login_redirect_based_on_roles( $user_login, $user ) {
 
     if( in_array( 'pro_user',$user->roles ) ){
-        exit( wp_redirect('/my-account/pro/upcoming-consultations' ) );
+        exit( wp_redirect('/my-account/pro-upcoming-consultations' ) );
     } else {
 		exit( wp_redirect('/my-account/upcoming-consultations' ) );
 	}
