@@ -64,21 +64,35 @@ foreach ($order->get_items() as $item_id => $item) {
         $apptTime = date('Y-m-d H:i:s', $unixTime);
 
         // convert to users timezone
-        $startTime = date_timezone_set(new DateTime($UTCTime), timezone_open($data['time_zone']));
+        $startTime = new DateTime($UTCTime);
         $dateTime = date_format($startTime, 'g:i a'); // appt date & time
 
         // time and date info
         $booklyDuration = floor($serviceInfo[0]->duration/60);
         $duration = $booklyDuration > 0 ? ($booklyDuration - 5) : $booklyDuration;
 
-        // Zoom ID
-		$appointment = $wpdb->get_results('SELECT * FROM wp_bookly_appointments WHERE start_date="'.$apptTime.'";');
-		$zoomId = $appointment[0]->online_meeting_id;
+        // Zoom
+        $appointment = $wpdb->get_results('SELECT * FROM wp_bookly_appointments WHERE start_date="'.$apptTime.'";');
+        if ($appointment) {
+            $zoomId = $appointment[0]->online_meeting_id;
+            $appointmentData = explode(",", $appointment[0]->online_meeting_data);
+            $object = json_decode (json_encode ($appointmentData), FALSE);
+
+            // Join Url
+            $joinArray = explode('":"', str_replace("\/", "/", $object[12]));
+            $joinUrl = str_replace('"', '', $joinArray[1]);
+
+            // Password
+            $passwordArray = explode(":", $object[13]);
+            if (strpos($passwordArray[0], 'password')) {
+                $password = str_replace('"', '', $passwordArray[1]);
+            }
+        }
     }
 } ?>
 
 <p style="font-weight: bold; margin-bottom: 0;">Consultation Details</p>
-<p>You can access your <?= $duration; ?> min 1:1 Consultation with <?= $staffName; ?> at <?= $dateTime; ?> through <a href="https://zoom.us/j/<?= $zoomId; ?>" target="_blank"><img style="height: 20px; margin-right: 4px;" src="<?php echo get_template_directory_uri(); ?>/assets/images/zoom-link.png"/></a><a href="https://zoom.us/j/<?= $zoomId; ?>" target="_blank">https://zoom.us/j/<?= $zoomId; ?></a></p>
+<p>You can access your <?= $duration; ?> min 1:1 Consultation with <?= $staffName; ?> at <?= $dateTime; ?> through <a href="<?= $joinUrl; ?>" target="_blank"><img style="height: 20px; margin-right: 4px;" src="<?php echo get_template_directory_uri(); ?>/assets/images/zoom-link.png"/></a><a href="<?= $joinUrl; ?>" target="_blank"><?= $joinUrl; ?></a> <?php if ($password): ?>(pw: <em><b><?= $password; ?></b</em>)<?php endif; ?></p>
 
 <p style="font-weight: bold; margin-bottom: 0;">Prepare for Your Session</p>
 <p>We strongly recommend completing your pre-consultation questionnaire and submitting all relevant photos to your Pro prior to your session with ample time for your Pro to review them. Depending on your project type, measurements, tools, drawings or images might be useful. Click here to fill out your pre-consultation questionnaire. <a href="<?= site_url();?>/my-account/view-order/<?= $order->ID; ?>"><?= site_url();?>/my-account/view-order/<?= $order->ID; ?></a></p>
