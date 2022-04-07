@@ -90,6 +90,49 @@ if ( ! function_exists( 'matriarchy_build_setup_theme' ) ) :
 
 		// Custom CSS-Styles of Wordpress Gallery.
 		add_filter( 'use_default_gallery_style', '__return_false' );
+
+		// add Matriarchy Build color palette
+		add_theme_support('editor-color-palette', array(
+			array(
+				'name' => esc_html__('Blue', 'matriarchybuild'),
+				'slug' => 'blue',
+				'color' => '#2d457c',
+			),
+			array(
+				'name' => esc_html__('Pink', 'matriarchybuild'),
+				'slug' => 'pink',
+				'color' => '#f7cbad',
+			),
+			array(
+				'name' => esc_html__('Yellow', 'matriarchybuild'),
+				'slug' => 'yellow',
+				'color' => '#fbf8ea',
+			),
+			array(
+				'name' => esc_html__('Green', 'matriarchybuild'),
+				'slug' => 'green',
+				'color' => '#555433',
+			),
+			array(
+				'name' => esc_html__('Olive', 'matriarchybuild'),
+				'slug' => 'olive',
+				'color' => '#bbb69b',
+			),
+			array(
+				'name' => esc_html__('Black', 'matriarchybuild'),
+				'slug' => 'black',
+				'color' => '#000000',
+			),
+			array(
+				'name' => esc_html__('White', 'matriarchybuild'),
+				'slug' => 'white',
+				'color' => '#ffffff',
+			)
+		));
+
+
+		// Disabled custom color picker
+		add_theme_support('disable-custom-colors');
 	}
 	add_action( 'after_setup_theme', 'matriarchy_build_setup_theme' );
 
@@ -1036,6 +1079,21 @@ function order_id_to_bookly($order_id) {
 		}
 	}
 }
+
+// adds custom color palette to ACF fields
+function klf_acf_input_admin_footer() { ?>
+	<script type="text/javascript">
+	(function($) {
+	acf.add_filter('color_picker_args', function( args, $field ){
+	// add the hexadecimal codes here for the colors you want to appear as swatches
+	args.palettes = ['#2d457c', '#f7cbad', '#fbf8ea', '#555433', '#bbb69b', '#000000', '#ffffff'];
+	// return colors
+	return args;
+	});
+	})(jQuery);
+	</script>
+	<?php }
+	add_action('acf/input/admin_footer', 'klf_acf_input_admin_footer');
 
 
 ?>
