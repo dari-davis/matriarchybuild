@@ -32,6 +32,14 @@
     }
 }
 
+div.wpforms-container-full .wpforms-form input[type=submit],
+div.wpforms-container-full .wpforms-form button[type=submit],
+div.wpforms-container-full .wpforms-form .wpforms-page-button {
+    background: $pink !important;
+    border: 1px solid $olive !important;
+    color: $blue !important;
+}
+
 a.button--text,
 button.button--text {
     color: $blue;

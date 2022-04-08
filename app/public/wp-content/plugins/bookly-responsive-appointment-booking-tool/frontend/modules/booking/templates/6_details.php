@@ -92,7 +92,7 @@ echo Common::stripScripts( $progress_tracker );
     <div class="bookly-box bookly-nav-steps">
         <button class="bookly-next-step bookly-js-next-step bookly-btn ladda-button" data-style="zoom-in" data-spinner-size="40">
             <?php if (is_user_logged_in()): ?>
-                <span class="ladda-label">Sign In</span>
+                <span class="ladda-label">Continue to Checkout</span>
             <?php else: ?>
                 <span class="ladda-label">Sign Up</span>
             <?php endif; ?>

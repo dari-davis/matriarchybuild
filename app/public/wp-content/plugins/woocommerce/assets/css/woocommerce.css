@@ -2077,15 +2077,6 @@ p.demo_store a,
   color: #a00;
 }
 
-.woocommerce .woocommerce-form-login .woocommerce-form-login__submit {
-  float: left;
-  margin-right: 1em;
-}
-
-.woocommerce .woocommerce-form-login .woocommerce-form-login__rememberme {
-  display: inline-block;
-}
-
 .woocommerce-no-js form.woocommerce-form-login,
 .woocommerce-no-js form.woocommerce-form-coupon {
   display: block !important;
@@ -2828,13 +2819,6 @@ p.demo_store a,
 #add_payment_method #payment .payment_method_paypal img {
   max-height: 52px;
   vertical-align: middle;
-}
-
-.woocommerce-terms-and-conditions {
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-          box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-  background: rgba(0, 0, 0, 0.05);
 }
 
 .woocommerce-invalid #terms {

@@ -98,6 +98,8 @@ foreach ($order->get_items() as $item_id => $item) {
 <p>We strongly recommend completing your pre-consultation questionnaire and submitting all relevant photos to your Pro prior to your session with ample time for your Pro to review them. Depending on your project type, measurements, tools, drawings or images might be useful. Click here to fill out your pre-consultation questionnaire. <a href="<?= site_url();?>/my-account/view-order/<?= $order->ID; ?>"><?= site_url();?>/my-account/view-order/<?= $order->ID; ?></a></p>
 
 <p>And visit our How it Works section for more guidance on preparing for your session. <a href="<?= site_url();?>/how-it-works"><?= site_url();?>/how-it-works</a></p>
+
+<p style="margin-top: 40px; font-size: 11px;">By engaging in Pro consultations, I agree to Matriarchy Build's <a href="<?= site_url();?>/terms-of-use" target="_blank">Terms of Use</a>.</p>
 <?php
 
 /*

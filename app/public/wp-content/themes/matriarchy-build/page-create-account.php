@@ -39,7 +39,7 @@
 
 				<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
 					<label>
-						<input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="terms" <?php checked( apply_filters( 'woocommerce_terms_is_checked_default', isset( $_POST['terms'] ) ), true ); ?> id="terms" /> <span><?php printf( __( 'I agree to Matriarchy Build&rsquo;s <a href="%s" target="_blank" class="woocommerce-terms-and-conditions-link">terms of use</a>', 'woocommerce' ), site_url('privacy-terms') ); ?></span>
+						<input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="terms" <?php checked( apply_filters( 'woocommerce_terms_is_checked_default', isset( $_POST['terms'] ) ), true ); ?> id="terms" /> <span class="small"><?php printf( __( 'I agree to Matriarchy Build&rsquo;s <a href="%s" target="_blank" class="woocommerce-terms-and-conditions-link">Terms of Use</a>', 'woocommerce' ), site_url('privacy-terms') ); ?></span>
 					</label>
 					<input type="hidden" name="terms-field" value="1" />
 				</p>
@@ -54,10 +54,11 @@
 			</form>
 		</div>
 
-		<div class="col-md-6 mb-3 mb-md-0 pb-5 ps-md-4">
+		<div class="col-md-6 mb-3 mb-md-0 pb-5 ps-md-4 register">
 			<h2><?php esc_html_e( 'Are You A Pro?', 'woocommerce' ); ?></h2>
 			<p class="p-explainer">If you’d like to join our roster of Matriarchy Build Pros please click here to fill out our simple questionnaire. The Matriarchy Build roster features Pros that are available for 1:1 video consultations with folks tackling DIY and home renovation projects.</p>
 			<a class="button alt" href="<?= site_url('apply'); ?>">Apply to Be a Pro</a>
+			<p class="small pt-3">By creating my account, I agree to Matriarchy Build's <a href="<?= home_url('/terms-of-use'); ?>" target="_blank">Terms of Use</a>.</p>
 		</div>
 	</div>
 </div>

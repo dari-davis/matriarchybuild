@@ -16,9 +16,14 @@
 	}
 
 	form.login,
-	form.register {
+	form.register,
+	.register {
 		padding: 0;
 		border: 0;
+
+		.small {
+			max-width: 90%;
+		}
 	}
 
 	.woocommerce-checkout & {
@@ -184,10 +189,6 @@
 .total .woocommerce-Price-amount {
 	font-size: 36px;
 	font-weight: 400;
-}
-
-.woocommerce-terms-and-conditions-link {
-	text-decoration: underline;
 }
 
 .woocommerce-error,
