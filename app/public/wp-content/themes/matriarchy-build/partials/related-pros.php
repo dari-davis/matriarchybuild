@@ -4,8 +4,6 @@
  */
 
 global $wpdb;
-$staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro_user') )->findOne();
-$services = $wpdb->get_results('SELECT * FROM wp_bookly_staff_services WHERE staff_id="'.$staff->id.'";');
 ?>
 
 <?php
@@ -55,7 +53,9 @@ $services = $wpdb->get_results('SELECT * FROM wp_bookly_staff_services WHERE sta
             <?php $related =  related_posts_by_taxonomy( $post->ID, 'pros' ); ?>
             <?php while ( $related->have_posts() ): $related->the_post(); ?>
                 <?php $postId = $post->ID;
-                $permalink = get_permalink($postId); ?>
+                $permalink = get_permalink($postId);
+                $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro_user', $postId) )->findOne();
+                $services = $wpdb->get_results('SELECT * FROM wp_bookly_staff_services WHERE staff_id="'.$staff->id.'";'); ?>
                 <div class="col-md-6 col-xl-4 article d-flex mb-3 mb-lg-0 mt-lg-3">
                     <div class="article__image-wrapper col-6 mb-borders mb-borders--green">
                         <a class="article__image-container d-flex" href="<?= $permalink; ?>" style="background-image: url('<?= get_the_post_thumbnail_url($postId, 'medium'); ?>');" aria-label="<?= $post->post_title; ?>"></a>

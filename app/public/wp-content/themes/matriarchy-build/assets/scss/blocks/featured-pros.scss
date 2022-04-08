@@ -103,7 +103,12 @@
     &__button {
         width: 28px;
         height: 30px;
-        border-left: 1px solid $green;
+        border: 1px solid $green;
+        border-width: 0 0 1px 1px;
+
+        &.bookable {
+            background: $pink;
+        }
 
         img {
             width: 16px;
