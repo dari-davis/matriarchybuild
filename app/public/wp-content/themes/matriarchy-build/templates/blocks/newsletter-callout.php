@@ -10,7 +10,7 @@
         <div class="row gx-0">
             <div class="d-flex col-md-4">
                 <div class="callout__scafolding col-3 d-md-none"></div>
-                <div class="col-9 col-md-12 callout__heading mb-borders mb-borders--pink"><div class="h1 mb-0">Stay Up To Date With Us</div></div>
+                <div class="col-9 col-md-12 callout__heading mb-borders mb-borders--pink"><div class="h1 mb-0 pt-3 pb-2">Stay Up To Date With Us</div></div>
             </div>
             <div class="col callout__content mb-borders mb-borders--pink">
                 <div class="callout__copy"><?= get_field('content'); ?></div>
