@@ -2,7 +2,7 @@
 <?php if ($staff): ?>
     <?php $services = $wpdb->get_results('SELECT * FROM wp_bookly_staff_services WHERE staff_id="'.$staff->id.'";'); ?>
 <?php endif; ?>
-<div class="row m-0">
+<div class="row pros__card gx-0">
     <div class="pros__details col p-0 mb-borders">
         <?php if (have_rows('display_name')): ?>
             <?php while (have_rows('display_name')): the_row(); ?>
@@ -15,7 +15,6 @@
         <?php endif; ?>
         <?php if (has_post_thumbnail()): ?>
             <a class="pros__image-wrapper" aria-label="Pro" href="<?php the_permalink(); ?>" style="background-image: url('<?= get_the_post_thumbnail_url(); ?>');"><div class="pros__image"></div></a>
-
         <?php else: ?>
             <a class="pros__image-wrapper" aria-label="Pro" href="<?php the_permalink(); ?>"><div class="pros__image"></div></a>
         <?php endif; ?>

@@ -83,30 +83,20 @@
 
 .pros {
 
-    &__image-wrapper {
-        display: block;
-        height: 208px;
-        background-size: cover;
-
-        @include media-breakpoint-up(md) {
-            height: 161px;
-        }
-
-        @include media-breakpoint-up(lg) {
-            height: 208px;
+    &__card {
+        @include media-breakpoint-down(md) {
+            margin: 0 auto;
+            max-width: 431px;
         }
     }
 
-    &__image {
+    &__image-wrapper {
+        display: block;
+        padding-bottom: 73.25%;
+        height: 0;
+        overflow: hidden;
         background: rgba($olive, 0.2);
-
-        @include media-breakpoint-up(md) {
-            height: 161px;
-        }
-
-        @include media-breakpoint-up(lg) {
-            height: 208px;
-        }
+        background-size: cover;
     }
 
     &__pro-name {
