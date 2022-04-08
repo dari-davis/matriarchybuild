@@ -1,4 +1,9 @@
 .article {
+
+    .featured-pros & {
+        max-width: 335px;
+    }
+
     &__details {
         display: flex;
         flex-direction: column;
@@ -7,6 +12,10 @@
         .related-articles & {
             border-color: $blue;
         }
+    }
+
+    &__image-wrapper {
+        overflow: hidden;
     }
 
     &__image-container {
@@ -23,7 +32,8 @@
         }
 
         .featured-pros & {
-            height: 100%;
+            height: 126%;
+            width: 120%;
         }
     }
 
@@ -133,9 +143,14 @@
         }
 
         &.featured-pros__view-all {
-            height: 78px;
-            line-height: 78px;
+            height: 50px;
+            line-height: 50px;
             text-align: center;
+
+            @include media-breakpoint-up(lg) {
+                height: 78px;
+                line-height: 78px;
+            }
         }
     }
 }

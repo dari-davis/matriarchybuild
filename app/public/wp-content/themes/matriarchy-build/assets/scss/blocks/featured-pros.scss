@@ -51,11 +51,6 @@
             -webkit-align-items: flex-end;
             margin-left: 130px;
         }
-
-        &:after {
-            content: "";
-            flex: auto;
-        }
     }
 
     &__header .col-md-8 {
@@ -117,6 +112,8 @@
 
     &__view-all {
         align-self: flex-start;
+        max-width: none;
+        width: 100%;
 
         a:after {
             content: '';
@@ -126,6 +123,10 @@
             width: 24px;
             background-image: url('../images/icons/arrow_blue.svg');
             background-repeat: no-repeat;
+        }
+
+        @include media-breakpoint-up(lg) {
+            max-width: 335px;
         }
     }
 }

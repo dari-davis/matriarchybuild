@@ -20,7 +20,7 @@ if ($staff) { $services = $wpdb->get_results('SELECT * FROM wp_bookly_staff_serv
                 $postId = $article->ID;
                 $permalink = get_permalink($postId); ?>
                 <div class="col-md-6 col-xl-4 article d-flex mb-3 mb-lg-0 mt-lg-3">
-                    <div class="col-6 mb-borders mb-borders--green">
+                    <div class="article__image-wrapper col-6 mb-borders mb-borders--green">
                         <a class="article__image-container d-flex" href="<?= $permalink; ?>" style="background-image: url('<?= get_the_post_thumbnail_url($postId, 'medium'); ?>');" aria-label="<?= $article->post_title; ?>"></a>
                     </div>
                     <div class="featured-pros__details col-6 has-white-background-color mb-borders mb-borders--green">
