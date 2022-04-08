@@ -81,16 +81,6 @@
     width: 100% !important;
 }
 
-.bookly-form input[type="text"]::placeholder,
-.bookly-form input[type="number"]::placeholder,
-.bookly-form input[type="password"]::placeholder,
-.bookly-form input[type="tel"]::placeholder,
-.bookly-form .intl-tel-input::placeholder,
-.bookly-form select,
-.bookly-form textarea::placeholder {
-    color: #2d457c !important;
-}
-
 .bookly-form input[type="tel"] {
     padding-left: 10px !important;
     padding-right: 10px !important;
