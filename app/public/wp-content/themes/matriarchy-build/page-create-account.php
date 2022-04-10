@@ -58,7 +58,6 @@
 			<h2><?php esc_html_e( 'Are You A Pro?', 'woocommerce' ); ?></h2>
 			<p class="p-explainer">If you’d like to join our roster of Matriarchy Build Pros please click here to fill out our simple questionnaire. The Matriarchy Build roster features Pros that are available for 1:1 video consultations with folks tackling DIY and home renovation projects.</p>
 			<a class="button alt" href="<?= site_url('apply'); ?>">Apply to Be a Pro</a>
-			<p class="small pt-3">By creating my account, I agree to Matriarchy Build's <a href="<?= home_url('/terms-of-use'); ?>" target="_blank">Terms of Use</a>.</p>
 		</div>
 	</div>
 </div>

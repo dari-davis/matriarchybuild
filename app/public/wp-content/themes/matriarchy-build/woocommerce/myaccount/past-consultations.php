@@ -35,7 +35,7 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 
 		global $wpdb;
 
-		if (!$order->get_status == 'failed') {
+		if ($order->get_status() != 'failed') {
 			foreach ($order->get_items() as $item_id => $item) {
 				$data =  $item->get_meta("bookly");
 
@@ -59,7 +59,7 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 					$apptTime = date('Y-m-d H:i:s', $unixTime);
 
 					// convert to users timezone
-					$startTime = date_timezone_set(new DateTime($UTCTime), timezone_open($data['time_zone']));
+					$startTime = new DateTime($UTCTime);
 					$dateTime = date_format($startTime, 'M j, Y g:i a'); // appt date & time
 
 					// time and date info
@@ -85,7 +85,7 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 		}
 		?>
 
-		<?php if (!$order->get_status == 'failed'): ?>
+		<?php if ($order->get_status() != 'failed'): ?>
 			<?php if (isset($data['items']) && !empty($serviceInfo) && ($apptIsWhen == 'past')): ?>
 				<div class="consultation-card consultation-card--<?= $apptIsWhen; ?> row mb-borders m-0 mb-4">
 					<div class="col-6 col-lg consultation-card__yellow-bg p-3">

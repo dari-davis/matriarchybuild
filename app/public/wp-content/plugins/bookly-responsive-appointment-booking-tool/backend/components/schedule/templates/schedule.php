@@ -6,19 +6,18 @@
 <div class="form-group">
     <?php foreach ( $schedule as $title ) : ?>
         <div class="form-row form-group bookly-js-range-row" data-key="<?php echo esc_attr( $schedule->key() ) ?>" data-index="<?php echo esc_attr( $schedule->index() ) ?>">
-            <div class="col-12 col-lg-6">
+            <div class="col-12 col-lg-5">
                 <div class="form-row align-items-center">
                     <div class="col-3">
                         <?php echo esc_html( $title ) ?>
                     </div>
-                    <div>between</div>
-                    <div class="col">
+                    <div class="col-auto">
                         <?php $schedule->start_select->render() ?>
                     </div>
                     <div class="col-auto bookly-js-invisible-on-off">
-                        <?php esc_html_e( 'and', 'bookly' ) ?>
+                        <?php esc_html_e( 'to', 'bookly' ) ?>
                     </div>
-                    <div class="col bookly-js-invisible-on-off">
+                    <div class="col-auto bookly-js-invisible-on-off">
                         <?php $schedule->end_select->render() ?>
                     </div>
                 </div>

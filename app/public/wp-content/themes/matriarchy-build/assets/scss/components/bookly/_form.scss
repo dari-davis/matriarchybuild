@@ -149,6 +149,15 @@ $picker-date-size: 35px;
     width: 152px;
     border: 1px solid $olive;
     border-radius: 0;
+
+    .bookly-staff-cabinet & {
+        width: auto !important;
+    }
+}
+
+#bookly-tbs.bookly-staff-cabinet .form-control,
+#bookly-tbs .bookly-staff-cabinet .form-control {
+    width: auto !important;
 }
 
 .bookly-modal-body.bookly-form--simple {

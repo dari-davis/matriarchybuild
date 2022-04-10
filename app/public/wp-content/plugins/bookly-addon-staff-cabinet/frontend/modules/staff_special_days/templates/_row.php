@@ -8,9 +8,9 @@
                 <div class="col-xs-12 bookly-js-staff-special-days-error"></div>
             </div>
         </div>
-        <div class="col-lg-5">
+        <div class="col-lg-4">
             <div class="form-row">
-                <div class="col">
+                <div class="col-auto">
                     <?php
                     $bound = array( $day['start_time'], $day['end_time'] );
                     echo $working_start->render(
@@ -23,7 +23,7 @@
                 <div class="mt-2">
                     <?php esc_html_e( 'and', 'bookly' ) ?>
                 </div>
-                <div class="col">
+                <div class="col-auto">
                     <?php
                     echo $working_end->render(
                         'list[' . $day['id'] . '][end_time]',

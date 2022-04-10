@@ -7,7 +7,7 @@
 ?>
 
 
-<div class="row no-gutters pt-4 pt-md-0">
+<div class="row no-gutters pt-4 pt-md-0 content-max-width">
 	<div class="col-lg-8">
 		<div class="pt-md-5">
 			<h2><?php esc_html_e( 'Create Custom Schedule', 'woocommerce' ); ?></h2>
@@ -21,7 +21,7 @@
 	<?php echo do_shortcode('[bookly-staff-special-days]'); ?>
 </div>
 
-<div class="row no-gutters">
+<div class="row no-gutters content-max-width">
 	<div class="col-lg-8 pt-5 pt-md-0">
 		<div class="pt-md-5">
 			<h2><?php esc_html_e( 'Create Recurring Schedule', 'woocommerce' ); ?></h2>
@@ -32,7 +32,7 @@
 	<?php echo do_shortcode('[bookly-staff-schedule]'); ?>
 </div>
 
-<div class="row no-gutters days-off invisible">
+<div class="row no-gutters days-off invisible content-max-width">
 	<div class="col-lg-8 pt-5 pt-md-0 days-off__header">
 		<div class="pt-md-5">
 			<h2><?php esc_html_e( 'Select Days Off', 'woocommerce' ); ?></h2>
@@ -50,6 +50,8 @@
 	var $ = jQuery;
 	$('.time-off-btn').on('click', function(e) {
 		e.preventDefault();
+		$(this).addClass('open');
 		$('.days-off').removeClass('invisible');
+
 	});
 </script>

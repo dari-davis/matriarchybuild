@@ -35,3 +35,5 @@ $post_blocks = parse_blocks(get_the_content('', false, $faqPage));
         <?php endif; ?>
     </div>
 </div>
+
+<script src="<?= get_template_directory_uri() . '/assets/js/accordion.js'; ?>"></script>

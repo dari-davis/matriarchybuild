@@ -84,3 +84,7 @@
 .bookly-staff-cabinet-days-off {
     background: transparent !important;
 }
+
+.time-off-btn.open:after {
+    transform: rotate(90deg);
+}

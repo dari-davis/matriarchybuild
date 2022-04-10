@@ -15,7 +15,7 @@ use Bookly\Lib\Utils\DateTime;
         </div>
         <div class="col-lg-5">
             <div class="form-row">
-                <div class="col">
+                <div class="col-auto">
                     <?php
                     $bound = array( $day['start_time'], $day['end_time'] );
                     echo $working_start->render(
@@ -28,7 +28,7 @@ use Bookly\Lib\Utils\DateTime;
                 <div class="mt-2 bookly-js-invisible-on-off">
                     <?php esc_html_e( 'and', 'bookly' ) ?>
                 </div>
-                <div class="col bookly-js-invisible-on-off">
+                <div class="col-auto bookly-js-invisible-on-off">
                     <?php
                     echo $working_end->render(
                         'special_days[' . $day['id'] . '][end_time]',
