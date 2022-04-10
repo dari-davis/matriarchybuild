@@ -879,11 +879,12 @@ add_action( 'wp_login', 'prefix_login_redirect_based_on_roles', 10, 2 );
  * @link https://stackoverflow.com/questions/30124931/how-to-redirect-a-user-with-specific-role-to-a-specific-page-after-login-in-wo
  */
 function prefix_login_redirect_based_on_roles( $user_login, $user ) {
-
-    if( in_array( 'pro_user',$user->roles ) ){
-        exit( wp_redirect('/my-account/pro-upcoming-consultations' ) );
-    } else {
-		exit( wp_redirect('/my-account/upcoming-consultations' ) );
+	if (is_account_page()) {
+		if( in_array( 'pro_user',$user->roles ) ){
+			exit( wp_redirect('/my-account/pro-upcoming-consultations' ) );
+		} else {
+			exit( wp_redirect('/my-account/upcoming-consultations' ) );
+		}
 	}
 }
 
