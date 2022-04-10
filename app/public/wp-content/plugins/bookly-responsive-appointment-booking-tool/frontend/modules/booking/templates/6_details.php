@@ -22,12 +22,12 @@ echo Common::stripScripts( $progress_tracker );
 </div>
 <?php endif ?>
 
-<div class="bookly__create-account pt-5">
+<div class="bookly__create-account">
     <div class="bookly-details-step">
         <?php if (is_user_logged_in()): ?>
             <h3 class="bookly-form__heading">Confirm your appointment details</h3>
         <?php else: ?>
-            <h3 class="bookly-form__heading">Don't Have An Account?</h3>
+            <h3 class="bookly-form__heading" data-details-step-heading>Don't Have An Account?</h3>
         <?php endif; ?>
         <div class="bookly-box bookly-table d-flex flex-column">
             <div class="bookly-form-group mb-2">
@@ -94,7 +94,7 @@ echo Common::stripScripts( $progress_tracker );
             <?php if (is_user_logged_in()): ?>
                 <span class="ladda-label">Continue to Checkout</span>
             <?php else: ?>
-                <span class="ladda-label">Sign Up</span>
+                <span class="ladda-label" data-details-step-button>Sign Up</span>
             <?php endif; ?>
         </button>
     </div>

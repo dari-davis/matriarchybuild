@@ -1,5 +1,5 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
-<div class="bookly-js-login d-none">
+<div class="bookly-js-login d-none pb-5">
     <form>
         <div class="bookly-modal-body bookly-form">
         <h3 class="bookly-form__heading"><?php esc_html_e( 'Sign In', 'bookly' ) ?></h3>

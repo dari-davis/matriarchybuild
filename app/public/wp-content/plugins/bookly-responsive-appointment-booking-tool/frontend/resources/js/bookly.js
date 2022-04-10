@@ -3835,8 +3835,9 @@ var bookly = (function ($) {
 
 					$__default['default']('.bookly-js-login-show', $container).on('click', function (e) {
 						e.preventDefault();
-						$login_modal.toggleClass('d-none');
+						$login_modal.removeClass('d-none');
 						$('.bookly-guest').toggleClass('d-none');
+						$('.bookly__create-account').addClass('d-none');
 					});
 					$__default['default']('button:submit', $login_modal).on('click', function (e) {
 						e.preventDefault();
@@ -3857,13 +3858,18 @@ var bookly = (function ($) {
 									BooklyL10n.csrf_token = response.data.csrf_token;
 									$guest_info.fadeOut('slow');
 									populateForm(response);
-									$login_modal.removeClass('bookly-in');
+									$login_modal.addClass('d-none');
+									$('[data-details-step-heading]').text('Confirm Your Appointment Details');
+									$('[data-details-step-button]').text('Continue To Checkout');
+									$('.bookly__create-account').removeClass('d-none');
 								} else if (response.error == 'incorrect_username_password') {
 									find($login_modal).call($login_modal, 'input').addClass('bookly-error');
 
 									find($login_modal).call($login_modal, '.bookly-label-error').html(opt[params.form_id].errors[response.error]);
 								}
-
+								ladda.stop();
+							},
+							error: function error(response) {
 								ladda.stop();
 							}
 						});

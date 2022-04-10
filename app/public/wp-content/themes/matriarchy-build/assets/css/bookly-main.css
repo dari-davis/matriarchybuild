@@ -49,6 +49,14 @@
     overflow: hidden;
 }
 
+.bookly-box.d-none {
+    margin: 0;
+}
+
+.bookly-js-login.d-none.pb-5 {
+    padding-bottom: 0 !important;
+}
+
 .bookly-table {
     display: table;
     table-layout: fixed;
