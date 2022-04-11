@@ -19,6 +19,10 @@ body {
     background: $background-color;
 }
 
+.wf-loading body {
+    visibility: hidden;
+}
+
 a {
     color: $blue;
 
@@ -155,6 +159,11 @@ input[type="tel"],
     .header .search-form & {
         color: $white !important;
     }
+}
+
+mark,
+.mark {
+    padding: 0;
 }
 
 .woocommerce-billing-fields {

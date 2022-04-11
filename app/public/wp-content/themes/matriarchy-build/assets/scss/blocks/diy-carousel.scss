@@ -2,6 +2,7 @@ $slick-arrow-height:    33px;
 
 .diy-carousel {
     background-size: cover;
+    background-position: 50%;
 
     &__scafolding {
         height: calc(100% - 50px);
@@ -11,6 +12,10 @@ $slick-arrow-height:    33px;
         &--left {
             margin-top: $slick-arrow-height;
             height: 191px;
+
+            @include media-breakpoint-up(md) {
+                border-right: 0;
+            }
 
             .diy-carousel--slider & {
                 margin-top: $slick-arrow-height * 2; // button height

@@ -4,10 +4,14 @@
     &__wrapper {
         padding: 0 $padding-small;
         margin: 0 auto;
-        max-width: 1006px;
+        max-width: 1010px;
 
         @include media-breakpoint-up(md) {
             padding: 0 $padding-medium;
+        }
+
+        @include media-breakpoint-up(lg) {
+            padding: 0;
         }
 
         .pro-application &,

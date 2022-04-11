@@ -26,13 +26,13 @@
 
   <header id="header" class="header row no-gutters m-0">
     <div class="header__logo col-md py-4 py-lg-0 px-lg-4 d-flex">
-      <a href="/"><img class="header__logo-image mx-auto" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" alt="Matriarchy Build logo"></a>
+      <a href="/"><img data-no-lazy class="header__logo-image mx-auto" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" alt="Matriarchy Build logo"></a>
     </div>
 
     <div class="header__nav col-md text-lg-center gx-0">
       <div class="header__top row gx-0 invisible">
         <div class="header__nav-container col-lg-8">
-          <div class="primary-nav pt-4 pb-3 py-lg-0 px-4 px-lg-0">
+          <div class="primary-nav pb-3 py-lg-0 mx-4 mx-lg-0">
             <?php
               // Loading WordPress Custom Menu (theme_location).
               wp_nav_menu(
@@ -48,9 +48,9 @@
           </div>
         </div>
 
-        <div class="header__account <?php if (is_user_logged_in()): ?>header__account--signed-in <?php endif; ?>col-lg-4 py-3 py-lg-0 px-4 px-lg-0">
+        <div class="header__account <?php if (is_user_logged_in()): ?>header__account--signed-in <?php endif; ?>col-lg-4 pt-3 pb-2 py-lg-0 px-4 px-lg-0">
           <?php if (is_user_logged_in()): ?>
-            <div class="header__account-link d-flex justify-content-center align-items-lg-center flex-column">
+            <div class="header__account-link d-flex justify-content-lg-center align-items-lg-center flex-column">
               <?php if (in_array('pro_user', (array) wp_get_current_user()->roles)): ?>
                 <a class="text-button" href="<?= wc_get_account_endpoint_url('pro-upcoming-consultations'); ?>">My Account</a>
               <?php else: ?>
@@ -59,10 +59,10 @@
               <span class="header__user d-flex mt-1 mt-lg-0">Logged in as&nbsp;<span class="header__user-name"><?= wp_get_current_user()->first_name; ?></span><span>
             </div>
           <?php else: ?>
-            <div class="header__account-link d-flex justify-content-center align-items-center">
+            <div class="header__account-link d-flex justify-content-lg-center align-items-center mb-1 mb-lg-0">
               <a class="text-button" href="/my-account">Sign In</a>
             </div>
-            <div class="header__account-link d-flex justify-content-center align-items-center">
+            <div class="header__account-link d-flex justify-content-lg-center align-items-center">
               <a class="text-button" href="/create-account">Sign Up</a>
             </div>
           <?php endif; ?>
@@ -80,7 +80,7 @@
                 <input type="text" name="s" class="form-control"
                   placeholder="<?php esc_attr_e( 'Search', 'matriarchy-build' ); ?>"
                   title="<?php esc_attr_e( 'Search', 'matriarchy-build' ); ?>" />
-                <button type="submit" name="submit" aria-label="Search"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/search.svg" alt="Search icon"/></button>
+                <button type="submit" name="submit" aria-label="Search"><img data-no-lazy src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/search.svg" alt="Search icon"/></button>
               </div>
             </form>
           <?php endif; ?>

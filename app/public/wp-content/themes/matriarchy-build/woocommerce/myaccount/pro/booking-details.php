@@ -155,7 +155,7 @@ $images = get_attached_media('', $order->get_id());
             <div class="questionnaire questionnaire--photos p-4 mb-4 d-flex">
                 <?php foreach(array_slice($images, 0, 5) as $image): ?>
                     <div class="questionnaire__image me-3">
-                        <img src="<?= wp_get_attachment_url($image->ID); ?>"/>
+                        <img data-no-lazy src="<?= wp_get_attachment_url($image->ID); ?>"/>
                     </div>
                 <?php endforeach; ?>
             </div>

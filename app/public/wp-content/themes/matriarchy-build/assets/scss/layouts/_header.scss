@@ -12,6 +12,10 @@
         &.invisible {
             display: none !important;
         }
+
+        img, svg {
+            scale: 1.5;
+        }
     }
 
     &__logo {
@@ -42,6 +46,10 @@
     &__logo-image {
         @include media-breakpoint-up(lg) {
             max-width: 375px;
+
+            .woocommerce-page & {
+                max-width: 375px;
+            }
         }
     }
 
@@ -122,7 +130,9 @@
         height: 50%;
 
         & + & {
-            border-top: 1px solid $pink;
+            @include media-breakpoint-up(lg) {
+                border-top: 1px solid $pink;
+            }
         }
 
         .header__account--signed-in & {

@@ -88,6 +88,7 @@
 
         @include media-breakpoint-up(md) {
             color: $pink;
+            border-top: 0;
         }
 
         &:after {
@@ -95,8 +96,6 @@
         }
 
         & + .hero__button {
-            border-top: 0;
-            
             @include media-breakpoint-up(md) {
                 border-left: 0;
             }

@@ -24,13 +24,13 @@
        .image-desktop {
            display: none;
 
-            @include media-breakpoint-up(1080px) {
+            @media (min-width: 1080px) {
                display: block;
             }
        }
 
        .image-mobile {
-            @include media-breakpoint-up(1080px) {
+            @media (min-width: 1080px) {
                display: none;
             }
        }

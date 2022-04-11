@@ -55,7 +55,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 						<?php wp_nonce_field( 'woocommerce-login', 'woocommerce-login-nonce' ); ?>
 					</div>
 					<button type="submit" class="woocommerce-button button alt woocommerce-form-login__submit" name="login" value="<?php esc_attr_e( 'Sign In', 'woocommerce' ); ?>"><?php esc_html_e( 'Sign In', 'woocommerce' ); ?></button>
-					<p class="small pt-3">By creating my account, I agree to Matriarchy Build's <a href="<?= home_url('/terms-of-use'); ?>" target="_blank">Terms of Use</a>.</p>
+					<p class="small pt-3">I agree to Matriarchy Build's <a href="<?= home_url('/terms-of-use'); ?>" target="_blank">Terms of Use</a>.</p>
 				</div>
 
 				<?php do_action( 'woocommerce_login_form_end' ); ?>

@@ -152,10 +152,10 @@ foreach ($order->get_items() as $item_id => $item) {
                         <?php foreach($images as $image): ?>
                             <?php $imageId = $image->ID; ?>
                             <div class="questionnaire__image me-3">
-                                <img src="<?= wp_get_attachment_url($image->ID); ?>"/>
+                                <img data-no-lazy src="<?= wp_get_attachment_url($image->ID); ?>"/>
 
                                 <form method="post">
-                                    <button class="questionnaire__remove-button" type="submit" name="remove-photo"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/x-circle.svg"></button>
+                                    <button class="questionnaire__remove-button" type="submit" name="remove-photo"><img data-no-lazy src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/x-circle.svg"></button>
                                     <input type="hidden" name="photo-id-<?= $imageId; ?>" value="<?= $image->ID; ?>"/>
                                 </form>
 
