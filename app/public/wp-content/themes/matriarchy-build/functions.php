@@ -1022,7 +1022,7 @@ function matriarchy_timezone_choice( $selected_zone, $locale = null ) {
 		}
 		
 		// 4.4.2022 - filters timezone options to find and display regions by timezone labels
-		$regions = ['America/New_York', 'America/Chicago', 'America/Denver', 'America/Pheonix', 'America/Los_Angeles', 'America/Anchorage', 'America/Adak', 'Pacific/Honolulu'];
+		$regions = ['America/New_York', 'America/Chicago', 'America/Denver', 'America/Pheonix', 'America/Los_Angeles', 'America/Anchorage', 'America/Adak', 'Pacific/Honolulu', 'America/Goose_Bay'];
 
 		if (in_array($value, $regions)) {
 			if ($value == 'America/New_York') {
@@ -1048,6 +1048,9 @@ function matriarchy_timezone_choice( $selected_zone, $locale = null ) {
 			}
 			if ($value == 'Pacific/Honolulu') {
 				$display = 'Hawaii Standard Time';
+			}
+			if ($value == 'America/Goose_Bay') {
+				$display = 'Atlantic Daylight Time';
 			}
 			$structure[] = '<option ' . $selected . 'value="' . esc_attr( $value ) . '">' . esc_html($display) . '</option>';
 		}
