@@ -358,18 +358,22 @@
     &__page-content {
         padding: 45px $padding-small;
         margin: 0 auto;
-        max-width: 1510px;
+        max-width: 1010px;
 
         @include media-breakpoint-up(md) {
             padding: 90px $padding-medium;
         }
 
         @include media-breakpoint-up(lg) {
-            padding: 90px $padding-large;
+            padding: 90px 0;
         }
 
         @media (min-width: 1556px) {
             padding: 90px 0;
+        }
+
+        p {
+            font-family: $sans-serif-font-family;
         }
     }
 

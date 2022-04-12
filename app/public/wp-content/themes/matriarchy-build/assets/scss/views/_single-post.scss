@@ -30,6 +30,7 @@
         flex-direction: column;
         padding: 0 $padding-small;
         margin-top: $margin-top-medium;
+        justify-content: center;
 
         @include media-breakpoint-up(md) {
             margin-top: $margin-top-large;

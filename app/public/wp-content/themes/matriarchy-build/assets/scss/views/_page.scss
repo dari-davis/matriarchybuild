@@ -45,7 +45,7 @@
         background-position: 50%;
 
         @include media-breakpoint-up(md) {
-            height: 760px;
+            height: 622px;
             overflow: hidden;
             background-color: rgba($olive, 0.2);
         }
@@ -92,7 +92,7 @@
     .page__content {
 
         @include media-breakpoint-up(lg) {
-            margin: 88px 0 88px -1px;
+            margin: 88px 0 133px -1px;
             width: 834px;
         }
 
