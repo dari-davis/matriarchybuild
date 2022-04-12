@@ -127,6 +127,37 @@ $picker-date-size: 35px;
     .bookly-js-cst-duplicate {
         display: none;
     }
+
+    &__back-button {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 10px;
+        width: 100%;
+        background: $yellow;
+    }
+
+    .bookly-js-back-step.text-button--blue {
+        &:before {
+            content: '';
+            display: inline-flex;
+            margin-right: 8px;
+            height: 8px;
+            width: 24px;
+            background-image: url('../images/icons/arrow_green.svg');
+            background-repeat: no-repeat;
+            transform: rotate(180deg);
+        }
+
+        &:after {
+            display: none;
+        }
+
+        &:hover {
+            color: $olive;
+        }
+    
+    }
 }
 
 .bookly-form-group label {

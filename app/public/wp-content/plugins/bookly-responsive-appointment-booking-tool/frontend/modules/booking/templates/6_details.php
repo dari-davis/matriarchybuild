@@ -99,3 +99,7 @@ echo Common::stripScripts( $progress_tracker );
         </button>
     </div>
 </div>
+
+<div class="bookly-form__back-button">
+    <button class="bookly-js-back-step text-button text-button--blue">Back</button>
+</div>

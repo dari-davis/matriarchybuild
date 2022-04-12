@@ -4327,7 +4327,6 @@ var bookly = (function ($) {
 					});
 					$__default['default']('.bookly-js-back-step', $container).on('click', function (e) {
 						e.preventDefault();
-						laddaStart(this);
 
 						if (!opt[params.form_id].skip_steps.cart) {
 							stepCart({
