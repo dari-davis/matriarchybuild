@@ -21,6 +21,8 @@ global $wpdb;
 
 // gets all the cart data
 foreach ( WC()->cart->get_cart() as $wc_key => $wc_item ) {
+	$timezone = $wc_item['bookly']['time_zone'];
+
 	// staff details
 	$staffId = $wc_item['bookly']['items'][0]['staff_ids'][0];
 	$staffInfo = $wpdb->get_results('SELECT * FROM wp_bookly_staff WHERE id="'.$staffId.'";');
@@ -39,6 +41,7 @@ foreach ( WC()->cart->get_cart() as $wc_key => $wc_item ) {
 
 	// convert to users timezone
 	$startTime = new DateTime($UTCTime);
+	$startTime->setTimezone(new DateTimeZone($timezone));
 
 	// time and date info
 	$booklyDuration = floor($serviceInfo[0]->duration/60);

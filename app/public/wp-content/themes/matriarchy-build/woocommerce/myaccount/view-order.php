@@ -26,6 +26,7 @@ global $post;
 
 foreach ($order->get_items() as $item_id => $item) {
     $data =  $item->get_meta("bookly");
+    $timezone = $data['time_zone'];
 
     if (isset($data['items'])) {
         // service details
@@ -48,6 +49,7 @@ foreach ($order->get_items() as $item_id => $item) {
 
         // convert to users timezone
         $startTime = new DateTime($UTCTime);
+	    $startTime->setTimezone(new DateTimeZone($timezone));
         $dateTime = date_format($startTime, 'M j, Y g:i a'); // appt date & time
 
         // time and date info
