@@ -52,8 +52,13 @@
 			</div>
 		</div>
 
-		<?= get_template_part('partials/post-diy-inspiration'); ?>
-		<?= get_template_part('partials/post-featured-pros'); ?>
+		<?php if (get_field('posts')): ?>
+			<?= get_template_part('partials/post-diy-inspiration'); ?>
+		<?php endif; ?>
+
+		<?php if (get_field('pros')): ?>
+			<?= get_template_part('partials/post-featured-pros'); ?>
+		<?php endif; ?>
 
 		<?php
 		wp_link_pages( array(
