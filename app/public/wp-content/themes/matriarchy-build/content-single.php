@@ -52,6 +52,9 @@
 			</div>
 		</div>
 
+		<?= get_template_part('partials/post-diy-inspiration'); ?>
+		<?= get_template_part('partials/post-featured-pros'); ?>
+
 		<?php
 		wp_link_pages( array(
 			'before' => '<div class="page-links">' . __( 'Pages:', 'matriarchy-build' ),

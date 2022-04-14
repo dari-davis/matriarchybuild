@@ -27,6 +27,26 @@
         height: auto !important;
     }
 
+    &__header {
+        .entry-meta {
+            margin-top: -1px;
+    
+            span {
+                height: 33px;
+                line-height: 33px;
+                background: $white;
+            }
+    
+            .row {
+                align-items: flex-start;
+            }
+    
+            @include media-breakpoint-up(lg) {
+                margin-left: 174px;
+            }
+        }
+    }
+
     &__content-wrapper {
         flex-direction: column;
         padding: 0 $padding-small;
@@ -163,24 +183,6 @@
             span {
                 border-top: 1px solid $olive;
             }
-        }
-    }
-
-    .entry-meta {
-        margin-top: -1px;
-
-        span {
-            height: 33px;
-            line-height: 33px;
-            background: $white;
-        }
-
-        .row {
-            align-items: flex-start;
-        }
-
-        @include media-breakpoint-up(lg) {
-            margin-left: 174px;
         }
     }
 

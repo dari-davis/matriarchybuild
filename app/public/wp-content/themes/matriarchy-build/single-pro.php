@@ -200,7 +200,7 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
       <div class="pro__faqs">
         <?php
           get_template_part( 'templates/blocks/faq', null, array(
-              'title'  => '',
+              'title'  => 'FAQ',
               'style' => 'mini'
           ) );
         ?>
@@ -217,6 +217,7 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
       </div>
 
       <?= get_template_part('partials/related-pros'); ?>
+      <?= get_template_part('partials/post-diy-inspiration'); ?>
 
     <?php endwhile; ?>
   </div>
