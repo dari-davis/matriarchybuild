@@ -30,6 +30,10 @@
             background-image: none;
         }
     }
+
+    .how-it-works--page & {
+        border-color: $blue;
+    }
 }
 
 div.wpforms-container-full .wpforms-form input[type=submit],

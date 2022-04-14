@@ -40,6 +40,9 @@ if (is_archive('pro')) { $activeBackgroundColor = get_field('active_step_backgro
                     </div>
                 <?php endwhile; ?>
             <?php endif; ?>
+            <?php if ($page): ?>
+                <div class="row gx-0"><a class="button justify-content-center align-items-center d-flex" href="<?= home_url('/pro'); ?>">Find a Pro<a></div>
+            <?php endif; ?>
         </div>
     </div>
 </div>

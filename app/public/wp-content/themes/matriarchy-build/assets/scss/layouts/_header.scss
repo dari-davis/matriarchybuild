@@ -148,6 +148,14 @@
         &-name {
             color: $pink;
         }
+
+        @include media-breakpoint-up(lg) {
+            flex-direction: column;
+        }
+
+        @include media-breakpoint-up(xl) {
+            flex-direction: row;
+        }
     }
 
     &__search-container {

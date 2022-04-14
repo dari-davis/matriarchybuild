@@ -48,7 +48,6 @@ $bookable-button-size:     41px;
 
     &__title.mb-borders {
         flex: 1;
-        height: 189px;
         align-items: center;
         justify-content: center;
         border-bottom: 0;
@@ -59,6 +58,7 @@ $bookable-button-size:     41px;
     }
 
     &__name {
+        padding: 16px 0 8px;
         color: $blue;
         font-size: 38px;
         line-height: 40px;
@@ -66,6 +66,10 @@ $bookable-button-size:     41px;
         @include media-breakpoint-up(sm) {
             font-size: 55px;
             line-height: 57px;
+        }
+
+        @include media-breakpoint-up(md) {
+            padding: 40px 0 32px;
         }
     }
 

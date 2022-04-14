@@ -71,6 +71,10 @@
         font-size: 28px;
         height: 74px;
         text-transform: uppercase;
+
+        &:hover {
+            color: $olive;
+        }
     }
 
     &__trade {

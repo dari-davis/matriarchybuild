@@ -11,16 +11,20 @@
 
     &__step {
         flex-direction: column;
-        padding-top: 16px;
+        padding: 2rem 0;
         border-top: 1px solid $olive;
     
         @include media-breakpoint-up(md) {
             flex-direction: row;
         }
+
+        .col-md-5 {
+            padding-right: 4rem;
+        }
     }
 
     &__label {
-        color: $pink;
+        color: $olive;
     }
 
     &__content p {

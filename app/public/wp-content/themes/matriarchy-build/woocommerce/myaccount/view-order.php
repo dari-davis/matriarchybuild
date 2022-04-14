@@ -105,7 +105,6 @@ foreach ($order->get_items() as $item_id => $item) {
                 <a class="consultation-card__zoom-link badge badge-primary" href="<?= $joinUrl; ?>" target="_blank"><i class="fas fa-video fa-fw"></i> Zoom <i class="fas fa-external-link-alt fa-fw"></i></a>
                 <?php if ($password): ?><span class="consultation-card__zoom-passcode" class="my-2">Passcode: <?= $password; ?></span><?php endif; ?>
             <?php endif; ?>
-            <div class="mt-4"><a class="text-button text-button--green" href="../view-order/<?= $order->get_id();?>">View Details</a></div>
         </div>
         <div class="col-12 col-lg d-flex justify-content-end">
             <div><?= wc_price($price); ?></div>

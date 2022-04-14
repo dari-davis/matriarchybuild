@@ -1,6 +1,7 @@
 .single-post {
     
-    .main p {
+    .main p,
+    .main li {
         font-size: 20px;
         line-height: 135%;
     }
@@ -185,6 +186,7 @@
 
     &__content-blocks {
         padding: 0 $padding-small;
+        margin-bottom: 6rem;
         max-width: $max-content-width;
         font-family: $sans-serif-font-family;
     }

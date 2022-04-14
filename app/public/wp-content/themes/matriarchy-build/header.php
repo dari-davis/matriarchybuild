@@ -31,7 +31,7 @@
 
     <div class="header__nav col-md text-lg-center gx-0">
       <div class="header__top row gx-0 invisible">
-        <div class="header__nav-container col-lg-8">
+        <div class="header__nav-container col-lg-9">
           <div class="primary-nav pb-3 py-lg-0 mx-4 mx-lg-0">
             <?php
               // Loading WordPress Custom Menu (theme_location).
@@ -48,7 +48,7 @@
           </div>
         </div>
 
-        <div class="header__account <?php if (is_user_logged_in()): ?>header__account--signed-in <?php endif; ?>col-lg-4 pt-3 pb-2 py-lg-0 px-4 px-lg-0">
+        <div class="header__account <?php if (is_user_logged_in()): ?>header__account--signed-in <?php endif; ?>col-lg-3 pt-3 pb-2 py-lg-0 px-4 px-lg-0">
           <?php if (is_user_logged_in()): ?>
             <div class="header__account-link d-flex justify-content-lg-center align-items-lg-center flex-column">
               <?php if (in_array('pro_user', (array) wp_get_current_user()->roles)): ?>
