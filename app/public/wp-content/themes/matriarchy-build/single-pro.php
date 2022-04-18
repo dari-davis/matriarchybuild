@@ -217,10 +217,7 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
       </div>
 
       <?= get_template_part('partials/related-pros'); ?>
-
-      <?php if (get_field('posts')): ?>
-        <?= get_template_part('partials/post-diy-inspiration'); ?>
-      <?php endif; ?>
+      <?= get_template_part('partials/post-diy-inspiration'); ?>
 
     <?php endwhile; ?>
   </div>

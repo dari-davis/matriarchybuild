@@ -52,9 +52,7 @@
 			</div>
 		</div>
 
-		<?php if (get_field('posts')): ?>
-			<?= get_template_part('partials/post-diy-inspiration'); ?>
-		<?php endif; ?>
+		<?= get_template_part('partials/post-diy-inspiration'); ?>
 
 		<?php if (get_field('pros')): ?>
 			<?= get_template_part('partials/post-featured-pros'); ?>

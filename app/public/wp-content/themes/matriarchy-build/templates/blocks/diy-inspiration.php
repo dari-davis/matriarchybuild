@@ -3,7 +3,12 @@
  * Block: DIY & Inspiration
  */
 
-$articles = get_field('posts');
+if (get_field('posts')) {
+    $articles = get_field('posts');
+} else {
+    $query = new WP_Query(array('posts_per_page' => 3, 'post__not_in' => array(get_the_ID()), 'post_status' => 'publish'));
+    $articles = $query->get_posts();
+}
 ?>
 
 <div class="diy-inspiration py-5">
