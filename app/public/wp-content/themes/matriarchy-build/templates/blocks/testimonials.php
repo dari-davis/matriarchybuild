@@ -20,7 +20,7 @@
               <?php while (have_rows('testimonial')): the_row(); ?>
               <div class="testimonials__slide text-center">
                   <div class="testimonials__inner-slide">
-                  <img class="testimonials__icon" src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/quotation.svg" alt="Testimonial quotation mark">
+                  <img data-no-lazy class="testimonials__icon" src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/quotation.svg" alt="Testimonial quotation mark">
 
                 <div class="testimonials__copy"><?= get_sub_field('copy'); ?></div>
                 <h3 class="testimonials__name"><?= get_sub_field('name'); ?></h3>
