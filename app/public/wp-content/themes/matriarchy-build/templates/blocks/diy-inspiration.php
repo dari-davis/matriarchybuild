@@ -41,7 +41,7 @@ if (get_field('posts')) {
                             </div>
                             <div class="article__meta col-auto px-0 d-flex flex-column">
                                 <?php $author = $article->post_author; ?>
-                                <span class="article__author px-2">by <?= get_the_author($article->ID); ?></span>
+                                <span class="article__author px-2">by <?= the_author_meta('display_name', $article->post_author); ?></span>
                                 <span class="px-2"><?= the_category(' , ', '', $article->ID); ?></span>
                             </div>
                         </div>

@@ -56,7 +56,7 @@
               <?php else: ?>
                 <a class="text-button" href="<?= wc_get_account_endpoint_url('upcoming-consultations'); ?>">My Account</a>
               <?php endif; ?>
-              <span class="header__user d-flex mt-1 mt-lg-0">Logged in as&nbsp;<span class="header__user-name"><?= wp_get_current_user()->first_name; ?></span><span>
+              <span class="header__user d-flex mt-1">Hello&nbsp;<span class="header__user-name"><?= wp_get_current_user()->first_name; ?></span>!<span>
             </div>
           <?php else: ?>
             <div class="header__account-link d-flex justify-content-lg-center align-items-center mb-1 mb-lg-0">
