@@ -104,6 +104,7 @@ $bookable-button-size:     41px;
 
     &__details-container {
         max-width: 1510px;
+        overflow: hidden;
 
         @include media-breakpoint-up(md) {
             margin-left: -24px;
