@@ -1,0 +1,13 @@
+{
+	"name": "matriarchybuild/composer",
+	"description": "",
+	"authors": [
+		{
+			"name": "Yellow Rocket Digital",
+			"email": "dari@yellowrocketdigital.com"
+		}
+	],
+	"require": {
+		 "monolog/monolog": "2.5.*"
+	}
+}
