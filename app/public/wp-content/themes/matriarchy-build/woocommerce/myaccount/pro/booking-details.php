@@ -112,18 +112,51 @@ $images = get_attached_media('', $order->get_id());
         <?php $hasConsultations = true; ?>
     <?php endif; ?>
 
-    <?php if (!empty($order->get_customer_note())): ?>
+    <?php if ($apptIsWhen == "past"): ?>
         <div class="row no-gutters m-0">
             <div class="col-md-8 p-0">
                 <div class="pt-md-5">
-                    <h2><?php esc_html_e( 'Note From The Client', 'woocommerce' ); ?></h2>
+                    <h2><?php esc_html_e( 'Notes To The Client', 'woocommerce' ); ?></h2>
                     <hr class="mb-hr mb-hr--olive" />
                 </div>
 
-                <p><?= $order->get_customer_note(); ?></p>
+                <form method="post">
+                    <?php $showSection = true; ?>
+                    <?php function submitClientNote($order, $order_id) {
+                        $showSection = false;
+                        $order->update_meta_data('notes_to_client', $_POST["note"]);
+                        $order->save();
+                    }
+                    if (isset($_POST['submit'])) { submitClientNote($order, $order_id); } ?>
+
+                    <?php if( empty(get_post_meta($order_id, 'notes_to_client'))): ?>
+                        <p>Following your session with the client you may want to send a recap of your conversation, a list of materials/tools, or topics for a follow-up consultation.</p>
+                        <div class="form-group row m-0">
+                            <div class="p-0">
+                                <textarea class="form-control" rows="12" id="note" name="note" required></textarea>
+                            </div>
+                        </div>
+                        <div class="d-flex py-3"><button type="submit" value="Send" name="submit" class="w-auto button alt">Send</button>
+                    <?php else: ?>
+                        <?= html_entity_decode(get_post_meta($order_id, 'notes_to_client', true)); ?>
+                    <?php endif; ?>
+                </form> 
             </div>
         </div>
     <?php endif; ?>
+
+    <?php if (!empty($order->get_customer_note())): ?>
+    <div class="row no-gutters m-0">
+        <div class="col-md-8 p-0">
+            <div class="pt-md-5">
+                <h2><?php esc_html_e( 'Note from the Client', 'woocommerce' ); ?></h2>
+                <hr class="mb-hr mb-hr--olive" />
+            </div>
+
+            <p><?= $order->get_customer_note(); ?></p>
+        </div>
+    </div>
+<?php endif; ?>
 
     <div class="row no-gutters m-0">
         <div class="col-md-8 p-0">
@@ -132,7 +165,7 @@ $images = get_attached_media('', $order->get_id());
                 <hr class="mb-hr mb-hr--olive" />
             </div>
             <?php if (!empty(get_post_meta($order_id, 'answer1', true))): ?>
-                <p>Get acquainted with the project details by reviewing the images and questionnaire answers below.</p>
+                <p>Get acquainted with the project details by reviewing the images and/or questionnaire answers below.</p>
             <?php else: ?>
                 <?php if ($apptIsWhen == "past"): ?>
                     <p>No questionnaire was submitted for this consultation.</p>

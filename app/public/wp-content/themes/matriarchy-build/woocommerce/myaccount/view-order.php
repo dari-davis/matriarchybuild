@@ -118,6 +118,27 @@ foreach ($order->get_items() as $item_id => $item) {
     <?php $hasConsultations = true; ?>
 <?php endif; ?>
 
+<div class="col-md-8 p-0">
+    <div class="pt-md-5">
+        <h2><?php esc_html_e( 'Notes From The Pro', 'woocommerce' ); ?></h2>
+        <hr class="mb-hr mb-hr--olive" />
+    </div>
+</div>
+<?php if( get_post_meta($order_id, 'notes_to_client', true)): ?>
+    <div class="questionnaire py-4 px-0">
+        <div class="form-group row py-3 mx-3">
+            <div class="questionnaire__label col-sm-4 col-form-label p-0"><?= $staffName; ?> writes:</div>
+            <div class=" col-sm-8">
+                <p class="questionnaire__answer m-0"><?= get_post_meta($order_id, 'notes_to_client', true); ?></p>
+            </div>
+        </div>
+    </div>
+<?php else: ?>
+    <div class="col-md-8 p-0">
+        <p>Following your session, your Pro may send a recap of your conversation, a list of materials/tools, or topics for a follow-up consultation.</p>
+    </div>
+<?php endif; ?>
+
 <?php if (!empty($order->get_customer_note())): ?>
     <div class="row no-gutters m-0">
         <div class="col-md-8 p-0">
@@ -138,7 +159,9 @@ foreach ($order->get_items() as $item_id => $item) {
             <h2><?php esc_html_e( 'Project Details', 'woocommerce' ); ?></h2>
             <hr class="mb-hr mb-hr--olive" />
         </div>
-        <?php if ($apptIsWhen == "future" || get_post_meta($order_id, 'answer1', true)): ?>
+        <?php if (get_post_meta($order_id, 'answer1', true)): ?>
+            <p>Your project details will be available for 6 months after your consultation.<p>
+        <?php elseif ($apptIsWhen == "future"): ?>
             <p>We strongly recommend completing your pre-consultation questionnaire and submitting all relevant photos to your Pro prior to your session. </p>
         <?php else: ?>
             <p>No questionnaire was submitted for this consultation.</p>
@@ -160,13 +183,10 @@ foreach ($order->get_items() as $item_id => $item) {
                                     <input type="hidden" name="photo-id-<?= $imageId; ?>" value="<?= $image->ID; ?>"/>
                                 </form>
 
-                                <?php
-                                    if (!empty($_POST["photo-id-$imageId"])) {
+                                <?php if (!empty($_POST["photo-id-$imageId"])) {
                                         wp_delete_attachment($imageId);
                                         echo "<script>location.reload();</script>";
-                                    }
-
-                                ?>
+                                } ?>
                             </div>
                         <?php endforeach; ?>
                                 </div>
@@ -174,9 +194,9 @@ foreach ($order->get_items() as $item_id => $item) {
             <?php endif; ?>
 
             <?php if ($apptIsWhen == "future"): ?>
-                <form class="questionnaire questionnaire__photo-form px-4 py-2 mb-4" method="post" enctype="multipart/form-data">
+                <form class="questionnaire questionnaire__photo-form px-4 pt-2 pb-3 mb-4" method="post" enctype="multipart/form-data">
                     <div class="form-group row py-3 m-0">
-                        <p>Please upload up to 5 images. Submit each image one at a time.</p>
+                        <p class="p-0">Please upload up to 5 images. Submit each image one at a time.</p>
                         <input class="custom-file-input p-0" type="file" name="upload_attachment[]" size="5"/>
                     </div>
                     <div class="upload-button">
