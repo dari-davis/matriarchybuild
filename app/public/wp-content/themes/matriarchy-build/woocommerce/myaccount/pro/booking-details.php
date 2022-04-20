@@ -124,12 +124,12 @@ $images = get_attached_media('', $order->get_id());
                     <?php $showSection = true; ?>
                     <?php function submitClientNote($order, $order_id) {
                         $showSection = false;
-                        $order->update_meta_data('notes_to_client', $_POST["note"]);
+                        $order->update_meta_data("notes_to_client", $_POST["note"]);
                         $order->save();
                     }
                     if (isset($_POST['submit'])) { submitClientNote($order, $order_id); } ?>
 
-                    <?php if( empty(get_post_meta($order_id, 'notes_to_client'))): ?>
+                    <?php if( empty(get_post_meta($order_id, "notes_to_client"))): ?>
                         <p>Following your session with the client you may want to send a recap of your conversation, a list of materials/tools, or topics for a follow-up consultation.</p>
                         <div class="form-group row m-0">
                             <div class="p-0">
@@ -138,7 +138,7 @@ $images = get_attached_media('', $order->get_id());
                         </div>
                         <div class="d-flex py-3"><button type="submit" value="Send" name="submit" class="w-auto button alt">Send</button>
                     <?php else: ?>
-                        <?= html_entity_decode(get_post_meta($order_id, 'notes_to_client', true)); ?>
+                        <div class="my-account__client-note"><?= str_replace("\'", "'", get_post_meta($order_id, "notes_to_client", true)); ?></div>
                     <?php endif; ?>
                 </form> 
             </div>

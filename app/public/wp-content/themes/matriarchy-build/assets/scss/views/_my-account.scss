@@ -46,6 +46,10 @@
             padding: 0;
         }
     }
+
+    &__client-note {
+        white-space: pre-line;
+    }
 }
 
 .woocommerce-account {
@@ -54,6 +58,7 @@
     .woocommerce-MyAccount-content {
         float: none;
         width: auto;
+        max-width: 1510px;
     }
 
     .woocommerce-MyAccount-content {

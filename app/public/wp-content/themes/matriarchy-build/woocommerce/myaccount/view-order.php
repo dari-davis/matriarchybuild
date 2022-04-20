@@ -124,12 +124,15 @@ foreach ($order->get_items() as $item_id => $item) {
         <hr class="mb-hr mb-hr--olive" />
     </div>
 </div>
-<?php if( get_post_meta($order_id, 'notes_to_client', true)): ?>
+<?php if( get_post_meta($order_id, "notes_to_client", true)): ?>
+    <div class="col-md-8 p-0">
+        <p>Your Pro has sent a followup message regarding your session.</p>
+    </div>
     <div class="questionnaire py-4 px-0">
         <div class="form-group row py-3 mx-3">
             <div class="questionnaire__label col-sm-4 col-form-label p-0"><?= $staffName; ?> writes:</div>
             <div class=" col-sm-8">
-                <p class="questionnaire__answer m-0"><?= get_post_meta($order_id, 'notes_to_client', true); ?></p>
+                <div class="questionnaire__answer my-account__client-note m-0"><?= str_replace("\'", "'", get_post_meta($order_id, "notes_to_client", true)); ?></div>
             </div>
         </div>
     </div>
