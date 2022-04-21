@@ -101,7 +101,7 @@ foreach ($order->get_items() as $item_id => $item) {
         <div class="col-6 col-lg p-3">
             <div><?= $date; ?></div>
             <div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
-            <?php if(!empty($zoomId)): ?>
+            <?php if(!empty($zoomId) && $apptIsWhen == "future"): ?>
                 <a class="consultation-card__zoom-link badge badge-primary" href="<?= $joinUrl; ?>" target="_blank"><i class="fas fa-video fa-fw"></i> Zoom <i class="fas fa-external-link-alt fa-fw"></i></a>
                 <?php if ($password): ?><span class="consultation-card__zoom-passcode" class="my-2">Passcode: <?= $password; ?></span><?php endif; ?>
             <?php endif; ?>
