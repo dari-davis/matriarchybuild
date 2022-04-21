@@ -73,11 +73,14 @@ foreach ($order->get_items() as $item_id => $item) {
         $booklyDuration = floor($serviceInfo[0]->duration/60);
         $duration = $booklyDuration > 0 ? ($booklyDuration - 5) : $booklyDuration;
 
+        $endDateTime = new DateTime($UTCTime);
+        $endDateTime->setTimezone(new DateTimeZone($timezone));
+        $endDateTime->add(new DateInterval('PT' . $duration . 'M'));
+
         // Zoom
         $appointment = $wpdb->get_results('SELECT * FROM wp_bookly_appointments WHERE start_date="'.$apptTime.'";');
         if ($appointment) {
             $zoomId = $appointment[0]->online_meeting_id;
-            $googleLink = $appointment[0]->google_calendar_url;
             $appointmentData = explode(",", $appointment[0]->online_meeting_data);
             $object = json_decode (json_encode ($appointmentData), FALSE);
 
@@ -91,18 +94,28 @@ foreach ($order->get_items() as $item_id => $item) {
                 $password = str_replace('"', '', $passwordArray[1]);
             }
         }
+
+        // Google Calendar
+        $calendarUrl = sprintf( 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=%s&dates=%s/%s&details=%s',
+            urlencode( "Matriarchy Build Consultation with $staffName" ),
+            $startTime->format('Ymd\THis'),
+            $endDateTime->format('Ymd\THis'),
+            urlencode( sprintf( "%s\n%s\n%s", "1:1 Consultation with $staffName", "$joinUrl", "Passcode: $password" ) ));
     }
 } ?>
 
-<p style="font-weight: bold; margin-bottom: 0;">Consultation Details</p>
+1%3A1%20Consultation%20with%20
+
+
+<p style="font-weight: bold; margin-bottom: 0; text-decoration: underline;">Consultation Details</p>
 <p>You can access your <?= $duration; ?> min 1:1 Consultation with <?= $staffName; ?> at <?= $dateTime; ?> through <a href="<?= $joinUrl; ?>" target="_blank"><img style="height: 20px; margin-right: 4px;" src="<?php echo get_template_directory_uri(); ?>/assets/images/zoom-link.png"/></a><a href="<?= $joinUrl; ?>" target="_blank"><?= $joinUrl; ?></a> <?php if ($password): ?>(pw: <em><b><?= $password; ?></b</em>)<?php endif; ?></p>
 
-<p style="font-weight: bold; margin-bottom: 0;">Prepare for Your Session</p>
+<p style="font-weight: bold; margin-bottom: 0; text-decoration: underline;">Prepare for Your Session</p>
 <p>We strongly recommend completing your pre-consultation questionnaire and submitting all relevant photos to your Pro prior to your session with ample time for your Pro to review them. Depending on your project type, measurements, tools, drawings or images might be useful. Click here to fill out your pre-consultation questionnaire. <a href="<?= site_url();?>/my-account/view-order/<?= $order->ID; ?>"><?= site_url();?>/my-account/view-order/<?= $order->ID; ?></a></p>
 
 <p>And visit our How it Works section for more guidance on preparing for your session. <a href="<?= site_url();?>/how-it-works"><?= site_url();?>/how-it-works</a></p>
 <br/>
-<p><a href="<?= $googleLink; ?>"><b>Add this meeting to your calendar</a></a></p>
+<p><a href="<?= $calendarUrl ?>"><b>Add this meeting to your calendar</a></a></p>
 
 <p style="margin-top: 40px; font-size: 11px;">By engaging in Pro consultations, I agree to Matriarchy Build's <a href="<?= site_url();?>/terms-of-use" target="_blank">Terms of Use</a>.</p>
 <?php
