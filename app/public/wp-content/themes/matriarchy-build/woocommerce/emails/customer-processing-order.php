@@ -81,7 +81,6 @@ foreach ($order->get_items() as $item_id => $item) {
         $appointment = $wpdb->get_results('SELECT * FROM wp_bookly_appointments WHERE start_date="'.$apptTime.'";');
         if ($appointment) {
             $zoomId = $appointment[0]->online_meeting_id;
-            $googleLink = $appointment[0]->google_calendar_url;
             $appointmentData = explode(",", $appointment[0]->online_meeting_data);
             $object = json_decode (json_encode ($appointmentData), FALSE);
 
@@ -116,7 +115,7 @@ foreach ($order->get_items() as $item_id => $item) {
 
 <p>And visit our How it Works section for more guidance on preparing for your session. <a href="<?= site_url();?>/how-it-works"><?= site_url();?>/how-it-works</a></p>
 <br/>
-<p><a href="<?= $googleLink; ?>"><b>Add this meeting to your calendar</a></a></p>
+<p><a href="<?= $calendarUrl ?>"><b>Add this meeting to your calendar</a></a></p>
 
 <p style="margin-top: 40px; font-size: 11px;">By engaging in Pro consultations, I agree to Matriarchy Build's <a href="<?= site_url();?>/terms-of-use" target="_blank">Terms of Use</a>.</p>
 <?php
