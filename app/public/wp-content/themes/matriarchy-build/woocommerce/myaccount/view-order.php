@@ -175,11 +175,14 @@ foreach ($order->get_items() as $item_id => $item) {
         <div class="photos__content">
             <?php if ($images): ?>
                 <div class="questionnaire__photos mb-4">
-                    <div class="questionnaire--attachments p-4 d-flex">
+                    <div class="questionnaire--attachments p-4 d-flex row">
                         <?php foreach($images as $image): ?>
                             <?php $imageId = $image->ID; ?>
-                            <div class="questionnaire__image me-3">
-                                <img data-no-lazy src="<?= wp_get_attachment_url($image->ID); ?>"/>
+                            <div class="questionnaire__image col-4 col-md-3">
+                                <a class="questionnaire__image-link d-block" href="#">
+                                    <div class="questionnaire__overlay"></div>
+                                    <img data-no-lazy src="<?= wp_get_attachment_url($image->ID); ?>"/>
+                                </a>
 
                                 <form method="post">
                                     <button class="questionnaire__remove-button" type="submit" name="remove-photo"><img data-no-lazy src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/x-circle.svg"></button>
@@ -187,8 +190,8 @@ foreach ($order->get_items() as $item_id => $item) {
                                 </form>
 
                                 <?php if (!empty($_POST["photo-id-$imageId"])) {
-                                        wp_delete_attachment($imageId);
-                                        echo "<script>location.reload();</script>";
+                                    wp_delete_attachment($imageId);
+                                    echo "<script>location.reload();</script>";
                                 } ?>
                             </div>
                         <?php endforeach; ?>
@@ -209,6 +212,43 @@ foreach ($order->get_items() as $item_id => $item) {
             <?php endif; ?>
         </div>
     </div>
+
+    <?php wp_enqueue_script( 'jquery-ui-dialog' ); ?>
+
+    <div class="photos__dialog p-0 mx-md-auto" id="dialog">
+        <?php foreach($images as $image): ?>
+            <div class="photos__image d-flex justify-content-center align-items-center">
+                <div class="photos__image-container">
+                    <div class="image-inner">
+                        <img class="m-md-auto" data-no-lazy src="<?= wp_get_attachment_url($image->ID); ?>"/>
+                    </div>
+                </div>
+            </div>    
+        <?php endforeach; ?>
+    </div>
+
+    <script>
+    var $ = jQuery.noConflict();
+    $(document).ready(function($) {
+        $('#dialog').slick({
+            infinite: true,
+            slidesToShow: 1,
+            variableWidth: true
+        });
+
+        $('.questionnaire__image-link').on('click', function(e) {
+            $('#dialog').dialog({
+                maxWidth: 800,
+                height: 'auto',
+                width: 'auto',
+                classes: {
+                    'ui-dialog': 'photos-dialog'
+                }
+            });
+        });
+       
+    });
+    </script>
 
     <?php if ($apptIsWhen == "future"): ?>
         <?= get_template_part('partials/image-uploads', null, array('orderId' => $order_id, 'imageCount' => count($images))); ?>
