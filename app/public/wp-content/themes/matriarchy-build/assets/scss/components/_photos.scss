@@ -1,0 +1,50 @@
+.ui-dialog.photos-dialog {
+    display: block;
+    margin: 20px 2.5%;
+    max-width: 95%;
+
+    @include media-breakpoint-up(lg) {
+        margin: 0 auto;
+        max-width: 836px;
+    }
+}
+
+.photos {
+    &__dialog {
+       display: none;
+       z-index: -1;
+       margin-top: -20px;
+       overflow: hidden;
+
+        .slick-prev {
+            left: -1px;
+            background: $white;
+            transform: rotate(180deg);
+            z-index: 1;
+        }
+
+        .slick-next {
+            right: -1px;
+            background: $white;
+        }
+
+        .slick-track {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__image-container {
+        margin: 20px auto;
+    }
+
+    &__image {
+        width: 94.6vw;
+        max-width: 836px;
+    }
+}
+
+.image-inner { // or the actual image
+    margin: 0 auto;
+    max-width: 536px;
+}

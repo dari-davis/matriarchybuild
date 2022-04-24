@@ -20,7 +20,26 @@
 
     &__image {
         position: relative;
-        max-width: 94px;
+
+        @include media-breakpoint-up(md) {
+            max-width: 94px;
+        }
+    }
+
+    &__image-link {
+        position: relative;
+        overflow: hidden;
+    }
+
+    &__overlay {
+
+        .questionnaire__image-link:hover & {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba($olive, 0.5);
+        }
     }
 
     &__photos {
