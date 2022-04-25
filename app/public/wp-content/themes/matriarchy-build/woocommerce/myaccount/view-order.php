@@ -175,11 +175,11 @@ foreach ($order->get_items() as $item_id => $item) {
         <div class="photos__content">
             <?php if ($images): ?>
                 <div class="questionnaire__photos mb-4">
-                    <div class="questionnaire--attachments p-4 d-flex row">
+                    <div class="questionnaire--attachments p-4 d-flex row gx-3">
                         <?php $imageIndex = 0; ?>
                         <?php foreach($images as $image): ?>
                             <?php $imageId = $image->ID; ?>
-                            <div class="questionnaire__image col-4 col-md-3">
+                            <div class="questionnaire__image col-3 mb-3">
                                 <a class="questionnaire__image-link d-block" href="#" data-slick-index="<?= $imageIndex; ?>">
                                     <div class="questionnaire__overlay"></div>
                                     <img data-no-lazy src="<?= wp_get_attachment_url($image->ID); ?>"/>
@@ -230,18 +230,19 @@ foreach ($order->get_items() as $item_id => $item) {
     </div>
 
     <script>
-    var $ = jQuery.noConflict();
+    var $ = jQuery.noConflict(),
+        $dialog = $('#dialog');
     $(document).ready(function($) {
-        $('#dialog').slick({
+        $dialog.slick({
             infinite: true,
             slidesToShow: 1,
             variableWidth: true
         });
 
         $('.questionnaire__image-link').on('click', function(e) {
-            $('#dialog').slick('slickGoTo', $(this).attr('data-slick-index'));
+            $dialog.slick('slickGoTo', $(this).attr('data-slick-index'));
 
-            $('#dialog').dialog({
+            $dialog.dialog({
                 maxWidth: 800,
                 height: 'auto',
                 width: 'auto',
