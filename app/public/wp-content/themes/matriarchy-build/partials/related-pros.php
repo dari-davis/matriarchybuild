@@ -49,8 +49,8 @@ global $wpdb;
             <img class="image-desktop" src="<?php echo get_template_directory_uri(); ?>/assets/images/related-pros-big.svg" alt="Related Pros heading">
             <img class="image-mobile" src="<?php echo get_template_directory_uri(); ?>/assets/images/related-pros-small.svg" alt="Related Pros heading">
         </div>
-        <div class="featured-pros__posts row ms-lg-3 gx-3">
-            <?php $related =  related_posts_by_taxonomy( $post->ID, 'pros' ); ?>
+        <?php $related = related_posts_by_taxonomy($post->ID, 'pros'); ?>
+        <div class="featured-pros__posts row ms-lg-3 gx-3 <?php if(count($related) >= 4) { echo "featured-pros__posts--pushed"; } ?>">
             <?php while ( $related->have_posts() ): $related->the_post(); ?>
                 <?php $postId = $post->ID;
                 $permalink = get_permalink($postId);
