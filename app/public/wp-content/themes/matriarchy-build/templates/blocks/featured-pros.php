@@ -13,7 +13,7 @@ $articles = get_field('pros');
             <img class="image-desktop" src="<?php echo get_template_directory_uri(); ?>/assets/images/featured-pros-big.svg" alt="Featured Pros heading">
             <img class="image-mobile" src="<?php echo get_template_directory_uri(); ?>/assets/images/featured-pros-small.svg" alt="Featured Pros heading">
         </div>
-        <div class="featured-pros__posts row ms-lg-3 gx-3 <?php if(count($articles) >= 4) { echo "featured-pros__posts--pushed"; } ?>">
+        <div class="featured-pros__posts row ms-lg-3 gx-0 gx-md-3 <?php if(count($articles) >= 4) { echo "featured-pros__posts--pushed"; } ?>">
             <?php foreach ($articles as $article):
                 $postId = $article->ID;
                 $permalink = get_permalink($postId);
