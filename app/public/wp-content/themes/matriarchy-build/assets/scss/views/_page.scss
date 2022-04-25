@@ -45,7 +45,7 @@
         background-position: 50%;
 
         @include media-breakpoint-up(md) {
-            height: 622px;
+            height: 760px;
             overflow: hidden;
             background-color: rgba($olive, 0.2);
         }
@@ -58,18 +58,19 @@
     .page__content-wrapper {
         display: flex;
         flex-direction: column;
-        margin: 44px 24px;
+        justify-content: center;
+        margin: 42px 24px;
 
         @include media-breakpoint-up(lg) {
             flex-direction: row;
             align-items: start;
+            padding: 0 $padding-large;
         }
 
         @include media-breakpoint-up(xl) {
             flex-direction: row;
-            padding-top: 215px;
-            padding-left: 215px;
             align-items: start;
+            margin-top: 115px;
         }
     }
 
