@@ -156,7 +156,7 @@ $images = get_attached_media('', $order->get_id());
             <p><?= $order->get_customer_note(); ?></p>
         </div>
     </div>
-<?php endif; ?>
+    <?php endif; ?>
 
     <div class="row no-gutters m-0">
         <div class="col-md-8 p-0">
@@ -178,9 +178,14 @@ $images = get_attached_media('', $order->get_id());
         <?php if ($images): ?>
             <div class="questionnaire questionnaire--photos p-4 mb-4 d-flex">
                 <?php foreach(array_slice($images, 0, 5) as $image): ?>
+                    <?php $imageIndex = 0; ?>
                     <div class="questionnaire__image me-3">
-                        <img data-no-lazy src="<?= wp_get_attachment_url($image->ID); ?>"/>
+                        <a class="questionnaire__image-link d-block" href="#" data-slick-index="<?= $imageIndex; ?>">
+                            <div class="questionnaire__overlay"></div>
+                            <img data-no-lazy src="<?= wp_get_attachment_url($image->ID); ?>"/>
+                        </a>
                     </div>
+                    <?php $imageIndex++; ?>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
@@ -189,4 +194,45 @@ $images = get_attached_media('', $order->get_id());
             <?= get_template_part('partials/questionnaire-answers', null, array('orderId' => $order_id)); ?>
         <?php endif; ?>
     </div>
+
+    <?php wp_enqueue_script( 'jquery-ui-dialog' ); ?>
+
+    <div class="photos__dialog p-0 mx-md-auto" id="dialog">
+        <?php foreach($images as $image): ?>
+            <div class="photos__image d-flex justify-content-center align-items-center">
+                <div class="photos__image-container">
+                    <div class="image-inner">
+                        <img class="m-md-auto" data-no-lazy src="<?= wp_get_attachment_url($image->ID); ?>"/>
+                    </div>
+                </div>
+            </div>    
+        <?php endforeach; ?>
+    </div>
+
+    <script>
+    var $ = jQuery.noConflict(),
+        $dialog = $('#dialog');
+    $(document).ready(function($) {
+        $dialog.slick({
+            infinite: true,
+            slidesToShow: 1,
+            variableWidth: true
+        });
+
+        $('.questionnaire__image-link').on('click', function(e) {
+            $dialog.slick('slickGoTo', $(this).attr('data-slick-index'));
+
+            $dialog.dialog({
+                maxWidth: 800,
+                height: 'auto',
+                width: 'auto',
+                classes: {
+                    'ui-dialog': 'photos-dialog'
+                }
+            });
+        });
+       
+    });
+    </script>
+
 <?php endif; ?>
