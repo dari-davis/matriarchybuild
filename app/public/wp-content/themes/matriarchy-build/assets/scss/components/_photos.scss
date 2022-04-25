@@ -28,22 +28,19 @@
             background: $white;
         }
 
+        .slick-disabled {
+            opacity: 0.25
+        }
+
         .slick-track {
             display: flex;
             align-items: center;
-        }
-
-        .slick-slide {
-            opacity: 0;
-        }
-
-        .slick-slide.slick-active {
-            opacity: 1;
         }
     }
 
     &__image-container {
         margin: 20px auto;
+        background: rgba($olive, 0.1);
     }
 
     &__image {
@@ -55,4 +52,9 @@
 .image-inner { // or the actual image
     margin: 0 auto;
     max-width: 536px;
+    opacity: 0;
+
+    .slick-active & {
+        opacity: 1;
+    }
 }
