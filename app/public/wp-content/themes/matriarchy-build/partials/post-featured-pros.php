@@ -15,7 +15,7 @@ $articles = get_field('pros');
                 $permalink = get_permalink($postId);
                 $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro_user', $postId) )->findOne();
                 if ($staff) { $services = $wpdb->get_results('SELECT * FROM wp_bookly_staff_services WHERE staff_id="'.$staff->id.'";'); } ?>
-                <div class="col-md-6 col-xl-4 article d-flex mb-3 mb-lg-0 mt-lg-3">
+                <div class="col-md-6 col-xl-4 article d-flex mb-3">
                     <div class="article__image-wrapper col-6 mb-borders mb-borders--green">
                         <a class="article__image-container d-flex" href="<?= $permalink; ?>" style="background-image: url('<?= get_the_post_thumbnail_url($postId, 'medium'); ?>');" aria-label="<?= $article->post_title; ?>"></a>
                     </div>
@@ -56,7 +56,7 @@ $articles = get_field('pros');
                     </div>
                 </div>
             <?php endforeach; ?>
-            <div class="featured-pros__view-all col-md-6 col-xl-4 article d-flex mb-3 mb-lg-0 mt-lg-3">
+            <div class="featured-pros__view-all col-md-6 col-xl-4 article d-flex mb-3">
                 <div class="col-12 mb-borders mb-borders--green"><a href="/pro">View All Pros</a></div>
             </div>
         </div>

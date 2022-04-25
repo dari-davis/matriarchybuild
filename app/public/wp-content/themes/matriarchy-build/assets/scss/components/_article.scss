@@ -1,9 +1,5 @@
 .article {
 
-    .featured-pros & {
-        max-width: 335px;
-    }
-
     &__details {
         display: flex;
         flex-direction: column;
@@ -150,7 +146,7 @@
             line-height: 50px;
             text-align: center;
 
-            @include media-breakpoint-up(lg) {
+            @include media-breakpoint-up(md) {
                 height: 78px;
                 line-height: 78px;
             }

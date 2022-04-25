@@ -20,36 +20,49 @@
     }
 
     &__image {
+        @include media-breakpoint-up(lg) {
+            width: 25%;
+        }
 
-       .image-desktop {
-           display: none;
+        .image-desktop,
+        .image-mobile {
+            width: 100%;
+        }
 
-            @media (min-width: 1080px) {
-               display: block;
+        .image-desktop {
+            display: none;
+
+            @include media-breakpoint-up(lg) {
+                display: block;
             }
-       }
+        }
 
-       .image-mobile {
-            @media (min-width: 1080px) {
-               display: none;
+        .image-mobile {
+            @include media-breakpoint-up(lg) {
+                display: none;
             }
-       }
+        }
     }
 
     &__posts {
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        align-self: center;
         flex: 1;
 
         @include media-breakpoint-up(md) {
             flex-direction: row;
-            justify-content: end;
-            -webkit-justify-content: flex-end;
-            align-items: end;
-            align-self: end;
-            -webkit-align-items: flex-end;
+            width: 75%;
+        }
+
+        @include media-breakpoint-up(lg) {
             margin-left: 130px;
+            align-self: start;
+        }
+
+        &--pushed {
+            @include media-breakpoint-up(lg) {
+                margin-top: 8.5%;
+            }
         }
     }
 
@@ -117,8 +130,6 @@
 
     &__view-all {
         align-self: flex-start;
-        max-width: none;
-        width: 100%;
 
         a:after {
             content: '';
@@ -128,10 +139,6 @@
             width: 24px;
             background-image: url('../images/icons/arrow_blue.svg');
             background-repeat: no-repeat;
-        }
-
-        @include media-breakpoint-up(lg) {
-            max-width: 335px;
         }
     }
 }
