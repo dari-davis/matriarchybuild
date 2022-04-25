@@ -17,7 +17,7 @@ the_post();
 		<?php else: ?>
 			<a class="page__image-wrapper" style="background-image: url('<?= get_template_directory_uri(); ?>/assets/images/page-background-02.png ?>');" href="<?php the_permalink(); ?>"><div class="post__featured-image"></div></a>
 		<?php endif; ?>
-		<div id="post-<?php the_ID(); ?>" class="page__content-wrapper m-0">
+		<div id="post-<?php the_ID(); ?>" class="page__content-wrapper">
 
 			<h1 class="page__title entry-title mb-borders mb-borders--pink pt-4 pb-3 mb-0 text-center"><?php the_title(); ?></h1>
 
