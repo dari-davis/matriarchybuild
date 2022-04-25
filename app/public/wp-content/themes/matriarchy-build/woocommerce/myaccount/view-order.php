@@ -176,13 +176,15 @@ foreach ($order->get_items() as $item_id => $item) {
             <?php if ($images): ?>
                 <div class="questionnaire__photos mb-4">
                     <div class="questionnaire--attachments p-4 d-flex row">
+                        <?php $imageIndex = 0; ?>
                         <?php foreach($images as $image): ?>
                             <?php $imageId = $image->ID; ?>
                             <div class="questionnaire__image col-4 col-md-3">
-                                <a class="questionnaire__image-link d-block" href="#">
+                                <a class="questionnaire__image-link d-block" href="#" data-slick-index="<?= $imageIndex; ?>">
                                     <div class="questionnaire__overlay"></div>
                                     <img data-no-lazy src="<?= wp_get_attachment_url($image->ID); ?>"/>
                                 </a>
+                                <?php $imageIndex++; ?>
 
                                 <form method="post">
                                     <button class="questionnaire__remove-button" type="submit" name="remove-photo"><img data-no-lazy src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/x-circle.svg"></button>
@@ -237,6 +239,8 @@ foreach ($order->get_items() as $item_id => $item) {
         });
 
         $('.questionnaire__image-link').on('click', function(e) {
+            $('#dialog').slick('slickGoTo', $(this).attr('data-slick-index'));
+
             $('#dialog').dialog({
                 maxWidth: 800,
                 height: 'auto',
