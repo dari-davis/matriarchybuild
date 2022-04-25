@@ -32,6 +32,14 @@
             display: flex;
             align-items: center;
         }
+
+        .slick-slide {
+            opacity: 0;
+        }
+
+        .slick-slide.slick-active {
+            opacity: 1;
+        }
     }
 
     &__image-container {
