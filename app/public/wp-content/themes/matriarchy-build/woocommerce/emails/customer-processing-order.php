@@ -104,9 +104,6 @@ foreach ($order->get_items() as $item_id => $item) {
     }
 } ?>
 
-1%3A1%20Consultation%20with%20
-
-
 <p style="font-weight: bold; margin-bottom: 0; text-decoration: underline;">Consultation Details</p>
 <p>You can access your <?= $duration; ?> min 1:1 Consultation with <?= $staffName; ?> at <?= $dateTime; ?> through <a href="<?= $joinUrl; ?>" target="_blank"><img style="height: 20px; margin-right: 4px;" src="<?php echo get_template_directory_uri(); ?>/assets/images/zoom-link.png"/></a><a href="<?= $joinUrl; ?>" target="_blank"><?= $joinUrl; ?></a> <?php if ($password): ?>(pw: <em><b><?= $password; ?></b</em>)<?php endif; ?></p>
 
