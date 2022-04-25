@@ -16,10 +16,8 @@ if ( have_posts() ) :
 	the_post();
 ?>
 	<header class="page-header">
-		<h1 class="page-title author">
-			<?php
-				printf( esc_html__( 'Author Archives: %s', 'matriarchy-build' ), get_the_author() );
-			?>
+		<h1 class="page-title author h2">
+			<?= get_the_author() ?>
 		</h1>
 	</header>
 <?php

@@ -118,3 +118,14 @@
         display: none;
     }
 }
+
+.page-header {
+    margin: 0 auto;
+    max-width: $max-content-width;
+    padding: 0 $padding-small;
+
+    .page-title {
+        font-size: rem(38px);
+        line-height: rem(36px);
+    }
+}

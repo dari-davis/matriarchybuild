@@ -8,14 +8,14 @@ get_header();
 if ( have_posts() ) :
 ?>
 <header class="page-header">
-	<h1 class="page-title">
+	<h1 class="page-title h2">
 		<?php
 			if ( is_day() ) :
-				printf( esc_html__( 'Daily Archives: %s', 'matriarchy-build' ), get_the_date() );
+				printf( get_the_date() );
 			elseif ( is_month() ) :
-				printf( esc_html__( 'Monthly Archives: %s', 'matriarchy-build' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'matriarchy-build' ) ) );
+				printf( get_the_date( _x( 'F Y', 'monthly archives date format', 'matriarchy-build' ) ) );
 			elseif ( is_year() ) :
-				printf( esc_html__( 'Yearly Archives: %s', 'matriarchy-build' ), get_the_date( _x( 'Y', 'yearly archives date format', 'matriarchy-build' ) ) );
+				printf( get_the_date( _x( 'Y', 'yearly archives date format', 'matriarchy-build' ) ) );
 			endif;
 		?>
 	</h1>
