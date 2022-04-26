@@ -1140,7 +1140,7 @@ class Ajax extends Lib\Base\Ajax
 
             header( 'Content-Type: text/calendar' );
             header( 'Content-Type: application/octet-stream', false );
-            header( 'Content-Disposition: attachment; filename="Bookly_' . $userData->getOrderId() . '.ics"' );
+            header( 'Content-Disposition: attachment; filename="iCal-Consultation-' . $userData->getOrderId() . '.ics"' );
             header( 'Content-Transfer-Encoding: binary' );
 
             echo $ics->render();
