@@ -177,8 +177,8 @@ $images = get_attached_media('', $order->get_id());
 
         <?php if ($images): ?>
             <div class="questionnaire questionnaire--photos p-4 mb-4 d-flex">
+                <?php $imageIndex = 0; ?>
                 <?php foreach(array_slice($images, 0, 5) as $image): ?>
-                    <?php $imageIndex = 0; ?>
                     <div class="questionnaire__image me-3">
                         <a class="questionnaire__image-link d-block" href="#" data-slick-index="<?= $imageIndex; ?>">
                             <div class="questionnaire__overlay"></div>
