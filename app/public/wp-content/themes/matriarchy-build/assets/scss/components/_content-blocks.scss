@@ -24,6 +24,16 @@
         .faqs & {
             padding: 0;
         }
+
+        .hero & {
+            @include media-breakpoint-up(lg) {
+                padding: 0 $padding-large;
+            }
+
+            @media (min-width: 1500px) {
+                padding: 0;
+            }
+        }
     }
 }
 
