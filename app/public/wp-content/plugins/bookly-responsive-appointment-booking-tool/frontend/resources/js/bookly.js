@@ -5360,12 +5360,18 @@ var bookly = (function ($) {
 		$__default['default'].extend(data, params); // Build slots html
 
 		function prepareSlotsHtml(slots_data, selected_date) {
-			var response = {};
+			var response = {},
+				today = new Date(),
+				dateBuffer = today.setDate(today.getDate()+2);
+
 			$__default['default'].each(slots_data, function (group, group_slots) {
-				var html = '<button class="bookly-day" value="' + group + '">' + group_slots.title + '</button>';
-				$__default['default'].each(group_slots.slots, function (id, slot) {
-					html += '<button value="' + stringify(slot.data).replace(/"/g, '&quot;') + '" data-group="' + group + '" class="bookly-hour' + (slot.special_hour ? ' bookly-slot-in-special-hour' : '') + (slot.status == 'waiting-list' ? ' bookly-slot-in-waiting-list' : slot.status == 'booked' ? ' booked' : '') + '"' + (slot.status == 'booked' ? ' disabled' : '') + '>' + '<span class="ladda-label bookly-time-main' + (slot.data[0][2] == selected_date ? ' bookly-bold' : '') + '">' + '<i class="bookly-hour-icon"><span></span></i>' + slot.time_text + '</span>' + '<span class="bookly-time-additional' + (slot.status == 'waiting-list' ? ' bookly-waiting-list' : '') + '"> ' + slot.additional_text + '</span>' + '</button>';
-				});
+
+				if (Date.parse(group) > dateBuffer) {
+					var html = '<button class="bookly-day" value="' + group + '">' + group_slots.title + '</button>';
+					$__default['default'].each(group_slots.slots, function (id, slot) {
+						html += '<button value="' + stringify(slot.data).replace(/"/g, '&quot;') + '" data-group="' + group + '" class="bookly-hour' + (slot.special_hour ? ' bookly-slot-in-special-hour' : '') + (slot.status == 'waiting-list' ? ' bookly-slot-in-waiting-list' : slot.status == 'booked' ? ' booked' : '') + '"' + (slot.status == 'booked' ? ' disabled' : '') + '>' + '<span class="ladda-label bookly-time-main' + (slot.data[0][2] == selected_date ? ' bookly-bold' : '') + '">' + '<i class="bookly-hour-icon"><span></span></i>' + slot.time_text + '</span>' + '<span class="bookly-time-additional' + (slot.status == 'waiting-list' ? ' bookly-waiting-list' : '') + '"> ' + slot.additional_text + '</span>' + '</button>';
+					});
+				}
 				response[group] = html;
 			});
 			return response;
