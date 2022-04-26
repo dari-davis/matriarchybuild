@@ -197,7 +197,7 @@ foreach ($order->get_items() as $item_id => $item) {
                                 } ?>
                             </div>
                         <?php endforeach; ?>
-                                </div>
+                    </div>
                 </div>
             <?php endif; ?>
 
