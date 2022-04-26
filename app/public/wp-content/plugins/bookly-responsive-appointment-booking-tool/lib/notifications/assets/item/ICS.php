@@ -46,7 +46,7 @@ class ICS
      */
     public function create()
     {
-        $path = tempnam( get_temp_dir(), 'Bookly_' );
+        $path = tempnam( get_temp_dir(), 'iCal-Consultation-' );
 
         if ( $path ) {
             $info = pathinfo( $path );
