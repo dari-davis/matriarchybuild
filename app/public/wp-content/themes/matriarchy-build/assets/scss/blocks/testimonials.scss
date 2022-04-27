@@ -6,7 +6,6 @@
 
         @include media-breakpoint-up(md) {
             margin: 0 auto;
-            width: calc(100vw - 93px);
         }
 
         @include media-breakpoint-up(xl) {
@@ -38,6 +37,8 @@
         max-width: 100vw;
 
         @include media-breakpoint-up(md) {
+            margin: 0 auto;
+            max-width: calc(100% - 78px);
             border: 1px solid $olive;
             border-width: 0 1px;
         }

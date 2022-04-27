@@ -42,6 +42,7 @@
             centerMode: true,
             infinite: true,
             variableWidth: true,
+            adaptiveHeight: true,
             slidesToShow: 1
         });
     });
