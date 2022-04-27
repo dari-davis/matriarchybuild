@@ -5500,11 +5500,10 @@ var bookly = (function ($) {
 									$time_next_button.toggle($screens.length != 1);
 								} else {
 									// Load new data from server.
+									$columnizer.html('<p class="small">No times available for the selected date.</p>');
+									$columnizer_wrap.height('75px');
+
 									dropAjax();
-									stepTime({
-										form_id: params.form_id,
-										selected_date: date
-									});
 									showSpinner();
 								}
 							}
