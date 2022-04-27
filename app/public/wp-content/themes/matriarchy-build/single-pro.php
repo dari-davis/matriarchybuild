@@ -5,6 +5,8 @@ use Bookly\Lib\Utils\Common;
 use Bookly\Lib\Entities\Staff;
 use Bookly\Lib\Entities\StaffService;
 $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro_user') )->findOne();
+
+if (strpos($_SERVER['HTTP_REFERER'], 'checkout')) { WC()->cart->empty_cart(); }
 ?>
 
 <?php $services = $wpdb->get_results('SELECT * FROM wp_bookly_staff_services WHERE staff_id="'.$staff->id.'";'); ?>
