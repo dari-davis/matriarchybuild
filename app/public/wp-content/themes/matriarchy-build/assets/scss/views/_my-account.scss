@@ -29,6 +29,15 @@
         }
     }
 
+    &__page-wrapper {
+        margin: 0 auto;
+        max-width: $max-content-width;
+
+        @include media-breakpoint-up(md) {
+            margin: 56px auto 0;
+        }
+    }
+
     .woocommerce-account__no-nav & {
         background: $yellow;
     }
