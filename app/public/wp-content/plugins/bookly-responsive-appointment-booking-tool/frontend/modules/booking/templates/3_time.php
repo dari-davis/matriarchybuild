@@ -17,8 +17,8 @@ use Bookly\Lib\Utils\Price;
   $dateBuffer = date('Y-m-d', strtotime($today. ' + 2 days'));
 ?>
 
-<?php if ($date > $dateBuffer): ?>
-  <input class="bookly-js-selected-date" type="text" value="" data-value="<?php echo esc_attr( $dataValue ) ?>"/>
+<?php if ($date >= $dateBuffer): ?>
+  <input class="bookly-js-selected-date" type="text" value="" data-value="<?php echo esc_attr( $date ) ?>"/>
 <?php else: ?>
   <input class="bookly-js-selected-date" type="text" value="Choose a Date to Continue" data-value=""/>
 <?php endif; ?>
