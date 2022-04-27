@@ -140,8 +140,6 @@ $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro
                       // wip reset bookly
                       $('.bookly-js-back-step', '.ui-dialog-titlebar').on('click', function() {
                         let $form_id = $(this).closest('.ui-dialog').find('[data-form_id]').data("form_id");
-                        console.log($form_id);
-                        //stepTime({ form_id: $form_id });
                       });
                     }
                   });
