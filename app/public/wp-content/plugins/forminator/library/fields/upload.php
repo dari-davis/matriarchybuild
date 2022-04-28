@@ -429,8 +429,13 @@ class Forminator_Upload extends Forminator_Field {
 					$file_path = forminator_upload_root();
 					$file_url  = formninator_upload_url_root();
 				} else {
+					$user = get_current_user_id();
+
 					$file_path = $upload_dir['path'];
+					$file_path = "$file_path/ugc/$user";
+
 					$file_url  = $upload_dir['url'];
+					$file_url = "$file_url/ugc/$user";
 				}
 
 				$unique_file_name = wp_unique_filename( $file_path, $file_name );
