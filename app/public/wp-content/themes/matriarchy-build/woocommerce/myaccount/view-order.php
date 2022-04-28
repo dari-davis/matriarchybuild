@@ -20,6 +20,8 @@
 $images = get_attached_media('', $order->get_id());
 global $wpdb;
 global $post;
+$user_id = get_current_user_id();
+$upload_dir = wp_upload_dir();
 ?>
 
 <?php 
@@ -172,36 +174,30 @@ foreach ($order->get_items() as $item_id => $item) {
     </div>
 
     <div class="photos__section p-0">
+        <?php $photos = $wpdb->get_results('SELECT entry_id FROM wp_frmt_form_entry_meta WHERE meta_value="'.$order_id.'";'); ?>
         <div class="photos__content">
-            <?php if ($images): ?>
-                <div class="questionnaire__photos mb-4">
-                    <div class="questionnaire--attachments p-4 d-flex row gx-3">
+            <div class="questionnaire__photos mb-4">
+                <div class="questionnaire--attachments p-4 d-flex row gx-3">
+                    <?php if ($photos): ?>
                         <?php $imageIndex = 0; ?>
-                        <?php foreach($images as $image): ?>
-                            <?php $imageId = $image->ID; ?>
+                        <?php foreach($photos as $photo): ?>
+                            <?php $src = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$photo->entry_id.'"');
+                            $url = explode("ugc/$user_id/", $src[0]->meta_value); ?>
                             <div class="questionnaire__image col-3 mb-3">
                                 <a class="questionnaire__image-link d-block" href="#" data-slick-index="<?= $imageIndex; ?>">
                                     <div class="questionnaire__overlay"></div>
-                                    <img data-no-lazy src="<?= wp_get_attachment_url($image->ID); ?>"/>
+                                    <img src="<?= $upload_dir['url'] . "/ugc/$user_id/" . str_replace('";}}', '', $url[2]); ?>"/>
                                 </a>
                                 <?php $imageIndex++; ?>
-
-                                <form method="post">
-                                    <button class="questionnaire__remove-button" type="submit" name="remove-photo"><img data-no-lazy src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/x-circle.svg"></button>
-                                    <input type="hidden" name="photo-id-<?= $imageId; ?>" value="<?= $image->ID; ?>"/>
-                                </form>
-
-                                <?php if (!empty($_POST["photo-id-$imageId"])) {
-                                    wp_delete_attachment($imageId);
-                                    echo "<script>location.reload();</script>";
-                                } ?>
                             </div>
                         <?php endforeach; ?>
-                    </div>
+                    <?php endif; ?>
                 </div>
-            <?php endif; ?>
+            </div>
 
             <?php if ($apptIsWhen == "future"): ?>
+                <?= do_shortcode('[forminator_form id="923"]'); ?>
+
                 <form class="questionnaire questionnaire__photo-form px-4 pt-2 pb-3 mb-4" method="post" enctype="multipart/form-data">
                     <div class="form-group row py-3 m-0">
                         <p class="p-0">Please upload up to 5 images. Submit each image one at a time.</p>
@@ -218,11 +214,13 @@ foreach ($order->get_items() as $item_id => $item) {
     <?php wp_enqueue_script( 'jquery-ui-dialog' ); ?>
 
     <div class="photos__dialog p-0 mx-md-auto" id="dialog">
-        <?php foreach($images as $image): ?>
+        <?php foreach($photos as $photo): ?>
+            <?php $src = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$photo->entry_id.'"');
+            $url = explode("ugc/$user_id/", $src[0]->meta_value); ?>
             <div class="photos__image d-flex justify-content-center align-items-center">
                 <div class="photos__image-container">
                     <div class="image-inner">
-                        <img class="m-md-auto" data-no-lazy src="<?= wp_get_attachment_url($image->ID); ?>"/>
+                        <img src="<?= $upload_dir['url'] . "/ugc/$user_id/" . str_replace('";}}', '', $url[2]); ?>"/>
                     </div>
                 </div>
             </div>    
