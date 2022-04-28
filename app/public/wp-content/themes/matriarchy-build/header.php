@@ -51,11 +51,7 @@
         <div class="header__account <?php if (is_user_logged_in()): ?>header__account--signed-in <?php endif; ?>col-lg-3 pt-3 pb-2 py-lg-0 px-4 px-lg-0">
           <?php if (is_user_logged_in()): ?>
             <div class="header__account-link d-flex justify-content-lg-center align-items-lg-center flex-column">
-              <?php if (in_array('pro_user', (array) wp_get_current_user()->roles)): ?>
-                <a class="text-button" href="<?= wc_get_account_endpoint_url('pro-upcoming-consultations'); ?>">My Account</a>
-              <?php else: ?>
-                <a class="text-button" href="<?= wc_get_account_endpoint_url('upcoming-consultations'); ?>">My Account</a>
-              <?php endif; ?>
+              <a class="text-button" href="<?= wc_get_account_endpoint_url('upcoming-consultations'); ?>">My Account</a>
               <span class="header__user d-flex mt-1">Hello&nbsp;<span class="header__user-name"><?= wp_get_current_user()->first_name; ?></span>!<span>
             </div>
           <?php else: ?>

@@ -662,16 +662,6 @@ function redirection_function(){
         wp_safe_redirect( home_url() ); 
         exit;
     }
-
-	$request = explode('/', $wp->request);
-	if (end($request) == 'my-account') {
-		if (in_array('pro_user', (array) wp_get_current_user()->roles)) {
-			wp_safe_redirect(home_url('/my-account/pro-upcoming-consultations'));
-			exit;
-		} else{
-			wp_safe_redirect(home_url('/my-account/upcoming-consultations'));
-		}
-	}
 }
 
 // Allow only 1 item in the cart
@@ -695,7 +685,6 @@ add_action('init', function() {
 	add_rewrite_endpoint('schedule', EP_PAGES);
 	add_rewrite_endpoint('pricing', EP_PAGES);
 	add_rewrite_endpoint('pro-past-consultations', EP_PAGES);
-	add_rewrite_endpoint('pro-upcoming-consultations', EP_PAGES);
 	add_rewrite_endpoint('booking-details', EP_PAGES);
 });
 
@@ -753,10 +742,6 @@ add_action('woocommerce_account_schedule_endpoint', function() {
 
 add_action('woocommerce_account_pricing_endpoint', function() {
 	wc_get_template('myaccount/pricing.php');
-});
-
-add_action('woocommerce_account_pro-upcoming-consultations_endpoint', function() {
-	wc_get_template('myaccount/pro/upcoming-consultations.php');
 });
 
 add_action('woocommerce_account_pro-past-consultations_endpoint', function() {
@@ -870,22 +855,6 @@ function bbloomer_save_name_fields( $customer_id ) {
         update_user_meta( $customer_id, 'last_name', sanitize_text_field($_POST['billing_last_name']) );
     }
   
-}
-
-// login directs
-add_action( 'wp_login', 'prefix_login_redirect_based_on_roles', 10, 2 );
-/**
- * Redirect Shop Manager to WC Orders
- * @link https://stackoverflow.com/questions/30124931/how-to-redirect-a-user-with-specific-role-to-a-specific-page-after-login-in-wo
- */
-function prefix_login_redirect_based_on_roles( $user_login, $user ) {
-	if (is_account_page()) {
-		if( in_array( 'pro_user',$user->roles ) ){
-			exit( wp_redirect('/my-account/pro-upcoming-consultations' ) );
-		} else {
-			exit( wp_redirect('/my-account/upcoming-consultations' ) );
-		}
-	}
 }
 
 // redirect to upcoming consultations after checkout

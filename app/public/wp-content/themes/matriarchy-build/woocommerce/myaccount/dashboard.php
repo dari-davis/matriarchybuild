@@ -43,11 +43,10 @@ $allowed_html = array(
 <nav class="py-4 ms-md-4 me-md-3 woocommerce-MyAccount-navigation account-nav account-nav--dashboard">
 	<div class="account-nav__heading">Consultations</div>
 	<ul class="list-unstyled">
+		<li><a class="text-button text-button--blue-pink" href="<?= wc_get_account_endpoint_url('upcoming-consultations'); ?>">Upcoming</a></li>
 		<?php if (in_array('pro_user', (array) wp_get_current_user()->roles)): ?>
-			<li><a class="text-button text-button--blue-pink" href="<?= wc_get_account_endpoint_url('pro-upcoming-consultations'); ?>">Upcoming</a></li>
 			<li><a class="text-button text-button--blue-pink" href="<?= wc_get_account_endpoint_url('pro-past-consultations'); ?>">Past</a></li>
 		<?php else: ?>
-			<li><a class="text-button text-button--blue-pink" href="<?= wc_get_account_endpoint_url('upcoming-consultations'); ?>">Upcoming</a></li>
 			<li><a class="text-button text-button--blue-pink" href="<?= wc_get_account_endpoint_url('past-consultations'); ?>">Past</a></li>
 		<?php endif; ?>
 	</ul>
