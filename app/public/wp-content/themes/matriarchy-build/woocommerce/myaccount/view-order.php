@@ -181,21 +181,37 @@ foreach ($order->get_items() as $item_id => $item) {
                     <div class="questionnaire--attachments p-4 d-flex row gx-3">
                         <?php $imageIndex = 0; ?>
                         <?php foreach($photos as $photo): ?>
-                            <?php $src = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$photo->entry_id.'"');
-                            $url = explode("ugc/$user_id/", $src[0]->meta_value); ?>
-                            <div class="questionnaire__image col-3 mb-3">
-                                <a class="questionnaire__image-link d-block" href="#" data-slick-index="<?= $imageIndex; ?>">
-                                    <div class="questionnaire__overlay"></div>
-                                    <img src="<?= $upload_dir['url'] . "/ugc/$user_id/" . str_replace('";}}', '', $url[2]); ?>"/>
-                                </a>
-                                <?php $imageIndex++; ?>
-                            </div>
+                            <?php $entry = $wpdb->get_results('SELECT * FROM wp_frmt_form_entry_meta WHERE entry_id="'.$photo->entry_id.'"');
+                            $src = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$photo->entry_id.'"');
+                            $url = explode("ugc/$user_id/", $src[0]->meta_value);
+                            $image = $upload_dir['url'] . "/ugc/$user_id/" . str_replace('";}}', '', $url[2]);
+                            $attachment = attachment_url_to_postid($image); ?>
+
+                            <?php if ($attachment > 0): ?>
+                                <div class="questionnaire__image col-3 mb-3">
+                                    <a class="questionnaire__image-link d-block" href="#" data-slick-index="<?= $imageIndex; ?>">
+                                        <div class="questionnaire__overlay"></div>
+                                        <img src="<?= $image; ?>"/>
+                                    </a>
+                                    <?php $imageIndex++; ?>
+
+                                    <form method="post">
+                                        <button class="questionnaire__remove-button" type="submit" name="remove-photo"><img data-no-lazy src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/x-circle.svg"></button>
+                                        <input type="hidden" name="photo-id-<?= $imageIndex; ?>" value="<?= $imageIndex; ?>"/>
+                                    </form>
+
+                                    <?php if (!empty($_POST["photo-id-$imageIndex"])) {
+                                        //wp_delete_attachment($attachment);
+                                        //echo "<script>location.reload();</script>";
+                                    } ?>
+                                </div>
+                            <?php endif; ?>
                         <?php endforeach; ?>
                     </div>
                 </div>
             <?php endif; ?>
 
-            <?php if ($apptIsWhen == "future" && count($photos) < 5): ?>
+            <?php if ($apptIsWhen == "future"): ?>
                 <div class="questionnaire questionnaire__photo-form px-4 pt-2 pb-3 mb-4">
                     <?= do_shortcode('[forminator_form id="923"]'); ?>
                 </div>
