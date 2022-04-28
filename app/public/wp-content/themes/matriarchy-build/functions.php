@@ -645,8 +645,8 @@ function snippetpress_style_stripe_1($styles) {
     return $styles;
 }
 
-// redirect to Pros browse page if cart is empty
-add_action("template_redirect", 'redirection_function');
+// user redirects
+add_action('template_redirect', 'redirection_function');
 function redirection_function(){
     global $woocommerce;
 	global $wp;
@@ -662,6 +662,12 @@ function redirection_function(){
         wp_safe_redirect( home_url() ); 
         exit;
     }
+
+	$request = explode('/', $wp->request);
+	if (end($request) == 'my-account') {
+		wp_safe_redirect(home_url('/my-account/upcoming-consultations'));
+		exit;
+	}
 }
 
 // Allow only 1 item in the cart
