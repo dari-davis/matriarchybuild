@@ -176,9 +176,9 @@ foreach ($order->get_items() as $item_id => $item) {
     <div class="photos__section p-0">
         <?php $photos = $wpdb->get_results('SELECT entry_id FROM wp_frmt_form_entry_meta WHERE meta_value="'.$order_id.'";'); ?>
         <div class="photos__content">
-            <div class="questionnaire__photos mb-4">
-                <div class="questionnaire--attachments p-4 d-flex row gx-3">
-                    <?php if ($photos): ?>
+            <?php if ($photos): ?>
+                <div class="questionnaire__photos mb-4">
+                    <div class="questionnaire--attachments p-4 d-flex row gx-3">
                         <?php $imageIndex = 0; ?>
                         <?php foreach($photos as $photo): ?>
                             <?php $src = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$photo->entry_id.'"');
@@ -191,22 +191,14 @@ foreach ($order->get_items() as $item_id => $item) {
                                 <?php $imageIndex++; ?>
                             </div>
                         <?php endforeach; ?>
-                    <?php endif; ?>
+                    </div>
                 </div>
-            </div>
+            <?php endif; ?>
 
-            <?php if ($apptIsWhen == "future"): ?>
-                <?= do_shortcode('[forminator_form id="923"]'); ?>
-
-                <form class="questionnaire questionnaire__photo-form px-4 pt-2 pb-3 mb-4" method="post" enctype="multipart/form-data">
-                    <div class="form-group row py-3 m-0">
-                        <p class="p-0">Please upload up to 5 images. Submit each image one at a time.</p>
-                        <input class="custom-file-input p-0" type="file" name="upload_attachment[]" size="5"/>
-                    </div>
-                    <div class="upload-button">
-                        <div class="d-flex py-3"><button type="submit" value="Upload Project Photos" name="submitPhotos" class="w-auto button <?php if (count($images) >= 5): ?>disabled<?php endif; ?>">Upload Project Photo</button></div>
-                    </div>
-                </form>
+            <?php if ($apptIsWhen == "future" && count($photos) < 5): ?>
+                <div class="questionnaire questionnaire__photo-form px-4 pt-2 pb-3 mb-4">
+                    <?= do_shortcode('[forminator_form id="923"]'); ?>
+                </div>
             <?php endif; ?>
         </div>
     </div>
