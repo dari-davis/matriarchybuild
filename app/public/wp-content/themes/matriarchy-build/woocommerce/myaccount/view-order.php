@@ -201,8 +201,10 @@ foreach ($order->get_items() as $item_id => $item) {
                                     </form>
 
                                     <?php if (!empty($_POST["photo-id-$imageIndex"])) {
-                                        //wp_delete_attachment($attachment);
-                                        //echo "<script>location.reload();</script>";
+                                        wp_delete_attachment($attachment);
+                                        $table = 'wp_frmt_form_entry';
+                                        $wpdb->delete($table, array('entry_id' => $photo->entry_id));
+                                        echo "<script>location.reload();</script>";
                                     } ?>
                                 </div>
                             <?php endif; ?>
@@ -211,7 +213,7 @@ foreach ($order->get_items() as $item_id => $item) {
                 </div>
             <?php endif; ?>
 
-            <?php if ($apptIsWhen == "future"): ?>
+            <?php if ($apptIsWhen == "future" && count($photos) < 5): ?>
                 <div class="questionnaire questionnaire__photo-form px-4 pt-2 pb-3 mb-4">
                     <?= do_shortcode('[forminator_form id="923"]'); ?>
                 </div>
