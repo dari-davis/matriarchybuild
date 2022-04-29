@@ -199,7 +199,7 @@ foreach ($order->get_items() as $item_id => $item) {
             <?php endif; ?>
 
             <?php if ($apptIsWhen == "future" && count($photos) < 5): ?>
-                <div class="questionnaire questionnaire__photo-form px-4 pt-2 pb-3 mb-4">
+                <div class="questionnaire questionnaire__photo-form p-4 mb-4">
                     <?= do_shortcode('[forminator_form id="1985"]'); ?> <!-- staging -->
                     <!-- forminator_form_id="923" -->
                 </div>
