@@ -138,23 +138,6 @@ foreach ($order->get_items() as $item_id => $item) {
             <p>No questionnaire was submitted for this consultation.</p>
         <?php endif; ?>
     </div>
-    
-    <?php if ($apptIsWhen == "future"): ?>
-        <div class="col-md-8 p-0">
-            <div class="pt-3 pt-md-5">
-                <h4 class="my-account__details-heading"><?php esc_html_e( 'Step 1: Fill Out Your Questionnaire', 'woocommerce' ); ?></h4>
-                <hr class="mb-hr mb-hr--olive" />
-            </div>
-        </div>
-    <?php endif; ?>
-
-    <?php if ($hasAnswers): ?>
-        <?= get_template_part('partials/questionnaire-answers', null, array('orderId' => $order_id)); ?>
-    <?php else: ?>
-        <?php if ($apptIsWhen == "future"): ?>
-            <?= get_template_part('partials/questionnaire-questions', null, array('orderId' => $order_id)); ?>
-        <?php endif; ?>
-    <?php endif; ?>
 
     <div class="hidden" id="uploads"></div>
 
@@ -172,6 +155,30 @@ foreach ($order->get_items() as $item_id => $item) {
         <?php $entries = $wpdb->get_results('SELECT entry_id FROM wp_frmt_form_entry_meta WHERE meta_value="'.$order_id.'";');
               $totalImageCount = 0; ?>
 
+    <div class="col-md-8 p-0">
+        <div class="pt-md-5">
+            <h4 class="my-account__details-heading"><?php esc_html_e( 'Step 1: Fill Out Your Questionnaire', 'woocommerce' ); ?></h4>
+            <hr class="mb-hr mb-hr--olive" />
+        </div>
+    </div>
+
+    <?php if($hasAnswers): ?>
+        <?= get_template_part('partials/questionnaire-answers', null, array('orderId' => $order_id)); ?>
+    <?php else: ?>
+        <?php if ($apptIsWhen == "future"): ?>
+            <?= get_template_part('partials/questionnaire-questions', null, array('orderId' => $order_id)); ?>
+        <?php endif; ?>
+    <?php endif; ?>
+
+    <div class="col-md-8 p-0">
+        <div class="pt-md-5">
+            <h4 class="my-account__details-heading"><?php esc_html_e( 'Step 2: Upload Your Project Photos', 'woocommerce' ); ?></h4>
+            <hr class="mb-hr mb-hr--olive" />
+        </div>
+    </div>
+
+    <div class="photos__section p-0">
+        <?php $photos = $wpdb->get_results('SELECT entry_id FROM wp_frmt_form_entry_meta WHERE meta_value="'.$order_id.'";'); ?>
         <div class="photos__content">
             <?php if ($entries): ?>
                 <div class="questionnaire__photos mb-4">
