@@ -24,7 +24,7 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 <?php if(in_array('pro_user', (array) wp_get_current_user()->roles)): ?>
 	<?php get_template_part('partials/consultations/pros', null, array()); ?>
 <?php else: ?>
-	<?php get_template_part('partials/consultations/users', null, array()); ?>
+	<?php get_template_part('partials/consultations/users', null, array('hasOrders' => $has_orders, 'customerOrders' => $customer_orders)); ?>
 <?php endif; ?>
 
 <?php do_action( 'woocommerce_after_account_orders', $has_orders ); ?>
