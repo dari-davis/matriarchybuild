@@ -194,7 +194,7 @@ class Codes extends Order\Codes
                 urlencode( $this->service_name ),
                 date( 'Ymd\THis', strtotime( $this->appointment_start ) ),
                 date( 'Ymd\THis', strtotime( $this->appointment_end ) ),
-                urlencode( sprintf( "%s\n%s", $this->service_name, $this->staff_name ) )
+                urlencode( sprintf( "%s\n%s\n%s", "1:1 Consultation with $this->staff_name", "$this->appointment_online_meeting_join_url", "Passcode: $this->appointment_online_meeting_password" ) )
             ),
             'number_of_persons'              => $this->number_of_persons,
             'reject_appointment_url'         => $this->appointment_token
