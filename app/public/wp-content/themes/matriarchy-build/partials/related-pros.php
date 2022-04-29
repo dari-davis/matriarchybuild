@@ -44,7 +44,7 @@ global $wpdb;
 } ?>
 
 <?php $related = related_posts_by_taxonomy($post->ID, 'pros'); ?>
-<?php if ($related->has_posts): ?>
+<?php if ($related->has_posts()): ?>
     <div class="featured-pros py-5 mx-auto">
         <div class="featured-pros__wrapper mx-auto d-flex">
             <div class="featured-pros__image mb-4 mb-lg-0 mx-auto mx-lg-0">
