@@ -120,43 +120,6 @@ foreach ($order->get_items() as $item_id => $item) {
     <?php $hasConsultations = true; ?>
 <?php endif; ?>
 
-<div class="col-md-8 p-0">
-    <div class="pt-md-5">
-        <h2><?php esc_html_e( 'Notes From The Pro', 'woocommerce' ); ?></h2>
-        <hr class="mb-hr mb-hr--olive" />
-    </div>
-</div>
-<?php if( get_post_meta($order_id, "notes_to_client", true)): ?>
-    <div class="col-md-8 p-0">
-        <p>Your Pro has sent a followup message regarding your session.</p>
-    </div>
-    <div class="questionnaire py-4 px-0">
-        <div class="form-group row py-3 mx-3">
-            <div class="questionnaire__label col-sm-4 col-form-label p-0"><?= $staffName; ?> writes:</div>
-            <div class=" col-sm-8">
-                <div class="questionnaire__answer my-account__client-note m-0"><?= str_replace("\'", "'", get_post_meta($order_id, "notes_to_client", true)); ?></div>
-            </div>
-        </div>
-    </div>
-<?php else: ?>
-    <div class="col-md-8 p-0">
-        <p>Following your session, your Pro may send a recap of your conversation, a list of materials/tools, or topics for a follow-up consultation.</p>
-    </div>
-<?php endif; ?>
-
-<?php if (!empty($order->get_customer_note())): ?>
-    <div class="row no-gutters m-0">
-        <div class="col-md-8 p-0">
-            <div class="pt-md-5">
-                <h2><?php esc_html_e( 'Your Note To The Pro', 'woocommerce' ); ?></h2>
-                <hr class="mb-hr mb-hr--olive" />
-            </div>
-
-            <p><?= $order->get_customer_note(); ?></p>
-        </div>
-    </div>
-<?php endif; ?>
-
 <div class="row no-gutters m-0">
 
     <div class="col-md-8 p-0">
@@ -167,10 +130,32 @@ foreach ($order->get_items() as $item_id => $item) {
         <?php if (get_post_meta($order_id, 'answer1', true)): ?>
             <p>Your project details will be available for 6 months after your consultation.<p>
         <?php elseif ($apptIsWhen == "future"): ?>
-            <p>We strongly recommend completing your pre-consultation questionnaire and submitting all relevant photos to your Pro prior to your session. </p>
+            <p>We strongly recommend completing your pre-consultation questionnaire and submitting all relevant photos to your Pro prior to your session. (Accepted file types: .jpg, .jpeg, .png) </p>
         <?php else: ?>
             <p>No questionnaire was submitted for this consultation.</p>
         <?php endif; ?>
+    </div>
+
+    <div class="col-md-8 p-0">
+        <div class="pt-md-5">
+            <h4 class="my-account__details-heading"><?php esc_html_e( 'Step 1: Fill Out Your Questionnaire', 'woocommerce' ); ?></h4>
+            <hr class="mb-hr mb-hr--olive" />
+        </div>
+    </div>
+
+    <?php if( get_post_meta($order_id, 'answer1', true)): ?>
+        <?= get_template_part('partials/questionnaire-answers', null, array('orderId' => $order_id)); ?>
+    <?php else: ?>
+        <?php if ($apptIsWhen == "future"): ?>
+            <?= get_template_part('partials/questionnaire-questions', null, array('orderId' => $order_id)); ?>
+        <?php endif; ?>
+    <?php endif; ?>
+
+    <div class="col-md-8 p-0">
+        <div class="pt-md-5">
+            <h4 class="my-account__details-heading"><?php esc_html_e( 'Step 2: Upload Your Project Photos', 'woocommerce' ); ?></h4>
+            <hr class="mb-hr mb-hr--olive" />
+        </div>
     </div>
 
     <div class="photos__section p-0">
@@ -267,15 +252,44 @@ foreach ($order->get_items() as $item_id => $item) {
     <?php if ($apptIsWhen == "future"): ?>
         <?= get_template_part('partials/image-uploads', null, array('orderId' => $order_id, 'imageCount' => count($images))); ?>
     <?php endif; ?>
-
-    <?php if( get_post_meta($order_id, 'answer1', true)): ?>
-        <?= get_template_part('partials/questionnaire-answers', null, array('orderId' => $order_id)); ?>
-    <?php else: ?>
-        <?php if ($apptIsWhen == "future"): ?>
-            <?= get_template_part('partials/questionnaire-questions', null, array('orderId' => $order_id)); ?>
-        <?php endif; ?>
-    <?php endif; ?>
 </div>
+
+<?php if (!empty($order->get_customer_note())): ?>
+    <div class="row no-gutters m-0">
+        <div class="col-md-8 p-0">
+            <div class="pt-md-5">
+                <h2><?php esc_html_e( 'Your Note To The Pro', 'woocommerce' ); ?></h2>
+                <hr class="mb-hr mb-hr--olive" />
+            </div>
+
+            <p><?= $order->get_customer_note(); ?></p>
+        </div>
+    </div>
+<?php endif; ?>
+
+<div class="col-md-8 p-0">
+    <div class="pt-md-5">
+        <h2><?php esc_html_e( 'Notes From The Pro', 'woocommerce' ); ?></h2>
+        <hr class="mb-hr mb-hr--olive" />
+    </div>
+</div>
+<?php if( get_post_meta($order_id, "notes_to_client", true)): ?>
+    <div class="col-md-8 p-0">
+        <p>Your Pro has sent a followup message regarding your session.</p>
+    </div>
+    <div class="questionnaire py-4 px-0">
+        <div class="form-group row py-3 mx-3">
+            <div class="questionnaire__label col-sm-4 col-form-label p-0"><?= $staffName; ?> writes:</div>
+            <div class=" col-sm-8">
+                <div class="questionnaire__answer my-account__client-note m-0"><?= str_replace("\'", "'", get_post_meta($order_id, "notes_to_client", true)); ?></div>
+            </div>
+        </div>
+    </div>
+<?php else: ?>
+    <div class="col-md-8 p-0">
+        <p>Following your session, your Pro may send a recap of your conversation, a list of materials/tools, or topics for a follow-up consultation.</p>
+    </div>
+<?php endif; ?>
 
 <?php if ($apptIsWhen == "future"): ?>
     <div class="row no-gutters m-0">
