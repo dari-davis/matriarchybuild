@@ -103,4 +103,9 @@ global $wpdb;
             </div>
         </div>
     </div>
+<?php else: ?>
+    <?php 
+    $content = apply_filters('the_content', get_post(954)->post_content);
+    echo $content;
+    ?>
 <?php endif; ?>
