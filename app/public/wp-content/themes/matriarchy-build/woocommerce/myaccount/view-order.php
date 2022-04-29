@@ -137,7 +137,7 @@ foreach ($order->get_items() as $item_id => $item) {
     </div>
 
     <div class="col-md-8 p-0">
-        <div class="pt-md-5">
+        <div class="pt-3 pt-md-5">
             <h4 class="my-account__details-heading"><?php esc_html_e( 'Step 1: Fill Out Your Questionnaire', 'woocommerce' ); ?></h4>
             <hr class="mb-hr mb-hr--olive" />
         </div>
@@ -152,13 +152,13 @@ foreach ($order->get_items() as $item_id => $item) {
     <?php endif; ?>
 
     <div class="col-md-8 p-0">
-        <div class="pt-md-5">
+        <div class="pt-3 pt-md-5">
             <h4 class="my-account__details-heading"><?php esc_html_e( 'Step 2: Upload Your Project Photos', 'woocommerce' ); ?></h4>
             <hr class="mb-hr mb-hr--olive" />
         </div>
     </div>
 
-    <div class="photos__section p-0">
+    <div class="photos__section p-0 mb-5 mb-md-0">
         <?php $photos = $wpdb->get_results('SELECT entry_id FROM wp_frmt_form_entry_meta WHERE meta_value="'.$order_id.'";'); ?>
         <div class="photos__content">
             <?php if ($photos): ?>
@@ -199,7 +199,7 @@ foreach ($order->get_items() as $item_id => $item) {
             <?php endif; ?>
 
             <?php if ($apptIsWhen == "future" && count($photos) < 5): ?>
-                <div class="questionnaire questionnaire__photo-form p-4 mb-4">
+                <div class="questionnaire questionnaire__photo-form p-4">
                     <?= do_shortcode('[forminator_form id="1985"]'); ?> <!-- staging -->
                     <!-- forminator_form_id="923" -->
                 </div>
