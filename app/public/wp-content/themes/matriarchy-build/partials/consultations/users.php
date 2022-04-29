@@ -18,6 +18,8 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+$has_orders = $args['hasOrders'];
+$customer_orders = $args['customerOrders'];
 
 do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 
