@@ -11,7 +11,7 @@ $order_id = $_GET['id'];
 global $wpdb;
 global $post;
 $order = wc_get_order($order_id);
-$images = get_attached_media('', $order->get_id());
+$upload_dir = wp_upload_dir();
 ?>
 
 <?php if (!empty($order)): ?>
@@ -91,6 +91,7 @@ $images = get_attached_media('', $order->get_id());
 <?php endif; ?>
 
 <?php if (!empty($order)): ?>
+    <?php $user_id = $order->customer_id; ?>
     <?php if (isset($data['items']) && !empty($serviceInfo)): ?>
         <div class="consultation-card consultation-card--<?= $apptIsWhen; ?> row mb-borders m-0 mb-4">
             <div class="col-6 col-lg consultation-card__yellow-bg p-3">
@@ -175,14 +176,20 @@ $images = get_attached_media('', $order->get_id());
             <?php endif; ?>
         </div>
 
-        <?php if ($images): ?>
+        <?php $photos = $wpdb->get_results('SELECT entry_id FROM wp_frmt_form_entry_meta WHERE meta_value="'.$order_id.'";'); ?>
+        <?php if ($photos): ?>
             <div class="questionnaire questionnaire--photos p-4 mb-4 d-flex">
                 <?php $imageIndex = 0; ?>
-                <?php foreach(array_slice($images, 0, 5) as $image): ?>
+                <?php foreach(array_slice($photos, 0, 5) as $photo): ?>
+                    <?php $entry = $wpdb->get_results('SELECT * FROM wp_frmt_form_entry_meta WHERE entry_id="'.$photo->entry_id.'"');
+                            $src = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$photo->entry_id.'"');
+                            $url = explode("ugc/$user_id/", $src[0]->meta_value);
+                            $image = $upload_dir['url'] . "/ugc/$user_id/" . str_replace('";}}', '', $url[2]);
+                            $attachment = attachment_url_to_postid($image); ?>
                     <div class="questionnaire__image me-3">
                         <a class="questionnaire__image-link d-block" href="#" data-slick-index="<?= $imageIndex; ?>">
                             <div class="questionnaire__overlay"></div>
-                            <img data-no-lazy src="<?= wp_get_attachment_url($image->ID); ?>"/>
+                            <img data-no-lazy src="<?= $image; ?>"/>
                         </a>
                     </div>
                     <?php $imageIndex++; ?>
@@ -198,11 +205,13 @@ $images = get_attached_media('', $order->get_id());
     <?php wp_enqueue_script( 'jquery-ui-dialog' ); ?>
 
     <div class="photos__dialog p-0 mx-md-auto" id="dialog">
-        <?php foreach($images as $image): ?>
+        <?php foreach($photos as $photo): ?>
+            <?php $src = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$photo->entry_id.'"');
+            $url = explode("ugc/$user_id/", $src[0]->meta_value); ?>
             <div class="photos__image d-flex justify-content-center align-items-center">
                 <div class="photos__image-container">
                     <div class="image-inner">
-                        <img class="m-md-auto" data-no-lazy src="<?= wp_get_attachment_url($image->ID); ?>"/>
+                        <img data-no-lazy src="<?= $upload_dir['url'] . "/ugc/$user_id/" . str_replace('";}}', '', $url[2]); ?>"/>
                     </div>
                 </div>
             </div>    

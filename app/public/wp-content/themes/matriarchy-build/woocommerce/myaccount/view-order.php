@@ -191,7 +191,7 @@ foreach ($order->get_items() as $item_id => $item) {
                                 <div class="questionnaire__image col-3 mb-3">
                                     <a class="questionnaire__image-link d-block" href="#" data-slick-index="<?= $imageIndex; ?>">
                                         <div class="questionnaire__overlay"></div>
-                                        <img src="<?= $image; ?>"/>
+                                        <img data-no-lazy src="<?= $image; ?>"/>
                                     </a>
                                     <?php $imageIndex++; ?>
 
@@ -230,7 +230,7 @@ foreach ($order->get_items() as $item_id => $item) {
             <div class="photos__image d-flex justify-content-center align-items-center">
                 <div class="photos__image-container">
                     <div class="image-inner">
-                        <img src="<?= $upload_dir['url'] . "/ugc/$user_id/" . str_replace('";}}', '', $url[2]); ?>"/>
+                        <img data-no-lazy src="<?= $upload_dir['url'] . "/ugc/$user_id/" . str_replace('";}}', '', $url[2]); ?>"/>
                     </div>
                 </div>
             </div>    

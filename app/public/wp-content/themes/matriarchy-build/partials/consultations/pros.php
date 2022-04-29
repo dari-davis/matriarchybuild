@@ -123,7 +123,7 @@ $staffAppointments = $wpdb->get_results("SELECT * FROM wp_bookly_appointments WH
 						<a class="consultation-card__zoom-link badge badge-primary" href="<?= $joinUrl; ?>" target="_blank"><i class="fas fa-video fa-fw"></i> Zoom <i class="fas fa-external-link-alt fa-fw"></i></a>
 						<?php if ($password): ?><span class="consultation-card__zoom-passcode" class="my-2">Passcode: <?= $password; ?></span><?php endif; ?>
 					<?php endif; ?>
-					<div><a class="text-button text-button--green" href="../booking-details?id=<?= $order->get_id();?>?key=<?= $order->get_id();?>">View Details</a></div>
+					<div><a class="text-button text-button--green" href="../booking-details?id=<?= $order->get_id();?>&pid=<?= $order->get_id();?>">View Details</a></div>
 				</div>
 				<div class="col-12 col-lg p-3 d-flex justify-content-end">
 					<div><?= wc_price($price); ?></div>
