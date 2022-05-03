@@ -177,25 +177,34 @@ foreach ($order->get_items() as $item_id => $item) {
                 <div class="questionnaire__photos mb-4">
                     <div class="questionnaire--attachments p-4 d-flex row gx-3">
                         <?php $imageIndex = 0; ?>
-                        <?php foreach($images as $image): ?>
-                            <?php $imageId = $image->ID; ?>
-                            <div class="questionnaire__image col-3 mb-3">
-                                <a class="questionnaire__image-link d-block" href="#" data-slick-index="<?= $imageIndex; ?>">
-                                    <div class="questionnaire__overlay"></div>
-                                    <img data-no-lazy src="<?= wp_get_attachment_url($image->ID); ?>"/>
-                                </a>
-                                <?php $imageIndex++; ?>
+                        <?php foreach($photos as $photo): ?>
+                            <?php $entry = $wpdb->get_results('SELECT * FROM wp_frmt_form_entry_meta WHERE entry_id="'.$photo->entry_id.'"');
+                            $src = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$photo->entry_id.'"');
+                            $path = explode("/uploads/", $src[0]->meta_value)[2];
+                            $image = $upload_dir['baseurl'] . "/" . str_replace('";}}', '', $path);
+                            $attachment = attachment_url_to_postid($image); ?>
 
-                                <form method="post">
-                                    <button class="questionnaire__remove-button" type="submit" name="remove-photo"><img data-no-lazy src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/x-circle.svg"></button>
-                                    <input type="hidden" name="photo-id-<?= $imageId; ?>" value="<?= $image->ID; ?>"/>
-                                </form>
+                            <?php if ($attachment > 0): ?>
+                                <div class="questionnaire__image col-3 mb-3">
+                                    <a class="questionnaire__image-link d-block" href="#" data-slick-index="<?= $imageIndex; ?>">
+                                        <div class="questionnaire__overlay"></div>
+                                        <img data-no-lazy src="<?= $image; ?>"/>
+                                    </a>
+                                    <?php $imageIndex++; ?>
 
-                                <?php if (!empty($_POST["photo-id-$imageId"])) {
-                                    wp_delete_attachment($imageId);
-                                    echo "<script>location.reload();</script>";
-                                } ?>
-                            </div>
+                                    <form method="post">
+                                        <button class="questionnaire__remove-button" type="submit" name="remove-photo"><img data-no-lazy src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/x-circle.svg"></button>
+                                        <input type="hidden" name="photo-id-<?= $imageIndex; ?>" value="<?= $imageIndex; ?>"/>
+                                    </form>
+
+                                    <?php if (!empty($_POST["photo-id-$imageIndex"])) {
+                                        wp_delete_attachment($attachment);
+                                        $table = 'wp_frmt_form_entry';
+                                        $wpdb->delete($table, array('entry_id' => $photo->entry_id));
+                                        echo "<script>location.reload();</script>";
+                                    } ?>
+                                </div>
+                            <?php endif; ?>
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -218,11 +227,13 @@ foreach ($order->get_items() as $item_id => $item) {
     <?php wp_enqueue_script( 'jquery-ui-dialog' ); ?>
 
     <div class="photos__dialog p-0 mx-md-auto" id="dialog">
-        <?php foreach($images as $image): ?>
+        <?php foreach($photos as $photo): ?>
+            <?php $src = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$photo->entry_id.'"');
+            $path = explode("/uploads/", $src[0]->meta_value)[2]; ?>
             <div class="photos__image d-flex justify-content-center align-items-center">
                 <div class="photos__image-container">
                     <div class="image-inner">
-                        <img class="m-md-auto" data-no-lazy src="<?= wp_get_attachment_url($image->ID); ?>"/>
+                        <img data-no-lazy src="<?= $upload_dir['baseurl'] . "/" . str_replace('";}}', '', $path); ?>"/>
                     </div>
                 </div>
             </div>    
