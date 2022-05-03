@@ -172,8 +172,8 @@ foreach ($order->get_items() as $item_id => $item) {
                         <?php foreach($photos as $photo): ?>
                             <?php $entry = $wpdb->get_results('SELECT * FROM wp_frmt_form_entry_meta WHERE entry_id="'.$photo->entry_id.'"');
                             $src = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$photo->entry_id.'"');
-                            $url = explode("ugc/$user_id/", $src[0]->meta_value);
-                            $image = $upload_dir['url'] . "/ugc/$user_id/" . str_replace('";}}', '', $url[2]);
+                            $path = explode("/uploads/", $src[0]->meta_value)[2];
+                            $image = $upload_dir['baseurl'] . "/" . str_replace('";}}', '', $path);
                             $attachment = attachment_url_to_postid($image); ?>
 
                             <?php if ($attachment > 0): ?>
@@ -216,11 +216,11 @@ foreach ($order->get_items() as $item_id => $item) {
     <div class="photos__dialog p-0 mx-md-auto" id="dialog">
         <?php foreach($photos as $photo): ?>
             <?php $src = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$photo->entry_id.'"');
-            $url = explode("ugc/$user_id/", $src[0]->meta_value); ?>
+            $path = explode("/uploads/", $src[0]->meta_value)[2]; ?>
             <div class="photos__image d-flex justify-content-center align-items-center">
                 <div class="photos__image-container">
                     <div class="image-inner">
-                        <img data-no-lazy src="<?= $upload_dir['url'] . "/ugc/$user_id/" . str_replace('";}}', '', $url[2]); ?>"/>
+                        <img data-no-lazy src="<?= $upload_dir['baseurl'] . "/" . str_replace('";}}', '', $path); ?>"/>
                     </div>
                 </div>
             </div>    
