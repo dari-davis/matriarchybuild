@@ -182,7 +182,7 @@ $images = get_attached_media('', $order->get_id());
                     <?php $entry = $wpdb->get_results('SELECT * FROM wp_frmt_form_entry_meta WHERE entry_id="'.$photo->entry_id.'"');
                             $src = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$photo->entry_id.'"');
                             $path = explode("/uploads/", $src[0]->meta_value)[2];
-                            $image - $upload_dir['baseurl'] . "/" . str_replace('";}}', '', $path);
+                            $image = $upload_dir['baseurl'] . "/" . str_replace('";}}', '', $path);
                             $attachment = attachment_url_to_postid($image); ?>
                     <div class="questionnaire__image me-3">
                         <a class="questionnaire__image-link d-block" href="#" data-slick-index="<?= $imageIndex; ?>">
