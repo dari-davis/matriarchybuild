@@ -178,7 +178,12 @@ $images = get_attached_media('', $order->get_id());
         <?php if ($images): ?>
             <div class="questionnaire questionnaire--photos p-4 mb-4 d-flex">
                 <?php $imageIndex = 0; ?>
-                <?php foreach(array_slice($images, 0, 5) as $image): ?>
+                <?php foreach(array_slice($photos, 0, 5) as $photo): ?>
+                    <?php $entry = $wpdb->get_results('SELECT * FROM wp_frmt_form_entry_meta WHERE entry_id="'.$photo->entry_id.'"');
+                            $src = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$photo->entry_id.'"');
+                            $path = explode("/uploads/", $src[0]->meta_value)[2];
+                            $image - $upload_dir['baseurl'] . "/" . str_replace('";}}', '', $path);
+                            $attachment = attachment_url_to_postid($image); ?>
                     <div class="questionnaire__image me-3">
                         <a class="questionnaire__image-link d-block" href="#" data-slick-index="<?= $imageIndex; ?>">
                             <div class="questionnaire__overlay"></div>
@@ -198,11 +203,13 @@ $images = get_attached_media('', $order->get_id());
     <?php wp_enqueue_script( 'jquery-ui-dialog' ); ?>
 
     <div class="photos__dialog p-0 mx-md-auto" id="dialog">
-        <?php foreach($images as $image): ?>
+        <?php foreach($photos as $photo): ?>
+            <?php $src = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$photo->entry_id.'"');
+            $path = explode("/uploads/", $src[0]->meta_value)[2]; ?>
             <div class="photos__image d-flex justify-content-center align-items-center">
                 <div class="photos__image-container">
                     <div class="image-inner">
-                        <img class="m-md-auto" data-no-lazy src="<?= wp_get_attachment_url($image->ID); ?>"/>
+                        <img data-no-lazy src="<?= $upload_dir['baseurl'] . "/" . str_replace('";}}', '', $path); ?>"/>
                     </div>
                 </div>
             </div>    
