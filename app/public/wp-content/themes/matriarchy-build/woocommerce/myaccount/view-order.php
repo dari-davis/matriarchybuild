@@ -169,7 +169,7 @@ foreach ($order->get_items() as $item_id => $item) {
                 <div class="questionnaire__photos mb-4">
                     <div id="attachments" class="questionnaire--attachments p-4 d-flex row gx-3">
                         <?php $imageIndex = 0; ?>
-                        <?php foreach($photos as $photo): ?>
+                        <?php foreach(array_slice($photos, 0, 5) as $photo): ?>
                             <?php $entry = $wpdb->get_results('SELECT * FROM wp_frmt_form_entry_meta WHERE entry_id="'.$photo->entry_id.'"');
                             $src = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$photo->entry_id.'"');
                             $url = explode("ugc/$user_id/", $src[0]->meta_value);
@@ -177,7 +177,7 @@ foreach ($order->get_items() as $item_id => $item) {
                             $attachment = attachment_url_to_postid($image); ?>
 
                             <?php if ($attachment > 0): ?>
-                                <div class="questionnaire__image col-3 mb-3">
+                                <div class="questionnaire__image col-3 mb-3" data-photo-id="<?= $attachment; ?>">
                                     <a class="questionnaire__image-link d-block" href="#" data-slick-index="<?= $imageIndex; ?>">
                                         <div class="questionnaire__overlay"></div>
                                         <img data-no-lazy src="<?= $image; ?>"/>
@@ -192,7 +192,7 @@ foreach ($order->get_items() as $item_id => $item) {
                                     <?php if (!empty($_POST["photo-id-$imageIndex"])) {
                                         wp_delete_attachment($attachment);
                                         $wpdb->query($wpdb->prepare('DELETE FROM wp_frmt_form_entry_meta WHERE entry_id="'.$photo->entry_id.'"'));
-                                        //echo '<script>location.reload();</script>';
+                                        echo 'jQuery("[data-photo-id='.$attachment.']").remove();</script>';
                                     } ?>
                                 </div>
                             <?php endif; ?>
@@ -201,14 +201,22 @@ foreach ($order->get_items() as $item_id => $item) {
                 </div>
             <?php endif; ?>
 
-            <?php if ($apptIsWhen == "future" && count($photos) < 5): ?>
+            <?php if ($apptIsWhen == "future"): ?>
                 <div class="questionnaire questionnaire__photo-form p-4">
-                    <?= do_shortcode('[forminator_form id="1985"]'); ?> <!-- staging -->
-                    <!-- forminator_form_id="923" -->
+                    <?php if (count($photos) <= 5): ?>
+                        <?= do_shortcode('[forminator_form id="1985"]'); ?> <!-- staging -->
+                        <!-- forminator_form_id="923" -->
+                    <?php else: ?>
+                        <p>Maximum number of uploads reached.</p>
+                    <?php endif; ?>
                 </div>
             <?php endif; ?>
         </div>
     </div>
+
+    <script>
+    if (window.history.replaceState) {window.history.replaceState(null, null, window.location.href);}
+    </script>
 
     <?php wp_enqueue_script( 'jquery-ui-dialog' ); ?>
 
