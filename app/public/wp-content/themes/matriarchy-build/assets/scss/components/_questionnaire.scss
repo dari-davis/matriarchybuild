@@ -29,6 +29,7 @@
     &__image-link {
         position: relative;
         overflow: hidden;
+        cursor: pointer;
     }
 
     &__overlay {
@@ -60,5 +61,6 @@
         background: transparent;
         border: 0;
         -webkit-appearance: none;
+        cursor: pointer;
     }
 }

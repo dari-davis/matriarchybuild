@@ -153,6 +153,8 @@ foreach ($order->get_items() as $item_id => $item) {
         <?php endif; ?>
     <?php endif; ?>
 
+    <div class="hidden" id="uploads"></div>
+
     <?php if ($apptIsWhen == "future"): ?>
         <div class="col-md-8 p-0">
             <div class="pt-3 pt-md-5">
@@ -173,7 +175,7 @@ foreach ($order->get_items() as $item_id => $item) {
                             <?php $entry = $wpdb->get_results('SELECT * FROM wp_frmt_form_entry_meta WHERE entry_id="'.$photo->entry_id.'"');
                             $src = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$photo->entry_id.'"');
                             $path = explode("/uploads/", $src[0]->meta_value)[2];
-                            $image - $upload_dir['baseurl'] . "/" . str_replace('";}}', '', $path);
+                            $image = $upload_dir['baseurl'] . "/" . str_replace('";}}', '', $path);
                             $attachment = attachment_url_to_postid($image); ?>
 
                             <?php if ($attachment > 0): ?>
@@ -192,7 +194,7 @@ foreach ($order->get_items() as $item_id => $item) {
                                     <?php if (!empty($_POST["photo-id-$imageIndex"])) {
                                         wp_delete_attachment($attachment);
                                         $wpdb->query($wpdb->prepare('DELETE FROM wp_frmt_form_entry_meta WHERE entry_id="'.$photo->entry_id.'"'));
-                                        echo 'jQuery("[data-photo-id='.$attachment.']").remove();</script>';
+                                        echo '<script>window.location.hash = "uploads"; jQuery("[data-photo-id='.$attachment.']").remove();</script>';
                                     } ?>
                                 </div>
                             <?php endif; ?>
@@ -207,7 +209,7 @@ foreach ($order->get_items() as $item_id => $item) {
                         <?= do_shortcode('[forminator_form id="1985"]'); ?> <!-- staging -->
                         <!-- forminator_form_id="923" -->
                     <?php else: ?>
-                        <p>Maximum number of uploads reached.</p>
+                        <p class="mb-0">Maximum number of uploads reached.</p>
                     <?php endif; ?>
                 </div>
             <?php endif; ?>
