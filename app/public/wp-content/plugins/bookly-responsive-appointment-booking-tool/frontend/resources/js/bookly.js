@@ -5365,7 +5365,7 @@ var bookly = (function ($) {
 				dateBuffer = today.setDate(today.getDate()+2);
 
 			$__default['default'].each(slots_data, function (group, group_slots) {
-				var groupEndOfDay = new Date(group.split("-"));
+				var groupEndOfDay = new Date(group.replace(/-/g, "-").replace(/ /g,"T"));
 				groupEndOfDay.setHours(23,59,59,999);
 
 				if (Date.parse(groupEndOfDay) >= dateBuffer) {
