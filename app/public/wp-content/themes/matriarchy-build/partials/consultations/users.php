@@ -38,8 +38,6 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 		global $wpdb;
 
 		if ($order->get_status() != 'failed') {
-			echo order_id_to_bookly($order->get_id());
-
 			foreach ($order->get_items() as $item_id => $item) {
 				$data =  $item->get_meta("bookly");
 				$timezone = $data['time_zone'];
