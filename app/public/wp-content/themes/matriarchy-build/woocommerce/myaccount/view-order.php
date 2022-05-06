@@ -130,7 +130,7 @@ foreach ($order->get_items() as $item_id => $item) {
         <?php if (get_post_meta($order_id, 'answer1', true)): ?>
             <p>Your project details will be available for 6 months after your consultation.<p>
         <?php elseif ($apptIsWhen == "future"): ?>
-            <p>We strongly recommend completing your pre-consultation questionnaire and submitting all relevant photos to your Pro prior to your session. (Accepted file types: .jpg, .jpeg, .png, .gif, .bmp) </p>
+            <p>We strongly recommend completing your pre-consultation questionnaire and submitting all relevant photos to your Pro prior to your session.</p>
         <?php else: ?>
             <p>No questionnaire was submitted for this consultation.</p>
         <?php endif; ?>
@@ -160,6 +160,7 @@ foreach ($order->get_items() as $item_id => $item) {
             <div class="pt-3 pt-md-5">
                 <h4 class="my-account__details-heading"><?php esc_html_e( 'Step 2: Upload Your Project Photos', 'woocommerce' ); ?></h4>
                 <hr class="mb-hr mb-hr--olive" />
+                <p>Add up to 5 photos. (Accepted file types: .jpg, .jpeg, .png, .gif, .bmp)</p>
             </div>
         </div>
     <?php endif; ?>
