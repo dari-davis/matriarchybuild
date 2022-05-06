@@ -219,7 +219,6 @@ foreach ($order->get_items() as $item_id => $item) {
                 </div>
             <?php endif; ?>
 
-
             <?php if ($apptIsWhen == "future"): ?>
                 <div class="questionnaire questionnaire__photo-form p-4">
                     <?php if ($totalImageCount < 5): ?>

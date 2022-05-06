@@ -175,23 +175,36 @@ $images = get_attached_media('', $order->get_id());
             <?php endif; ?>
         </div>
 
-        <?php if ($images): ?>
-            <div class="questionnaire questionnaire--photos p-4 mb-4 d-flex">
-                <?php $imageIndex = 0; ?>
-                <?php foreach(array_slice($photos, 0, 5) as $photo): ?>
-                    <?php $entry = $wpdb->get_results('SELECT * FROM wp_frmt_form_entry_meta WHERE entry_id="'.$photo->entry_id.'"');
-                            $src = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$photo->entry_id.'"');
-                            $path = explode("/uploads/", $src[0]->meta_value)[2];
-                            $image = $upload_dir['baseurl'] . "/" . str_replace('";}}', '', $path);
-                            $attachment = attachment_url_to_postid($image); ?>
-                    <div class="questionnaire__image me-3">
-                        <a class="questionnaire__image-link d-block" href="#" data-slick-index="<?= $imageIndex; ?>">
-                            <div class="questionnaire__overlay"></div>
-                            <img data-no-lazy src="<?= wp_get_attachment_url($image->ID); ?>"/>
-                        </a>
-                    </div>
-                    <?php $imageIndex++; ?>
-                <?php endforeach; ?>
+        <?php $entries = $wpdb->get_results('SELECT entry_id FROM wp_frmt_form_entry_meta WHERE meta_value="'.$order_id.'";');
+              $totalImageCount = 0; ?>
+
+        <?php if ($entries): ?>
+            <div class="questionnaire questionnaire--photos p-4 mb-4 d-flex row gx-3">
+                <?php foreach($entries as $entry): ?>
+                    <?php $photos = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$entry->entry_id.'"');
+                        $filepath = explode("file_path", $photos[0]->meta_value);
+                        $images = explode("/uploads", $filepath[1]); ?>
+
+                    <?php foreach($images as $image): ?>
+                        <?php $src = str_replace('"', '', explode(";i:", $image)[0]);
+
+                        if (strpos($src, ';') !== false) { $path = substr($src, 0, strpos($src, ';'));
+                        } else { $path = $src; }
+                        
+                        $image = $upload_dir['baseurl'] . $path;
+                        $attachment = attachment_url_to_postid($image); ?>
+
+                        <?php if ($attachment > 0): ?>
+                            <div class="questionnaire__image col-3 mb-3" data-photo-id="<?= $attachment; ?>">
+                                <a class="questionnaire__image-link d-block" href="#" data-slick-index="<?= $totalImageCount; ?>">
+                                    <div class="questionnaire__overlay"></div>
+                                    <img data-no-lazy src="<?= $image; ?>"/>
+                                </a>
+                                <?php $totalImageCount++; ?>
+                            </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                <?php endforeach; ?> 
             </div>
         <?php endif; ?>
         
@@ -203,16 +216,27 @@ $images = get_attached_media('', $order->get_id());
     <?php wp_enqueue_script( 'jquery-ui-dialog' ); ?>
 
     <div class="photos__dialog p-0 mx-md-auto" id="dialog">
-        <?php foreach($photos as $photo): ?>
-            <?php $src = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$photo->entry_id.'"');
-            $path = explode("/uploads/", $src[0]->meta_value)[2]; ?>
-            <div class="photos__image d-flex justify-content-center align-items-center">
-                <div class="photos__image-container">
-                    <div class="image-inner">
-                        <img data-no-lazy src="<?= $upload_dir['baseurl'] . "/" . str_replace('";}}', '', $path); ?>"/>
+        <?php foreach($entries as $entry): ?>
+            <?php $photos = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$entry->entry_id.'"');
+                $filepath = explode("file_path", $photos[0]->meta_value);
+                $images = explode("/uploads", $filepath[1]); array_shift($images);?>
+
+            <?php foreach($images as $image): ?>
+                <?php $src = str_replace('"', '', explode(";i:", $image)[0]);
+
+                if (strpos($src, ';') !== false) { $path = substr($src, 0, strpos($src, ';'));
+                } else { $path = $src; }
+                
+                $image = $upload_dir['baseurl'] . $path; ?>
+
+                <div class="photos__image d-flex justify-content-center align-items-center">
+                    <div class="photos__image-container">
+                        <div class="image-inner">
+                            <img data-no-lazy src="<?= $image; ?>"/>
+                        </div>
                     </div>
-                </div>
-            </div>    
+                </div>    
+            <?php endforeach; ?>
         <?php endforeach; ?>
     </div>
 
