@@ -165,7 +165,7 @@ foreach ($order->get_items() as $item_id => $item) {
         <?php if (get_post_meta($order_id, 'answer1', true)): ?>
             <p>Your project details will be available for 6 months after your consultation.<p>
         <?php elseif ($apptIsWhen == "future"): ?>
-            <p>We strongly recommend completing your pre-consultation questionnaire and submitting all relevant photos to your Pro prior to your session. </p>
+            <p>We strongly recommend completing your pre-consultation questionnaire and submitting all relevant photos to your Pro prior to your session. (Accepted file types: .jpg, .jpeg, .png, .gif, .bmp) </p>
         <?php else: ?>
             <p>No questionnaire was submitted for this consultation.</p>
         <?php endif; ?>
@@ -222,7 +222,7 @@ foreach ($order->get_items() as $item_id => $item) {
             <?php if ($apptIsWhen == "future"): ?>
                 <div class="questionnaire questionnaire__photo-form p-4">
                     <?php if ($totalImageCount < 5): ?>
-                        <?= do_shortcode('[forminator_form id="923"]'); ?> <!-- staging -->
+                        <?= do_shortcode('[forminator_form id="1985"]'); ?> <!-- staging -->
                         <!-- forminator_form_id="923" -->
                     <?php else: ?>
                         <p class="mb-0">Maximum number of uploads reached.</p>
