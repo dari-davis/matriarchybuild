@@ -867,7 +867,7 @@ function bbloomer_save_name_fields( $customer_id ) {
 add_action( 'woocommerce_thankyou', 'redirect_woo_checkout');
 function redirect_woo_checkout( $order_id ){
     $order = wc_get_order( $order_id );
-    $url = wc_get_account_endpoint_url("view-order/$order_id");
+    $url = wc_get_account_endpoint_url("view-order/$order_id/?pid=$order_id");
 
     if ( ! $order->has_status( 'failed' ) ) {
 		order_id_to_bookly($order_id);
