@@ -160,7 +160,7 @@ foreach ($order->get_items() as $item_id => $item) {
             <div class="pt-3 pt-md-5">
                 <h4 class="my-account__details-heading"><?php esc_html_e( 'Step 2: Upload Your Project Photos', 'woocommerce' ); ?></h4>
                 <hr class="mb-hr mb-hr--olive" />
-                <p>Add up to 5 photos. (Accepted file types: .jpg, .jpeg, .png, .gif, .bmp)</p>
+                <p>Add up to 10 photos. (Accepted file types: .jpg, .jpeg, .png, .gif, .bmp)</p>
             </div>
         </div>
     <?php endif; ?>
@@ -204,8 +204,8 @@ foreach ($order->get_items() as $item_id => $item) {
 
             <?php if ($apptIsWhen == "future" && $totalImageCount < 10): ?>
                 <div class="questionnaire questionnaire__photo-form p-4">
-                    <?= do_shortcode('[forminator_form id="2228"]'); ?> <!-- production -->
-                    <!-- do_shortcode('[forminator_form id="1985"]'); ?> staging -->
+                    <!-- do_shortcode('[forminator_form id="2228"]'); ?> production -->
+                    <?= do_shortcode('[forminator_form id="1985"]'); ?> <!-- staging -->
                     <!-- forminator_form_id="923" -->
                 </div>
             <?php endif; ?>
