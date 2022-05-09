@@ -23,6 +23,10 @@
             background: $pink !important;
             border-radius: 30px;
             color: $blue;
+
+            &:hover {
+                background: $olive !important;
+            }
         }
     }
 

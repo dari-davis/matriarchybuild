@@ -141,7 +141,7 @@ button.button--text {
         font-family: $font-family;
         font-weight: normal;
         background-color: $olive;
-        border: 0;
+        border-color: $blue;
         border-radius: 0;
         -webkit-appearance: none;
 
@@ -166,6 +166,11 @@ button.button--text {
             color: $pink !important;
             background-color: $blue !important;
         }
+
+        &:hover {
+            color: $pink;
+            background-color: $blue;
+        }
     }
 
     .bookly-button.ladda-button.btn.btn-success,
@@ -177,12 +182,17 @@ button.button--text {
         font-family: $font-family;
         font-weight: normal;
         background-color: $blue;
-        border: 0;
+        border-color: $blue;
         border-radius: 0;
         -webkit-appearance: none;
 
         &:after {
             background-image: url('../images/icons/arrow_white.svg');
+        }
+
+        &:hover {
+            color: $blue;
+            background-color: $olive !important;
         }
     }
 
