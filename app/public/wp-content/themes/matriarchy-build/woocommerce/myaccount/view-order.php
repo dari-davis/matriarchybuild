@@ -202,15 +202,11 @@ foreach ($order->get_items() as $item_id => $item) {
                 </div>
             <?php endif; ?>
 
-            <?php if ($apptIsWhen == "future"): ?>
+            <?php if ($apptIsWhen == "future" && $totalImageCount < 10): ?>
                 <div class="questionnaire questionnaire__photo-form p-4">
-                    <?php if ($totalImageCount < 5): ?>
-                        <?= do_shortcode('[forminator_form id="2228"]'); ?> <!-- production -->
-                        <!-- do_shortcode('[forminator_form id="1985"]'); ?> staging -->
-                        <!-- forminator_form_id="923" -->
-                    <?php else: ?>
-                        <p class="mb-0">Maximum number of uploads reached.</p>
-                    <?php endif; ?>
+                    <?= do_shortcode('[forminator_form id="2228"]'); ?> <!-- production -->
+                    <!-- do_shortcode('[forminator_form id="1985"]'); ?> staging -->
+                    <!-- forminator_form_id="923" -->
                 </div>
             <?php endif; ?>
         </div>
