@@ -166,6 +166,10 @@
             }
         }
 
+        a:hover {
+            color: $olive;
+        }
+
         @include media-breakpoint-down(md) {
             border-bottom: 0;
         }

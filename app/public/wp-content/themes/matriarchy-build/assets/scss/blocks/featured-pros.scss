@@ -126,9 +126,14 @@
         height: 30px;
         border: 1px solid $green;
         border-width: 0 0 1px 1px;
+        cursor: pointer;
 
         &.bookable {
             background: $pink;
+
+            &:hover {
+                background: $olive;
+            }
         }
 
         img {
@@ -138,6 +143,11 @@
 
     &__view-all {
         align-self: flex-start;
+        cursor: pointer;
+
+        a {
+            color: $green;
+        }
 
         a:after {
             content: '';
@@ -147,6 +157,12 @@
             width: 24px;
             background-image: url('../images/icons/arrow_blue.svg');
             background-repeat: no-repeat;
+        }
+
+        &:hover {
+            div {
+                background: $pink;
+            }
         }
     }
 }

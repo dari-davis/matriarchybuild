@@ -187,7 +187,7 @@ if (strpos($_SERVER['HTTP_REFERER'], 'checkout')) { WC()->cart->empty_cart(); }
                     </div>
                   </div>
                   <div class="booking-card__action text-center">
-                    <a class="text-button text-button--blue d-flex justify-content-center align-items-center p-3" data-bookly="#dialog-<?= $row->service_id; ?>" href="#">Book a Time</a>
+                    <a class="button button--secondary d-flex justify-content-center align-items-center p-3" data-bookly="#dialog-<?= $row->service_id; ?>" href="#">Book a Time</a>
                   </div>
                 </div>
               <?php endforeach; ?>

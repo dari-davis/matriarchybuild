@@ -80,7 +80,12 @@ $header-height:     169px;
         border: 0;
 
         &:hover {
+            color: $blue;
             background: $olive;
+
+            &:after {
+                background-image: url('../images/icons/arrow_white.svg');
+            }
         }
     }
 }

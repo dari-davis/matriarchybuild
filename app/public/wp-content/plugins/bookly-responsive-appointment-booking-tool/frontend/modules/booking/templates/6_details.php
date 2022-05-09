@@ -90,7 +90,7 @@ echo Common::stripScripts( $progress_tracker );
     <?php Proxy\RecurringAppointments::renderInfoMessage( $userData ) ?>
 
     <div class="bookly-box bookly-nav-steps">
-        <button class="bookly-next-step bookly-js-next-step bookly-btn ladda-button" data-style="zoom-in" data-spinner-size="40">
+        <button class="bookly-next-step bookly-js-next-step bookly-btn ladda-button button button--secondary" data-style="zoom-in" data-spinner-size="40">
             <?php if (is_user_logged_in()): ?>
                 <span class="ladda-label">Continue to Checkout</span>
             <?php else: ?>

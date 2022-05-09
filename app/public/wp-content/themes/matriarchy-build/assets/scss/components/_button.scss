@@ -35,6 +35,25 @@
     .how-it-works--page & {
         border-color: $blue;
     }
+
+    .booking-card__action & {
+        border: 0;
+    }
+}
+
+.button--secondary {
+    background: $pink;
+    color: $green;
+    border-color: $blue;
+}
+
+.button--secondary:hover {
+    background: $olive;
+    color: $blue;
+
+    &:after {
+        background-image: url('../images/icons/arrow_white.svg');
+    }
 }
 
 div.wpforms-container-full .wpforms-form input[type=submit],
@@ -56,19 +75,18 @@ button.button--text {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: $blue;
     font-weight: normal;
     background-color: $pink;
-    border: 1px solid $olive;
+    border: 1px solid $blue;
     border-radius: 0;
 
-    &:after {
-        background-image: url('../images/icons/arrow_white.svg');
-    }
-
     &:hover {
-        background: $pink;
+        background: $olive;
         color: $blue;
+
+        &:after {
+            background-image: url('../images/icons/arrow_white.svg');
+        }
     }
 }
 
@@ -78,7 +96,7 @@ button.button--text {
     color: $pink;
     font-weight: normal;
     background-color: $blue;
-    border: 1px solid $olive;
+    border: 1px solid $blue;
     border-radius: 0;
 
     &:after {
@@ -92,8 +110,8 @@ button.button--text {
     }
 
     &:hover {
-        color: $pink;
-        background: $blue;
+        color: $blue;
+        background: $olive;
     }
 }
 

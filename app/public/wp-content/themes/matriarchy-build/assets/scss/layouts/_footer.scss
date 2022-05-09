@@ -79,6 +79,10 @@
     .nav-link {
         padding: 0;
         color: $blue;
+
+        &:hover {
+            color: $white;
+        }
     }
 
     &__social-menu {

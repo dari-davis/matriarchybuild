@@ -57,6 +57,11 @@
         height: auto !important;
         font-size: 20px;
         font-family: $sans-serif-font-family;
+        color: $blue;
+
+        &:hover {
+            color: $olive;
+        }
     }
 
     &__terms {
