@@ -85,17 +85,9 @@
         justify-content: center;
         align-items: center;
         height: 50px;
-        color: $white;
-        background: $green;
-        border-color: $blue;
 
         @include media-breakpoint-up(md) {
-            color: $pink;
             border-top: 0;
-        }
-
-        &:after {
-            background-image: url('../images/icons/arrow_white.svg');
         }
 
         & + .hero__button {

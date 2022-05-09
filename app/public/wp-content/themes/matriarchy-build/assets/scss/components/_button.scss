@@ -56,6 +56,21 @@
     }
 }
 
+.button--tertiary {
+    background: $green;
+    color: $pink;
+    border: 1px solid $blue;
+
+    &:after {
+        background-image: url('../images/icons/arrow_white.svg');
+    }
+}
+
+.button--tertiary:hover {
+    background: $pink;
+    color: $blue;
+}
+
 div.wpforms-container-full .wpforms-form input[type=submit],
 div.wpforms-container-full .wpforms-form button[type=submit],
 div.wpforms-container-full .wpforms-form .wpforms-page-button {
