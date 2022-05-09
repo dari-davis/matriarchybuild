@@ -129,6 +129,7 @@ if (strpos($_SERVER['HTTP_REFERER'], 'checkout')) { WC()->cart->empty_cart(); }
                   let dialog = $(e.currentTarget).data('bookly');
                   $(dialog).dialog({
                     minWidth: 836,
+                    modal: true,
                     classes: {
                       'ui-dialog': 'booking-dialog'
                     },
