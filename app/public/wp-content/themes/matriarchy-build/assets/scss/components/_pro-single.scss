@@ -50,7 +50,12 @@ $bookable-button-size:     41px;
         flex: 1;
         align-items: center;
         justify-content: center;
+        padding-bottom: 16px;
         border-bottom: 0;
+
+        @include media-breakpoint-up(md) {
+            padding-bottom: 32px;
+        }
     }
 
     &__title span {
@@ -58,19 +63,23 @@ $bookable-button-size:     41px;
     }
 
     &__name {
-        padding: 16px 0 8px;
+        padding: 16px 0 0;
         color: $blue;
         font-size: 38px;
         line-height: 40px;
 
         @include media-breakpoint-up(sm) {
             font-size: 55px;
-            line-height: 57px;
+            line-height: 90%;
         }
 
         @include media-breakpoint-up(md) {
-            padding: 40px 0 32px;
+            padding: 40px 0 0;
         }
+    }
+
+    &__pronouns {
+        color: $green;
     }
 
     &__attributes {

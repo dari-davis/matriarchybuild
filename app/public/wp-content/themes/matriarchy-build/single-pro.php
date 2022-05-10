@@ -29,7 +29,7 @@ if (strpos($_SERVER['HTTP_REFERER'], 'checkout')) { WC()->cart->empty_cart(); }
                 <?php endif; ?>
               </div>
             </div>
-            <div class="pro__title mb-borders text-center d-flex">
+            <div class="pro__title mb-borders text-center d-flex flex-column">
               <?php while (have_rows('display_name')): the_row(); ?>
                 <?php if (get_sub_field('line_1')): ?>
                   <h1 class="pro__name m-0"><?= get_sub_field('line_1'); ?><br/><?= get_sub_field('line_2'); ?></h1>
@@ -37,6 +37,7 @@ if (strpos($_SERVER['HTTP_REFERER'], 'checkout')) { WC()->cart->empty_cart(); }
                   <h1 class="pro__name m-0"><span><?= the_title(); ?><span></h1>
                 <?php endif; ?>
               <?php endwhile; ?>
+              <?php if (get_field('pronouns')): ?><div class="pro__pronouns d-flex"><?= get_field('pronouns'); ?></div><?php endif; ?>
             </div>
           </div>
           <div class="pro__attributes col-md-4 p-0">
