@@ -34,6 +34,10 @@
 
     .how-it-works--page & {
         border-color: $blue;
+
+        @include media-breakpoint-down(md) {
+            border-left: 0;
+        }
     }
 
     .booking-card__action & {

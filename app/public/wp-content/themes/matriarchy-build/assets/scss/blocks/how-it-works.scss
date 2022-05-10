@@ -124,6 +124,10 @@
                 border-top: 0;
             }
         }
+
+        &:hover {
+            background: $white;
+        }
     }
 
     &__step {

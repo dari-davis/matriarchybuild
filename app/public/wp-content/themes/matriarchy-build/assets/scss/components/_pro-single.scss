@@ -115,6 +115,12 @@ $bookable-button-size:     41px;
         }
     }
 
+    &__social-link:hover {
+        path {
+            fill: $olive;
+        }
+    }
+
     &__details-container {
         max-width: 1510px;
         overflow: hidden;
@@ -221,6 +227,10 @@ $bookable-button-size:     41px;
             bottom: auto;
             right: -1px;
             margin-top: -1px;
+        }
+
+        .slick-arrow:hover {
+            background: $white;
         }
     }
 

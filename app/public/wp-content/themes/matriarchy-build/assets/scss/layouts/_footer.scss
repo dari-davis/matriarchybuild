@@ -97,5 +97,9 @@
             height: 22px;
             width: 22px;
         }
+
+        &:hover path {
+            fill: $olive;
+        }
     }
 }
