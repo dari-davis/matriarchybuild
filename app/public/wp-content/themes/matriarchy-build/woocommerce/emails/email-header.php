@@ -45,7 +45,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 									<table border="0" cellpadding="0" cellspacing="0" width="100%" id="template_header" style="background-color: #f7cbad;">
 										<tr>
 											<td id="header_wrapper" style="text-align: center;">
-												<a href="/"><img style="margin: 0;" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png"></a>
+												<a href="/"><img style="margin: 0;" src="https://d3k81ch9hvuctc.cloudfront.net/company/WG95tq/images/74e94b3e-24d8-4e98-b325-844fb41f7782.png"></a>
 											</td>
 										</tr>
 									</table>
