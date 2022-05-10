@@ -66,6 +66,8 @@ $staffAppointments = $wpdb->get_results("SELECT * FROM wp_bookly_appointments WH
 				// bookly appointment
 				$appointment = $wpdb->get_results('SELECT * FROM wp_bookly_appointments WHERE start_date="'.$apptTime.'";');
 				$appointmentId = $appointment[0]->id;
+				$customerAppointment = $wpdb->get_results('SELECT * FROM wp_bookly_customer_appointments WHERE appointment_id="'.$appointmentId.'";');
+				$status = $customerAppointment[0]->status;
 
 				// convert to pros timezone
 				$dateTime = date_format($startTime, 'M j, Y g:i a'); // appt date & time
@@ -109,7 +111,7 @@ $staffAppointments = $wpdb->get_results("SELECT * FROM wp_bookly_appointments WH
 		}
 	} ?>
 
-	<?php if (!empty($order)): ?>
+	<?php if (!empty($order) && $appointment && $status == 'approved'): ?>
 		<?php if (isset($data['items']) && !empty($serviceInfo) && $apptIsWhen == "future"): ?>
 			<div class="consultation-card consultation-card--<?= $apptIsWhen; ?> row mb-borders m-0 mb-4">
             <div class="col-6 col-lg consultation-card__yellow-bg p-3">

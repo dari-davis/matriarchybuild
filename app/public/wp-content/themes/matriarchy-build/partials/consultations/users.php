@@ -86,6 +86,8 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 
 					// Zoom
 					$appointment = $wpdb->get_results('SELECT * FROM wp_bookly_appointments WHERE start_date="'.$apptTime.'";');
+					$customerAppointment = $wpdb->get_results('SELECT * FROM wp_bookly_customer_appointments WHERE appointment_id="'.$appointment[0]->id.'";');
+					$status = $customerAppointment[0]->status;
 					if ($appointment) {
 						$zoomId = $appointment[0]->online_meeting_id;
 						$appointmentData = explode(",", $appointment[0]->online_meeting_data);
@@ -106,7 +108,7 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 		}
 		?>
 
-		<?php if ($order->get_status() != 'failed' && $appointment): ?>
+		<?php if ($order->get_status() != 'failed' && $appointment && $status == 'approved'): ?>
 			<?php foreach ($order->get_items() as $item_id => $item): ?>
 				<?php $data =  $item->get_meta("bookly"); ?>
 				<?php if (isset($data['items']) && !empty($serviceInfo) && ($apptIsWhen == 'future')): ?>
