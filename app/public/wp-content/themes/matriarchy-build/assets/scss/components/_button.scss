@@ -53,6 +53,14 @@
 
     &:after {
         background-image: url('../images/icons/arrow_white.svg');
+
+        .booking-card__action & {
+            background-image: url('../images/icons/arrow_blue.svg');
+        }
+    }
+
+    .booking-card__action & {
+        background: $yellow;
     }
 }
 

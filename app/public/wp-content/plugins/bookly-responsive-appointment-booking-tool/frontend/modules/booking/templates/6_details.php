@@ -15,7 +15,7 @@ echo Common::stripScripts( $progress_tracker );
 <div class="bookly-box bookly-guest bookly-js-guest">
     <h3 class="bookly-form__heading">Sign In</h3>
     <?php if ( Lib\Config::showLoginButton() ) : ?>
-        <button class="bookly-btn bookly-js-login-show ladda-button"><?php echo Common::getTranslatedOption( 'bookly_l10n_step_details_button_login' ) ?></button>
+        <button class="button button--secondary bookly-btn bookly-js-login-show ladda-button"><?php echo Common::getTranslatedOption( 'bookly_l10n_step_details_button_login' ) ?></button>
     <?php endif ?>
     <?php Proxy\Pro::renderFacebookButton() ?>
     
