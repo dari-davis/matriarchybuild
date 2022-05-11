@@ -30,7 +30,8 @@ a {
         color: $blue;
     }
 
-    p & {
+    p &,
+    .lost_password & {
         border-bottom: 1px solid $blue;
     }
 }
