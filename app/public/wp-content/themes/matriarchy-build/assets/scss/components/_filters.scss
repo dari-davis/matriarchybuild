@@ -133,6 +133,7 @@
         display: none;
         position: absolute;
         margin-top: -1px;
+        width: 100%;
         background: $yellow;
         border: 1px solid $blue;
         z-index: 1;
@@ -146,10 +147,6 @@
                 cursor: pointer;
                 background: $white;
             }
-        }
-
-        @include media-breakpoint-down(md) {
-            width: 100%;
         }
     }
 
