@@ -7,6 +7,23 @@
   <meta name="description" content="Built by Women. Built for Everyone. Matriarchy Build wants to empower you to take on your next project with confidence.">
   <meta name="p:domain_verify" content="ba15d92dd5d02f5fb6cf46d5be0e3149"/>
 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3W51537JVV"></script>
+  <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-3W51537JVV');</script>
+
+  <!-- Facebook Meta Tags -->
+  <meta property="og:url" content="https://matriarchybuild.com">
+  <meta property="og:title" content="Matriarchy Build – Built by Women. Built for Everyone.">
+  <meta property="og:description" content="Built by Women. Built for Everyone. Matriarchy Build wants to empower you to take on your next project with confidence.">
+  <meta property="og:image" content="https://matriarchybuild.com/og-image.png">
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="twitter:domain" content="matriarchybuild.com">
+  <meta property="twitter:url" content="https://matriarchybuild.com">
+  <meta name="twitter:title" content="Matriarchy Build – Built by Women. Built for Everyone.">
+  <meta name="twitter:description" content="Built by Women. Built for Everyone. Matriarchy Build wants to empower you to take on your next project with confidence.">
+  <meta name="twitter:image" content="https://matriarchybuild.com/og-image.png">
+
   <?php wp_head(); ?>
 </head>
 
