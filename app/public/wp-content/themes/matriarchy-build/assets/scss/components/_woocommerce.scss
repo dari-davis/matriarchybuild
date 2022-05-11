@@ -195,6 +195,8 @@
 .woocommerce-info,
 .woocommerce-message {
 	margin-bottom: 8px;
+	line-height: 30px;
+	background: $pink;
 
 	.woocommerce-checkout & {
 		margin-bottom: 30px;
