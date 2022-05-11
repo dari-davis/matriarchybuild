@@ -1360,6 +1360,10 @@ label.bookly-square {
         left: 0 !important;
     }
 
+    .picker__holder:focus {
+        outline: 0;
+    }
+
     .bookly-extra-step .bookly-extras-item {
         width: 50%;
     }

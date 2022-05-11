@@ -29,7 +29,7 @@
 							</div>
 							<div class="single-post__meta col-auto p-0 d-flex flex-column">
 								<span class="px-2"><?= the_category(' , '); ?></span>
-								<span class="px-2"><?= get_the_author(); ?></span>
+								<span class="px-2">by <?= get_the_author(); ?></span>
 							</div>
 						</div>
 					</div><!-- /.entry-meta -->
@@ -37,7 +37,7 @@
 			</div>
 
 			<div class="single-post__content">
-				<img class="d-none d-md-block" src="<?php echo get_template_directory_uri(); ?>/assets/images/scafolding-posts.png">
+				<img class="d-none d-lg-block" src="<?php echo get_template_directory_uri(); ?>/assets/images/scafolding-posts.png">
 				<div class="mb-borders mb-borders--pink">
 					<div class="single-post__content-inner mx-auto">
 						<?php if (get_field('content')) { echo get_field('content'); } ?>
@@ -46,7 +46,7 @@
 			</div>
 		</div>
 
-		<div id="post-<?php the_ID(); ?>" class="single-post__content-blocks mx-auto">
+		<div id="post-<?php the_ID(); ?>" class="single-post__content-blocks mx-auto mt-5 mt-lg-0">
 			<div class="col-12 p-0">
 				<?php the_content(); ?>
 			</div>

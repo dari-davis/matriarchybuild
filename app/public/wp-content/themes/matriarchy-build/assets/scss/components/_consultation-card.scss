@@ -11,7 +11,7 @@ $border:    1px solid $green;
         }
     }
 
-    .col-12 {
+    .col-12 + .col-12 {
         @include media-breakpoint-up(lg) {
             border-left: $border;
         }
@@ -34,11 +34,16 @@ $border:    1px solid $green;
     }
 
     &__pro {
-        display: table-caption;
-        font-size: 80px;
-        line-height: 75px;
+        font-size: 38px;
+        line-height: 36px;
         font-family: $heading-font-family;
         text-transform: uppercase;
+
+        @include media-breakpoint-up(lg) {
+            display: table-caption;
+            font-size: 80px;
+            line-height: 75px;
+        }
     }
 
     &__pro--customer {
