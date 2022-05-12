@@ -30,8 +30,6 @@
 <?php
 	$navbar_scheme   = get_theme_mod( 'navbar_scheme', 'navbar-light bg-light' ); // Get custom meta-value.
 	$navbar_position = get_theme_mod( 'navbar_position', 'static' ); // Get custom meta-value.
-
-	$search_enabled  = get_theme_mod( 'search_enabled', '1' ); // Get custom meta-value.
 ?>
 
 <body <?php body_class(); ?>>
@@ -47,6 +45,8 @@
     </div>
 
     <div class="header__nav col-md text-lg-center gx-0">
+    <div class="header__logo--sticky"><a href="/"><img data-no-lazy class="header__logo-image mx-auto" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-sticky.svg" alt="Matriarchy Build logo"></a></div>
+
       <div class="header__top row gx-0 invisible">
         <div class="header__nav-container col-lg-9">
           <div class="primary-nav pb-3 py-lg-0 mx-4 mx-lg-0">
@@ -65,6 +65,10 @@
           </div>
         </div>
 
+        <div class="header__search-container header__search-container--sticky row gx-0">
+        <?= get_template_part('partials/search'); ?>
+      </div>
+
         <div class="header__account <?php if (is_user_logged_in()): ?>header__account--signed-in <?php endif; ?>col-lg-3 pt-3 pb-2 py-lg-0 px-4 px-lg-0">
           <?php if (is_user_logged_in()): ?>
             <div class="header__account-link d-flex justify-content-lg-center align-items-lg-center flex-column">
@@ -81,36 +85,9 @@
           <?php endif; ?>
         </div>
       </div>
-  
+
       <div class="header__search-container row gx-0">
-        <a data-menu-icon class="header__hamburger col-auto p-0 me-3 me-lg-0 d-flex d-lg-none" href="/">
-          <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="1" y="1" width="20" height="19" stroke="#F7CBAD"/>
-            <line x1="5" y1="6.5" x2="17" y2="6.5" stroke="#F7CBAD"/>
-            <line x1="5" y1="10.5" x2="17" y2="10.5" stroke="#F7CBAD"/>
-            <line x1="5" y1="14.5" x2="17" y2="14.5" stroke="#F7CBAD"/>
-          </svg>
-        </a>
-        <a data-menu-icon class="header__hamburger col-auto p-0 me-3 me-lg-0 d-flex d-lg-none invisible" href="/">
-        <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="1" y="1" width="20" height="19" stroke="#F7CBAD"/>
-          <path d="M6 5L16 14.7308" stroke="#F7CBAD"/>
-          <path d="M16 5L6 14.7308" stroke="#F7CBAD"/>
-        </svg>
-        </a>
-        <div class="search col p-0">
-          <?php if ( '1' === $search_enabled ) : ?>
-            <form class="search-form my-lg-0 p-0" role="search" method="get"
-              action="<?php echo esc_url( home_url( '/' ) ); ?>">
-              <div class="input-group">
-                <input type="text" name="s" class="form-control"
-                  placeholder="<?php esc_attr_e( 'Search', 'matriarchy-build' ); ?>"
-                  title="<?php esc_attr_e( 'Search', 'matriarchy-build' ); ?>" />
-                <button type="submit" name="submit" aria-label="Search"><img data-no-lazy src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/search.svg" alt="Search icon"/></button>
-              </div>
-            </form>
-          <?php endif; ?>
-          </div>
+        <?= get_template_part('partials/search'); ?>
       </div>
     </div>
   </header>

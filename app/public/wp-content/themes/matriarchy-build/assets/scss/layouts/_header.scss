@@ -1,5 +1,6 @@
 .header {
     background: $blue;
+    transition: all 1s ease 0s;
 
     @include media-breakpoint-down(lg) {
         flex-direction: column-reverse;
@@ -42,6 +43,26 @@
             padding-left: $padding-small;
             padding-right: $padding-small;
         }
+
+        .sticky & {
+            display: none !important;
+        }
+
+        &--sticky {
+            display: none;
+
+            .sticky & {
+                padding-left: 24px;
+
+                @include media-breakpoint-up(lg) {
+                    display: inline-flex;
+                }
+
+                .logged-in & {
+                    padding-left: 40px;
+                }
+            }
+        }
     }
 
     &__logo-image {
@@ -81,6 +102,15 @@
                 visibility: visible !important;
             }             
         }
+
+        .sticky & {
+            display: inline-flex;
+            justify-content: end;
+            height: 100%;
+            margin-top: 0;
+            border: 0;
+
+        }
     } 
 
     &__nav {
@@ -95,6 +125,13 @@
             padding-left: $padding-small;
             padding-right: $padding-large;
         }
+
+        .sticky & {
+            display: flex;
+            padding: 0;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
     }
 
     &__nav-container {
@@ -106,6 +143,10 @@
         @include media-breakpoint-up(lg) {
             flex-direction: column;
             overflow: hidden;
+        }
+
+        .sticky & {
+            width: auto;
         }
     }
 
@@ -125,6 +166,26 @@
         .col-md-6 + .col-md-6 {
             border: 0;
         }
+
+        .sticky & {
+            display: flex;
+            flex-direction: row;
+            padding: 0 20px !important;
+            align-items: center;
+            width: auto;
+
+            @include media-breakpoint-up(xl) {
+                padding: 0 24px !important;
+            }
+        }
+    }
+
+    &__account--signed-in {
+        .sticky & {
+            @include media-breakpoint-up(lg) {
+                padding: 0 40px !important;
+            }
+        }
     }
 
     &__account-link {
@@ -134,9 +195,25 @@
             @include media-breakpoint-up(lg) {
                 border-top: 1px solid $pink;
             }
+
+            .sticky & {
+                padding-left: 20px;
+                margin-left: 20px;
+                border-top: 0;
+                border-left: 1px solid $pink;
+
+                @include media-breakpoint-up(xl) {
+                    margin-left: 40px;
+                    padding-left: 40px;
+                }
+            }
         }
 
         .header__account--signed-in & {
+            height: 100%;
+        }
+
+        .sticky & {
             height: 100%;
         }
     }
@@ -163,5 +240,33 @@
         @include media-breakpoint-up(lg) {
             padding: 16px 0 24px;
         }
+
+        .sticky & {
+            display: none;
+        }
+
+        &--sticky {
+            display: none;
+
+            .sticky & {
+                display: flex;
+                padding: 0 20px;
+                border-right: 1px solid $pink;
+                align-items: center;
+                width: 300px;
+
+                @include media-breakpoint-up(xl) {
+                    width: 360px;
+                }
+
+                .header__account--signed-in & {
+                    width: 320px;
+                }
+            }
+        }
+    }
+
+    &.sticky {
+        box-shadow: 0px 1px 5px 2px rgba(#333, 0.25);
     }
 }
