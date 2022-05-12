@@ -55,6 +55,10 @@
         &.faqs__active {
             border-bottom: 0;
         }
+
+        &:hover {
+            color: $olive;
+        }
     }
       
     &__panel {

@@ -94,11 +94,11 @@ $upload_dir = wp_upload_dir();
     <?php $user_id = $order->customer_id; ?>
     <?php if (isset($data['items']) && !empty($serviceInfo)): ?>
         <div class="consultation-card consultation-card--<?= $apptIsWhen; ?> row mb-borders m-0 mb-4">
-            <div class="col-6 col-lg consultation-card__yellow-bg p-3">
+            <div class="col-12 col-lg consultation-card__yellow-bg p-3">
                 <div class="consultation-card__detail mb-2"><?= $serviceInfo[0]->title;?></div>
                 <div class="consultation-card__pro consultation-card__pro--customer"><?= "$customerFName $customerLName"; ?></div>
             </div>
-            <div class="col-6 col-lg p-3">
+            <div class="col-12 col-lg p-3">
                 <div><?= $date; ?></div>
                 <div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
                 <?php if(!empty($zoomId) && $apptIsWhen == "future"): ?>
@@ -106,7 +106,7 @@ $upload_dir = wp_upload_dir();
                     <?php if ($password): ?><span class="consultation-card__zoom-passcode" class="my-2">Passcode: <?= $password; ?></span><?php endif; ?>
                 <?php endif; ?>
             </div>
-            <div class="col-12 col-lg p-3 d-flex justify-content-end">
+            <div class="col-12 col-lg p-3 d-flex justify-content-lg-end">
                 <div><?= wc_price($price); ?></div>
             </div>
         </div>

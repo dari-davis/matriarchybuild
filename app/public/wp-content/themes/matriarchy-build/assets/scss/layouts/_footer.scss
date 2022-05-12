@@ -79,6 +79,10 @@
     .nav-link {
         padding: 0;
         color: $blue;
+
+        &:hover {
+            color: $white;
+        }
     }
 
     &__social-menu {
@@ -92,6 +96,10 @@
         a, img {
             height: 22px;
             width: 22px;
+        }
+
+        &:hover path {
+            fill: $olive;
         }
     }
 }

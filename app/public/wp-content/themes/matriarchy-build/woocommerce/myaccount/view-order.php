@@ -95,12 +95,12 @@ foreach ($order->get_items() as $item_id => $item) {
 
 <?php if (isset($data['items']) && !empty($serviceInfo)): ?>
     <div class="consultation-card row mb-borders m-0 mb-4">
-        <div class="col-6 col-lg consultation-card__yellow-bg p-3">
+        <div class="col-12 col-lg consultation-card__yellow-bg p-3">
             <div class="consultation-card__detail mb-2"><?= $serviceInfo[0]->title;?></div>
             <div class="consultation-card__pro"><?= $staffName; ?></div>
             <div class="consultation-card__detail"><?= $staffTrade; ?></div>
         </div>
-        <div class="col-6 col-lg p-3">
+        <div class="col-12 col-lg p-3">
             <div><?= $date; ?></div>
             <div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
             <?php if(!empty($zoomId) && $apptIsWhen == "future"): ?>
@@ -108,7 +108,7 @@ foreach ($order->get_items() as $item_id => $item) {
                 <?php if ($password): ?><span class="consultation-card__zoom-passcode" class="my-2">Passcode: <?= $password; ?></span><?php endif; ?>
             <?php endif; ?>
         </div>
-        <div class="col-12 col-lg d-flex justify-content-end">
+        <div class="col-12 col-lg p-3 d-flex justify-content-lg-end">
             <div><?= wc_price($price); ?></div>
         </div>
         <div class="consultation-card__order row no-gutters m-0 py-2">
@@ -163,7 +163,7 @@ foreach ($order->get_items() as $item_id => $item) {
             <div class="pt-3 pt-md-5">
                 <h4 class="my-account__details-heading"><?php esc_html_e( 'Step 2: Upload Your Project Photos', 'woocommerce' ); ?></h4>
                 <hr class="mb-hr mb-hr--olive" />
-                <p>Add up to 5 photos. (Accepted file types: .jpg, .jpeg, .png, .gif, .bmp)</p>
+                <p>Add up to 10 photos. (Accepted file types: .jpg, .jpeg, .png, .gif, .bmp)</p>
             </div>
         </div>
     <?php endif; ?>
@@ -205,15 +205,11 @@ foreach ($order->get_items() as $item_id => $item) {
                 </div>
             <?php endif; ?>
 
-            <?php if ($apptIsWhen == "future"): ?>
+            <?php if ($apptIsWhen == "future" && $totalImageCount < 10): ?>
                 <div class="questionnaire questionnaire__photo-form p-4">
-                    <?php if ($totalImageCount < 5): ?>
-                        <?= do_shortcode('[forminator_form id="2228"]'); ?> <!-- production -->
-                        <!-- do_shortcode('[forminator_form id="1985"]'); ?> staging -->
-                        <!-- forminator_form_id="923" -->
-                    <?php else: ?>
-                        <p class="mb-0">Maximum number of uploads reached.</p>
-                    <?php endif; ?>
+                    <!-- do_shortcode('[forminator_form id="2228"]'); ?> production -->
+                    <?= do_shortcode('[forminator_form id="1985"]'); ?> <!-- staging -->
+                    <!-- forminator_form_id="923" -->
                 </div>
             <?php endif; ?>
         </div>

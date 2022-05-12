@@ -86,6 +86,8 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 
 					// Zoom
 					$appointment = $wpdb->get_results('SELECT * FROM wp_bookly_appointments WHERE start_date="'.$apptTime.'";');
+					$customerAppointment = $wpdb->get_results('SELECT * FROM wp_bookly_customer_appointments WHERE appointment_id="'.$appointment[0]->id.'";');
+					$status = $customerAppointment[0]->status;
 					if ($appointment) {
 						$zoomId = $appointment[0]->online_meeting_id;
 						$appointmentData = explode(",", $appointment[0]->online_meeting_data);
@@ -106,26 +108,26 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 		}
 		?>
 
-		<?php if ($order->get_status() != 'failed' && $appointment): ?>
+		<?php if ($order->get_status() != 'failed' && $appointment && $status == 'approved'): ?>
 			<?php foreach ($order->get_items() as $item_id => $item): ?>
 				<?php $data =  $item->get_meta("bookly"); ?>
 				<?php if (isset($data['items']) && !empty($serviceInfo) && ($apptIsWhen == 'future')): ?>
 					<div class="consultation-card consultation-card--<?= $apptIsWhen; ?> row m-0 mb-4">
-						<div class="col-6 col-lg consultation-card__yellow-bg p-3">
+						<div class="col-12 col-lg consultation-card__yellow-bg p-3">
 							<div class="consultation-card__detail mb-2"><?= $serviceInfo[0]->title;?></div>
 							<div class="consultation-card__pro"><?= $staffName; ?></div>
 							<div class="consultation-card__detail"><?= $staffTrade; ?></div>
 						</div>
-						<div class="col-6 col-lg p-3">
+						<div class="col-12 col-lg p-3">
 							<div><?= $date; ?></div>
 							<div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
 							<?php if(!empty($zoomId)): ?>
 								<a class="consultation-card__zoom-link badge badge-primary" href="<?= $joinUrl; ?>" target="_blank"><i class="fas fa-video fa-fw"></i> Zoom <i class="fas fa-external-link-alt fa-fw"></i></a>
 								<?php if ($password): ?><span class="consultation-card__zoom-passcode" class="my-2">Passcode: <?= $password; ?></span><?php endif; ?>
 							<?php endif; ?>
-							<div class="mt-4"><a class="text-button text-button--green" href="../view-order/<?= $order->get_id();?>?pid=<?= $order->get_id();?>">View Details</a></div>
+							<div><a class="text-button text-button--green" href="../view-order/<?= $order->get_id();?>?pid=<?= $order->get_id();?>">View Details</a></div>
 						</div>
-						<div class="col-12 col-lg p-3 d-flex justify-content-end">
+						<div class="col-12 col-lg p-3 d-flex justify-content-lg-end">
 							<div><?= wc_price($price); ?></div>
 						</div>
 					</div>

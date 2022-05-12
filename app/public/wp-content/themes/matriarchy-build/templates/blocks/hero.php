@@ -24,12 +24,12 @@
                 <div class="hero__buttons">
                     <?php if (have_rows('button_1')): ?>
                         <?php while( have_rows('button_1')): the_row(); ?>
-                            <a href="<?= get_sub_field('link'); ?>" class="hero__button button"><?= get_sub_field('text'); ?></a>
+                            <a href="<?= get_sub_field('link'); ?>" class="hero__button button button--tertiary"><?= get_sub_field('text'); ?></a>
                         <?php endwhile; ?>    
                     <?php endif; ?>
                     <?php if (have_rows('button_2')): ?>
                         <?php while( have_rows('button_2')): the_row(); ?>
-                            <a href="<?= get_sub_field('link'); ?>" class="hero__button button"><?= get_sub_field('text'); ?></a>
+                            <a href="<?= get_sub_field('link'); ?>" class="hero__button button button--tertiary"><?= get_sub_field('text'); ?></a>
                         <?php endwhile; ?>    
                     <?php endif; ?>
                 </div>

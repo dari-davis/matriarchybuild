@@ -30,7 +30,7 @@ $post_blocks = parse_blocks(get_the_content('', false, $faqPage));
                 <?php endif; ?>
             <?php endwhile; ?>
             <?php if ($args['style'] == 'mini'): ?>
-                <a href="<?= home_url('/faq'); ?>" class="button">View All</a>
+                <a href="<?= home_url('/faq'); ?>" class="button button--secondary mt-3">View All</a>
             <?php endif; ?>
         <?php endif; ?>
     </div>

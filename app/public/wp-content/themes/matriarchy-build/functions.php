@@ -867,7 +867,7 @@ function bbloomer_save_name_fields( $customer_id ) {
 add_action( 'woocommerce_thankyou', 'redirect_woo_checkout');
 function redirect_woo_checkout( $order_id ){
     $order = wc_get_order( $order_id );
-    $url = wc_get_account_endpoint_url("view-order/$order_id");
+    $url = wc_get_account_endpoint_url("view-order/$order_id/?pid=$order_id");
 
     if ( ! $order->has_status( 'failed' ) ) {
 		order_id_to_bookly($order_id);
@@ -901,7 +901,12 @@ function reordering_order_item_totals( $total_rows, $order, $tax_display ){
 
 // filters js
 add_action('wp_enqueue_scripts', function(){
-	wp_enqueue_script('main', get_template_directory_uri() . '/assets/js/filters.js', '', '', true);
+	wp_enqueue_script('filters', get_template_directory_uri() . '/assets/js/filters.js', '', '', true);
+
+	if (!wp_is_mobile()) {
+	wp_enqueue_script('sticky', get_template_directory_uri() . '/assets/js/sticky.js', '', '', true);
+	}
+
 });
 
 /**

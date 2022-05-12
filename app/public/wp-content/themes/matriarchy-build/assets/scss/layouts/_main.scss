@@ -2,6 +2,7 @@
     flex: 1 0 auto;
     margin-top: 33px;
     padding: 0;
+    overflow-x: hidden;
 
     @include media-breakpoint-up(lg) {
         margin-top: 56px;

@@ -133,5 +133,14 @@ $slick-arrow-height:    33px;
         &:after {
             background-image: url('../images/icons/arrow_pink.svg');
         }
+
+        &:hover {
+            color: $blue;
+            background: $pink;
+
+            &:after {
+                background-image: url('../images/icons/arrow_blue.svg');
+            }
+        }
     }
 }

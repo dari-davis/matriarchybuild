@@ -38,6 +38,10 @@ $bookable-button-size:     41px;
 
         &.bookable {
             background: $pink;
+
+            &:hover {
+                background: $olive;
+            }
         }
 
         @include media-breakpoint-up(md) {
@@ -108,6 +112,12 @@ $bookable-button-size:     41px;
                     border-bottom: 0;
                 }
             }
+        }
+    }
+
+    &__social-link:hover {
+        path {
+            fill: $olive;
         }
     }
 
@@ -218,6 +228,10 @@ $bookable-button-size:     41px;
             right: -1px;
             margin-top: -1px;
         }
+
+        .slick-arrow:hover {
+            background: $white;
+        }
     }
 
     &__services {
@@ -246,6 +260,7 @@ $bookable-button-size:     41px;
 
     &__service {
         padding: 0.35em 0;
+        font-weight: normal;
         line-height: 25px;
         border-top: 1px solid $olive;
 

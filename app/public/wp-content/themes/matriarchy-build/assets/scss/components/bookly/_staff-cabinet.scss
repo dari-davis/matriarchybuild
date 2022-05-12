@@ -22,6 +22,10 @@
             font-family: $font-family;
             text-decoration: underline;
         }
+
+        &:hover {
+            color: $olive !important;
+        }
     }
 
     #bookly-tbs &,

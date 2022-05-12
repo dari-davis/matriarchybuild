@@ -56,7 +56,15 @@ if ( ! is_ajax() ) {
 
         <div class="row">
             <div class="col-md-8">
-                <div class="form-row place-order">
+                <p class="form-row kl_newsletter_checkbox_field mb-3" id="kl_newsletter_checkbox_field" data-priority=""><span class="woocommerce-input-wrapper"><label class="checkbox ">
+					<input type="checkbox" class="input-checkbox " name="kl_newsletter_checkbox" id="kl_newsletter_checkbox" value="1"> Sign me up to receive news and email updates</label></span>
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-row place-order mb-0 mt-1">
                     <noscript>
                         <?php
                         /* translators: $1 and $2 opening and closing emphasis tags respectively */

@@ -46,11 +46,13 @@ do_action( 'woocommerce_before_account_payment_methods', $has_methods ); ?>
 							} elseif ( 'method' === $column_id ) {
 								if ( ! empty( $method['method']['last4'] ) ) {
 									/* translators: 1: credit card type 2: last 4 digits */
+									echo '<span class="d-md-none">Method:&nbsp;</span>';
 									echo sprintf( esc_html__( '%1$s ending in %2$s', 'woocommerce' ), esc_html( wc_get_credit_card_type_label( $method['method']['brand'] ) ), esc_html( $method['method']['last4'] ) );
 								} else {
 									echo esc_html( wc_get_credit_card_type_label( $method['method']['brand'] ) );
 								}
 							} elseif ( 'expires' === $column_id ) {
+								echo '<span class="d-md-none">Expires:&nbsp;</span>';
 								echo esc_html( $method['expires'] );
 							} elseif ( 'actions' === $column_id ) {
 								foreach ( $method['actions'] as $key => $action ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited

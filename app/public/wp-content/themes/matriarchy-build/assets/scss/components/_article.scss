@@ -8,10 +8,22 @@
         .related-articles & {
             border-color: $blue;
         }
+
+        &:hover {
+            .article__title {
+                color: $pink;
+            }
+        }
     }
 
     &__image-wrapper {
         overflow: hidden;
+
+        &:hover + .featured-pros__details {
+            .article__name {
+                color: $olive;
+            }
+        }
     }
 
     &__image-container {
@@ -57,6 +69,12 @@
         height: auto !important;
         font-size: 20px;
         font-family: $sans-serif-font-family;
+        color: $blue;
+
+        &:hover,
+        .article__details:hover & {
+            color: $olive;
+        }
     }
 
     &__terms {
@@ -132,6 +150,10 @@
         .diy-inspiration & {
             color: $pink;
         }
+    }
+
+    &__category a:hover {
+        color: $pink;
     }
 
     .featured-pros & {

@@ -15,7 +15,7 @@ echo Common::stripScripts( $progress_tracker );
 <div class="bookly-box bookly-guest bookly-js-guest">
     <h3 class="bookly-form__heading">Sign In</h3>
     <?php if ( Lib\Config::showLoginButton() ) : ?>
-        <button class="bookly-btn bookly-js-login-show ladda-button"><?php echo Common::getTranslatedOption( 'bookly_l10n_step_details_button_login' ) ?></button>
+        <button class="button button--secondary bookly-btn bookly-js-login-show ladda-button"><?php echo Common::getTranslatedOption( 'bookly_l10n_step_details_button_login' ) ?></button>
     <?php endif ?>
     <?php Proxy\Pro::renderFacebookButton() ?>
     
@@ -33,14 +33,22 @@ echo Common::stripScripts( $progress_tracker );
             <div class="bookly-form-group mb-2">
                 <label><?php echo Common::getTranslatedOption( 'bookly_l10n_label_first_name' ) ?></label>
                 <div>
-                    <input class="bookly-js-first-name" type="text" value="<?php echo esc_attr( $userData->getFirstName() ) ?>" placeholder="First Name"/>
+                    <?php if ($userData->getLastName() == ''): ?>
+                        <input class="bookly-js-first-name" type="text" value="<?php echo esc_attr( wp_get_current_user()->user_firstname ) ?>" placeholder="First Name"/>
+                    <?php else: ?>
+                        <input class="bookly-js-first-name" type="text" value="<?php echo esc_attr( $userData->getFirstName() ) ?>" placeholder="First Name"/>
+                    <?php endif; ?>
                 </div>
                 <div class="bookly-js-first-name-error bookly-label-error"></div>
             </div>
             <div class="bookly-form-group mb-2">
                 <label><?php echo Common::getTranslatedOption( 'bookly_l10n_label_last_name' ) ?></label>
                 <div>
-                    <input class="bookly-js-last-name" type="text" value="<?php echo esc_attr( $userData->getLastName() ) ?>" placeholder="Last Name"/>
+                    <?php if ($userData->getLastName() == ''): ?>
+                        <input class="bookly-js-last-name" type="text" value="<?php echo esc_attr( wp_get_current_user()->user_lastname ) ?>" placeholder="Last Name"/>
+                    <?php else: ?>
+                        <input class="bookly-js-last-name" type="text" value="<?php echo esc_attr( $userData->getLastName() ) ?>" placeholder="Last Name"/>
+                    <?php endif; ?>
                 </div>
                 <div class="bookly-js-last-name-error bookly-label-error"></div>
             </div>
@@ -90,7 +98,7 @@ echo Common::stripScripts( $progress_tracker );
     <?php Proxy\RecurringAppointments::renderInfoMessage( $userData ) ?>
 
     <div class="bookly-box bookly-nav-steps">
-        <button class="bookly-next-step bookly-js-next-step bookly-btn ladda-button" data-style="zoom-in" data-spinner-size="40">
+        <button class="bookly-next-step bookly-js-next-step bookly-btn ladda-button button button--secondary" data-style="zoom-in" data-spinner-size="40">
             <?php if (is_user_logged_in()): ?>
                 <span class="ladda-label">Continue to Checkout</span>
             <?php else: ?>
