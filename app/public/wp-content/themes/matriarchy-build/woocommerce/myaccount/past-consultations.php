@@ -87,7 +87,7 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 		}
 		?>
 
-		<?php $sixMonthsAgo = date('Y-m-d', strtotime('-7 days', strtotime($currentDateTime))); ?>
+		<?php $sixMonthsAgo = date('Y-m-d', strtotime('-6 months', strtotime($currentDateTime))); ?>
 		<?php $apptDate = date_format($startTime, 'Y-m-d'); ?>
 
 		<?php if ($order->get_status() != 'failed' && ($apptDate > $sixMonthsAgo)): ?>

@@ -92,7 +92,7 @@ $staffAppointments = $wpdb->get_results("SELECT * FROM wp_bookly_appointments WH
 		}
 	} ?>
 
-	<?php $sixMonthsAgo = date('Y-m-d', strtotime('-7 days', strtotime($currentDateTime))); ?>
+	<?php $sixMonthsAgo = date('Y-m-d', strtotime('-6 months', strtotime($currentDateTime))); ?>
 	<?php $apptDate = date_format($startTime, 'Y-m-d'); ?>
 
 	<?php if (!empty($order) && ($apptDate > $sixMonthsAgo)): ?>
