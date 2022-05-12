@@ -58,4 +58,4 @@
 })(jQuery);
 
 // Call the plugin
-$('#header').stickToTop(200);
+//$('#header').stickToTop(200);
