@@ -45,6 +45,8 @@
     </div>
 
     <div class="header__nav col-md text-lg-center gx-0">
+    <div class="header__logo--sticky"><a href="/"><img data-no-lazy class="header__logo-image mx-auto" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-sticky.svg" alt="Matriarchy Build logo"></a></div>
+
       <div class="header__top row gx-0 invisible">
         <div class="header__nav-container col-lg-9">
           <div class="primary-nav pb-3 py-lg-0 mx-4 mx-lg-0">

@@ -1,5 +1,6 @@
 .header {
     background: $blue;
+    transition: all 1s ease 0s;
 
     @include media-breakpoint-down(lg) {
         flex-direction: column-reverse;
@@ -46,6 +47,18 @@
         .sticky & {
             display: none !important;
         }
+
+        &--sticky {
+            display: none;
+
+            .sticky & {
+                padding-left: 40px;
+
+                @include media-breakpoint-up(lg) {
+                    display: inline-flex;
+                }
+            }
+        }
     }
 
     &__logo-image {
@@ -87,7 +100,9 @@
         }
 
         .sticky & {
-            justify-content: space-between;
+            display: inline-flex;
+            justify-content: end;
+            height: 100%;
             margin-top: 0;
             border: 0;
 
@@ -105,6 +120,13 @@
         @include media-breakpoint-up(lg) {
             padding-left: $padding-small;
             padding-right: $padding-large;
+        }
+
+        .sticky & {
+            display: flex;
+            padding: 0;
+            align-items: flex-start;
+            justify-content: space-between;
         }
     }
 
@@ -140,6 +162,14 @@
         .col-md-6 + .col-md-6 {
             border: 0;
         }
+
+        .sticky & {
+            display: flex;
+            flex-direction: row;
+            padding: 0 40px !important;
+            align-items: center;
+            width: auto;
+        }
     }
 
     &__account-link {
@@ -149,9 +179,20 @@
             @include media-breakpoint-up(lg) {
                 border-top: 1px solid $pink;
             }
+
+            .sticky & {
+                padding-left: 40px;
+                margin-left: 40px;
+                border-top: 0;
+                border-left: 1px solid $pink;
+            }
         }
 
         .header__account--signed-in & {
+            height: 100%;
+        }
+
+        .sticky & {
             height: 100%;
         }
     }
@@ -188,8 +229,14 @@
 
             .sticky & {
                 display: flex;
+                padding: 0 24px;
+                border-right: 1px solid $pink;
                 align-items: center;
-                width: 360px;
+                width: 320px;
+
+                @include media-breakpoint-up(xl) {
+                    width: 360px;
+                }
             }
         }
     }
