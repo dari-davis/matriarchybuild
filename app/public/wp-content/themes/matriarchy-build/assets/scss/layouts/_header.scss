@@ -52,10 +52,14 @@
             display: none;
 
             .sticky & {
-                padding-left: 40px;
+                padding-left: 24px;
 
                 @include media-breakpoint-up(lg) {
                     display: inline-flex;
+                }
+
+                .logged-in & {
+                    padding-left: 40px;
                 }
             }
         }
@@ -166,9 +170,21 @@
         .sticky & {
             display: flex;
             flex-direction: row;
-            padding: 0 40px !important;
+            padding: 0 20px !important;
             align-items: center;
             width: auto;
+
+            @include media-breakpoint-up(xl) {
+                padding: 0 24px !important;
+            }
+        }
+    }
+
+    &__account--signed-in {
+        .sticky & {
+            @include media-breakpoint-up(lg) {
+                padding: 0 40px !important;
+            }
         }
     }
 
@@ -181,10 +197,15 @@
             }
 
             .sticky & {
-                padding-left: 40px;
-                margin-left: 40px;
+                padding-left: 20px;
+                margin-left: 20px;
                 border-top: 0;
                 border-left: 1px solid $pink;
+
+                @include media-breakpoint-up(xl) {
+                    margin-left: 40px;
+                    padding-left: 40px;
+                }
             }
         }
 
@@ -229,15 +250,23 @@
 
             .sticky & {
                 display: flex;
-                padding: 0 24px;
+                padding: 0 20px;
                 border-right: 1px solid $pink;
                 align-items: center;
-                width: 320px;
+                width: 300px;
 
                 @include media-breakpoint-up(xl) {
                     width: 360px;
                 }
+
+                .header__account--signed-in & {
+                    width: 320px;
+                }
             }
         }
+    }
+
+    &.sticky {
+        box-shadow: 0px 1px 5px 2px rgba(#333, 0.25);
     }
 }

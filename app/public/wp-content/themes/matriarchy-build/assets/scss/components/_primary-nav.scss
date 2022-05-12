@@ -62,8 +62,8 @@
             padding-right: 20px;
 
             .sticky & {
-                font-size: 28px;
-                line-height: 26px;
+                font-size: 26px;
+                line-height: 24px;
             }
         }
 
@@ -72,7 +72,14 @@
             line-height: 32px;
 
             .sticky & {
+                padding-left: 30px;
+                padding-right: 30px;
                 font-size: 28px;
+
+                .logged-in & {
+                    padding-left: 40px;
+                    padding-right: 40px;
+                }
             }
         }
     }
