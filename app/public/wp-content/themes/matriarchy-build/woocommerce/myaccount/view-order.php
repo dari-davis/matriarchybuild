@@ -145,7 +145,10 @@ foreach ($order->get_items() as $item_id => $item) {
         </div>
     <?php endif; ?>
 
-    <?php if( get_post_meta($order_id, 'answer1', true)): ?>
+    <?php $hasAnswers = false; $answers = ['answer3', 'answer2', 'answer3', 'answer4', 'answer5', 'answer6']; ?>
+    <?php foreach($answers as $answer) { if( get_post_meta($order_id, $answer, true)) { $hasAnswers = true; }} ?>
+
+    <?php if ($hasAnswers): ?>
         <?= get_template_part('partials/questionnaire-answers', null, array('orderId' => $order_id)); ?>
     <?php else: ?>
         <?php if ($apptIsWhen == "future"): ?>
