@@ -7,9 +7,6 @@
   <meta name="description" content="Built by Women. Built for Everyone. Matriarchy Build wants to empower you to take on your next project with confidence.">
   <meta name="p:domain_verify" content="ba15d92dd5d02f5fb6cf46d5be0e3149"/>
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3W51537JVV"></script>
-  <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-3W51537JVV');</script>
-
   <?php wp_head(); ?>
 </head>
 

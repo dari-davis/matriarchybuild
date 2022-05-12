@@ -1,0 +1,20 @@
+.bookly-form,
+.bookly-box {
+    display: none;
+
+    .ui-dialog & {
+        display: block;
+    }
+}
+
+.ui-dialog.booking-dialog {
+    display: block;
+    margin: 0 2.5%;
+    max-width: 95%;
+
+    @include media-breakpoint-up(lg) {
+        margin: 0 auto;
+        min-width: 800px;
+        max-width: 90%;
+    }
+}

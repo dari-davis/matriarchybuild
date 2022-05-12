@@ -1,0 +1,147 @@
+.button,
+.ladda-button {
+    height: 60px;
+    color: $blue;
+    font-size: 16px;
+    font-weight: normal;
+    width: 100%;
+    background: $pink;
+    border: 1px solid $olive;
+    border-radius: 0;
+
+    &:after {
+        content: '';
+        display: inline-flex;
+        margin-left: 8px;
+        height: 8px;
+        width: 24px;
+        background-image: url('../images/icons/arrow_blue.svg');
+        background-repeat: no-repeat;
+    }
+
+    &:hover {
+        background-color: $pink;
+        border-color: $blue;
+    }
+}
+
+a.button--text,
+button.button--text {
+    color: $blue;
+}
+
+.woocommerce button.button,
+.woocommerce input.button,
+.woocommerce a.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $blue;
+    font-weight: normal;
+    background-color: $pink;
+    border: 1px solid $olive;
+    border-radius: 0;
+
+    &:after {
+        background-image: url('../images/icons/arrow_white.svg');
+    }
+
+    &:hover {
+        background: $pink;
+        color: $blue;
+    }
+}
+
+.woocommerce button.button.alt,
+.woocommerce input.button.alt,
+.woocommerce a.button.alt {
+    color: $pink;
+    font-weight: normal;
+    background-color: $blue;
+    border: 1px solid $olive;
+    border-radius: 0;
+
+    &:after {
+        content: '';
+        display: inline-flex;
+        margin-left: 8px;
+        height: 8px;
+        width: 24px;
+        background-image: url('../images/icons/arrow_white.svg');
+        background-repeat: no-repeat;
+    }
+
+    &:hover {
+        color: $pink;
+        background: $blue;
+    }
+}
+
+#bookly-tbs {
+
+    .bookly-button.ladda-button.btn.btn-danger,
+    .bookly-button.ladda-button.btn.btn-default {
+        padding: 0 24px;
+        width: auto;
+        height: 60px;
+        color: $blue;
+        font-family: $font-family;
+        font-weight: normal;
+        background-color: $olive;
+        border: 0;
+        border-radius: 0;
+        -webkit-appearance: none;
+
+        &#bookly-js-special-days-delete-all:after {
+            display: none;
+        }
+
+        &#bookly-js-special-days-save-days {
+            background-color: $pink;
+
+            &:after {
+                background-image: url('../images/icons/arrow_blue.svg');
+            }
+        }
+
+        &:after {
+            background-image: url('../images/icons/arrow_white.svg');
+        }
+
+        &#bookly-schedule-save,
+        &#bookly-services-save {
+            color: $pink !important;
+            background-color: $blue !important;
+        }
+    }
+
+    .bookly-button.ladda-button.btn.btn-success,
+    .ladda-button.btn.btn-success {
+        padding: 0 24px;
+        width: auto;
+        height: 60px;
+        color: $pink;
+        font-family: $font-family;
+        font-weight: normal;
+        background-color: $blue;
+        border: 0;
+        border-radius: 0;
+        -webkit-appearance: none;
+
+        &:after {
+            background-image: url('../images/icons/arrow_white.svg');
+        }
+    }
+
+    &#bookly-schedule-save,
+    &#bookly-services-save {
+        color: $pink !important;
+        background-color: $blue !important;
+    }
+
+}
+
+#bookly-tbs .btn-success, #bookly-tbs .daterangepicker.show-calendar .drp-buttons .btn-primary {
+    color: $pink;
+    background-color: $blue !important;
+}

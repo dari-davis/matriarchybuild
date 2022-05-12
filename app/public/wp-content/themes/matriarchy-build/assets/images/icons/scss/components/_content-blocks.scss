@@ -1,0 +1,28 @@
+.content-blocks {
+    max-width: $max-content-width;
+
+    &__wrapper {
+        padding: 0 $padding-small;
+        margin: 0 auto;
+        max-width: 1006px;
+
+        @include media-breakpoint-up(md) {
+            padding: 0 $padding-medium;
+        }
+
+        .pro-application &,
+        .newsletter &,
+        .hero &,
+        .diy-carousel & {
+            max-width: $max-content-width;
+        }
+    }
+}
+
+.page__content-blocks,
+.single-post__content-blocks {
+    h1, h2, h3, h4, h5, h5 {
+        margin: 0 auto;
+        max-width: 1010px;
+    }
+}

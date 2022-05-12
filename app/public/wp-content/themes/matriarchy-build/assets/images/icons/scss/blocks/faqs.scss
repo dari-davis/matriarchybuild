@@ -1,0 +1,44 @@
+.faqs {
+    &__question {
+        background: transparent;
+        cursor: pointer;
+        color: $blue;
+        font-size: 16px;
+        padding: 16px 0;
+        width: 100%;
+        text-align: left;
+        border: none;
+        outline: none;
+        transition: 0.4s;
+        border-bottom: 1px solid $olive;
+
+        &:before {
+            content: '';
+            display: inline-flex;
+            margin-right: 16px;
+            height: 8px;
+            width: 24px;
+            background-image: url('../images/icons/arrow_blue.svg');
+            background-repeat: no-repeat;
+        }
+    }
+      
+    &__panel {
+        padding: 16px 40px;
+        display: none;
+        overflow: hidden;
+        font-family: $sans-serif-font-family;
+        font-size: 20px;
+        line-height: 25px;
+    }
+    
+    &__active:before {
+        transform: rotate(90deg);
+    }
+
+    .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

@@ -1,0 +1,14 @@
+.bookly-btn {
+    text-decoration: none;
+}
+
+.bookly-btn[disabled] {
+    opacity: 0.5;
+}
+
+.bookly-form .bookly-btn+input[type=file] {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    display: block;
+}

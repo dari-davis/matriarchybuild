@@ -1,0 +1,45 @@
+.questionnaire {
+    background: rgba($olive, 0.2);
+
+    &__label {
+        font-size: 14px;
+    }
+
+    .form-group {
+        border-bottom: 1px solid $olive;
+
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+
+    &__answer {
+        font-family: $font-family-sans-serif;
+        font-weight: bold;
+    }
+
+    &__image {
+        position: relative;
+        max-width: 94px;
+    }
+
+    &__photos {
+        background: rgba($olive, 0.2);
+    }
+
+    &__photo-form .form-group {
+        border-bottom: 0;
+    }
+
+    &__remove-button {
+        padding: 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 24px;
+        width: 24px;
+        background: transparent;
+        border: 0;
+        -webkit-appearance: none;
+    }
+}

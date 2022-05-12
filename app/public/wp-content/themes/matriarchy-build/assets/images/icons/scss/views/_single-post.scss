@@ -1,0 +1,191 @@
+.single-post {
+    
+    .main p {
+        font-size: 20px;
+        line-height: 130%;
+    }
+
+    &__image-wrapper {
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        overflow: hidden;
+        width: 100%;
+        height: 350px;
+        background-size: cover;
+        background-position: 50%;
+
+        @include media-breakpoint-up(md) {
+            height: 760px;
+            overflow: hidden;
+            background-color: rgba($olive, 0.2);
+        }
+    }
+
+    &__featured-image {
+        height: auto !important;
+    }
+
+    &__content-wrapper {
+        flex-direction: column;
+        padding: 0 $padding-small;
+        margin-top: $margin-top-medium;
+
+        @include media-breakpoint-up(md) {
+            margin-top: $margin-top-large;
+            margin-bottom: $margin-bottom;
+            padding: 0 $padding-medium;
+            flex-direction: row;
+            align-items: start;
+        }
+
+        @include media-breakpoint-up(lg) {
+            margin-top: $margin-top-large;
+            padding: 0 $padding-large;
+        }
+
+        @include media-breakpoint-up(xl) {
+            flex-direction: row;
+            margin-top: 124px;
+            align-items: start;
+        }
+    }
+
+    &__title-container {
+        display: flex;
+    }
+
+    &__title {
+        flex-direction: column;
+        justify-content: center;
+        font-size: 38px;
+        color: $blue;
+        height: 191px;
+        line-height: normal;
+        background: $white;
+
+        @include media-breakpoint-up(md) {
+            border-right: 0;
+        }
+    
+        @include media-breakpoint-up(lg) {
+            width: 344px;
+            height: 193px;
+            border-left: 0;
+        }
+    }
+
+    &__content {
+
+        @include media-breakpoint-up(lg) {
+            margin: 0 0 3rem -1px;
+            width: 834px;
+        }
+
+        .mb-borders {
+            background: $white;
+
+            @include media-breakpoint-up(md) {
+                border-top: 0;
+            }
+        }
+    }
+
+    &__content-inner {
+        padding: $padding-medium 44px;
+        font-family: $sans-serif-font-family;
+        font-size: 20px;
+        font-weight: bold;
+
+        @include media-breakpoint-up(md) {
+            padding: $padding-large 44px;
+            max-width: 664px;
+        }
+    }
+
+    &__date {
+        width: 120px;
+        border: 1px solid $pink;
+
+        span {
+            padding: 0 12px;
+            line-height: 33px;
+            border-right: 1px solid $pink;
+
+            .archives & {
+                border-color: $olive;
+            }
+        }
+
+        @include media-breakpoint-up(lg) {
+            border-width: 0 1px 1px;
+        }
+
+        .archives & {
+            height: 33px;
+            border-right: 0;
+            border-color: $olive;
+
+            span:last-child {
+                border-right: 0;
+            }
+        }
+    }
+
+    &__meta {
+        flex: 1;
+        margin-top: 33px;
+        border: 1px solid $pink;
+
+        span + span {
+            border-top: 1px solid $pink;
+
+            .archives & {
+                border-color: $olive;
+            }
+        }
+
+        @include media-breakpoint-down(md) {
+            border-bottom: 0;
+        }
+
+        @include media-breakpoint-up(md) {
+            border-right: 0;
+        }
+
+        .archives & {
+            padding-top: 33px !important;
+            margin-top: 0;
+            border: 1px solid $olive;
+            border-top: 0;
+
+            span {
+                border-top: 1px solid $olive;
+            }
+        }
+    }
+
+    .entry-meta {
+        margin-top: -1px;
+
+        span {
+            height: 33px;
+            line-height: 33px;
+            background: $white;
+        }
+
+        .row {
+            align-items: flex-start;
+        }
+
+        @include media-breakpoint-up(lg) {
+            margin-left: 174px;
+        }
+    }
+
+    &__content-blocks {
+        padding: 0 $padding-small;
+        max-width: $max-content-width;
+        font-family: $sans-serif-font-family;
+    }
+}

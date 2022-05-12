@@ -1,11 +1,10 @@
 .faqs {
     margin: 0 auto;
-    padding: $padding-large $padding-small;
+    padding: $padding-large 0;
     max-width: 664px;
-    box-sizing: content-box;
 
     @include media-breakpoint-up(md) {
-        padding: 90px 0;
+        padding: 90px $padding-medium;
     }
 
     &--page {

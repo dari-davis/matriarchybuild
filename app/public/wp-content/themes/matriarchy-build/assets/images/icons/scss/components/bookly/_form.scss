@@ -1,0 +1,136 @@
+$picker-date-size: 35px;
+
+.bookly-form {
+    background: $yellow;
+
+    &--simple {
+        background: transparent;
+    }
+
+    .bookly-slim & {
+        margin: 0 auto;
+        max-width: 360px;
+    }
+
+    &__heading {
+        padding-bottom: 8px;
+        margin-bottom: 16px;
+        border-bottom: 1px solid $olive;
+    }
+
+    .picker--opened {
+        .picker__holder {
+            color: $blue;
+            background: transparent;
+            border: 0;
+            box-shadow: none;
+        }
+    }
+
+    &__time-date {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid $olive;
+
+        .bookly-js-time-zone-switcher {
+            color: $blue;
+            border: 0 !important;
+            background: transparent;
+        }
+    }
+
+    #service-info {
+        display: none;
+    }
+
+    .intl-tel-input {
+        display: none !important;
+    }
+
+    input[type="text"].bookly-js-selected-date {
+        width: 150px !important;
+        background: transparent;
+        border: 0 !important;
+    }
+
+    .picker__day {
+
+        &.picker__day--selected,
+        &.picker__day--infocus {
+            margin: 0 auto;
+            padding: 0;
+            height: $picker-date-size;
+            width: $picker-date-size;
+            line-height: $picker-date-size;
+            text-align: center;
+            border-radius: 50% !important;
+        }
+
+        &.picker__day--infocus {
+            background: $pink !important;
+        }
+
+        &.picker__day--infocus.picker__day--selected {
+            background: $blue !important;
+        }
+
+        &.picker__day--infocus.picker__day--disabled,
+        &.picker__day--disabled {
+            opacity: 1;
+            color: $blue !important;
+            background: transparent !important;
+        }
+    }
+
+    .bookly-columnizer .bookly-hour {
+        display: block;
+        margin-bottom: 8px;
+        width: 100%;
+        height: 34px;
+        background: $pink !important;
+        border: 0 !important;
+        border-radius: 4px;
+
+        span {
+            color: $blue !important;
+        }
+
+        .bookly-hour-icon {
+            display: none;
+        }
+
+        &:hover {
+            .bookly-hour-icon {
+                display: none;
+            }
+        }
+    }
+
+    .bookly-js-cst-duplicate {
+        display: none;
+    }
+}
+
+.bookly-form-group label {
+    height: 0;
+    font-size: 0;
+    position: absolute;
+    visibility: hidden;
+}
+
+#bookly-tbs .custom-control-input:checked~.custom-control-label::before {
+    border-color: $blue;
+    background-color: $blue;
+}
+
+#bookly-tbs .custom-control-label {
+    color: $green;
+}
+
+#bookly-tbs .form-control {
+    font-size: 14px;
+    height: 35px;
+    width: 152px;
+    border: 1px solid $olive;
+    border-radius: 0;
+}

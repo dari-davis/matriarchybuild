@@ -1,0 +1,30 @@
+.bookly-time-step {
+    display: inline-flex;
+    margin-bottom: 30px;
+    padding: 8px 16px;
+    width: 100%;
+    overflow-y: auto;
+
+    @include media-breakpoint-up(md) {
+        padding: 0;
+        width: 246px;
+    }
+
+    .bookly-columnizer-wrap {
+        position: relative;
+        width: 100%;
+    }
+
+    .bookly-time-screen {
+        .bookly-day.bookly-js-first-child {
+            display: none;
+        }
+    }
+}
+
+.bookly-column {
+    display: inline-block;
+    zoom: 1;
+    vertical-align: top;
+    width: 100%;
+}

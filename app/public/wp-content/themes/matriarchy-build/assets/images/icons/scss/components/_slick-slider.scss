@@ -1,0 +1,121 @@
+.slick-slide {
+    .pro__image-inner & {
+        border: 1px solid $blue;
+        overflow: hidden;
+
+        @include media-breakpoint-down(md) {
+            border-width: 1px 0;
+        }
+
+        @include media-breakpoint-up(md) {
+            border-width: 1px 1px 1px 0;
+        }
+
+        @include media-breakpoint-up(xl) {
+
+            border-width: 1px 0 1px 1px;
+        }
+    }
+}
+
+.slick-prev, .slick-next {
+    .pro__image-inner & {
+        left: auto;
+        right: auto;
+        position: absolute;
+        bottom: 0;
+        top: auto;
+    }
+}
+
+.slick-prev {
+    .pro__image-inner & {
+        right: -43px;
+    }
+}
+
+.slick-next {
+    .pro__image-inner & {
+        right: -86px;
+    }
+}
+
+.slick-arrow {
+    border: 0;
+    height: 33px;
+    width: 40px;
+    line-height: 25px;
+    float: left;
+    border: 1px solid $blue;
+    background: transparent;
+
+    &:after {
+        content: '';
+        display: inline-flex;
+        height: 8px;
+        width: 24px;
+        background-image: url('../images/icons/arrow_blue.svg');
+        background-repeat: no-repeat;
+    }
+
+    &.prev:after {
+        transform: rotate(180deg);
+    }
+
+    @include media-breakpoint-down(md) {
+        background: $white;
+
+        .diy-carousel & {
+            width: 50%;
+            background: $blue;
+        }
+    }
+
+    .diy-carousel & {
+        border-color: $pink;
+        border-width: 0 0 0 1px;
+        background: $blue;
+
+        @include media-breakpoint-down(md) {
+            height: 50px;
+        }
+
+        @include media-breakpoint-up(md) {
+            border-width: 1px 0 0 1px;
+        }
+
+        &:after {
+            background-image: url('../images/icons/arrow_pink.svg');
+        }
+    }
+
+    &.slick-hidden {
+        height: 0;
+        line-height: 0;
+    }
+
+    .bookly-js-holidays__arrows & {
+        width: 50px;
+        border: 0;
+        background: rgba($olive, 0.02);
+
+        &:after {
+            height: 16px;
+            background-image: url('../images/icons/chevron.svg');
+        }
+    }
+}
+
+.slick-arrow + .slick-arrow {
+    .pro__arrows & {
+        @include media-breakpoint-up(md) {
+            border-left: 0;
+        }
+    }
+
+    .diy-carousel & {
+        @include media-breakpoint-up(md) {
+            border-width: 1px 1px 0 1px;
+        }
+    }
+}

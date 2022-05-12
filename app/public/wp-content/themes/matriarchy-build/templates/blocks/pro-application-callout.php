@@ -6,7 +6,7 @@
 ?>
 
 <div class="pro-application callout">
-    <div class="callout__wrapper mx-auto d-flex flex-column flex-md-row">
+    <div class="content-blocks__wrapper mx-auto d-flex flex-column flex-md-row">
         <div class="row gx-0">
             <div class="d-flex col-md-4">
                 <div class="callout__scafolding col-3 d-md-none"></div>

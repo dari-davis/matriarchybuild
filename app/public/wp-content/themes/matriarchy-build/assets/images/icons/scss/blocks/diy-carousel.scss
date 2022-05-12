@@ -1,0 +1,132 @@
+$slick-arrow-height:    33px;
+
+.diy-carousel {
+    background-size: cover;
+
+    &__scafolding {
+        height: calc(100% - 50px);
+        border: 1px solid $pink;
+        background: linear-gradient(to top right, transparent calc(50% - 1px), $pink, transparent calc(50% + 1px));
+
+        &--left {
+            margin-top: $slick-arrow-height;
+            height: 191px;
+
+            .diy-carousel--slider & {
+                margin-top: $slick-arrow-height * 2; // button height
+            }
+        }
+
+        &--right {
+            height: 512px;
+        }
+    }
+
+    &__articles {
+        position: relative;
+        border-color: $pink;
+
+        @include media-breakpoint-up(md) {
+            margin-top: $slick-arrow-height;
+            max-width: 344px;
+            border: 0;
+        }
+
+        .diy-carousel--slider & {
+            @include media-breakpoint-up(md) {
+                margin-top: $slick-arrow-height; // button height
+            }
+        }
+    }
+
+    &__slides {
+        .diy-carousel--slider & {
+            margin-top: 52px; // button + border;
+        }
+
+        @include media-breakpoint-up(md) {
+            border: 1px solid $pink;
+            border-width: 1px 0 1px 1px;
+
+            .diy-carousel--slider & {
+                margin-top: $slick-arrow-height; // button height
+            }
+        }
+    }
+
+    &__arrows {
+        position: absolute;
+        top: 0;
+        z-index: 1;
+
+        @include media-breakpoint-down(md) {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+
+            .diy-carousel--slider & {
+                border-top: 1px solid $pink;
+            }
+        }
+
+        @include media-breakpoint-up(md) {
+            bottom: auto;
+            right: -1px;
+            margin-top: -1px;
+        }
+    }
+
+    &__post {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: calc(191px + 50px); // button
+        text-align: center;
+
+        @include media-breakpoint-up(md) {
+            border-width: 1px 0;
+        }
+    }
+
+    &__name {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: $padding-small;
+        height: 191px;
+        font-family: $heading-font-family;
+        font-size: 38px;
+        line-height: 36px;
+        text-transform: uppercase;
+
+        @include media-breakpoint-up(md) {
+            padding: $padding-medium;
+        }
+
+        @include media-breakpoint-up(lg) {
+            padding: $padding-medium;
+            font-size: 38px;
+            line-height: 36px;
+        }
+    }
+
+    &__title {
+        max-width: 224px;
+        margin: 0 auto;
+        background: $white;
+    }
+
+    &__button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        color: $pink;
+        background: $blue;
+        border: 0;
+
+        &:after {
+            background-image: url('../images/icons/arrow_pink.svg');
+        }
+    }
+}

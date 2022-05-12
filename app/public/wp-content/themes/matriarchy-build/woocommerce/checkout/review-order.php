@@ -35,7 +35,9 @@ foreach ( WC()->cart->get_cart() as $wc_key => $wc_item ) {
 	$serviceInfo = $wpdb->get_results('SELECT * FROM wp_bookly_services WHERE id="'.$serviceId.'";');
 
 	// appointment time and date
+	//var_dump($wc_item['bookly']['items'][0]);
 	$unixTime = strtotime($wc_item['bookly']['items'][0]['slots'][0][2]);
+	//var_dump($wc_item['bookly']['items'][0]['slots'][0][2]);
 	$date = date('M j, Y', $unixTime);
 	$UTCTime = date('g:i a', $unixTime);
 

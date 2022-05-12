@@ -1,0 +1,20 @@
+.bookly-box {
+    background: $white;
+
+    &__details {
+        border: 1px solid $olive;
+        border-width: 1px 0;
+
+        .bookly-box & .col-6 {
+            border-right: 0;
+        }
+    }
+
+    .col-6 {
+        border-right: 1px solid $olive;
+
+        &+& {
+            border-right: 0;
+        }
+    }
+}

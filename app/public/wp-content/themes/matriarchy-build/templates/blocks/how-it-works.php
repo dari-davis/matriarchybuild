@@ -10,10 +10,10 @@ if (is_archive('pro')) { $activeBackgroundColor = get_field('active_step_backgro
 ?>
 
 <div class="how-it-works <?php if ($page): ?>how-it-works--page <?php endif; ?>d-lg-flex flex-column<?php if (!$page): ?> content-block" style="background-color: <?= $backgroundColor; ?>;<?php endif; ?>">
-    <div class="how-it-works__container <?php if ($page): ?>d-md-flex flex-column flex-lg-row<?php else: ?>d-lg-flex<?php endif; ?>">
-        <div class="how-it-works__header row col-11 col-md-5 col-lg-4 gx-0">
-            <div class="how-it-works__scafolding col-3 col-lg-6" data-no-lazy></div>
-            <div class="how-it-works__heading col-6 mb-borders d-flex justify-content-center align-items-center"><h2 class="m-0">How It Works</h2></div>
+    <div class="how-it-works__container <?php if ($page): ?>d-md-flex flex-column flex-xl-row align-items-lg-end align-items-xl-start<?php else: ?>d-xl-flex<?php endif; ?>">
+        <div class="how-it-works__header row col-11 col-md-5 <?php if ($page): ?>col-lg-6<?php else: ?>col-lg-4<?php endif; ?> gx-0">
+            <div class="how-it-works__scafolding col-3 <?php if ($page): ?>col-lg-4<?php else: ?>col-lg-6<?php endif; ?>" data-no-lazy></div>
+            <div class="how-it-works__heading col-6 <?php if ($page): ?>col-lg-8<?php endif; ?> mb-borders d-flex justify-content-center align-items-center"><h2 class="m-0">How It Works</h2></div>
             <div class="how-it-works__arrows col-2 d-flex flex-column flex-lg-row<?php if($page): ?> d-none<?php endif; ?>">
                 <button class="how-it-works__prev prev" aria-label="Previous" type="button"></button>
                 <button class="how-it-works__next next" aria-label="Next" type="button"></button>
@@ -41,7 +41,7 @@ if (is_archive('pro')) { $activeBackgroundColor = get_field('active_step_backgro
                 <?php endwhile; ?>
             <?php endif; ?>
             <?php if ($page): ?>
-                <div class="row gx-0"><a class="button justify-content-center align-items-center d-flex" href="<?= home_url('/pro'); ?>">Find a Pro<a></div>
+                <div class="row gx-0"><a class="button button--secondary justify-content-center align-items-center d-flex" href="<?= home_url('/pro'); ?>">Find a Pro</a></div>
             <?php endif; ?>
         </div>
     </div>
