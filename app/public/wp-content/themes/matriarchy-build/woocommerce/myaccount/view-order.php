@@ -122,12 +122,15 @@ foreach ($order->get_items() as $item_id => $item) {
 
 <div class="row no-gutters m-0">
 
+    <?php $hasAnswers = false; $answers = ['answer3', 'answer2', 'answer3', 'answer4', 'answer5', 'answer6']; ?>
+    <?php foreach($answers as $answer) { if( get_post_meta($order_id, $answer, true)) { $hasAnswers = true; }} ?>
+
     <div class="col-md-8 p-0">
         <div class="pt-md-5">
             <h2><?php esc_html_e( 'Project Details', 'woocommerce' ); ?></h2>
             <hr class="mb-hr mb-hr--olive" />
         </div>
-        <?php if (get_post_meta($order_id, 'answer1', true)): ?>
+        <?php if ($hasAnswers): ?>
             <p>Your project details will be available for 6 months after your consultation.<p>
         <?php elseif ($apptIsWhen == "future"): ?>
             <p>We strongly recommend completing your pre-consultation questionnaire and submitting all relevant photos to your Pro prior to your session.</p>
@@ -144,9 +147,6 @@ foreach ($order->get_items() as $item_id => $item) {
             </div>
         </div>
     <?php endif; ?>
-
-    <?php $hasAnswers = false; $answers = ['answer3', 'answer2', 'answer3', 'answer4', 'answer5', 'answer6']; ?>
-    <?php foreach($answers as $answer) { if( get_post_meta($order_id, $answer, true)) { $hasAnswers = true; }} ?>
 
     <?php if ($hasAnswers): ?>
         <?= get_template_part('partials/questionnaire-answers', null, array('orderId' => $order_id)); ?>

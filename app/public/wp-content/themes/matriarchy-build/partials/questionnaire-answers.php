@@ -31,10 +31,10 @@
             <p class="questionnaire__answer"><?= get_post_meta($order_id, 'answer5', true); ?></p>
         </div>
     </div>
-    <div class="form-group row py-3 mx-3">
-        <div class="questionnaire__label col-sm-4 col-form-label p-0 pe-md-3">To share large files please list any relevant links for your Pro (Example: Dropbox, Google Doc, Pinterest Board.)</div>
-        <div class="col-sm-8">
-            <p class="questionnaire__answer m-0"><?= get_post_meta($order_id, 'answer6', true); ?></p>
+    <div class="form-group row py-3 m-0">
+        <div class="questionnaire__label col-sm-4 col-form-label p-0">To share large files please list any relevant links for your Pro (Example: Dropbox, Google Doc, Pinterest Board.)</div>
+        <div class="col-sm-8 ps-md-4 px-0 py-2">
+            <p class="questionnaire__answer"><?= get_post_meta($order_id, 'answer6', true); ?></p>
         </div>
     </div>
 </div>
