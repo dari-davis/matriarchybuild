@@ -901,7 +901,12 @@ function reordering_order_item_totals( $total_rows, $order, $tax_display ){
 
 // filters js
 add_action('wp_enqueue_scripts', function(){
-	wp_enqueue_script('main', get_template_directory_uri() . '/assets/js/filters.js', '', '', true);
+	wp_enqueue_script('filters', get_template_directory_uri() . '/assets/js/filters.js', '', '', true);
+
+	if (!wp_is_mobile()) {
+	wp_enqueue_script('sticky', get_template_directory_uri() . '/assets/js/sticky.js', '', '', true);
+	}
+
 });
 
 /**
