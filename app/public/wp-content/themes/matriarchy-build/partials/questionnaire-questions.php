@@ -12,6 +12,7 @@
         $order->update_meta_data('answer3', $_POST["question3"]);
         $order->update_meta_data('answer4', $_POST["question4"]);
         $order->update_meta_data('answer5', $_POST["question5"]);
+        $order->update_meta_data('answer6', $_POST["question6"]);
         $order->save();
     }
     if (isset($_POST['submit'])) { submitQuestionnaire($order_id); } ?>
@@ -46,6 +47,12 @@
                 <label for="question5" class="questionnaire__label col-sm-4 col-form-label p-0 pe-sm-3 mb-3 mb-md-0">Do you have any questions you’d like your Pro to be prepared to address in your session? Are there any additional notes for your Pro?</label>
                 <div class="col-sm-8 px-0 px-md-3">
                     <textarea class="form-control" rows="6" id="question5" name="question5"></textarea>
+                </div>
+            </div>
+            <div class="form-group row py-3 mx-3">
+                <label for="question6" class="questionnaire__label col-sm-4 col-form-label p-0 pe-sm-3 mb-3 mb-md-0">To share large files please list any relevant links for your Pro (Example: Dropbox, Google Doc, Pinterest Board.)</label>
+                <div class="col-sm-8 px-0 px-md-3">
+                    <textarea class="form-control" rows="6" id="question6" name="question6"></textarea>
                 </div>
             </div>
             <div class="d-flex p-3"><input type="submit" value="Save" name="submit" class="w-auto button alt"></div>

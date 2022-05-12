@@ -165,7 +165,11 @@ $upload_dir = wp_upload_dir();
                 <h2><?php esc_html_e( 'Project Details', 'woocommerce' ); ?></h2>
                 <hr class="mb-hr mb-hr--olive" />
             </div>
-            <?php if (!empty(get_post_meta($order_id, 'answer1', true))): ?>
+
+            <?php $hasAnswers = false; $answers = ['answer3', 'answer2', 'answer3', 'answer4', 'answer5', 'answer6']; ?>
+            <?php foreach($answers as $answer) { if( get_post_meta($order_id, $answer, true)) { $hasAnswers = true; }} ?>
+
+            <?php if ($hasAnswers): ?>
                 <p>Get acquainted with the project details by reviewing the images and/or questionnaire answers below.</p>
             <?php else: ?>
                 <?php if ($apptIsWhen == "past"): ?>
@@ -209,7 +213,7 @@ $upload_dir = wp_upload_dir();
             </div>
         <?php endif; ?>
         
-        <?php if( get_post_meta($order_id, 'answer1', true)): ?>
+        <?php if($hasAnswers): ?>
             <?= get_template_part('partials/questionnaire-answers', null, array('orderId' => $order_id)); ?>
         <?php endif; ?>
     </div>
