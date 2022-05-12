@@ -92,7 +92,10 @@ $staffAppointments = $wpdb->get_results("SELECT * FROM wp_bookly_appointments WH
 		}
 	} ?>
 
-	<?php if (!empty($order)): ?>
+	<?php $sixMonthsAgo = date('Y-m-d', strtotime('-7 days', strtotime($currentDateTime))); ?>
+	<?php $apptDate = date_format($startTime, 'Y-m-d'); ?>
+
+	<?php if (!empty($order) && ($apptDate > $sixMonthsAgo)): ?>
 		<?php if (isset($data['items']) && !empty($serviceInfo) && $apptIsWhen == "past"): ?>
 			<div class="consultation-card consultation-card--<?= $apptIsWhen; ?> row mb-borders m-0 mb-4">
 				<div class="col-12 col-lg consultation-card__yellow-bg p-3">
