@@ -141,16 +141,6 @@ foreach ($order->get_items() as $item_id => $item) {
 
     <div class="hidden" id="uploads"></div>
 
-    <?php if ($apptIsWhen == "future"): ?>
-        <div class="col-md-8 p-0">
-            <div class="pt-3 pt-md-5">
-                <h4 class="my-account__details-heading"><?php esc_html_e( 'Step 2: Upload Your Project Photos', 'woocommerce' ); ?></h4>
-                <hr class="mb-hr mb-hr--olive" />
-                <p>Add up to 10 photos. (Accepted file types: .jpg, .jpeg, .png, .gif, .bmp)</p>
-            </div>
-        </div>
-    <?php endif; ?>
-
     <div class="photos__section p-0 mb-5 mb-md-0">
         <?php $entries = $wpdb->get_results('SELECT entry_id FROM wp_frmt_form_entry_meta WHERE meta_value="'.$order_id.'";');
               $totalImageCount = 0; ?>
@@ -170,12 +160,15 @@ foreach ($order->get_items() as $item_id => $item) {
         <?php endif; ?>
     <?php endif; ?>
 
-    <div class="col-md-8 p-0">
-        <div class="pt-md-5">
-            <h4 class="my-account__details-heading"><?php esc_html_e( 'Step 2: Upload Your Project Photos', 'woocommerce' ); ?></h4>
-            <hr class="mb-hr mb-hr--olive" />
+    <?php if ($apptIsWhen == "future"): ?>
+        <div class="col-md-8 p-0">
+            <div class="pt-3 pt-md-5">
+                <h4 class="my-account__details-heading"><?php esc_html_e( 'Step 2: Upload Your Project Photos', 'woocommerce' ); ?></h4>
+                <hr class="mb-hr mb-hr--olive" />
+                <p>Add up to 10 photos. (Accepted file types: .jpg, .jpeg, .png, .gif, .bmp)</p>
+            </div>
         </div>
-    </div>
+    <?php endif; ?>
 
     <div class="photos__section p-0">
         <?php $photos = $wpdb->get_results('SELECT entry_id FROM wp_frmt_form_entry_meta WHERE meta_value="'.$order_id.'";'); ?>
