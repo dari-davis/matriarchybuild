@@ -172,7 +172,6 @@ if (strpos($_SERVER['HTTP_REFERER'], 'checkout')) { WC()->cart->empty_cart(); }
                       });
                     }
                   });
-                  return false;
                 });
               });
             </script>
