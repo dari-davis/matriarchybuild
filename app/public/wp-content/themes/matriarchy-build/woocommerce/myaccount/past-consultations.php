@@ -91,7 +91,7 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 		<?php $apptDate = date_format($startTime, 'Y-m-d'); ?>
 
 		<?php if ($order->get_status() != 'failed' && ($apptDate > $sixMonthsAgo)): ?>
-			<?php if (isset($data['items']) && !empty($serviceInfo)): ?>
+			<?php if (isset($data['items']) && !empty($serviceInfo) && $apptIsWhen == 'past'): ?>
 				<div class="consultation-card consultation-card--<?= $apptIsWhen; ?> row mb-borders m-0 mb-4">
 					<div class="col-12 col-lg consultation-card__yellow-bg p-3">
 						<div class="consultation-card__detail mb-2"><?= $serviceInfo[0]->title;?></div>
