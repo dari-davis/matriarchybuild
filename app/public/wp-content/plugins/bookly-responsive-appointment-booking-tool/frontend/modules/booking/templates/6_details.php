@@ -33,22 +33,14 @@ echo Common::stripScripts( $progress_tracker );
             <div class="bookly-form-group mb-2">
                 <label><?php echo Common::getTranslatedOption( 'bookly_l10n_label_first_name' ) ?></label>
                 <div>
-                    <?php if ($userData->getLastName() == ''): ?>
-                        <input class="bookly-js-first-name" type="text" value="<?php echo esc_attr( wp_get_current_user()->user_firstname ) ?>" placeholder="First Name"/>
-                    <?php else: ?>
-                        <input class="bookly-js-first-name" type="text" value="<?php echo esc_attr( $userData->getFirstName() ) ?>" placeholder="First Name"/>
-                    <?php endif; ?>
+                    <input class="bookly-js-first-name" type="text" value="<?php echo esc_attr( $userData->getFirstName() ) ?>" placeholder="First Name"/>
                 </div>
                 <div class="bookly-js-first-name-error bookly-label-error"></div>
             </div>
             <div class="bookly-form-group mb-2">
                 <label><?php echo Common::getTranslatedOption( 'bookly_l10n_label_last_name' ) ?></label>
                 <div>
-                    <?php if ($userData->getLastName() == ''): ?>
-                        <input class="bookly-js-last-name" type="text" value="<?php echo esc_attr( wp_get_current_user()->user_lastname ) ?>" placeholder="Last Name"/>
-                    <?php else: ?>
-                        <input class="bookly-js-last-name" type="text" value="<?php echo esc_attr( $userData->getLastName() ) ?>" placeholder="Last Name"/>
-                    <?php endif; ?>
+                    <input class="bookly-js-last-name" type="text" value="<?php echo esc_attr( $userData->getLastName() ) ?>" placeholder="Last Name"/>
                 </div>
                 <div class="bookly-js-last-name-error bookly-label-error"></div>
             </div>
