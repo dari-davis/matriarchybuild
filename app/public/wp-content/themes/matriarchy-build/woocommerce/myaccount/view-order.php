@@ -130,11 +130,7 @@ foreach ($order->get_items() as $item_id => $item) {
             <h2><?php esc_html_e( 'Project Details', 'woocommerce' ); ?></h2>
             <hr class="mb-hr mb-hr--olive" />
         </div>
-        <?php if ($hasAnswers): ?>
-            <p>Your project details will be available for 6 months after your consultation.<p>
-        <?php elseif ($apptIsWhen == "future"): ?>
-            <p>We strongly recommend completing your pre-consultation questionnaire and submitting all relevant photos to your Pro prior to your session.</p>
-        <?php else: ?>
+        <?php if ($apptIsWhen == "past" && !$hasAnswers): ?>
             <p>No questionnaire was submitted for this consultation.</p>
         <?php endif; ?>
     </div>
@@ -145,12 +141,14 @@ foreach ($order->get_items() as $item_id => $item) {
         <?php $entries = $wpdb->get_results('SELECT entry_id FROM wp_frmt_form_entry_meta WHERE meta_value="'.$order_id.'";');
               $totalImageCount = 0; ?>
 
-    <div class="col-md-8 p-0">
-        <div class="pt-md-5">
-            <h4 class="my-account__details-heading"><?php esc_html_e( 'Step 1: Fill Out Your Questionnaire', 'woocommerce' ); ?></h4>
-            <hr class="mb-hr mb-hr--olive" />
+    <?php if ($apptIsWhen == "future"): ?>
+        <div class="col-md-8 p-0">
+            <div class="pt-md-5">
+                <h4 class="my-account__details-heading"><?php esc_html_e( 'Step 1: Fill Out Your Questionnaire', 'woocommerce' ); ?></h4>
+                <hr class="mb-hr mb-hr--olive" />
+            </div>
         </div>
-    </div>
+    <?php endif; ?>
 
     <?php if($hasAnswers): ?>
         <?= get_template_part('partials/questionnaire-answers', null, array('orderId' => $order_id)); ?>
@@ -165,111 +163,114 @@ foreach ($order->get_items() as $item_id => $item) {
             <div class="pt-3 pt-md-5">
                 <h4 class="my-account__details-heading"><?php esc_html_e( 'Step 2: Upload Your Project Photos', 'woocommerce' ); ?></h4>
                 <hr class="mb-hr mb-hr--olive" />
-                <p>Add up to 10 photos. (Accepted file types: .jpg, .jpeg, .png, .gif, .bmp)</p>
+                <p>Add up to 10 photos. Please note maximum file size of 20 MB. (Accepted file types: .jpg, .jpeg, .png, .gif, .bmp)</p>
+            </div>
+        </div>
+
+        <div class="photos__section p-0">
+            <?php $photos = $wpdb->get_results('SELECT entry_id FROM wp_frmt_form_entry_meta WHERE meta_value="'.$order_id.'";'); ?>
+            <div class="photos__content">
+                <?php if ($entries): ?>
+                    <div class="questionnaire__photos mb-4">
+                        <div class="questionnaire--attachments p-4 d-flex row gx-3">
+                            <?php foreach($entries as $entry): ?>
+                                <?php $photos = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$entry->entry_id.'"');
+                                    $filepath = explode("file_path", $photos[0]->meta_value);
+                                    $images = explode("/uploads", $filepath[1]); ?>
+
+                                <?php foreach($images as $image): ?>
+                                    <?php $src = str_replace('"', '', explode(";i:", $image)[0]);
+
+                                    if (strpos($src, ';') !== false) { $path = substr($src, 0, strpos($src, ';'));
+                                    } else { $path = $src; }
+                                    
+                                    $image = $upload_dir['baseurl'] . $path;
+                                    $attachment = attachment_url_to_postid($image); ?>
+
+                                    <?php if ($attachment > 0): ?>
+                                        <div class="questionnaire__image col-3 mb-3" data-photo-id="<?= $attachment; ?>">
+                                            <a class="questionnaire__image-link d-block" href="#" data-slick-index="<?= $totalImageCount; ?>">
+                                                <div class="questionnaire__overlay"></div>
+                                                <img data-no-lazy src="<?= $image; ?>"/>
+                                            </a>
+                                            <?php $totalImageCount++; ?>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($apptIsWhen == "future" && $totalImageCount < 10): ?>
+                    <div class="questionnaire questionnaire__photo-form p-4">
+                        <?= do_shortcode('[forminator_form id="923"]'); ?>
+                        <!-- forminator_form_id="923" -->
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     <?php endif; ?>
-
-    <div class="photos__section p-0">
-        <?php $photos = $wpdb->get_results('SELECT entry_id FROM wp_frmt_form_entry_meta WHERE meta_value="'.$order_id.'";'); ?>
-        <div class="photos__content">
-            <?php if ($entries): ?>
-                <div class="questionnaire__photos mb-4">
-                    <div class="questionnaire--attachments p-4 d-flex row gx-3">
-                        <?php foreach($entries as $entry): ?>
-                            <?php $photos = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$entry->entry_id.'"');
-                                  $filepath = explode("file_path", $photos[0]->meta_value);
-                                  $images = explode("/uploads", $filepath[1]); ?>
-
-                            <?php foreach($images as $image): ?>
-                                <?php $src = str_replace('"', '', explode(";i:", $image)[0]);
-
-                                if (strpos($src, ';') !== false) { $path = substr($src, 0, strpos($src, ';'));
-                                } else { $path = $src; }
-                                
-                                $image = $upload_dir['baseurl'] . $path;
-                                $attachment = attachment_url_to_postid($image); ?>
-
-                                <?php if ($attachment > 0): ?>
-                                    <div class="questionnaire__image col-3 mb-3" data-photo-id="<?= $attachment; ?>">
-                                        <a class="questionnaire__image-link d-block" href="#" data-slick-index="<?= $totalImageCount; ?>">
-                                            <div class="questionnaire__overlay"></div>
-                                            <img data-no-lazy src="<?= $image; ?>"/>
-                                        </a>
-                                        <?php $totalImageCount++; ?>
-                                    </div>
-                                <?php endif; ?>
-                            <?php endforeach; ?>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-            <?php endif; ?>
-
-            <?php if ($apptIsWhen == "future" && $totalImageCount < 10): ?>
-                <div class="questionnaire questionnaire__photo-form p-4">
-                    <?= do_shortcode('[forminator_form id="2329"]'); ?>
-                    <!-- forminator_form_id="923" -->
-                </div>
-            <?php endif; ?>
-        </div>
-    </div>
 
     <script>
     if (window.history.replaceState) {window.history.replaceState(null, null, window.location.href);}
     </script>
 
-    <?php wp_enqueue_script( 'jquery-ui-dialog' ); ?>
+    <?php if ($apptIsWhen == "future"): ?>
 
-    <div class="photos__dialog p-0 mx-md-auto" id="dialog">
-        <?php foreach($entries as $entry): ?>
-            <?php $photos = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$entry->entry_id.'"');
-                $filepath = explode("file_path", $photos[0]->meta_value);
-                $images = explode("/uploads", $filepath[1]); array_shift($images);?>
+        <?php wp_enqueue_script( 'jquery-ui-dialog' ); ?>
 
-            <?php foreach($images as $image): ?>
-                <?php $src = str_replace('"', '', explode(";i:", $image)[0]);
+        <div class="photos__dialog p-0 mx-md-auto" id="dialog">
+            <?php foreach($entries as $entry): ?>
+                <?php $photos = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$entry->entry_id.'"');
+                    $filepath = explode("file_path", $photos[0]->meta_value);
+                    $images = explode("/uploads", $filepath[1]); array_shift($images);?>
 
-                if (strpos($src, ';') !== false) { $path = substr($src, 0, strpos($src, ';'));
-                } else { $path = $src; }
-                
-                $image = $upload_dir['baseurl'] . $path; ?>
+                <?php foreach($images as $image): ?>
+                    <?php $src = str_replace('"', '', explode(";i:", $image)[0]);
 
-                <div class="photos__image d-flex justify-content-center align-items-center">
-                    <div class="photos__image-container">
-                        <div class="image-inner">
-                            <img data-no-lazy src="<?= $image; ?>"/>
+                    if (strpos($src, ';') !== false) { $path = substr($src, 0, strpos($src, ';'));
+                    } else { $path = $src; }
+                    
+                    $image = $upload_dir['baseurl'] . $path; ?>
+
+                    <div class="photos__image d-flex justify-content-center align-items-center">
+                        <div class="photos__image-container">
+                            <div class="image-inner">
+                                <img data-no-lazy src="<?= $image; ?>"/>
+                            </div>
                         </div>
-                    </div>
-                </div>    
+                    </div>    
+                <?php endforeach; ?>
             <?php endforeach; ?>
-        <?php endforeach; ?>
-    </div>
+        </div>
 
-    <script>
-    var $ = jQuery.noConflict(),
-        $dialog = $('#dialog');
-    $(document).ready(function($) {
-        $dialog.slick({
-            infinite: true,
-            slidesToShow: 1,
-            variableWidth: true
-        });
-
-        $('.questionnaire__image-link').on('click', function(e) {
-            $dialog.slick('slickGoTo', $(this).attr('data-slick-index'));
-
-            $dialog.dialog({
-                maxWidth: 800,
-                height: 'auto',
-                width: 'auto',
-                classes: {
-                    'ui-dialog': 'photos-dialog'
-                }
+        <script>
+        var $ = jQuery.noConflict(),
+            $dialog = $('#dialog');
+        $(document).ready(function($) {
+            $dialog.slick({
+                infinite: true,
+                slidesToShow: 1,
+                variableWidth: true
             });
+
+            $('.questionnaire__image-link').on('click', function(e) {
+                $dialog.slick('slickGoTo', $(this).attr('data-slick-index'));
+
+                $dialog.dialog({
+                    maxWidth: 800,
+                    height: 'auto',
+                    width: 'auto',
+                    classes: {
+                        'ui-dialog': 'photos-dialog'
+                    }
+                });
+            });
+        
         });
-       
-    });
-    </script>
+        </script>
+    <?php endif; ?>
 
     <?php if ($apptIsWhen == "future"): ?>
         <?= get_template_part('partials/image-uploads', null, array('orderId' => $order_id, 'imageCount' => count($images))); ?>
