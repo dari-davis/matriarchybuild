@@ -55,7 +55,7 @@
                     <textarea class="form-control" rows="3" id="question6" name="question6"></textarea>
                 </div>
             </div>
-            <div class="d-flex p-3"><input type="submit" value="Save" name="submit" class="w-auto button alt"></div>
+            <div class="d-flex p-3 align-items-center"><input type="submit" value="Save" name="submit" class="w-auto button alt"><p class="ms-4 mb-0">Please submit your questionnaire before starting Step 2.</p></div>
         </div>
     <?php endif; ?>
 </form>
