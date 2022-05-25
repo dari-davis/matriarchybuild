@@ -169,48 +169,55 @@ $upload_dir = wp_upload_dir();
             <?php $hasAnswers = false; $answers = ['answer3', 'answer2', 'answer3', 'answer4', 'answer5', 'answer6']; ?>
             <?php foreach($answers as $answer) { if( get_post_meta($order_id, $answer, true)) { $hasAnswers = true; }} ?>
 
-            <?php if ($hasAnswers): ?>
-                <p>Get acquainted with the project details by reviewing the images and/or questionnaire answers below.</p>
-            <?php else: ?>
-                <?php if ($apptIsWhen == "past"): ?>
+            <?php if ($apptIsWhen == "past"): ?>
+                <?php if ($hasAnswers): ?>
+                    <p>Get acquainted with the project details by reviewing the questionnaire answers below.</p>
+                <?php else: ?>
                     <p>No questionnaire was submitted for this consultation.</p>
+                <?php endif; ?>
+            <?php else: ?>
+                <?php if ($hasAnswers): ?>
+                    <p>Get acquainted with the project details by reviewing the images and/or questionnaire answers below.</p>
                 <?php else: ?>
                     <p>A questionnaire has not yet been submitted for this consultation.</p>
                 <?php endif; ?>
             <?php endif; ?>
         </div>
 
-        <?php $entries = $wpdb->get_results('SELECT entry_id FROM wp_frmt_form_entry_meta WHERE meta_value="'.$order_id.'";');
-              $totalImageCount = 0; ?>
+        <?php if ($apptIsWhen == "future"): ?>
 
-        <?php if ($entries): ?>
-            <div class="questionnaire questionnaire--photos p-4 mb-4 d-flex row gx-3">
-                <?php foreach($entries as $entry): ?>
-                    <?php $photos = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$entry->entry_id.'"');
-                        $filepath = explode("file_path", $photos[0]->meta_value);
-                        $images = explode("/uploads", $filepath[1]); ?>
+            <?php $entries = $wpdb->get_results('SELECT entry_id FROM wp_frmt_form_entry_meta WHERE meta_value="'.$order_id.'";');
+                $totalImageCount = 0; ?>
 
-                    <?php foreach($images as $image): ?>
-                        <?php $src = str_replace('"', '', explode(";i:", $image)[0]);
+            <?php if ($entries): ?>
+                <div class="questionnaire questionnaire--photos p-4 mb-4 d-flex row gx-3">
+                    <?php foreach($entries as $entry): ?>
+                        <?php $photos = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$entry->entry_id.'"');
+                            $filepath = explode("file_path", $photos[0]->meta_value);
+                            $images = explode("/uploads", $filepath[1]); ?>
 
-                        if (strpos($src, ';') !== false) { $path = substr($src, 0, strpos($src, ';'));
-                        } else { $path = $src; }
-                        
-                        $image = $upload_dir['baseurl'] . $path;
-                        $attachment = attachment_url_to_postid($image); ?>
+                        <?php foreach($images as $image): ?>
+                            <?php $src = str_replace('"', '', explode(";i:", $image)[0]);
 
-                        <?php if ($attachment > 0): ?>
-                            <div class="questionnaire__image col-3 mb-3" data-photo-id="<?= $attachment; ?>">
-                                <a class="questionnaire__image-link d-block" href="#" data-slick-index="<?= $totalImageCount; ?>">
-                                    <div class="questionnaire__overlay"></div>
-                                    <img data-no-lazy src="<?= $image; ?>"/>
-                                </a>
-                                <?php $totalImageCount++; ?>
-                            </div>
-                        <?php endif; ?>
-                    <?php endforeach; ?>
-                <?php endforeach; ?> 
-            </div>
+                            if (strpos($src, ';') !== false) { $path = substr($src, 0, strpos($src, ';'));
+                            } else { $path = $src; }
+                            
+                            $image = $upload_dir['baseurl'] . $path;
+                            $attachment = attachment_url_to_postid($image); ?>
+
+                            <?php if ($attachment > 0): ?>
+                                <div class="questionnaire__image col-3 mb-3" data-photo-id="<?= $attachment; ?>">
+                                    <a class="questionnaire__image-link d-block" href="#" data-slick-index="<?= $totalImageCount; ?>">
+                                        <div class="questionnaire__overlay"></div>
+                                        <img data-no-lazy src="<?= $image; ?>"/>
+                                    </a>
+                                    <?php $totalImageCount++; ?>
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    <?php endforeach; ?> 
+                </div>
+            <?php endif; ?>
         <?php endif; ?>
         
         <?php if($hasAnswers): ?>
