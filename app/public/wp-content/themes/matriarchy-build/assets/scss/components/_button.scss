@@ -1,14 +1,14 @@
 .button,
 .ladda-button,
 .forminator-button {
-    height: 60px !important;
-    color: $blue !important;
-    font-size: 16px !important;
+    height: 60px;
+    color: $blue;
+    font-size: 16px;
     font-family: $font-family;
     font-weight: normal;
     width: 100%;
-    background: $pink !important;
-    border: 1px solid $olive !important;
+    background: $pink;
+    border: 1px solid $olive;
     border-radius: 0;
 
     &:after {
@@ -44,6 +44,13 @@
     .booking-card__action & {
         border: 0;
     }
+}
+
+.forminator-button {
+    background: $pink !important;
+    border: 1px solid $olive !important;
+    color: $blue !important;
+    font-size: 16px !important;
 }
 
 .button--secondary {
