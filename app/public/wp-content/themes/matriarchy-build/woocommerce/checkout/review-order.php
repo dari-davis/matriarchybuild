@@ -91,21 +91,23 @@ foreach ( WC()->cart->get_cart() as $wc_key => $wc_item ) {
 	<div class="col-md p-0 mb-5">
 		<div class="woocommerce-form-coupon" method="post">
 			<div>
-				<input type="text" name="coupon_code" class="coupon-form-input input-text" placeholder="<?php esc_attr_e( 'Gift or Promo Code', 'woocommerce' ); ?>" id="coupon_code" value="" />
+				<input type="text" name="coupon_code" class="coupon-form-input input-text" placeholder="<?php esc_attr_e( 'Gift or Coupon Code', 'woocommerce' ); ?>" id="coupon_code" value="" />
 				<a class="coupon-form-submit text-button text-button--green" name="apply_coupon" value="<?php esc_attr_e( 'Apply', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply coupon', 'woocommerce' ); ?></a>
 			</div>
 		</div>
 	</div>
-	<div class="col-md p-0 d-flex justify-content-md-end align-items-center total">
+	<div class="col-md p-0 d-flex justify-content-md-end align-items-start total">
 		<div class="row gx-0">
-			<div class="col-12 d-flex justify-content-md-end align-items-center">
-				<?php foreach ( WC()->cart->get_coupons() as $code => $coupon ) : ?>
-					<div class="cart-discount coupon-<?php echo esc_attr( sanitize_title( $code ) ); ?> mt-3">
-						<p class="mb-1 text-md-end"><?php wc_cart_totals_coupon_label( $coupon ); ?></p>
-						<p class="text-md-end"><?php wc_cart_totals_coupon_html( $coupon ); ?></p>
-					</div>
-				<?php endforeach; ?>
-			</div>
+			<?php if (!empty(WC()->cart->applied_coupons)): ?>
+				<div class="col-12 d-flex justify-content-md-end align-items-center">
+					<?php foreach ( WC()->cart->get_coupons() as $code => $coupon ) : ?>
+						<div class="cart-discount coupon-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
+							<p class="mb-1 text-md-end"><?php wc_cart_totals_coupon_label( $coupon ); ?></p>
+							<p class="text-md-end"><?php wc_cart_totals_coupon_html( $coupon ); ?></p>
+						</div>
+					<?php endforeach; ?>
+				</div>
+			<?php endif; ?>
 			<div class="col-12 d-flex justify-content-md-end align-items-center">
 				<span>Total&nbsp;&nbsp;</span><?= wc_cart_totals_order_total_html(); ?>
 			</div>
