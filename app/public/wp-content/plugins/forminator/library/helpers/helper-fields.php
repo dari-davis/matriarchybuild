@@ -968,7 +968,7 @@ function forminator_get_account_approval_link( Forminator_Form_Model $custom_for
 		$key = esc_url(
 			add_query_arg(
 				array(
-					'page' => 'forminator_activation',
+					'page' => 'account_activation',
 					'key'  => $key,
 				),
 				home_url( '/' )
@@ -2410,4 +2410,26 @@ function forminator_count_field_type_in_page( $field_type ) {
 	}
 
 	return $field_count;
+}
+
+/**
+ * Trim field values
+ *
+ * @since 1.15.15
+ *
+ * @param $value
+ *
+ * @return array
+ */
+function forminator_trim_array ( $value ) {
+
+	foreach( $value as $key => $val ) {
+		if ( is_array( $val ) ) {
+			$value[$key] = forminator_trim_array( $val );
+		} else {
+			$value[$key] = wp_unslash( trim( $val ) );
+		}
+	}
+
+	return $value;
 }
