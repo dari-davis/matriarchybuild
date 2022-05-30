@@ -56,4 +56,10 @@ import * as bootstrap from 'bootstrap';
 		$('.header__top').toggleClass('invisible');
 		$('[data-menu-icon]').toggleClass('invisible');
 	});
+
+	if ($('.woocommerce-checkout').length) {
+		$('body').on('applied_coupon_in_checkout removed_coupon_in_checkout', function() {
+			location.reload();
+		});
+	}
 } )();

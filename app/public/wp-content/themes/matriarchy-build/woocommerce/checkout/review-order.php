@@ -88,7 +88,7 @@ foreach ( WC()->cart->get_cart() as $wc_key => $wc_item ) {
 <hr/>
 
 <div class="row m-0 pt-1">
-	<div class="col p-0">
+	<div class="col-md p-0 mb-5">
 		<div class="woocommerce-form-coupon" method="post">
 			<div>
 				<input type="text" name="coupon_code" class="coupon-form-input input-text" placeholder="<?php esc_attr_e( 'Gift or Promo Code', 'woocommerce' ); ?>" id="coupon_code" value="" />
@@ -96,7 +96,18 @@ foreach ( WC()->cart->get_cart() as $wc_key => $wc_item ) {
 			</div>
 		</div>
 	</div>
-	<div class="col p-0 d-flex justify-content-end align-items-center total">
-		<span>Total&nbsp;&nbsp;</span><?= wc_cart_totals_order_total_html(); ?>
+	<div class="col-md p-0 d-flex justify-content-md-end align-items-center total">
+		<div class="row gx-0">
+			<div class="col-12 d-flex justify-content-md-end align-items-center">
+				<?php foreach ( WC()->cart->get_coupons() as $code => $coupon ) : ?>
+					<div class="cart-discount coupon-<?php echo esc_attr( sanitize_title( $code ) ); ?> mt-3">
+						<p class="mb-1 text-md-end"><?php wc_cart_totals_coupon_label( $coupon ); ?></p>
+						<p class="text-md-end"><?php wc_cart_totals_coupon_html( $coupon ); ?></p>
+					</div>
+				<?php endforeach; ?>
+			</div>
+			<div class="col-12 d-flex justify-content-md-end align-items-center">
+				<span>Total&nbsp;&nbsp;</span><?= wc_cart_totals_order_total_html(); ?>
+			</div>
 	</div>
 </div>
