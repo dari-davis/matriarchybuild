@@ -105,7 +105,7 @@ $staffAppointments = $wpdb->get_results("SELECT * FROM wp_bookly_appointments WH
 				<div class="col-12 col-lg p-3">
 					<div><?= $date; ?></div>
 					<div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
-					<div><a class="text-button text-button--green" href="../booking-details?id=<?= $order->get_id();?>?key=<?= $order->get_id();?>">View Details</a></div>
+					<div><a class="text-button text-button--green" href="../booking-details?id=<?= $order->get_id();?>">View Details</a></div>
 				</div>
 				<div class="col-12 col-lg p-3 d-flex justify-content-lg-end">
 					<div><?= wc_price($price); ?></div>
