@@ -7,6 +7,14 @@
   <meta name="description" content="Built by Women. Built for Everyone. Matriarchy Build wants to empower you to take on your next project with confidence.">
   <meta name="p:domain_verify" content="ba15d92dd5d02f5fb6cf46d5be0e3149"/>
 
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5HDJGHX');</script>
+  <!-- End Google Tag Manager -->
+
   <!-- Facebook Meta Tags -->
   <meta property="og:url" content="https://matriarchybuild.com">
   <meta property="og:title" content="Matriarchy Build – Built by Women. Built for Everyone.">
@@ -30,6 +38,11 @@
 ?>
 
 <body <?php body_class(); ?>>
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5HDJGHX"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   <?php wp_body_open(); ?>
 
