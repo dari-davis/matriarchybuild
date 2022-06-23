@@ -96,11 +96,15 @@ $picker-date-size: 35px;
             background: $blue !important;
         }
 
-        &.picker__day--infocus.picker__day--disabled,
         &.picker__day--disabled {
             opacity: 1;
             color: $blue !important;
             background: transparent !important;
+        }
+
+        &.picker__day--selected.picker__day--disabled {
+            color: $white !important;
+            background: $blue !important;
         }
     }
 

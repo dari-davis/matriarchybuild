@@ -14,7 +14,7 @@ use Bookly\Lib\Utils\Price;
 <?php Proxy\Pro::renderTimeZoneSwitcher() ?>
 <?php
   $today = date('Y-m-d');
-  $dateBuffer = date('Y-m-d', strtotime($today. ' + 2 days'));
+  $dateBuffer = date('Y-m-d', strtotime($today. ' + 1 days'));
 ?>
 
 <?php if ($date >= $dateBuffer): ?>
