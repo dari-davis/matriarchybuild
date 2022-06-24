@@ -12,16 +12,8 @@ use Bookly\Lib\Utils\Price;
 
 <!-- time and date picker -->
 <?php Proxy\Pro::renderTimeZoneSwitcher() ?>
-<?php
-  $today = date('Y-m-d');
-  $dateBuffer = date('Y-m-d', strtotime($today. ' + 1 days'));
-?>
 
-<?php if ($date >= $dateBuffer): ?>
-  <input class="bookly-js-selected-date" type="text" value="" data-value="<?php echo esc_attr( $date ) ?>"/>
-<?php else: ?>
-  <input class="bookly-js-selected-date" type="text" value="Choose a Date to Continue" data-value=""/>
-<?php endif; ?>
+<input class="bookly-js-selected-date" type="text" value="" data-value="<?php echo esc_attr( $date ) ?>"/>
 
 <?php if ( $has_slots ) : ?>
   <div class="bookly-time-step">

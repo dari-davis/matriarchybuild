@@ -230,6 +230,7 @@ class Ajax extends Lib\Base\Ajax
                     foreach ( $group_slots as $slot ) {
                         $slots_data[ $group ]['slots'][] = array(
                             'data' => $slot->buildSlotData(),
+                            'time' => $slot->start()->toClientTz()->formatI18n('H:m'),
                             'time_text' => $slot->start()->toClientTz()->formatI18n( $finder->isServiceDurationInDays() ? 'D, M d' : get_option( 'time_format' ) ),
                             'status' => $block_time_slots ? 'booked' : ( $slot->waitingListEverStarted() ? 'waiting-list' : ( $slot->fullyBooked() ? 'booked' : '' ) ),
                             'additional_text' => $slot->waitingListEverStarted() ? '(' . $slot->maxOnWaitingList() . ')' : ( Lib\Config::groupBookingActive() ? Proxy\GroupBooking::getTimeSlotText( $slot ) : '' ),
