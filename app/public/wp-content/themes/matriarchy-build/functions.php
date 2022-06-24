@@ -869,8 +869,6 @@ function actions_after_checkout( $order_id ){
     $order = wc_get_order( $order_id );
     $url = wc_get_account_endpoint_url("view-order/$order_id/?pid=$order_id");
 
-	echo '<script>dataLayer.push({"event": "Purchase"});</script>';
-
     if ( ! $order->has_status( 'failed' ) ) {
 		order_id_to_bookly($order_id);
         wp_safe_redirect( $url );

@@ -49,6 +49,29 @@ import * as bootstrap from 'bootstrap';
 				$('form.checkout_coupon').submit();
 			});
 		}
+
+		if ($('.woocommerce-checkout').length) {
+			$('body').on('applied_coupon_in_checkout removed_coupon_in_checkout', function() {
+				location.reload();
+			});
+	
+			$('form.woocommerce-checkout').on( 'click', "#place_order", function(){
+				var pro = $('.consultation-card__pro').text();
+				var total = parseFloat($('[data-order-total]').find('bdi').text().substring(1));
+
+				window.dataLayer.push({
+					event: 'Purchase',
+					ecommerce: {
+						currency: 'USD',
+						value: total,
+						items: [{
+							item_name: `Consultation with ${pro}`
+						}]
+
+					}
+				});
+			});
+		}
 	});
 
 	$('.header__hamburger').on('click', function(e) {
@@ -57,9 +80,4 @@ import * as bootstrap from 'bootstrap';
 		$('[data-menu-icon]').toggleClass('invisible');
 	});
 
-	if ($('.woocommerce-checkout').length) {
-		$('body').on('applied_coupon_in_checkout removed_coupon_in_checkout', function() {
-			location.reload();
-		});
-	}
 } )();
