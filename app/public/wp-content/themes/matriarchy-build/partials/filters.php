@@ -6,10 +6,9 @@ $regions = get_terms(['taxonomy' => 'regions', 'hide_empty' => true]);
 
 <div class="filters<?php if (is_search()): ?> filters--search<?php endif; ?> row gx-0 m-0 p-0 mb-3 mb-md-5">
     <div class="filters__wrapper d-flex p-0">
-        <p class="filters__heading filters__button d-md-none">Filter <img class="filters__arrow" src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/arrow_blue.svg"></p>
         <p class="filters__heading d-none d-md-flex me-md-3">Filter</p>
 
-        <form method="GET" id="filters" class="filters__form d-none d-md-flex flex-column">
+        <form method="GET" id="filters" class="filters__form d-flex flex-column">
             <div class="filters__dropdowns d-flex flex-column flex-md-row">
                 <?php if (is_search()): ?>
                     <div class="filters__filter me-md-2 mb-2 mb-md-0">

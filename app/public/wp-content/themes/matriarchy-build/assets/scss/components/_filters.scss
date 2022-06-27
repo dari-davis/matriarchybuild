@@ -42,8 +42,6 @@
     }
 
     &__selected-group {
-        margin-top: 8px;
-
         @include media-breakpoint-up(md) {
             margin-top: 20px;
         }

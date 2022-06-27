@@ -67,8 +67,3 @@ $('#filters').on('change', "input:checkbox", function () {
         $('#filters').submit();
     }
 });
-
-$('.filters__button').on('click', function() {
-    $('.filters__arrow').toggleClass('open');
-    $('.filters__form').toggleClass('d-none');
-});
