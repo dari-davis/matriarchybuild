@@ -91,7 +91,7 @@ $regions = get_terms(['taxonomy' => 'regions', 'hide_empty' => true]);
                 <?php foreach ($regions as $region) : ?>
                     <?php $filterIsChecked = isset($_GET['regions']) && in_array($region->slug, $_GET['regions']); ?>
                     <label class="filters__label<?php if ($filterIsChecked) { echo ' filters__label--checked'; }?> p-2"><input class="filters__checkbox checkbox-box" type="checkbox" name="regions[]" value="<?php echo $region->slug; ?>" <?php checked($filterIsChecked) ?> />
-                        <?php echo $trade->name; ?>
+                        <?php echo $region->name; ?>
                     </label>
                 <?php endforeach; ?>
 
