@@ -23,6 +23,26 @@ add_action('init', function() {
     'show_in_rest' => true
   ));
 
+  register_taxonomy('regions', ['pro'], array(
+    'labels' => array(
+      'name' => __('Regions'),
+      'sinular_name' => __('Region'),
+      'search_items' => __('Serach Regions'),
+      'all_items' => __('All Regions'),
+      'parent_item' => __('Parent Regions'),
+      'parent_item_colon' => __('Parent Regions:'),
+      'edit_item' => __('Edit Region'),
+      'update_item' => __('Update Region'),
+      'add_new_item' => __('Add New Region'),
+      'new_item_name' => __('New Region Name'),
+      'menu_name' => __('Regions'),
+      'not_found' => __('No Regions found.'),
+      'not_found_in_trash' => __('No Regions found in Trash.')
+    ),
+    'hierarchial' => true,
+    'show_in_rest' => true
+  ));
+
   register_taxonomy('projects', ['pro'], array(
     'labels' => array(
       'name' => __('Project Types'),
