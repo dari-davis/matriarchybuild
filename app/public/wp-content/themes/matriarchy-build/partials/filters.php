@@ -1,6 +1,7 @@
 <?php
 $trades = get_terms([ 'taxonomy' => 'pros', 'hide_empty' => true ]);
 $projects = get_terms([ 'taxonomy' => 'projects', 'hide_empty' => true ]);
+$regions = get_terms(['taxonomy' => 'regions', 'hide_empty' => true]);
 ?>
 
 <div class="filters<?php if (is_search()): ?> filters--search<?php endif; ?> row gx-0 m-0 p-0 mb-3 mb-md-5">
@@ -32,6 +33,21 @@ $projects = get_terms([ 'taxonomy' => 'projects', 'hide_empty' => true ]);
                                 <label class="d-flex pb-1"> 
                                 <input class="invisible select-box" type="checkbox" name="pros[]" value="<?php echo $trade->slug; ?>" <?php checked((isset($_GET['pros']) && in_array($trade->slug, $_GET['pros']))) ?> />
                                 <?php echo $trade->name; ?>
+                            </label>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+
+                    <div class="filters__filter me-md-2 mb-2 mb-md-0">
+                        <div class="filters__select selectBox" onclick="showRegions()">
+                            <select class="px-2"><option>Region</option></select>
+                            <div class="filters__over-select"></div>
+                        </div>
+                        <div id="filters__regions" class="filters__checkboxes py-2">
+                            <?php foreach ($regions as $region) : ?>
+                                <label class="d-flex pb-1"> 
+                                <input class="invisible select-box" type="checkbox" name="regions[]" value="<?php echo $region->slug; ?>" <?php checked((isset($_GET['regions']) && in_array($region->slug, $_GET['regions']))) ?> />
+                                <?php echo $region->name; ?>
                             </label>
                             <?php endforeach; ?>
                         </div>
@@ -70,6 +86,12 @@ $projects = get_terms([ 'taxonomy' => 'projects', 'hide_empty' => true ]);
                 <?php foreach ($trades as $trade) : ?>
                     <?php $filterIsChecked = isset($_GET['pros']) && in_array($trade->slug, $_GET['pros']); ?>
                     <label class="filters__label<?php if ($filterIsChecked) { echo ' filters__label--checked'; }?> p-2"><input class="filters__checkbox checkbox-box" type="checkbox" name="pros[]" value="<?php echo $trade->slug; ?>" <?php checked($filterIsChecked) ?> />
+                        <?php echo $trade->name; ?>
+                    </label>
+                <?php endforeach; ?>
+                <?php foreach ($regions as $region) : ?>
+                    <?php $filterIsChecked = isset($_GET['regions']) && in_array($region->slug, $_GET['regions']); ?>
+                    <label class="filters__label<?php if ($filterIsChecked) { echo ' filters__label--checked'; }?> p-2"><input class="filters__checkbox checkbox-box" type="checkbox" name="regions[]" value="<?php echo $region->slug; ?>" <?php checked($filterIsChecked) ?> />
                         <?php echo $trade->name; ?>
                     </label>
                 <?php endforeach; ?>

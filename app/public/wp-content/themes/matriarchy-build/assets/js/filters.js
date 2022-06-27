@@ -23,6 +23,17 @@ function showTrades() {
     }
 }
 
+function showRegions() {
+    var checkboxes = document.getElementById("filters__regions");
+    if (!expanded) {
+        checkboxes.style.display = "block";
+        expanded = true;
+    } else {
+        checkboxes.style.display = "none";
+        expanded = false;
+    }
+}
+
 function showProjects() {
     var checkboxes = document.getElementById("filters__projects");
     if (!expanded) {
