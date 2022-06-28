@@ -38,21 +38,6 @@ $regions = get_terms(['taxonomy' => 'regions', 'hide_empty' => true]);
                     </div>
 
                     <div class="filters__filter me-md-2 mb-2 mb-md-0">
-                        <div class="filters__select selectBox" onclick="showRegions()">
-                            <select class="px-2"><option>Region</option></select>
-                            <div class="filters__over-select"></div>
-                        </div>
-                        <div id="filters__regions" class="filters__checkboxes py-2">
-                            <?php foreach ($regions as $region) : ?>
-                                <label class="d-flex pb-1"> 
-                                <input class="invisible select-box" type="checkbox" name="regions[]" value="<?php echo $region->slug; ?>" <?php checked((isset($_GET['regions']) && in_array($region->slug, $_GET['regions']))) ?> />
-                                <?php echo $region->name; ?>
-                            </label>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
-
-                    <div class="filters__filter me-md-2 mb-2 mb-md-0">
                         <div class="filters__select selectBox" onclick="showProjects()">
                             <select class="px-2"><option>Project Type</option></select>
                             <div class="filters__over-select"></div>
@@ -66,6 +51,23 @@ $regions = get_terms(['taxonomy' => 'regions', 'hide_empty' => true]);
                             <?php endforeach; ?>
                         </div>
                     </div>
+
+                    <?php if ($regions): ?>
+                        <div class="filters__filter me-md-2 mb-2 mb-md-0">
+                            <div class="filters__select selectBox" onclick="showRegions()">
+                                <select class="px-2"><option>Region</option></select>
+                                <div class="filters__over-select"></div>
+                            </div>
+                            <div id="filters__regions" class="filters__checkboxes py-2">
+                                <?php foreach ($regions as $region) : ?>
+                                    <label class="d-flex pb-1"> 
+                                    <input class="invisible select-box" type="checkbox" name="regions[]" value="<?php echo $region->slug; ?>" <?php checked((isset($_GET['regions']) && in_array($region->slug, $_GET['regions']))) ?> />
+                                    <?php echo $region->name; ?>
+                                </label>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    <?php endif; ?>
                 <?php endif; ?>
             </div>
             
