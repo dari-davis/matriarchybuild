@@ -168,40 +168,7 @@ foreach ($order->get_items() as $item_id => $item) {
         </div>
 
         <div class="photos__section p-0">
-            <?php $photos = $wpdb->get_results('SELECT entry_id FROM wp_frmt_form_entry_meta WHERE meta_value="'.$order_id.'";'); ?>
             <div class="photos__content">
-                <?php if ($entries): ?>
-                    <div class="questionnaire__photos mb-4">
-                        <div class="questionnaire--attachments p-4 d-flex row gx-3">
-                            <?php foreach($entries as $entry): ?>
-                                <?php $photos = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$entry->entry_id.'"');
-                                    $filepath = explode("file_path", $photos[0]->meta_value);
-                                    $images = explode("/uploads", $filepath[1]); ?>
-
-                                <?php foreach($images as $image): ?>
-                                    <?php $src = str_replace('"', '', explode(";i:", $image)[0]);
-
-                                    if (strpos($src, ';') !== false) { $path = substr($src, 0, strpos($src, ';'));
-                                    } else { $path = $src; }
-                                    
-                                    $image = $upload_dir['baseurl'] . $path;
-                                    $attachment = attachment_url_to_postid($image); ?>
-
-                                    <?php if ($attachment > 0): ?>
-                                        <div class="questionnaire__image col-3 mb-3" data-photo-id="<?= $attachment; ?>">
-                                            <a class="questionnaire__image-link d-block" href="#" data-slick-index="<?= $totalImageCount; ?>">
-                                                <div class="questionnaire__overlay"></div>
-                                                <img data-no-lazy src="<?= $image; ?>"/>
-                                            </a>
-                                            <?php $totalImageCount++; ?>
-                                        </div>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
-                <?php endif; ?>
-
                 <?php if ($apptIsWhen == "future" && $totalImageCount < 10): ?>
                     <div class="questionnaire questionnaire__photo-form p-4">
                         <?= do_shortcode('[forminator_form id="1985"]'); ?>
