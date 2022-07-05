@@ -60,23 +60,19 @@ import * as bootstrap from 'bootstrap';
 				var total = parseFloat($('[data-order-total]').find('bdi').text().substring(1));
 
 				window.dataLayer.push({
-					event: 'purchase',
-					ecommerce: {
-						purchase: {
-							actionField: {
-								id: '12345',
-								revenue: `${total}`,
-								tax: '0.00',
-								shipping: '0.00',
-								currency: 'USD'
-							},
-							products: [{
-								id: '12345',
-								name: `Consultation with ${pro}`,
-								price: `${total}`,
-								quantity: 1
-							}]
-						}
+					'event': 'purchase',
+					'ecommerce': {
+						'transaction_id': '12345',
+						'currency': 'USD',
+						'tax': 0,
+						'value' : `${total}`,
+						'shipping': 0,
+						'items': [{
+							'item_name': `Consultation with ${pro}`,
+							'item_category': 'Consultation',
+							'price': `${total}`,
+							'quantity': 1
+						}]
 					}
 				});
 			});
