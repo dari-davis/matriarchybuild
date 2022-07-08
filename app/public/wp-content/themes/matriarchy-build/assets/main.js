@@ -65,12 +65,12 @@ import * as bootstrap from 'bootstrap';
 						'transaction_id': '12345',
 						'currency': 'USD',
 						'tax': 0,
-						'value' : `${total}`,
+						'value' : total,
 						'shipping': 0,
 						'items': [{
 							'item_name': `Consultation with ${pro}`,
 							'item_category': 'Consultation',
-							'price': `${total}`,
+							'price': total,
 							'quantity': 1
 						}]
 					}
