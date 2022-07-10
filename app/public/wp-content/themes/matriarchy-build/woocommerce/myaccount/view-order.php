@@ -161,9 +161,9 @@ foreach ($order->get_items() as $item_id => $item) {
     <?php if ($apptIsWhen == "future"): ?>
         <div class="col-md-8 p-0">
             <div class="pt-3 pt-md-5">
-                <h4 class="my-account__details-heading"><?php esc_html_e( 'Step 2: Upload Your Project Photos', 'woocommerce' ); ?></h4>
+                <h4 class="my-account__details-heading"><?php esc_html_e( 'Step 2: Upload Your Project Files', 'woocommerce' ); ?></h4>
                 <hr class="mb-hr mb-hr--olive" />
-                <p>Add up to 10 photos. Please note maximum file size of 20 MB. (Accepted file types: .jpg, .jpeg, .png, .gif, .bmp)</p>
+                <p>Add up to 10 files. Please note maximum file size of 20 MB. (Accepted file types: .jpg, .jpeg, .png, .gif, .bmp, .pdf)</p>
             </div>
         </div>
 
