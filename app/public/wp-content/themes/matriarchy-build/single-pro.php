@@ -6,7 +6,19 @@ use Bookly\Lib\Entities\Staff;
 use Bookly\Lib\Entities\StaffService;
 $staff = Bookly\Lib\Entities\Staff::query()->where( 'wp_user_id', get_field('pro_user') )->findOne();
 
-if (strpos($_SERVER['HTTP_REFERER'], 'checkout')) { WC()->cart->empty_cart(); }
+
+if (strpos($_SERVER['HTTP_REFERER'], 'checkout')) {
+  foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {	
+    $_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
+    $is_consultation = $_product->is_type('simple') && strpos($_product->name, 'Consultation') != false;
+
+    if ($is_consultation) {
+      if ( $cart_item_key ) {
+        WC()->cart->remove_cart_item( $cart_item_key );
+      }
+    }
+  }
+}
 ?>
 
 <?php $services = $wpdb->get_results('SELECT * FROM wp_bookly_staff_services WHERE staff_id="'.$staff->id.'";'); ?>
