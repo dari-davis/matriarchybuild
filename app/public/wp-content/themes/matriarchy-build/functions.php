@@ -842,10 +842,21 @@ add_action( 'woocommerce_thankyou', 'actions_after_checkout');
 function actions_after_checkout( $order_id ){
     $order = wc_get_order( $order_id );
     $url = wc_get_account_endpoint_url("view-order/$order_id/?pid=$order_id");
+	$hasConsultation = false;
 
     if ( ! $order->has_status( 'failed' ) ) {
 		order_id_to_bookly($order_id);
-        wp_safe_redirect( $url );
+
+		foreach ($order->get_items() as $item_id => $item) {
+			$is_consultation = strpos($item->get_name(), 'Consultation') != false;
+			if ($is_consultation) { $hasConsultation = true; }
+		}
+
+		if ($hasConsultation) {
+			wp_safe_redirect( $url );
+		} else {
+			wp_safe_redirect(home_url());
+		}
         exit;
     }
 }

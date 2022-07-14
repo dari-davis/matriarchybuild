@@ -25,6 +25,7 @@ foreach ( $items as $item_id => $item ) :
 	$sku           = '';
 	$purchase_note = '';
 	$image         = '';
+	$is_consultation = strpos($item->get_name(), 'Consultation') != false;
 
 	if ( ! apply_filters( 'woocommerce_order_item_visible', true, $item ) ) {
 		continue;
@@ -38,7 +39,7 @@ foreach ( $items as $item_id => $item ) :
 
 	?>
 	<tr class="<?php echo esc_attr( apply_filters( 'woocommerce_order_item_class', 'order_item', $item, $order ) ); ?>">
-		<td colspan="4" class="td" style="border: 0; padding: 0 0 12px; margin-top: -12px; text-align:<?php echo esc_attr( $text_align ); ?>; vertical-align: middle; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif; word-wrap:break-word;">
+		<td colspan="6" class="td" style="border: 0; padding: 0 0 12px; margin-top: -12px; text-align:<?php echo esc_attr( $text_align ); ?>; vertical-align: middle; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif; word-wrap:break-word;">
 		<?php
 
 		// Show title/image etc.
@@ -47,7 +48,11 @@ foreach ( $items as $item_id => $item ) :
 		}
 
 		// Product name.
-		//echo wp_kses_post( apply_filters( 'woocommerce_order_item_name', $item->get_name(), $item, false ) );
+		if (!$is_consultation) {
+			echo '<div style="font-weight: bold; margin-top: 16px;">';
+			echo wp_kses_post( apply_filters( 'woocommerce_order_item_name', $item->get_name(), $item, false ) );
+			echo '</div>';
+		}
 
 		// SKU.
 		if ( $show_sku && $sku ) {
