@@ -865,6 +865,8 @@ function actions_after_checkout( $order_id ){
 
 		if ($hasConsultation && $order->get_item_count() == 1) {
 			wp_safe_redirect( $url );
+		} else {
+			wp_safe_redirect(home_url());
 		}
 
         exit;
