@@ -107,7 +107,7 @@ $selected = isset( $_REQUEST[ 'attribute_' . PWGC_DENOMINATION_ATTRIBUTE_SLUG ] 
         flex-wrap: wrap !important;
     }
 </style>
-<div id="pwgc-purchase-container" style="<?php echo $selected ? '' : 'display: none;'; ?>">
+<div>
     <div class="pwgc-field-container">
         <label for="pwgc-to" class="pwgc-label"><?php echo __( PWGC_TO_META_DISPLAY_NAME, 'pw-woocommerce-gift-cards' ); ?></label>
         <input type="text" id="pwgc-to" name="<?php echo PWGC_TO_META_KEY; ?>" class="pwgc-input-text" placeholder="<?php _e( 'Enter an email address for each recipient', 'pw-woocommerce-gift-cards' ); ?>" value="<?php echo $pwgc_to; ?>" required>

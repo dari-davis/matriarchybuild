@@ -1,0 +1,25 @@
+.single-product {
+    display: flex;
+}
+
+.related.products {
+    display: none;
+}
+
+.product {
+    &__title {
+        padding: 16px 0 0;
+        color: $blue;
+        font-size: 38px;
+        line-height: 40px;
+
+        @include media-breakpoint-up(sm) {
+            font-size: 55px;
+            line-height: 90%;
+        }
+
+        @include media-breakpoint-up(md) {
+            padding: 40px 0 0;
+        }
+    }
+}
