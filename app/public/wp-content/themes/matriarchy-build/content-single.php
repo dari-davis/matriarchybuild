@@ -57,10 +57,9 @@
 				</div>
 			</div>
 		<?php else: ?>
-			<div id="post-<?php the_ID(); ?>" class="single-post__content-blocks mx-auto mt-5 mt-lg-0">
+			<div id="post-<?php the_ID(); ?>" class="single-post__content-blocks mx-auto mt-lg-0">
 				<div class="col-12 p-0">
-				<h1 class="product__title pt-0 mb-4"><?php the_title(); ?></h1>
-
+					<h1 class="product__title pt-0 mb-4"><?php the_title(); ?></h1>
 					<?php the_content(); ?>
 				</div>
 			</div>
