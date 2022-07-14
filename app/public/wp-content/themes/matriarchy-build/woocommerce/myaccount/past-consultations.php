@@ -37,50 +37,54 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 
 		if ($order->get_status() != 'failed') {
 			foreach ($order->get_items() as $item_id => $item) {
-				$data =  $item->get_meta("bookly");
-				$timezone = $data['time_zone'];
+				$is_consultation = strpos($item->get_name(), 'Consultation') != false;
 
-				if (isset($data['items'])) {
-					// service details
-					$serviceId = $data['items'][0]['service_id'];
-					$serviceInfo = $wpdb->get_results('SELECT * FROM wp_bookly_services WHERE id="'.$serviceId.'";');
+				if ($is_consultation) {
+					$data =  $item->get_meta("bookly");
+					$timezone = $data['time_zone'];
+
+					if (isset($data['items'])) {
+						// service details
+						$serviceId = $data['items'][0]['service_id'];
+						$serviceInfo = $wpdb->get_results('SELECT * FROM wp_bookly_services WHERE id="'.$serviceId.'";');
 
 
-					// staff details
-					$staffId = $data['items'][0]['staff_ids'][0];
-					$staffInfo = $wpdb->get_results('SELECT * FROM wp_bookly_staff WHERE id="'.$staffId.'";');
-					$staffName = $staffInfo[0]->full_name;
-					$staffSlug = str_replace(" ", "-", strtolower($staffName));
-					$staffTrade = get_post_meta(get_page_by_path($staffSlug, OBJECT, 'pro')->ID, 'trade', true);
+						// staff details
+						$staffId = $data['items'][0]['staff_ids'][0];
+						$staffInfo = $wpdb->get_results('SELECT * FROM wp_bookly_staff WHERE id="'.$staffId.'";');
+						$staffName = $staffInfo[0]->full_name;
+						$staffSlug = str_replace(" ", "-", strtolower($staffName));
+						$staffTrade = get_post_meta(get_page_by_path($staffSlug, OBJECT, 'pro')->ID, 'trade', true);
 
-					// appointment time and date
-					$unixTime = strtotime($data['items'][0]['slots'][0][2]);
-					$date = date('M j, Y', $unixTime);
-					$UTCTime = date('M j, Y g:i a', $unixTime);
-					$apptTime = date('Y-m-d H:i:s', $unixTime);
+						// appointment time and date
+						$unixTime = strtotime($data['items'][0]['slots'][0][2]);
+						$date = date('M j, Y', $unixTime);
+						$UTCTime = date('M j, Y g:i a', $unixTime);
+						$apptTime = date('Y-m-d H:i:s', $unixTime);
 
-					// convert to users timezone
-					$startTime = new DateTime($UTCTime);
-					$startTime->setTimezone(new DateTimeZone($timezone));
-					$dateTime = date_format($startTime, 'M j, Y g:i a'); // appt date & time
+						// convert to users timezone
+						$startTime = new DateTime($UTCTime);
+						$startTime->setTimezone(new DateTimeZone($timezone));
+						$dateTime = date_format($startTime, 'M j, Y g:i a'); // appt date & time
 
-					// time and date info
-					$booklyDuration = floor($serviceInfo[0]->duration/60);
-					$duration = $booklyDuration > 0 ? ($booklyDuration - 5) : $booklyDuration;
-					$endTime = new DateTime(date_format($startTime, 'g:i a'));
-					$endTime->add(new DateInterval('PT' . $duration . 'M'));
-					$timeOfDay = date_format($endTime, 'a');
+						// time and date info
+						$booklyDuration = floor($serviceInfo[0]->duration/60);
+						$duration = $booklyDuration > 0 ? ($booklyDuration - 5) : $booklyDuration;
+						$endTime = new DateTime(date_format($startTime, 'g:i a'));
+						$endTime->add(new DateInterval('PT' . $duration . 'M'));
+						$timeOfDay = date_format($endTime, 'a');
 
-					$price = $item->get_total();
+						$price = $item->get_total();
 
-					// get current date and time in users timezone
-					$currentDateTime = date_timezone_set(new DateTime('now'), timezone_open($data['time_zone']));
-					$currentDateTime = date_format($currentDateTime, 'M j, Y g:i a');
+						// get current date and time in users timezone
+						$currentDateTime = date_timezone_set(new DateTime('now'), timezone_open($data['time_zone']));
+						$currentDateTime = date_format($currentDateTime, 'M j, Y g:i a');
 
-					if (new DateTime($dateTime) <= new DateTime($currentDateTime)) {
-						$apptIsWhen = "past";
-					} else {
-						$apptIsWhen = "future";
+						if (new DateTime($dateTime) <= new DateTime($currentDateTime)) {
+							$apptIsWhen = "past";
+						} else {
+							$apptIsWhen = "future";
+						}
 					}
 				}
 			}
