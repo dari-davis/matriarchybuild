@@ -43,50 +43,54 @@ $staffAppointments = $wpdb->get_results("SELECT * FROM wp_bookly_appointments WH
 		$customerLName = $order->get_data()["billing"]["last_name"];
 
 		foreach ($order->get_items() as $item_id => $item) {
-			$data =  $item->get_meta("bookly");
+			$is_consultation = strpos($item->get_name(), 'Consultation') != false;
 
-			if (isset($data['items'])) {
-				// service details
-				$serviceId = $data['items'][0]['service_id'];
-				$serviceInfo = $wpdb->get_results('SELECT * FROM wp_bookly_services WHERE id="'.$serviceId.'";');
+			if ($is_consultation) {
+				$data =  $item->get_meta("bookly");
 
-				// staff details
-				$staffId = $data['items'][0]['staff_ids'][0];
-				$staffInfo = $wpdb->get_results('SELECT * FROM wp_bookly_staff WHERE id="'.$staffId.'";');
+				if (isset($data['items'])) {
+					// service details
+					$serviceId = $data['items'][0]['service_id'];
+					$serviceInfo = $wpdb->get_results('SELECT * FROM wp_bookly_services WHERE id="'.$serviceId.'";');
 
-				// appointment time and date
-				$unixTime = strtotime($data['items'][0]['slots'][0][2]);
-				$date = date('M j, Y', $unixTime);
-				$UTCTime = date('M j, Y g:i a', $unixTime);
-				$apptTime = date('Y-m-d H:i:s', $unixTime);
+					// staff details
+					$staffId = $data['items'][0]['staff_ids'][0];
+					$staffInfo = $wpdb->get_results('SELECT * FROM wp_bookly_staff WHERE id="'.$staffId.'";');
 
-				$startTime = new DateTime($UTCTime);
-				$startTime->setTimezone(new DateTimeZone($staffInfo[0]->time_zone));
+					// appointment time and date
+					$unixTime = strtotime($data['items'][0]['slots'][0][2]);
+					$date = date('M j, Y', $unixTime);
+					$UTCTime = date('M j, Y g:i a', $unixTime);
+					$apptTime = date('Y-m-d H:i:s', $unixTime);
 
-				// bookly appointment
-				$appointment = $wpdb->get_results('SELECT * FROM wp_bookly_appointments WHERE start_date="'.$apptTime.'";');
-				$appointmentId = $appointment[0]->id;
+					$startTime = new DateTime($UTCTime);
+					$startTime->setTimezone(new DateTimeZone($staffInfo[0]->time_zone));
 
-				// convert to pros timezone
-				$dateTime = date_format($startTime, 'M j, Y g:i a'); // appt date & time
+					// bookly appointment
+					$appointment = $wpdb->get_results('SELECT * FROM wp_bookly_appointments WHERE start_date="'.$apptTime.'";');
+					$appointmentId = $appointment[0]->id;
 
-				// time and date info
-				$booklyDuration = floor($serviceInfo[0]->duration/60);
-				$duration = $booklyDuration > 0 ? ($booklyDuration - 5) : $booklyDuration;
-				$endTime = new DateTime(date_format($startTime, 'g:i a'));
-				$endTime->add(new DateInterval('PT' . $duration . 'M'));
-				$timeOfDay = date_format($endTime, 'a');
+					// convert to pros timezone
+					$dateTime = date_format($startTime, 'M j, Y g:i a'); // appt date & time
 
-				$price = $item->get_total();
+					// time and date info
+					$booklyDuration = floor($serviceInfo[0]->duration/60);
+					$duration = $booklyDuration > 0 ? ($booklyDuration - 5) : $booklyDuration;
+					$endTime = new DateTime(date_format($startTime, 'g:i a'));
+					$endTime->add(new DateInterval('PT' . $duration . 'M'));
+					$timeOfDay = date_format($endTime, 'a');
 
-				// get current date and time in users timezone
-				$currentDateTime = date_timezone_set(new DateTime('now'), timezone_open($staffInfo[0]->time_zone));
-				$currentDateTime = date_format($currentDateTime, 'M j, Y g:i a');
+					$price = $item->get_total();
 
-				if (new DateTime($dateTime) <= new DateTime($currentDateTime)) {
-					$apptIsWhen = "past";
-				} else {
-					$apptIsWhen = "future";
+					// get current date and time in users timezone
+					$currentDateTime = date_timezone_set(new DateTime('now'), timezone_open($staffInfo[0]->time_zone));
+					$currentDateTime = date_format($currentDateTime, 'M j, Y g:i a');
+
+					if (new DateTime($dateTime) <= new DateTime($currentDateTime)) {
+						$apptIsWhen = "past";
+					} else {
+						$apptIsWhen = "future";
+					}
 				}
 			}
 		}
