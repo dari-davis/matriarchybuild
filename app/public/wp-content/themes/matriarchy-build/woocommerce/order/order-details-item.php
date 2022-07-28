@@ -22,6 +22,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! apply_filters( 'woocommerce_order_item_visible', true, $item ) ) {
 	return;
 }
+
+global $wpdb;
+
+$data =  $item->get_meta("bookly");
+if (isset($data['items'])) {
+    $staffId = $data['items'][0]['staff_ids'][0];
+    $staffInfo = $wpdb->get_results('SELECT * FROM wp_bookly_staff WHERE id="'.$staffId.'";');
+    $staffName = $staffInfo[0]->full_name;
+}
+$is_consultation = strpos($item->get_name(), 'Consultation') != false;
 ?>
 <tr class="<?php echo esc_attr( apply_filters( 'woocommerce_order_item_class', 'woocommerce-table__line-item order_item', $item, $order ) ); ?>">
 
@@ -48,7 +58,12 @@ if ( ! apply_filters( 'woocommerce_order_item_visible', true, $item ) ) {
 		wc_display_item_meta( $item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 		do_action( 'woocommerce_order_item_meta_end', $item_id, $item, $order, false );
+
 		?>
+
+        <?php if ($is_consultation): ?>
+            <a class="order-confirmation__consultation-button d-flex button my-3" href="/my-account/view-order/<?= $order->get_id();?>?pid=<?= $order->get_id();?>&assignee=<?= str_replace(" ", "", $staffName); ?>">View Details</a>
+        <?php endif; ?>
 	</td>
 
 	<td class="woocommerce-table__product-total product-total">
