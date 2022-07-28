@@ -5,8 +5,19 @@
         text-transform: uppercase;
     }
 
+    &__details {
+        @include media-breakpoint-down(md) {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
     &__details-item {
         font-size: 14px;
+
+        @include media-breakpoint-down(md) {
+            margin-bottom: 8px;
+        }
     }
 
     .total .woocommerce-Price-amount {
