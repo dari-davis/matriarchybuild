@@ -841,6 +841,7 @@ function bbloomer_save_name_fields( $customer_id ) {
 add_action( 'woocommerce_thankyou', 'actions_after_checkout');
 function actions_after_checkout( $order_id ){
     $order = wc_get_order( $order_id );
+	$confirmation_url = $order->get_checkout_order_received_url();
 	$hasConsultation = false;
 	global $wpdb;
 
@@ -866,7 +867,7 @@ function actions_after_checkout( $order_id ){
 		if ($hasConsultation && $order->get_item_count() == 1) {
 			wp_safe_redirect( $url );
 		} else {
-			wp_safe_redirect(home_url());
+			wp_safe_redirect( $confirmation_url);
 		}
 
         exit;

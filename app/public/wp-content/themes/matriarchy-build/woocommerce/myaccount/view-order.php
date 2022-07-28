@@ -28,7 +28,7 @@ $upload_dir = wp_upload_dir();
 
 foreach ($order->get_items() as $item_id => $item) {
     $data =  $item->get_meta("bookly");
-    $timezone = $data['time_zone'];
+    if (is_array($data)) { $timezone = $data['time_zone']; }
 
     if (isset($data['items'])) {
         // service details

@@ -29,6 +29,14 @@ do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
         padding-bottom: 24px !important;
         border-top: 1px solid #e5e5e5 !important;
     }
+
+    .wc-item-meta {
+        margin-top: 0 !important;
+    }
+
+    .wc-item-meta-label {
+        font-weight: normal !important;
+    }
 </style>
 
 <?php /* translators: %s: Customer first name */ ?>
@@ -36,7 +44,6 @@ do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 <?php /* translators: %s: Order number */ ?>
 <p>You're one step closer to tackling your next project.</p>
 
-<p style="font-weight: bold; margin-bottom: 0;">Consultation Confirmation</p>
 <?php
 
 /*
