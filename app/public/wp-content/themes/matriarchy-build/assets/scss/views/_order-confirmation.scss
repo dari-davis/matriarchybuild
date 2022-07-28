@@ -1,0 +1,29 @@
+.order-confirmation {
+    &__heading {
+        font-family: $heading-font-family;
+        font-size: 40px;
+        text-transform: uppercase;
+    }
+
+    &__details-item {
+        font-size: 14px;
+    }
+
+    .total .woocommerce-Price-amount {
+        font-size: 16px;
+    }
+
+    .wc-item-meta {
+        padding: 0;
+    }
+
+    &__product-name,
+    .woocommerce-table__product-table {
+        font-family: $sans-serif-font-family;
+        font-size: 18px;
+    }
+
+    .text-button {
+        color: $blue;
+    }
+}

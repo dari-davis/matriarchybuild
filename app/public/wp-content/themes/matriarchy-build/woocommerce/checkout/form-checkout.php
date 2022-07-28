@@ -34,7 +34,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 <?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
 	
 	<div class="woocommerce__section">
-		<h2 id="order_review_heading"><?php esc_html_e( 'Your Consultation', 'woocommerce' ); ?></h2>
+		<h2 id="order_review_heading"><?php esc_html_e( 'Your Order', 'woocommerce' ); ?></h2>
 		<hr class="mb-hr" />
 		
 		<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>

@@ -842,6 +842,7 @@ add_action( 'woocommerce_thankyou', 'actions_after_checkout');
 function actions_after_checkout( $order_id ){
     $order = wc_get_order( $order_id );
     $url = wc_get_account_endpoint_url("view-order/$order_id/?pid=$order_id");
+	$confirmation_url = $order->get_checkout_order_received_url();
 	$hasConsultation = false;
 
     if ( ! $order->has_status( 'failed' ) ) {
@@ -852,11 +853,10 @@ function actions_after_checkout( $order_id ){
 			if ($is_consultation) { $hasConsultation = true; }
 		}
 
-		if ($hasConsultation) {
+		if ($hasConsultation && $order->get_item_count() == 1) {
 			wp_safe_redirect( $url );
-		} else {
-			wp_safe_redirect(home_url());
 		}
+
         exit;
     }
 }
