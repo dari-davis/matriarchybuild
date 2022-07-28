@@ -115,7 +115,7 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 
 		<?php if ($order->get_status() != 'failed' && $appointment && $status == 'approved'): ?>
 			<?php foreach ($order->get_items() as $item_id => $item): ?>
-				
+				<?php $is_consultation = strpos($item->get_name(), 'Consultation') != false; ?>
 				<?php if ($is_consultation): ?>
 					<?php $data =  $item->get_meta("bookly"); ?>
 					<?php if (isset($data['items']) && !empty($serviceInfo) && ($apptIsWhen == 'future')): ?>

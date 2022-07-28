@@ -41,4 +41,9 @@
     &__consultation-button {
         width: 200px;
     }
+
+    .woocommerce-table--order-details thead .woocommerce-table__product-name {
+        font-family: $sans-serif-font-family;
+        font-size: 18px;
+    }
 }
