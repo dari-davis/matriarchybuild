@@ -105,7 +105,11 @@ foreach ($order->get_items() as $item_id => $item) {
 
                 // Join Url
                 $joinArray = explode('":"', str_replace("\/", "/", $object[12]));
-                $joinUrl = str_replace('"', '', $joinArray[1]);
+                if ($appointment[0]->online_meeting_provider == 'google_meet') {
+                    $joinUrl = $appointment[0]->online_meeting_id;
+                } else {
+                    $joinUrl = str_replace('"', '', $joinArray[1]);
+                }
 
                 // Password
                 $passwordArray = explode(":", $object[13]);
@@ -126,7 +130,14 @@ foreach ($order->get_items() as $item_id => $item) {
 
 <?php if ($hasConsultation): ?>
     <p style="font-weight: bold; margin-bottom: 0; text-decoration: underline;">Consultation Details</p>
-    <p>You can access your <?= $duration; ?> min 1:1 Consultation with <?= $staffName; ?> at <?= $dateTime; ?> through <a href="<?= $joinUrl; ?>" target="_blank"><img style="height: 20px; margin-right: 4px;" src="https://d3k81ch9hvuctc.cloudfront.net/company/WG95tq/images/1bd4e92b-ee86-482e-8523-071d9287af70.png"/></a><a href="<?= $joinUrl; ?>" target="_blank"><?= $joinUrl; ?></a> <?php if ($password): ?>(pw: <em><b><?= $password; ?></b</em>)<?php endif; ?></p>
+    <?php $isGoogleMeet = $appointment[0]->online_meeting_provider == 'google_meet'; ?>
+    <?php if ($isGoogleMeet) {
+        $videoImg = "https://matriarchybuild.com/wp-content/uploads/2022/07/google-meet-link.png";
+    } else {
+        $videoImg = "https://d3k81ch9hvuctc.cloudfront.net/company/WG95tq/images/1bd4e92b-ee86-482e-8523-071d9287af70.png";
+    } ?>
+
+    <p>You can access your <?= $duration; ?> min 1:1 Consultation with <?= $staffName; ?> at <?= $dateTime; ?> through <a href="<?= $joinUrl; ?>" target="_blank"><img style="height: 20px; margin-right: 4px;" src=<?= $videoImg; ?>></a><a href="<?= $joinUrl; ?>" target="_blank"><?= $joinUrl; ?></a> <?php if ($password): ?>(pw: <em><b><?= $password; ?></b</em>)<?php endif; ?></p>
 
     <p style="font-weight: bold; margin-bottom: 0; text-decoration: underline;">Prepare for Your Session</p>
     <p>We strongly recommend completing your pre-consultation questionnaire and submitting all relevant photos to your Pro prior to your session with ample time for your Pro to review them. Depending on your project type, measurements, tools, drawings or images might be useful. Click here to fill out your pre-consultation questionnaire. <a href="<?= site_url();?>/my-account/view-order/<?= $order->ID; ?>"><?= site_url();?>/my-account/view-order/<?= $order->ID; ?></a></p>

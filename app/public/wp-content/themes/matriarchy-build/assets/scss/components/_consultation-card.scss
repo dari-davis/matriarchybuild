@@ -64,17 +64,16 @@ $border:    1px solid $green;
         border-top: $border;
     }
 
-    &__zoom-link {
+    &__zoom-link,
+    &__google-link {
         display: flex;
         justify-content: center;
         align-items: center;
         padding: 14px;
         margin-top: 8px;
-        width: 104px;
         height: 24px;
         font-size: 14px;
         font-family: $sans-serif-font-family;
-        background: #007bff;
 
         .fa-video,
         .fa-external-link-alt {
@@ -94,6 +93,16 @@ $border:    1px solid $green;
         &:hover {
             color: $white;
         }
+    }
+
+    &__zoom-link {
+        width: 104px;
+        background: #007bff;
+    }
+
+    &__google-link {
+        width: 140px;
+        background: #00832D;
     }
 
     &__zoom-passcode {
