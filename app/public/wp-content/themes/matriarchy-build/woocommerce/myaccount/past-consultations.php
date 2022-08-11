@@ -74,13 +74,20 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 						$endTime->add(new DateInterval('PT' . $duration . 'M'));
 						$timeOfDay = date_format($endTime, 'a');
 
+						// gets session end date and time
+						$sessionEndDateAndTime = new DateTime(date_format($startTime, 'M j, Y g:i a')); // start date and time
+						$sessionEndDateAndTime->add(new DateInterval('PT' . $duration . 'M'));
+
+						$fmtEndTime = date_format($sessionEndDateAndTime, 'M j, Y g:i a');
+
 						$price = $item->get_total();
 
 						// get current date and time in users timezone
 						$currentDateTime = date_timezone_set(new DateTime('now'), timezone_open($data['time_zone']));
 						$currentDateTime = date_format($currentDateTime, 'M j, Y g:i a');
 
-						if (new DateTime($dateTime) <= new DateTime($currentDateTime)) {
+						// if the session end time is in the past
+						if (new DateTime($fmtEndTime) <= new DateTime($currentDateTime)) {
 							$apptIsWhen = "past";
 						} else {
 							$apptIsWhen = "future";
