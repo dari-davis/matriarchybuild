@@ -148,7 +148,7 @@ foreach ( WC()->cart->get_cart() as $wc_key => $wc_item ) {
 	<div class="col-md p-0 mb-5">
 		<div class="woocommerce-form-coupon" method="post">
 			<div>
-				<input type="text" name="coupon_code" class="coupon-form-input input-text" placeholder="<?php esc_attr_e( 'Gift or Coupon Code', 'woocommerce' ); ?>" id="coupon_code" value="" />
+				<input type="text" name="coupon_code" class="coupon-form-input input-text" placeholder="<?php esc_attr_e( 'Coupon Code', 'woocommerce' ); ?>" id="coupon_code" value="" />
 				<a class="coupon-form-submit text-button text-button--green" name="apply_coupon" value="<?php esc_attr_e( 'Apply', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply coupon', 'woocommerce' ); ?></a>
 			</div>
 		</div>
@@ -165,6 +165,9 @@ foreach ( WC()->cart->get_cart() as $wc_key => $wc_item ) {
 					<?php endforeach; ?>
 				</div>
 			<?php endif; ?>
+			<div class="cart-discount col-12 d-flex flex-column justify-content-md-end align-items-md-end">
+				<?php do_action( 'woocommerce_review_order_before_order_total' ); ?>
+			</div>
 			<div class="col-12 d-flex justify-content-md-end align-items-center" data-order-total>
 				<span>Total&nbsp;&nbsp;</span><?= wc_cart_totals_order_total_html(); ?>
 			</div>
