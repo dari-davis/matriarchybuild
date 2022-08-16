@@ -35,13 +35,21 @@ foreach ($orders as $order) {
       // appointment time and date
       $unixTime = strtotime($details['items'][0]['slots'][0][2]);
       $apptTime = date('m-d-Y', $unixTime);
+      $timeForStatus = date('Y-m-d H:i:s', $unixTime);
+
+	   $appointment = $wpdb->get_results('SELECT * FROM wp_bookly_appointments WHERE start_date="'.$timeForStatus.'";');
+
+	   $customerAppointment = $wpdb->get_results('SELECT * FROM wp_bookly_customer_appointments WHERE appointment_id="'.$appointment[0]->id.'";');
+	   $status = $customerAppointment[0]->status;
 
       $booklyDuration = floor($serviceInfo[0]->duration/60);
       $duration = $booklyDuration > 0 ? ($booklyDuration - 5) : $booklyDuration;
       $orderPrice = number_format($orderTotal[0]->meta_value,2,'.','.');
 
-      echo '',$order->order_id, ', ', $staffName, ', ', $apptTime, ', ', $duration, ', ', '$'.$orderPrice, "
-      ";
+      if ($status != 'cancelled') {
+        echo '',$order->order_id, ', ', $staffName, ', ', $apptTime, ', ', $duration, ', ', '$'.$orderPrice, "
+        ";
+      }
    }
 }
 ?>
