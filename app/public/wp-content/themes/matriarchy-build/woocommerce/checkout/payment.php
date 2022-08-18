@@ -54,10 +54,13 @@ if ( ! is_ajax() ) {
 			</div>
 		</div>
 
-        <div class="row">
+        <div class="row klaviyo">
             <div class="col-md-8">
                 <p class="form-row kl_newsletter_checkbox_field mb-3" id="kl_newsletter_checkbox_field" data-priority=""><span class="woocommerce-input-wrapper"><label class="checkbox ">
-					<input type="checkbox" class="input-checkbox " name="kl_newsletter_checkbox" id="kl_newsletter_checkbox" value="1" checked> Sign me up to receive news and email updates</label></span>
+					<label class="container">
+                        <input type="checkbox" class="input-checkbox " name="kl_newsletter_checkbox" id="kl_newsletter_checkbox" value="1" checked><span>Sign me up to receive news and email updates</span>
+                        <span class="checkmark"></span>
+                    </label>
                 </p>
             </div>
         </div>
