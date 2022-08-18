@@ -57,7 +57,7 @@ if ( ! is_ajax() ) {
         <div class="row">
             <div class="col-md-8">
                 <p class="form-row kl_newsletter_checkbox_field mb-3" id="kl_newsletter_checkbox_field" data-priority=""><span class="woocommerce-input-wrapper"><label class="checkbox ">
-					<input type="checkbox" class="input-checkbox " name="kl_newsletter_checkbox" id="kl_newsletter_checkbox" value="1"> Sign me up to receive news and email updates</label></span>
+					<input type="checkbox" class="input-checkbox " name="kl_newsletter_checkbox" id="kl_newsletter_checkbox" value="1" checked> Sign me up to receive news and email updates</label></span>
                 </p>
             </div>
         </div>
