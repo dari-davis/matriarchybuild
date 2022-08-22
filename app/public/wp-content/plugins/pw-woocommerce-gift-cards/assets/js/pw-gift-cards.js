@@ -131,6 +131,7 @@ function pwgc_bind_remove_link() {
                 jQuery( '.woocommerce-error, .woocommerce-message' ).remove();
                 checkoutContainer.removeClass( 'processing' ).unblock();
                 jQuery( document.body ).trigger( 'update_checkout', { update_shipping_method: false } );
+                location.reload();
             } else {
                 jQuery( document.body ).trigger( 'wc_update_cart' );
             }
@@ -184,6 +185,7 @@ function pwgc_redeem_gift_card(redeemButton) {
     jQuery.post(pwgc.ajaxurl, {'action': 'pw-gift-cards-redeem', 'card_number': cardNumber.val(), 'security': pwgc.nonces.apply_gift_card}, function( result ) {
         if (result.success) {
             jQuery( document.body ).trigger( 'wc_update_cart' );
+            location.reload();
         } else {
             errorContainer.text(result.data.message);
             redeemButton.attr('value', redeemButton.attr('data-apply-text')).prop('disabled', false);
@@ -224,6 +226,7 @@ function pwgc_checkout_redeem_gift_card(redeemButton) {
             form.slideUp();
             cardNumber.val('');
             jQuery( document.body ).trigger( 'update_checkout', { update_shipping_method: false } );
+            location.reload();
         } else {
             errorContainer.text(result.data.message);
             cardNumber.trigger('focus');
