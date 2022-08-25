@@ -17,7 +17,7 @@ if ( ! function_exists( 'pwgc_get_designs' ) ) {
 
 if ( ! function_exists( 'pwgc_redeem_url' ) ) {
     function pwgc_redeem_url( $item_data ) {
-        $shop_url = get_permalink( wc_get_page_id( 'shop' ) );
+        $shop_url = home_url();
         if ( empty( $shop_url ) ) {
             $shop_url = site_url();
         }
