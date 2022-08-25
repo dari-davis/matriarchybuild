@@ -27,14 +27,14 @@ if ( $pw_gift_cards_redeeming->cart_contains_gift_card() && 'yes' !== get_option
 
 if ( 'review_order_before_submit' === get_option( 'pwgc_redeem_checkout_location', 'review_order_before_submit' ) ) {
     ?>
-    <div id="pwgc-redeem-gift-card-form">
+    <div id="pwgc-redeem-gift-card-form ms-md-2">
         <form id="pwgc-redeem-form">
-            <label for="pwgc-redeem-gift-card-number"><?php _e( 'Have a gift card?', 'pw-woocommerce-gift-cards' ); ?></label>
+            <label class="sr-only" for="pwgc-redeem-gift-card-number"><?php _e( 'Have a gift card?', 'pw-woocommerce-gift-cards' ); ?></label>
             <div id="pwgc-redeem-error" style="color: red;"></div>
-            <div class="d-flex mt-2">
-            <input type="text" id="pwgc-redeem-gift-card-number" name="card_number" autocomplete="off" placeholder="<?php esc_html_e( 'Gift card number', 'pw-woocommerce-gift-cards' ); ?>">
-            <input class="button" type="submit" id="pwgc-redeem-button" data-wait-text="<?php esc_html_e( 'Please wait...', 'pw-woocommerce-gift-cards' ); ?>" value="<?php esc_html_e( 'Apply Gift Card', 'pw-woocommerce-gift-cards' ); ?>">
-</div>
+            <div class="d-flex flex-column flex-lg-row">
+                <input class="mb-2 mb-lg-0" type="text" id="pwgc-redeem-gift-card-number" name="card_number" autocomplete="off" placeholder="<?php esc_html_e( 'Gift card number', 'pw-woocommerce-gift-cards' ); ?>">
+                <input class="button" type="submit" id="pwgc-redeem-button" data-wait-text="<?php esc_html_e( 'Please wait...', 'pw-woocommerce-gift-cards' ); ?>" value="<?php esc_html_e( 'Apply Gift Card', 'pw-woocommerce-gift-cards' ); ?>">
+            </div>
         </form>
     </div>
     <script>

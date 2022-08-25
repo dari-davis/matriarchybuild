@@ -145,13 +145,15 @@ foreach ( WC()->cart->get_cart() as $wc_key => $wc_item ) {
 <hr/>
 
 <div class="row m-0 pt-1">
-	<div class="col-md p-0 mb-5">
-		<div class="woocommerce-form-coupon" method="post">
-			<div>
-				<input type="text" name="coupon_code" class="coupon-form-input input-text" placeholder="<?php esc_attr_e( 'Coupon Code', 'woocommerce' ); ?>" id="coupon_code" value="" />
-				<a class="coupon-form-submit text-button text-button--green" name="apply_coupon" value="<?php esc_attr_e( 'Apply', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply coupon', 'woocommerce' ); ?></a>
+	<div class="col-md p-0 d-flex mb-4 mb-md-0">
+		<div class="woocommerce-form-coupon me-3" method="post">
+			<div class="d-flex flex-column flex-lg-row">
+				<input type="text" name="coupon_code" class="coupon-form-input input-text mb-2 mb-lg-0" placeholder="<?php esc_attr_e( 'Coupon Code', 'woocommerce' ); ?>" id="coupon_code" value="" />
+				<a class="coupon-form-submit button" name="apply_coupon" value="<?php esc_attr_e( 'Apply', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply coupon', 'woocommerce' ); ?></a>
 			</div>
 		</div>
+
+		<?php do_action( 'woocommerce_review_order_before_submit' ); ?>
 	</div>
 	<div class="col-md p-0 d-flex justify-content-md-end align-items-start total">
 		<div class="row gx-0">
