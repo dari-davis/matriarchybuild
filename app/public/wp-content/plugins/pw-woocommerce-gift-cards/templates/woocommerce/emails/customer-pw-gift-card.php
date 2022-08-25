@@ -173,7 +173,7 @@ if ( ! isset( $item_data->preview ) ) {
         <td width="10"></td>
         <td>
             <div id="pwgc-email-redeem-button">
-                <a href="<?php echo $item_data->redeem_url; ?>"><?php _e( 'Redeem', 'pw-woocommerce-gift-cards' ); ?></a>
+                <a href="<?php echo $item_data->redeem_url; ?>"><?php _e( 'Use Gift Card', 'pw-woocommerce-gift-cards' ); ?></a>
             </div>
         </td>
         <td width="10"></td>
