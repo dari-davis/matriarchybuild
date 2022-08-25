@@ -37,10 +37,6 @@ if ( ! is_ajax() ) {
                     ?>
                 </ul>
 
-                <div class="mt-3">
-                    <?php do_action( 'woocommerce_review_order_before_submit' ); ?>
-                </div>
-
             <?php endif; ?>
         </div>
             
