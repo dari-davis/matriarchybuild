@@ -85,11 +85,7 @@ $upload_dir = wp_upload_dir();
 
                 // Join Url
                 $joinArray = explode('":"', str_replace("\/", "/", $object[12]));
-                if ($appointment[0]->online_meeting_provider == 'google_meet') {
-                    $joinUrl = $appointment[0]->online_meeting_id;
-                } else {
-                    $joinUrl = str_replace('"', '', $joinArray[1]);
-                }
+                $joinUrl = str_replace('"', '', $joinArray[1]);
 
                 // Password
                 $passwordArray = explode(":", $object[13]);
@@ -112,13 +108,9 @@ $upload_dir = wp_upload_dir();
             <div class="col-12 col-lg p-3">
                 <div><?= $date; ?></div>
                 <div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
-                <?php if(!empty($zoomId)): ?>
-                    <?php if ($appointment[0]->online_meeting_provider == 'google_meet'): ?>
-                        <a class="consultation-card__google-link badge badge-primary" href="<?= $joinUrl; ?>" target="_blank"><i class="fas fa-video fa-fw"></i> Google Meet <i class="fas fa-external-link-alt fa-fw"></i></a>
-                    <?php else: ?>
-                        <a class="consultation-card__zoom-link badge badge-primary" href="<?= $joinUrl; ?>" target="_blank"><i class="fas fa-video fa-fw"></i> Zoom <i class="fas fa-external-link-alt fa-fw"></i></a>
-                        <?php if ($password): ?><span class="consultation-card__zoom-passcode" class="my-2">Passcode: <?= $password; ?></span><?php endif; ?>
-                    <?php endif; ?>
+                <?php if(!empty($zoomId) && $apptIsWhen == "future"): ?>
+                    <a class="consultation-card__zoom-link badge badge-primary" href="<?= $joinUrl; ?>" target="_blank"><i class="fas fa-video fa-fw"></i> Zoom <i class="fas fa-external-link-alt fa-fw"></i></a>
+                    <?php if ($password): ?><span class="consultation-card__zoom-passcode" class="my-2">Passcode: <?= $password; ?></span><?php endif; ?>
                 <?php endif; ?>
             </div>
             <div class="col-12 col-lg p-3 d-flex justify-content-lg-end">

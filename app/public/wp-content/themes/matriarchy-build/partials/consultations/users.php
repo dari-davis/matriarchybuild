@@ -106,11 +106,8 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 
 							// Join Url
 							$joinArray = explode('":"', str_replace("\/", "/", $object[12]));
-							if ($appointment[0]->online_meeting_provider == 'google_meet') {
-								$joinUrl = $appointment[0]->online_meeting_id;
-							} else {
-								$joinUrl = str_replace('"', '', $joinArray[1]);
-							}
+							$joinUrl = str_replace('"', '', $joinArray[1]);
+
 							// Password
 							$passwordArray = explode(":", $object[13]);
 							if (strpos($passwordArray[0], 'password')) {
@@ -139,12 +136,8 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 								<div><?= $date; ?></div>
 								<div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
 								<?php if(!empty($zoomId)): ?>
-									<?php if ($appointment[0]->online_meeting_provider == 'google_meet'): ?>
-										<a class="consultation-card__google-link badge badge-primary" href="<?= $joinUrl; ?>" target="_blank"><i class="fas fa-video fa-fw"></i> Google Meet <i class="fas fa-external-link-alt fa-fw"></i></a>
-									<?php else: ?>
-										<a class="consultation-card__zoom-link badge badge-primary" href="<?= $joinUrl; ?>" target="_blank"><i class="fas fa-video fa-fw"></i> Zoom <i class="fas fa-external-link-alt fa-fw"></i></a>
-										<?php if ($password): ?><span class="consultation-card__zoom-passcode" class="my-2">Passcode: <?= $password; ?></span><?php endif; ?>
-									<?php endif; ?>
+									<a class="consultation-card__zoom-link badge badge-primary" href="<?= $joinUrl; ?>" target="_blank"><i class="fas fa-video fa-fw"></i> Zoom <i class="fas fa-external-link-alt fa-fw"></i></a>
+									<?php if ($password): ?><span class="consultation-card__zoom-passcode" class="my-2">Passcode: <?= $password; ?></span><?php endif; ?>
 								<?php endif; ?>
 								<div><a class="text-button text-button--green" href="../view-order/<?= $order->get_id();?>?pid=<?= $order->get_id();?>&assignee=<?= str_replace(" ", "", $staffName); ?>">View Details</a></div>
 							</div>
