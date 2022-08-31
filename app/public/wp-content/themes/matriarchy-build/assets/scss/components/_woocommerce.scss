@@ -148,7 +148,14 @@
 	}
 
 	.button.coupon-form-submit {
-		min-width: 160px;
+		min-width: 130px;
+
+		&:after {
+			background-image: none;
+			height: 0;
+			width: 0;
+			margin-left: 0;
+		}
 	}
 }
 

@@ -140,7 +140,7 @@ do_action( 'woocommerce_review_order_after_cart_contents' );
 		<div class="woocommerce-form-coupon me-3" method="post">
 			<div class="d-flex flex-column flex-lg-row">
 				<input type="text" name="coupon_code" class="coupon-form-input input-text mb-2 mb-lg-0" placeholder="<?php esc_attr_e( 'Coupon Code', 'woocommerce' ); ?>" id="coupon_code" value="" />
-				<a class="coupon-form-submit button" name="apply_coupon" value="<?php esc_attr_e( 'Apply', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply coupon', 'woocommerce' ); ?></a>
+				<a class="coupon-form-submit button" name="apply_coupon" value="<?php esc_attr_e( 'Apply', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply Coupon', 'woocommerce' ); ?></a>
 			</div>
 		</div>
 
