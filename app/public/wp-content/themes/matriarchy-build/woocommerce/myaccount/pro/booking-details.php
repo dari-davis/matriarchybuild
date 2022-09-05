@@ -17,6 +17,7 @@ $upload_dir = wp_upload_dir();
 <?php if (!empty($order)): ?>
     <?php $customerFName = $order->get_data()["billing"]["first_name"];
 	      $customerLName = $order->get_data()["billing"]["last_name"];
+          $customerEmail = $order->get_data()["billing"]["email"];
     ?>
 
     <?php foreach ($order->get_items() as $item_id => $item) {
@@ -141,7 +142,8 @@ $upload_dir = wp_upload_dir();
                         <p>Following your session with the client you may want to send a recap of your conversation, a list of materials/tools, or topics for a follow-up consultation.</p>
                         <div class="form-group row m-0">
                             <div class="p-0">
-                                <textarea class="form-control" rows="12" id="note" name="note" required></textarea>
+                                <?= do_shortcode('[forminator_form id="2212"]'); ?> <!-- staging -->
+                                <!-- local form id 1170 -->
                             </div>
                         </div>
                         <div class="d-flex py-3"><button type="submit" value="Send" name="submit" class="w-auto button alt">Send</button>

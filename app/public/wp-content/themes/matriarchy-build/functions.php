@@ -1110,4 +1110,17 @@ function isa_pre_user_query($user_search) {
 	}
 }
 
+// Pro note to client hidden name field
+add_filter( 'forminator_field_hidden_field_value', function( $value, $saved_value, $field ){
+	$order_id = $_GET['id'];
+	$order = wc_get_order($order_id);
+
+	$hidden_field_id = 'hidden-1';
+	$customerEmail = $order->get_data()["billing"]["email"];
+
+	$value = $customerEmail;
+
+	return $value;
+}, 20, 3 );
+
 ?>
