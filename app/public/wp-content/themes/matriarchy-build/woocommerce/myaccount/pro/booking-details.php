@@ -140,7 +140,6 @@ $upload_dir = wp_upload_dir();
                                 <!-- local form id 1170 -->
                             </div>
                         </div>
-                        <div class="d-flex py-3"><button type="submit" value="Send" name="submit" class="w-auto button alt">Send</button>
                     <?php else: ?>
                         <div class="my-account__client-note"><?= str_replace("\'", "'", get_post_meta($order_id, "notes_to_client", true)); ?></div>
                     <?php endif; ?>
