@@ -112,7 +112,7 @@ foreach ($order->get_items() as $item_id => $item) {
     <?php $site = site_url(); ?>
     <?php $id = $order->ID; ?>
     <?php $staff = str_replace(" ", "", $staffName); ?>
-    <?php $consultationLink = "$site/my-account/view-order/$id&assignee=$staff&"; ?>
+    <?php $consultationLink = "$site/my-account/view-order/$id?pid=$id&assignee=$staff&"; ?>
 
 <p>We strongly recommend completing your pre-consultation questionnaire and submitting all relevant photos to your Pro prior to your session with ample time for your Pro to review them. Depending on your project type, measurements, tools, drawings or images might be useful. Click here to fill out your pre-consultation questionnaire. <a href="<?= preg_replace('{/$}', '', $consultationLink); ?>"><?= site_url();?>/my-account/view-order/<?= $order->ID; ?></a></p>
 
