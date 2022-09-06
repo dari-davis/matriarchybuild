@@ -1146,18 +1146,36 @@ function isa_pre_user_query($user_search) {
 	}
 }
 
+function get_current_url() {
+    $pageURL = 'http';
+    if (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on") {
+        $pageURL .= "s";
+    }
+    $pageURL .= "://";
+    if ($_SERVER["SERVER_PORT"] != "۸۰") {
+        $pageURL .= $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . $_SERVER["REQUEST_URI"];
+    } else {
+        $pageURL .= $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+    }
+    return $pageURL;
+}
+
+$url = get_current_url();
+
 // Pro note to client hidden name field
-add_filter( 'forminator_field_hidden_field_value', function( $value, $saved_value, $field ){
-	$order_id = $_GET['id'];
-	$order = wc_get_order($order_id);
+if (strpos($url, '/booking-details/')) {
+	add_filter( 'forminator_field_hidden_field_value', function( $value, $saved_value, $field ){
+		$order_id = $_GET['id'];
+		$order = wc_get_order($order_id);
 
-	$hidden_field_id = 'hidden-1';
-	$customerEmail = $order->get_data()["billing"]["email"];
+		$hidden_field_id = 'hidden-1';
+		$customerEmail = $order->get_data()["billing"]["email"];
 
-	$value = $customerEmail;
+		$value = $customerEmail;
 
-	return $value;
-}, 20, 3 );
+		return $value;
+	}, 20, 3 );
+}
 
 function get_current_url() {
     $pageURL = 'http';
