@@ -1125,4 +1125,31 @@ function isa_pre_user_query($user_search) {
 	}
 }
 
+function get_current_url() {
+    $pageURL = 'http';
+    if (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on") {
+        $pageURL .= "s";
+    }
+    $pageURL .= "://";
+    if ($_SERVER["SERVER_PORT"] != "۸۰") {
+        $pageURL .= $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . $_SERVER["REQUEST_URI"];
+    } else {
+        $pageURL .= $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+    }
+    return $pageURL;
+}
+
+$url = get_current_url();
+
+if (strpos($url, '/view-order/')) {
+	add_filter('forminator_field_hidden_field_value', function ($value, $saved_value, $field) {
+		$pro = $_GET['assignee'];
+
+		$hidden_field_id = 'hidden-1'; // Pro Name
+		$value = $pro;
+
+		return $value;
+	}, 20, 3 );
+}
+
 ?>
