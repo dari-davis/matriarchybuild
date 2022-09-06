@@ -867,11 +867,30 @@ function bbloomer_save_name_fields( $customer_id ) {
 add_action( 'woocommerce_thankyou', 'actions_after_checkout');
 function actions_after_checkout( $order_id ){
     $order = wc_get_order( $order_id );
-    $url = wc_get_account_endpoint_url("view-order/$order_id/?pid=$order_id");
+	$hasConsultation = false;
 
     if ( ! $order->has_status( 'failed' ) ) {
 		order_id_to_bookly($order_id);
-        wp_safe_redirect( $url );
+
+		foreach ($order->get_items() as $item_id => $item) {
+			$data =  $item->get_meta("bookly");
+
+			if (isset($data['items'])) {
+				$staffId = $data['items'][0]['staff_ids'][0];
+       			$staffInfo = $wpdb->get_results('SELECT * FROM wp_bookly_staff WHERE id="'.$staffId.'";');
+        		$staffName = $staffInfo[0]->full_name;
+			}
+
+			$is_consultation = strpos($item->get_name(), 'Consultation') != false;
+			if ($is_consultation) { $hasConsultation = true; }
+		}
+
+		$url = wc_get_account_endpoint_url("view-order/$order_id/?pid=$order_id&assignee=$staffName");
+
+		if ($hasConsultation && $order->get_item_count() == 1) {
+			wp_safe_redirect( $url );
+		}
+
         exit;
     }
 }
