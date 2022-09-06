@@ -57,7 +57,7 @@ foreach ( WC()->cart->get_cart() as $wc_key => $cart_item ) {
 		$timeOfDay = date_format($endTime, 'a');
 	}
 
-	if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_checkout_cart_item_visible', true, $cart_item, $cart_item_key ) ) { ?>
+	if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_checkout_cart_item_visible', true, $cart_item) ) { ?>
 
 		<?php if ($is_consultation): ?>
 			<div class="consultation-card row mb-borders m-0 mb-4">
@@ -72,7 +72,7 @@ foreach ( WC()->cart->get_cart() as $wc_key => $cart_item ) {
 					<div><a class="text-button text-button--green" href="/pro/<?= str_replace(' ', '-', strtolower($staffInfo[0]->full_name)); ?>/#booking-<?= $serviceId; ?>">Change Time</a></div>
 				</div>
 				<div class="col-12 col-lg p-3 d-flex justify-content-lg-end">
-					<div><?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
+					<?= WC()->cart->get_product_subtotal($_product, $cart_item['quantity']); ?>
 				</div>
 			</div>
 		<?php else: ?>

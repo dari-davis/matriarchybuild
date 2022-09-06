@@ -843,6 +843,7 @@ function actions_after_checkout( $order_id ){
     $order = wc_get_order( $order_id );
 	$confirmation_url = $order->get_checkout_order_received_url();
 	$hasConsultation = false;
+	global $wpdb;
 
     if ( ! $order->has_status( 'failed' ) ) {
 		order_id_to_bookly($order_id);
@@ -860,7 +861,7 @@ function actions_after_checkout( $order_id ){
 			if ($is_consultation) { $hasConsultation = true; }
 		}
 
-		$url = wc_get_account_endpoint_url("view-order/$order_id/?pid=$order_id&assignee=$staffName");
+		$url = wc_get_account_endpoint_url("view-order/$order_id?pid=$order_id&assignee=$staffName");
 
 		if ($hasConsultation && $order->get_item_count() == 1) {
 			wp_safe_redirect( $url );
