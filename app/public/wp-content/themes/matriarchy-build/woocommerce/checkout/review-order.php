@@ -60,24 +60,26 @@ foreach ( WC()->cart->get_cart() as $wc_key => $wc_item ) {
 	foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
 		$_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
 
-		if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_checkout_cart_item_visible', true, $cart_item, $cart_item_key ) ) {
+		if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_checkout_cart_item_visible', true, $cart_item) ) {
 			?>
-			
-			<div class="consultation-card row mb-borders m-0 mb-4">
-				<div class="col-12 col-lg bg-white p-3">
-					<div class="consultation-card__detail mb-2"><?= $serviceInfo[0]->title;?></div>
-					<div class="consultation-card__pro"><?= $staffName; ?></div>
-					<div class="consultation-card__detail"><?= $staffTrade; ?></div>
+
+			<?php if ($is_consultation): ?>
+				<div class="consultation-card row mb-borders m-0 mb-4">
+					<div class="col-12 col-lg bg-white p-3">
+						<div class="consultation-card__detail mb-2"><?= $serviceInfo[0]->title;?></div>
+						<div class="consultation-card__pro"><?= $staffName; ?></div>
+						<div class="consultation-card__detail"><?= $staffTrade; ?></div>
+					</div>
+					<div class="col-12 col-lg p-3">
+						<div><?= $date; ?></div>
+						<div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
+						<div><a class="text-button text-button--green" href="/pro/<?= str_replace(' ', '-', strtolower($staffInfo[0]->full_name)); ?>/#booking-<?= $serviceId; ?>">Change Time</a></div>
+					</div>
+					<div class="col-12 col-lg p-3 d-flex justify-content-lg-end">
+						<?= WC()->cart->get_product_subtotal($_product, $cart_item['quantity']); ?>
+					</div>
 				</div>
-				<div class="col-12 col-lg p-3">
-					<div><?= $date; ?></div>
-					<div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
-					<div><a class="text-button text-button--green" href="/pro/<?= str_replace(' ', '-', strtolower($staffInfo[0]->full_name)); ?>/#booking-<?= $serviceId; ?>">Change Time</a></div>
-				</div>
-				<div class="col-12 col-lg p-3 d-flex justify-content-lg-end">
-					<div><?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
-				</div>
-			</div>
+			<?php endif; ?>
 			<?php
 		}
 	}
