@@ -1141,4 +1141,15 @@ if (strpos($url, '/booking-details/')) {
 	}, 20, 3 );
 }
 
+if (strpos($url, '/view-order/')) {
+	add_filter('forminator_field_hidden_field_value', function ($value, $saved_value, $field) {
+		$pro = $_GET['assignee'];
+
+		$hidden_field_id = 'hidden-1'; // Pro Name
+		$value = $pro;
+
+		return $value;
+	}, 20, 3 );
+}
+
 ?>
