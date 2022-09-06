@@ -108,7 +108,13 @@ foreach ($order->get_items() as $item_id => $item) {
 <p>You can access your <?= $duration; ?> min 1:1 Consultation with <?= $staffName; ?> at <?= $dateTime; ?> through <a href="<?= $joinUrl; ?>" target="_blank"><img style="height: 20px; margin-right: 4px;" src="https://d3k81ch9hvuctc.cloudfront.net/company/WG95tq/images/1bd4e92b-ee86-482e-8523-071d9287af70.png"/></a><a href="<?= $joinUrl; ?>" target="_blank"><?= $joinUrl; ?></a> <?php if ($password): ?>(pw: <em><b><?= $password; ?></b</em>)<?php endif; ?></p>
 
 <p style="font-weight: bold; margin-bottom: 0; text-decoration: underline;">Prepare for Your Session</p>
-<p>We strongly recommend completing your pre-consultation questionnaire and submitting all relevant photos to your Pro prior to your session with ample time for your Pro to review them. Depending on your project type, measurements, tools, drawings or images might be useful. Click here to fill out your pre-consultation questionnaire. <a href="<?= site_url();?>/my-account/view-order/<?= $order->ID; ?>"><?= site_url();?>/my-account/view-order/<?= $order->ID; ?></a></p>
+
+<?php $site = site_url(); ?>
+<?php $id = $order->ID; ?>
+<?php $staff = str_replace(" ", "", $staffName); ?>
+<?php $consultationLink = "$site/my-account/view-order/$id&assignee=$staff"; ?>
+
+<p>We strongly recommend completing your pre-consultation questionnaire and submitting all relevant photos to your Pro prior to your session with ample time for your Pro to review them. Depending on your project type, measurements, tools, drawings or images might be useful. Click here to fill out your pre-consultation questionnaire. <a href="<?= preg_replace('{/$}', '', $consultationLink); ?>"><?= site_url();?>/my-account/view-order/<?= $order->ID; ?></a></p>
 
 <p>And visit our How it Works section for more guidance on preparing for your session. <a href="<?= site_url();?>/how-it-works"><?= site_url();?>/how-it-works</a></p>
 <br/>
