@@ -867,11 +867,31 @@ function bbloomer_save_name_fields( $customer_id ) {
 add_action( 'woocommerce_thankyou', 'actions_after_checkout');
 function actions_after_checkout( $order_id ){
     $order = wc_get_order( $order_id );
-    $url = wc_get_account_endpoint_url("view-order/$order_id/?pid=$order_id");
+	$hasConsultation = false;
+	global $wpdb;
 
     if ( ! $order->has_status( 'failed' ) ) {
 		order_id_to_bookly($order_id);
-        wp_safe_redirect( $url );
+
+		foreach ($order->get_items() as $item_id => $item) {
+			$data =  $item->get_meta("bookly");
+
+			if (isset($data['items'])) {
+				$staffId = $data['items'][0]['staff_ids'][0];
+       			$staffInfo = $wpdb->get_results('SELECT * FROM wp_bookly_staff WHERE id="'.$staffId.'";');
+        		$staffName = $staffInfo[0]->full_name;
+			}
+
+			$is_consultation = strpos($item->get_name(), 'Consultation') != false;
+			if ($is_consultation) { $hasConsultation = true; }
+		}
+
+		$url = wc_get_account_endpoint_url("view-order/$order_id?pid=$order_id&assignee=$staffName");
+
+		if ($hasConsultation && $order->get_item_count() == 1) {
+			wp_safe_redirect( $url );
+		}
+
         exit;
     }
 }
@@ -1123,6 +1143,33 @@ function isa_pre_user_query($user_search) {
 			$user_search->query_where
 		);
 	}
+}
+
+function get_current_url() {
+    $pageURL = 'http';
+    if (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on") {
+        $pageURL .= "s";
+    }
+    $pageURL .= "://";
+    if ($_SERVER["SERVER_PORT"] != "۸۰") {
+        $pageURL .= $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . $_SERVER["REQUEST_URI"];
+    } else {
+        $pageURL .= $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+    }
+    return $pageURL;
+}
+
+$url = get_current_url();
+
+if (strpos($url, '/view-order/')) {
+	add_filter('forminator_field_hidden_field_value', function ($value, $saved_value, $field) {
+		$pro = $_GET['assignee'];
+
+		$hidden_field_id = 'hidden-1'; // Pro Name
+		$value = $pro;
+
+		return $value;
+	}, 20, 3 );
 }
 
 ?>
