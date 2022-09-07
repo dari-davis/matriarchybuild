@@ -855,13 +855,14 @@ function actions_after_checkout( $order_id ){
 				$staffId = $data['items'][0]['staff_ids'][0];
        			$staffInfo = $wpdb->get_results('SELECT * FROM wp_bookly_staff WHERE id="'.$staffId.'";');
         		$staffName = $staffInfo[0]->full_name;
+				$staff = str_replace(" ", "", $staffName);
 			}
 
 			$is_consultation = strpos($item->get_name(), 'Consultation') != false;
 			if ($is_consultation) { $hasConsultation = true; }
 		}
 
-		$url = wc_get_account_endpoint_url("view-order/$order_id?pid=$order_id&assignee=$staffName");
+		$url = wc_get_account_endpoint_url("view-order/$order_id?pid=$order_id&assignee=$staff&");
 
 		if ($hasConsultation && $order->get_item_count() == 1) {
 			wp_safe_redirect( $url );
