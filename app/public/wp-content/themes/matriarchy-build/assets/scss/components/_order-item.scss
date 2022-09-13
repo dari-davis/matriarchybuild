@@ -1,0 +1,27 @@
+.order-item {
+    .col-12 + .col-12 {
+        @include media-breakpoint-up(lg) {
+            border-left: $border;
+        }
+
+        @include media-breakpoint-down(lg) {
+            border-top: $border;
+        }
+    }
+
+    .col-lg + .col-lg {
+        @include media-breakpoint-up(lg) {
+            border-left: $border;
+        }
+    }
+
+    &__name {
+        font-size: 24px;
+        line-height: 26px;
+    }
+
+    &__details {
+        font-size: 16px;
+        color: $green;
+    }
+}

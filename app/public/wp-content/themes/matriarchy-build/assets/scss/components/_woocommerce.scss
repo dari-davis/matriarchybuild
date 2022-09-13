@@ -134,6 +134,29 @@
 		}
 
 	}
+
+	// gift card apply button
+	#pwgc-redeem-button,
+	.button.coupon-form-submit {
+		height: auto;
+		width: auto;
+		font-size: 14px;
+
+		@include media-breakpoint-up(lg) {
+			margin-left: 10px;
+		}
+	}
+
+	.button.coupon-form-submit {
+		min-width: 130px;
+
+		&:after {
+			background-image: none;
+			height: 0;
+			width: 0;
+			margin-left: 0;
+		}
+	}
 }
 
 .woocommerce__section {
@@ -272,6 +295,10 @@
 	.woocommerce-checkout & {
 		margin-bottom: 30px;
 	}
+}
+
+.woocommerce-message .wc-forward {
+	display: none !important;
 }
 
 .woocommerce form .form-row .required {

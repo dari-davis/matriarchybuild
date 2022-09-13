@@ -1,0 +1,49 @@
+.order-confirmation {
+    &__heading {
+        font-family: $heading-font-family;
+        font-size: 40px;
+        text-transform: uppercase;
+    }
+
+    &__details {
+        @include media-breakpoint-down(md) {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    &__details-item {
+        font-size: 14px;
+
+        @include media-breakpoint-down(md) {
+            margin-bottom: 8px;
+        }
+    }
+
+    .total .woocommerce-Price-amount {
+        font-size: 16px;
+    }
+
+    .wc-item-meta {
+        padding: 0;
+    }
+
+    &__product-name,
+    .woocommerce-table__product-table {
+        font-family: $sans-serif-font-family;
+        font-size: 18px;
+    }
+
+    .text-button {
+        color: $blue;
+    }
+
+    &__consultation-button {
+        width: 200px;
+    }
+
+    .woocommerce-table--order-details thead .woocommerce-table__product-name {
+        font-family: $sans-serif-font-family;
+        font-size: 18px;
+    }
+}

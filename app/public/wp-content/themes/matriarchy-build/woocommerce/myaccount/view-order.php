@@ -28,13 +28,12 @@ $upload_dir = wp_upload_dir();
 
 foreach ($order->get_items() as $item_id => $item) {
     $data =  $item->get_meta("bookly");
-    $timezone = $data['time_zone'];
+    if (is_array($data)) { $timezone = $data['time_zone']; }
 
     if (isset($data['items'])) {
         // service details
         $serviceId = $data['items'][0]['service_id'];
         $serviceInfo = $wpdb->get_results('SELECT * FROM wp_bookly_services WHERE id="'.$serviceId.'";');
-
 
         // staff details
         $staffId = $data['items'][0]['staff_ids'][0];
@@ -61,13 +60,20 @@ foreach ($order->get_items() as $item_id => $item) {
         $endTime->add(new DateInterval('PT' . $duration . 'M'));
         $timeOfDay = date_format($endTime, 'a');
 
+        // gets session end date and time
+        $sessionEndDateAndTime = new DateTime(date_format($startTime, 'M j, Y g:i a')); // start date and time
+        $sessionEndDateAndTime->add(new DateInterval('PT' . $duration . 'M'));
+
+        $fmtEndTime = date_format($sessionEndDateAndTime, 'M j, Y g:i a');
+
         $price = $item->get_total();
 
         // get current date and time in users timezone
         $currentDateTime = date_timezone_set(new DateTime('now'), timezone_open($data['time_zone']));
         $currentDateTime = date_format($currentDateTime, 'M j, Y g:i a');
 
-        if (new DateTime($dateTime) <= new DateTime($currentDateTime)) {
+        // if the session end time is in the past
+        if (new DateTime($fmtEndTime) <= new DateTime($currentDateTime)) {
             $apptIsWhen = "past";
         } else {
             $apptIsWhen = "future";
@@ -93,32 +99,36 @@ foreach ($order->get_items() as $item_id => $item) {
     }
 } ?>
 
-<?php if (isset($data['items']) && !empty($serviceInfo)): ?>
-    <div class="consultation-card row mb-borders m-0 mb-4">
-        <div class="col-12 col-lg consultation-card__yellow-bg p-3">
-            <div class="consultation-card__detail mb-2"><?= $serviceInfo[0]->title;?></div>
-            <div class="consultation-card__pro"><?= $staffName; ?></div>
-            <div class="consultation-card__detail"><?= $staffTrade; ?></div>
+<?php foreach ($order->get_items() as $item_id => $item): ?>
+    <?php $data =  $item->get_meta("bookly"); ?>
+
+    <?php if (isset($data['items']) && !empty($serviceInfo)): ?>
+        <div class="consultation-card row mb-borders m-0 mb-4">
+            <div class="col-12 col-lg consultation-card__yellow-bg p-3">
+                <div class="consultation-card__detail mb-2"><?= $serviceInfo[0]->title;?></div>
+                <div class="consultation-card__pro"><?= $staffName; ?></div>
+                <div class="consultation-card__detail"><?= $staffTrade; ?></div>
+            </div>
+            <div class="col-12 col-lg p-3">
+                <div><?= $date; ?></div>
+                <div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
+                <?php if(!empty($zoomId) && $apptIsWhen == "future"): ?>
+                    <a class="consultation-card__zoom-link badge badge-primary" href="<?= $joinUrl; ?>" target="_blank"><i class="fas fa-video fa-fw"></i> Zoom <i class="fas fa-external-link-alt fa-fw"></i></a>
+                    <?php if ($password): ?><span class="consultation-card__zoom-passcode" class="my-2">Passcode: <?= $password; ?></span><?php endif; ?>
+                <?php endif; ?>
+            </div>
+            <div class="col-12 col-lg p-3 d-flex justify-content-lg-end">
+                <div><?= wc_price($price); ?></div>
+            </div>
+            <div class="consultation-card__order row no-gutters m-0 py-2">
+                <?php $orderNumber = $order->get_order_number();
+                    $orderDate = wc_format_datetime($order->get_date_created()); ?>
+                <?= "Order $orderNumber was placed on $orderDate."; ?>
+            </div>
         </div>
-        <div class="col-12 col-lg p-3">
-            <div><?= $date; ?></div>
-            <div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
-            <?php if(!empty($zoomId) && $apptIsWhen == "future"): ?>
-                <a class="consultation-card__zoom-link badge badge-primary" href="<?= $joinUrl; ?>" target="_blank"><i class="fas fa-video fa-fw"></i> Zoom <i class="fas fa-external-link-alt fa-fw"></i></a>
-                <?php if ($password): ?><span class="consultation-card__zoom-passcode" class="my-2">Passcode: <?= $password; ?></span><?php endif; ?>
-            <?php endif; ?>
-        </div>
-        <div class="col-12 col-lg p-3 d-flex justify-content-lg-end">
-            <div><?= wc_price($price); ?></div>
-        </div>
-        <div class="consultation-card__order row no-gutters m-0 py-2">
-            <?php $orderNumber = $order->get_order_number();
-                $orderDate = wc_format_datetime($order->get_date_created()); ?>
-            <?= "Order $orderNumber was placed on $orderDate."; ?>
-        </div>
-    </div>
-    <?php $hasConsultations = true; ?>
-<?php endif; ?>
+        <?php $hasConsultations = true; ?>
+    <?php endif; ?>
+<?php endforeach; ?>
 
 <div class="row no-gutters m-0">
 

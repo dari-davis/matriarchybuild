@@ -123,6 +123,7 @@ $link-decoration: none;
 @import "scss/components/booking-dialog";
 @import "scss/components/dialog";
 @import "scss/components/filters";
+@import "scss/components/order-item";
 @import "scss/components/photos";
 @import "scss/components/picker";
 @import "scss/components/pro-single";
@@ -152,7 +153,9 @@ $link-decoration: none;
 @import "scss/blocks/testimonials";
 
 @import "scss/views/my-account";
+@import "scss/views/order-confirmation";
 @import "scss/views/page";
+@import "scss/views/product";
 @import "scss/views/pros-archives";
 @import "scss/views/search";
 @import "scss/views/single-post";
