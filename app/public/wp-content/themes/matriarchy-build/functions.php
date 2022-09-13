@@ -1177,22 +1177,6 @@ if (strpos($url, '/booking-details/')) {
 	}, 20, 3 );
 }
 
-function get_current_url() {
-    $pageURL = 'http';
-    if (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on") {
-        $pageURL .= "s";
-    }
-    $pageURL .= "://";
-    if ($_SERVER["SERVER_PORT"] != "۸۰") {
-        $pageURL .= $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . $_SERVER["REQUEST_URI"];
-    } else {
-        $pageURL .= $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
-    }
-    return $pageURL;
-}
-
-$url = get_current_url();
-
 if (strpos($url, '/view-order/')) {
 	add_filter('forminator_field_hidden_field_value', function ($value, $saved_value, $field) {
 		$pro = $_GET['assignee'];
