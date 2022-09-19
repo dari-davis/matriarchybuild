@@ -17,31 +17,34 @@
 
 defined( 'ABSPATH' ) || exit;
 
-global $wpdb;
+global $wpdb; ?>
 
-// gets all the cart data
-foreach ( WC()->cart->get_cart() as $wc_key => $wc_item ) {
-	$_product = wc_get_product( $wc_item['product_id'] );
-	$is_consultation = $_product->is_type('simple') && strpos($_product->name, 'Consultation') != false;
+<?php foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ): ?>
+	<?php
+	$_product = wc_get_product( $cart_item['product_id'] );
+	$product_id = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
+	$is_consultation = $_product->is_type('simple') && strpos($_product->get_name(), 'Consultation') != false;
+	?>
 
-	if ($is_consultation) {
-		$timezone = $wc_item['bookly']['time_zone'];
+	<?php if ($is_consultation): ?>
+		<?php
+		$timezone = $cart_item['bookly']['time_zone'];
 
 		// staff details
-		$staffId = $wc_item['bookly']['items'][0]['staff_ids'][0];
+		$staffId = $cart_item['bookly']['items'][0]['staff_ids'][0];
 		$staffInfo = $wpdb->get_results('SELECT * FROM wp_bookly_staff WHERE id="'.$staffId.'";');
 		$staffName = $staffInfo[0]->full_name;
 		$staffSlug = str_replace(" ", "-", strtolower($staffName));
 		$staffTrade = get_post_meta(get_page_by_path($staffSlug, OBJECT, 'pro')->ID, 'trade', true);
 
 		// service details
-		$serviceId = $wc_item['bookly']['items'][0]['service_id'];
+		$serviceId = $cart_item['bookly']['items'][0]['service_id'];
 		$serviceInfo = $wpdb->get_results('SELECT * FROM wp_bookly_services WHERE id="'.$serviceId.'";');
 
 		// appointment time and date
-		//var_dump($wc_item['bookly']['items'][0]);
-		$unixTime = strtotime($wc_item['bookly']['items'][0]['slots'][0][2]);
-		//var_dump($wc_item['bookly']['items'][0]['slots'][0][2]);
+		//var_dump($cart_item['bookly']['items'][0]);
+		$unixTime = strtotime($cart_item['bookly']['items'][0]['slots'][0][2]);
+		//var_dump($cart_item['bookly']['items'][0]['slots'][0][2]);
 		$date = date('M j, Y', $unixTime);
 		$UTCTime = date('g:i a', $unixTime);
 
@@ -55,35 +58,56 @@ foreach ( WC()->cart->get_cart() as $wc_key => $wc_item ) {
 		$endTime = new DateTime(date_format($startTime, 'g:i a'));
 		$endTime->add(new DateInterval('PT' . $duration . 'M'));
 		$timeOfDay = date_format($endTime, 'a');
-	}
-}
-?>
+
+		// price
+		$price = $wpdb->get_results('SELECT price FROM wp_bookly_staff_services WHERE staff_id="'.$staffId.'";');
+		?>
+
+		<div class="consultation-card row mb-borders m-0 mb-4">
+			<div class="col-12 col-lg bg-white p-3">
+				<div class="consultation-card__detail mb-2"><?= $serviceInfo[0]->title;?></div>
+				<div class="consultation-card__pro"><?= $staffName; ?></div>
+				<div class="consultation-card__detail"><?= $staffTrade; ?></div>
+			</div>
+			<div class="col-12 col-lg p-3">
+				<div><?= $date; ?></div>
+				<div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
+
+				<div class="product-remove">
+					<?php
+						echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+							'woocommerce_cart_item_remove_link',
+							sprintf(
+								'<a href="%s" class="text-button text-button--green" aria-label="%s" data-product_id="%s" data-product_sku="%s">Remove</a>',
+								esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
+								esc_html__( 'Remove this item', 'woocommerce' ),
+								esc_attr( $product_id ),
+								esc_attr( $_product->get_sku() )
+							),
+							$cart_item_key
+						);
+					?>
+				</div>
+			</div>
+			<div class="col-12 col-lg p-3 d-flex justify-content-lg-end">
+				<div>$<?= $price[0]->price; ?></div>
+			</div>
+		</div>
+	<?php endif; ?>
+<?php endforeach; ?>
 
 <?php
 	do_action( 'woocommerce_review_order_before_cart_contents' );
 
-	foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {		
+	foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {	
 		$_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
-		$is_consultation = $_product->is_type('simple') && strpos($_product->name, 'Consultation') != false;
+		$product_id = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
+		$is_consultation = $_product->is_type('simple') && strpos($_product->get_name(), 'Consultation') != false;
 
 		if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_checkout_cart_item_visible', true, $cart_item, $cart_item_key ) ) { ?>
 
 			<?php if ($is_consultation): ?>
-				<div class="consultation-card row mb-borders m-0 mb-4">
-					<div class="col-12 col-lg bg-white p-3">
-						<div class="consultation-card__detail mb-2"><?= $serviceInfo[0]->title;?></div>
-						<div class="consultation-card__pro"><?= $staffName; ?></div>
-						<div class="consultation-card__detail"><?= $staffTrade; ?></div>
-					</div>
-					<div class="col-12 col-lg p-3">
-						<div><?= $date; ?></div>
-						<div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
-						<div><a class="text-button text-button--green" href="/pro/<?= str_replace(' ', '-', strtolower($staffInfo[0]->full_name)); ?>/#booking-<?= $serviceId; ?>">Change Time</a></div>
-					</div>
-					<div class="col-12 col-lg p-3 d-flex justify-content-lg-end">
-						<div><?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
-					</div>
-				</div>
+				
 			<?php else: ?>
 				<div class="order-item row mb-borders m-0 mb-4">
 					<div class="col-12 col-lg p-3">
@@ -92,6 +116,7 @@ foreach ( WC()->cart->get_cart() as $wc_key => $wc_item ) {
 					<div class="col-12 col-lg p-3">
 						<div class="order-item__name product-name mb-3" data-title="<?php esc_attr_e( 'Product', 'woocommerce' ); ?>">
 							<?php
+							$product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
 							if ( ! $product_permalink ) {
 								echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ) . '&nbsp;' );
 							} else {
