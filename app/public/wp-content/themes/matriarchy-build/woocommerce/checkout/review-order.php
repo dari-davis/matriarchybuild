@@ -22,7 +22,7 @@ global $wpdb;
 // gets all the cart data
 foreach ( WC()->cart->get_cart() as $wc_key => $wc_item ) {
 	$_product = wc_get_product( $wc_item['product_id'] );
-	$is_consultation = $_product->is_type('simple') && strpos($_product->name, 'Consultation') != false;
+	$is_consultation = $_product->is_type('simple') && strpos($_product->get_name(), 'Consultation') != false;
 
 	if ($is_consultation) {
 		$timezone = $wc_item['bookly']['time_zone'];
@@ -62,9 +62,10 @@ foreach ( WC()->cart->get_cart() as $wc_key => $wc_item ) {
 <?php
 	do_action( 'woocommerce_review_order_before_cart_contents' );
 
-	foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {		
+	foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {	
 		$_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
-		$is_consultation = $_product->is_type('simple') && strpos($_product->name, 'Consultation') != false;
+		$product_id = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
+		$is_consultation = $_product->is_type('simple') && strpos($_product->get_name(), 'Consultation') != false;
 
 		if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_checkout_cart_item_visible', true, $cart_item, $cart_item_key ) ) { ?>
 
@@ -78,7 +79,23 @@ foreach ( WC()->cart->get_cart() as $wc_key => $wc_item ) {
 					<div class="col-12 col-lg p-3">
 						<div><?= $date; ?></div>
 						<div><?= date_format($startTime, 'g:i').'-'.date_format($endTime, 'g:i').$timeOfDay; ?></div>
-						<div><a class="text-button text-button--green" href="/pro/<?= str_replace(' ', '-', strtolower($staffInfo[0]->full_name)); ?>/#booking-<?= $serviceId; ?>">Change Time</a></div>
+						<div><a class="text-button text-button--green" href="#" data-bookly="#dialog-<?= $serviceId; ?>">Change Time</a></div>
+
+						<div class="product-remove">
+							<?php
+								echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+									'woocommerce_cart_item_remove_link',
+									sprintf(
+										'<a href="%s" class="text-button text-button--green" aria-label="%s" data-product_id="%s" data-product_sku="%s">Remove</a>',
+										esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
+										esc_html__( 'Remove this item', 'woocommerce' ),
+										esc_attr( $product_id ),
+										esc_attr( $_product->get_sku() )
+									),
+									$cart_item_key
+								);
+							?>
+						</div>
 					</div>
 					<div class="col-12 col-lg p-3 d-flex justify-content-lg-end">
 						<div><?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
@@ -92,6 +109,7 @@ foreach ( WC()->cart->get_cart() as $wc_key => $wc_item ) {
 					<div class="col-12 col-lg p-3">
 						<div class="order-item__name product-name mb-3" data-title="<?php esc_attr_e( 'Product', 'woocommerce' ); ?>">
 							<?php
+							$product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
 							if ( ! $product_permalink ) {
 								echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ) . '&nbsp;' );
 							} else {
@@ -141,6 +159,56 @@ foreach ( WC()->cart->get_cart() as $wc_key => $wc_item ) {
 
 	do_action( 'woocommerce_review_order_after_cart_contents' );
 ?>
+
+<?php wp_enqueue_script( 'jquery-ui-dialog' ); ?>
+
+<?php foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ): ?>
+	<?php $_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
+		$is_consultation = $_product->is_type('simple') && strpos($_product->get_name(), 'Consultation') != false; ?>
+
+		<?php if ($is_consultation): ?>
+
+			<div class="pro__booking-content">
+				<div id="dialog-<?= $serviceId; ?>">
+					<div class="bookly-box bookly-box--heading py-2 mb-0 pb-0 d-block">
+
+					<script>
+              var $ = jQuery.noConflict();
+              $(document).ready(function($) {
+                $('[data-bookly]').on('click', function(e) {
+                  let dialog = $(e.currentTarget).data('bookly');
+                  $(dialog).dialog({
+                    minWidth: 836,
+                    modal: true,
+                    classes: {
+                      'ui-dialog': 'booking-dialog'
+                    },
+                    open: function() {
+                      $(this).parent().promise().done(function () {
+                        let content = $(dialog).find('#service-info').html();
+                        $('[data-consultation-details]').html(content).removeClass('invisible');
+                      });
+                      $('.ui-dialog-titlebar-close').addClass('bookly-js-back-step');
+
+                      // wip reset bookly
+                      $('.bookly-js-back-step', '.ui-dialog-titlebar').on('click', function() {
+                        let $form_id = $(this).closest('.ui-dialog').find('[data-form_id]').data("form_id");
+                      });
+                    }
+                  });
+                });
+              });
+            </script>
+
+					<div class="bookly-box__details d-flex row px-0 gx-0">
+						<div class="col-6 p-2 py-md-3" data-consultation-details></div>
+					</div>
+					</div>
+					<?php echo do_shortcode('[bookly-form category_id="-1" service_id="'.$serviceId.'" staff_member_id="'.$staffId.'" hide="categories,services,staff_members,date,week_days,time_range"]'); ?>
+				</div>
+            </div>
+		<?php endif; ?>
+	<?php endforeach; ?>
 
 <hr/>
 
