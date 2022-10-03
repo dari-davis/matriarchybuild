@@ -58,6 +58,8 @@ import * as bootstrap from 'bootstrap';
 			$('form.woocommerce-checkout').on( 'click', "#place_order", function(){
 				var pro = $('.consultation-card__pro').text();
 				var total = parseFloat($('[data-order-total]').find('bdi').text().substring(1));
+				console.log(total);
+				console.log(typeof(total));
 
 				window.dataLayer.push({
 					'event': 'purchase',
@@ -78,6 +80,7 @@ import * as bootstrap from 'bootstrap';
 			});
 		}
 	});
+
 
 	$('.header__hamburger').on('click', function(e) {
 		e.preventDefault();
