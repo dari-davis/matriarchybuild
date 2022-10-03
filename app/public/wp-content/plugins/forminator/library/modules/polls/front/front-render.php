@@ -56,7 +56,7 @@ class Forminator_Poll_Front extends Forminator_Render_Form {
 
 		} else {
 
-			$this->model = Forminator_Poll_Model::model()->load( $id );
+			$this->model = Forminator_Base_Form_Model::get_model( $id );
 
 			if ( ! $this->model instanceof Forminator_Poll_Model ) {
 				return;

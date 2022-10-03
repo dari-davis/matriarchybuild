@@ -15,7 +15,7 @@ echo Common::stripScripts( $progress_tracker );
 <div class="bookly-box bookly-guest bookly-js-guest">
     <h3 class="bookly-form__heading">Sign In</h3>
     <?php if ( Lib\Config::showLoginButton() ) : ?>
-        <button class="button button--secondary bookly-btn bookly-js-login-show ladda-button"><?php echo Common::getTranslatedOption( 'bookly_l10n_step_details_button_login' ) ?></button>
+        <button class="bookly-btn bookly-js-login-show ladda-button"><?php echo Common::getTranslatedOption( 'bookly_l10n_step_details_button_login' ) ?></button>
     <?php endif ?>
     <?php Proxy\Pro::renderFacebookButton() ?>
     
@@ -90,7 +90,7 @@ echo Common::stripScripts( $progress_tracker );
     <?php Proxy\RecurringAppointments::renderInfoMessage( $userData ) ?>
 
     <div class="bookly-box bookly-nav-steps">
-        <button class="bookly-next-step bookly-js-next-step bookly-btn ladda-button button button--secondary" data-style="zoom-in" data-spinner-size="40">
+        <button class="bookly-next-step bookly-js-next-step bookly-btn ladda-button" data-style="zoom-in" data-spinner-size="40">
             <?php if (is_user_logged_in()): ?>
                 <span class="ladda-label">Continue to Checkout</span>
             <?php else: ?>

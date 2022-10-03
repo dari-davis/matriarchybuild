@@ -1,0 +1,1553 @@
+********************************************************************************
+* DUPLICATOR LITE: Install-Log
+* STEP-0 START @ 12:31:17
+* NOTICE: Do NOT post to public sites or forums!!
+********************************************************************************
+PACKAGE INFO________ ORIGINAL SERVER                        |CURRENT SERVER
+OS__________________: Linux                                 |Darwin
+PHP VERSION_________: 7.4.28                                |7.4.1
+********************************************************************************
+CURRENT SERVER INFO
+PHP_________________: 7.4.1 | SAPI: fpm-fcgi
+PHP MEMORY__________: 4294967296 | SUHOSIN: disabled
+ARCHITECTURE________: 64-bit
+SERVER______________: Apache/2.4.43 (Unix)
+DOC ROOT____________: "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+REQUEST URL_________: "http://dari.matriarchybuild.com"
+********************************************************************************
+OVERWRITE PARAMS
+ *** FROM PACKAGE
+PARAM SET KEY[blogname]
+********************************************************************************
+MAINTENANCE MODE DISABLE
+INSTALLER INFO
+
+TEMPLATE____________: "base"
+VALIDATE ON START___: "normal"
+PATH_NEW____________: "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+URL_NEW_____________: "http://dari.matriarchybuild.com"
+********************************************************************************
+ARCHIVE INFO
+
+ARCHIVE NAME________: "/Users/darielledavis/Local Sites/matriarchy-build/app/public/20221003_matriarchybuild_[HASH]_20221003122005_archive.zip"
+ARCHIVE SIZE________: 844.35MB
+CREATED_____________: 2022-10-03 12:20:05
+WP VERSION__________: 5.9.4
+DUP VERSION_________: 1.5.0
+LICENSE_____________: Free version
+DB VERSION__________: 5.6.41
+DB FILE SIZE________: 82.13MB
+DB TABLES___________: 91
+DB ROWS_____________: 71372
+URL HOME____________: https://matriarchybuild.com
+URL CORE____________: https://matriarchybuild.com
+URL CONTENT_________: https://matriarchybuild.com/wp-content
+URL UPLOAD__________: https://matriarchybuild.com/wp-content/uploads
+URL PLUGINS_________: https://matriarchybuild.com/wp-content/plugins
+URL MU PLUGINS______: https://matriarchybuild.com/wp-content/mu-plugins
+URL THEMES__________: https://matriarchybuild.com/wp-content/themes
+PATH HOME___________: /home1/matrias8/public_html
+PATH ABS____________: /home1/matrias8/public_html
+PATH WPCONFIG_______: /home1/matrias8/public_html
+PATH WPCONTENT______: /home1/matrias8/public_html/wp-content
+PATH UPLOADS________: /home1/matrias8/public_html/wp-content/uploads
+PATH PLUGINS________: /home1/matrias8/public_html/wp-content/plugins
+PATH MUPLUGINS______: /home1/matrias8/public_html/wp-content/mu-plugins
+PATH THEMES_________: /home1/matrias8/public_html/wp-content/themes
+
+SUBSITES
+SUBSITE [ID:   1] "matriarchybuild.com/"
+
+PLUGINS
+PLUGIN [SLUG:advanced-custom-fields-pro/acf.php                ][ON:true ]  Advanced Custom Fields PRO
+PLUGIN [SLUG:bookly-responsive-appointment-booking-tool/main.php][ON:true ]  Bookly
+PLUGIN [SLUG:bookly-addon-customer-cabinet/main.php            ][ON:true ]  Bookly Customer Cabinet (Add-on)
+PLUGIN [SLUG:bookly-addon-pro/main.php                         ][ON:true ]  Bookly Pro (Add-on)
+PLUGIN [SLUG:bookly-addon-special-days/main.php                ][ON:true ]  Bookly Special Days (Add-on)
+PLUGIN [SLUG:bookly-addon-staff-cabinet/main.php               ][ON:true ]  Bookly Staff Cabinet (Add-on)
+PLUGIN [SLUG:bookly-addon-stripe/main.php                      ][ON:true ]  Bookly Stripe (Add-on)
+PLUGIN [SLUG:controlled-admin-access/controlled-admin-access.php][ON:true ]  Controlled Admin Access
+PLUGIN [SLUG:duplicator/duplicator.php                         ][ON:true ]  Duplicator
+PLUGIN [SLUG:error-log-monitor/plugin.php                      ][ON:true ]  Error Log Monitor
+PLUGIN [SLUG:forminator/forminator.php                         ][ON:true ]  Forminator
+PLUGIN [SLUG:gutenslider/eedee-gutenslider.php                 ][ON:true ]  Gutenslider — The last WordPress slider you will ever need.
+PLUGIN [SLUG:klaviyo/klaviyo.php                               ][ON:true ]  Klaviyo
+PLUGIN [SLUG:wp-live-chat-software-for-wordpress/livechat.php  ][ON:true ]  LiveChat
+PLUGIN [SLUG:post-types-order/post-types-order.php             ][ON:true ]  Post Types Order
+PLUGIN [SLUG:pw-woocommerce-gift-cards/pw-gift-cards.php       ][ON:true ]  PW WooCommerce Gift Cards
+PLUGIN [SLUG:relevanssi/relevanssi.php                         ][ON:true ]  Relevanssi
+PLUGIN [SLUG:google-site-kit/google-site-kit.php               ][ON:true ]  Site Kit by Google
+PLUGIN [SLUG:user-switching/user-switching.php                 ][ON:true ]  User Switching
+PLUGIN [SLUG:w3-total-cache/w3-total-cache.php                 ][ON:false]  W3 Total Cache
+PLUGIN [SLUG:web-stories/web-stories.php                       ][ON:true ]  Web Stories
+PLUGIN [SLUG:woocommerce/woocommerce.php                       ][ON:true ]  WooCommerce
+PLUGIN [SLUG:woocommerce-gateway-stripe/woocommerce-gateway-stripe.php][ON:true ]  WooCommerce Stripe Gateway
+PLUGIN [SLUG:wp-mail-logging/wp-mail-logging.php               ][ON:true ]  WP Mail Logging
+PLUGIN [SLUG:sso.php                                           ][ON:false]  SSO
+
+********************************************************************************
+LOG-TIME[/Users/darielledavis/Local Sites/matriarchy-build/app/public/dup-installer/ctrls/ctrl.base.php:227][DELTA:   0.12367]  MESSAGE:END RENDER PAGE
+LOG-TIME[/Users/darielledavis/Local Sites/matriarchy-build/app/public/dup-installer/src/Core/Bootstrap.php:72] RESET TIME
+
+-------------------------
+AJAX ACTION [sparam_s1] START
+AJAX ACTION [sparam_s1] SUCCESS
+-------------------------
+
+LOG-TIME[/Users/darielledavis/Local Sites/matriarchy-build/app/public/dup-installer/src/Core/Bootstrap.php:72] RESET TIME
+STEP ACTION: "on-validate"
+LOG-TIME[/Users/darielledavis/Local Sites/matriarchy-build/app/public/dup-installer/ctrls/ctrl.base.php:227][DELTA:   0.05186]  MESSAGE:END RENDER PAGE
+LOG-TIME[/Users/darielledavis/Local Sites/matriarchy-build/app/public/dup-installer/src/Core/Bootstrap.php:72] RESET TIME
+
+-------------------------
+AJAX ACTION [validate] START
+START TEST "Archive Check" [CLASS: DUPX_Validation_test_archive_check]
+LOG-TIME[DELTA:   0.00005]  MESSAGE:TEST "Archive Check" RESULT: passed
+
+START TEST "Duplicator importer version" [CLASS: DUPX_Validation_test_importer_version]
+LOG-TIME[DELTA:   0.00004]  MESSAGE:TEST "Duplicator importer version" RESULT: skip
+
+START TEST "Overwrite Install" [CLASS: DUPX_Validation_test_owrinstall]
+LOG-TIME[DELTA:   0.00005]  MESSAGE:TEST "Overwrite Install" RESULT: soft warning
+
+START TEST "Recovery Point" [CLASS: DUPX_Validation_test_recovery]
+LOG-TIME[DELTA:   0.00004]  MESSAGE:TEST "Recovery Point" RESULT: skip
+
+START TEST "Package is Importable" [CLASS: DUPX_Validation_test_importable]
+LOG-TIME[DELTA:   0.00004]  MESSAGE:TEST "Package is Importable" RESULT: skip
+
+START TEST "REST API test" [CLASS: DUPX_Validation_test_rest_api]
+LOG-TIME[DELTA:   0.00003]  MESSAGE:TEST "REST API test" RESULT: skip
+
+START TEST "Manual extraction detected" [CLASS: DUPX_Validation_test_manual_extraction]
+LOG-TIME[DELTA:   0.00003]  MESSAGE:TEST "Manual extraction detected" RESULT: good
+
+START TEST "Database Only" [CLASS: DUPX_Validation_test_dbonly_iswordpress]
+LOG-TIME[DELTA:   0.00003]  MESSAGE:TEST "Database Only" RESULT: skip
+
+START TEST "Package Age" [CLASS: DUPX_Validation_test_package_age]
+LOG-TIME[DELTA:   0.00005]  MESSAGE:TEST "Package Age" RESULT: good
+
+START TEST "Replace PATHs in database" [CLASS: DUPX_Validation_test_replace_paths]
+LOG-TIME[DELTA:   0.00004]  MESSAGE:TEST "Replace PATHs in database" RESULT: skip
+
+START TEST "Managed hosting supported" [CLASS: DUPX_Validation_test_managed_supported]
+LOG-TIME[DELTA:   0.00012]  MESSAGE:TEST "Managed hosting supported" RESULT: skip
+
+START TEST "Siteground" [CLASS: DUPX_Validation_test_siteground]
+LOG-TIME[DELTA:   0.00023]  MESSAGE:TEST "Siteground" RESULT: skip
+
+START TEST "Addon Sites" [CLASS: DUPX_Validation_test_addon_sites]
+--------------------------------------
+PATHS MAPPING : "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+--------------------------------------
+LOG-TIME[DELTA:   1.22808]  MESSAGE:TEST "Addon Sites" RESULT: good
+
+START TEST "Wordfence" [CLASS: DUPX_Validation_test_wordfence]
+LOG-TIME[DELTA:   0.00053]  MESSAGE:TEST "Wordfence" RESULT: good
+
+START TEST "Table prefix of managed hosting" [CLASS: DUPX_Validation_test_managed_tprefix]
+LOG-TIME[DELTA:   0.00009]  MESSAGE:TEST "Table prefix of managed hosting" RESULT: skip
+
+START TEST "PHP Version Mismatch" [CLASS: DUPX_Validation_test_php_version]
+LOG-TIME[DELTA:   0.00004]  MESSAGE:TEST "PHP Version Mismatch" RESULT: good
+
+START TEST "PHP Open Base" [CLASS: DUPX_Validation_test_open_basedir]
+LOG-TIME[DELTA:   0.00003]  MESSAGE:TEST "PHP Open Base" RESULT: good
+
+START TEST "PHP Memory Limit" [CLASS: DUPX_Validation_test_memory_limit]
+LOG-TIME[DELTA:   0.00006]  MESSAGE:TEST "PHP Memory Limit" RESULT: good
+
+START TEST "PHP Extensions" [CLASS: DUPX_Validation_test_extensions]
+LOG-TIME[DELTA:   0.00003]  MESSAGE:TEST "PHP Extensions" RESULT: good
+
+START TEST "PHP Mysqli" [CLASS: DUPX_Validation_test_mysql_connect]
+LOG-TIME[DELTA:   0.00003]  MESSAGE:TEST "PHP Mysqli" RESULT: passed
+
+START TEST "PHP Tokenizer" [CLASS: DUPX_Validation_test_tokenizer]
+LOG-TIME[DELTA:   0.00003]  MESSAGE:TEST "PHP Tokenizer" RESULT: passed
+
+START TEST "PHP Timeout" [CLASS: DUPX_Validation_test_timeout]
+LOG-TIME[DELTA:   0.00004]  MESSAGE:TEST "PHP Timeout" RESULT: good
+
+START TEST "Disk Space" [CLASS: DUPX_Validation_test_disk_space]
+LOG-TIME[DELTA:   0.01477]  MESSAGE:TEST "Disk Space" RESULT: good
+
+START TEST "Permissions: General" [CLASS: DUPX_Validation_test_iswritable]
+LOG-TIME[DELTA:   0.11806]  MESSAGE:TEST "Permissions: General" RESULT: passed
+
+START TEST "Permissions: Configs Files " [CLASS: DUPX_Validation_test_iswritable_configs]
+LOG-TIME[DELTA:   0.00019]  MESSAGE:TEST "Permissions: Configs Files " RESULT: passed
+
+START TEST "Host Name" [CLASS: DUPX_Validation_test_db_host_name]
+LOG-TIME[DELTA:   0.00006]  MESSAGE:TEST "Host Name" RESULT: passed
+
+START TEST "Host Connection" [CLASS: DUPX_Validation_test_db_connection]
+LOG-TIME[DELTA:   0.00741]  MESSAGE:TEST "Host Connection" RESULT: passed
+
+START TEST "Database Version" [CLASS: DUPX_Validation_test_db_version]
+LOG-TIME[DELTA:   0.00450]  MESSAGE:TEST "Database Version" RESULT: soft warning
+
+START TEST "Create New Database" [CLASS: DUPX_Validation_test_db_create]
+LOG-TIME[DELTA:   0.00004]  MESSAGE:TEST "Create New Database" RESULT: skip
+
+START TEST "Database Engine Support" [CLASS: DUPX_Validation_test_db_supported_engine]
+LOG-TIME[DELTA:   0.00020]  MESSAGE:TEST "Database Engine Support" RESULT: passed
+
+START TEST "Database GTID Mode" [CLASS: DUPX_Validation_test_db_gtid_mode]
+LOG-TIME[DELTA:   0.00009]  MESSAGE:TEST "Database GTID Mode" RESULT: passed
+
+START TEST "Privileges: User Visibility" [CLASS: DUPX_Validation_test_db_visibility]
+LOG-TIME[DELTA:   0.00008]  MESSAGE:TEST "Privileges: User Visibility" RESULT: passed
+
+START TEST "Manual Table Check" [CLASS: DUPX_Validation_test_db_manual_tabels_count]
+LOG-TIME[DELTA:   0.00003]  MESSAGE:TEST "Manual Table Check" RESULT: skip
+
+START TEST "Multiple WordPress Installs" [CLASS: DUPX_Validation_test_db_multiple_wp_installs]
+LOG-TIME[DELTA:   0.00193]  MESSAGE:TEST "Multiple WordPress Installs" RESULT: passed
+
+START TEST "Privileges: User Resources" [CLASS: DUPX_Validation_test_db_user_resources]
+LOG-TIME[DELTA:   0.00039]  MESSAGE:TEST "Privileges: User Resources" RESULT: passed
+
+START TEST "Privileges: User Table Access" [CLASS: DUPX_Validation_test_db_user_perms]
+LOG-TIME[DELTA:   0.01925]  MESSAGE:TEST "Privileges: User Table Access" RESULT: passed
+
+START TEST "Privileges: 'Show Variables' Query" [CLASS: DUPX_Validation_test_db_custom_queries]
+LOG-TIME[DELTA:   0.00089]  MESSAGE:TEST "Privileges: 'Show Variables' Query" RESULT: passed
+
+START TEST "Source Database Triggers" [CLASS: DUPX_Validation_test_db_triggers]
+LOG-TIME[DELTA:   0.00003]  MESSAGE:TEST "Source Database Triggers" RESULT: passed
+
+START TEST "Character Set and Collation Support" [CLASS: DUPX_Validation_test_db_supported_default_charset]
+LOG-TIME[DELTA:   0.00210]  MESSAGE:TEST "Character Set and Collation Support" RESULT: passed
+
+START TEST "Character Set and  Collation Capability" [CLASS: DUPX_Validation_test_db_supported_charset]
+LOG-TIME[DELTA:   0.00012]  MESSAGE:TEST "Character Set and  Collation Capability" RESULT: passed
+
+START TEST "Tables Case Sensitivity" [CLASS: DUPX_Validation_test_db_case_sensitive_tables]
+LOG-TIME[DELTA:   0.00160]  MESSAGE:TEST "Tables Case Sensitivity" RESULT: passed
+
+START TEST "Tables Flagged for Removal or Backup" [CLASS: DUPX_Validation_test_db_affected_tables]
+LOG-TIME[DELTA:   0.00175]  MESSAGE:TEST "Tables Flagged for Removal or Backup" RESULT: soft warning
+
+START TEST "Prefix too long" [CLASS: DUPX_Validation_test_db_prefix_too_long]
+LOG-TIME[DELTA:   0.00187]  MESSAGE:TEST "Prefix too long" RESULT: passed
+
+START TEST "Database cleanup" [CLASS: DUPX_Validation_test_db_cleanup]
+LOG-TIME[DELTA:   0.00003]  MESSAGE:TEST "Database cleanup" RESULT: skip
+
+
+CTRL PARAMS AFTER VALIDATION
+AJAX ACTION [validate] SUCCESS
+-------------------------
+
+LOG-TIME[/Users/darielledavis/Local Sites/matriarchy-build/app/public/dup-installer/src/Core/Bootstrap.php:72] RESET TIME
+
+-------------------------
+AJAX ACTION [proceed_confirm_dialog] START
+AJAX ACTION [proceed_confirm_dialog] SUCCESS
+-------------------------
+
+LOG-TIME[/Users/darielledavis/Local Sites/matriarchy-build/app/public/dup-installer/src/Core/Bootstrap.php:72] RESET TIME
+
+-------------------------
+AJAX ACTION [sparam_s1] START
+AJAX ACTION [sparam_s1] SUCCESS
+-------------------------
+
+LOG-TIME[/Users/darielledavis/Local Sites/matriarchy-build/app/public/dup-installer/src/Core/Bootstrap.php:72] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+INITIALIZE FILTERS
+--------------------------------------
+PATHS MAPPING : "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+--------------------------------------
+********************************************************************************
+* DUPLICATOR LITE: Install-Log
+* STEP-1 START @ 12:32:37
+* NOTICE: Do NOT post to public sites or forums!!
+********************************************************************************
+USER INPUTS
+INSTALL TYPE________: single site
+BLOG NAME___________: "Matriarchy Build"
+HOME URL NEW________: "http://dari.matriarchybuild.com"
+SITE URL NEW________: "http://dari.matriarchybuild.com/"
+CONTENT URL NEW_____: "http://dari.matriarchybuild.com/wp-content"
+UPLOAD URL NEW______: "http://dari.matriarchybuild.com/wp-content/uploads"
+PLUGINS URL NEW_____: "http://dari.matriarchybuild.com/wp-content/plugins"
+MUPLUGINS URL NEW___: "http://dari.matriarchybuild.com/wp-content/mu-plugins"
+HOME PATH NEW_______: "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+SITE PATH NEW_______: "/Users/darielledavis/Local Sites/matriarchy-build/app/public/"
+CONTENT PATH NEW____: "/Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content"
+UPLOAD PATH NEW_____: "/Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/uploads"
+PLUGINS PATH NEW____: "/Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins"
+MUPLUGINS PATH NEW__: "/Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/mu-plugins"
+ARCHIVE ACTION______: "donothing"
+SKIP WP FILES_______: "none"
+ARCHIVE ENGINE______: "ziparchivechunking"
+SET DIR PERMS_______: true
+DIR PERMS VALUE_____: 0755
+SET FILE PERMS______: true
+FILE PERMS VALUE____: 0644
+SAFE MODE___________: 0
+LOGGING_____________: 1
+ZIP THROTTLING______: false
+WP CONFIG___________: "modify"
+HTACCESS CONFIG_____: "new"
+OTHER CONFIG________: "new"
+FILE TIME___________: "current"
+********************************************************************************
+
+REMOVE FILTERS
+	DIR : "/Users/darielledavis/Local Sites/matriarchy-build/app/public/dup-installer"
+	FILE: "/Users/darielledavis/Local Sites/matriarchy-build/app/public/20221003_matriarchybuild_[HASH]_20221003122005_installer-backup.php"
+	FILE: "/Users/darielledavis/Local Sites/matriarchy-build/app/public/20221003_matriarchybuild_[HASH]_20221003122005_archive.zip"
+	FILE: "/Users/darielledavis/Local Sites/matriarchy-build/app/public/installer.php"
+	FILE: "/Users/darielledavis/Local Sites/matriarchy-build/app/public/dup-installer-bootlog__0b295de-03122005.txt"
+EXTRACTION FILTERS
+	DIR : "dup-installer"
+	FILE: "20221003_matriarchybuild_[HASH]_20221003122005_installer-backup.php"
+--------------------------------------
+
+
+EXTRACTION: ZIP CHUNKING >>> START
+MAINTENANCE MODE ENABLE
+BEFORE EXTRACION ACTIONS
+
+*** RESET CONFIG FILES IN CURRENT HOSTING >>> START
+RESET CONFIG FILES: I'M GOING TO MOVE CONFIG FILE "wp-config.php" IN ORIGINAL FOLDER
+	CONFIG FILE HAS BEEN RESET
+RESET CONFIG FILES: I'M GOING TO MOVE CONFIG FILE ".htaccess" IN ORIGINAL FOLDER
+	CONFIG FILE HAS BEEN RESET
+
+*** RESET CONFIG FILES IN CURRENT HOSTING >>> END
+MAINTENANCE MODE ENABLE
+
+*** CREATE FOLDER AND PERMISSION PREPARE
+FOLDER PREPARE DONE
+ARCHIVE OFFSET 0
+CHUNK COMPLETE - RUNTIME: 5.0211 sec. - Files processed: 5,998 of 176,334
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[/Users/darielledavis/Local Sites/matriarchy-build/app/public/dup-installer/src/Core/Bootstrap.php:72] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 5998
+--------------------------------------
+PATHS MAPPING : "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0126 sec. - Files processed: 12,786 of 176,334
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[/Users/darielledavis/Local Sites/matriarchy-build/app/public/dup-installer/src/Core/Bootstrap.php:72] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 12786
+--------------------------------------
+PATHS MAPPING : "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0117 sec. - Files processed: 23,771 of 176,334
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[/Users/darielledavis/Local Sites/matriarchy-build/app/public/dup-installer/src/Core/Bootstrap.php:72] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 23771
+--------------------------------------
+PATHS MAPPING : "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+--------------------------------------
+FILE EXTRACTION: done processing last file in list of 26479
+
+EXTRACTION: ZIP CHUNKING >>> DONE
+
+EXTRACTION COMPLETE @ 12:32:55 - RUNTIME: 20.6715 sec. - Files processed: 176,334 of 176,334
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[/Users/darielledavis/Local Sites/matriarchy-build/app/public/dup-installer/src/Core/Bootstrap.php:72] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+ADD PREFIX META MAP ID 0 wp_
+
+
+
+********************************************************************************
+* DUPLICATOR LITE: INSTALL-LOG
+* STEP-2 START @ 12:32:55
+* NOTICE: Do NOT post to public sites or forums!!
+********************************************************************************
+USER INPUTS
+DB ENGINE___________: "chunk"
+VIEW MODE___________: "basic"
+DB ACTION___________: "empty"
+DB HOST_____________: "**OBSCURED**"
+DB NAME_____________: "**OBSCURED**"
+DB PASS_____________: "**OBSCURED**"
+DB PORT_____________: "**OBSCURED**"
+USER MODE___________: "overwrite"
+TABLE PREFIX________: "wp_"
+MYSQL MODE__________: "DEFAULT"
+MYSQL MODE OPTS_____: ""
+CHARSET_____________: "utf8"
+COLLATE_____________: ""
+CUNKING_____________: true
+VIEW CREATION_______: true
+STORED PROCEDURE____: true
+FUNCTIONS___________: true
+REMOVE DEFINER______: false
+SPLIT CREATES_______: true
+--------------------------------------
+TABLES
+--------------------------------------
+TABLE "wp_actionscheduler_actions"______________________[ROWS:     452] [EXTRACT|REPLACE] [INST NAME: wp_actionscheduler_actions]
+TABLE "wp_actionscheduler_claims"_______________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_actionscheduler_claims]
+TABLE "wp_actionscheduler_groups"_______________________[ROWS:       4] [EXTRACT|REPLACE] [INST NAME: wp_actionscheduler_groups]
+TABLE "wp_actionscheduler_logs"_________________________[ROWS:    1356] [EXTRACT|REPLACE] [INST NAME: wp_actionscheduler_logs]
+TABLE "wp_bookly_appointments"__________________________[ROWS:     158] [EXTRACT|REPLACE] [INST NAME: wp_bookly_appointments]
+TABLE "wp_bookly_categories"____________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_bookly_categories]
+TABLE "wp_bookly_customers"_____________________________[ROWS:      93] [EXTRACT|REPLACE] [INST NAME: wp_bookly_customers]
+TABLE "wp_bookly_customer_appointments"_________________[ROWS:     156] [EXTRACT|REPLACE] [INST NAME: wp_bookly_customer_appointments]
+TABLE "wp_bookly_email_log"_____________________________[ROWS:     628] [EXTRACT|REPLACE] [INST NAME: wp_bookly_email_log]
+TABLE "wp_bookly_holidays"______________________________[ROWS:     420] [EXTRACT|REPLACE] [INST NAME: wp_bookly_holidays]
+TABLE "wp_bookly_log"___________________________________[ROWS:     626] [EXTRACT|REPLACE] [INST NAME: wp_bookly_log]
+TABLE "wp_bookly_mailing_campaigns"_____________________[ROWS:       1] [EXTRACT|REPLACE] [INST NAME: wp_bookly_mailing_campaigns]
+TABLE "wp_bookly_mailing_lists"_________________________[ROWS:       1] [EXTRACT|REPLACE] [INST NAME: wp_bookly_mailing_lists]
+TABLE "wp_bookly_mailing_list_recipients"_______________[ROWS:       1] [EXTRACT|REPLACE] [INST NAME: wp_bookly_mailing_list_recipients]
+TABLE "wp_bookly_mailing_queue"_________________________[ROWS:       1] [EXTRACT|REPLACE] [INST NAME: wp_bookly_mailing_queue]
+TABLE "wp_bookly_news"__________________________________[ROWS:      69] [EXTRACT|REPLACE] [INST NAME: wp_bookly_news]
+TABLE "wp_bookly_notifications"_________________________[ROWS:      28] [EXTRACT|REPLACE] [INST NAME: wp_bookly_notifications]
+TABLE "wp_bookly_orders"________________________________[ROWS:     214] [EXTRACT|REPLACE] [INST NAME: wp_bookly_orders]
+TABLE "wp_bookly_payments"______________________________[ROWS:     177] [EXTRACT|REPLACE] [INST NAME: wp_bookly_payments]
+TABLE "wp_bookly_schedule_item_breaks"__________________[ROWS:      17] [EXTRACT|REPLACE] [INST NAME: wp_bookly_schedule_item_breaks]
+TABLE "wp_bookly_sent_notifications"____________________[ROWS:     516] [EXTRACT|REPLACE] [INST NAME: wp_bookly_sent_notifications]
+TABLE "wp_bookly_series"________________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_bookly_series]
+TABLE "wp_bookly_services"______________________________[ROWS:       2] [EXTRACT|REPLACE] [INST NAME: wp_bookly_services]
+TABLE "wp_bookly_service_special_days"__________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_bookly_service_special_days]
+TABLE "wp_bookly_service_special_days_breaks"___________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_bookly_service_special_days_breaks]
+TABLE "wp_bookly_shop"__________________________________[ROWS:      44] [EXTRACT|REPLACE] [INST NAME: wp_bookly_shop]
+TABLE "wp_bookly_special_days_breaks"___________________[ROWS:      13] [EXTRACT|REPLACE] [INST NAME: wp_bookly_special_days_breaks]
+TABLE "wp_bookly_staff"_________________________________[ROWS:      49] [EXTRACT|REPLACE] [INST NAME: wp_bookly_staff]
+TABLE "wp_bookly_staff_categories"______________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_bookly_staff_categories]
+TABLE "wp_bookly_staff_preference_orders"_______________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_bookly_staff_preference_orders]
+TABLE "wp_bookly_staff_schedule_items"__________________[ROWS:     343] [EXTRACT|REPLACE] [INST NAME: wp_bookly_staff_schedule_items]
+TABLE "wp_bookly_staff_services"________________________[ROWS:      89] [EXTRACT|REPLACE] [INST NAME: wp_bookly_staff_services]
+TABLE "wp_bookly_staff_special_days"____________________[ROWS:      36] [EXTRACT|REPLACE] [INST NAME: wp_bookly_staff_special_days]
+TABLE "wp_bookly_stats"_________________________________[ROWS:      35] [EXTRACT|REPLACE] [INST NAME: wp_bookly_stats]
+TABLE "wp_bookly_sub_services"__________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_bookly_sub_services]
+TABLE "wp_commentmeta"__________________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_commentmeta]
+TABLE "wp_comments"_____________________________________[ROWS:     519] [EXTRACT|REPLACE] [INST NAME: wp_comments]
+TABLE "wp_cpappbk_forms"________________________________[ROWS:       1] [EXTRACT|REPLACE] [INST NAME: wp_cpappbk_forms]
+TABLE "wp_cpappbk_messages"_____________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_cpappbk_messages]
+TABLE "wp_duplicator_packages"__________________________[ROWS:       1] [EXTRACT|REPLACE] [INST NAME: wp_duplicator_packages]
+TABLE "wp_frmt_form_entry"______________________________[ROWS:      27] [EXTRACT|REPLACE] [INST NAME: wp_frmt_form_entry]
+TABLE "wp_frmt_form_entry_meta"_________________________[ROWS:     136] [EXTRACT|REPLACE] [INST NAME: wp_frmt_form_entry_meta]
+TABLE "wp_frmt_form_views"______________________________[ROWS:      24] [EXTRACT|REPLACE] [INST NAME: wp_frmt_form_views]
+TABLE "wp_links"________________________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_links]
+TABLE "wp_login_redirects"______________________________[ROWS:       2] [EXTRACT|REPLACE] [INST NAME: wp_login_redirects]
+TABLE "wp_mclean_refs"__________________________________[ROWS:    5118] [EXTRACT|REPLACE] [INST NAME: wp_mclean_refs]
+TABLE "wp_mclean_scan"__________________________________[ROWS:       5] [EXTRACT|REPLACE] [INST NAME: wp_mclean_scan]
+TABLE "wp_options"______________________________________[ROWS:     923] [EXTRACT|REPLACE] [INST NAME: wp_options]
+TABLE "wp_pimwick_gift_card"____________________________[ROWS:       2] [EXTRACT|REPLACE] [INST NAME: wp_pimwick_gift_card]
+TABLE "wp_pimwick_gift_card_activity"___________________[ROWS:       4] [EXTRACT|REPLACE] [INST NAME: wp_pimwick_gift_card_activity]
+TABLE "wp_postmeta"_____________________________________[ROWS:   27879] [EXTRACT|REPLACE] [INST NAME: wp_postmeta]
+TABLE "wp_posts"________________________________________[ROWS:    3458] [EXTRACT|REPLACE] [INST NAME: wp_posts]
+TABLE "wp_relevanssi"___________________________________[ROWS:   12426] [EXTRACT|REPLACE] [INST NAME: wp_relevanssi]
+TABLE "wp_relevanssi_log"_______________________________[ROWS:    1767] [EXTRACT|REPLACE] [INST NAME: wp_relevanssi_log]
+TABLE "wp_relevanssi_stopwords"_________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_relevanssi_stopwords]
+TABLE "wp_smush_dir_images"_____________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_smush_dir_images]
+TABLE "wp_termmeta"_____________________________________[ROWS:       1] [EXTRACT|REPLACE] [INST NAME: wp_termmeta]
+TABLE "wp_terms"________________________________________[ROWS:     140] [EXTRACT|REPLACE] [INST NAME: wp_terms]
+TABLE "wp_term_relationships"___________________________[ROWS:     506] [EXTRACT|REPLACE] [INST NAME: wp_term_relationships]
+TABLE "wp_term_taxonomy"________________________________[ROWS:     140] [EXTRACT|REPLACE] [INST NAME: wp_term_taxonomy]
+TABLE "wp_usermeta"_____________________________________[ROWS:    7926] [EXTRACT|REPLACE] [INST NAME: wp_usermeta]
+TABLE "wp_users"________________________________________[ROWS:     338] [EXTRACT|REPLACE] [INST NAME: wp_users]
+TABLE "wp_wc_admin_notes"_______________________________[ROWS:      83] [EXTRACT|REPLACE] [INST NAME: wp_wc_admin_notes]
+TABLE "wp_wc_admin_note_actions"________________________[ROWS:      93] [EXTRACT|REPLACE] [INST NAME: wp_wc_admin_note_actions]
+TABLE "wp_wc_category_lookup"___________________________[ROWS:       1] [EXTRACT|REPLACE] [INST NAME: wp_wc_category_lookup]
+TABLE "wp_wc_customer_lookup"___________________________[ROWS:     112] [EXTRACT|REPLACE] [INST NAME: wp_wc_customer_lookup]
+TABLE "wp_wc_download_log"______________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_wc_download_log]
+TABLE "wp_wc_order_coupon_lookup"_______________________[ROWS:      16] [EXTRACT|REPLACE] [INST NAME: wp_wc_order_coupon_lookup]
+TABLE "wp_wc_order_product_lookup"______________________[ROWS:     184] [EXTRACT|REPLACE] [INST NAME: wp_wc_order_product_lookup]
+TABLE "wp_wc_order_stats"_______________________________[ROWS:     187] [EXTRACT|REPLACE] [INST NAME: wp_wc_order_stats]
+TABLE "wp_wc_order_tax_lookup"__________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_wc_order_tax_lookup]
+TABLE "wp_wc_product_meta_lookup"_______________________[ROWS:      12] [EXTRACT|REPLACE] [INST NAME: wp_wc_product_meta_lookup]
+TABLE "wp_wc_reserved_stock"____________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_wc_reserved_stock]
+TABLE "wp_wc_tax_rate_classes"__________________________[ROWS:       2] [EXTRACT|REPLACE] [INST NAME: wp_wc_tax_rate_classes]
+TABLE "wp_wc_webhooks"__________________________________[ROWS:       5] [EXTRACT|REPLACE] [INST NAME: wp_wc_webhooks]
+TABLE "wp_woocommerce_api_keys"_________________________[ROWS:       1] [EXTRACT|REPLACE] [INST NAME: wp_woocommerce_api_keys]
+TABLE "wp_woocommerce_attribute_taxonomies"_____________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_woocommerce_attribute_taxonomies]
+TABLE "wp_woocommerce_downloadable_product_permissions"_[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_woocommerce_downloadable_product_permissions]
+TABLE "wp_woocommerce_log"______________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_woocommerce_log]
+TABLE "wp_woocommerce_order_itemmeta"___________________[ROWS:    1932] [EXTRACT|REPLACE] [INST NAME: wp_woocommerce_order_itemmeta]
+TABLE "wp_woocommerce_order_items"______________________[ROWS:     204] [EXTRACT|REPLACE] [INST NAME: wp_woocommerce_order_items]
+TABLE "wp_woocommerce_payment_tokenmeta"________________[ROWS:     140] [EXTRACT|REPLACE] [INST NAME: wp_woocommerce_payment_tokenmeta]
+TABLE "wp_woocommerce_payment_tokens"___________________[ROWS:      35] [EXTRACT|REPLACE] [INST NAME: wp_woocommerce_payment_tokens]
+TABLE "wp_woocommerce_sessions"_________________________[ROWS:       5] [EXTRACT|REPLACE] [INST NAME: wp_woocommerce_sessions]
+TABLE "wp_woocommerce_shipping_zones"___________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_woocommerce_shipping_zones]
+TABLE "wp_woocommerce_shipping_zone_locations"__________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_woocommerce_shipping_zone_locations]
+TABLE "wp_woocommerce_shipping_zone_methods"____________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_woocommerce_shipping_zone_methods]
+TABLE "wp_woocommerce_tax_rates"________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_woocommerce_tax_rates]
+TABLE "wp_woocommerce_tax_rate_locations"_______________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_woocommerce_tax_rate_locations]
+TABLE "wp_wpforms_tasks_meta"___________________________[ROWS:     148] [EXTRACT|REPLACE] [INST NAME: wp_wpforms_tasks_meta]
+TABLE "wp_wpml_mails"___________________________________[ROWS:      26] [EXTRACT|REPLACE] [INST NAME: wp_wpml_mails]
+********************************************************************************
+
+--------------------------------------
+DATABASE-ENVIRONMENT
+--------------------------------------
+MYSQL VERSION:	This Server: 8.0.16 -- Build Server: 5.6.41
+FILE SIZE:	dup-database__[HASH].sql (50.64MB)
+TIMEOUT:	5000
+MAXPACK:	16777216
+SQLMODE-GLOBAL:	ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+SQLMODE-SESSION:NO_AUTO_VALUE_ON_ZERO
+DROP ALL TABLES
+DROP TABLE wp_actionscheduler_actions
+DROP TABLE wp_actionscheduler_claims
+DROP TABLE wp_actionscheduler_groups
+DROP TABLE wp_actionscheduler_logs
+DROP TABLE wp_bookly_appointments
+DROP TABLE wp_bookly_categories
+DROP TABLE wp_bookly_customer_appointments
+DROP TABLE wp_bookly_customers
+DROP TABLE wp_bookly_email_log
+DROP TABLE wp_bookly_holidays
+DROP TABLE wp_bookly_log
+DROP TABLE wp_bookly_mailing_campaigns
+DROP TABLE wp_bookly_mailing_list_recipients
+DROP TABLE wp_bookly_mailing_lists
+DROP TABLE wp_bookly_mailing_queue
+DROP TABLE wp_bookly_news
+DROP TABLE wp_bookly_notifications
+DROP TABLE wp_bookly_orders
+DROP TABLE wp_bookly_payments
+DROP TABLE wp_bookly_schedule_item_breaks
+DROP TABLE wp_bookly_sent_notifications
+DROP TABLE wp_bookly_series
+DROP TABLE wp_bookly_service_special_days
+DROP TABLE wp_bookly_service_special_days_breaks
+DROP TABLE wp_bookly_services
+DROP TABLE wp_bookly_shop
+DROP TABLE wp_bookly_special_days_breaks
+DROP TABLE wp_bookly_staff
+DROP TABLE wp_bookly_staff_categories
+DROP TABLE wp_bookly_staff_preference_orders
+DROP TABLE wp_bookly_staff_schedule_items
+DROP TABLE wp_bookly_staff_services
+DROP TABLE wp_bookly_staff_special_days
+DROP TABLE wp_bookly_stats
+DROP TABLE wp_bookly_sub_services
+DROP TABLE wp_commentmeta
+DROP TABLE wp_comments
+DROP TABLE wp_cpappbk_forms
+DROP TABLE wp_cpappbk_messages
+DROP TABLE wp_duplicator_packages
+DROP TABLE wp_frmt_form_entry
+DROP TABLE wp_frmt_form_entry_meta
+DROP TABLE wp_frmt_form_views
+DROP TABLE wp_links
+DROP TABLE wp_login_redirects
+DROP TABLE wp_mclean_refs
+DROP TABLE wp_mclean_scan
+DROP TABLE wp_options
+DROP TABLE wp_pimwick_gift_card
+DROP TABLE wp_pimwick_gift_card_activity
+DROP TABLE wp_postmeta
+DROP TABLE wp_posts
+DROP TABLE wp_relevanssi
+DROP TABLE wp_relevanssi_log
+DROP TABLE wp_relevanssi_stopwords
+DROP TABLE wp_smush_dir_images
+DROP TABLE wp_term_relationships
+DROP TABLE wp_term_taxonomy
+DROP TABLE wp_termmeta
+DROP TABLE wp_terms
+DROP TABLE wp_usermeta
+DROP TABLE wp_users
+DROP TABLE wp_wc_admin_note_actions
+DROP TABLE wp_wc_admin_notes
+DROP TABLE wp_wc_category_lookup
+DROP TABLE wp_wc_customer_lookup
+DROP TABLE wp_wc_download_log
+DROP TABLE wp_wc_order_coupon_lookup
+DROP TABLE wp_wc_order_product_lookup
+DROP TABLE wp_wc_order_stats
+DROP TABLE wp_wc_order_tax_lookup
+DROP TABLE wp_wc_product_meta_lookup
+DROP TABLE wp_wc_reserved_stock
+DROP TABLE wp_wc_tax_rate_classes
+DROP TABLE wp_wc_webhooks
+DROP TABLE wp_woocommerce_api_keys
+DROP TABLE wp_woocommerce_attribute_taxonomies
+DROP TABLE wp_woocommerce_downloadable_product_permissions
+DROP TABLE wp_woocommerce_log
+DROP TABLE wp_woocommerce_order_itemmeta
+DROP TABLE wp_woocommerce_order_items
+DROP TABLE wp_woocommerce_payment_tokenmeta
+DROP TABLE wp_woocommerce_payment_tokens
+DROP TABLE wp_woocommerce_sessions
+DROP TABLE wp_woocommerce_shipping_zone_locations
+DROP TABLE wp_woocommerce_shipping_zone_methods
+DROP TABLE wp_woocommerce_shipping_zones
+DROP TABLE wp_woocommerce_tax_rate_locations
+DROP TABLE wp_woocommerce_tax_rates
+DROP TABLE wp_wpforms_tasks_meta
+--------------------------------------
+DATABASE RESULTS
+--------------------------------------
+QUERY FIXES
+GLOBAL RULES ADDED: PROC AND VIEWS
+
+QUERY FIXES GLOBAL RULES
+	SEARCH  => /^(\s*(?:\/\*!\d+\s)?\s*(?:CREATE.+)?DEFINER\s*=)([^\*\s]+)(.*)$/m
+	REPLACE => $1`root`@`localhost`$3
+
+	SEARCH  => /^(\s*CREATE.+(?:PROCEDURE|FUNCTION)[\s\S]*)(BEGIN)([\s\S]*)$/
+	REPLACE => $1SQL SECURITY INVOKER
+$2$3
+
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 0
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+ERRORS FOUND:	0
+DROPPED TABLES:	90
+RENAMED TABLES:	0
+QUERIES RAN:	858
+
+TABLES ROWS IN DATABASE AFTER EXTRACTION
+
+TABLE "wp_actionscheduler_actions"______________________[ROWS:   452]
+TABLE "wp_actionscheduler_claims"_______________________[ROWS:     0]
+TABLE "wp_actionscheduler_groups"_______________________[ROWS:     4]
+TABLE "wp_actionscheduler_logs"_________________________[ROWS:  1356]
+TABLE "wp_bookly_appointments"__________________________[ROWS:   158]
+TABLE "wp_bookly_categories"____________________________[ROWS:     0]
+TABLE "wp_bookly_customer_appointments"_________________[ROWS:   156]
+TABLE "wp_bookly_customers"_____________________________[ROWS:    93]
+TABLE "wp_bookly_email_log"_____________________________[ROWS:   628]
+TABLE "wp_bookly_holidays"______________________________[ROWS:   420]
+TABLE "wp_bookly_log"___________________________________[ROWS:   626]
+TABLE "wp_bookly_mailing_campaigns"_____________________[ROWS:     1]
+TABLE "wp_bookly_mailing_list_recipients"_______________[ROWS:     1]
+TABLE "wp_bookly_mailing_lists"_________________________[ROWS:     1]
+TABLE "wp_bookly_mailing_queue"_________________________[ROWS:     1]
+TABLE "wp_bookly_news"__________________________________[ROWS:    69]
+TABLE "wp_bookly_notifications"_________________________[ROWS:    28]
+TABLE "wp_bookly_orders"________________________________[ROWS:   214]
+TABLE "wp_bookly_payments"______________________________[ROWS:   177]
+TABLE "wp_bookly_schedule_item_breaks"__________________[ROWS:    17]
+TABLE "wp_bookly_sent_notifications"____________________[ROWS:   516]
+TABLE "wp_bookly_series"________________________________[ROWS:     0]
+TABLE "wp_bookly_service_special_days"__________________[ROWS:     0]
+TABLE "wp_bookly_service_special_days_breaks"___________[ROWS:     0]
+TABLE "wp_bookly_services"______________________________[ROWS:     2]
+TABLE "wp_bookly_shop"__________________________________[ROWS:    44]
+TABLE "wp_bookly_special_days_breaks"___________________[ROWS:    13]
+TABLE "wp_bookly_staff"_________________________________[ROWS:    49]
+TABLE "wp_bookly_staff_categories"______________________[ROWS:     0]
+TABLE "wp_bookly_staff_preference_orders"_______________[ROWS:     0]
+TABLE "wp_bookly_staff_schedule_items"__________________[ROWS:   343]
+TABLE "wp_bookly_staff_services"________________________[ROWS:    89]
+TABLE "wp_bookly_staff_special_days"____________________[ROWS:    36]
+TABLE "wp_bookly_stats"_________________________________[ROWS:    35]
+TABLE "wp_bookly_sub_services"__________________________[ROWS:     0]
+TABLE "wp_commentmeta"__________________________________[ROWS:     0]
+TABLE "wp_comments"_____________________________________[ROWS:   519]
+TABLE "wp_cpappbk_forms"________________________________[ROWS:     1]
+TABLE "wp_cpappbk_messages"_____________________________[ROWS:     0]
+TABLE "wp_duplicator_packages"__________________________[ROWS:     1]
+TABLE "wp_frmt_form_entry"______________________________[ROWS:    27]
+TABLE "wp_frmt_form_entry_meta"_________________________[ROWS:   136]
+TABLE "wp_frmt_form_views"______________________________[ROWS:    24]
+TABLE "wp_links"________________________________________[ROWS:     0]
+TABLE "wp_login_redirects"______________________________[ROWS:     2]
+TABLE "wp_mclean_refs"__________________________________[ROWS:  5118]
+TABLE "wp_mclean_scan"__________________________________[ROWS:     5]
+TABLE "wp_options"______________________________________[ROWS:   923]
+TABLE "wp_pimwick_gift_card"____________________________[ROWS:     2]
+TABLE "wp_pimwick_gift_card_activity"___________________[ROWS:     4]
+TABLE "wp_postmeta"_____________________________________[ROWS: 27879]
+TABLE "wp_posts"________________________________________[ROWS:  3458]
+TABLE "wp_relevanssi"___________________________________[ROWS: 12426]
+TABLE "wp_relevanssi_log"_______________________________[ROWS:  1767]
+TABLE "wp_relevanssi_stopwords"_________________________[ROWS:     0]
+TABLE "wp_smush_dir_images"_____________________________[ROWS:     0]
+TABLE "wp_term_relationships"___________________________[ROWS:   506]
+TABLE "wp_term_taxonomy"________________________________[ROWS:   140]
+TABLE "wp_termmeta"_____________________________________[ROWS:     1]
+TABLE "wp_terms"________________________________________[ROWS:   140]
+TABLE "wp_usermeta"_____________________________________[ROWS:  7926]
+TABLE "wp_users"________________________________________[ROWS:   338]
+TABLE "wp_wc_admin_note_actions"________________________[ROWS:    93]
+TABLE "wp_wc_admin_notes"_______________________________[ROWS:    83]
+TABLE "wp_wc_category_lookup"___________________________[ROWS:     1]
+TABLE "wp_wc_customer_lookup"___________________________[ROWS:   112]
+TABLE "wp_wc_download_log"______________________________[ROWS:     0]
+TABLE "wp_wc_order_coupon_lookup"_______________________[ROWS:    16]
+TABLE "wp_wc_order_product_lookup"______________________[ROWS:   184]
+TABLE "wp_wc_order_stats"_______________________________[ROWS:   187]
+TABLE "wp_wc_order_tax_lookup"__________________________[ROWS:     0]
+TABLE "wp_wc_product_meta_lookup"_______________________[ROWS:    12]
+TABLE "wp_wc_reserved_stock"____________________________[ROWS:     0]
+TABLE "wp_wc_tax_rate_classes"__________________________[ROWS:     2]
+TABLE "wp_wc_webhooks"__________________________________[ROWS:     5]
+TABLE "wp_woocommerce_api_keys"_________________________[ROWS:     1]
+TABLE "wp_woocommerce_attribute_taxonomies"_____________[ROWS:     0]
+TABLE "wp_woocommerce_downloadable_product_permissions"_[ROWS:     0]
+TABLE "wp_woocommerce_log"______________________________[ROWS:     0]
+TABLE "wp_woocommerce_order_itemmeta"___________________[ROWS:  1932]
+TABLE "wp_woocommerce_order_items"______________________[ROWS:   204]
+TABLE "wp_woocommerce_payment_tokenmeta"________________[ROWS:   140]
+TABLE "wp_woocommerce_payment_tokens"___________________[ROWS:    35]
+TABLE "wp_woocommerce_sessions"_________________________[ROWS:     5]
+TABLE "wp_woocommerce_shipping_zone_locations"__________[ROWS:     0]
+TABLE "wp_woocommerce_shipping_zone_methods"____________[ROWS:     0]
+TABLE "wp_woocommerce_shipping_zones"___________________[ROWS:     0]
+TABLE "wp_woocommerce_tax_rate_locations"_______________[ROWS:     0]
+TABLE "wp_woocommerce_tax_rates"________________________[ROWS:     0]
+TABLE "wp_wpforms_tasks_meta"___________________________[ROWS:   148]
+TABLE "wp_wpml_mails"___________________________________[ROWS:    26]
+
+INSERT DATA RUNTIME: 3.6705 sec.
+STEP-2 COMPLETE @ 12:32:59 - RUNTIME: 3.6705 sec.
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[/Users/darielledavis/Local Sites/matriarchy-build/app/public/dup-installer/src/Core/Bootstrap.php:72] RESET TIME
+
+-------------------------
+AJAX ACTION [webupdate] START
+
+====================================
+SET SEARCH AND REPLACE LIST INSTALL TYPE single site
+====================================
+SEARCH ITEM[T:path |P:12] SEARCH: /home1/matrias8/public_html REPLACE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/ [SCOPE: ALL]
+SEARCH ITEM[T:path |P:12] SEARCH: /home1/matrias8/public_html REPLACE: /Users/darielledavis/Local Sites/matriarchy-build/app/public [SCOPE: ALL]
+SEARCH ITEM[T:urlnd|P:12] SEARCH: https://matriarchybuild.com REPLACE: http://dari.matriarchybuild.com/ [SCOPE: ALL]
+SEARCH ITEM[T:urlnd|P:12] SEARCH: https://matriarchybuild.com REPLACE: http://dari.matriarchybuild.com [SCOPE: ALL]
+CHUNK LOAD DATA: IS NULL 
+CHUNK ACTION: CURRENT [start][][]
+
+
+********************************************************************************
+DUPLICATOR LITE: INSTALL-LOG
+STEP-3 START @ 12:32:59
+NOTICE: Do NOT post to public sites or forums
+********************************************************************************
+CHARSET SERVER:	"utf8"
+CHARSET CLIENT:	"utf8"
+********************************************************************************
+OPTIONS:
+DISALLOW_FILE_EDIT____: [value = ], [inWpConfig = ]
+DISALLOW_FILE_MODS____: [value = ], [inWpConfig = ]
+AUTOSAVE_INTERVAL_____: [value = 60], [inWpConfig = ]
+WP_POST_REVISIONS_____: [value = 1], [inWpConfig = ]
+FORCE_SSL_ADMIN_______: [value = 1], [inWpConfig = ]
+WP_AUTO_UPDATE_CORE___: [value = false], [inWpConfig = ]
+WP_CACHE______________: [value = ], [inWpConfig = ]
+WPCACHEHOME___________: [value = /], [inWpConfig = ]
+WP_DEBUG______________: [value = ], [inWpConfig = 1]
+WP_DEBUG_LOG__________: [value = ], [inWpConfig = ]
+WP_DEBUG_DISPLAY______: [value = 1], [inWpConfig = 1]
+WP_DISABLE_FATAL_ERROR_HANDLER: [value = ], [inWpConfig = ]
+SCRIPT_DEBUG__________: [value = ], [inWpConfig = ]
+CONCATENATE_SCRIPTS___: [value = ], [inWpConfig = ]
+SAVEQUERIES___________: [value = ], [inWpConfig = ]
+ALTERNATE_WP_CRON_____: [value = ], [inWpConfig = ]
+DISABLE_WP_CRON_______: [value = ], [inWpConfig = ]
+WP_CRON_LOCK_TIMEOUT__: [value = 60], [inWpConfig = ]
+COOKIE_DOMAIN_________: [value = ], [inWpConfig = ]
+WP_MEMORY_LIMIT_______: [value = 512M], [inWpConfig = 1]
+WP_MAX_MEMORY_LIMIT___: [value = 512M], [inWpConfig = ]
+WP_TEMP_DIR___________: [value = ], [inWpConfig = ]
+********************************************************************************
+
+********************************************************************************
+CHUNK PARAMS:
+maxIteration__________: 0
+timeOut_______________: 5000
+throttling____________: 2
+rowsPerPage___________: 1000
+********************************************************************************
+
+CHUNK ACTION: CURRENT [cleanup_trans][][]
+CLEAN OPTIONS [wp_options]
+	`option_name` LIKE "\_transient%"
+	`option_name` LIKE "\_site\_transient%"
+	`option_name` IN ("duplicator_ui_view_state","duplicator_package_active","duplicator_settings","duplicator_is_pro_enable_notice_dismissed")
+DATABASE OPTIONS DELETED [ROWS:   120]
+CHUNK ACTION: CURRENT [cleanup_extra][][]
+CLEANUP EXTRA
+	- SKIP DROP VIEWS
+	- SKIP DROP PROCS
+	- SKIP DROP FUNCS
+CHUNK ACTION: CURRENT [cleanup_packages][][]
+EMPTY PACKAGES TABLE
+CLEAN PACKAGES
+DATABASE PACKAGE DELETED [ROWS:     1]
+CHUNK ACTION: CURRENT [init][][]
+
+EVALUATE TABLE: "wp_actionscheduler_actions"______________________[ROWS:   452][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_actionscheduler_actions][0]
+
+EVALUATE TABLE: "wp_actionscheduler_claims"_______________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_actionscheduler_groups"_______________________[ROWS:     4][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_actionscheduler_groups][0]
+
+EVALUATE TABLE: "wp_actionscheduler_logs"_________________________[ROWS:  1356][PG:   2][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_actionscheduler_logs][0]
+	CHUNK ACTION: CURRENT [search_replace][wp_actionscheduler_logs][1]
+
+EVALUATE TABLE: "wp_bookly_appointments"__________________________[ROWS:   158][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_bookly_appointments][0]
+
+EVALUATE TABLE: "wp_bookly_categories"____________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_bookly_customers"_____________________________[ROWS:    93][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_bookly_customers][0]
+
+EVALUATE TABLE: "wp_bookly_customer_appointments"_________________[ROWS:   156][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_bookly_customer_appointments][0]
+
+EVALUATE TABLE: "wp_bookly_email_log"_____________________________[ROWS:   628][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_bookly_email_log][0]
+
+EVALUATE TABLE: "wp_bookly_holidays"______________________________[ROWS:   420][PG:   1][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_bookly_log"___________________________________[ROWS:   626][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_bookly_log][0]
+
+EVALUATE TABLE: "wp_bookly_mailing_campaigns"_____________________[ROWS:     1][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_bookly_mailing_campaigns][0]
+
+EVALUATE TABLE: "wp_bookly_mailing_lists"_________________________[ROWS:     1][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_bookly_mailing_lists][0]
+
+EVALUATE TABLE: "wp_bookly_mailing_list_recipients"_______________[ROWS:     1][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_bookly_mailing_list_recipients][0]
+
+EVALUATE TABLE: "wp_bookly_mailing_queue"_________________________[ROWS:     1][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_bookly_mailing_queue][0]
+
+EVALUATE TABLE: "wp_bookly_news"__________________________________[ROWS:    69][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_bookly_news][0]
+
+EVALUATE TABLE: "wp_bookly_notifications"_________________________[ROWS:    28][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_bookly_notifications][0]
+
+EVALUATE TABLE: "wp_bookly_orders"________________________________[ROWS:   214][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_bookly_orders][0]
+
+EVALUATE TABLE: "wp_bookly_payments"______________________________[ROWS:   177][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_bookly_payments][0]
+
+EVALUATE TABLE: "wp_bookly_schedule_item_breaks"__________________[ROWS:    17][PG:   1][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_bookly_sent_notifications"____________________[ROWS:   516][PG:   1][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_bookly_series"________________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_bookly_services"______________________________[ROWS:     2][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_bookly_services][0]
+
+EVALUATE TABLE: "wp_bookly_service_special_days"__________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_bookly_service_special_days_breaks"___________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_bookly_shop"__________________________________[ROWS:    44][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_bookly_shop][0]
+
+EVALUATE TABLE: "wp_bookly_special_days_breaks"___________________[ROWS:    13][PG:   1][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_bookly_staff"_________________________________[ROWS:    49][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_bookly_staff][0]
+
+EVALUATE TABLE: "wp_bookly_staff_categories"______________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_bookly_staff_preference_orders"_______________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_bookly_staff_schedule_items"__________________[ROWS:   343][PG:   1][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_bookly_staff_services"________________________[ROWS:    89][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_bookly_staff_services][0]
+
+EVALUATE TABLE: "wp_bookly_staff_special_days"____________________[ROWS:    36][PG:   1][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_bookly_stats"_________________________________[ROWS:    35][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_bookly_stats][0]
+
+EVALUATE TABLE: "wp_bookly_sub_services"__________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_commentmeta"__________________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_comments"_____________________________________[ROWS:   519][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_comments][0]
+
+EVALUATE TABLE: "wp_cpappbk_forms"________________________________[ROWS:     1][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_cpappbk_forms][0]
+
+EVALUATE TABLE: "wp_cpappbk_messages"_____________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_duplicator_packages"__________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_frmt_form_entry"______________________________[ROWS:    27][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_frmt_form_entry][0]
+
+EVALUATE TABLE: "wp_frmt_form_entry_meta"_________________________[ROWS:   136][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_frmt_form_entry_meta][0]
+
+EVALUATE TABLE: "wp_frmt_form_views"______________________________[ROWS:    24][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_frmt_form_views][0]
+
+EVALUATE TABLE: "wp_links"________________________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_login_redirects"______________________________[ROWS:     2][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_login_redirects][0]
+
+EVALUATE TABLE: "wp_mclean_refs"__________________________________[ROWS:  5118][PG:   6][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_mclean_refs][0]
+	CHUNK ACTION: CURRENT [search_replace][wp_mclean_refs][1]
+	CHUNK ACTION: CURRENT [search_replace][wp_mclean_refs][2]
+	CHUNK ACTION: CURRENT [search_replace][wp_mclean_refs][3]
+	CHUNK ACTION: CURRENT [search_replace][wp_mclean_refs][4]
+	CHUNK ACTION: CURRENT [search_replace][wp_mclean_refs][5]
+
+EVALUATE TABLE: "wp_mclean_scan"__________________________________[ROWS:     5][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_mclean_scan][0]
+
+EVALUATE TABLE: "wp_options"______________________________________[ROWS:   803][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_options][0]
+
+EVALUATE TABLE: "wp_pimwick_gift_card"____________________________[ROWS:     2][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_pimwick_gift_card][0]
+
+EVALUATE TABLE: "wp_pimwick_gift_card_activity"___________________[ROWS:     4][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_pimwick_gift_card_activity][0]
+
+EVALUATE TABLE: "wp_postmeta"_____________________________________[ROWS: 27879][PG:  28][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][0]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][1]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][2]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][3]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][4]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][5]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][6]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][7]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][8]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][9]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][10]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][11]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][12]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][13]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][14]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][15]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][16]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][17]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][18]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][19]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][20]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][21]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][22]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][23]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][24]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][25]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][26]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][27]
+
+EVALUATE TABLE: "wp_posts"________________________________________[ROWS:  3458][PG:   4][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_posts][0]
+	CHUNK ACTION: CURRENT [search_replace][wp_posts][1]
+	CHUNK ACTION: CURRENT [search_replace][wp_posts][2]
+	
+STEP-3 CHUNK STOP @ 12:33:04 - RUNTIME: 5.6521 sec. 
+
+
+	AJAX ACTION [webupdate] SUCCESS
+	-------------------------
+
+LOG-TIME[/Users/darielledavis/Local Sites/matriarchy-build/app/public/dup-installer/src/Core/Bootstrap.php:72] RESET TIME
+
+-------------------------
+AJAX ACTION [webupdate] START
+CHUNK ACTION: CURRENT [search_replace][wp_posts][3]
+
+EVALUATE TABLE: "wp_relevanssi"___________________________________[ROWS: 12426][PG:  13][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_relevanssi][0]
+	CHUNK ACTION: CURRENT [search_replace][wp_relevanssi][1]
+	CHUNK ACTION: CURRENT [search_replace][wp_relevanssi][2]
+	CHUNK ACTION: CURRENT [search_replace][wp_relevanssi][3]
+	CHUNK ACTION: CURRENT [search_replace][wp_relevanssi][4]
+	CHUNK ACTION: CURRENT [search_replace][wp_relevanssi][5]
+	CHUNK ACTION: CURRENT [search_replace][wp_relevanssi][6]
+	CHUNK ACTION: CURRENT [search_replace][wp_relevanssi][7]
+	CHUNK ACTION: CURRENT [search_replace][wp_relevanssi][8]
+	CHUNK ACTION: CURRENT [search_replace][wp_relevanssi][9]
+	CHUNK ACTION: CURRENT [search_replace][wp_relevanssi][10]
+	CHUNK ACTION: CURRENT [search_replace][wp_relevanssi][11]
+	CHUNK ACTION: CURRENT [search_replace][wp_relevanssi][12]
+
+EVALUATE TABLE: "wp_relevanssi_log"_______________________________[ROWS:  1767][PG:   2][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_relevanssi_log][0]
+	CHUNK ACTION: CURRENT [search_replace][wp_relevanssi_log][1]
+
+EVALUATE TABLE: "wp_relevanssi_stopwords"_________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_smush_dir_images"_____________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_termmeta"_____________________________________[ROWS:     1][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_termmeta][0]
+
+EVALUATE TABLE: "wp_terms"________________________________________[ROWS:   140][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_terms][0]
+
+EVALUATE TABLE: "wp_term_relationships"___________________________[ROWS:   506][PG:   1][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_term_taxonomy"________________________________[ROWS:   140][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_term_taxonomy][0]
+
+EVALUATE TABLE: "wp_usermeta"_____________________________________[ROWS:  7926][PG:   8][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_usermeta][0]
+	CHUNK ACTION: CURRENT [search_replace][wp_usermeta][1]
+	CHUNK ACTION: CURRENT [search_replace][wp_usermeta][2]
+	CHUNK ACTION: CURRENT [search_replace][wp_usermeta][3]
+	CHUNK ACTION: CURRENT [search_replace][wp_usermeta][4]
+	CHUNK ACTION: CURRENT [search_replace][wp_usermeta][5]
+	CHUNK ACTION: CURRENT [search_replace][wp_usermeta][6]
+	CHUNK ACTION: CURRENT [search_replace][wp_usermeta][7]
+
+EVALUATE TABLE: "wp_users"________________________________________[ROWS:   338][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_users][0]
+
+EVALUATE TABLE: "wp_wc_admin_notes"_______________________________[ROWS:    83][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_wc_admin_notes][0]
+
+EVALUATE TABLE: "wp_wc_admin_note_actions"________________________[ROWS:    93][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_wc_admin_note_actions][0]
+
+EVALUATE TABLE: "wp_wc_category_lookup"___________________________[ROWS:     1][PG:   1][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_wc_customer_lookup"___________________________[ROWS:   112][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_wc_customer_lookup][0]
+
+EVALUATE TABLE: "wp_wc_download_log"______________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_wc_order_coupon_lookup"_______________________[ROWS:    16][PG:   1][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_wc_order_product_lookup"______________________[ROWS:   184][PG:   1][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_wc_order_stats"_______________________________[ROWS:   187][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_wc_order_stats][0]
+
+EVALUATE TABLE: "wp_wc_order_tax_lookup"__________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_wc_product_meta_lookup"_______________________[ROWS:    12][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_wc_product_meta_lookup][0]
+
+EVALUATE TABLE: "wp_wc_reserved_stock"____________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_wc_tax_rate_classes"__________________________[ROWS:     2][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_wc_tax_rate_classes][0]
+
+EVALUATE TABLE: "wp_wc_webhooks"__________________________________[ROWS:     5][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_wc_webhooks][0]
+
+EVALUATE TABLE: "wp_woocommerce_api_keys"_________________________[ROWS:     1][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_woocommerce_api_keys][0]
+
+EVALUATE TABLE: "wp_woocommerce_attribute_taxonomies"_____________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_woocommerce_downloadable_product_permissions"_[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_woocommerce_log"______________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_woocommerce_order_itemmeta"___________________[ROWS:  1932][PG:   2][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_woocommerce_order_itemmeta][0]
+	CHUNK ACTION: CURRENT [search_replace][wp_woocommerce_order_itemmeta][1]
+
+EVALUATE TABLE: "wp_woocommerce_order_items"______________________[ROWS:   204][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_woocommerce_order_items][0]
+
+EVALUATE TABLE: "wp_woocommerce_payment_tokenmeta"________________[ROWS:   140][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_woocommerce_payment_tokenmeta][0]
+
+EVALUATE TABLE: "wp_woocommerce_payment_tokens"___________________[ROWS:    35][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_woocommerce_payment_tokens][0]
+
+EVALUATE TABLE: "wp_woocommerce_sessions"_________________________[ROWS:     5][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_woocommerce_sessions][0]
+
+EVALUATE TABLE: "wp_woocommerce_shipping_zones"___________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_woocommerce_shipping_zone_locations"__________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_woocommerce_shipping_zone_methods"____________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_woocommerce_tax_rates"________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_woocommerce_tax_rate_locations"_______________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_wpforms_tasks_meta"___________________________[ROWS:   148][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_wpforms_tasks_meta][0]
+
+EVALUATE TABLE: "wp_wpml_mails"___________________________________[ROWS:    26][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/home1/matrias8/public_html" =====================> "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+	SEARCH[urlnd]  2:"https://matriarchybuild.com" =====================> "http://dari.matriarchybuild.com"
+	CHUNK ACTION: CURRENT [search_replace][wp_wpml_mails][0]
+--------------------------------------
+SCANNED:	Tables:91 	|	 Rows:67885 	|	 Cells:563531 
+UPDATED:	Tables:12 	|	 Rows:3852 	|	 Cells:5244 
+ERRORS:		0 
+RUNTIME:	8.579500 sec
+CHUNK ACTION: CURRENT [rem_maintenance][][]
+
+====================================
+REMOVE MAINTENANCE MODE
+====================================
+MAINTENANCE MODE DISABLE
+CHUNK ACTION: CURRENT [config_update][][]
+SET CONFIG FILES
+Retained original entry wpconfig target:/Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-config.php
+New htaccess file created:/Users/darielledavis/Local Sites/matriarchy-build/app/public/.htaccess
+
+====================================
+CONFIGURATION FILE UPDATES
+====================================
+	UPDATE ABSPATH "dirname(__FILE__) . '/'"
+	UPDATE WP_SITEURL "http://dari.matriarchybuild.com/"
+	UPDATE DB_NAME ""local""
+	UPDATE DB_USER "** OBSCURED **"
+	UPDATE DB_PASSWORD "** OBSCURED **"
+	UPDATE DB_HOST ""localhost""
+	UPDATE DB_CHARSET "utf8"
+	UPDATE DB_COLLATE ""
+	WP CONFIG UPDATE WP_DEBUG "false"
+	WP CONFIG UPDATE WP_DEBUG_DISPLAY "true"
+	WP CONFIG UPDATE WP_MEMORY_LIMIT "512M"
+	
+*** UPDATED WP CONFIG FILE ***
+
+====================================
+HTACCESS UPDATE
+====================================
+
+WEB SERVER CONFIGURATION FILE UPDATED:
+- Preparing .htaccess file with basic setup.
+HTACCESS FILE - Successfully updated the .htaccess file setting.
+
+====================================
+INDEX.PHP UPDATE
+====================================
+INDEX.PHP updated with new blog header "dirname(__FILE__) . '/wp-blog-header.php'"
+
+CHUNK ACTION: CURRENT [gen_update][][]
+
+====================================
+GENERAL UPDATES
+====================================
+
+====================================
+MANAGE PLUGINS
+====================================
+Activated plugins listed here will be deactivated: Array
+(
+)
+
+CHUNK ACTION: CURRENT [gen_clean][][]
+
+====================================
+GENERAL CLEANUP
+====================================
+RESET ALL USERS SESSION TOKENS
+MIGRATION INFO SET
+CHUNK ACTION: CURRENT [create_admin][][]
+
+====================================
+RESET USERS PASSWORD
+====================================
+CHUNK ACTION: CURRENT [notice_test][][]
+
+====================================
+CHECK FOR INDEX.HTML
+====================================
+NO INDEX.HTML WAS FOUND
+
+====================================
+NOTICES TEST
+====================================
+No General Notices Found
+
+CHUNK ACTION: CURRENT [cleanup_tmp_files][][]
+
+====================================
+CLEANUP TMP FILES
+====================================
+CHUNK ACTION: CURRENT [set_files_perms][][]
+
+====================================
+SET PARAMS PERMISSION
+====================================
+
+*** SET FOLDER PERMISSION AFTER EXTRACTION
+--------------------------------------
+PATHS MAPPING : "/Users/darielledavis/Local Sites/matriarchy-build/app/public"
+--------------------------------------
+SET FOLDER PERMISSION DONE
+CHUNK ACTION: CURRENT [final_report][][]
+
+====================================
+FINAL REPORT NOTICES
+====================================
+
+STEP-3 COMPLETE @ 12:33:07 - RUNTIME: 3.0929 sec. 
+
+
+AJAX ACTION [webupdate] SUCCESS
+-------------------------
+
+LOG-TIME[/Users/darielledavis/Local Sites/matriarchy-build/app/public/dup-installer/src/Core/Bootstrap.php:72] RESET TIME
+
+-------------------------
+AJAX ACTION [finalpre] START
+AJAX ACTION [finalpre] SUCCESS
+-------------------------
+
+LOG-TIME[/Users/darielledavis/Local Sites/matriarchy-build/app/public/dup-installer/src/Core/Bootstrap.php:72] RESET TIME
+
+-------------------------
+AJAX ACTION [finalafter] START
+AJAX ACTION [finalafter] SUCCESS
+-------------------------
+
+LOG-TIME[/Users/darielledavis/Local Sites/matriarchy-build/app/public/dup-installer/src/Core/Bootstrap.php:72] RESET TIME
+
+====================================
+NEXT STEP NOTICES
+====================================
+-----------------------
+[WARNING] One or multiple config files were found in main WordPress folders
+	SECTIONS: general
+	LONG MSG: Config files in WordPress main folders may cause problems with accessing the site after the installation. The following config files were found: - /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-admin/php.ini- /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/php.iniPlease consider removing those files in case you have problems with your site after the installation.
+
+====================================
+
+====================================
+FINAL REPORT NOTICES LIST
+====================================
+-----------------------
+[WARNING] One or multiple config files were found in main WordPress folders
+	SECTIONS: general
+	LONG MSG: Config files in WordPress main folders may cause problems with accessing the site after the installation. The following config files were found: - /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-admin/php.ini- /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/php.iniPlease consider removing those files in case you have problems with your site after the installation.
+
+-----------------------
+[NOTICE] Warnings or notices on WordPress front-end tests!
+	SECTIONS: general
+	LONG MSG: SCRIPT FILE TEST: /Users/darielledavis/Local Sites/matriarchy-build/app/public/index.php
+E_NOTICE Undefined variable: title_tag
+	FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/templates/blocks/featured-pros.php[50]
+	--- TRACE ---
+	FUNCTION: include                       FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/advanced-custom-fields-pro/pro/blocks.php[437]
+	FUNCTION: acf_render_block              FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/advanced-custom-fields-pro/pro/blocks.php[367]
+	FUNCTION: acf_rendered_block            FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/advanced-custom-fields-pro/pro/blocks.php[328]
+	FUNCTION: acf_render_block_callback     FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-block.php[255]
+	CLASS___: WP_Block->render              FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/blocks.php[883]
+	FUNCTION: render_block                  FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/blocks.php[921]
+	FUNCTION: do_blocks                     FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/blocks/block.php[45]
+	FUNCTION: render_block_core_block       FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-block.php[255]
+	CLASS___: WP_Block->render              FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/blocks.php[883]
+	FUNCTION: render_block                  FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/blocks.php[921]
+	FUNCTION: do_blocks                     FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php[307]
+	CLASS___: WP_Hook->apply_filters        FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php[189]
+	FUNCTION: apply_filters                 FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/post-template.php[253]
+	FUNCTION: the_content                   FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/front-page.php[15]
+	FUNCTION: include                       FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template-loader.php[106]
+	FUNCTION: require_once                  FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-blog-header.php[19]
+	FUNCTION: require                       FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/index.php[17]
+	FUNCTION: require_once                  FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/wp_test_script_0b295de-03122005.php[96]
+-----
+For solutions to these issues see the online FAQs 
+https://snapcreek.com/duplicator/docs 
+E_NOTICE Undefined variable: title_tag
+	FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/templates/blocks/featured-pros.php[50]
+	--- TRACE ---
+	FUNCTION: include                       FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/advanced-custom-fields-pro/pro/blocks.php[437]
+	FUNCTION: acf_render_block              FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/advanced-custom-fields-pro/pro/blocks.php[367]
+	FUNCTION: acf_rendered_block            FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/advanced-custom-fields-pro/pro/blocks.php[328]
+	FUNCTION: acf_render_block_callback     FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-block.php[255]
+	CLASS___: WP_Block->render              FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/blocks.php[883]
+	FUNCTION: render_block                  FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/blocks.php[921]
+	FUNCTION: do_blocks                     FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/blocks/block.php[45]
+	FUNCTION: render_block_core_block       FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-block.php[255]
+	CLASS___: WP_Block->render              FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/blocks.php[883]
+	FUNCTION: render_block                  FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/blocks.php[921]
+	FUNCTION: do_blocks                     FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php[307]
+	CLASS___: WP_Hook->apply_filters        FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php[189]
+	FUNCTION: apply_filters                 FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/post-template.php[253]
+	FUNCTION: the_content                   FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/front-page.php[15]
+	FUNCTION: include                       FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template-loader.php[106]
+	FUNCTION: require_once                  FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-blog-header.php[19]
+	FUNCTION: require                       FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/index.php[17]
+	FUNCTION: require_once                  FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/wp_test_script_0b295de-03122005.php[96]
+-----
+For solutions to these issues see the online FAQs 
+https://snapcreek.com/duplicator/docs 
+E_NOTICE Undefined variable: title_tag
+	FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/templates/blocks/featured-pros.php[50]
+	--- TRACE ---
+	FUNCTION: include                       FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/advanced-custom-fields-pro/pro/blocks.php[437]
+	FUNCTION: acf_render_block              FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/advanced-custom-fields-pro/pro/blocks.php[367]
+	FUNCTION: acf_rendered_block            FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/advanced-custom-fields-pro/pro/blocks.php[328]
+	FUNCTION: acf_render_block_callback     FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-block.php[255]
+	CLASS___: WP_Block->render              FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/blocks.php[883]
+	FUNCTION: render_block                  FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/blocks.php[921]
+	FUNCTION: do_blocks                     FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/blocks/block.php[45]
+	FUNCTION: render_block_core_block       FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-block.php[255]
+	CLASS___: WP_Block->render              FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/blocks.php[883]
+	FUNCTION: render_block                  FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/blocks.php[921]
+	FUNCTION: do_blocks                     FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php[307]
+	CLASS___: WP_Hook->apply_filters        FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php[189]
+	FUNCTION: apply_filters                 FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/post-template.php[253]
+	FUNCTION: the_content                   FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/front-page.php[15]
+	FUNCTION: include                       FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template-loader.php[106]
+	FUNCTION: require_once                  FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-blog-header.php[19]
+	FUNCTION: require                       FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/index.php[17]
+	FUNCTION: require_once                  FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/wp_test_script_0b295de-03122005.php[96]
+-----
+For solutions to these issues see the online FAQs 
+https://snapcreek.com/duplicator/docs 
+E_NOTICE Undefined variable: title_tag
+	FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/templates/blocks/featured-pros.php[50]
+	--- TRACE ---
+	FUNCTION: include                       FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/advanced-custom-fields-pro/pro/blocks.php[437]
+	FUNCTION: acf_render_block              FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/advanced-custom-fields-pro/pro/blocks.php[367]
+	FUNCTION: acf_rendered_block            FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/advanced-custom-fields-pro/pro/blocks.php[328]
+	FUNCTION: acf_render_block_callback     FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-block.php[255]
+	CLASS___: WP_Block->render              FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/blocks.php[883]
+	FUNCTION: render_block                  FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/blocks.php[921]
+	FUNCTION: do_blocks                     FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/blocks/block.php[45]
+	FUNCTION: render_block_core_block       FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-block.php[255]
+	CLASS___: WP_Block->render              FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/blocks.php[883]
+	FUNCTION: render_block                  FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/blocks.php[921]
+	FUNCTION: do_blocks                     FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php[307]
+	CLASS___: WP_Hook->apply_filters        FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php[189]
+	FUNCTION: apply_filters                 FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/post-template.php[253]
+	FUNCTION: the_content                   FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/front-page.php[15]
+	FUNCTION: include                       FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template-loader.php[106]
+	FUNCTION: require_once                  FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-blog-header.php[19]
+	FUNCTION: require                       FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/index.php[17]
+	FUNCTION: require_once                  FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/wp_test_script_0b295de-03122005.php[96]
+-----
+For solutions to these issues see the online FAQs 
+https://snapcreek.com/duplicator/docs 
+E_NOTICE Undefined variable: title_tag
+	FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/templates/blocks/featured-pros.php[50]
+	--- TRACE ---
+	FUNCTION: include                       FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/advanced-custom-fields-pro/pro/blocks.php[437]
+	FUNCTION: acf_render_block              FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/advanced-custom-fields-pro/pro/blocks.php[367]
+	FUNCTION: acf_rendered_block            FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/plugins/advanced-custom-fields-pro/pro/blocks.php[328]
+	FUNCTION: acf_render_block_callback     FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-block.php[255]
+	CLASS___: WP_Block->render              FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/blocks.php[883]
+	FUNCTION: render_block                  FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/blocks.php[921]
+	FUNCTION: do_blocks                     FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/blocks/block.php[45]
+	FUNCTION: render_block_core_block       FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-block.php[255]
+	CLASS___: WP_Block->render              FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/blocks.php[883]
+	FUNCTION: render_block                  FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/blocks.php[921]
+	FUNCTION: do_blocks                     FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/class-wp-hook.php[307]
+	CLASS___: WP_Hook->apply_filters        FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/plugin.php[189]
+	FUNCTION: apply_filters                 FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/post-template.php[253]
+	FUNCTION: the_content                   FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/themes/matriarchy-build/front-page.php[15]
+	FUNCTION: include                       FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-includes/template-loader.php[106]
+	FUNCTION: require_once                  FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-blog-header.php[19]
+	FUNCTION: require                       FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/index.php[17]
+	FUNCTION: require_once                  FILE: /Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/wp_test_script_0b295de-03122005.php[96]
+-----
+For solutions to these issues see the online FAQs 
+https://snapcreek.com/duplicator/docs 
+
+
+====================================
+LOG-TIME[/Users/darielledavis/Local Sites/matriarchy-build/app/public/dup-installer/ctrls/ctrl.base.php:227][DELTA:   0.08792]  MESSAGE:END RENDER PAGE

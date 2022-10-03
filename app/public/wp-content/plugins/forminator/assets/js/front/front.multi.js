@@ -26,7 +26,6 @@
 		    chart_design: 'bar',
 		    chart_options: {},
 		    forminator_fields: [],
-		    max_nested_formula: 5,
 		    general_messages: {
 			    calculation_error: 'Failed to calculate field.',
 			    payment_require_ssl_error: 'SSL required to submit this form, please check your URL.',
@@ -168,7 +167,6 @@
 			// initiate calculator
 			$( form_selector ).forminatorFrontCalculate({
 				forminatorFields: self.settings.forminator_fields,
-				maxExpand: self.settings.max_nested_formula,
 				generalMessages: self.settings.general_messages,
 				memoizeTime: self.settings.calcs_memoize_time || 300,
 			});
@@ -865,7 +863,7 @@
 					if ($limit.length) {
 						if ($limit.data('limit')) {
 							if ($limit.data('type') !== "words") {
-								count = $( $(this).val() ).text().length;
+								count = $( '<div>' + $(this).val() + '</div>' ).text().length;
 							} else {
 								count = $(this).val().trim().split(/\s+/).length;
 

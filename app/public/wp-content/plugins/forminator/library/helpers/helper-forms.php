@@ -895,20 +895,15 @@ function forminator_get_name_from_model( $model ) {
  * @param $settings
  * @param $title
  * @param $result
- * @param $data
  * @return mixed|string
  */
-function forminator_get_social_message( $settings, $title, $result, $data = array() ) {
+function forminator_get_social_message( $settings, $title, $result ) {
 	$message = __( 'I got {quiz_result} on {quiz_name} quiz!', 'forminator' );
 	if ( isset( $settings['social-share-message'] ) && ! empty( $settings['social-share-message'] ) ) {
 		$message = $settings['social-share-message'];
 	}
 
-	if ( ! isset( $data['current_url'] ) || empty( $data['current_url'] ) ) {
-		$data['current_url'] = forminator_get_current_url();
-	}
-	$post_id = url_to_postid( $data['current_url'] );
-	$message = forminator_replace_variables( $message, false, $data['current_url'], $post_id );
+	$message = forminator_replace_variables( $message, false );
 	$message = str_ireplace( '{quiz_name}', $title, $message );
 	$message = str_ireplace( '{quiz_result}', $result, $message );
 
@@ -1031,7 +1026,7 @@ function forminator_is_subdomain_network() {
  * @return string
  */
 function forminator_get_quiz_name( $id ) {
-	$model = Forminator_Quiz_Model::model()->load( $id );
+	$model = Forminator_Base_Form_Model::get_model( $id );
 
 	return ! empty( $model->settings['quiz_name'] ) ? $model->settings['quiz_name'] : '';
 }

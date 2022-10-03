@@ -425,7 +425,7 @@ class Forminator_Export {
 
 		switch ( $type ) {
 			case 'quiz':
-				$model = Forminator_Quiz_Model::model()->load( $form_id );
+				$model = Forminator_Base_Form_Model::get_model( $form_id );
 				if ( ! is_object( $model ) ) {
 					return null;
 				}
@@ -453,7 +453,7 @@ class Forminator_Export {
 				$leads_id  = isset( $model->settings['leadsId'] ) ? $model->settings['leadsId'] : 0;
 
 				if ( $has_leads && $leads_id ) {
-					$form_model = Forminator_Form_Model::model()->load( $leads_id );
+					$form_model = Forminator_Base_Form_Model::get_model( $leads_id );
 					if ( is_object( $model ) ) {
 						$mappers = $this->get_custom_form_export_mappers( $form_model );
 						foreach ( $mappers as $mapper ) {
@@ -571,7 +571,7 @@ class Forminator_Export {
 				$export_result->data = $data;
 				break;
 			case 'poll':
-				$model = Forminator_Poll_Model::model()->load( $form_id );
+				$model = Forminator_Base_Form_Model::get_model( $form_id );
 				if ( ! is_object( $model ) ) {
 					return null;
 				}
@@ -623,7 +623,7 @@ class Forminator_Export {
 				$export_result->data = $data;
 				break;
 			case 'cform':
-				$model = Forminator_Form_Model::model()->load( $form_id );
+				$model = Forminator_Base_Form_Model::get_model( $form_id );
 				if ( ! is_object( $model ) ) {
 					return null;
 				}
@@ -861,9 +861,8 @@ class Forminator_Export {
 	 */
 	private function get_custom_form_export_mappers( $model ) {
 		/** @var  Forminator_Form_Model $model */
-		$fields              = $model->get_fields();
-		$ignored_field_types = Forminator_Form_Entry_Model::ignored_fields();
-		$visible_fields      = filter_input( INPUT_GET, 'field', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
+		$fields         = $model->get_real_fields();
+		$visible_fields = filter_input( INPUT_GET, 'field', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
 
 		/** @var  Forminator_Form_Field_Model $fields */
 		$mappers = array(
@@ -877,10 +876,6 @@ class Forminator_Export {
 
 		foreach ( $fields as $field ) {
 			$field_type = $field->__get( 'type' );
-
-			if ( in_array( $field_type, $ignored_field_types, true ) ) {
-				continue;
-			}
 
 			if ( ! empty( $visible_fields ) ) {
 				if ( ! in_array( $field->slug, $visible_fields, true ) ) {

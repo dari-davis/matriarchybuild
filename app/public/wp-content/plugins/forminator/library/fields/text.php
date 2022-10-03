@@ -117,8 +117,6 @@ class Forminator_Text extends Forminator_Field {
 		$this->field         = $field;
 		$this->form_settings = $settings;
 
-		$this->init_autofill( $settings );
-
 		$html        = '';
 		$id          = self::get_property( 'element_id', $field );
 		$name        = $id;
@@ -135,7 +133,7 @@ class Forminator_Text extends Forminator_Field {
 		$limit       = self::get_property( 'limit', $field, 0, 'num' );
 		$limit_type  = self::get_property( 'limit_type', $field, '', 'str' );
 
-		$autofill_markup = $this->get_element_autofill_markup_attr( self::get_property( 'element_id', $field ), $this->form_settings );
+		$autofill_markup = $this->get_element_autofill_markup_attr( self::get_property( 'element_id', $field ) );
 
 		if ( (bool) $required ) {
 			$ariareq = 'true';
@@ -355,9 +353,8 @@ class Forminator_Text extends Forminator_Field {
 	 *
 	 * @param array        $field
 	 * @param array|string $data
-	 * @param array        $post_data
 	 */
-	public function validate( $field, $data, $post_data = array() ) {
+	public function validate( $field, $data ) {
 		$id = self::get_property( 'element_id', $field );
 
 		if ( ! isset( $field['limit'] ) ) {

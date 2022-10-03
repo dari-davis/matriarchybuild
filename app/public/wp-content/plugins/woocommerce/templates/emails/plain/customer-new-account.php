@@ -23,22 +23,16 @@ echo "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n";
 
 /* translators: %s: Customer username */
 echo sprintf( esc_html__( 'Hi %s,', 'woocommerce' ), esc_html( $user_login ) ) . "\n\n";
-/* translators: %1$s: Site title, %2$s: Username, %3$s: My account link */
-echo sprintf( esc_html__( 'Thanks for creating an account on %1$s. Your username is %2$s. You can access your account area to view orders, change your password, and more at: %3$s', 'woocommerce' ), esc_html( $blogname ), esc_html( $user_login ), esc_html( wc_get_page_permalink( 'myaccount' ) ) ) . "\n\n";
-
+/* translators: %1$s: Site title, %2$s: Username, %3$s: My account link */ ?>
+<p>Thanks for creating an account on Matriarchy Build. We’re built by women, built for everyone. Get ready to Build the Matriarchy one renovation project at a time!</p>
+<p>You can access your account to view orders, change your password, and more at: <a href="<?= site_url();?>/my-account"><?= site_url();?>/my-account</a></p>
+<br/>
+<p>We look forward to helping you tackle your next project.</p>
+<p>Lacey + Gabriella + the Pros of MBuild</p>
+<?php
 if ( 'yes' === get_option( 'woocommerce_registration_generate_password' ) && $password_generated ) {
 	/* translators: %s: Auto generated password */
 	echo sprintf( esc_html__( 'Your password has been automatically generated: %s', 'woocommerce' ), esc_html( $user_pass ) ) . "\n\n";
-}
-
-echo "\n\n----------------------------------------\n\n";
-
-/**
- * Show user-defined additional content - this is set in each email's settings.
- */
-if ( $additional_content ) {
-	echo esc_html( wp_strip_all_tags( wptexturize( $additional_content ) ) );
-	echo "\n\n----------------------------------------\n\n";
 }
 
 echo wp_kses_post( apply_filters( 'woocommerce_email_footer_text', get_option( 'woocommerce_email_footer_text' ) ) );

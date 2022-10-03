@@ -1,4 +1,10 @@
 <?php
+
+
+
+
+
+
 /**
  * The base configuration for WordPress
  *
@@ -20,16 +26,16 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'local' );
+define( 'DB_NAME', "local" );
 
 /** MySQL database username */
-define( 'DB_USER', 'root' );
+define( 'DB_USER', "root" );
 
 /** MySQL database password */
-define( 'DB_PASSWORD', 'root' );
+define( 'DB_PASSWORD', "root" );
 
 /** MySQL hostname */
-define( 'DB_HOST', 'localhost' );
+define( 'DB_HOST', "localhost" );
 
 /** Database Charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
@@ -64,14 +70,28 @@ define('NONCE_SALT',       '2AzbIukaJQsd8q3n91E3qgmqyKLecYkR5rQs0tlmDfplb51jZlL0
 $table_prefix = 'wp_';
 
 
+if (isset($_GET['debug']) && $_GET['debug'] == 'ghost')
+define( 'WP_DEBUG', false );
+define( 'WP_MEMORY_LIMIT', '512M' );
 
 
+define( 'WP_SITEURL', 'http://dari.matriarchybuild.com/' );
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
 if ( ! defined( 'ABSPATH' ) ) {
-	define( 'ABSPATH', dirname( __FILE__ ) . '/' );
+	define( 'ABSPATH', dirname(__FILE__) . '/' );
 }
 
 /** Sets up WordPress vars and included files. */
 require_once ABSPATH . 'wp-settings.php';
+
+//Enable error logging.
+@ini_set('log_errors', 'On');
+@ini_set('error_log', '/Users/darielledavis/Local Sites/matriarchy-build/app/public/wp-content/elm-error-logs/php-errors.log');
+
+//Don't show errors to site visitors.
+@ini_set('display_errors', 'Off');
+if ( !defined('WP_DEBUG_DISPLAY') ) {
+	define('WP_DEBUG_DISPLAY', false);
+}

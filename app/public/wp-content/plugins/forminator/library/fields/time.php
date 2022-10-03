@@ -648,9 +648,8 @@ class Forminator_Time extends Forminator_Field {
 	 *
 	 * @param array        $field
 	 * @param array|string $data
-	 * @param array        $post_data
 	 */
-	public function validate( $field, $data, $post_data = array() ) {
+	public function validate( $field, $data ) {
 		$isValid       = true;
 		$type          = self::get_property( 'time_type', $field, 'twelve' );
 		$restrict_time = self::get_property( 'restrict_time', $field, 'none' );

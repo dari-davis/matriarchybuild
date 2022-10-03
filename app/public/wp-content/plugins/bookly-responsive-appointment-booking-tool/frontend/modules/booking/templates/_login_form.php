@@ -23,7 +23,7 @@
                 </label>
             </div>
         </div>
-        <button class="button button--secondary bookly-btn-submit ladda-button mb-3" type="submit" data-spinner-size="40" data-style="zoom-in">
+        <button class="bookly-btn-submit ladda-button mb-3" type="submit" data-spinner-size="40" data-style="zoom-in">
             <span class="ladda-label"><?php esc_html_e( 'Sign In' ) ?></span>
         </button>
     </form>

@@ -1190,7 +1190,7 @@ abstract class Forminator_Render_Form {
 	public function is_ajax_load( $force = false, $quiz_id = null ) {
 
 		if ( ! empty( $quiz_id ) ) {
-			$this->lead_model = Forminator_Quiz_Model::model()->load( $quiz_id );
+			$this->lead_model = Forminator_Base_Form_Model::get_model( $quiz_id );
 			if ( ! $force ) {
 				return isset( $this->lead_model->settings['use_ajax_load'] ) ? $this->lead_model->settings['use_ajax_load'] : false;
 			}

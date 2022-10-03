@@ -69,7 +69,7 @@ class Forminator_CForm_Front extends Forminator_Render_Form {
 			// its preview!
 			$this->model->id = $id;
 		} else {
-			$this->model = Forminator_Form_Model::model()->load( $id );
+			$this->model = Forminator_Base_Form_Model::get_model( $id );
 
 			if ( ! $this->model instanceof Forminator_Form_Model ) {
 				return;
@@ -1136,7 +1136,7 @@ class Forminator_CForm_Front extends Forminator_Render_Form {
 
 		// Get field object.
 		/** @var Forminator_Field $field_object */
-		$field_object = forminator_get_field( $this->get_field_type( $field ) );
+		$field_object = Forminator_Core::get_field_object( $this->get_field_type( $field ) );
 
 		// If bool, abort.
 		if ( is_bool( $field_object ) ) {
@@ -1144,7 +1144,7 @@ class Forminator_CForm_Front extends Forminator_Render_Form {
 		}
 
 		if ( $field_object->is_available( $field ) ) {
-			if ( ! $this->is_hidden( $field ) ) {
+			if ( ! self::is_hidden( $field ) ) {
 				// Render before field markup.
 				$html .= $this->render_field_before( $field );
 			}
@@ -1152,7 +1152,7 @@ class Forminator_CForm_Front extends Forminator_Render_Form {
 			// Render field.
 			$html .= $this->render_field( $field );
 
-			if ( ! $this->is_hidden( $field ) ) {
+			if ( ! self::is_hidden( $field ) ) {
 				// Render after field markup.
 				$html .= $this->render_field_after( $field );
 			}
@@ -1180,7 +1180,7 @@ class Forminator_CForm_Front extends Forminator_Render_Form {
 		$has_placeholder = $placeholder ? true : false;
 
 		// deprecated, label should be handled by field class it seld.
-		// if ( ! $this->is_hidden( $field ) && ! $this->has_label( $field ) ) {.
+		// if ( ! self::is_hidden( $field ) && ! $this->has_label( $field ) ) {.
 		//
 		// if ( ! $this->is_multi_name( $field ) ) {.
 		// $html .= $this->get_field_label_markup( $field_label, $is_required, $has_placeholder, $field );.
@@ -1196,7 +1196,7 @@ class Forminator_CForm_Front extends Forminator_Render_Form {
 
 		// Get field object.
 		/** @var Forminator_Field $field_object */
-		$field_object = forminator_get_field( $type );
+		$field_object = Forminator_Core::get_field_object( $type );
 
 		// Print field markup.
 		$html .= $field_object->markup( $field, $this->model->settings );
@@ -1315,10 +1315,6 @@ class Forminator_CForm_Front extends Forminator_Render_Form {
 		}
 
 		$container_class = 'forminator-field--label';
-		$type            = $this->get_field_type( $field );
-		/** @var Forminator_Field $field_object */
-		$field_object = forminator_get_field( $type );
-		$design       = $this->get_form_design();
 
 		if ( $required ) {
 			$asterisk = ' ' . forminator_get_required_icon();
@@ -1346,7 +1342,7 @@ class Forminator_CForm_Front extends Forminator_Render_Form {
 		_deprecated_function( __METHOD__, '1.6' );
 		$type = $this->get_field_type( $field );
 		/** @var Forminator_Field $field_object */
-		$field_object              = forminator_get_field( $type );
+		$field_object              = Forminator_Core::get_field_object( $type );
 		$has_phone_character_limit = ( ( isset( $field['phone_validation'] ) && $field['phone_validation'] )
 									   && ( isset( $field['validation'] )
 											&& 'character_limit' === $field['validation'] ) );
@@ -1424,18 +1420,7 @@ class Forminator_CForm_Front extends Forminator_Render_Form {
 	 * @return mixed
 	 */
 	public function get_form_settings() {
-		// If not using the new "submission-behaviour" setting, set it according to the previous settings.
-		if ( ! isset( $this->model->settings['submission-behaviour'] ) ) {
-			$redirect = ( isset( $this->model->settings['redirect'] ) && filter_var( $this->model->settings['redirect'], FILTER_VALIDATE_BOOLEAN ) );
-
-			if ( $redirect ) {
-				$this->model->settings['submission-behaviour'] = 'behaviour-redirect';
-			} else {
-				$this->model->settings['submission-behaviour'] = 'behaviour-thankyou';
-			}
-		}
-
-		return $this->model->settings;
+		return $this->model->get_form_settings();
 	}
 
 	/**
@@ -1447,7 +1432,7 @@ class Forminator_CForm_Front extends Forminator_Render_Form {
 	 *
 	 * @return mixed
 	 */
-	public function is_hidden( $field ) {
+	public static function is_hidden( $field ) {
 		// Array of hidden fields.
 		$hidden = apply_filters( 'forminator_cform_hidden_fields', array( 'hidden' ) );
 
@@ -1949,7 +1934,7 @@ class Forminator_CForm_Front extends Forminator_Render_Form {
 	public function get_paypal_button_markup( $form_id ) {
 
 		$html        = '';
-		$custom_form = Forminator_Form_Model::model()->load( $form_id );
+		$custom_form = Forminator_Base_Form_Model::get_model( $form_id );
 		if ( is_object( $custom_form ) ) {
 			$fields = $custom_form->get_fields();
 			foreach ( $fields as $field ) {
@@ -2109,7 +2094,7 @@ class Forminator_CForm_Front extends Forminator_Render_Form {
 		$nonce
 	) {
 		if ( (int) $form_id === (int) $this->model->id && $this->is_honeypot_enabled() ) {
-			$fields       = $this->get_fields();
+			$fields       = $this->model->get_real_fields();
 			$total_fields = count( $fields ) + 1;
 			// Most bots wont bother with hidden fields, so set to text and hide it.
 			$html .= sprintf( '<label for="%1$s" class="forminator-hidden" aria-hidden="true">%2$s <input id="%1$s" type="text" name="%1$s" value="" autocomplete="off"></label>', "input_$total_fields", __( 'Please do not fill in this field.', 'forminator' ) );
@@ -2646,8 +2631,7 @@ class Forminator_CForm_Front extends Forminator_Render_Form {
 			// this is string, todo: refactor this to array to (ALL FIELDS will be affected)  avoid client JSON.parse.
 			'pagination_config'   => $form_properties['pagination'],
 			'paypal_config'       => $form_properties['paypal_payment'],
-			'forminator_fields'   => array_keys( forminator_fields_to_array() ),
-			'max_nested_formula'  => forminator_calculator_get_max_nested_formula(),
+			'forminator_fields'   => Forminator_Core::get_field_types(),
 			'general_messages'    => array(
 				'calculation_error'            => Forminator_Calculation::default_error_message(),
 				'payment_require_ssl_error'    => apply_filters(

@@ -42,10 +42,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<tr>
 								<td align="center" valign="top">
 									<!-- Header -->
-									<table border="0" cellpadding="0" cellspacing="0" width="100%" id="template_header">
+									<table border="0" cellpadding="0" cellspacing="0" width="100%" id="template_header" style="background-color: #f7cbad;">
 										<tr>
-											<td id="header_wrapper">
-												<h1><?php echo $email_heading; ?></h1>
+											<td id="header_wrapper" style="text-align: center;">
+												<a href="/"><img style="margin: 0;" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg"></a>
 											</td>
 										</tr>
 									</table>

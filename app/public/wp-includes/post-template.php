@@ -1005,9 +1005,9 @@ function wp_link_pages( $args = '' ) {
 	 *
 	 * @since 3.6.0
 	 *
-	 * @param string $output HTML output of paginated posts' page links.
-	 * @param array  $args   An array of arguments. See wp_link_pages()
-	 *                       for information on accepted arguments.
+	 * @param string       $output HTML output of paginated posts' page links.
+	 * @param array|string $args   An array or query string of arguments. See wp_link_pages()
+	 *                             for information on accepted arguments.
 	 */
 	$html = apply_filters( 'wp_link_pages', $output, $args );
 
@@ -1088,9 +1088,10 @@ function post_custom( $key = '' ) {
  *
  * @since 1.2.0
  *
- * @internal This will probably change at some point...
+ * @deprecated 6.0.2 Use get_post_meta() to retrieve post meta and render manually.
  */
 function the_meta() {
+	_deprecated_function( __FUNCTION__, '6.0.2', 'get_post_meta()' );
 	$keys = get_post_custom_keys();
 	if ( $keys ) {
 		$li_html = '';
@@ -1106,8 +1107,8 @@ function the_meta() {
 			$html = sprintf(
 				"<li><span class='post-meta-key'>%s</span> %s</li>\n",
 				/* translators: %s: Post custom field name. */
-				sprintf( _x( '%s:', 'Post custom field name' ), $key ),
-				$value
+				esc_html( sprintf( _x( '%s:', 'Post custom field name' ), $key ) ),
+				esc_html( $value )
 			);
 
 			/**
@@ -1646,7 +1647,7 @@ function wp_get_attachment_link( $id = 0, $size = 'thumbnail', $permalink = fals
 	 * @since 5.1.0 Added the `$attr` parameter.
 	 *
 	 * @param string       $link_html The page link HTML output.
-	 * @param int          $id        Post ID.
+	 * @param int|WP_Post  $id        Post ID or object. Can be 0 for the current global post.
 	 * @param string|int[] $size      Requested image size. Can be any registered image size name, or
 	 *                                an array of width and height values in pixels (in that order).
 	 * @param bool         $permalink Whether to add permalink to image. Default false.

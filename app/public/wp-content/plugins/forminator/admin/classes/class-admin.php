@@ -26,11 +26,13 @@ class Forminator_Admin {
 		add_action( 'admin_notices', array( $this, 'show_stripe_updated_notice' ) );
 		add_action( 'admin_notices', array( $this, 'show_rating_notice' ) );
 		add_action( 'admin_notices', array( $this, 'show_pro_available_notice' ) );
+		add_action( 'admin_notices', array( $this, 'check_stripe_addon_version' ) );
 		add_action( 'admin_notices', array( $this, 'show_cf7_importer_notice' ) );
 		add_action( 'admin_notices', array( $this, 'show_addons_update_notice' ) );
 		// add_action( 'admin_notices', array( $this, 'show_wpmudev_giveaway' ) );
 		//add_action( 'admin_notices', array( $this, 'show_prelaunch_subscriptions_notice' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts_for_notices' ) );
+		add_action( 'admin_notices', array( $this, 'show_plugin_update_notice' ) );
 
 		// Add plugin action links.
 		add_filter( 'plugin_action_links_' . FORMINATOR_PLUGIN_BASENAME, array( $this, 'add_plugin_action_links' ) );
@@ -53,8 +55,6 @@ class Forminator_Admin {
 		 * Triggered when Admin is loaded
 		 */
 		do_action( 'forminator_admin_loaded' );
-
-        $this->forminator_in_plugin_update_message();
 	}
 
 	public function enqueue_scripts_for_notices() {
@@ -441,6 +441,34 @@ class Forminator_Admin {
 		echo '<div class="forminator-grouped-notice notice notice-info is-dismissible"'
 			. ' data-notice-slug="forminator_pro_is_available"'
 			. ' data-nonce="' . esc_attr( wp_create_nonce( 'forminator_dismiss_notice' ) ) . '">';
+		echo wp_kses_post( $message );
+		echo '</div>';
+	}
+
+	/**
+	 * Displays an admin notice when Forminator version is 1.16.0 or higher and Stripe Addon version is less than 1.0.4
+	 * Shown in forminator pages. Per user notification.
+	 */
+	public function check_stripe_addon_version() {
+		// Show the notice only if Stripe Addon is active and its version is less than 1.0.4.
+		if ( ! defined( 'FORMINATOR_STRIPE_ADDON' ) || ! class_exists( 'Forminator_Stripe_Addon' )
+				|| version_compare( FORMINATOR_STRIPE_ADDON, '1.0.4', '>=' ) ) {
+			return;
+		}
+
+		// Show the notice only for administrators.
+		if ( ! current_user_can( 'administrator' ) ) {
+			return;
+		}
+
+		$message = '<p>';
+		/* translators: Forminator vesrion */
+		$message .= sprintf( esc_html__( 'We\'ve noticed you have updated to Forminator Pro version %s. Please ensure you also update your Forminator Stripe Subscriptions Add-on to version 1.0.4 or higher to ensure compatibility with the new submissions processes.', 'forminator' ), FORMINATOR_VERSION );
+		$message .= '</p>';
+
+		echo '<div class="forminator-grouped-notice notice notice-error"'
+			. ' data-notice-slug="forminator_pro_is_available"'
+			. '>';
 		echo wp_kses_post( $message );
 		echo '</div>';
 	}
@@ -927,31 +955,6 @@ class Forminator_Admin {
 	}
 
 	/**
-	 * Forminator plugin update notice
-	 *
-	 * @return void
-	 */
-	public function forminator_in_plugin_update_message() {
-		if ( ! FORMINATOR_PRO ) {
-			add_action( 'in_plugin_update_message-forminator/forminator.php', array(
-				$this,
-				'show_plugin_update_notice'
-			), 10, 2 );
-		} else {
-			add_action(
-				'load-plugins.php',
-				function () {
-					add_action( 'after_plugin_row_forminator/forminator.php', array(
-						$this,
-						'show_plugin_update_notice'
-					), 10, 2 );
-				},
-				22
-			);
-		}
-	}
-
-	/**
 	 * Show plugin update notice
 	 *
 	 * @param $data
@@ -959,31 +962,67 @@ class Forminator_Admin {
 	 *
 	 * @return void
 	 */
-	public function show_plugin_update_notice( $data, $response ) {
-		$plugin_data = (object) $response;
+	public function show_plugin_update_notice() {
 
-		if ( empty( $plugin_data->update ) || empty( $plugin_data->new_version ) || empty( $plugin_data->plugin ) ) {
+		if ( FORMINATOR_PRO || ! current_user_can( 'administrator' ) ) {
 			return;
 		}
 
-		if ( '1.16.0' === $plugin_data->new_version || '1.16' === $plugin_data->new_version ) {
-			$notice = '<br/><strong>' . __( 'Upgrade Notice: ', 'forminator' ) . '</strong>';
-			$notice .= __( 'Forminator is getting a huge performance boost thanks to some form submission improvements.', 'forminator' );
-			$notice .= '<br/><br/>' . sprintf(
-					__( 'There\'s an extremely low chance these changes may affect you if any of your forms use a custom action or filter that we\'ve now removed or modified (forms using standard Forminator features won\'t be affected at all). If needed, refer to this list of the %1$sretired actions/filters%2$s, but we\'re confident that %3$s of users should remain unaffected.', 'forminator' ),
-					'<a href="https://wpmudev.com/docs/api-plugin-development/forminator-api-docs/#modified-or-deprecated-hooks" target="_blank">',
-					'</a>',
-					'99%'
-				);
-			$notice .= '<br/><br/>' . esc_html__( 'Any problems or issues? Don\'t hesitate to create a support ticket or contact support directly.', 'forminator' );
-
-			echo "<script type='text/javascript'>
-            (function ($) {
-               $(document).ready(function (e) {
-                   $( '.wp-list-table tr[data-plugin=\"" . esc_attr( $plugin_data->plugin ) . "\"] .notice-warning' ).append( '" . addslashes( $notice ) . "' ).css('padding-bottom', '10px');
-               });
-            })(jQuery);
-           </script>";
+		$page = filter_input( INPUT_GET, 'page' );
+		if ( ! $page || false === strpos( $page, 'forminator' ) ) {
+			return;
 		}
+
+		$notice_dismissed = get_option( 'forminator_plugin_update_notice_dismissed', false );
+		if ( $notice_dismissed ) {
+			return;
+		}
+        ?>
+        <div class="forminator-notice notice notice-info"
+             data-prop="forminator_plugin_update_notice_dismissed"
+             data-nonce="<?php echo esc_attr( wp_create_nonce( 'forminator_dismiss_notification' ) ); ?>"
+        >
+            <p style="color: #72777C; line-height: 22px;">
+                <strong><?php esc_html_e( 'Upgrade Notice: ', 'forminator' ); ?></strong>
+                <?php esc_html_e( 'Forminator is getting a huge performance boost thanks to some form submission improvements.', 'forminator' ); ?>
+            </p>
+            <p style="color: #72777C; line-height: 22px;">
+	            <?php printf(
+		            __( 'There\'s an extremely low chance these changes may affect you if any of your forms use a custom action or filter that we\'ve now removed or modified (forms using standard Forminator features won\'t be affected at all). If needed, refer to this list of the %1$sretired actions/filters%2$s, but we\'re confident that %3$s of users should remain unaffected.', 'forminator' ),
+		            '<a href="https://wpmudev.com/docs/api-plugin-development/forminator-api-docs/#modified-or-deprecated-hooks" target="_blank">',
+		            '</a>',
+		            '99%'
+	            ); ?>
+            </p>
+            <p style="color: #72777C; line-height: 22px;">
+	            <?php printf( __( 'Any problems or issues? Don\'t hesitate to %1$screate a support ticket%2$s.', 'forminator' ),
+		            '<a href="https://wordpress.org/support/plugin/forminator/#new-topic-0" target="_blank">',
+		            '</a>'
+	            ); ?>
+            </p>
+            <p>
+                <a href="#" class="dismiss-notice" style="text-decoration: none; color: #555; font-weight: 500;"><?php esc_html_e( 'Dismiss', 'forminator' ); ?></a>
+            </p>
+        </div>
+        <script type="text/javascript">
+            jQuery( '.forminator-notice .dismiss-notice' ).on( 'click', function( e ) {
+                e.preventDefault();
+
+                var $notice = jQuery( e.currentTarget ).closest( '.forminator-notice' );
+                var ajaxUrl = '<?php echo esc_url( forminator_ajax_url() ); ?>';
+
+                jQuery.post(
+                    ajaxUrl,
+                    {
+                        action: 'forminator_dismiss_notification',
+                        prop: $notice.data('prop'),
+                        _ajax_nonce: $notice.data('nonce')
+                    }
+                ).always( function() {
+                    $notice.hide();
+                });
+            });
+        </script>
+		<?php
 	}
 }

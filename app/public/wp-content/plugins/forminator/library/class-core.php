@@ -44,6 +44,13 @@ class Forminator_Core {
 	public $pro_fields = array();
 
 	/**
+	 * Store field objects
+	 *
+	 * @var array
+	 */
+	private static $field_objects = array();
+
+	/**
 	 * Plugin instance
 	 *
 	 * @var null
@@ -93,6 +100,8 @@ class Forminator_Core {
 		$fields       = new Forminator_Fields();
 		$this->fields = $fields->get_fields();
 
+		$this->set_field_objects();
+
 		/**
 		 * Filter Pro fields for promotion PRO version
 		 *
@@ -123,6 +132,60 @@ class Forminator_Core {
 
 		// Post meta box.
 		add_action( 'init', array( &$this, 'post_field_meta_box' ) );
+	}
+
+	/**
+	 * Set field objects
+	 */
+	private function set_field_objects() {
+		if ( self::$field_objects ) {
+			return;
+		}
+		foreach ( $this->fields as $field_object ) {
+			self::$field_objects[ $field_object->slug ] = $field_object;
+		}
+	}
+
+	/**
+	 * Get field object by field type
+	 *
+	 * @param string $type Field type.
+	 * @return object
+	 */
+	public static function get_field_object( $type ) {
+		$object = isset( self::$field_objects[ $type ] ) ? self::$field_objects[ $type ] : null;
+
+		return $object;
+	}
+
+	/**
+	 * Get field types
+	 *
+	 * @return array
+	 */
+	public static function get_field_types() {
+		$types = array_keys( self::$field_objects );
+
+		return $types;
+	}
+
+	/**
+	 * Get field type based on $element_id
+	 *
+	 * @param $element_id Field slug.
+	 * @return array
+	 */
+	public static function get_field_type( $element_id ) {
+		$field_type = '';
+		$parts      = explode( '-', $element_id );
+		// all avail fields on library.
+		$field_types = Forminator_Core::get_field_types();
+
+		if ( in_array( $parts[0], $field_types, true ) ) {
+			$field_type = $parts[0];
+		}
+
+		return $field_type;
 	}
 
 	/**

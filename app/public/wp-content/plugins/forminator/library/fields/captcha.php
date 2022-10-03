@@ -220,11 +220,10 @@ class Forminator_Captcha extends Forminator_Field {
 	 *
 	 * @param array        $field
 	 * @param array|string $data
-	 * @param array        $post_data
 	 *
 	 * @return bool
 	 */
-	public function validate( $field, $data, $post_data = array() ) {
+	public function validate( $field, $data ) {
 		$element_id    = self::get_property( 'element_id', $field );
 		$provider  	   = self::get_property( 'captcha_provider', $field, 'recaptcha' );
 		$captcha_type  = self::get_property( 'captcha_type', $field, '' );

@@ -391,11 +391,10 @@ class Forminator_Phone extends Forminator_Field {
 	 *
 	 * @param array        $field
 	 * @param array|string $data
-	 * @param array        $post_data
 	 *
 	 * @return bool
 	 */
-	public function validate( $field, $data, $post_data = array() ) {
+	public function validate( $field, $data ) {
 		$id = self::get_property( 'element_id', $field );
 
 		if ( $this->is_required( $field ) ) {

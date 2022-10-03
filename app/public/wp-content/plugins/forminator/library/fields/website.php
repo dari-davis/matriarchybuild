@@ -270,9 +270,8 @@ class Forminator_Website extends Forminator_Field {
 	 *
 	 * @param array        $field
 	 * @param array|string $data
-	 * @param array        $post_data
 	 */
-	public function validate( $field, $data, $post_data = array() ) {
+	public function validate( $field, $data ) {
 		$id                 = self::get_property( 'element_id', $field );
 		$validation_enabled = self::get_property( 'validation', $field, false, 'bool' );
 		$validation_message = self::get_property( 'validation_message', $field, self::FIELD_PROPERTY_VALUE_NOT_EXIST );

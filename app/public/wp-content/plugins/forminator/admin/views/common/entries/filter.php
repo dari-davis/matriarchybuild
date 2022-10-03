@@ -183,17 +183,12 @@ $is_registration    = ! empty( $args['is_registration'] );
 
 					<fieldset class="forminator-entries-fields-filter" <?php echo ( $this->fields_is_filtered ? '' : 'disabled=disabled' ); ?>>
 						<?php
-						$ignored_field_types = Forminator_Form_Entry_Model::ignored_fields();
-						$fields              = apply_filters( 'forminator_custom_form_filter_fields', $args['fields'] );
+						$fields = apply_filters( 'forminator_custom_form_filter_fields', $args['fields'] );
 
 						foreach ( $fields as $field ) {
 
 							$label      = $field->__get( 'field_label' );
 							$field_type = $field->__get( 'type' );
-
-							if ( in_array( $field_type, $ignored_field_types, true ) ) {
-								continue;
-							}
 
 							if ( ! $label ) {
 								$label = $field->title;

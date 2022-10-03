@@ -406,9 +406,8 @@ class Forminator_Select extends Forminator_Field {
 	 *
 	 * @param array        $field
 	 * @param array|string $data
-	 * @param array        $post_data
 	 */
-	public function validate( $field, $data, $post_data = array() ) {
+	public function validate( $field, $data ) {
 		$select_type = isset( $field['value_type'] ) ? $field['value_type'] : 'single';
 
 		if ( $this->is_required( $field ) ) {
@@ -455,12 +454,12 @@ class Forminator_Select extends Forminator_Field {
 	 *
 	 * @since 1.7
 	 *
-	 * @param $submitted_data
+	 * @param $submitted_field
 	 * @param $field_settings
 	 *
 	 * @return float|string
 	 */
-	private function calculable_value( $submitted_data, $field_settings ) {
+	private static function calculable_value( $submitted_field, $field_settings ) {
 		$enabled = self::get_property( 'calculations', $field_settings, false, 'bool' );
 		if ( ! $enabled ) {
 			return self::FIELD_NOT_CALCULABLE;
@@ -473,9 +472,9 @@ class Forminator_Select extends Forminator_Field {
 
 		if ( 'multiselect' !== $field_type ) {
 			// process as array.
-			$submitted_data = array( $submitted_data );
+			$submitted_field = array( $submitted_field );
 		}
-		if ( ! is_array( $submitted_data ) ) {
+		if ( ! is_array( $submitted_field ) ) {
 			return $sums;
 		}
 
@@ -484,7 +483,7 @@ class Forminator_Select extends Forminator_Field {
 			$calculation_value = isset( $option['calculation'] ) ? $option['calculation'] : 0.0;
 
 			// strict array compare disabled to allow non-coercion type compare.
-			if ( in_array( $option_value, $submitted_data, true ) ) {
+			if ( in_array( $option_value, $submitted_field, true ) ) {
 				// this one is selected.
 				$sums += floatval( $calculation_value );
 			}
@@ -497,20 +496,20 @@ class Forminator_Select extends Forminator_Field {
 	 * @since 1.7
 	 * @inheritdoc
 	 */
-	public function get_calculable_value( $submitted_data, $field_settings ) {
-		$calculable_value = $this->calculable_value( $submitted_data, $field_settings );
+	public static function get_calculable_value( $submitted_field_data, $field_settings ) {
+		$calculable_value = self::calculable_value( $submitted_field_data, $field_settings );
 		/**
 		 * Filter formula being used on calculable value on select field
 		 *
 		 * @since 1.7
 		 *
 		 * @param float $calculable_value
-		 * @param array $submitted_data
+		 * @param array $submitted_field_data
 		 * @param array $field_settings
 		 *
 		 * @return string|int|float
 		 */
-		$calculable_value = apply_filters( 'forminator_field_select_calculable_value', $calculable_value, $submitted_data, $field_settings );
+		$calculable_value = apply_filters( 'forminator_field_select_calculable_value', $calculable_value, $submitted_field_data, $field_settings );
 
 		return $calculable_value;
 	}

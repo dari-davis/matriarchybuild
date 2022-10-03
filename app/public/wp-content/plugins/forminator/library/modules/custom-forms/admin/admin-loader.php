@@ -48,20 +48,20 @@ class Forminator_Custom_Form_Admin extends Forminator_Admin_Module {
 		$model = null;
 		if ( $this->is_admin_wizard() ) {
 			$data['application'] = 'builder';
+			$settings            = array();
 
 			$id = filter_input( INPUT_GET, 'id', FILTER_VALIDATE_INT );
 			if ( $id ) {
 				$data['formNonce'] = wp_create_nonce( 'forminator_save_builder_fields' );
-				$model             = Forminator_Form_Model::model()->load( $id );
+				$model             = Forminator_Base_Form_Model::get_model( $id );
+				$settings          = $model->get_form_settings();
+				$behavior          = $model->get_behavior_array();
 			}
 
 			$wrappers = array();
 			if ( is_object( $model ) ) {
 				$wrappers = $model->get_fields_grouped();
 			}
-
-			// Load stored record
-			$settings = apply_filters( 'forminator_form_settings', $this->get_form_settings( $model ), $model, $data, $this );
 
 			if ( isset( $model->settings['form-type'] ) && 'registration' === $model->settings['form-type'] ) {
 				$notifications = self::get_registration_form_notifications( $model );
@@ -92,7 +92,7 @@ class Forminator_Custom_Form_Admin extends Forminator_Admin_Module {
 					)
 				),
 				'notifications' => $notifications,
-				'behaviorArray' => Forminator_Form_Model::get_behavior_array( $model, $settings ),
+				'behaviorArray' => isset( $behavior ) ? $behavior : array(),
 				'integrationConditions' => ! empty( $model->integration_conditions ) ? $model->integration_conditions : array(),
 			);
 		}
@@ -191,41 +191,6 @@ class Forminator_Custom_Form_Admin extends Forminator_Admin_Module {
 		}
 
 		return false;
-	}
-
-	/**
-	 * Return Form Settins
-	 *
-	 * @since 1.1
-	 *
-	 * @param Forminator_Form_Model $form
-	 *
-	 * @return mixed
-	 */
-	public function get_form_settings( $form ) {
-
-		if ( ! isset( $form ) ) {
-			$form = new stdClass();
-		}
-
-		// If not using the new "submission-behaviour" setting, set it according to the previous settings.
-		if ( ! isset( $form->settings['submission-behaviour'] ) ) {
-			$redirect = ( isset( $form->settings['redirect'] ) && filter_var( $form->settings['redirect'], FILTER_VALIDATE_BOOLEAN ) );
-
-			if ( $redirect ) {
-				$form->settings['submission-behaviour'] = 'behaviour-redirect';
-			} else {
-				$form->settings['submission-behaviour'] = 'behaviour-thankyou';
-			}
-		}
-
-		if ( Forminator_Form_Model::has_stripe_or_paypal( $form ) && $this->is_ajax_submit( $form ) ) {
-			if ( isset( $form->settings['submission-behaviour'] ) && 'behaviour-thankyou' === $form->settings['submission-behaviour'] ) {
-				$form->settings['submission-behaviour'] = 'behaviour-hide';
-			}
-		}
-
-		return $form->settings;
 	}
 
 	/**
@@ -358,28 +323,6 @@ class Forminator_Custom_Form_Admin extends Forminator_Admin_Module {
 	}
 
 	/**
-	 * Check if submit is handled with AJAX
-	 *
-	 * @since 1.9.3
-	 *
-	 * @return bool
-	 */
-	public function is_ajax_submit( $form ) {
-		$form_settings = $form->settings;
-
-		// Force AJAX submit if form contains Stripe payment field.
-		if ( $form->has_stripe_field() ) {
-			return true;
-		}
-
-		if ( ! isset( $form_settings['enable-ajax'] ) || empty( $form_settings['enable-ajax'] ) ) {
-			return false;
-		}
-
-		return filter_var( $form_settings['enable-ajax'], FILTER_VALIDATE_BOOLEAN );
-	}
-
-	/**
 	 * Form default data
 	 *
 	 * @param $name
@@ -488,7 +431,7 @@ class Forminator_Custom_Form_Admin extends Forminator_Admin_Module {
 		$model->settings = self::validate_settings( $settings );
 		$model->status   = $status;
 
-		$behaviors        = Forminator_Form_Model::get_behavior_array( $model, $model->settings );
+		$behaviors        = $model->get_behavior_array();
 		$model->behaviors = $behaviors;
 
 		// Save data.
@@ -515,7 +458,7 @@ class Forminator_Custom_Form_Admin extends Forminator_Admin_Module {
 				$status = Forminator_Form_Model::STATUS_PUBLISH;
 			}
 		} else {
-			$form_model = Forminator_Form_Model::model()->load( $id );
+			$form_model = Forminator_Base_Form_Model::get_model( $id );
 			$action     = 'update';
 
 			if ( ! is_object( $form_model ) ) {

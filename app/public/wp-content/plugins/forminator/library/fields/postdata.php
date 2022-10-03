@@ -588,9 +588,8 @@ class Forminator_Postdata extends Forminator_Field {
 	 *
 	 * @param array        $field
 	 * @param array|string $data
-	 * @param array        $post_data
 	 */
-	public function validate( $field, $data, $post_data = array() ) {
+	public function validate( $field, $data ) {
 
 		$id = self::get_property( 'element_id', $field );
 
@@ -726,66 +725,63 @@ class Forminator_Postdata extends Forminator_Field {
 	public function upload_post_image( $field, $field_name ) {
 		$post_image = self::get_property( 'post_image', $field, '' );
 
-		if ( ! empty( $post_image ) ) {
-			if ( isset( $_FILES[ $field_name ] ) ) {
-				if ( isset( $_FILES[ $field_name ]['name'] ) && ! empty( $_FILES[ $field_name ]['name'] ) ) {
-					$file_name = sanitize_file_name( $_FILES[ $field_name ]['name'] );
-					// TODO: refactor upload to use WP filesystem api.
-					$file_data        = file_get_contents( $_FILES[ $field_name ]['tmp_name'] );
-					$upload_dir       = wp_upload_dir(); // Set upload folder.
-					$unique_file_name = wp_unique_filename( $upload_dir['path'], $file_name );
-					$filename         = basename( $unique_file_name ); // Create base file name.
+		if ( empty( $post_image ) ) {
+			return true;
+		}
+		if ( ! empty( $_FILES[ $field_name ]['name'] ) ) {
+			$file_name = sanitize_file_name( $_FILES[ $field_name ]['name'] );
+			// TODO: refactor upload to use WP filesystem api.
+			$file_data        = file_get_contents( $_FILES[ $field_name ]['tmp_name'] );
+			$upload_dir       = wp_upload_dir(); // Set upload folder.
+			$unique_file_name = wp_unique_filename( $upload_dir['path'], $file_name );
+			$filename         = basename( $unique_file_name ); // Create base file name.
 
-					if ( wp_mkdir_p( $upload_dir['path'] ) ) {
-						$file = $upload_dir['path'] . '/' . $filename;
-					} else {
-						$file = $upload_dir['basedir'] . '/' . $filename;
-					}
-
-					// Create the  file on the server.
-					file_put_contents( $file, $file_data );
-
-					// Check image file type.
-					$wp_filetype = wp_check_filetype( $filename, null );
-					$image_exts  = apply_filters( 'forminator_field_postdata_image_file_types', array( 'jpg', 'jpeg', 'jpe', 'gif', 'png', 'bmp' ) );
-					if ( in_array( (string) $wp_filetype['ext'], $image_exts, true ) ) {
-						// Set attachment data.
-						$attachment = array(
-							'post_mime_type' => $wp_filetype['type'],
-							'post_title'     => sanitize_file_name( $filename ),
-							'post_content'   => '',
-							'post_status'    => 'inherit',
-						);
-
-						// Create the attachment.
-						$attachment_id = wp_insert_attachment( $attachment, $file );
-
-						// Include image.php.
-						require_once ABSPATH . 'wp-admin/includes/image.php';
-
-						// Define attachment metadata.
-						$attach_data = wp_generate_attachment_metadata( $attachment_id, $file );
-
-						// Assign metadata to attachment.
-						wp_update_attachment_metadata( $attachment_id, $attach_data );
-						$uploaded_file = wp_get_attachment_image_src( $attachment_id, 'large', false );
-						if ( $uploaded_file && is_array( $uploaded_file ) ) {
-							return array(
-								'attachment_id' => $attachment_id,
-								'uploaded_file' => $uploaded_file,
-							);
-						}
-					}
-				}
+			if ( wp_mkdir_p( $upload_dir['path'] ) ) {
+				$file = $upload_dir['path'] . '/' . $filename;
+			} else {
+				$file = $upload_dir['basedir'] . '/' . $filename;
 			}
 
-			return array(
-				'attachment_id' => 0,
-				'uploaded_file' => 0,
-			);
+			// Create the  file on the server.
+			file_put_contents( $file, $file_data );
+
+			// Check image file type.
+			$wp_filetype = wp_check_filetype( $filename, null );
+			$image_exts  = apply_filters( 'forminator_field_postdata_image_file_types', array( 'jpg', 'jpeg', 'jpe', 'gif', 'png', 'bmp' ) );
+			if ( in_array( (string) $wp_filetype['ext'], $image_exts, true ) ) {
+				// Set attachment data.
+				$attachment = array(
+					'post_mime_type' => $wp_filetype['type'],
+					'post_title'     => sanitize_file_name( $filename ),
+					'post_content'   => '',
+					'post_status'    => 'inherit',
+				);
+
+				// Create the attachment.
+				$attachment_id = wp_insert_attachment( $attachment, $file );
+
+				// Include image.php.
+				require_once ABSPATH . 'wp-admin/includes/image.php';
+
+				// Define attachment metadata.
+				$attach_data = wp_generate_attachment_metadata( $attachment_id, $file );
+
+				// Assign metadata to attachment.
+				wp_update_attachment_metadata( $attachment_id, $attach_data );
+				$uploaded_file = wp_get_attachment_image_src( $attachment_id, 'large', false );
+				if ( $uploaded_file && is_array( $uploaded_file ) ) {
+					return array(
+						'attachment_id' => $attachment_id,
+						'uploaded_file' => $uploaded_file,
+					);
+				}
+			}
 		}
 
-		return true;
+		return array(
+			'attachment_id' => 0,
+			'uploaded_file' => 0,
+		);
 	}
 
 	/**

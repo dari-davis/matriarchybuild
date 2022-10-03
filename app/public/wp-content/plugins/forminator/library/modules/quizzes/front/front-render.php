@@ -35,7 +35,7 @@ class Forminator_QForm_Front extends Forminator_Render_Form {
 	 * @param bool $hide If true, display: none will be added on the form markup and later removed with JS.
 	 */
 	public function display( $id, $is_preview = false, $data = false, $hide = true ) {
-		$this->model = Forminator_Quiz_Model::model()->load( $id );
+		$this->model = Forminator_Base_Form_Model::get_model( $id );
 		if ( ! $this->model instanceof Forminator_Quiz_Model ) {
 			return;
 		}

@@ -64,7 +64,7 @@ class InfoText
                     );
                     /** @var Lib\Entities\Service $service */
                     $service = Lib\Entities\Service::find( $chain_item->getServiceId() );
-                    $appointment_data['category_name'] = $service->getTranslatedCategoryName();
+                    //$appointment_data['category_name'] = $service->getTranslatedCategoryName();
                     $appointment_data['service_name'] = $service->getTranslatedTitle();
                     $appointment_data['service_image'] = ( $url = $service->getImageUrl() ) ? '<img src="' . $url . '"/>' : '';
                     $appointment_data['service_info'] = $service->getTranslatedInfo();

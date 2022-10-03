@@ -1081,9 +1081,8 @@ class Forminator_Date extends Forminator_Field {
 	 *
 	 * @param array        $field
 	 * @param array|string $data
-	 * @param array        $post_data
 	 */
-	public function validate( $field, $data, $post_data = array() ) {
+	public function validate( $field, $data ) {
 		$id              = self::get_property( 'element_id', $field );
 		$start_date_type = self::get_property( 'start-date', $field, '' );
 		$end_date_type   = self::get_property( 'end-date', $field, '' );
@@ -1151,18 +1150,9 @@ class Forminator_Date extends Forminator_Field {
 			return;
 		}
 
-		// subfields `{"year":"","day":"","month":""}`.
-		if ( is_array( $data ) ) {
-			$is_all_empty = true;
-			foreach ( $data as $value ) {
-				if ( ! empty( $value ) ) {
-					$is_all_empty = false;
-					break;
-				}
-			}
-			if ( $is_all_empty ) {
-				return;
-			}
+		if ( isset( $data['year'] ) && isset( $data['day'] ) && isset( $data['month'] )
+				&& empty( $data['year'] ) && empty( $data['day'] ) && empty( $data['month'] ) ) {
+			return;
 		}
 
 		// Always! (we dont have validate flag on builder) validate date_format.
@@ -1208,7 +1198,7 @@ class Forminator_Date extends Forminator_Field {
 				);
 
 			}
-			
+
 		} else {
 
 			if ( 'select' === $date_type ) {
@@ -1325,7 +1315,8 @@ class Forminator_Date extends Forminator_Field {
 						if ( 'today' === $start_date_type ) {
 							$start_date = date_i18n( 'm/d/Y', strtotime( $start_offset_operator . $start_offset_value . ' ' . $start_offset_duration, current_time( 'U' ) ) );
 						} else {
-							$start_date_field = isset( $post_data[ $start_date_type ] ) ? $post_data[ $start_date_type ] : '';
+							$start_date_field = isset( Forminator_CForm_Front_Action::$prepared_data[ $start_date_type ] )
+									? Forminator_CForm_Front_Action::$prepared_data[ $start_date_type ] : '';
 							$start_date       = ! empty( $start_date_field ) ? date_i18n( 'm/d/Y', strtotime( $start_date_field . ' ' . $start_offset_operator . $start_offset_value . ' ' . $start_offset_duration ) ) : '';
 						}
 					}
@@ -1346,7 +1337,8 @@ class Forminator_Date extends Forminator_Field {
 						if ( 'today' === $end_date_type ) {
 							$end_date = date_i18n( 'm/d/Y', strtotime( $end_offset_operator . $end_offset_value . ' ' . $end_offset_duration, current_time( 'U' ) ) );
 						} else {
-							$end_date_field = isset( $post_data[ $end_date_type ] ) ? $post_data[ $end_date_type ] : '';
+							$end_date_field = isset( Forminator_CForm_Front_Action::$prepared_data[ $end_date_type ] )
+									? Forminator_CForm_Front_Action::$prepared_data[ $end_date_type ] : '';
 							$end_date       = date_i18n( 'm/d/Y', strtotime( $end_date_field . ' ' . $end_offset_operator . $end_offset_value . ' ' . $end_offset_duration ) );
 						}
 					}

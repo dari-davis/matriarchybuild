@@ -76,7 +76,7 @@ if ( $this->total_entries() > 0 ) :
 				$this->template(
 					'common/entries/filter',
 					array(
-						'fields'          => $this->get_fields(),
+						'fields'          => $this->model->get_real_fields(),
 						'is_registration' => $is_registration,
 					)
 				);

@@ -1,0 +1,204 @@
+img {
+    max-width: 100%;
+}
+
+a {
+    color: #2d457c !important;
+    text-decoration: none !important;
+}
+
+.has-pink-background {
+    background-color: #f7cbad;
+}
+
+.has-blue-background {
+    background-color: #2d457c;
+}
+
+.has-olive-background {
+    background-color: #bbb69b;
+}
+
+.blue-text {
+    color: #2d457c;
+}
+
+.pink-text {
+    color: #f7cbad;
+}
+
+.col-lg-6 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.left.col-lg-6 {
+    min-height: 496px;
+}
+
+.header {
+    padding: 50px 20px 40px;
+    text-align: center
+}
+
+.heading,
+.main-copy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #f7cbad;
+    padding: 20px;
+}
+
+.main-copy {
+    padding: 40px;
+    border-top: 0;
+    font-family: 'BNTGothic', sans-serif;
+    font-size: 20px;
+    line-height: 25px;
+    align-items: start;
+}
+
+.x-icon {
+    width: 148px;
+}
+
+.right {
+    padding: 20px;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FBF8EA;
+    height: 60px;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: 'Dharma', serif;
+}
+
+.button:hover {
+    color: #2d457c;
+}
+
+.button:after,
+.text-button:after {
+    content: '';
+    display: inline-flex;
+    margin-left: 8px;
+    height: 8px;
+    width: 24px;
+    background-image: url('images/arrow_blue.svg');
+    background-repeat: no-repeat;
+}
+
+.text-button {
+    color: #ffffff !important;
+    text-decoration: none;
+    float: left;
+}
+
+.text-button:after {
+    background-image: url('images/arrow_white.svg');
+}
+
+.heading {
+    flex: 1;
+    font-family: 'NauticGroteskBold';
+    text-transform: uppercase;
+    font-size: 40px;
+    letter-spacing: 0.03em;
+    text-align: center;
+    line-height: 34px;
+}
+
+.heading span {
+    max-width: 333px;
+}
+
+.footer {
+    font-family: 'Dharma', serif;
+}
+
+.footer-heading {
+    font-family: 'NauticGroteskBold';
+    text-transform: uppercase;
+    font-size: 28px;
+    line-height: 27px;
+    letter-spacing: 0.03rem;
+}
+
+.footer .col-md-7 {
+    padding: 20px;
+}
+
+.footer .pink-text p {
+    font-size: 16px;
+    line-height: 23px;
+    text-align: left;
+}
+
+@font-face {
+    font-family: 'NauticGroteskBold';
+    src: url('fonts/nautic_grotesk_bold.woff2') format('woff2'),
+        url('fonts/nautic_grotesk_bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Dharma';
+    src: url('fonts/dharma_type_regular.woff2') format('woff2'),
+        url('fonts/dharma_type_regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BNTGothic';
+    src: url('fonts/bnt_times_gothic.woff2') format('woff2'),
+        url('fonts/bnt_times_gothic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.footer__links {
+    margin: 0;
+    list-style: none;
+}
+
+.footer__social {
+    margin-right: 6px;
+}
+
+.footer .has-pink-background {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.footer-bottom {
+    justify-content: space-between;
+}
+
+@media all and (min-width: 768px) {
+    .heading {
+        font-size: 60px;
+        line-height: 54px;
+    }
+
+    .left.col-lg-6 {
+        min-height: 842px;
+    }
+
+    .right {
+        padding: 40px;
+    }
+}
+
+@media all and (min-width: 1200px) {
+    .x-icon {
+        width: 248px;
+    }
+}

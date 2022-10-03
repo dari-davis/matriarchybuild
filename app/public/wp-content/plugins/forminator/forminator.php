@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Forminator
- * Version: 1.15.14
+ * Version: 1.16.2
  * Plugin URI:  https://wpmudev.com/project/forminator/
  * Description: Capture user information (as detailed as you like), engage users with interactive polls that show real-time results and graphs, “no wrong answer” Facebook-style quizzes and knowledge tests.
  * Author: WPMU DEV
@@ -34,7 +34,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'FORMINATOR_VERSION' ) ) {
-	define( 'FORMINATOR_VERSION', '1.15.14' );
+	define( 'FORMINATOR_VERSION', '1.16.2' );
 }
 
 if ( ! defined( 'FORMINATOR_SUI_VERSION' ) ) {
@@ -180,7 +180,9 @@ if ( ! class_exists( 'Forminator' ) ) {
 		 */
 		public function add_custom_cap() {
 			$admin = get_role( 'administrator' );
-			$admin->add_cap( 'manage_forminator', true );
+			if( $admin ) {
+				$admin->add_cap( 'manage_forminator', true );
+			}
 		}
 
 		/**

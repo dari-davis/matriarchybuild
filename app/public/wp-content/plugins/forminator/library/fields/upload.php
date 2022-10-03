@@ -233,9 +233,8 @@ class Forminator_Upload extends Forminator_Field {
 	 *
 	 * @param array        $field
 	 * @param array|string $data
-	 * @param array        $post_data
 	 */
-	public function validate( $field, $data, $post_data = array() ) {
+	public function validate( $field, $data ) {
 		if ( $this->is_required( $field ) ) {
 			$id               = self::get_property( 'element_id', $field );
 			$required_message = self::get_property( 'required_message', $field, '' );
@@ -421,7 +420,6 @@ class Forminator_Upload extends Forminator_Field {
 					);
 				}
 
-				$user = get_current_user_id();
 				$upload_dir = wp_upload_dir(); // Set upload folder.
 
 				if ( 'upload' === $upload_type && 'multiple' === $file_type ) {
@@ -430,12 +428,6 @@ class Forminator_Upload extends Forminator_Field {
 				} else {
 					$file_path = $upload_dir['path'];
 					$file_url  = $upload_dir['url'];
-
-					$file_path = $upload_dir['path'];
-					$file_path = "$file_path/ugc/$user";
-
-					$file_url  = $upload_dir['url'];
-					$file_url = "$file_url/ugc/$user";
 				}
 
 				$unique_file_name = wp_unique_filename( $file_path, $file_name );

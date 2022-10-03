@@ -17,7 +17,7 @@ abstract class Forminator_Front_Action {
 	 *
 	 * @var string
 	 */
-	public $entry_type = '';
+	public static $entry_type = '';
 
 	/**
 	 * Response message
@@ -27,14 +27,6 @@ abstract class Forminator_Front_Action {
 	protected static $response = array();
 
 	/**
-	 * Hold superglobal POST submitted data
-	 *
-	 * @since 1.5.1
-	 * @var array
-	 */
-	protected $_post_data = array();
-
-	/**
 	 * Additional response attributes
 	 *
 	 * @var array
@@ -42,35 +34,63 @@ abstract class Forminator_Front_Action {
 	protected static $response_attrs = array();
 
 	/**
-	 * Submitted data
-	 *
-	 * @var array
-	 */
-	protected static $submitted_data = array();
-
-	/**
-	 * Pseudo submitted data
-	 *
-	 * @var array
-	 */
-	protected static $pseudo_submitted_data = array();
-
-	/**
 	 * Module ID
 	 *
 	 * @var int
 	 */
-	protected static $module_id = 0;
+	public static $module_id = 0;
+
+	/**
+	 * Prepared submitted data
+	 *
+	 * @var array
+	 */
+	public static $prepared_data = array();
+
+	/**
+	 * Module object Forminator_Form_Model | Forminator_Poll_Model | Forminator_Quiz_Model
+	 *
+	 * @var object
+	 */
+	public static $module_object;
+
+	/**
+	 * Module settings
+	 *
+	 * @var array
+	 */
+	public static $module_settings;
+
+	/**
+	 * Is leads
+	 *
+	 * @var bool
+	 */
+	protected static $is_leads = false;
+
+	/**
+	 * Fields info
+	 *
+	 * @var array
+	 */
+	public static $info = array(
+		'stripe_field'          => array(),
+		'paypal_field'          => array(),
+		'captcha_settings'      => array(),
+		'field_data_array'      => array(),
+		'select_field_value'    => array(),
+		'upload_in_customfield' => array(),
+	);
 
 	public function __construct() {
 		// Save entries.
-		if ( ! empty( $this->entry_type ) ) {
+		if ( ! empty( static::$entry_type ) ) {
 			add_action( 'wp', array( $this, 'maybe_handle_submit' ), 9 );
-			add_action( 'wp_ajax_forminator_submit_form_' . $this->entry_type, array( $this, 'save_entry' ) );
-			add_action( 'wp_ajax_nopriv_forminator_submit_form_' . $this->entry_type, array( $this, 'save_entry' ) );
+			add_action( 'wp_ajax_forminator_submit_form_' . static::$entry_type, array( $this, 'save_entry' ) );
+			add_action( 'wp_ajax_nopriv_forminator_submit_form_' . static::$entry_type, array( $this, 'save_entry' ) );
 
-			add_action( 'wp_ajax_forminator_submit_preview_form_' . $this->entry_type, array( $this, 'save_entry_preview' ) );
-			add_action( 'wp_ajax_nopriv_forminator_submit_preview_form_' . $this->entry_type, array( $this, 'save_entry_preview' ) );
+			add_action( 'wp_ajax_forminator_submit_preview_form_' . static::$entry_type, array( $this, 'save_entry_preview' ) );
+			add_action( 'wp_ajax_nopriv_forminator_submit_preview_form_' . static::$entry_type, array( $this, 'save_entry_preview' ) );
 
 			add_action( 'wp_ajax_forminator_update_payment_amount', array( $this, 'update_payment_amount' ) );
 			add_action( 'wp_ajax_nopriv_forminator_update_payment_amount', array( $this, 'update_payment_amount' ) );
@@ -114,11 +134,55 @@ abstract class Forminator_Front_Action {
 			}
 		} else {
 			$action = Forminator_Core::sanitize_text_field( 'action' );
-			if ( $action && 'forminator_submit_form_' . $this->entry_type === $action ) {
+			if ( $action && 'forminator_submit_form_' . static::$entry_type === $action ) {
 				$this->handle_submit();
 			}
 		}
+	}
 
+	/**
+	 * Init properties
+	 */
+	protected function init_properties( $nonce_args = array() ) {
+		self::$prepared_data = $this->get_post_data( $nonce_args );
+		self::$module_id     = isset( self::$prepared_data['form_id'] ) ? self::$prepared_data['form_id'] : false;
+
+		if ( self::$module_id ) {
+			static::$module_object = Forminator_Base_Form_Model::get_model( self::$module_id );
+			if ( ! static::$module_object && wp_doing_ajax() ) {
+				wp_send_json_error(
+					array(
+						'message' => __( 'Error: Module object is corrupted!', 'forminator' ),
+						'errors'  => array(),
+					)
+				);
+			}
+			self::$module_settings = method_exists( static::$module_object, 'get_form_settings' )
+					? static::$module_object->get_form_settings() : static::$module_object->settings;
+		} else {
+			if ( wp_doing_ajax() ) {
+				wp_send_json_error(
+					array(
+						'message' => __( "Error: Your module ID doesn't exist!", 'forminator' ),
+						'errors'  => array(),
+					)
+				);
+			}
+		}
+	}
+
+	/**
+	 * Get submitted data
+	 *
+	 * @return array
+	 */
+	protected static function get_submitted_data() {
+		$data = self::$prepared_data;
+		unset( $data['forminator_nonce'], $data['form_id'], $data['action'] );
+
+		$data = apply_filters( 'forminator_addon_formatted_' . static::$module_slug . '_submitted_data', $data );
+
+		return $data;
 	}
 
 	/**
@@ -127,76 +191,66 @@ abstract class Forminator_Front_Action {
 	 * @since 1.0
 	 */
 	public function handle_submit() {
-		$this->_post_data = $this->get_post_data();
-		$form_id          = isset( $this->_post_data['form_id'] ) ? $this->_post_data['form_id'] : false;
-		if ( $form_id ) {
-			/**
-			 * Action called before full module submit
-			 *
-			 * @since 1.0.2
-			 *
-			 * @param int $form_id - the form id.
-			 */
-			do_action( 'forminator_' . static::$module_slug . '_before_handle_submit', $form_id );
+		$this->init_properties();
+		if ( ! self::$module_id ) {
+			return;
+		}
+		/**
+		 * Action called before full module submit
+		 *
+		 * @since 1.0.2
+		 *
+		 * @param int $form_id - the form id.
+		 */
+		do_action( 'forminator_' . static::$module_slug . '_before_handle_submit', self::$module_id );
 
-			if ( 'form' === static::$module_slug ) {
-				// remove after 1.15.1.
-				do_action_deprecated( 'forminator_custom_form_before_handle_submit', array( $form_id ), '1.14.12', 'forminator_form_before_handle_submit' );
-			}
+		$response = $this->handle_form();
 
-			$response = $this->handle_form( $form_id );
+		// sanitize front end message.
+		if ( ! empty( $response['message'] ) ) {
+			$response['message'] = wp_kses_post( $response['message'] );
+		}
 
-			// sanitize front end message.
-			if ( ! empty( $response['message'] ) ) {
-				$response['message'] = wp_kses_post( $response['message'] );
-			}
+		/**
+		 * Filter submit response
+		 *
+		 * @since 1.0.2
+		 *
+		 * @param array $response - the post response.
+		 * @param int $form_id - the form id.
+		 *
+		 * @return array $response
+		 */
+		$response = apply_filters( 'forminator_' . static::$module_slug . '_submit_response', $response, self::$module_id );
 
-			/**
-			 * Filter submit response
-			 *
-			 * @since 1.0.2
-			 *
-			 * @param array $response - the post response.
-			 * @param int $form_id - the form id.
-			 *
-			 * @return array $response
-			 */
-			$response = apply_filters( 'forminator_' . static::$module_slug . '_submit_response', $response, $form_id );
-
-			if ( 'form' === static::$module_slug ) {
-				// remove after 1.15.1.
-				do_action_deprecated( 'forminator_custom_form_after_handle_submit', array( $form_id, $response ), '1.14.12', 'forminator_form_after_handle_submit' );
-			}
-
-			/**
-			 * Action called after full form submit
-			 *
-			 * @since 1.0.2
-			 *
-			 * @param int $form_id - the form id.
-			 * @param array $response - the post response.
-			 */
-			do_action( 'forminator_' . static::$module_slug . '_after_handle_submit', $form_id, $response );
-			if ( $response && is_array( $response ) ) {
-				self::$response = $response;
-				if ( $response['success'] ) {
-					if ( isset( $response['url'] ) && ( ! isset( $response['newtab'] ) || 'sametab' === $response['newtab'] ) ) {
-						$url = apply_filters( 'forminator_' . static::$module_slug . '_submit_url', $response['url'], $form_id );
-						wp_redirect( $url );
-						exit;
-					} else {
-						add_action( 'forminator_' . static::$module_slug . '_post_message', array( $this, 'form_response_message' ), 10, 2 );
-						// cleanup submitted data.
-						$_POST = array();
-					}
+		/**
+		 * Action called after full form submit
+		 *
+		 * @since 1.0.2
+		 *
+		 * @param int $form_id - the form id.
+		 * @param array $response - the post response.
+		 */
+		do_action( 'forminator_' . static::$module_slug . '_after_handle_submit', self::$module_id, $response );
+		if ( $response && is_array( $response ) ) {
+			self::$response = $response;
+			if ( $response['success'] ) {
+				if ( isset( $response['url'] ) && ( ! isset( $response['newtab'] ) || 'sametab' === $response['newtab'] ) ) {
+					$url = apply_filters( 'forminator_' . static::$module_slug . '_submit_url', $response['url'], self::$module_id );
+					wp_redirect( $url );
+					exit;
 				} else {
-					if ( $response['message'] ) {
-						add_action( 'forminator_' . static::$module_slug . '_post_message', array( $this, 'form_response_message' ), 10, 2 );
-						// cleanup submitted data.
-						$_POST = array();
-					}
-					add_action( 'wp_footer', array( $this, 'footer_message' ) );
+					add_action( 'forminator_' . static::$module_slug . '_post_message', array( $this, 'form_response_message' ), 10, 2 );
+					// cleanup submitted data.
+					$_POST = array();
 				}
+			} else {
+				if ( $response['message'] ) {
+					add_action( 'forminator_' . static::$module_slug . '_post_message', array( $this, 'form_response_message' ), 10, 2 );
+					// cleanup submitted data.
+					$_POST = array();
+				}
+				add_action( 'wp_footer', array( $this, 'footer_message' ) );
 			}
 		}
 	}
@@ -209,7 +263,7 @@ abstract class Forminator_Front_Action {
 	 * @since 1.5.1 utilize `_post_data` which already defined on submit
 	 */
 	public function footer_message() {
-		$submitted_data = $this->_post_data;
+		$submitted_data = self::$prepared_data;
 
 		$response  = self::$response;
 		$form_id   = isset( $submitted_data['form_id'] ) ? sanitize_text_field( $submitted_data['form_id'] ) : false;
@@ -301,70 +355,56 @@ abstract class Forminator_Front_Action {
 	 * @since 1.0
 	 */
 	public function save_entry() {
-		$this->_post_data = $this->get_post_data();
+		$this->init_properties();
 
-		if ( $this->validate_ajax( 'forminator_submit_form', 'POST', 'forminator_nonce' ) ) {
-			$form_id = isset( $this->_post_data['form_id'] ) ? $this->_post_data['form_id'] : false;
-			if ( $form_id ) {
-
-				/**
-				 * Action called before module ajax
-				 *
-				 * @since 1.0.2
-				 *
-				 * @param int $form_id - the form id.
-				 */
-				do_action( 'forminator_' . static::$module_slug . '_before_save_entry', $form_id );
-
-				if ( 'form' === static::$module_slug ) {
-					// remove after 1.15.1.
-					do_action_deprecated( 'forminator_custom_form_before_save_entry', array( $form_id ), '1.14.12', 'forminator_form_before_save_entry' );
-				}
-
-				$response = $this->handle_form( $form_id );
-
-				// sanitize front end message.
-				if ( is_array( $response ) && ! empty( $response['message'] ) ) {
-					$response['message'] = wp_kses_post( $response['message'] );
-				}
-
-				/**
-				 * Filter ajax response
-				 *
-				 * @since 1.0.2
-				 *
-				 * @param array $response - the post response.
-				 * @param int $form_id - the form id.
-				 */
-				$response = apply_filters( 'forminator_' . static::$module_slug . '_ajax_submit_response', $response, $form_id );
-
-				if ( 'form' === static::$module_slug ) {
-					// remove after 1.15.1.
-					do_action_deprecated( 'forminator_custom_form_after_save_entry', array( $form_id, $response ), '1.14.12', 'forminator_form_after_save_entry' );
-				}
-
-				/**
-				 * Action called after form ajax
-				 *
-				 * @since 1.0.2
-				 *
-				 * @param int $form_id - the form id.
-				 * @param array $response - the post response.
-				 */
-				do_action( 'forminator_' . static::$module_slug . '_after_save_entry', $form_id, $response );
-
-				if ( $response && is_array( $response ) ) {
-					if ( ! $response['success'] ) {
-						wp_send_json_error( $response );
-					} else {
-						wp_send_json_success( $response );
-					}
-				}
-						wp_send_json_error( __( 'Invalid form response', 'forminator' ) );
-			}
-						wp_send_json_error( __( 'Invalid ID', 'forminator' ) );
+		if ( ! $this->validate_ajax( 'forminator_submit_form', 'POST', 'forminator_nonce' ) ) {
+			wp_send_json_error( __( 'Invalid nonce. Please refresh your browser.', 'forminator' ) );
 		}
-						wp_send_json_error( __( 'Invalid nonce. Please refresh your browser.', 'forminator' ) );
+
+		/**
+		 * Action called before module ajax
+		 *
+		 * @since 1.0.2
+		 *
+		 * @param int $form_id - the form id.
+		 */
+		do_action( 'forminator_' . static::$module_slug . '_before_save_entry', self::$module_id );
+
+		$response = $this->handle_form();
+
+		// sanitize front end message.
+		if ( is_array( $response ) && ! empty( $response['message'] ) ) {
+			$response['message'] = wp_kses_post( $response['message'] );
+		}
+
+		/**
+		 * Filter ajax response
+		 *
+		 * @since 1.0.2
+		 *
+		 * @param array $response - the post response.
+		 * @param int $form_id - the form id.
+		 */
+		$response = apply_filters( 'forminator_' . static::$module_slug . '_ajax_submit_response', $response, self::$module_id );
+
+		/**
+		 * Action called after form ajax
+		 *
+		 * @since 1.0.2
+		 *
+		 * @param int $form_id - the form id.
+		 * @param array $response - the post response.
+		 */
+		do_action( 'forminator_' . static::$module_slug . '_after_save_entry', self::$module_id, $response );
+
+		if ( $response && is_array( $response ) ) {
+			if ( ! $response['success'] ) {
+				wp_send_json_error( $response );
+			} else {
+				wp_send_json_success( $response );
+			}
+		}
+		wp_send_json_error( __( 'Invalid form response', 'forminator' ) );
 	}
 
 	/**
@@ -373,66 +413,64 @@ abstract class Forminator_Front_Action {
 	 * @since 1.6
 	 */
 	public function save_entry_preview() {
-		$this->_post_data = $this->get_post_data();
+		$this->init_properties();
 
-		if ( $this->validate_ajax( 'forminator_submit_form', 'POST', 'forminator_nonce' ) ) {
-			$form_id = isset( $this->_post_data['form_id'] ) ? $this->_post_data['form_id'] : false;
-			if ( $form_id ) {
+		if ( ! $this->validate_ajax( 'forminator_submit_form', 'POST', 'forminator_nonce' ) ) {
+			return;
+		}
 
-				/**
-				 * Action called before module ajax
-				 *
-				 * @since 1.0.2
-				 *
-				 * @param int $form_id - the form id.
-				 */
-				do_action( 'forminator_' . static::$module_slug . '_before_save_entry', $form_id );
+		/**
+		 * Action called before module ajax
+		 *
+		 * @since 1.0.2
+		 *
+		 * @param int $form_id - the form id.
+		 */
+		do_action( 'forminator_' . static::$module_slug . '_before_save_entry', self::$module_id );
 
-				if ( 'form' === static::$module_slug ) {
-					// remove after 1.15.1.
-					do_action_deprecated( 'forminator_custom_form_before_save_entry', array( $form_id ), '1.14.12', 'forminator_form_before_save_entry' );
-				}
+		$response = $this->handle_form( true );
+		// sanitize front end message.
+		if ( is_array( $response ) && ! empty( $response['message'] ) ) {
+			$response['message'] = wp_kses_post( $response['message'] );
+		}
 
-				$response = $this->handle_form( $form_id, true );
-				// sanitize front end message.
-				if ( is_array( $response ) && ! empty( $response['message'] ) ) {
-					$response['message'] = wp_kses_post( $response['message'] );
-				}
+		/**
+		 * Filter ajax response
+		 *
+		 * @since 1.0.2
+		 *
+		 * @param array $response - the post response.
+		 * @param int $form_id - the form id.
+		 */
+		$response = apply_filters( 'forminator_' . static::$module_slug . '_ajax_submit_response', $response, self::$module_id );
 
-				/**
-				 * Filter ajax response
-				 *
-				 * @since 1.0.2
-				 *
-				 * @param array $response - the post response.
-				 * @param int $form_id - the form id.
-				 */
-				$response = apply_filters( 'forminator_' . static::$module_slug . '_ajax_submit_response', $response, $form_id );
+		/**
+		 * Action called after form ajax
+		 *
+		 * @since 1.0.2
+		 *
+		 * @param int $form_id - the form id.
+		 * @param array $response - the post response.
+		 */
+		do_action( 'forminator_' . static::$module_slug . '_after_save_entry', self::$module_id, $response );
 
-				if ( 'form' === static::$module_slug ) {
-					// remove after 1.15.1.
-					do_action_deprecated( 'forminator_custom_form_after_save_entry', array( $form_id, $response ), '1.14.12', 'forminator_form_after_save_entry' );
-				}
-
-				/**
-				 * Action called after form ajax
-				 *
-				 * @since 1.0.2
-				 *
-				 * @param int $form_id - the form id.
-				 * @param array $response - the post response.
-				 */
-				do_action( 'forminator_' . static::$module_slug . '_after_save_entry', $form_id, $response );
-
-				if ( $response && is_array( $response ) ) {
-					if ( ! $response['success'] ) {
-						wp_send_json_error( $response );
-					} else {
-						wp_send_json_success( $response );
-					}
-				}
+		if ( $response && is_array( $response ) ) {
+			if ( ! $response['success'] ) {
+				wp_send_json_error( $response );
+			} else {
+				wp_send_json_success( $response );
 			}
 		}
+	}
+
+	/**
+	 * Prepare submitted data to sending to addons
+	 *
+	 * @param array $current_entry_fields Entry fields.
+	 * @return array
+	 */
+	protected static function get_prepared_submitted_data_for_addons( $current_entry_fields ) {
+		return static::get_submitted_data();
 	}
 
 	/**
@@ -440,26 +478,24 @@ abstract class Forminator_Front_Action {
 	 *
 	 * @since 1.1
 	 *
-	 * @param                              $module_id
-	 * @param Forminator_Base_Form_Model $module_model
 	 * @param array                      $current_entry_fields
 	 *
 	 * @return array added fields to entry
 	 */
-	protected function attach_addons_add_entry_fields( $module_id, Forminator_Base_Form_Model $module_model, $current_entry_fields ) {
+	protected static function attach_addons_add_entry_fields( $current_entry_fields ) {
 		$additional_fields_data = array();
-		$submitted_data         = static::get_submitted_data( $module_model, $current_entry_fields );
+		$submitted_data         = static::get_prepared_submitted_data_for_addons( $current_entry_fields );
 
-		$connected_addons = forminator_get_addons_instance_connected_with_module( $module_id, static::$module_slug );
+		$connected_addons = forminator_get_addons_instance_connected_with_module( static::$module_id, static::$module_slug );
 
 		foreach ( $connected_addons as $connected_addon ) {
-			if ( ! self::are_integration_conditions_matched( $connected_addon, $module_model ) ) {
+			if ( ! self::are_integration_conditions_matched( $connected_addon ) ) {
 				continue;
 			}
 			try {
 				$method = 'get_addon_' . static::$module_slug . '_hooks';
 				if ( method_exists( $connected_addon, $method ) ) {
-					$hooks = $connected_addon->$method( $module_id );
+					$hooks = $connected_addon->$method( static::$module_id );
 				}
 				if ( isset( $hooks ) && $hooks instanceof Forminator_Addon_Hooks_Abstract ) {
 					$addon_fields = $hooks->add_entry_fields( $submitted_data, $current_entry_fields );
@@ -472,17 +508,16 @@ abstract class Forminator_Front_Action {
 			}
 		}
 
-		return $additional_fields_data;
+		return array_merge( $current_entry_fields, $additional_fields_data );
 	}
 
 	/**
 	 * Check - are integration conditions matched or not
 	 *
 	 * @param object $connected_addon Connected addon object.
-	 * @param object $model Module model.
 	 * @return boolean
 	 */
-	protected static function are_integration_conditions_matched( $connected_addon, $model ) {
+	protected static function are_integration_conditions_matched( $connected_addon ) {
 		if ( 'form' !== static::$module_slug ) {
 			return true;
 		}
@@ -493,10 +528,10 @@ abstract class Forminator_Front_Action {
 		if ( ! empty( $connected_addon->multi_global_id ) ) {
 			$integration_id = $connected_addon->multi_global_id;
 		}
-		if ( empty( $model->integration_conditions[ $integration_id ] ) ) {
+		if ( empty( static::$module_object->integration_conditions[ $integration_id ] ) ) {
 			return true;
 		}
-		$data = $model->integration_conditions[ $integration_id ];
+		$data = static::$module_object->integration_conditions[ $integration_id ];
 
 		if ( empty( $data['conditions'] ) ) {
 			// If it doesn't have any conditions - return true.
@@ -509,7 +544,7 @@ abstract class Forminator_Front_Action {
 		$all_conditions = $data['conditions'];
 
 		foreach ( $all_conditions as $condition ) {
-			$is_condition_fulfilled = Forminator_Field::is_condition_matched( $condition, static::$submitted_data, static::$pseudo_submitted_data );
+			$is_condition_fulfilled = Forminator_Field::is_condition_matched( $condition );
 			if ( $is_condition_fulfilled ) {
 				$condition_fulfilled ++;
 			}
@@ -530,20 +565,18 @@ abstract class Forminator_Front_Action {
 	 * @since 1.1
 	 *
 	 * @param Forminator_Form_Entry_Model $entry_model
-	 * @param Forminator_Base_Form_Model  $model Module model.
 	 */
-	protected function attach_addons_after_entry_saved( Forminator_Form_Entry_Model $entry_model, Forminator_Base_Form_Model $model ) {
-		$module_id        = $model->id;
-		$connected_addons = forminator_get_addons_instance_connected_with_module( $module_id, static::$module_slug );
+	protected static function attach_addons_after_entry_saved( Forminator_Form_Entry_Model $entry_model ) {
+		$connected_addons = forminator_get_addons_instance_connected_with_module( self::$module_id, static::$module_slug );
 
 		foreach ( $connected_addons as $connected_addon ) {
-			if ( ! self::are_integration_conditions_matched( $connected_addon, $model ) ) {
+			if ( ! self::are_integration_conditions_matched( $connected_addon ) ) {
 				continue;
 			}
 			try {
 				$method = 'get_addon_' . static::$module_slug . '_hooks';
 				if ( method_exists( $connected_addon, $method ) ) {
-					$hooks = $connected_addon->$method( $module_id );
+					$hooks = $connected_addon->$method( self::$module_id );
 				}
 				if ( isset( $hooks ) && $hooks instanceof Forminator_Addon_Hooks_Abstract ) {
 					$hooks->after_entry_saved( $entry_model );// run and forget.
@@ -767,13 +800,12 @@ abstract class Forminator_Front_Action {
 	/**
 	 * Get Akismet fail message or false for storing the current submission and marking it as spam.
 	 *
-	 * @param array $setting Module settings.
 	 * @return boolean|string
 	 */
-	protected static function get_akismet_fail_message( $setting ) {
-		if ( empty( $setting['akismet-protection-behavior'] ) || 'fail' === $setting['akismet-protection-behavior'] ) {
-			if ( ! empty( $setting['spam-fail-message'] ) ) {
-				$fail_message = $setting['spam-fail-message'];
+	protected static function get_akismet_fail_message() {
+		if ( empty( self::$module_settings['akismet-protection-behavior'] ) || 'fail' === self::$module_settings['akismet-protection-behavior'] ) {
+			if ( ! empty( self::$module_settings['spam-fail-message'] ) ) {
+				$fail_message = self::$module_settings['spam-fail-message'];
 			} else {
 				$fail_message = __( 'Something went wrong.', 'forminator' );
 			}
@@ -787,10 +819,9 @@ abstract class Forminator_Front_Action {
 	 * Prepare error array.
 	 *
 	 * @param string $error Error message.
-	 * @param array  $errors Error Optional. Fields errors.
 	 * @return array
 	 */
-	protected static function return_error( $error, $errors = array() ) {
+	protected static function return_error( $error ) {
 		$response = array(
 			'message' => $error,
 			'success' => false,
@@ -798,8 +829,8 @@ abstract class Forminator_Front_Action {
 			'form_id' => static::$module_id,
 		);
 
-		if ( ! empty( $errors ) ) {
-			$response['errors'] = $errors;
+		if ( ! empty( static::$submit_errors ) ) {
+			$response['errors'] = static::$submit_errors;
 		}
 
 		unset( self::$response_attrs['message'] );
@@ -820,6 +851,7 @@ abstract class Forminator_Front_Action {
 		$response = array(
 			'message' => ! is_null( $message ) ? $message : __( 'Form entry saved', 'forminator' ),
 			'success' => true,
+			'form_id' => static::$module_id,
 		);
 
 		if ( self::$response_attrs ) {
@@ -828,4 +860,71 @@ abstract class Forminator_Front_Action {
 
 		return $response;
 	}
+
+	/**
+	 * Check if it's spam submission or not
+	 *
+	 * @return boolean
+	 */
+	protected static function is_spam() {
+		/**
+		 * Handle spam protection
+		 * Add-ons use this filter to check if content has spam data
+		 *
+		 * @since 1.0.2
+		 *
+		 * @param bool false - defauls to false
+		 * @param array $field_data_array - the entry data.
+		 * @param int $form_id - the form id.
+		 * @param string $form_type - the form type.
+		 *
+		 * @return bool true|false
+		 */
+		$is_spam = apply_filters( 'forminator_spam_protection', false, self::$info['field_data_array'], self::$module_id, static::$module_slug );
+		if ( $is_spam ) {
+			$fail_message = self::get_akismet_fail_message();
+			if ( false !== $fail_message ) {
+				throw new Exception( $fail_message );
+			} else {
+				return true;
+			}
+		}
+	}
+
+	/**
+	 * Get form entry model
+	 */
+	protected static function get_entry() {
+		$entry = new Forminator_Form_Entry_Model();
+
+		if ( isset( self::$prepared_data['lead_quiz'] ) && self::$is_leads ) {
+			$entry->entry_type = 'quizzes';
+			$entry->form_id    = self::$prepared_data['lead_quiz'];
+		} else {
+			$entry->entry_type = static::$entry_type;
+			$entry->form_id    = self::$module_id;
+		}
+
+		return $entry;
+	}
+
+	/**
+	 * Should it prevent storing submission?
+	 *
+	 * @return boolean
+	 */
+	protected static function prevent_store() {
+		$prevent_store = false;
+		if ( self::$is_leads && isset( self::$prepared_data['lead_quiz'] ) ) {
+			$quiz_model = Forminator_Base_Form_Model::get_model( self::$prepared_data['lead_quiz'] );
+			if ( isset( $quiz_model->settings ) ) {
+				$prevent_store = static::$module_object->is_prevent_store( self::$prepared_data['lead_quiz'], $quiz_model->settings );
+			}
+		} else {
+			$prevent_store = static::$module_object->is_prevent_store();
+		}
+
+		return $prevent_store;
+	}
+
 }

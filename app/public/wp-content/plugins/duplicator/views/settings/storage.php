@@ -13,17 +13,17 @@ defined('ABSPATH') || defined('DUPXABSPATH') || exit;
     $action_response = esc_html__("Storage Settings Saved", 'duplicator');
 
     //SAVE RESULTS
-    if (filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING) === 'save') {
+    if (filter_input(INPUT_POST, 'action', FILTER_UNSAFE_RAW) === 'save') {
         //Nonce Check
-        if (!wp_verify_nonce(filter_input(INPUT_POST, 'dup_storage_settings_save_nonce_field', FILTER_SANITIZE_STRING), 'dup_settings_save')) {
+        if (!wp_verify_nonce(filter_input(INPUT_POST, 'dup_storage_settings_save_nonce_field', FILTER_UNSAFE_RAW), 'dup_settings_save')) {
             die('Invalid token permissions to perform this request.');
         }
 
         DUP_Settings::Set('storage_htaccess_off', filter_input(INPUT_POST, 'storage_htaccess_off', FILTER_VALIDATE_BOOLEAN));
 
         switch (filter_input(INPUT_POST, 'storage_position', FILTER_DEFAULT)) {
-            case DUP_Settings::STORAGE_POSITION_LECAGY:
-                $setPostion = DUP_Settings::STORAGE_POSITION_LECAGY;
+            case DUP_Settings::STORAGE_POSITION_LEGACY:
+                $setPostion = DUP_Settings::STORAGE_POSITION_LEGACY;
                 break;
             case DUP_Settings::STORAGE_POSITION_WP_CONTENT:
             default:
@@ -70,8 +70,8 @@ defined('ABSPATH') || defined('DUPXABSPATH') || exit;
                     <p>
                         <label>
                             <input type="radio" name="storage_position" 
-                                   value="<?php echo DUP_Settings::STORAGE_POSITION_LECAGY; ?>" 
-                                   <?php checked($storage_position === DUP_Settings::STORAGE_POSITION_LECAGY); ?> >
+                                   value="<?php echo DUP_Settings::STORAGE_POSITION_LEGACY; ?>"
+                                   <?php checked($storage_position === DUP_Settings::STORAGE_POSITION_LEGACY); ?> >
                             <span class="storage_pos_fixed_label"><?php esc_html_e('Legacy Path:', 'duplicator'); ?></span>
                             <i><?php echo DUP_Settings::getSsdirPathLegacy(); ?></i>
                         </label>
@@ -85,14 +85,14 @@ defined('ABSPATH') || defined('DUPXABSPATH') || exit;
                             <i><?php echo DUP_Settings::getSsdirPathWpCont(); ?></i>
                         </label>
                     </p>
-                    <p class="description" style="max-width:800px">
+                    <p class="description">
                         <?php
                         esc_html_e("The storage location is where all package files are stored to disk. If your host has troubles writing content to the 'Legacy Path' then use "
                             . "the 'Contents Path'.  Upon clicking the save button all files are moved to the new location and the previous path is removed.", 'duplicator');
                         ?><br/>
 
-
-                        <i class="fas fa-database fa-sm"></i>&nbsp; <span id="duplicator_advanced_storage_text" class="link-style">[<?php esc_html_e("More Advanced Storage Options...", 'duplicator'); ?>]</span>
+                        <i class="fas fa-server fa-sm"></i>&nbsp;
+                        <span id="duplicator_advanced_storage_text" class="link-style">[<?php esc_html_e("More Advanced Storage Options...", 'duplicator'); ?>]</span>
                     </p>
                 </td>
             </tr>
@@ -102,9 +102,8 @@ defined('ABSPATH') || defined('DUPXABSPATH') || exit;
                     <input type="checkbox" name="storage_htaccess_off" id="storage_htaccess_off" <?php echo ($storage_htaccess_off) ? 'checked="checked"' : ''; ?> />
                     <label for="storage_htaccess_off"><?php esc_html_e("Disable .htaccess file in storage directory", 'duplicator') ?> </label>
                     <p class="description">
-                        <?php 
+                        <?php
                             esc_html_e("When checked this setting will prevent Duplicator from laying down an .htaccess file in the storage location above.", 'duplicator');
-                            echo '<br/>';
                             esc_html_e("Only disable this option if issues occur when downloading either the installer/archive files.", 'duplicator');
                         ?>
                     </p>
@@ -127,21 +126,21 @@ function dup_lite_storage_advanced_pro_content()
     ob_start();
     ?>
     <div style="text-align: center">
-        <img src="<?php echo esc_url(DUPLICATOR_PLUGIN_URL."assets/img/logo-dpro-300x50.png"); ?>" style="height:50px; width:250px" /><br/>
-        <?php 
-                esc_html_e('Store &amp; Automate to Multiple Endpoints', 'duplicator');
+        <img src="<?php echo esc_url(DUPLICATOR_PLUGIN_URL . "assets/img/logo-dpro-300x50.png"); ?>" style="height:50px; width:250px" /><br/>
+        <?php
+                esc_html_e('Store to Multiple Endpoints', 'duplicator');
                 echo '<br/>';
                 esc_html_e('with Duplicator Pro', 'duplicator');
         ?>
   
-        <div style="text-align: left; margin:auto; width:175px">
+        <div style="text-align: left; margin:auto; width:200px">
             <ul>
-                <li><i class="fab fa-amazon"></i> <?php esc_html_e('Amazon S3', 'duplicator'); ?></li>
-                <li><i class="fab fa-dropbox"></i> <?php esc_html_e(' Dropbox', 'duplicator'); ?></li>
-                <li><i class="fab fa-google-drive"></i> <?php esc_html_e('Google Drive', 'duplicator'); ?></li>
-                <li><i class="fa fa-cloud fa-sm"></i> <?php esc_html_e('One Drive', 'duplicator'); ?></li>
-                <li><i class="fa fa-upload"></i> <?php esc_html_e('FTP &amp; SFTP', 'duplicator'); ?></li>
-                <li><i class="far fa-folder-open"></i> <?php esc_html_e('Custom Directory', 'duplicator'); ?></li>
+                <li><i class="fab fa-amazon"></i>&nbsp;<?php esc_html_e('Amazon S3', 'duplicator'); ?></li>
+                <li><i class="fab fa-dropbox"></i>&nbsp;<?php esc_html_e(' Dropbox', 'duplicator'); ?></li>
+                <li><i class="fab fa-google-drive"></i>&nbsp;<?php esc_html_e('Google Drive', 'duplicator'); ?></li>
+                <li><i class="fa fa-cloud fa-sm"></i>&nbsp;<?php esc_html_e('One Drive', 'duplicator'); ?></li>
+                <li><i class="fas fa-network-wired"></i>&nbsp;<?php esc_html_e('FTP &amp; SFTP', 'duplicator'); ?></li>
+                <li><i class="fas fa-hdd"></i>&nbsp;<?php esc_html_e('Custom Directory', 'duplicator'); ?></li>
             </ul>
         </div>
         <i>
@@ -150,7 +149,9 @@ function dup_lite_storage_advanced_pro_content()
         </i>
     </div>
     <p style="text-align: center">
-        <a href="https://snapcreek.com/duplicator/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=free_settings_storage_popup&utm_campaign=duplicator_pro" target="_blank" class="button button-primary button-large dup-check-it-btn" >
+        <a href="https://snapcreek.com/duplicator/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=free_settings_storage_popup_green&utm_campaign=duplicator_pro"
+           target="_blank"
+           class="dup-btn-call-action" style="font-size:15px; padding:8px 10px; width: 120px">
             <?php esc_html_e('Learn More', 'duplicator'); ?>
         </a>
     </p>
@@ -159,9 +160,9 @@ function dup_lite_storage_advanced_pro_content()
 }
 $storageAlert          = new DUP_UI_Dialog();
 $storageAlert->title   = __('Advanced Storage', 'duplicator');
-$storageAlert->height  = 525;
+$storageAlert->height  = 500;
 $storageAlert->width   = 400;
-//$storageAlert->okText  = esc_html__('Close', 'duplicator');
+$storageAlert->okText  = '';
 $storageAlert->message = dup_lite_storage_advanced_pro_content();
 $storageAlert->initAlert();
 ?>

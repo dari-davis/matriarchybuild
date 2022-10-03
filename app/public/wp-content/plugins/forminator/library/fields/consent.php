@@ -199,9 +199,8 @@ class Forminator_Consent extends Forminator_Field {
 	 *
 	 * @param array        $field
 	 * @param array|string $data
-	 * @param array        $post_data
 	 */
-	public function validate( $field, $data, $post_data = array() ) {
+	public function validate( $field, $data ) {
 		// value of consent checkbox is `string` *checked*.
 		$id = $this->get_id( $field );
 		if ( $this->is_required( $field ) && ( empty( $data ) || __( 'checked', 'forminator' ) !== $data ) ) {

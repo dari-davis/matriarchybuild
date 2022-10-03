@@ -80,7 +80,7 @@ class Forminator_CForm_General_Data_Protection extends Forminator_General_Data_P
 
 				// avoid overhead.
 				if ( ! isset( self::$custom_form_model_instances[ $entry_model->form_id ] ) ) {
-					$model = Forminator_Form_Model::model()->load( $entry_model->form_id );
+					$model = Forminator_Base_Form_Model::get_model( $entry_model->form_id );
 					self::$custom_form_model_instances[ $entry_model->form_id ] = $model;
 				} else {
 					$model = self::$custom_form_model_instances[ $entry_model->form_id ];
@@ -173,7 +173,7 @@ class Forminator_CForm_General_Data_Protection extends Forminator_General_Data_P
 
 						$data [] = array(
 							'name'  => $key,
-							'value' => Forminator_Form_Entry_Model::meta_value_to_string( '', $meta_datum_encoded, false ),
+							'value' => Forminator_Form_Entry_Model::meta_value_to_string( '', $meta_datum_encoded ),
 						);
 
 					}
@@ -230,8 +230,7 @@ class Forminator_CForm_General_Data_Protection extends Forminator_General_Data_P
 	 */
 	public static function get_custom_form_export_mappers( $model ) {
 		/** @var  Forminator_Form_Model $model */
-		$fields              = $model->get_fields();
-		$ignored_field_types = Forminator_Form_Entry_Model::ignored_fields();
+		$fields = $model->get_real_fields();
 
 		/** @var  Forminator_Form_Field_Model $fields */
 		$mappers = array(
@@ -257,10 +256,6 @@ class Forminator_CForm_General_Data_Protection extends Forminator_General_Data_P
 
 		foreach ( $fields as $field ) {
 			$field_type = $field->__get( 'type' );
-
-			if ( in_array( $field_type, $ignored_field_types, true ) ) {
-				continue;
-			}
 
 			// base mapper for every field.
 			$mapper             = array();
@@ -416,7 +411,7 @@ class Forminator_CForm_General_Data_Protection extends Forminator_General_Data_P
 			$entry_model = new Forminator_Form_Entry_Model( $entry_id );
 
 			if ( ! empty( $entry_model->form_id ) ) {
-				$custom_form = Forminator_Form_Model::model()->load( $entry_model->form_id );
+				$custom_form = Forminator_Base_Form_Model::get_model( $entry_model->form_id );
 				if ( $custom_form instanceof Forminator_Form_Model ) {
 					$settings = $custom_form->settings;
 					if ( isset( $settings['enable-submissions-erasure'] ) ) {

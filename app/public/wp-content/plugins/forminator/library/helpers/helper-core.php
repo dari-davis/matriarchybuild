@@ -996,8 +996,6 @@ function forminator_get_poll_chart_colors( $poll_id = null ) {
 		'rgba(136, 136, 136, 0.2)', // Black Alt.
 	);
 
-	$chart_colors = apply_filters_deprecated( 'forminator_poll_chart_color', array( $chart_colors ), '1.5.3', 'forminator_poll_chart_colors' );
-
 	/**
 	 * Filter chart colors to be used for polls
 	 *
@@ -1286,11 +1284,13 @@ function forminator_form_types() {
 }
 
 /**
+ * DON'T USE IT!!! It's only for backward compatibility
  * Get prefix based on module slug.
  *
  * @param string $module_slug Module slug.
  * @param string $form_prefix Optional. Prefix before Custom Form type or `post_type` value.
  * @param bool   $ucfirst Optional. With capital the first letter.
+ * @param bool   $plural Optional. Plural or singular.
  * @return string
  */
 function forminator_get_prefix( $module_slug, $form_prefix = '', $ucfirst = false, $plural = false ) {

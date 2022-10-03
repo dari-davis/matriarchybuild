@@ -144,8 +144,6 @@ class Forminator_Currency extends Forminator_Field {
 		$this->field         = $field;
 		$this->form_settings = $settings;
 
-		$this->init_autofill( $settings );
-
 		$html        = '';
 		$min         = 0;
 		$max         = '';
@@ -191,7 +189,7 @@ class Forminator_Currency extends Forminator_Field {
 			$number_attr['step'] = $step;
 		}
 
-		$autofill_markup = $this->get_element_autofill_markup_attr( self::get_property( 'element_id', $field ), $this->form_settings );
+		$autofill_markup = $this->get_element_autofill_markup_attr( self::get_property( 'element_id', $field ) );
 		$number_attr     = array_merge( $number_attr, $autofill_markup );
 
 		$html .= '<div class="forminator-field">';
@@ -306,9 +304,8 @@ class Forminator_Currency extends Forminator_Field {
 	 *
 	 * @param array        $field
 	 * @param array|string $data
-	 * @param array        $post_data
 	 */
-	public function validate( $field, $data, $post_data = array() ) {
+	public function validate( $field, $data ) {
 		$id             = self::get_property( 'element_id', $field );
 		$max            = self::get_property( 'limit_max', $field, $data );
 		$min            = self::get_property( 'limit_min', $field, $data );
@@ -401,39 +398,39 @@ class Forminator_Currency extends Forminator_Field {
 	 *
 	 * @since 1.7
 	 *
-	 * @param array|mixed $submitted_data
+	 * @param array|mixed $submitted_field
 	 * @param array       $field_settings
 	 *
 	 * @return float
 	 */
-	private function calculable_value( $submitted_data, $field_settings ) {
+	private static function calculable_value( $submitted_field, $field_settings ) {
 		$enabled = self::get_property( 'calculations', $field_settings, false, 'bool' );
 		if ( ! $enabled ) {
 			return self::FIELD_NOT_CALCULABLE;
 		}
 
-		return floatval( $submitted_data );
+		return floatval( $submitted_field );
 	}
 
 	/**
 	 * @since 1.7
 	 * @inheritdoc
 	 */
-	public function get_calculable_value( $submitted_data, $field_settings ) {
-		$formatting_value = self::forminator_replace_number( $field_settings, $submitted_data );
-		$calculable_value = $this->calculable_value( $formatting_value, $field_settings );
+	public static function get_calculable_value( $submitted_field_data, $field_settings ) {
+		$formatting_value = self::forminator_replace_number( $field_settings, $submitted_field_data );
+		$calculable_value = self::calculable_value( $formatting_value, $field_settings );
 		/**
 		 * Filter formula being used on calculable value on number field
 		 *
 		 * @since 1.7
 		 *
 		 * @param float $calculable_value
-		 * @param array $submitted_data
+		 * @param array $submitted_field_data
 		 * @param array $field_settings
 		 *
 		 * @return string|int|float
 		 */
-		$calculable_value = apply_filters( 'forminator_field_currency_calculable_value', $calculable_value, $submitted_data, $field_settings );
+		$calculable_value = apply_filters( 'forminator_field_currency_calculable_value', $calculable_value, $submitted_field_data, $field_settings );
 
 		return $calculable_value;
 	}

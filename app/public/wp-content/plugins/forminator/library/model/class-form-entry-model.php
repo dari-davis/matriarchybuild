@@ -191,61 +191,48 @@ class Forminator_Form_Entry_Model {
 		}
 
 		// probably prevent_store enabled.
-		if ( ! $this->entry_id ) {
-			// set meta data here for future object reference.
+		$prevent_store = ! $this->entry_id;
 
-			foreach ( $meta_array as $meta ) {
-				if ( isset( $meta['name'] ) && isset( $meta['value'] ) ) {
-					$key                     = $meta['name'];
-					$value                   = $meta['value'];
-					$key                     = wp_unslash( $key );
-					$value                   = wp_unslash( $value );
-					$this->meta_data[ $key ] = array(
-						'id'    => $key,
-						'value' => $value,
-					);
-				}
-			}
-
-			return false;
+		if ( ! $prevent_store ) {
+			// clear cache first.
+			$cache_key = get_class( $this );
+			wp_cache_delete( $this->entry_id, $cache_key );
 		}
-
-		// clear cache first.
-		$cache_key = get_class( $this );
-		wp_cache_delete( $this->entry_id, $cache_key );
 		foreach ( $meta_array as $meta ) {
-			if ( isset( $meta['name'] ) && isset( $meta['value'] ) ) {
-				$key   = $meta['name'];
-				$value = $meta['value'];
-				$key   = wp_unslash( $key );
-				$value = wp_unslash( $value );
-				$value = maybe_serialize( $value );
+			if ( ! isset( $meta['name'] ) || ! isset( $meta['value'] ) ) {
+				continue;
+			}
+			$key   = wp_unslash( $meta['name'] );
+			$value = wp_unslash( $meta['value'] );
 
+			if ( ! $prevent_store ) {
 				$meta_id = $wpdb->insert(
 					$this->table_meta_name,
 					array(
 						'entry_id'     => $this->entry_id,
 						'meta_key'     => $key,
-						'meta_value'   => $value,
+						'meta_value'   => maybe_serialize( $value ),
 						'date_created' => ! empty( $entry_date ) ? $entry_date : date_i18n( 'Y-m-d H:i:s' ),
 					)
 				);
+			} else {
+				$meta_id = $key;
+			}
 
-				/**
-				 * Set Meta data for later usage
-				 *
-				 * @since 1.0.3
-				 */
-				if ( $meta_id ) {
-					$this->meta_data[ $key ] = array(
-						'id'    => $meta_id,
-						'value' => is_array( $value ) ? array_map( 'maybe_unserialize', $value ) : maybe_unserialize( $value ),
-					);
-				}
+			/**
+			 * Set Meta data for later usage
+			 *
+			 * @since 1.0.3
+			 */
+			if ( $meta_id ) {
+				$this->meta_data[ $key ] = array(
+					'id'    => $meta_id,
+					'value' => $value,
+				);
 			}
 		}
 
-		return true;
+		return ! $prevent_store;
 	}
 
 	/**
@@ -1080,16 +1067,11 @@ class Forminator_Form_Entry_Model {
 			$db = $wpdb;
 		}
 
-		if ( empty( $form_id ) ) {
+		if ( empty( $form_id ) || empty( $entries ) ) {
 			return false;
 		}
 
 		$form_id = (int) $form_id;
-		// get connected addons since.
-		self::get_connected_addons( $form_id );
-		if ( ! $entries || empty( $entries ) ) {
-			return false;
-		}
 
 		$table_name      = Forminator_Database_Tables::get_table_name( Forminator_Database_Tables::FORM_ENTRY );
 		$table_meta_name = Forminator_Database_Tables::get_table_name( Forminator_Database_Tables::FORM_ENTRY_META );
@@ -1197,7 +1179,7 @@ class Forminator_Form_Entry_Model {
 	 * @param Forminator_Form_Entry_Model $entry_model
 	 */
 	public static function entry_delete_upload_files( $form_id, $entry_model ) {
-		$custom_form     = Forminator_Form_Model::model()->load( $form_id );
+		$custom_form     = Forminator_Base_Form_Model::get_model( $form_id );
 		$submission_file = 'delete';
 		if ( is_object( $custom_form ) ) {
 			$settings        = $custom_form->settings;
@@ -1781,29 +1763,33 @@ class Forminator_Form_Entry_Model {
 	 *
 	 * @since 1.1
 	 *
-	 * @param $form_id
+	 * @param $module_id
 	 *
 	 * @return array|Forminator_Addon_Abstract[]
 	 */
-	public static function get_connected_addons( $form_id ) {
-		if ( ! isset( self::$connected_addons[ $form_id ] ) ) {
-			self::$connected_addons[ $form_id ] = array();
+	public static function get_connected_addons( $module_id, $module_slug = 'form' ) {
+		if ( ! isset( self::$connected_addons[ $module_id ] ) ) {
+			self::$connected_addons[ $module_id ] = array();
 
-			$connected_addons = forminator_get_addons_instance_connected_with_module( $form_id, 'form' );
+			$connected_addons = forminator_get_addons_instance_connected_with_module( $module_id, $module_slug );
 
 			foreach ( $connected_addons as $connected_addon ) {
 				try {
-					$form_hooks = $connected_addon->get_addon_form_hooks( $form_id );
-					if ( $form_hooks instanceof Forminator_Addon_Form_Hooks_Abstract ) {
-						self::$connected_addons[ $form_id ][] = $connected_addon;
+					$method = "get_addon_{$module_slug}_hooks";
+					if ( ! method_exists( $connected_addon, $method ) ) {
+						throw new Exception( 'Method ' . $method . ' doesn\'t exist.' );
+					}
+					$module_hooks = $connected_addon->$method( $module_id );
+					if ( $module_hooks instanceof Forminator_Addon_Hooks_Abstract ) {
+						self::$connected_addons[ $module_id ][] = $connected_addon;
 					}
 				} catch ( Exception $e ) {
-					forminator_addon_maybe_log( $connected_addon->get_slug(), 'failed to get_addon_form_hooks', $e->getMessage() );
+					forminator_addon_maybe_log( $connected_addon->get_slug(), 'failed to get_addon_module_hooks', $e->getMessage() );
 				}
 			}
 		}
 
-		return self::$connected_addons[ $form_id ];
+		return self::$connected_addons[ $module_id ];
 	}
 
 	/**
@@ -1815,14 +1801,23 @@ class Forminator_Form_Entry_Model {
 	 * @param Forminator_Form_Entry_Model $entry_model
 	 */
 	public static function attach_addons_on_before_delete_entry( $form_id, Forminator_Form_Entry_Model $entry_model ) {
-		// find is_form_connected.
-		$connected_addons = self::get_connected_addons( $form_id );
+		$module_slug = 'form';
+		if ( ! empty( $entry_model->entry_type ) && 'poll' === $entry_model->entry_type ) {
+			$module_slug = 'poll';
+		} elseif ( ! empty( $entry_model->entry_type ) && 'quizzes' === $entry_model->entry_type ) {
+			$module_slug = 'quiz';
+		}
+		$connected_addons = self::get_connected_addons( $form_id, $module_slug );
 
 		foreach ( $connected_addons as $connected_addon ) {
 			try {
-				$form_hooks      = $connected_addon->get_addon_form_hooks( $form_id );
+				$method = "get_addon_{$module_slug}_hooks";
+				if ( ! method_exists( $connected_addon, $method ) ) {
+					throw new Exception( 'Method ' . $method . ' doesn\'t exist.' );
+				}
+				$module_hooks    = $connected_addon->$method( $form_id );
 				$addon_meta_data = forminator_find_addon_meta_data_from_entry_model( $connected_addon, $entry_model );
-				$form_hooks->on_before_delete_entry( $entry_model, $addon_meta_data );
+				$module_hooks->on_before_delete_entry( $entry_model, $addon_meta_data );
 			} catch ( Exception $e ) {
 				forminator_addon_maybe_log( $connected_addon->get_slug(), 'failed to on_before_delete_entry', $e->getMessage() );
 			}

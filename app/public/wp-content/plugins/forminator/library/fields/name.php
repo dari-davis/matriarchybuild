@@ -167,7 +167,7 @@ class Forminator_Name extends Forminator_Field {
 			'aria-required' => $ariareq,
 		);
 
-		$autofill_markup = $this->get_element_autofill_markup_attr( $name, $this->form_settings );
+		$autofill_markup = $this->get_element_autofill_markup_attr( $name );
 
 		$name_attr = array_merge( $name_attr, $autofill_markup );
 
@@ -288,7 +288,7 @@ class Forminator_Name extends Forminator_Field {
 				'data-multi'    => true,
 			);
 
-			$autofill_markup = $this->get_element_autofill_markup_attr( $id . '-first-name', $this->form_settings );
+			$autofill_markup = $this->get_element_autofill_markup_attr( $id . '-first-name' );
 
 			$first_name = array_merge( $first_name, $autofill_markup );
 
@@ -411,7 +411,7 @@ class Forminator_Name extends Forminator_Field {
 				'data-multi'    => true,
 			);
 
-			$autofill_markup = $this->get_element_autofill_markup_attr( $id . '-last-name', $this->form_settings );
+			$autofill_markup = $this->get_element_autofill_markup_attr( $id . '-last-name' );
 
 			$last_name = array_merge( $last_name, $autofill_markup );
 
@@ -453,8 +453,6 @@ class Forminator_Name extends Forminator_Field {
 	public function markup( $field, $settings = array() ) {
 		$this->field         = $field;
 		$this->form_settings = $settings;
-
-		$this->init_autofill( $settings );
 
 		$multiple = self::get_property( 'multiple_name', $field, false, 'bool' );
 		$design   = $this->get_form_style( $settings );
@@ -624,9 +622,8 @@ class Forminator_Name extends Forminator_Field {
 	 *
 	 * @param array        $field
 	 * @param array|string $data
-	 * @param array        $post_data
 	 */
-	public function validate( $field, $data, $post_data = array() ) {
+	public function validate( $field, $data ) {
 		$id          = self::get_property( 'element_id', $field );
 		$is_multiple = self::get_property( 'multiple_name', $field, false, 'bool' );
 		$required    = $this->is_required( $field );
