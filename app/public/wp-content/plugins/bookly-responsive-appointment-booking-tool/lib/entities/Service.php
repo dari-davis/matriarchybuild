@@ -117,7 +117,7 @@ class Service extends Lib\Base\Entity
 
     protected static $table = 'bookly_services';
 
-    protected static $schema = array(
+    static $schema = array(
         'id'                           => array( 'format' => '%d' ),
         'category_id'                  => array( 'format' => '%d', 'reference' => array( 'entity' => 'Category' ) ),
         'type'                         => array( 'format' => '%s' ),
