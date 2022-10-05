@@ -236,28 +236,30 @@ $upload_dir = wp_upload_dir();
     <?php wp_enqueue_script( 'jquery-ui-dialog' ); ?>
 
     <div class="photos__dialog p-0 mx-md-auto" id="dialog">
-        <?php foreach($entries as $entry): ?>
-            <?php $photos = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$entry->entry_id.'"');
-                $filepath = explode("file_path", $photos[0]->meta_value);
-                $images = explode("/uploads", $filepath[1]); array_shift($images);?>
+        <?php if ($entries): ?>
+            <?php foreach($entries as $entry): ?>
+                <?php $photos = $wpdb->get_results('SELECT meta_value FROM wp_frmt_form_entry_meta WHERE meta_key="upload-1" AND entry_id="'.$entry->entry_id.'"');
+                    $filepath = explode("file_path", $photos[0]->meta_value);
+                    $images = explode("/uploads", $filepath[1]); array_shift($images);?>
 
-            <?php foreach($images as $image): ?>
-                <?php $src = str_replace('"', '', explode(";i:", $image)[0]);
+                <?php foreach($images as $image): ?>
+                    <?php $src = str_replace('"', '', explode(";i:", $image)[0]);
 
-                if (strpos($src, ';') !== false) { $path = substr($src, 0, strpos($src, ';'));
-                } else { $path = $src; }
-                
-                $image = $upload_dir['baseurl'] . $path; ?>
+                    if (strpos($src, ';') !== false) { $path = substr($src, 0, strpos($src, ';'));
+                    } else { $path = $src; }
+                    
+                    $image = $upload_dir['baseurl'] . $path; ?>
 
-                <div class="photos__image d-flex justify-content-center align-items-center">
-                    <div class="photos__image-container">
-                        <div class="image-inner">
-                            <img data-no-lazy src="<?= $image; ?>"/>
+                    <div class="photos__image d-flex justify-content-center align-items-center">
+                        <div class="photos__image-container">
+                            <div class="image-inner">
+                                <img data-no-lazy src="<?= $image; ?>"/>
+                            </div>
                         </div>
-                    </div>
-                </div>    
+                    </div>    
+                <?php endforeach; ?>
             <?php endforeach; ?>
-        <?php endforeach; ?>
+        <?php endif; ?>
     </div>
 
     <script>
